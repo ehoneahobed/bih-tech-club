@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>BIH Tech Club - Session 3: The Desktop & Programmes</title>
+  <style>
+    :root {
+      --bih-purple: #3A0CA3;
+      --bih-accent: #4361EE;
+      --bih-gold: #F77F00;
+      --bih-green: #2EC4B6;
+      --bih-red: #E63946;
+      --bih-dark: #1E1E24;
+      --bih-light: #F8F9FA;
+      --bih-border: #CED4DA;
+      --window-top: #E2E8F0;
+    }
+
+    * {
+      box-sizing: border-box;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    body {
+      background-color: #E9ECEF;
+      color: var(--bih-dark);
+      margin: 0;
+      padding: 20px;
+      line-height: 1.55;
+    }
+
+    .page {
+      background: #FFFFFF;
+      max-width: 860px;
+      margin: 20px auto;
+      padding: 42px 50px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+      border-radius: 8px;
+      page-break-after: always;
+    }
+
+    @media print {
+      body { background: white; padding: 0; }
+      .page { box-shadow: none; margin: 0; padding: 30px; max-width: 100%; border-radius: 0; }
+      .no-print { display: none; }
+    }
+
+    /* Header Bar */
+    .header-bar {
+      border-bottom: 3px solid var(--bih-purple);
+      padding-bottom: 10px;
+      margin-bottom: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .header-title {
+      font-size: 19px;
+      font-weight: 800;
+      color: var(--bih-purple);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .badge {
+      background: var(--bih-gold);
+      color: #FFFFFF;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+    }
+
+    /* Student Meta Box */
+    .student-meta {
+      border: 2px dashed var(--bih-border);
+      border-radius: 8px;
+      padding: 12px 18px;
+      background: var(--bih-light);
+      margin-bottom: 20px;
+    }
+
+    .meta-row {
+      display: flex;
+      gap: 15px;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+    .meta-row:last-child { margin-bottom: 0; }
+
+    .meta-label {
+      font-size: 12.5px;
+      font-weight: 700;
+      color: var(--bih-dark);
+      min-width: 125px;
+    }
+
+    .editable-line {
+      border-bottom: 1.5px solid var(--bih-purple);
+      flex-grow: 1;
+      padding: 2px 6px;
+      font-size: 13.5px;
+      font-weight: 600;
+      color: var(--bih-purple);
+      outline: none;
+      min-height: 20px;
+    }
+
+    /* Typography */
+    h1 { color: var(--bih-purple); font-size: 22px; margin-top: 0; margin-bottom: 8px; }
+    h2 { color: var(--bih-purple); font-size: 16px; margin-top: 20px; margin-bottom: 10px; border-left: 4px solid var(--bih-gold); padding-left: 8px; }
+    p { font-size: 13px; margin: 6px 0; }
+
+    /* Dual Grid Layout */
+    .dual-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin: 12px 0;
+    }
+
+    .dual-box {
+      border: 1px solid var(--bih-border);
+      border-radius: 8px;
+      padding: 12px 14px;
+      background: #FAFAFA;
+    }
+    .dual-box-title {
+      font-size: 13px;
+      font-weight: 800;
+      color: var(--bih-purple);
+      margin-bottom: 6px;
+      border-bottom: 1px solid var(--bih-border);
+      padding-bottom: 4px;
+    }
+
+    /* Callouts & Alert Boxes */
+    .callout {
+      background: #FFF3CD;
+      border-left: 4px solid var(--bih-gold);
+      padding: 10px 14px;
+      margin: 14px 0;
+      border-radius: 0 8px 8px 0;
+      font-size: 12.5px;
+    }
+    .callout-title {
+      font-weight: 800;
+      color: #856404;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 2px;
+    }
+
+    .panic-box {
+      background: #F8D7DA;
+      border-left: 4px solid var(--bih-red);
+      padding: 12px 14px;
+      margin: 14px 0;
+      border-radius: 0 8px 8px 0;
+      font-size: 12.5px;
+    }
+    .panic-title {
+      font-weight: 800;
+      color: #721C24;
+      margin-bottom: 4px;
+    }
+
+    /* Step Cards */
+    .step-card {
+      display: flex;
+      gap: 12px;
+      background: var(--bih-light);
+      border: 1px solid var(--bih-border);
+      border-radius: 6px;
+      padding: 10px 12px;
+      margin-bottom: 8px;
+      align-items: flex-start;
+    }
+
+    .step-num {
+      background: var(--bih-purple);
+      color: white;
+      font-size: 13px;
+      font-weight: 800;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .step-content { flex-grow: 1; font-size: 12.5px; }
+
+    /* Diagrams */
+    .diagram-container {
+      background: #FAFAFA;
+      border: 1px solid var(--bih-border);
+      border-radius: 8px;
+      padding: 12px;
+      margin: 14px 0;
+      text-align: center;
+    }
+    .diagram-caption {
+      font-size: 11px;
+      color: #6C757D;
+      margin-top: 6px;
+      font-style: italic;
+    }
+
+    /* Tables */
+    table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 12.5px; }
+    th { background: var(--bih-purple); color: white; text-align: left; padding: 7px 10px; }
+    td { border: 1px solid var(--bih-border); padding: 7px 10px; vertical-align: top; }
+    tr:nth-child(even) { background-color: var(--bih-light); }
+
+    /* Inline Key Badge */
+    .kbd-key {
+      display: inline-block;
+      background: #F3F4F6;
+      border: 1.5px solid #9CA3AF;
+      border-bottom: 3px solid #6B7280;
+      border-radius: 4px;
+      padding: 1px 6px;
+      font-family: monospace;
+      font-size: 12px;
+      font-weight: 700;
+      color: #1F2937;
+      margin: 0 2px;
+    }
+
+    /* Interactive Inputs */
+    .answer-line {
+      min-height: 24px;
+      border-bottom: 1px dashed var(--bih-purple);
+      margin: 4px 0;
+      outline: none;
+      font-size: 13px;
+      color: var(--bih-dark);
+      padding: 2px 4px;
+    }
+
+    .checkbox-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 6px;
+      font-size: 12.5px;
+    }
+    .checkbox-item input { width: 15px; height: 15px; cursor: pointer; }
+  </style>
+</head>
+<body>
+
+<!-- ========================================== -->
+<!-- PAGE 1: THE DESKTOP DIGITAL WORKSPACE      -->
+<!-- ========================================== -->
+<div class="page">
+  <div class="header-bar">
+    <div class="header-title">Bozoma Innovation Hub • Tech Club</div>
+    <div class="badge">Session 3 • Page 1</div>
+  </div>
+
+  <div class="student-meta">
+    <div class="meta-row">
+      <span class="meta-label">Learner Full Name:</span>
+      <div class="editable-line" contenteditable="true">Ama Mensah</div>
+    </div>
+    <div class="meta-row">
+      <span class="meta-label">School:</span>
+      <div class="editable-line" contenteditable="true">Bozoma Model School</div>
+      <span class="meta-label" style="min-width: 50px;">Class:</span>
+      <div class="editable-line" contenteditable="true" style="max-width: 90px;">JHS 1</div>
+    </div>
+    <div class="meta-row">
+      <span class="meta-label">Workstation Device:</span>
+      <div class="editable-line" contenteditable="true" style="max-width: 180px;">[ ] Desktop &nbsp; [ ] Laptop</div>
+      <span class="meta-label" style="min-width: 70px;">Station #:</span>
+      <div class="editable-line" contenteditable="true" style="max-width: 90px;">PC-01</div>
+    </div>
+  </div>
+
+  <h1>Session 3: The Desktop and Programmes</h1>
+  <p>When you sit down at your school desk, you place your exercise book, pen, ruler, and eraser in front of you. In the computer world, your screen is called the <strong>Desktop</strong> because it acts as your electronic work table!</p>
+
+  <h2>1. Anatomy of the Desktop Workspace</h2>
+  <p>Look at your screen right now. Every desktop screen has four main zones:</p>
+
+  <!-- DIAGRAM: FULL DESKTOP SCREEN ANATOMY -->
+  <div class="diagram-container">
+    <svg width="740" height="230" viewBox="0 0 740 230" xmlns="http://www.w3.org/2000/svg">
+      <!-- Monitor Outer Rim -->
+      <rect x="10" y="10" width="720" height="210" rx="8" fill="#1E293B" stroke="#0F172A" stroke-width="2"/>
+      
+      <!-- DESKTOP BACKGROUND (Wallpaper) -->
+      <rect x="20" y="20" width="700" height="165" fill="#3B82F6"/>
+      <!-- Soft landscape gradient hills on wallpaper -->
+      <path d="M 20,150 Q 200,90 400,140 T 720,120 L 720,185 L 20,185 Z" fill="#2563EB" opacity="0.6"/>
+      <path d="M 20,165 Q 300,110 550,150 T 720,135 L 720,185 L 20,185 Z" fill="#1D4ED8" opacity="0.7"/>
+
+      <!-- ICONS ON DESKTOP -->
+      <!-- Icon 1: This PC -->
+      <g transform="translate(35, 30)">
+        <rect x="5" y="0" width="26" height="20" rx="2" fill="#E2E8F0" stroke="#334155" stroke-width="1"/>
+        <rect x="9" y="4" width="18" height="12" fill="#0EA5E9"/>
+        <text x="18" y="32" font-size="8.5" font-weight="bold" fill="white" text-anchor="middle">This PC</text>
+      </g>
+
+      <!-- Icon 2: Recycle Bin -->
+      <g transform="translate(35, 75)">
+        <rect x="7" y="0" width="22" height="24" rx="2" fill="#E2E8F0" stroke="#334155" stroke-width="1"/>
+        <line x1="12" y1="6" x2="12" y2="18" stroke="#10B981" stroke-width="1.5"/>
+        <line x1="18" y1="6" x2="18" y2="18" stroke="#10B981" stroke-width="1.5"/>
+        <line x1="24" y1="6" x2="24" y2="18" stroke="#10B981" stroke-width="1.5"/>
+        <text x="18" y="36" font-size="8.5" font-weight="bold" fill="white" text-anchor="middle">Recycle Bin</text>
+      </g>
+
+      <!-- Icon 3: Drawing / Paint App -->
+      <g transform="translate(35, 125)">
+        <rect x="7" y="0" width="22" height="22" rx="3" fill="#FEF08A"/>
+        <circle cx="14" cy="8" r="3" fill="#EF4444"/>
+        <circle cx="22" cy="8" r="3" fill="#3B82F6"/>
+        <circle cx="18" cy="15" r="3" fill="#10B981"/>
+        <text x="18" y="34" font-size="8.5" font-weight="bold" fill="white" text-anchor="middle">Paint</text>
+      </g>
+
+      <!-- TASKBAR (Along bottom rim) -->
+      <rect x="20" y="185" width="700" height="25" fill="#0F172A"/>
+
+      <!-- Start Button (Window Logo) -->
+      <g transform="translate(26, 189)">
+        <rect x="0" y="0" width="7.5" height="7.5" fill="#38BDF8"/>
+        <rect x="9" y="0" width="7.5" height="7.5" fill="#38BDF8"/>
+        <rect x="0" y="9" width="7.5" height="7.5" fill="#38BDF8"/>
+        <rect x="9" y="9" width="7.5" height="7.5" fill="#38BDF8"/>
+      </g>
+      <text x="52" y="201" font-size="9" font-weight="bold" fill="#38BDF8">Start</text>
+
+      <!-- Search Bar -->
+      <rect x="85" y="189" width="120" height="17" rx="3" fill="#1E293B"/>
+      <circle cx="95" cy="197" r="3.5" fill="none" stroke="#94A3B8" stroke-width="1"/>
+      <line x1="98" y1="200" x2="102" y2="204" stroke="#94A3B8" stroke-width="1"/>
+      <text x="108" y="201" font-size="8.5" fill="#94A3B8">Type to search...</text>
+
+      <!-- Running App Icons on Taskbar -->
+      <rect x="220" y="187" width="20" height="20" rx="3" fill="#1E293B"/>
+      <rect x="225" y="191" width="10" height="12" fill="#FDE047"/>
+      <line x1="223" y1="208" x2="237" y2="208" stroke="#38BDF8" stroke-width="2"/> <!-- Active indicator -->
+
+      <rect x="246" y="187" width="20" height="20" rx="3" fill="#1E293B"/>
+      <rect x="250" y="191" width="12" height="12" fill="#60A5FA"/>
+
+      <!-- SYSTEM TRAY (Far Right of Taskbar) -->
+      <g transform="translate(580, 192)">
+        <!-- Wi-Fi Waves -->
+        <path d="M 10,13 A 8 8 0 0 1 22,13 M 12,10 A 11 11 0 0 1 20,10 M 14,7 A 14 14 0 0 1 18,7" stroke="#E2E8F0" stroke-width="1.2" fill="none"/>
+        <circle cx="16" cy="14" r="1" fill="#E2E8F0"/>
+
+        <!-- Speaker -->
+        <polygon points="32,8 35,8 39,5 39,15 35,12 32,12" fill="#E2E8F0"/>
+        <path d="M 41,7 A 4 4 0 0 1 41,13" stroke="#E2E8F0" stroke-width="1" fill="none"/>
+
+        <!-- Battery (Laptop indicator) -->
+        <rect x="52" y="6" width="16" height="9" rx="1.5" fill="none" stroke="#E2E8F0" stroke-width="1.2"/>
+        <rect x="68" y="8.5" width="2" height="4" fill="#E2E8F0"/>
+        <rect x="54" y="8" width="10" height="5" fill="#10B981"/>
+
+        <!-- Clock -->
+        <text x="80" y="13" font-size="9" fill="#E2E8F0">10:30 AM</text>
+      </g>
+
+      <!-- Callout Labels -->
+      <path d="M 80,45 L 140,45" stroke="#FDE047" stroke-width="1.5"/>
+      <text x="145" y="48" font-size="10" font-weight="bold" fill="#FDE047">Desktop Icons (Shortcuts)</text>
+
+      <path d="M 450,90 L 520,70" stroke="#FFFFFF" stroke-width="1.5"/>
+      <text x="525" y="73" font-size="10" font-weight="bold" fill="#FFFFFF">Wallpaper (Background)</text>
+
+      <path d="M 48,187 L 48,165" stroke="#38BDF8" stroke-width="1.5"/>
+      <text x="48" y="160" font-size="9.5" font-weight="bold" fill="#38BDF8" text-anchor="middle">Start Button</text>
+
+      <path d="M 640,185 L 640,165" stroke="#34D399" stroke-width="1.5"/>
+      <text x="640" y="160" font-size="9.5" font-weight="bold" fill="#34D399" text-anchor="middle">System Tray (Sound, Wi-Fi, Battery, Clock)</text>
+    </svg>
+    <div class="diagram-caption">Figure 3.0: The Desktop Screen. The Taskbar sits on the bottom rim, keeping track of every open program.</div>
+  </div>
+
+  <h2>2. Plain Talk: The Four Core Elements</h2>
+  <ul>
+    <li><strong>1. The Wallpaper:</strong> The picture or color covering your screen surface.</li>
+    <li><strong>2. Desktop Icons:</strong> Small labeled pictures that act as shortcuts to open programs, folders, or files.</li>
+    <li><strong>3. The Taskbar:</strong> The long bar at the bottom. It shows the Start button and small icons for every program currently running.</li>
+    <li><strong>4. The System Tray:</strong> Found on the bottom-right corner. It displays background information: sound volume, internet connection, the time, and the battery level (if using a laptop).</li>
+  </ul>
+</div>
+
+<!-- ========================================== -->
+<!-- PAGE 2: WHAT IS A PROGRAMME / APP?         -->
+<!-- ========================================== -->
+<div class="page">
+  <div class="header-bar">
+    <div class="header-title">What is a Programme (Application)?</div>
+    <div class="badge">Session 3 • Page 2</div>
+  </div>
+
+  <h2>1. Everyday Analogy: Different Tools for Different Work</h2>
+  <p>If you want to cut a piece of wood, you pick up a <strong>saw</strong>. If you want to hammer a nail, you pick up a <strong>hammer</strong>. You would never try to cut timber with a hammer!</p>
+  <p>In computing, a <strong>Programme</strong> (also called an <strong>Application</strong> or <strong>App</strong>) is a specialized electronic tool built to do one particular job:</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 25%;">Programme Type</th>
+        <th style="width: 40%;">What It Lets You Do</th>
+        <th style="width: 35%;">Examples on Your Computer</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Word Processor</strong></td>
+        <td>Type letters, write school essays, format stories, and print text.</td>
+        <td>Notepad, WordPad, Microsoft Word, Google Docs.</td>
+      </tr>
+      <tr>
+        <td><strong>Drawing / Paint Tool</strong></td>
+        <td>Draw shapes, create diagrams, paint posters, and color images.</td>
+        <td>MS Paint, TuxPaint, Paint 3D.</td>
+      </tr>
+      <tr>
+        <td><strong>Web Browser</strong></td>
+        <td>Connect to the internet to read articles, search facts, and watch lessons.</td>
+        <td>Google Chrome, Microsoft Edge, Mozilla Firefox.</td>
+      </tr>
+      <tr>
+        <td><strong>Calculator</strong></td>
+        <td>Quickly add, subtract, multiply, and solve mathematics problems.</td>
+        <td>Windows Calculator app.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>2. Two Ways to Open (Launch) Any Programme</h2>
+  <div class="dual-grid">
+    <div class="dual-box">
+      <div class="dual-box-title">Method 1: From a Desktop Icon</div>
+      <p>1. Glide your pointer over the icon on the desktop screen.</p>
+      <p>2. Perform a fast <strong>Double-Click</strong> (tap the Left Button twice fast: <em>Click-Click!</em>).</p>
+      <p>3. Wait 2 seconds. The program opens inside a box called a <strong>Window</strong>.</p>
+    </div>
+
+    <div class="dual-box">
+      <div class="dual-box-title">Method 2: Using the Start Menu Search</div>
+      <p>1. Left-click the <strong>Start Button</strong> in the bottom-left corner.</p>
+      <p>2. Immediately type the program name (e.g., <code>paint</code> or <code>calculator</code>).</p>
+      <p>3. Tap the <span class="kbd-key">Enter</span> key on your keyboard.</p>
+    </div>
+  </div>
+
+  <h2>3. Icons Decoded: Can You Spot the Difference?</h2>
+  <p>Look at the small pictures on your desktop. They fall into three groups:</p>
+  <ul>
+    <li><strong>Program Icon:</strong> The tool itself (e.g., a paintbrush for Paint, a blue 'W' for Word). Often has a tiny curved arrow in the corner showing it is a shortcut.</li>
+    <li><strong>File Icon:</strong> A single document you or someone else created (e.g., a sheet of paper with writing).</li>
+    <li><strong>Folder Icon:</strong> A yellow plastic-looking folder used to organize multiple files together.</li>
+  </ul>
+
+  <h2>4. Check Your Thinking</h2>
+  <p><strong>Question:</strong> Ama wants to draw a map of Ghana showing the Volta Lake. Which program on the school computer should she launch?</p>
+  <div class="answer-line" contenteditable="true">Write your answer here...</div>
+</div>
+
+<!-- ========================================== -->
+<!-- PAGE 3: WINDOW ANATOMY & THE CONTROL TRIO  -->
+<!-- ========================================== -->
+<div class="page">
+  <div class="header-bar">
+    <div class="header-title">Window Anatomy & Window Controls</div>
+    <div class="badge">Session 3 • Page 3</div>
+  </div>
+
+  <h2>1. What is a "Window"?</h2>
+  <p>When you launch an application, it appears inside a framed rectangular area called a <strong>Window</strong> (this is why the operating system is named <em>Microsoft Windows</em>!). A window lets you see and work inside one program at a time.</p>
+
+  <!-- DIAGRAM: WINDOW ANATOMY & THREE BUTTONS -->
+  <div class="diagram-container">
+    <svg width="720" height="190" viewBox="0 0 720 190" xmlns="http://www.w3.org/2000/svg">
+      <!-- Main Window Outer Frame -->
+      <rect x="20" y="10" width="680" height="165" rx="6" fill="#FFFFFF" stroke="#334155" stroke-width="2"/>
+      
+      <!-- TITLE BAR (Top Strip) -->
+      <rect x="20" y="10" width="680" height="34" rx="5" fill="#E2E8F0"/>
+      <rect x="30" y="18" width="18" height="18" rx="3" fill="#F59E0B"/>
+      <text x="55" y="31" font-size="12" font-weight="bold" fill="#1E293B">Untitled - Paint (Title Bar)</text>
+
+      <!-- CONTROL TRIO BUTTONS -->
+      <!-- Minimise -->
+      <rect x="575" y="14" width="34" height="24" rx="3" fill="#CBD5E1"/>
+      <line x1="585" y1="28" x2="599" y2="28" stroke="#0F172A" stroke-width="2"/>
+
+      <!-- Maximise / Restore -->
+      <rect x="615" y="14" width="34" height="24" rx="3" fill="#CBD5E1"/>
+      <rect x="625" y="21" width="14" height="10" fill="none" stroke="#0F172A" stroke-width="1.6"/>
+
+      <!-- Close -->
+      <rect x="655" y="14" width="38" height="24" rx="3" fill="#EF4444"/>
+      <line x1="668" y1="21" x2="680" y2="31" stroke="white" stroke-width="2"/>
+      <line x1="680" y1="21" x2="668" y2="31" stroke="white" stroke-width="2"/>
+
+      <!-- Workspace Area inside Window -->
+      <rect x="30" y="52" width="660" height="112" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1"/>
+      <text x="360" y="115" font-size="14" fill="#94A3B8" text-anchor="middle">Drawing Canvas / Document Workspace</text>
+
+      <!-- Callouts for the Trio -->
+      <path d="M 592,42 L 592,70" stroke="#3A0CA3" stroke-width="1.5"/>
+      <text x="592" y="82" font-size="10.5" font-weight="bold" fill="#3A0CA3" text-anchor="middle">1. MINIMISE [-]</text>
+      <text x="592" y="94" font-size="9" fill="#4B5563" text-anchor="middle">Hides window into</text>
+      <text x="592" y="104" font-size="9" fill="#4B5563" text-anchor="middle">the Taskbar shelf</text>
+
+      <path d="M 632,42 L 632,120" stroke="#0D9488" stroke-width="1.5"/>
+      <text x="632" y="132" font-size="10.5" font-weight="bold" fill="#0D9488" text-anchor="middle">2. MAXIMISE [ &#9633; ]</text>
+      <text x="632" y="144" font-size="9" fill="#4B5563" text-anchor="middle">Expands window to fill</text>
+      <text x="632" y="154" font-size="9" fill="#4B5563" text-anchor="middle">the whole monitor screen</text>
+
+      <path d="M 674,42 L 674,70" stroke="#DC2626" stroke-width="1.5"/>
+      <text x="674" y="82" font-size="10.5" font-weight="bold" fill="#DC2626" text-anchor="middle">3. CLOSE [ X ]</text>
+      <text x="674" y="94" font-size="9" fill="#4B5563" text-anchor="middle">Shuts program down</text>
+      <text x="674" y="104" font-size="9" fill="#4B5563" text-anchor="middle">completely!</text>
+    </svg>
+    <div class="diagram-caption">Figure 3.1: The Window Anatomy. The three magic control buttons always sit in the top-right corner.</div>
+  </div>
+
+  <h2>2. Master the Three Magic Window Buttons</h2>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 20%;">Button Symbol</th>
+        <th style="width: 30%;">Button Name</th>
+        <th style="width: 50%;">What Actually Happens When You Click It</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong style="font-size:16px;">[ &minus; ]</strong></td>
+        <td><strong>Minimise</strong></td>
+        <td>The window instantly disappears from view, but <strong>it is NOT closed!</strong> It tucks down into the bottom taskbar, waiting for you.</td>
+      </tr>
+      <tr>
+        <td><strong style="font-size:16px;">[ &square; ]</strong></td>
+        <td><strong>Maximise / Restore</strong></td>
+        <td>Grows the window to cover the entire screen. Once maximised, the icon changes to two overlapping squares (<strong>Restore Down</strong>) to shrink it back.</td>
+      </tr>
+      <tr>
+        <td><strong style="font-size:16px; color:#DC2626;">[ &times; ]</strong></td>
+        <td><strong>Close</strong></td>
+        <td>Shuts the application down completely. If you have unsaved drawings or words, the computer will ask you if you want to save first!</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>3. Moving and Resizing a Window</h2>
+  <div class="dual-grid">
+    <div class="dual-box">
+      <div class="dual-box-title">How to MOVE a Window</div>
+      <p>1. Move your pointer over the empty gray space on the <strong>Title Bar</strong> at the very top.</p>
+      <p>2. <strong>Click and HOLD</strong> the left mouse button (or hold the bottom-left touchpad corner).</p>
+      <p>3. Slide your mouse across the desk. The whole window slides with you! Release to park it.</p>
+    </div>
+
+    <div class="dual-box">
+      <div class="dual-box-title">How to RESIZE a Window</div>
+      <p>1. Move your pointer very slowly to the <strong>outer rim or corner</strong> of the window frame.</p>
+      <p>2. Watch the arrow pointer transform into a <strong>double-headed arrow</strong> (&harr; or &#8597;).</p>
+      <p>3. Click and drag inward to shrink the window, or drag outward to make it bigger!</p>
+    </div>
+  </div>
+</div>
+
+<!-- ========================================== -->
+<!-- PAGE 4: MULTITASKING & JUGGLING WINDOWS    -->
+<!-- ========================================== -->
+<div class="page">
+  <div class="header-bar">
+    <div class="header-title">Multitasking: Juggling Two Programmes</div>
+    <div class="badge">Session 3 • Page 4</div>
+  </div>
+
+  <h2>1. What is Multitasking?</h2>
+  <p>In school, you might have your Science textbook open on your left while writing notes in your exercise notebook on your right. A computer can do this too! Having more than one program running at the same time is called <strong>Multitasking</strong>.</p>
+
+  <!-- DIAGRAM: TWO WINDOWS OVERLAPPING -->
+  <div class="diagram-container">
+    <svg width="700" height="210" viewBox="0 0 700 210" xmlns="http://www.w3.org/2000/svg">
+      <!-- Background Desktop -->
+      <rect x="10" y="10" width="680" height="190" fill="#E2E8F0" rx="6" stroke="#CBD5E1" stroke-width="1.5"/>
+
+      <!-- WINDOW 1: INACTIVE (WordPad/Notepad in background) -->
+      <g transform="translate(40, 25)">
+        <rect x="0" y="0" width="340" height="150" rx="4" fill="#FFFFFF" stroke="#94A3B8" stroke-width="1.5"/>
+        <rect x="0" y="0" width="340" height="26" rx="3" fill="#94A3B8"/> <!-- Dimmed title bar -->
+        <text x="12" y="17" font-size="10" fill="white" font-weight="bold">Notes.txt - Notepad (INACTIVE / Sleeping)</text>
+        <!-- Mock text lines -->
+        <line x1="20" y1="45" x2="280" y2="45" stroke="#CBD5E1" stroke-width="3"/>
+        <line x1="20" y1="60" x2="220" y2="60" stroke="#CBD5E1" stroke-width="3"/>
+        <line x1="20" y1="75" x2="250" y2="75" stroke="#CBD5E1" stroke-width="3"/>
+      </g>
+
+      <!-- WINDOW 2: ACTIVE (Paint in foreground, overlapping Window 1) -->
+      <g transform="translate(240, 45)">
+        <rect x="0" y="0" width="400" height="145" rx="4" fill="#FFFFFF" stroke="#1E293B" stroke-width="2" filter="drop-shadow(0 4px 6px rgba(0,0,0,0.15))"/>
+        <rect x="0" y="0" width="400" height="28" rx="3" fill="#3A0CA3"/> <!-- Bright active title bar -->
+        <text x="14" y="18" font-size="11" fill="white" font-weight="bold">Flag_Design - Paint (ACTIVE / Focused)</text>
+        <!-- Window buttons -->
+        <rect x="330" y="6" width="18" height="16" rx="2" fill="#4361EE"/>
+        <rect x="352" y="6" width="18" height="16" rx="2" fill="#4361EE"/>
+        <rect x="374" y="6" width="20" height="16" rx="2" fill="#EF4444"/>
+        <!-- Simple flag inside paint window -->
+        <rect x="80" y="45" width="150" height="25" fill="#EF4444"/>
+        <rect x="80" y="70" width="150" height="25" fill="#F59E0B"/>
+        <polygon points="155,75 158,83 166,83 160,88 162,95 155,90 148,95 150,88 144,83 152,83" fill="#111827"/>
+        <rect x="80" y="95" width="150" height="25" fill="#10B981"/>
+      </g>
+
+      <!-- Annotation pointers -->
+      <path d="M 120,110 L 120,140" stroke="#64748B" stroke-width="1.5"/>
+      <text x="120" y="152" font-size="9" fill="#475569" font-weight="bold" text-anchor="middle">Click anywhere here</text>
+      <text x="120" y="163" font-size="8.5" fill="#475569" text-anchor="middle">to wake this window up!</text>
+
+      <path d="M 520,35 L 520,15" stroke="#3A0CA3" stroke-width="1.5"/>
+      <text x="520" y="10" font-size="9" fill="#3A0CA3" font-weight="bold" text-anchor="middle">Active Window sits on top with a colored Title Bar</text>
+    </svg>
+    <div class="diagram-caption">Figure 3.2: Overlapping windows. The "Active" window has the colored title bar; the "Inactive" window sleeps behind it.</div>
+  </div>
+
+  <h2>2. Three Ways to Switch Between Open Windows</h2>
+  <ul>
+    <li><strong>Method 1 (The Taskbar Click):</strong> Move your pointer down to the bottom taskbar. Click on the icon of the program you want. It immediately pops to the front!</li>
+    <li><strong>Method 2 (The Background Tap):</strong> If any small edge of the background window is peeking out, click on it once. It instantly leaps to the front.</li>
+    <li><strong>Method 3 (The Pro Keyboard Shortcut):</strong> Hold down the <span class="kbd-key">Alt</span> key with your left thumb, and tap the <span class="kbd-key">Tab</span> key once. A small selector box appears. Release both keys to swap windows!</li>
+  </ul>
+
+  <h2>3. Panic Button / Troubleshooting</h2>
+  <div class="panic-box">
+    <div class="panic-title">🚨 HELP! I clicked the minus button [-] and my whole document vanished! Did I delete my work?</div>
+    <strong>No, your work is 100% safe!</strong> You clicked the <strong>Minimise</strong> button. Minimise never erases anything; it simply rolls the window up and parks it on the bottom shelf (the Taskbar).
+    <br><br>
+    <strong>How to get it back:</strong> Look at the bottom taskbar rim. Find the icon with a tiny glowing dot or blue line underneath it. Click that icon once. Your window will instantly leap back onto the screen!
+  </div>
+</div>
+
+<!-- ========================================== -->
+<!-- PAGE 5: GUIDED LAB - THE ARTIST & WRITER   -->
+<!-- ========================================== -->
+<div class="page">
+  <div class="header-bar">
+    <div class="header-title">Guided Hands-On Lab: The Artist & Writer</div>
+    <div class="badge">Session 3 • Page 5</div>
+  </div>
+
+  <h2>1. Lab Goal: Run Two Applications Side-by-Side</h2>
+  <p>Today you will be an artist and a writer at the same time. Follow these steps carefully:</p>
+
+  <div class="step-card">
+    <div class="step-num">1</div>
+    <div class="step-content">
+      <strong>Open Paint:</strong> Click Start &rarr; Type <code>paint</code> &rarr; Press <span class="kbd-key">Enter</span>.
+      <br>Using the pencil, brush, or shape tools, draw a simple outline of a house, a tree, or the Ghanaian flag.
+    </div>
+  </div>
+
+  <div class="step-card">
+    <div class="step-num">2</div>
+    <div class="step-content">
+      <strong>Open Notepad:</strong> Click Start &rarr; Type <code>notepad</code> &rarr; Press <span class="kbd-key">Enter</span>.
+      <br>Notice how Notepad opens directly on top of your drawing! Paint is not gone; it is just sitting behind Notepad.
+    </div>
+  </div>
+
+  <div class="step-card">
+    <div class="step-num">3</div>
+    <div class="step-content">
+      <strong>Write in Notepad:</strong> In Notepad, type two sentences describing your drawing:
+      <br><em>"I drew a house with a green compound. Technology helps us build ideas."</em>
+    </div>
+  </div>
+
+  <div class="step-card">
+    <div class="step-num">4</div>
+    <div class="step-content">
+      <strong>Practice Switching:</strong> Use the Taskbar icons at the bottom of the screen to switch back and forth between Paint and Notepad <strong>three times</strong>.
+    </div>
+  </div>
+
+  <h2>2. Closing Properly: The "Save Changes?" Dialog Box</h2>
+  <p>When you click the red <span style="color:#DC2626; font-weight:bold;">[ X ]</span> button to close a program, the computer protects you from accidentally throwing your work into the dustbin:</p>
+
+  <!-- DIAGRAM: SAVE DIALOG BOX -->
+  <div class="diagram-container">
+    <svg width="550" height="120" viewBox="0 0 550 120" xmlns="http://www.w3.org/2000/svg">
+      <rect x="25" y="10" width="500" height="100" rx="6" fill="#FFFFFF" stroke="#334155" stroke-width="2" filter="drop-shadow(0 4px 6px rgba(0,0,0,0.1))"/>
+      <rect x="25" y="10" width="500" height="24" rx="5" fill="#F1F5F9"/>
+      <text x="40" y="26" font-size="10" font-weight="bold" fill="#334155">Notepad</text>
+      <text x="40" y="55" font-size="11.5" font-weight="bold" fill="#1E293B">Do you want to save changes to Untitled?</text>
+
+      <!-- Three Buttons -->
+      <rect x="180" y="70" width="95" height="26" rx="4" fill="#3A0CA3"/>
+      <text x="227" y="87" font-size="11" font-weight="bold" fill="white" text-anchor="middle">Save</text>
+
+      <rect x="290" y="70" width="115" height="26" rx="4" fill="#E2E8F0" stroke="#94A3B8" stroke-width="1"/>
+      <text x="347" y="87" font-size="11" font-weight="bold" fill="#1E293B" text-anchor="middle">Don't Save</text>
+
+      <rect x="420" y="70" width="90" height="26" rx="4" fill="#E2E8F0" stroke="#94A3B8" stroke-width="1"/>
+      <text x="465" y="87" font-size="11" fill="#1E293B" text-anchor="middle">Cancel</text>
+    </svg>
+    <div class="diagram-caption">Figure 3.3: The standard Save Warning dialog box. Always read before clicking!</div>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 25%;">Button Option</th>
+        <th style="width: 75%;">What the Computer Does When You Click It</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Save</strong></td>
+        <td>Stores your work permanently onto the storage drive so you can open it next week.</td>
+      </tr>
+      <tr>
+        <td><strong>Don't Save</strong></td>
+        <td>Closes the program and <strong>permanently throws away</strong> everything you typed/drew today. (Use only for scrap practice).</td>
+      </tr>
+      <tr>
+        <td><strong>Cancel</strong></td>
+        <td>"Oops, I didn't mean to close!" Stops the shutdown and returns you right back to your document.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ========================================== -->
+<!-- PAGE 6: REVIEW & SELF-ASSESSMENT           -->
+<!-- ========================================== -->
+<div class="page">
+  <div class="header-bar">
+    <div class="header-title">Session 3 Review & Verification</div>
+    <div class="badge">Session 3 • Page 6</div>
+  </div>
+
+  <h2>1. Match the Window Button to its Purpose</h2>
+  <p>Draw a line connecting each window button symbol on the left to its correct action on the right:</p>
+
+  <div style="display: flex; justify-content: space-between; margin: 20px 30px; font-size: 13px;">
+    <div style="display: flex; flex-direction: column; gap: 22px; font-weight: bold;">
+      <div style="font-size: 16px; color: var(--bih-purple);">[ &minus; ] &nbsp; (Minus)</div>
+      <div style="font-size: 16px; color: var(--bih-green);">[ &square; ] &nbsp; (Single Square)</div>
+      <div style="font-size: 16px; color: var(--bih-red);">[ &times; ] &nbsp; (Red X)</div>
+      <div style="font-size: 14px; color: var(--bih-accent);">Title Bar Drag</div>
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 22px; color: var(--bih-dark);">
+      <div>&bull; &nbsp; Shuts down the program completely.</div>
+      <div>&bull; &nbsp; Moves the window to a new spot on your screen.</div>
+      <div>&bull; &nbsp; Hides the window temporarily down into the Taskbar.</div>
+      <div>&bull; &nbsp; Expands the window to fill the entire monitor glass.</div>
+    </div>
+  </div>
+
+  <h2>2. Written Review Questions</h2>
+  <p><strong>Question 1:</strong> What is the difference between <em>Minimising</em> a window and <em>Closing</em> a window?</p>
+  <div class="answer-line" contenteditable="true">Write your answer here...</div>
+  <div class="answer-line" contenteditable="true"></div>
+
+  <p><strong>Question 2:</strong> You have a drawing program open, but you need to check the time. In which corner of the Desktop screen is the clock located?</p>
+  <div class="answer-line" contenteditable="true">Write your answer here...</div>
+
+  <p><strong>Question 3:</strong> If you accidentally click the red Close button [X] on your essay, which button in the warning box should you click so your document stays open?</p>
+  <div class="answer-line" contenteditable="true">Write your answer here...</div>
+
+  <h2>3. Self-Assessment & Mentor Sign-Off</h2>
+  <p>Tick the column that reflects your confidence at the end of Session 3:</p>
+  <table>
+    <thead>
+      <tr>
+        <th>Desktop & Window Navigation Skill</th>
+        <th style="width: 18%; text-align: center;">With Help</th>
+        <th style="width: 18%; text-align: center;">Almost Alone</th>
+        <th style="width: 18%; text-align: center;">All By Myself!</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1. I can identify the Wallpaper, Desktop Icons, Taskbar, and System Tray.</td>
+        <td style="text-align: center;"><input type="radio" name="s3_1"></td>
+        <td style="text-align: center;"><input type="radio" name="s3_1"></td>
+        <td style="text-align: center;"><input type="radio" name="s3_1"></td>
+      </tr>
+      <tr>
+        <td>2. I can correctly use the Minimise, Maximise, and Close buttons.</td>
+        <td style="text-align: center;"><input type="radio" name="s3_2"></td>
+        <td style="text-align: center;"><input type="radio" name="s3_2"></td>
+        <td style="text-align: center;"><input type="radio" name="s3_2"></td>
+      </tr>
+      <tr>
+        <td>3. I can move a window by dragging its Title Bar and resize it from the corner.</td>
+        <td style="text-align: center;"><input type="radio" name="s3_3"></td>
+        <td style="text-align: center;"><input type="radio" name="s3_3"></td>
+        <td style="text-align: center;"><input type="radio" name="s3_3"></td>
+      </tr>
+      <tr>
+        <td>4. I can run Paint and Notepad simultaneously and switch between them.</td>
+        <td style="text-align: center;"><input type="radio" name="s3_4"></td>
+        <td style="text-align: center;"><input type="radio" name="s3_4"></td>
+        <td style="text-align: center;"><input type="radio" name="s3_4"></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div style="border-top: 1px solid var(--bih-border); margin-top: 25px; padding-top: 12px; display: flex; justify-content: space-between; font-size: 13px;">
+    <div><strong>Mentor Signature:</strong> _____________________________</div>
+    <div><strong>Date Completed:</strong> ____________________</div>
+  </div>
+</div>
+
+</body>
+</html>

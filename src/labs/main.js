@@ -1,0 +1,21 @@
+// Mounts every <div class="lab" data-lab="name"> on the page.
+import { createStage, createUI, webglAvailable } from './runtime.js';
+
+for (const host of document.querySelectorAll('.lab[data-lab]')) mount(host);
+
+async function mount(host) {
+  const status = host.querySelector('.lab-status');
+  if (!webglAvailable()) {
+    status.textContent = 'This computer cannot show 3D graphics (WebGL is turned off or not supported). Everything in the workbook still works without it.';
+    return;
+  }
+  try {
+    const mod = await import(`./${host.dataset.lab}.js`);
+    const stage = createStage(host, mod.config);
+    mod.default(stage, createUI(host), host);
+    status.remove();
+  } catch (err) {
+    console.error(err);
+    status.textContent = 'The 3D lab could not load. Try refreshing the page.';
+  }
+}

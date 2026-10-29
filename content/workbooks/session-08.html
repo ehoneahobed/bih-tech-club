@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>BIH Tech Club - Session 8: Word Processing & Document Formatting</title>
+  <style>
+    :root {
+      --bih-purple: #3A0CA3;
+      --bih-accent: #4361EE;
+      --bih-gold: #F77F00;
+      --bih-green: #2EC4B6;
+      --bih-red: #E63946;
+      --bih-dark: #1E1E24;
+      --bih-light: #F8F9FA;
+      --bih-border: #CED4DA;
+      --word-blue: #2563EB;
+      --ribbon-gray: #F1F5F9;
+    }
+
+    * {
+      box-sizing: border-box;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    body {
+      background-color: #E9ECEF;
+      color: var(--bih-dark);
+      margin: 0;
+      padding: 20px;
+      line-height: 1.55;
+    }
+
+    .page {
+      background: #FFFFFF;
+      max-width: 860px;
+      margin: 20px auto;
+      padding: 42px 50px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+      border-radius: 8px;
+      page-break-after: always;
+    }
+
+    @media print {
+      body { background: white; padding: 0; }
+      .page { box-shadow: none; margin: 0; padding: 30px; max-width: 100%; border-radius: 0; }
+      .no-print { display: none; }
+    }
+
+    /* Header Bar */
+    .header-bar {
+      border-bottom: 3px solid var(--bih-purple);
+      padding-bottom: 10px;
+      margin-bottom: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .header-title {
+      font-size: 19px;
+      font-weight: 800;
+      color: var(--bih-purple);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .badge {
+      background: var(--bih-gold);
+      color: #FFFFFF;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+    }
+
+    /* Student Meta Box */
+    .student-meta {
+      border: 2px dashed var(--bih-border);
+      border-radius: 8px;
+      padding: 12px 18px;
+      background: var(--bih-light);
+      margin-bottom: 20px;
+    }
+
+    .meta-row {
+      display: flex;
+      gap: 15px;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+    .meta-row:last-child { margin-bottom: 0; }
+
+    .meta-label {
+      font-size: 12.5px;
+      font-weight: 700;
+      color: var(--bih-dark);
+      min-width: 125px;
+    }
+
+    .editable-line {
+      border-bottom: 1.5px solid var(--bih-purple);
+      flex-grow: 1;
+      padding: 2px 6px;
+      font-size: 13.5px;
+      font-weight: 600;
+      color: var(--bih-purple);
+      outline: none;
+      min-height: 20px;
+    }
+
+    /* Typography */
+    h1 { color: var(--bih-purple); font-size: 22px; margin-top: 0; margin-bottom: 8px; }
+    h2 { color: var(--bih-purple); font-size: 16px; margin-top: 20px; margin-bottom: 10px; border-left: 4px solid var(--bih-gold); padding-left: 8px; }
+    p { font-size: 13px; margin: 6px 0; }
+
+    /* Dual Grid Layout */
+    .dual-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin: 12px 0;
+    }
+
+    .dual-box {
+      border: 1px solid var(--bih-border);
+      border-radius: 8px;
+      padding: 12px 14px;
+      background: #FAFAFA;
+    }
+    .dual-box-title {
+      font-size: 13px;
+      font-weight: 800;
+      color: var(--bih-purple);
+      margin-bottom: 6px;
+      border-bottom: 1px solid var(--bih-border);
+      padding-bottom: 4px;
+    }
+
+    /* Callouts & Alert Boxes */
+    .callout {
+      background: #FFF3CD;
+      border-left: 4px solid var(--bih-gold);
+      padding: 10px 14px;
+      margin: 14px 0;
+      border-radius: 0 8px 8px 0;
+      font-size: 12.5px;
+    }
+    .callout-title {
+      font-weight: 800;
+      color: #856404;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 2px;
+    }
+
+    .panic-box {
+      background: #F8D7DA;
+      border-left: 4px solid var(--bih-red);
+      padding: 12px 14px;
+      margin: 14px 0;
+      border-radius: 0 8px 8px 0;
+      font-size: 12.5px;
+    }
+    .panic-title {
+      font-weight: 800;
+      color: #721C24;
+      margin-bottom: 4px;
+    }
+
+    /* Step Cards */
+    .step-card {
+      display: flex;
+      gap: 12px;
+      background: var(--bih-light);
+      border: 1px solid var(--bih-border);
+      border-radius: 6px;
+      padding: 10px 12px;
+      margin-bottom: 8px;
+      align-items: flex-start;
+    }
+
+    .step-num {
+      background: var(--bih-purple);
+      color: white;
+      font-size: 13px;
+      font-weight: 800;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .step-content { flex-grow: 1; font-size: 12.5px; }
+
+    /* Diagrams */
+    .diagram-container {
+      background: #FAFAFA;
+      border: 1px solid var(--bih-border);
+      border-radius: 8px;
+      padding: 12px;
+      margin: 14px 0;
+      text-align: center;
+    }
+    .diagram-caption {
+      font-size: 11px;
+      color: #6C757D;
+      margin-top: 6px;
+      font-style: italic;
+    }
+
+    /* Tables */
+    table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 12.5px; }
+    th { background: var(--bih-purple); color: white; text-align: left; padding: 7px 10px; }
+    td { border: 1px solid var(--bih-border); padding: 7px 10px; vertical-align: top; }
+    tr:nth-child(even) { background-color: var(--bih-light); }
+
+    /* Key Badge */
+    .kbd-key {
+      display: inline-block;
+      background: #F3F4F6;
+      border: 1.5px solid #9CA3AF;
+      border-bottom: 3px solid #6B7280;
+      border-radius: 4px;
+      padding: 1px 6px;
+      font-family: monospace;
+      font-size: 12px;
+      font-weight: 700;
+      color: #1F2937;
+      margin: 0 2px;
+    }
+
+    /* Interactive Inputs */
+    .answer-line {
+      min-height: 24px;
+      border-bottom: 1px dashed var(--bih-purple);
+      margin: 4px 0;
+      outline: none;
+      font-size: 13px;
+      color: var(--bih-dark);
+      padding: 2px 4px;
+    }
+
+    .checkbox-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 6px;
+      font-size: 12.5px;
+    }
+    .checkbox-item input { width: 15px; height: 15px; cursor: pointer; }
+  </style>
+</head>
+<body>
+
+<!-- ========================================== -->
+<!-- PAGE 1: MEET THE WORD PROCESSOR            -->
+<!-- ========================================== -->
+<div class="page">
+  <div class="header-bar">
+    <div class="header-title">Bozoma Innovation Hub • Tech Club</div>
+    <div class="badge">Session 8 • Page 1</div>
+  </div>
+
+  <div class="student-meta">
+    <div class="meta-row">
+      <span class="meta-label">Learner Full Name:</span>
+      <div class="editable-line" contenteditable="true">Ama Mensah</div>
+    </div>
+    <div class="meta-row">
+      <span class="meta-label">School:</span>
+      <div class="editable-line" contenteditable="true">Bozoma Model School</div>
+      <span class="meta-label" style="min-width: 50px;">Class:</span>
+      <div class="editable-line" contenteditable="true" style="max-width: 90px;">JHS 1</div>
+    </div>
+    <div class="meta-row">
+      <span class="meta-label">Workstation Device:</span>
+      <div class="editable-line" contenteditable="true" style="max-width: 180px;">[ ] Desktop &nbsp; [ ] Laptop</div>
+      <span class="meta-label" style="min-width: 70px;">Station #:</span>
+      <div class="editable-line" contenteditable="true" style="max-width: 90px;">PC-01</div>
+    </div>
+  </div>
+
+  <h1>Session 8: Create & Format Documents (Part 1)</h1>
+  <p>In earlier sessions, we used <em>Notepad</em> to practice typing. Notepad is simple, but it cannot change the color of words, center a title, or add pictures. Today, we step into the world of full <strong>Word Processors</strong>!</p>
+
+  <h2>1. Plain Talk: The Old Typewriter vs. Digital Word Processor</h2>
+  <p>Before computers, office secretaries in Ghana typed on mechanical <strong>typewriters</strong>. If they made a single spelling mistake near the bottom of the page, they had to throw the entire sheet of paper away and start over! With a modern digital <strong>Word Processor</strong> (such as Microsoft Word, Google Docs, or LibreOffice Writer), you can edit, correct, recolor, and format your text as many times as you like before printing a single sheet of paper.</p>
+
+  <!-- DIAGRAM: WORD PROCESSOR INTERFACE ANATOMY -->
+  <div class="diagram-container">
+    <svg width="720" height="230" viewBox="0 0 720 230" xmlns="http://www.w3.org/2000/svg">
+      <!-- Window Outer Frame -->
+      <rect x="15" y="10" width="690" height="210" rx="6" fill="#F8FAFC" stroke="#334155" stroke-width="1.5"/>
+
+      <!-- Title Bar -->
+      <rect x="15" y="10" width="690" height="26" rx="5" fill="#2563EB"/>
+      <text x="30" y="27" font-size="10.5" font-weight="bold" fill="white">Document1 - Word Processor</text>
+      <rect x="670" y="15" width="16" height="16" rx="2" fill="#E63946"/>
+      <line x1="674" y1="19" x2="682" y2="27" stroke="white" stroke-width="1.5"/>
+      <line x1="682" y1="19" x2="674" y2="27" stroke="white" stroke-width="1.5"/>
+
+      <!-- THE RIBBON (Menu Tabs + Toolbar) -->
+      <rect x="15" y="36" width="690" height="48" fill="#F1F5F9" stroke="#E2E8F0" stroke-width="1"/>
+      <!-- Tabs -->
+      <text x="30" y="49" font-size="9" font-weight="bold" fill="#2563EB">Home</text>
+      <line x1="28" y1="52" x2="55" y2="52" stroke="#2563EB" stroke-width="2"/>
+      <text x="70" y="49" font-size="9" fill="#64748B">Insert</text>
+      <text x="110" y="49" font-size="9" fill="#64748B">Layout</text>
+      <text x="155" y="49" font-size="9" fill="#64748B">Review</text>
+
+      <!-- Formatting Cluster inside Ribbon -->
+      <g transform="translate(25, 58)">
+        <!-- Font family box -->
+        <rect x="0" y="0" width="80" height="18" rx="2" fill="white" stroke="#CBD5E1" stroke-width="1"/>
+        <text x="8" y="12" font-size="8.5" fill="#1E293B">Calibri &or;</text>
+
+        <!-- Font size box -->
+        <rect x="85" y="0" width="30" height="18" rx="2" fill="white" stroke="#CBD5E1" stroke-width="1"/>
+        <text x="92" y="12" font-size="8.5" fill="#1E293B">12 &or;</text>
+
+        <!-- B I U buttons -->
+        <rect x="120" y="0" width="18" height="18" rx="2" fill="#E2E8F0"/>
+        <text x="125" y="13" font-size="10" font-weight="bold" fill="#1E293B">B</text>
+
+        <rect x="140" y="0" width="18" height="18" rx="2" fill="#E2E8F0"/>
+        <text x="146" y="13" font-size="10" font-style="italic" font-weight="bold" fill="#1E293B">I</text>
+
+        <rect x="160" y="0" width="18" height="18" rx="2" fill="#E2E8F0"/>
+        <text x="165" y="13" font-size="10" text-decoration="underline" font-weight="bold" fill="#1E293B">U</text>
+
+        <!-- Alignments -->
+        <rect x="185" y="0" width="18" height="18" rx="2" fill="#E2E8F0"/>
+        <text x="189" y="12" font-size="9" fill="#1E293B">&equiv;</text>
+
+        <rect x="205" y="0" width="18" height="18" rx="2" fill="#DBEAFE" stroke="#2563EB" stroke-width="1"/>
+        <text x="209" y="12" font-size="9" fill="#2563EB">&equiv;</text>
+      </g>
+
+      <!-- THE WHITE DOCUMENT SHEET (Canvas) -->
+      <rect x="160" y="90" width="400" height="115" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1" filter="drop-shadow(0 2px 4px rgba(0,0,0,0.06))"/>
+      
+      <!-- Mock text on canvas -->
+      <!-- Title -->
+      <line x1="280" y1="108" x2="440" y2="108" stroke="#3A0CA3" stroke-width="3.5"/>
+      <!-- Subtitle -->
+      <line x1="310" y1="120" x2="410" y2="120" stroke="#F77F00" stroke-width="2"/>
+      <!-- Paragraph -->
+      <line x1="190" y1="138" x2="530" y2="138" stroke="#94A3B8" stroke-width="1.8"/>
+      <line x1="190" y1="150" x2="530" y2="150" stroke="#94A3B8" stroke-width="1.8"/>
+      <line x1="190" y1="162" x2="450" y2="162" stroke="#94A3B8" stroke-width="1.8"/>
+
+      <!-- STATUS BAR (Bottom) -->
+      <rect x="15" y="208" width="690" height="12" fill="#F1F5F9"/>
+      <text x="30" y="217" font-size="7.5" fill="#64748B">Page 1 of 1 &bull; 45 words</text>
+      <text x="640" y="217" font-size="7.5" fill="#64748B">100% Zoom &plusmn;</text>
+
+      <!-- Callout Labels -->
+      <path d="M 230,42 L 310,42" stroke="#2563EB" stroke-width="1.5"/>
+      <text x="315" y="45" font-size="9" font-weight="bold" fill="#2563EB">The Ribbon (Your Formatting Toolbox)</text>
+
+      <path d="M 160,150 L 90,150" stroke="#3A0CA3" stroke-width="1.5"/>
+      <text x="85" y="146" font-size="9" font-weight="bold" fill="#3A0CA3" text-anchor="end">The Document Canvas</text>
+      <text x="85" y="158" font-size="8" fill="#64748B" text-anchor="end">(Your digital sheet of paper)</text>
+    </svg>
+    <div class="diagram-caption">Figure 8.0: The Word Processor layout. All styling controls sit inside the Ribbon at the top.</div>
+  </div>
+
+  <h2>2. Word Processor Vocabulary</h2>
+  <ul>
+    <li><strong>The Ribbon:</strong> The wide strip of tabs and buttons running across the top of the window.</li>
+    <li><strong>Canvas (Page):</strong> The white rectangular workspace representing an A4 sheet of paper.</li>
+    <li><strong>Margins:</strong> The blank protective border around the edges of the page where no text is typed.</li>
+    <li><strong>Cursor:</strong> The blinking vertical line (<span style="color:#E63946; font-weight:bold;">|</span>) showing exactly where the next typed letter will land.</li>
+  </ul>
+</div>
+
+<!-- ========================================== -->
+<!-- PAGE 2: THE FONT STUDIO                   -->
+<!-- ========================================== -->
+<div class="page">
+  <div class="header-bar">
+    <div class="header-title">The Font Studio: Styling Your Words</div>
+    <div class="badge">Session 8 • Page 2</div>
+  </div>
+
+  <h2>1. What is a "Font"?</h2>
+  <p>A <strong>Font</strong> is the visual design, shape, and style of the letters you type. Just as people have different handwritings, computers have hundreds of digital typefaces designed for different purposes.</p>
+
+  <!-- DIAGRAM: FONT CONTROLS BREAKDOWN -->
+  <div class="diagram-container">
+    <svg width="680" height="140" viewBox="0 0 680 140" xmlns="http://www.w3.org/2000/svg">
+      <rect x="20" y="15" width="640" height="110" rx="6" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.5"/>
+      
+      <!-- FONT CLUSTER ON RIBBON -->
+      <g transform="translate(40, 30)">
+        <!-- Font Family Selector -->
+        <rect x="0" y="0" width="130" height="28" rx="3" fill="white" stroke="#94A3B8" stroke-width="1.2"/>
+        <text x="12" y="18" font-size="11" font-weight="bold" fill="#1E293B">Calibri</text>
+        <text x="110" y="18" font-size="9" fill="#64748B">&or;</text>
+        <text x="65" y="44" font-size="9" font-weight="bold" fill="#3A0CA3" text-anchor="middle">&uarr; 1. Font Family</text>
+
+        <!-- Font Size Selector -->
+        <rect x="145" y="0" width="50" height="28" rx="3" fill="white" stroke="#94A3B8" stroke-width="1.2"/>
+        <text x="155" y="18" font-size="12" font-weight="bold" fill="#1E293B">12</text>
+        <text x="180" y="18" font-size="9" fill="#64748B">&or;</text>
+        <text x="170" y="44" font-size="9" font-weight="bold" fill="#F77F00" text-anchor="middle">&uarr; 2. Font Size</text>
+
+        <!-- Bold B -->
+        <rect x="215" y="0" width="30" height="28" rx="3" fill="#E2E8F0" stroke="#94A3B8" stroke-width="1"/>
+        <text x="224" y="20" font-size="14" font-weight="bold" fill="#1E293B">B</text>
+        <text x="230" y="44" font-size="9" font-weight="bold" fill="#2563EB" text-anchor="middle">Bold</text>
+
+        <!-- Italic I -->
+        <rect x="255" y="0" width="30" height="28" rx="3" fill="#E2E8F0" stroke="#94A3B8" stroke-width="1"/>
+        <text x="265" y="20" font-size="14" font-style="italic" font-weight="bold" fill="#1E293B">I</text>
+        <text x="270" y="44" font-size="9" font-weight="bold" fill="#2563EB" text-anchor="middle">Italic</text>
+
+        <!-- Underline U -->
+        <rect x="295" y="0" width="30" height="28" rx="3" fill="#E2E8F0" stroke="#94A3B8" stroke-width="1"/>
+        <text x="303" y="20" font-size="14" text-decoration="underline" font-weight="bold" fill="#1E293B">U</text>
+        <text x="310" y="44" font-size="9" font-weight="bold" fill="#2563EB" text-anchor="middle">Underline</text>
+
+        <!-- Font Color A -->
+        <rect x="345" y="0" width="32" height="28" rx="3" fill="#E2E8F0" stroke="#94A3B8" stroke-width="1"/>
+        <text x="353" y="18" font-size="13" font-weight="bold" fill="#1E293B">A</text>
+        <rect x="351" y="21" width="18" height="4" fill="#DC2626"/>
+        <text x="361" y="44" font-size="9" font-weight="bold" fill="#DC2626" text-anchor="middle">Color</text>
+      </g>
+
+      <text x="340" y="112" font-size="10" font-weight="bold" fill="#4B5563" text-anchor="middle">RULE: You must HIGHLIGHT text first before clicking any of these formatting buttons!</text>
+    </svg>
+    <div class="diagram-caption">Figure 8.1: The Font Formatting Cluster on the Home Ribbon.</div>
+  </div>
+
+  <h2>2. The Essential Formatting Styles</h2>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 20%;">Tool</th>
+        <th style="width: 25%;">Shortcut Key</th>
+        <th style="width: 30%;">Visual Appearance</th>
+        <th style="width: 25%;">When to Use in School</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Bold</strong></td>
+        <td><span class="kbd-key">Ctrl</span> + <span class="kbd-key">B</span></td>
+        <td><strong>Thick, dark, heavy letters</strong></td>
+        <td>Main titles and section headings.</td>
+      </tr>
+      <tr>
+        <td><strong>Italic</strong></td>
+        <td><span class="kbd-key">Ctrl</span> + <span class="kbd-key">I</span></td>
+        <td><em>Slanted, gentle letters</em></td>
+        <td>Book titles, quotes, or subheadings.</td>
+      </tr>
+      <tr>
+        <td><strong>Underline</strong></td>
+        <td><span class="kbd-key">Ctrl</span> + <span class="kbd-key">U</span></td>
+        <td><u>Line drawn underneath</u></td>
+        <td>Important warning phrases or terms.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>3. Professional Font Sizes for School Work</h2>
+  <div class="dual-grid">
+    <div class="dual-box">
+      <div class="dual-box-title">Document Titles & Headings</div>
+      <p>&bull; <strong>Main Document Title:</strong> 16 pt to 20 pt (Bold)</p>
+      <p>&bull; <strong>Section Subheading:</strong> 13 pt to 14 pt (Bold or Italic)</p>
+    </div>
+    <div class="dual-box">
+      <div class="dual-box-title">Body Text (The Essay Paragraphs)</div>
+      <p>&bull; <strong>Standard Body Paragraphs:</strong> 11 pt or 12 pt</p>
+      <p><em>Never type school essays in size 18 font just to make them look longer! Teachers spot this immediately!</em></p>
+    </div>
+  </div>
+</div>
+
+<!-- ========================================== -->
+<!-- PAGE 3: TEXT ALIGNMENT & MARGINS           -->
+<!-- ========================================== -->
+<div class="page">
+  <div class="header-bar">
+    <div class="header-title">Text Alignment & Page Layout</div>
+    <div class="badge">Session 8 • Page 3</div>
+  </div>
+
+  <h2>1. The Four Text Alignments</h2>
+  <p><strong>Alignment</strong> refers to how text lines up along the left and right edges of your page:</p>
+
+  <!-- DIAGRAM: THE FOUR ALIGNMENTS VISUALIZED -->
+  <div class="diagram-container">
+    <svg width="700" height="150" viewBox="0 0 700 150" xmlns="http://www.w3.org/2000/svg">
+      <!-- 1. ALIGN LEFT -->
+      <g transform="translate(20, 15)">
+        <rect x="0" y="0" width="145" height="95" rx="4" fill="#FFFFFF" stroke="#94A3B8" stroke-width="1.5"/>
+        <line x1="12" y1="20" x2="110" y2="20" stroke="#3A0CA3" stroke-width="2.5"/>
+        <line x1="12" y1="35" x2="130" y2="35" stroke="#3A0CA3" stroke-width="2.5"/>
+        <line x1="12" y1="50" x2="90" y2="50" stroke="#3A0CA3" stroke-width="2.5"/>
+        <line x1="12" y1="65" x2="120" y2="65" stroke="#3A0CA3" stroke-width="2.5"/>
+        <text x="72" y="112" font-size="10.5" font-weight="bold" fill="#3A0CA3" text-anchor="middle">Align Left (Ctrl+L)</text>
+        <text x="72" y="125" font-size="8.5" fill="#64748B" text-anchor="middle">Standard for all essays</text>
+      </g>
+
+      <!-- 2. CENTER -->
+      <g transform="translate(190, 15)">
+        <rect x="0" y="0" width="145" height="95" rx="4" fill="#FFFFFF" stroke="#94A3B8" stroke-width="1.5"/>
+        <line x1="32" y1="20" x2="112" y2="20" stroke="#F77F00" stroke-width="2.5"/>
+        <line x1="15" y1="35" x2="130" y2="35" stroke="#F77F00" stroke-width="2.5"/>
+        <line x1="40" y1="50" x2="105" y2="50" stroke="#F77F00" stroke-width="2.5"/>
+        <line x1="25" y1="65" x2="120" y2="65" stroke="#F77F00" stroke-width="2.5"/>
+        <text x="72" y="112" font-size="10.5" font-weight="bold" fill="#F77F00" text-anchor="middle">Center (Ctrl+E)</text>
+        <text x="72" y="125" font-size="8.5" fill="#64748B" text-anchor="middle">Titles & Cover Pages</text>
+      </g>
+
+      <!-- 3. ALIGN RIGHT -->
+      <g transform="translate(360, 15)">
+        <rect x="0" y="0" width="145" height="95" rx="4" fill="#FFFFFF" stroke="#94A3B8" stroke-width="1.5"/>
+        <line x1="35" y1="20" x2="133" y2="20" stroke="#0D9488" stroke-width="2.5"/>
+        <line x1="15" y1="35" x2="133" y2="35" stroke="#0D9488" stroke-width="2.5"/>
+        <line x1="55" y1="50" x2="133" y2="50" stroke="#0D9488" stroke-width="2.5"/>
+        <line x1="25" y1="65" x2="133" y2="65" stroke="#0D9488" stroke-width="2.5"/>
+        <text x="72" y="112" font-size="10.5" font-weight="bold" fill="#0D9488" text-anchor="middle">Align Right (Ctrl+R)</text>
+        <text x="72" y="125" font-size="8.5" fill="#64748B" text-anchor="middle">Dates & Signatures</text>
+      </g>
+
+      <!-- 4. JUSTIFY -->
+      <g transform="translate(530, 15)">
+        <rect x="0" y="0" width="145" height="95" rx="4" fill="#FFFFFF" stroke="#94A3B8" stroke-width="1.5"/>
+        <line x1="12" y1="20" x2="133" y2="20" stroke="#2563EB" stroke-width="2.5"/>
+        <line x1="12" y1="35" x2="133" y2="35" stroke="#2563EB" stroke-width="2.5"/>
+        <line x1="12" y1="50" x2="133" y2="50" stroke="#2563EB" stroke-width="2.5"/>
+        <line x1="12" y1="65" x2="85" y2="65" stroke="#2563EB" stroke-width="2.5"/>
+        <text x="72" y="112" font-size="10.5" font-weight="bold" fill="#2563EB" text-anchor="middle">Justify (Ctrl+J)</text>
+        <text x="72" y="125" font-size="8.5" fill="#64748B" text-anchor="middle">Newspapers & Books</text>
+      </g>
+    </svg>
+    <div class="diagram-caption">Figure 8.2: Visual comparison of the four alignment options.</div>
+  </div>
+
+  <h2>2. When to Use Each Alignment in School Work</h2>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 25%;">Alignment Name</th>
+        <th style="width: 45%;">How It Looks</th>
+        <th style="width: 30%;">Real-World School Example</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Align Left</strong></td>
+        <td>Straight line on the left; ragged edges on the right.</td>
+        <td>All normal school essays, stories, and answers.</td>
+      </tr>
+      <tr>
+        <td><strong>Center</strong></td>
+        <td>Equal empty space on left and right; text sits in the exact middle.</td>
+        <td>The main title of your essay, flyer, or poem.</td>
+      </tr>
+      <tr>
+        <td><strong>Align Right</strong></td>
+        <td>Straight line on the right; ragged on the left.</td>
+        <td>Writing the date (e.g. <em>24th October 2026</em>) at the top of a formal letter.</td>
+      </tr>
+      <tr>
+        <td><strong>Justify</strong></td>
+        <td>Spaces between words are gently stretched so both left and right edges are perfectly straight.</td>
+        <td>Printed textbooks, government gazettes, newspapers.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>3. The Enter Key Rule (Starting New Paragraphs)</h2>
+  <div class="callout">
+    <div class="callout-title">⚠️ DO NOT PRESS ENTER AT THE END OF EVERY LINE!</div>
+    Word processors have a smart feature called <strong>Word Wrap</strong>. When your sentence reaches the right margin, the computer automatically drops your cursor down to the next line.
+    <br><strong>Only press <span class="kbd-key">Enter</span> when you want to start a brand-new paragraph!</strong>
+  </div>
+</div>
+
+<!-- ========================================== -->
+<!-- PAGE 4: THE MAGIC WAND (UNDO) & SELECTION -->
+<!-- ========================================== -->
+<div class="page">
+  <div class="header-bar">
+    <div class="header-title">Text Selection & The Magic Undo Wand</div>
+    <div class="badge">Session 8 • Page 4</div>
+  </div>
+
+  <h2>1. Fast Text Selection Techniques</h2>
+  <p>Before you can change the font, size, or color of any word, you must <strong>select (highlight) it</strong> so the computer knows which words to change:</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 30%;">To Select Exactly...</th>
+        <th style="width: 40%;">Mouse / Touchpad Action</th>
+        <th style="width: 30%;">Pro Speed</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>A Single Word</strong></td>
+        <td>Move pointer over the word and <strong>Double-Click</strong> (tap twice fast).</td>
+        <td>1 second!</td>
+      </tr>
+      <tr>
+        <td><strong>An Entire Paragraph</strong></td>
+        <td>Move pointer inside the paragraph and <strong>Triple-Click</strong> (tap 3 times fast).</td>
+        <td>Instantly selects the whole block!</td>
+      </tr>
+      <tr>
+        <td><strong>Custom Selection</strong></td>
+        <td>Click and hold before the first letter, slide to the end, then let go.</td>
+        <td>Standard dragging.</td>
+      </tr>
+      <tr>
+        <td><strong>The Entire Document</strong></td>
+        <td>Hold down <span class="kbd-key">Ctrl</span> and press <span class="kbd-key">A</span> (Select <strong>A</strong>ll).</td>
+        <td>Highlights everything on every page.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>2. The Magic Wand: Undo (Ctrl + Z)</h2>
+  <p>The single most powerful shortcut on a computer is <strong>Undo</strong> (<span class="kbd-key">Ctrl</span> + <span class="kbd-key">Z</span>). It is an electronic time-machine that reverses your last mistake!</p>
+
+  <!-- DIAGRAM: UNDO TIME MACHINE -->
+  <div class="diagram-container">
+    <svg width="680" height="110" viewBox="0 0 680 110" xmlns="http://www.w3.org/2000/svg">
+      <rect x="30" y="15" width="620" height="80" rx="8" fill="#FFF7ED" stroke="#F97316" stroke-width="1.5"/>
+
+      <g transform="translate(60, 30)">
+        <text x="0" y="25" font-size="12" font-weight="bold" fill="#9A3412">Accidental Deletion &rarr;</text>
+        <text x="0" y="42" font-size="10" fill="#431407">You deleted a paragraph by mistake!</text>
+      </g>
+
+      <g transform="translate(320, 25)">
+        <rect x="0" y="5" width="130" height="40" rx="4" fill="#3A0CA3"/>
+        <text x="65" y="24" font-size="12" font-weight="bold" fill="white" text-anchor="middle">&#8630; Ctrl + Z</text>
+        <text x="65" y="38" font-size="9" fill="#E0E7FF" text-anchor="middle">Press Undo</text>
+      </g>
+
+      <g transform="translate(480, 30)">
+        <text x="0" y="25" font-size="12" font-weight="bold" fill="#047857">Restored Instantly! &#10004;</text>
+        <text x="0" y="42" font-size="10" fill="#065F46">Your words reappear untouched.</text>
+      </g>
+    </svg>
+    <div class="diagram-caption">Figure 8.3: The Undo lifeline. Ctrl+Z undoes your last mistake; Ctrl+Y re-applies it if you change your mind!</div>
+  </div>
+
+  <h2>3. Panic Button: The Selection Replacement Trap</h2>
+  <div class="panic-box">
+    <div class="panic-title">🚨 MY ENTIRE ESSAY DISAPPEARED WHEN I PRESSED SPACEBAR!</div>
+    <strong>Why this happened:</strong> You accidentally highlighted the whole paragraph and tapped a key. When text is highlighted blue, the computer thinks you want to replace it with whatever new key you tap!
+    <br><br>
+    <strong>How to fix it immediately:</strong> <strong>DO NOT PANIC!</strong> Take your hands off the keyboard. Press:
+    <div style="font-size: 16px; font-weight: bold; text-align: center; margin: 6px 0; color: #721C24;">
+      <span class="kbd-key">Ctrl</span> + <span class="kbd-key">Z</span>
+    </div>
+    Your entire essay will pop back onto the screen instantly!
+  </div>
+</div>
+
+<!-- ========================================== -->
+<!-- PAGE 5: GUIDED LAB - A GREENER SCHOOL      -->
+<!-- ========================================== -->
+<div class="page">
+  <div class="header-bar">
+    <div class="header-title">Guided Hands-On Lab: "A Greener School"</div>
+    <div class="badge">Session 8 • Page 5</div>
+  </div>
+
+  <h2>1. Lab Mission: Format an Official School Environmental Notice</h2>
+  <p>Follow these 5 steps inside your word processor to build a beautifully formatted clean-school campaign document:</p>
+
+  <div class="step-card">
+    <div class="step-num">1</div>
+    <div class="step-content">
+      <strong>Launch the Word Processor:</strong>
+      <br>Click Start &rarr; type <code>word</code> (or open <strong>LibreOffice Writer</strong> or <strong>Google Docs</strong>) &rarr; Open a blank document.
+    </div>
+  </div>
+
+  <div class="step-card">
+    <div class="step-num">2</div>
+    <div class="step-content">
+      <strong>Type the Raw Content (Do not format yet):</strong>
+      <br>Type the exact lines below (press <span class="kbd-key">Enter</span> only where indicated):
+      <br><code>A GREENER, CLEANER SCHOOL COMPOUND</code> &larr; <em>press Enter</em>
+      <br><code>By: BIH Tech Club Sanitation Team</code> &larr; <em>press Enter</em>
+      <br><code>A clean school environment keeps every student healthy and proud. When we clear standing water from our gutters and plant trees around our classrooms, we stop mosquitoes and create cool shade for learning. Let us join hands this Friday to beautify our school grounds.</code>
+    </div>
+  </div>
+
+  <div class="step-card">
+    <div class="step-num">3</div>
+    <div class="step-content">
+      <strong>Format the Main Title:</strong>
+      <br>Triple-click line 1. Change Font to <strong>Calibri</strong> or <strong>Arial</strong>, Size to <strong>18 pt</strong>, make it <strong>Bold</strong> (<span class="kbd-key">Ctrl+B</span>), and <strong>Center</strong> it (<span class="kbd-key">Ctrl+E</span>).
+    </div>
+  </div>
+
+  <div class="step-card">
+    <div class="step-num">4</div>
+    <div class="step-content">
+      <strong>Format the Subtitle:</strong>
+      <br>Triple-click line 2. Set Size to <strong>12 pt</strong>, make it <em>Italic</em> (<span class="kbd-key">Ctrl+I</span>), and <strong>Center</strong> it (<span class="kbd-key">Ctrl+E</span>).
+    </div>
+  </div>
+
+  <div class="step-card">
+    <div class="step-num">5</div>
+    <div class="step-content">
+      <strong>Format the Body Paragraph & Save:</strong>
+      <br>Triple-click the paragraph. Keep it Size <strong>12 pt</strong>, ensure it is <strong>Align Left</strong> (<span class="kbd-key">Ctrl+L</span>).
+      <br>Save the document: Click <strong>File &rarr; Save As</strong> &rarr; Navigate to <code>Documents &gt; BIH_Practice &gt; Notes</code> &rarr; Name it: <code>Greener_School_AmaMensah.docx</code>.
+    </div>
+  </div>
+
+  <h2>2. Visual Target (What Your Finished Page Should Look Like)</h2>
+  <div style="border: 2px solid var(--bih-purple); border-radius: 6px; padding: 20px; background: white; margin: 15px 0;">
+    <div style="text-align: center; font-size: 18px; font-weight: bold; color: var(--bih-purple); margin-bottom: 4px;">
+      A GREENER, CLEANER SCHOOL COMPOUND
+    </div>
+    <div style="text-align: center; font-size: 12px; font-style: italic; color: #4B5563; margin-bottom: 16px;">
+      By: BIH Tech Club Sanitation Team
+    </div>
+    <div style="text-align: left; font-size: 12px; line-height: 1.6; color: #1E293B;">
+      A clean school environment keeps every student healthy and proud. When we clear standing water from our gutters and plant trees around our classrooms, we stop mosquitoes and create cool shade for learning. Let us join hands this Friday to beautify our school grounds.
+    </div>
+  </div>
+</div>
+
+<!-- ========================================== -->
+<!-- PAGE 6: REVIEW & SELF-ASSESSMENT           -->
+<!-- ========================================== -->
+<div class="page">
+  <div class="header-bar">
+    <div class="header-title">Session 8 Review & Verification</div>
+    <div class="badge">Session 8 • Page 6</div>
+  </div>
+
+  <h2>1. Match the Formatting Tool</h2>
+  <p>Draw a line connecting each ribbon button to its correct action:</p>
+
+  <div style="display: flex; justify-content: space-between; margin: 20px 30px; font-size: 13px;">
+    <div style="display: flex; flex-direction: column; gap: 20px; font-weight: bold; font-family: monospace; font-size: 15px; color: var(--bih-purple);">
+      <div>[ B ]</div>
+      <div>[ I ]</div>
+      <div>[ Ctrl + E ]</div>
+      <div>[ Ctrl + Z ]</div>
+      <div>[ 12 pt ]</div>
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 20px; color: var(--bih-dark);">
+      <div>&bull; &nbsp; Reverses your last accidental mistake (Undo).</div>
+      <div>&bull; &nbsp; Makes letters slanted for quotes or subtitles (Italic).</div>
+      <div>&bull; &nbsp; Centers text in the middle of the page.</div>
+      <div>&bull; &nbsp; Standard readable font size for school essay body text.</div>
+      <div>&bull; &nbsp; Makes letters heavy, thick, and dark (Bold).</div>
+    </div>
+  </div>
+
+  <h2>2. Written Review Questions</h2>
+  <p><strong>Question 1:</strong> Why should you NOT press the <span class="kbd-key">Enter</span> key at the end of every typed line in a word processor?</p>
+  <div class="answer-line" contenteditable="true">Write your answer here...</div>
+
+  <p><strong>Question 2:</strong> What mouse action allows you to highlight an entire word in less than a second?</p>
+  <div class="answer-line" contenteditable="true">Answer: ____________________________________</div>
+
+  <p><strong>Question 3:</strong> Which text alignment is used for the main title of an essay? Circle one: &nbsp; <code>[ Left ]</code> &nbsp; <code>[ Center ]</code> &nbsp; <code>[ Right ]</code></p>
+
+  <h2>3. Self-Assessment & Mentor Sign-Off</h2>
+  <p>Tick the column that reflects your confidence at the end of Session 8:</p>
+  <table>
+    <thead>
+      <tr>
+        <th>Word Processing Competency</th>
+        <th style="width: 18%; text-align: center;">With Help</th>
+        <th style="width: 18%; text-align: center;">Almost Alone</th>
+        <th style="width: 18%; text-align: center;">All By Myself!</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1. I can identify the Ribbon, Document Canvas, and Zoom Slider in Word.</td>
+        <td style="text-align: center;"><input type="radio" name="s8_1"></td>
+        <td style="text-align: center;"><input type="radio" name="s8_1"></td>
+        <td style="text-align: center;"><input type="radio" name="s8_1"></td>
+      </tr>
+      <tr>
+        <td>2. I can select words and change Font Family, Size, and Styles (Bold, Italic).</td>
+        <td style="text-align: center;"><input type="radio" name="s8_2"></td>
+        <td style="text-align: center;"><input type="radio" name="s8_2"></td>
+        <td style="text-align: center;"><input type="radio" name="s8_2"></td>
+      </tr>
+      <tr>
+        <td>3. I can correctly apply Align Left, Center, and Right to titles and paragraphs.</td>
+        <td style="text-align: center;"><input type="radio" name="s8_3"></td>
+        <td style="text-align: center;"><input type="radio" name="s8_3"></td>
+        <td style="text-align: center;"><input type="radio" name="s8_3"></td>
+      </tr>
+      <tr>
+        <td>4. I know how to use Ctrl + Z immediately to undo accidental deletions.</td>
+        <td style="text-align: center;"><input type="radio" name="s8_4"></td>
+        <td style="text-align: center;"><input type="radio" name="s8_4"></td>
+        <td style="text-align: center;"><input type="radio" name="s8_4"></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div style="border-top: 1px solid var(--bih-border); margin-top: 25px; padding-top: 12px; display: flex; justify-content: space-between; font-size: 13px;">
+    <div><strong>Mentor Signature:</strong> _____________________________</div>
+    <div><strong>Date Completed:</strong> ____________________</div>
+  </div>
+</div>
+
+</body>
+</html>

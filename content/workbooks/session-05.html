@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>BIH Tech Club - Session 5: File Operations & Typing Fluency</title>
+  <style>
+    :root {
+      --bih-purple: #3A0CA3;
+      --bih-accent: #4361EE;
+      --bih-gold: #F77F00;
+      --bih-green: #2EC4B6;
+      --bih-red: #E63946;
+      --bih-dark: #1E1E24;
+      --bih-light: #F8F9FA;
+      --bih-border: #CED4DA;
+      --folder-yellow: #F59E0B;
+    }
+
+    * {
+      box-sizing: border-box;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    body {
+      background-color: #E9ECEF;
+      color: var(--bih-dark);
+      margin: 0;
+      padding: 20px;
+      line-height: 1.55;
+    }
+
+    .page {
+      background: #FFFFFF;
+      max-width: 860px;
+      margin: 20px auto;
+      padding: 42px 50px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+      border-radius: 8px;
+      page-break-after: always;
+    }
+
+    @media print {
+      body { background: white; padding: 0; }
+      .page { box-shadow: none; margin: 0; padding: 30px; max-width: 100%; border-radius: 0; }
+      .no-print { display: none; }
+    }
+
+    /* Header Bar */
+    .header-bar {
+      border-bottom: 3px solid var(--bih-purple);
+      padding-bottom: 10px;
+      margin-bottom: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .header-title {
+      font-size: 19px;
+      font-weight: 800;
+      color: var(--bih-purple);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .badge {
+      background: var(--bih-gold);
+      color: #FFFFFF;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+    }
+
+    /* Student Meta Box */
+    .student-meta {
+      border: 2px dashed var(--bih-border);
+      border-radius: 8px;
+      padding: 12px 18px;
+      background: var(--bih-light);
+      margin-bottom: 20px;
+    }
+
+    .meta-row {
+      display: flex;
+      gap: 15px;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+    .meta-row:last-child { margin-bottom: 0; }
+
+    .meta-label {
+      font-size: 12.5px;
+      font-weight: 700;
+      color: var(--bih-dark);
+      min-width: 125px;
+    }
+
+    .editable-line {
+      border-bottom: 1.5px solid var(--bih-purple);
+      flex-grow: 1;
+      padding: 2px 6px;
+      font-size: 13.5px;
+      font-weight: 600;
+      color: var(--bih-purple);
+      outline: none;
+      min-height: 20px;
+    }
+
+    /* Typography */
+    h1 { color: var(--bih-purple); font-size: 22px; margin-top: 0; margin-bottom: 8px; }
+    h2 { color: var(--bih-purple); font-size: 16px; margin-top: 20px; margin-bottom: 10px; border-left: 4px solid var(--bih-gold); padding-left: 8px; }
+    p { font-size: 13px; margin: 6px 0; }
+
+    /* Dual Grid Layout */
+    .dual-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin: 12px 0;
+    }
+
+    .dual-box {
+      border: 1px solid var(--bih-border);
+      border-radius: 8px;
+      padding: 12px 14px;
+      background: #FAFAFA;
+    }
+    .dual-box-title {
+      font-size: 13px;
+      font-weight: 800;
+      color: var(--bih-purple);
+      margin-bottom: 6px;
+      border-bottom: 1px solid var(--bih-border);
+      padding-bottom: 4px;
+    }
+
+    /* Callouts & Alert Boxes */
+    .callout {
+      background: #FFF3CD;
+      border-left: 4px solid var(--bih-gold);
+      padding: 10px 14px;
+      margin: 14px 0;
+      border-radius: 0 8px 8px 0;
+      font-size: 12.5px;
+    }
+    .callout-title {
+      font-weight: 800;
+      color: #856404;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 2px;
+    }
+
+    .panic-box {
+      background: #F8D7DA;
+      border-left: 4px solid var(--bih-red);
+      padding: 12px 14px;
+      margin: 14px 0;
+      border-radius: 0 8px 8px 0;
+      font-size: 12.5px;
+    }
+    .panic-title {
+      font-weight: 800;
+      color: #721C24;
+      margin-bottom: 4px;
+    }
+
+    /* Step Cards */
+    .step-card {
+      display: flex;
+      gap: 12px;
+      background: var(--bih-light);
+      border: 1px solid var(--bih-border);
+      border-radius: 6px;
+      padding: 10px 12px;
+      margin-bottom: 8px;
+      align-items: flex-start;
+    }
+
+    .step-num {
+      background: var(--bih-purple);
+      color: white;
+      font-size: 13px;
+      font-weight: 800;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .step-content { flex-grow: 1; font-size: 12.5px; }
+
+    /* Diagrams */
+    .diagram-container {
+      background: #FAFAFA;
+      border: 1px solid var(--bih-border);
+      border-radius: 8px;
+      padding: 12px;
+      margin: 14px 0;
+      text-align: center;
+    }
+    .diagram-caption {
+      font-size: 11px;
+      color: #6C757D;
+      margin-top: 6px;
+      font-style: italic;
+    }
+
+    /* Tables */
+    table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 12.5px; }
+    th { background: var(--bih-purple); color: white; text-align: left; padding: 7px 10px; }
+    td { border: 1px solid var(--bih-border); padding: 7px 10px; vertical-align: top; }
+    tr:nth-child(even) { background-color: var(--bih-light); }
+
+    /* Key Badge */
+    .kbd-key {
+      display: inline-block;
+      background: #F3F4F6;
+      border: 1.5px solid #9CA3AF;
+      border-bottom: 3px solid #6B7280;
+      border-radius: 4px;
+      padding: 1px 6px;
+      font-family: monospace;
+      font-size: 12px;
+      font-weight: 700;
+      color: #1F2937;
+      margin: 0 2px;
+    }
+
+    /* Interactive Inputs */
+    .answer-line {
+      min-height: 24px;
+      border-bottom: 1px dashed var(--bih-purple);
+      margin: 4px 0;
+      outline: none;
+      font-size: 13px;
+      color: var(--bih-dark);
+      padding: 2px 4px;
+    }
+
+    .checkbox-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 6px;
+      font-size: 12.5px;
+    }
+    .checkbox-item input { width: 15px; height: 15px; cursor: pointer; }
+  </style>
+</head>
+<body>
+
+<!-- ========================================== -->
+<!-- PAGE 1: COPY, CUT & PASTE                  -->
+<!-- ========================================== -->
+<div class="page">
+  <div class="header-bar">
+    <div class="header-title">Bozoma Innovation Hub • Tech Club</div>
+    <div class="badge">Session 5 • Page 1</div>
+  </div>
+
+  <div class="student-meta">
+    <div class="meta-row">
+      <span class="meta-label">Learner Full Name:</span>
+      <div class="editable-line" contenteditable="true">Ama Mensah</div>
+    </div>
+    <div class="meta-row">
+      <span class="meta-label">School:</span>
+      <div class="editable-line" contenteditable="true">Bozoma Model School</div>
+      <span class="meta-label" style="min-width: 50px;">Class:</span>
+      <div class="editable-line" contenteditable="true" style="max-width: 90px;">JHS 1</div>
+    </div>
+    <div class="meta-row">
+      <span class="meta-label">Workstation Device:</span>
+      <div class="editable-line" contenteditable="true" style="max-width: 180px;">[ ] Desktop &nbsp; [ ] Laptop</div>
+      <span class="meta-label" style="min-width: 70px;">Station #:</span>
+      <div class="editable-line" contenteditable="true" style="max-width: 90px;">PC-01</div>
+    </div>
+  </div>
+
+  <h1>Session 5: File Operations & Typing Fluency</h1>
+  <p>In Session 4, you built your first folder and saved your student profile inside. Today, you will learn the superpower tools used by computer experts around the world: <strong>Copy</strong>, <strong>Cut</strong>, <strong>Paste</strong>, <strong>Rename</strong>, and how to safely manage the <strong>Recycle Bin</strong> and <strong>USB Flash Drives</strong>.</p>
+
+  <h2>1. Everyday Analogy: Photocopy Machine vs. Moving a Desk</h2>
+  <div class="dual-grid">
+    <div class="dual-box">
+      <div class="dual-box-title">📋 COPY & PASTE (The Photocopy Machine)</div>
+      <p>When you photocopy a syllabus sheet, the original paper stays in your hand, and a <strong>brand-new identical twin</strong> appears. You now have <strong>TWO copies</strong> in two different places!</p>
+      <p><strong>Shortcut:</strong> <span class="kbd-key">Ctrl</span> + <span class="kbd-key">C</span> &rarr; then &rarr; <span class="kbd-key">Ctrl</span> + <span class="kbd-key">V</span></p>
+    </div>
+
+    <div class="dual-box">
+      <div class="dual-box-title">✂️ CUT & PASTE (Moving a Desk)</div>
+      <p>When you pick up a wooden desk from JHS 1 and carry it into JHS 2, you did not create a second desk. You simply <strong>moved the original</strong>. It is gone from JHS 1!</p>
+      <p><strong>Shortcut:</strong> <span class="kbd-key">Ctrl</span> + <span class="kbd-key">X</span> &rarr; then &rarr; <span class="kbd-key">Ctrl</span> + <span class="kbd-key">V</span></p>
+    </div>
+  </div>
+
+  <h2>2. Visual Comparison: Copy vs. Cut</h2>
+  <!-- DIAGRAM: COPY VS CUT WORKFLOW -->
+  <div class="diagram-container">
+    <svg width="700" height="150" viewBox="0 0 700 150" xmlns="http://www.w3.org/2000/svg">
+      <!-- TOP TRACK: COPY -->
+      <g transform="translate(20, 15)">
+        <text x="0" y="24" font-size="11" font-weight="bold" fill="#3A0CA3">COPY:</text>
+        <!-- Original File -->
+        <rect x="60" y="5" width="70" height="32" rx="3" fill="#FFFFFF" stroke="#334155" stroke-width="1.5"/>
+        <text x="95" y="25" font-size="9" font-weight="bold" fill="#1E293B" text-anchor="middle">Story.txt</text>
+        
+        <path d="M 140,21 L 180,21" stroke="#3A0CA3" stroke-width="2"/>
+        <polygon points="185,21 177,17 177,25" fill="#3A0CA3"/>
+        <text x="160" y="14" font-size="8" fill="#3A0CA3" font-weight="bold" text-anchor="middle">Ctrl + C</text>
+
+        <!-- Destination with Two Files -->
+        <rect x="200" y="5" width="70" height="32" rx="3" fill="#FFFFFF" stroke="#334155" stroke-width="1.5"/>
+        <text x="235" y="25" font-size="9" font-weight="bold" fill="#1E293B" text-anchor="middle">Story.txt</text>
+
+        <text x="290" y="25" font-size="14" font-weight="bold" fill="#2EC4B6">+</text>
+
+        <rect x="310" y="5" width="85" height="32" rx="3" fill="#ECFDF5" stroke="#10B981" stroke-width="1.5"/>
+        <text x="352" y="25" font-size="9" font-weight="bold" fill="#065F46" text-anchor="middle">Story (Copy).txt</text>
+
+        <text x="430" y="25" font-size="10" font-weight="bold" fill="#10B981">&larr; Result: 2 Files Exist!</text>
+      </g>
+
+      <!-- DIVIDER -->
+      <line x1="20" y1="75" x2="680" y2="75" stroke="#E2E8F0" stroke-width="1.5" stroke-dasharray="4,4"/>
+
+      <!-- BOTTOM TRACK: CUT -->
+      <g transform="translate(20, 85)">
+        <text x="0" y="28" font-size="11" font-weight="bold" fill="#F77F00">CUT:</text>
+        <!-- Original File Faded -->
+        <rect x="60" y="10" width="70" height="32" rx="3" fill="#F3F4F6" stroke="#94A3B8" stroke-width="1.5" stroke-dasharray="3,3"/>
+        <text x="95" y="30" font-size="9" fill="#94A3B8" text-anchor="middle">Story.txt</text>
+
+        <path d="M 140,26 L 180,26" stroke="#F77F00" stroke-width="2"/>
+        <polygon points="185,26 177,22 177,30" fill="#F77F00"/>
+        <text x="160" y="18" font-size="8" fill="#F77F00" font-weight="bold" text-anchor="middle">Ctrl + X</text>
+
+        <!-- Destination Folder Only -->
+        <rect x="200" y="10" width="70" height="32" rx="3" fill="#FFFFFF" stroke="#F77F00" stroke-width="2"/>
+        <text x="235" y="30" font-size="9" font-weight="bold" fill="#C2410C" text-anchor="middle">Story.txt</text>
+
+        <text x="300" y="30" font-size="10" font-weight="bold" fill="#C2410C">&larr; Result: Moved! Old spot is empty.</text>
+      </g>
+    </svg>
+    <div class="diagram-caption">Figure 5.0: The difference between Copying and Cutting. Notice how 'X' in Ctrl+X looks like a pair of scissors!</div>
+  </div>
+
+  <h2>3. Renaming a File Quickly (The F2 Shortcut)</h2>
+  <div class="callout">
+    <div class="callout-title">💡 PRO TYPING TIP: RENAME IN 1 SECOND</div>
+    Do not double-click slowly to rename! Simply click the file once to select it, then press the <span class="kbd-key">F2</span> key at the very top of your keyboard. The name will instantly highlight blue so you can type the new name and press <span class="kbd-key">Enter</span>!
+  </div>
+</div>
+
+<!-- ========================================== -->
+<!-- PAGE 2: DELETING & THE RECYCLE BIN         -->
+<!-- ========================================== -->
+<div class="page">
+  <div class="header-bar">
+    <div class="header-title">Deleting Files & The Recycle Bin</div>
+    <div class="badge">Session 5 • Page 2</div>
+  </div>
+
+  <h2>1. What Happens When You Delete a File?</h2>
+  <p>When you delete a file on your computer, <strong>it does not vanish into thin air immediately</strong>. The computer safely transfers it to a special temporary holding basket on your Desktop called the <strong>Recycle Bin</strong>.</p>
+  <p>Think of it just like the wastepaper basket in your classroom. If you accidentally throw your homework sheet into the wastepaper basket, you can easily reach in, pull it out, and smooth it flat again!</p>
+
+  <!-- DIAGRAM: RECYCLE BIN LIFECYCLE -->
+  <div class="diagram-container">
+    <svg width="680" height="150" viewBox="0 0 680 150" xmlns="http://www.w3.org/2000/svg">
+      <!-- File in Folder -->
+      <g transform="translate(30, 30)">
+        <rect x="0" y="0" width="85" height="45" rx="3" fill="#FFFFFF" stroke="#334155" stroke-width="1.5"/>
+        <text x="42" y="27" font-size="10" font-weight="bold" fill="#1E293B" text-anchor="middle">Draft_1.txt</text>
+        <text x="42" y="60" font-size="9" fill="#64748B" text-anchor="middle">In Documents</text>
+      </g>
+
+      <!-- Arrow 1: Delete -->
+      <path d="M 130,52 L 205,52" stroke="#E63946" stroke-width="2"/>
+      <polygon points="210,52 202,48 202,56" fill="#E63946"/>
+      <text x="170" y="44" font-size="9" font-weight="bold" fill="#E63946" text-anchor="middle">Tap Delete Key</text>
+
+      <!-- Recycle Bin -->
+      <g transform="translate(230, 20)">
+        <rect x="10" y="10" width="70" height="75" rx="4" fill="#E2E8F0" stroke="#334155" stroke-width="2"/>
+        <!-- Trash ribs -->
+        <line x1="28" y1="28" x2="28" y2="70" stroke="#10B981" stroke-width="2.5"/>
+        <line x1="45" y1="28" x2="45" y2="70" stroke="#10B981" stroke-width="2.5"/>
+        <line x1="62" y1="28" x2="62" y2="70" stroke="#10B981" stroke-width="2.5"/>
+        <rect x="5" y="5" width="80" height="8" rx="2" fill="#64748B"/>
+        <text x="45" y="105" font-size="11" font-weight="bold" fill="#1E293B" text-anchor="middle">Recycle Bin</text>
+      </g>
+
+      <!-- Branch A: Restore -->
+      <g transform="translate(330, 10)">
+        <path d="M 0,35 Q 60,10 120,20" stroke="#10B981" stroke-width="2" fill="none"/>
+        <polygon points="125,21 116,17 119,26" fill="#10B981"/>
+        <text x="65" y="12" font-size="9.5" font-weight="bold" fill="#047857">Right-Click &rarr; Restore</text>
+        <!-- Restored File -->
+        <rect x="135" y="8" width="90" height="35" rx="3" fill="#ECFDF5" stroke="#10B981" stroke-width="1.5"/>
+        <text x="180" y="30" font-size="9" font-weight="bold" fill="#065F46" text-anchor="middle">Draft_1.txt (Safe!)</text>
+      </g>
+
+      <!-- Branch B: Empty Bin -->
+      <g transform="translate(330, 75)">
+        <path d="M 0,10 Q 60,35 120,25" stroke="#DC2626" stroke-width="2" fill="none"/>
+        <polygon points="125,24 118,20 116,29" fill="#DC2626"/>
+        <text x="65" y="44" font-size="9.5" font-weight="bold" fill="#DC2626">Empty Recycle Bin</text>
+        <text x="145" y="30" font-size="10" font-weight="bold" fill="#DC2626">Gone Forever! 💨</text>
+      </g>
+    </svg>
+    <div class="diagram-caption">Figure 5.1: The Recycle Bin safety net. You can always Restore a deleted file unless the bin has been emptied.</div>
+  </div>
+
+  <h2>2. How to Recover an Accidentally Deleted File</h2>
+  <div class="step-card">
+    <div class="step-num">1</div>
+    <div class="step-content">
+      <strong>Open the Recycle Bin:</strong> Go to your Desktop screen and double-click the <strong>Recycle Bin</strong> icon.
+    </div>
+  </div>
+
+  <div class="step-card">
+    <div class="step-num">2</div>
+    <div class="step-content">
+      <strong>Find Your File:</strong> Look through the list for the file you accidentally deleted.
+    </div>
+  </div>
+
+  <div class="step-card">
+    <div class="step-num">3</div>
+    <div class="step-content">
+      <strong>Click "Restore":</strong> Right-click on the file name. Click <strong>Restore</strong> in the pop-up menu. The file magically jumps straight back into its original folder!
+    </div>
+  </div>
+
+  <h2>3. Check Your Knowledge</h2>
+  <p><strong>Scenario:</strong> Kwesi deletes his Social Studies project. He opens the Recycle Bin, clicks "Empty Recycle Bin", and confirms Yes. Can he still click "Restore" to get it back?</p>
+  <div class="answer-line" contenteditable="true">Write your answer here and explain why...</div>
+</div>
+
+<!-- ========================================== -->
+<!-- PAGE 3: USB FLASH DRIVES (PEN DRIVES)      -->
+<!-- ========================================== -->
+<div class="page">
+  <div class="header-bar">
+    <div class="header-title">Portable Storage: USB Flash Drives</div>
+    <div class="badge">Session 5 • Page 3</div>
+  </div>
+
+  <h2>1. What is a USB Flash Drive (Pen Drive)?</h2>
+  <p>A <strong>USB Flash Drive</strong> (commonly called a <em>Pen Drive</em> in Ghana) is a thumb-sized storage device. Because it does not need internet or cables, students and teachers use it to carry school files from one computer to another.</p>
+
+  <!-- DIAGRAM: USB ANATOMY & PLUG ALIGNMENT -->
+  <div class="diagram-container">
+    <svg width="680" height="135" viewBox="0 0 680 135" xmlns="http://www.w3.org/2000/svg">
+      <!-- USB Flash Drive Body -->
+      <g transform="translate(50, 30)">
+        <rect x="0" y="10" width="110" height="55" rx="6" fill="#3A0CA3" stroke="#1E1B4B" stroke-width="2"/>
+        <rect x="8" y="20" width="94" height="35" rx="3" fill="#4361EE"/>
+        <text x="55" y="42" font-size="10.5" font-weight="bold" fill="white" text-anchor="middle">BIH_32GB</text>
+        <circle cx="95" cy="37" r="4" fill="#F77F00"/>
+        
+        <!-- Metal Connector Head -->
+        <rect x="110" y="20" width="45" height="35" rx="2" fill="#E2E8F0" stroke="#64748B" stroke-width="1.5"/>
+        <rect x="135" y="26" width="12" height="8" fill="#1E293B"/> <!-- USB Holes -->
+        <rect x="135" y="41" width="12" height="8" fill="#1E293B"/>
+        <!-- Plastic Tongue inside -->
+        <rect x="125" y="20" width="30" height="12" fill="#94A3B8"/>
+      </g>
+
+      <!-- Insertion Arrow -->
+      <path d="M 230,67 L 300,67" stroke="#F77F00" stroke-width="3"/>
+      <polygon points="308,67 298,62 298,72" fill="#F77F00"/>
+      <text x="265" y="58" font-size="9" font-weight="bold" fill="#F77F00" text-anchor="middle">Insert gently</text>
+
+      <!-- Computer USB Port -->
+      <g transform="translate(330, 25)">
+        <rect x="0" y="0" width="60" height="85" rx="4" fill="#1F2937" stroke="#111827" stroke-width="2"/>
+        <!-- USB Port Slot -->
+        <rect x="15" y="25" width="30" height="16" rx="2" fill="#000000"/>
+        <rect x="15" y="25" width="30" height="7" fill="#E2E8F0"/> <!-- Internal plastic tongue -->
+        <rect x="15" y="55" width="30" height="16" rx="2" fill="#000000"/>
+        <text x="30" y="105" font-size="10" font-weight="bold" fill="#3A0CA3" text-anchor="middle">USB Port</text>
+      </g>
+
+      <!-- Callout: Never Force It -->
+      <g transform="translate(430, 30)">
+        <rect x="0" y="5" width="220" height="70" rx="6" fill="#FFF7ED" stroke="#F97316" stroke-width="1.5"/>
+        <text x="15" y="26" font-size="10.5" font-weight="bold" fill="#9A3412">⚠️ THE USB TONGUE RULE:</text>
+        <text x="15" y="44" font-size="9.5" fill="#431407">A USB plug only enters ONE way.</text>
+        <text x="15" y="58" font-size="9.5" fill="#431407">If it resists, flip it over! Never jam</text>
+        <text x="15" y="70" font-size="9.5" fill="#431407">or force it into the computer port.</text>
+      </g>
+    </svg>
+    <div class="diagram-caption">Figure 5.2: Gentle USB insertion. Align the hollow side with the internal plastic tongue of the port.</div>
+  </div>
+
+  <h2>2. The Cardinal Rule: "Safely Remove Hardware" (Eject)</h2>
+  <div class="panic-box">
+    <div class="panic-title">🚨 NEVER YANK OUT A PEN DRIVE WHILE IN USE!</div>
+    If you pull a flash drive out while the computer is saving, the files on the drive can be <strong>permanently corrupted and destroyed</strong>! Always follow this 3-click ejection ritual:
+    <ol style="margin: 6px 0 0 15px; padding: 0;">
+      <li>Look at the bottom-right corner of your screen (the <strong>System Tray</strong>).</li>
+      <li>Click the tiny upward arrow <span class="kbd-key">^</span> to reveal hidden icons.</li>
+      <li>Click the small picture of a <strong>USB plug with a green checkmark</strong> and click <strong>"Eject Flash Drive"</strong>.</li>
+      <li>Wait until the screen says <em>"Safe To Remove Hardware"</em> before pulling it out!</li>
+    </ol>
+  </div>
+</div>
+
+<!-- ========================================== -->
+<!-- PAGE 4: TYPING FLUENCY - TOP ROW REACH    -->
+<!-- ========================================== -->
+<div class="page">
+  <div class="header-bar">
+    <div class="header-title">Typing Fluency: The Top Row Reach</div>
+    <div class="badge">Session 5 • Page 4</div>
+  </div>
+
+  <h2>1. Expanding Beyond Home Row: Reaching the Vowels</h2>
+  <p>Your fingers always rest anchored on the Home Row (<span class="kbd-key">A S D F</span> and <span class="kbd-key">J K L ;</span>). But the most common vowels in the English language—<strong>E, I, O, U</strong>—live on the <strong>Top Row</strong>!</p>
+  <p>To type a top-row letter: reach up with the assigned finger, strike the key once, and <strong>immediately snap the finger back home</strong>!</p>
+
+  <!-- DIAGRAM: TOP ROW REACH MAP -->
+  <div class="diagram-container">
+    <svg width="700" height="195" viewBox="0 0 700 195" xmlns="http://www.w3.org/2000/svg">
+      <rect x="20" y="10" width="660" height="175" rx="8" fill="#1F2937"/>
+
+      <!-- TOP ROW KEYS (Reaches) -->
+      <!-- Q W E R T -->
+      <rect x="50" y="25" width="45" height="42" rx="4" fill="#374151"/>
+      <text x="72" y="51" font-size="16" fill="white" font-weight="bold" text-anchor="middle">Q</text>
+
+      <rect x="100" y="25" width="45" height="42" rx="4" fill="#374151"/>
+      <text x="122" y="51" font-size="16" fill="white" font-weight="bold" text-anchor="middle">W</text>
+
+      <!-- E (Left Middle Finger) -->
+      <rect x="150" y="25" width="45" height="42" rx="4" fill="#10B981"/>
+      <text x="172" y="51" font-size="18" fill="white" font-weight="bold" text-anchor="middle">E</text>
+
+      <!-- R (Left Index Finger) -->
+      <rect x="200" y="25" width="45" height="42" rx="4" fill="#3B82F6"/>
+      <text x="222" y="51" font-size="18" fill="white" font-weight="bold" text-anchor="middle">R</text>
+
+      <!-- T (Left Index reach) -->
+      <rect x="250" y="25" width="45" height="42" rx="4" fill="#3B82F6"/>
+      <text x="272" y="51" font-size="18" fill="white" font-weight="bold" text-anchor="middle">T</text>
+
+      <!-- Y U I O P (Right Hand) -->
+      <!-- Y (Right Index reach) -->
+      <rect x="360" y="25" width="45" height="42" rx="4" fill="#3B82F6"/>
+      <text x="382" y="51" font-size="18" fill="white" font-weight="bold" text-anchor="middle">Y</text>
+
+      <!-- U (Right Index) -->
+      <rect x="410" y="25" width="45" height="42" rx="4" fill="#3B82F6"/>
+      <text x="432" y="51" font-size="18" fill="white" font-weight="bold" text-anchor="middle">U</text>
+
+      <!-- I (Right Middle) -->
+      <rect x="460" y="25" width="45" height="42" rx="4" fill="#10B981"/>
+      <text x="482" y="51" font-size="18" fill="white" font-weight="bold" text-anchor="middle">I</text>
+
+      <!-- O (Right Ring) -->
+      <rect x="510" y="25" width="45" height="42" rx="4" fill="#F59E0B"/>
+      <text x="532" y="51" font-size="18" fill="white" font-weight="bold" text-anchor="middle">O</text>
+
+      <!-- P (Right Pinky) -->
+      <rect x="560" y="25" width="45" height="42" rx="4" fill="#EF4444"/>
+      <text x="582" y="51" font-size="18" fill="white" font-weight="bold" text-anchor="middle">P</text>
+
+      <!-- HOME ROW ANCHOR KEYS (Bottom) -->
+      <!-- D (Middle) -->
+      <rect x="150" y="95" width="45" height="42" rx="4" fill="#10B981" opacity="0.6"/>
+      <text x="172" y="121" font-size="16" fill="white" text-anchor="middle">D</text>
+
+      <!-- F (Index) -->
+      <rect x="200" y="95" width="45" height="42" rx="4" fill="#3B82F6" opacity="0.6"/>
+      <text x="222" y="121" font-size="16" fill="white" text-anchor="middle">F</text>
+      <line x1="212" y1="128" x2="232" y2="128" stroke="white" stroke-width="2"/>
+
+      <!-- J (Index) -->
+      <rect x="410" y="95" width="45" height="42" rx="4" fill="#3B82F6" opacity="0.6"/>
+      <text x="432" y="121" font-size="16" fill="white" text-anchor="middle">J</text>
+      <line x1="422" y1="128" x2="442" y2="128" stroke="white" stroke-width="2"/>
+
+      <!-- K (Middle) -->
+      <rect x="460" y="95" width="45" height="42" rx="4" fill="#10B981" opacity="0.6"/>
+      <text x="482" y="121" font-size="16" fill="white" text-anchor="middle">K</text>
+
+      <!-- L (Ring) -->
+      <rect x="510" y="95" width="45" height="42" rx="4" fill="#F59E0B" opacity="0.6"/>
+      <text x="532" y="121" font-size="16" fill="white" text-anchor="middle">L</text>
+
+      <!-- Arrow Reaches -->
+      <path d="M 172,95 L 172,73" stroke="#10B981" stroke-width="2.5" marker-end="url(#arrow)"/>
+      <path d="M 222,95 L 222,73" stroke="#3B82F6" stroke-width="2.5"/>
+      <path d="M 432,95 L 432,73" stroke="#3B82F6" stroke-width="2.5"/>
+      <path d="M 482,95 L 482,73" stroke="#10B981" stroke-width="2.5"/>
+      <path d="M 532,95 L 532,73" stroke="#F59E0B" stroke-width="2.5"/>
+
+      <!-- Labels -->
+      <text x="172" y="155" font-size="9" fill="#6EE7B7" text-anchor="middle">D reaches to E</text>
+      <text x="222" y="155" font-size="9" fill="#93C5FD" text-anchor="middle">F reaches to R</text>
+      <text x="432" y="155" font-size="9" fill="#93C5FD" text-anchor="middle">J reaches to U</text>
+      <text x="482" y="155" font-size="9" fill="#6EE7B7" text-anchor="middle">K reaches to I</text>
+      <text x="532" y="155" font-size="9" fill="#FCD34D" text-anchor="middle">L reaches to O</text>
+    </svg>
+    <div class="diagram-caption">Figure 5.3: Reaching up from the Home Row anchors to the Top Row vowels and letters. Always snap fingers back home!</div>
+  </div>
+
+  <h2>2. The Gold Standard: Accuracy Over Speed</h2>
+  <div class="callout">
+    <div class="callout-title">🏆 WHY SLOW AND ACCURATE WINS</div>
+    Never rush to type fast! If you type 40 words a minute with 10 mistakes, you will waste 3 minutes erasing and fixing typos. A calm student who types 20 words a minute with zero errors finishes their school assignments twice as fast!
+  </div>
+</div>
+
+<!-- ========================================== -->
+<!-- PAGE 5: GUIDED LAB - FILE OPERATIONS       -->
+<!-- ========================================== -->
+<div class="page">
+  <div class="header-bar">
+    <div class="header-title">Guided Hands-On Lab: File Operations</div>
+    <div class="badge">Session 5 • Page 5</div>
+  </div>
+
+  <h2>1. Lab Workout: Copy, Rename, Move, and Recover</h2>
+  <p>Follow these 5 practical challenges inside your <code>BIH_Practice</code> folder:</p>
+
+  <div class="step-card">
+    <div class="step-num">1</div>
+    <div class="step-content">
+      <strong>Navigate:</strong> Press <span class="kbd-key">&#8862; Win</span> + <span class="kbd-key">E</span> to open File Explorer.
+      <br>Go to <strong>Documents &rarr; BIH_Practice</strong>. Find your <code>Profile_AmaMensah.txt</code> file from Session 4.
+    </div>
+  </div>
+
+  <div class="step-card">
+    <div class="step-num">2</div>
+    <div class="step-content">
+      <strong>Make a Duplicate (Copy & Paste):</strong>
+      <br>Click your profile file once. Press <span class="kbd-key">Ctrl</span> + <span class="kbd-key">C</span> (Copy).
+      <br>Now immediately press <span class="kbd-key">Ctrl</span> + <span class="kbd-key">V</span> (Paste).
+      <br><em>Observation:</em> A new duplicate file named <code>Profile_AmaMensah - Copy.txt</code> appears right next to it!
+    </div>
+  </div>
+
+  <div class="step-card">
+    <div class="step-num">3</div>
+    <div class="step-content">
+      <strong>Rename the Duplicate:</strong>
+      <br>Click the copy file once. Press the <span class="kbd-key">F2</span> key at the top of your keyboard.
+      <br>Type: <code>Profile_Backup.txt</code> and press <span class="kbd-key">Enter</span>.
+    </div>
+  </div>
+
+  <div class="step-card">
+    <div class="step-num">4</div>
+    <div class="step-content">
+      <strong>Move It (Cut & Paste):</strong>
+      <br>Click <code>Profile_Backup.txt</code>. Press <span class="kbd-key">Ctrl</span> + <span class="kbd-key">X</span> (Cut). Notice how the icon fades slightly.
+      <br>Double-click your <code>Notes</code> subfolder to open it.
+      <br>Press <span class="kbd-key">Ctrl</span> + <span class="kbd-key">V</span> (Paste). The backup file is now safely inside <code>Notes</code>!
+    </div>
+  </div>
+
+  <div class="step-card">
+    <div class="step-num">5</div>
+    <div class="step-content">
+      <strong>Delete & Restore Drill:</strong>
+      <br>Create a scrap file: Right-click &rarr; New &rarr; Text Document &rarr; Name it <code>TrashMe.txt</code>.
+      <br>Select it and tap the <span class="kbd-key">Delete</span> key. It vanishes!
+      <br>Go to the Desktop, open the <strong>Recycle Bin</strong>, find <code>TrashMe.txt</code>, right-click it, and click <strong>Restore</strong>. Check your folder—it is back!
+    </div>
+  </div>
+
+  <h2>2. Fluency Typing Workout (Top Row Vowels)</h2>
+  <p>Open <strong>Notepad</strong> and type each drill line 3 times using the correct finger reaches:</p>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 25%;">Drill</th>
+        <th style="width: 50%;">What You Must Type in Notepad</th>
+        <th style="width: 25%;">Fingers Used</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Drill 1: Reach E & I</strong></td>
+        <td><code>ded kik ded kik red kid led</code></td>
+        <td>Middle & Index reach</td>
+      </tr>
+      <tr>
+        <td><strong>Drill 2: Reach U & O</strong></td>
+        <td><code>juj lol juj lol you out pour</code></td>
+        <td>Index & Ring reach</td>
+      </tr>
+      <tr>
+        <td><strong>Drill 3: Full Sentence</strong></td>
+        <td><code>Our youth use computers to build Ghana.</code></td>
+        <td>All Home & Top Row</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ========================================== -->
+<!-- PAGE 6: REVIEW & SELF-ASSESSMENT           -->
+<!-- ========================================== -->
+<div class="page">
+  <div class="header-bar">
+    <div class="header-title">Session 5 Review & Verification</div>
+    <div class="badge">Session 5 • Page 6</div>
+  </div>
+
+  <h2>1. Match the Keyboard Shortcut</h2>
+  <p>Draw a line connecting each essential keyboard shortcut to its correct command:</p>
+
+  <div style="display: flex; justify-content: space-between; margin: 20px 30px; font-size: 13px;">
+    <div style="display: flex; flex-direction: column; gap: 20px; font-weight: bold; font-family: monospace; font-size: 14px; color: var(--bih-purple);">
+      <div>[ Ctrl + C ]</div>
+      <div>[ Ctrl + X ]</div>
+      <div>[ Ctrl + V ]</div>
+      <div>[ Ctrl + Z ]</div>
+      <div>[ F2 Key ]</div>
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 20px; color: var(--bih-dark);">
+      <div>&bull; &nbsp; Paste the item you copied or cut.</div>
+      <div>&bull; &nbsp; Undo the last mistake immediately.</div>
+      <div>&bull; &nbsp; Copy (duplicate) the selected file.</div>
+      <div>&bull; &nbsp; Rename the highlighted file instantly.</div>
+      <div>&bull; &nbsp; Cut (move) the selected file.</div>
+    </div>
+  </div>
+
+  <h2>2. Written Review Questions</h2>
+  <p><strong>Question 1:</strong> You want to put a copy of your science homework onto your friend's pen drive, but you still want to keep your own copy on the school computer. Should you use <strong>Copy & Paste</strong> or <strong>Cut & Paste</strong>?</p>
+  <div class="answer-line" contenteditable="true">Write your choice and explain why:</div>
+
+  <p><strong>Question 2:</strong> Why should you always click "Eject" before pulling a USB flash drive out of a computer?</p>
+  <div class="answer-line" contenteditable="true">Write your answer here...</div>
+
+  <p><strong>Question 3:</strong> Which finger is responsible for reaching up from the Home Row to strike the letter <strong>E</strong>?</p>
+  <div class="answer-line" contenteditable="true">Answer: ____________________________________</div>
+
+  <h2>3. Self-Assessment & Mentor Sign-Off</h2>
+  <p>Tick the column that reflects your confidence at the end of Session 5:</p>
+  <table>
+    <thead>
+      <tr>
+        <th>File Operations & Typing Competency</th>
+        <th style="width: 18%; text-align: center;">With Help</th>
+        <th style="width: 18%; text-align: center;">Almost Alone</th>
+        <th style="width: 18%; text-align: center;">All By Myself!</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1. I can explain the difference between Copying and Cutting a file.</td>
+        <td style="text-align: center;"><input type="radio" name="s5_1"></td>
+        <td style="text-align: center;"><input type="radio" name="s5_1"></td>
+        <td style="text-align: center;"><input type="radio" name="s5_1"></td>
+      </tr>
+      <tr>
+        <td>2. I can delete a file and safely recover it from the Recycle Bin.</td>
+        <td style="text-align: center;"><input type="radio" name="s5_2"></td>
+        <td style="text-align: center;"><input type="radio" name="s5_2"></td>
+        <td style="text-align: center;"><input type="radio" name="s5_2"></td>
+      </tr>
+      <tr>
+        <td>3. I know how to insert and safely eject a USB flash drive.</td>
+        <td style="text-align: center;"><input type="radio" name="s5_3"></td>
+        <td style="text-align: center;"><input type="radio" name="s5_3"></td>
+        <td style="text-align: center;"><input type="radio" name="s5_3"></td>
+      </tr>
+      <tr>
+        <td>4. I can reach up from the Home Row to strike top-row vowels (E, I, O, U).</td>
+        <td style="text-align: center;"><input type="radio" name="s5_4"></td>
+        <td style="text-align: center;"><input type="radio" name="s5_4"></td>
+        <td style="text-align: center;"><input type="radio" name="s5_4"></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div style="border-top: 1px solid var(--bih-border); margin-top: 25px; padding-top: 12px; display: flex; justify-content: space-between; font-size: 13px;">
+    <div><strong>Mentor Signature:</strong> _____________________________</div>
+    <div><strong>Date Completed:</strong> ____________________</div>
+  </div>
+</div>
+
+</body>
+</html>

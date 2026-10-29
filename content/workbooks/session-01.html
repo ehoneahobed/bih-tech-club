@@ -1,0 +1,915 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>BIH Tech Club - Session 1: Meet the Computer (Desktop & Laptop Edition)</title>
+  <style>
+    :root {
+      --bih-purple: #3A0CA3;
+      --bih-accent: #4361EE;
+      --bih-gold: #F77F00;
+      --bih-green: #2EC4B6;
+      --bih-red: #E63946;
+      --bih-dark: #1E1E24;
+      --bih-light: #F8F9FA;
+      --bih-border: #CED4DA;
+      --bih-trackpad: #E0E7FF;
+    }
+
+    * {
+      box-sizing: border-box;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    body {
+      background-color: #E9ECEF;
+      color: var(--bih-dark);
+      margin: 0;
+      padding: 20px;
+      line-height: 1.55;
+    }
+
+    .page {
+      background: #FFFFFF;
+      max-width: 860px;
+      margin: 20px auto;
+      padding: 42px 50px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+      border-radius: 8px;
+      page-break-after: always;
+    }
+
+    @media print {
+      body { background: white; padding: 0; }
+      .page { box-shadow: none; margin: 0; padding: 30px; max-width: 100%; border-radius: 0; }
+      .no-print { display: none; }
+    }
+
+    /* Header Bar */
+    .header-bar {
+      border-bottom: 3px solid var(--bih-purple);
+      padding-bottom: 10px;
+      margin-bottom: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .header-title {
+      font-size: 19px;
+      font-weight: 800;
+      color: var(--bih-purple);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .badge {
+      background: var(--bih-gold);
+      color: #FFFFFF;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+    }
+
+    /* Student Information Box */
+    .student-meta {
+      border: 2px dashed var(--bih-border);
+      border-radius: 8px;
+      padding: 12px 18px;
+      background: var(--bih-light);
+      margin-bottom: 20px;
+    }
+
+    .meta-row {
+      display: flex;
+      gap: 15px;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+    .meta-row:last-child { margin-bottom: 0; }
+
+    .meta-label {
+      font-size: 12.5px;
+      font-weight: 700;
+      color: var(--bih-dark);
+      min-width: 125px;
+    }
+
+    .editable-line {
+      border-bottom: 1.5px solid var(--bih-purple);
+      flex-grow: 1;
+      padding: 2px 6px;
+      font-size: 13.5px;
+      font-weight: 600;
+      color: var(--bih-purple);
+      outline: none;
+      min-height: 20px;
+    }
+
+    /* Headings & Text */
+    h1 { color: var(--bih-purple); font-size: 22px; margin-top: 0; margin-bottom: 8px; }
+    h2 { color: var(--bih-purple); font-size: 16px; margin-top: 20px; margin-bottom: 10px; border-left: 4px solid var(--bih-gold); padding-left: 8px; }
+    h3 { font-size: 13.5px; color: var(--bih-accent); margin-top: 12px; margin-bottom: 4px; }
+    p { font-size: 13px; margin: 6px 0; }
+
+    /* Dual Column Layouts */
+    .dual-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin: 12px 0;
+    }
+
+    .dual-box {
+      border: 1px solid var(--bih-border);
+      border-radius: 8px;
+      padding: 12px 14px;
+      background: #FAFAFA;
+    }
+    .dual-box.highlight {
+      border-color: var(--bih-accent);
+      background: #F0F4FF;
+    }
+    .dual-box-title {
+      font-size: 13px;
+      font-weight: 800;
+      color: var(--bih-purple);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 6px;
+      border-bottom: 1px solid var(--bih-border);
+      padding-bottom: 4px;
+    }
+
+    /* Callouts & Alert Boxes */
+    .callout {
+      background: #FFF3CD;
+      border-left: 4px solid var(--bih-gold);
+      padding: 10px 14px;
+      margin: 14px 0;
+      border-radius: 0 8px 8px 0;
+      font-size: 12.5px;
+    }
+
+    .callout-title {
+      font-weight: 800;
+      color: #856404;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 2px;
+    }
+
+    .panic-box {
+      background: #F8D7DA;
+      border-left: 4px solid var(--bih-red);
+      padding: 12px 14px;
+      margin: 14px 0;
+      border-radius: 0 8px 8px 0;
+      font-size: 12.5px;
+    }
+
+    .panic-title {
+      font-weight: 800;
+      color: #721C24;
+      margin-bottom: 4px;
+    }
+
+    /* Step Cards */
+    .step-card {
+      display: flex;
+      gap: 12px;
+      background: var(--bih-light);
+      border: 1px solid var(--bih-border);
+      border-radius: 6px;
+      padding: 10px 12px;
+      margin-bottom: 8px;
+      align-items: flex-start;
+    }
+
+    .step-num {
+      background: var(--bih-purple);
+      color: white;
+      font-size: 13px;
+      font-weight: 800;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .step-content { flex-grow: 1; font-size: 12.5px; }
+    .step-title { font-weight: 700; color: var(--bih-purple); margin-bottom: 2px; }
+
+    /* Diagrams */
+    .diagram-container {
+      background: #FAFAFA;
+      border: 1px solid var(--bih-border);
+      border-radius: 8px;
+      padding: 12px;
+      margin: 14px 0;
+      text-align: center;
+    }
+
+    .diagram-caption {
+      font-size: 11px;
+      color: #6C757D;
+      margin-top: 6px;
+      font-style: italic;
+    }
+
+    /* Tables */
+    table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 12.5px; }
+    th { background: var(--bih-purple); color: white; text-align: left; padding: 7px 10px; }
+    td { border: 1px solid var(--bih-border); padding: 7px 10px; vertical-align: top; }
+    tr:nth-child(even) { background-color: var(--bih-light); }
+
+    /* Interactive Inputs */
+    .answer-line {
+      min-height: 24px;
+      border-bottom: 1px dashed var(--bih-purple);
+      margin: 4px 0;
+      outline: none;
+      font-size: 13px;
+      color: var(--bih-dark);
+      padding: 2px 4px;
+    }
+
+    .checkbox-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 6px;
+      font-size: 12.5px;
+    }
+    .checkbox-item input { width: 15px; height: 15px; cursor: pointer; }
+  </style>
+</head>
+<body>
+
+<!-- ========================================== -->
+<!-- PAGE 1: BIG PICTURE & TWO TYPES OF PCS    -->
+<!-- ========================================== -->
+<div class="page">
+  <div class="header-bar">
+    <div class="header-title">Bozoma Innovation Hub • Tech Club</div>
+    <div class="badge">Session 1 • Page 1</div>
+  </div>
+
+  <div class="student-meta">
+    <div class="meta-row">
+      <span class="meta-label">Learner Full Name:</span>
+      <div class="editable-line" contenteditable="true">Type your full name here...</div>
+    </div>
+    <div class="meta-row">
+      <span class="meta-label">School:</span>
+      <div class="editable-line" contenteditable="true">e.g. Bozoma Model School</div>
+      <span class="meta-label" style="min-width: 50px;">Class:</span>
+      <div class="editable-line" contenteditable="true" style="max-width: 90px;">JHS 1</div>
+    </div>
+    <div class="meta-row">
+      <span class="meta-label">Workstation Device:</span>
+      <div class="editable-line" contenteditable="true" style="max-width: 180px;">[ ] Desktop &nbsp; [ ] Laptop</div>
+      <span class="meta-label" style="min-width: 70px;">Station #:</span>
+      <div class="editable-line" contenteditable="true" style="max-width: 90px;">PC-01</div>
+    </div>
+  </div>
+
+  <h1>Session 1: Meet Your Computer</h1>
+  <p>Welcome! Whether you are sitting in front of a <strong>Desktop computer</strong> or a <strong>Laptop</strong>, this workbook will guide you step-by-step. You do not need any prior experience.</p>
+
+  <h2>1. What is a Computer? (The Corn Mill Analogy)</h2>
+  <p>Think about a local neighborhood corn mill:</p>
+  <ul>
+    <li><strong>1. INPUT:</strong> You pour raw, dry corn into the funnel hopper.</li>
+    <li><strong>2. PROCESS:</strong> The motor grinds and crushes the grains inside the machine housing.</li>
+    <li><strong>3. OUTPUT:</strong> Clean, fine corn meal pours into your waiting basin.</li>
+  </ul>
+  <p>Every computer—desktop or laptop—works the exact same way:</p>
+
+  <!-- DIAGRAM: INPUT - PROCESS - OUTPUT -->
+  <div class="diagram-container">
+    <svg width="680" height="110" viewBox="0 0 680 110" xmlns="http://www.w3.org/2000/svg">
+      <rect x="20" y="15" width="180" height="75" rx="6" fill="#EEF2FF" stroke="#4361EE" stroke-width="2"/>
+      <text x="110" y="42" font-size="13" font-weight="bold" fill="#3A0CA3" text-anchor="middle">1. INPUT</text>
+      <text x="110" y="60" font-size="11" fill="#4B5563" text-anchor="middle">You type or click</text>
+      <text x="110" y="76" font-size="10" font-weight="bold" fill="#4361EE" text-anchor="middle">(Keyboard / Mouse / Touchpad)</text>
+
+      <path d="M 210,52 L 245,52" stroke="#F77F00" stroke-width="3" fill="none"/>
+      <polygon points="250,52 242,47 242,57" fill="#F77F00"/>
+
+      <rect x="255" y="15" width="170" height="75" rx="6" fill="#FFF7ED" stroke="#F77F00" stroke-width="2"/>
+      <text x="340" y="42" font-size="13" font-weight="bold" fill="#9A3412" text-anchor="middle">2. PROCESS</text>
+      <text x="340" y="60" font-size="11" fill="#4B5563" text-anchor="middle">Calculates & executes</text>
+      <text x="340" y="76" font-size="10" font-weight="bold" fill="#EA580C" text-anchor="middle">(Processor inside the box/base)</text>
+
+      <path d="M 435,52 L 470,52" stroke="#F77F00" stroke-width="3" fill="none"/>
+      <polygon points="475,52 467,47 467,57" fill="#F77F00"/>
+
+      <rect x="480" y="15" width="180" height="75" rx="6" fill="#ECFDF5" stroke="#2EC4B6" stroke-width="2"/>
+      <text x="570" y="42" font-size="13" font-weight="bold" fill="#065F46" text-anchor="middle">3. OUTPUT</text>
+      <text x="570" y="60" font-size="11" fill="#4B5563" text-anchor="middle">Shows your results</text>
+      <text x="570" y="76" font-size="10" font-weight="bold" fill="#0D9488" text-anchor="middle">(Monitor Screen / Audio)</text>
+    </svg>
+    <div class="diagram-caption">Figure 1.0: The flow of computing. Input becomes Output through internal processing.</div>
+  </div>
+
+  <h2>2. Which Machine Are You Using Today?</h2>
+  <div class="dual-grid">
+    <div class="dual-box">
+      <div class="dual-box-title">🖥️ OPTION A: Desktop Computer</div>
+      <p>A stationary machine designed to stay on a table. It is made of <strong>separate pieces</strong> connected with cables: a monitor screen, a system unit tower, an external keyboard, and a mouse.</p>
+    </div>
+    <div class="dual-box">
+      <div class="dual-box-title">💻 OPTION B: Laptop Computer</div>
+      <p>A portable all-in-one computer. The screen folds down over the keyboard. It has an internal rechargeable battery, a built-in keyboard, and a flat <strong>touchpad</strong> that acts as the mouse.</p>
+    </div>
+  </div>
+
+  <h2>3. Hardware vs. Software in 30 Seconds</h2>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 50%;">Hardware (The Physical Body)</th>
+        <th style="width: 50%;">Software (The Brain's Programs)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Anything you can physically <strong>touch with your hand</strong>.</td>
+        <td>The invisible instructions that tell the machine <strong>what to do</strong>.</td>
+      </tr>
+      <tr>
+        <td><em>Examples:</em> Screen glass, keys, mouse, touchpad, battery.</td>
+        <td><em>Examples:</em> Word processor, Scratch coding, games, web browser.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ========================================== -->
+<!-- PAGE 2: HARDWARE ANATOMY (DESKTOP & LAPTOP)-->
+<!-- ========================================== -->
+<div class="page">
+  <div class="header-bar">
+    <div class="header-title">Hardware Anatomy: Desktop vs. Laptop</div>
+    <div class="badge">Session 1 • Page 2</div>
+  </div>
+
+  <h2>1. Comparing the Physical Machines</h2>
+  <p>Study the two setups below to understand where each part lives on your machine:</p>
+
+  <!-- DIAGRAM: DESKTOP VS LAPTOP SIDE-BY-SIDE -->
+  <div class="diagram-container">
+    <svg width="740" height="220" viewBox="0 0 740 220" xmlns="http://www.w3.org/2000/svg">
+      <!-- LEFT SIDE: DESKTOP -->
+      <g transform="translate(10, 0)">
+        <text x="160" y="20" font-size="12" font-weight="bold" fill="#3A0CA3" text-anchor="middle">DESKTOP COMPUTER (4 Separate Units)</text>
+        
+        <!-- Tower -->
+        <rect x="20" y="40" width="60" height="130" rx="4" fill="#374151" stroke="#111827" stroke-width="1.5"/>
+        <circle cx="50" cy="60" r="7" fill="#10B981"/>
+        <text x="50" y="185" font-size="10" font-weight="bold" fill="#374151" text-anchor="middle">System Unit</text>
+
+        <!-- Monitor -->
+        <rect x="110" y="35" width="140" height="95" rx="4" fill="#1F2937"/>
+        <rect x="118" y="42" width="124" height="78" rx="2" fill="#60A5FA"/>
+        <rect x="170" y="130" width="20" height="20" fill="#4B5563"/>
+        <rect x="150" y="150" width="60" height="6" rx="2" fill="#374151"/>
+        <text x="180" y="170" font-size="10" font-weight="bold" fill="#374151" text-anchor="middle">Monitor</text>
+
+        <!-- Keyboard -->
+        <rect x="100" y="175" width="120" height="35" rx="3" fill="#4B5563"/>
+        <text x="160" y="218" font-size="10" font-weight="bold" fill="#374151" text-anchor="middle">Keyboard</text>
+
+        <!-- Mouse -->
+        <ellipse cx="255" cy="190" rx="14" ry="18" fill="#E5E7EB" stroke="#374151" stroke-width="1.5"/>
+        <line x1="255" y1="172" x2="255" y2="188" stroke="#374151" stroke-width="1"/>
+        <text x="255" y="218" font-size="10" font-weight="bold" fill="#374151" text-anchor="middle">Mouse</text>
+
+        <!-- Connecting Cables -->
+        <path d="M 80,120 Q 95,140 110,120" stroke="#9CA3AF" stroke-width="1.5" fill="none" stroke-dasharray="2,2"/>
+        <path d="M 80,130 Q 90,175 100,185" stroke="#9CA3AF" stroke-width="1.5" fill="none" stroke-dasharray="2,2"/>
+        <path d="M 80,140 Q 150,210 240,195" stroke="#9CA3AF" stroke-width="1.5" fill="none" stroke-dasharray="2,2"/>
+      </g>
+
+      <!-- DIVIDER LINE -->
+      <line x1="330" y1="20" x2="330" y2="215" stroke="#D1D5DB" stroke-width="2" stroke-dasharray="4,4"/>
+
+      <!-- RIGHT SIDE: LAPTOP -->
+      <g transform="translate(360, 0)">
+        <text x="180" y="20" font-size="12" font-weight="bold" fill="#3A0CA3" text-anchor="middle">LAPTOP COMPUTER (All Built Together)</text>
+
+        <!-- Screen (Lid tilted open) -->
+        <polygon points="60,40 280,40 260,130 80,130" fill="#1F2937" stroke="#111827" stroke-width="1.5"/>
+        <polygon points="72,48 268,48 252,122 88,122" fill="#60A5FA"/>
+        <circle cx="170" cy="44" r="2.5" fill="#9CA3AF"/> <!-- Webcam -->
+        <text x="290" y="70" font-size="9" fill="#4B5563">&larr; Built-in Screen</text>
+        <text x="290" y="82" font-size="8" fill="#9CA3AF">(Webcam at top)</text>
+
+        <!-- Hinge Line -->
+        <rect x="75" y="130" width="190" height="5" fill="#4B5563"/>
+
+        <!-- Base Unit (Houses CPU, Battery, Storage) -->
+        <polygon points="40,195 75,135 265,135 300,195" fill="#374151" stroke="#1F2937" stroke-width="1.5"/>
+        
+        <!-- Built-in Keyboard Grid -->
+        <polygon points="70,165 85,140 255,140 270,165" fill="#4B5563"/>
+        <text x="310" y="155" font-size="9" fill="#4B5563">&larr; Built-in Keyboard</text>
+
+        <!-- Built-in Touchpad -->
+        <polygon points="140,190 148,172 202,172 210,190" fill="#D1D5DB" stroke="#1F2937" stroke-width="1"/>
+        <line x1="175" y1="183" x2="175" y2="190" stroke="#4B5563" stroke-width="1"/>
+        <text x="310" y="188" font-size="9" fill="#4B5563">&larr; Touchpad (Mouse)</text>
+
+        <text x="170" y="215" font-size="9" font-weight="bold" fill="#0D9488" text-anchor="middle">Base holds the Processor & Battery underneath</text>
+      </g>
+    </svg>
+    <div class="diagram-caption">Figure 1.1: Visual comparison of Desktop vs. Laptop. Both contain the exact same core computing parts!</div>
+  </div>
+
+  <h2>2. Hardware Component Location Table</h2>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 25%;">Component</th>
+        <th style="width: 37%;">On a Desktop</th>
+        <th style="width: 38%;">On a Laptop</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>The "Brain" (CPU)</strong></td>
+        <td>Inside the heavy metal System Unit tower.</td>
+        <td>Packed flat underneath the built-in keyboard.</td>
+      </tr>
+      <tr>
+        <td><strong>The Display Screen</strong></td>
+        <td>A standalone glass monitor on a heavy stand.</td>
+        <td>Hinged top lid that folds open and closed.</td>
+      </tr>
+      <tr>
+        <td><strong>The Pointer Tool</strong></td>
+        <td>An external handheld plastic <strong>Mouse</strong>.</td>
+        <td>A built-in touch-sensitive <strong>Touchpad</strong>.</td>
+      </tr>
+      <tr>
+        <td><strong>Power Source</strong></td>
+        <td>Constantly plugged into wall / UPS battery.</td>
+        <td>Rechargeable battery (charges with an adapter).</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>3. Critical Care Rules for Laptops</h2>
+  <div class="callout">
+    <div class="callout-title">⚠️ THREE GOLDEN LAPTOP CARE RULES</div>
+    <ol style="margin: 4px 0 0 15px; padding: 0;">
+      <li><strong>Open from the center:</strong> Always open the laptop lid by lifting gently from the center of the rim. Never yank it open from just one corner, or the hinge may crack!</li>
+      <li><strong>Two hands at all times:</strong> When carrying a laptop, close the screen completely and carry it with <strong>two hands</strong> close to your chest like a valuable textbook. Never hold it by its screen!</li>
+      <li><strong>Keep vents clear:</strong> Never place a running laptop on a soft mattress, pillow, or cloth. It breathes air through vents on the bottom. Always use a flat, hard desk so it does not overheat.</li>
+    </ol>
+  </div>
+</div>
+
+<!-- ========================================== -->
+<!-- PAGE 3: SAFE STARTUP FOR BOTH PLATFORMS   -->
+<!-- ========================================== -->
+<div class="page">
+  <div class="header-bar">
+    <div class="header-title">Safe Startup: Desktop vs. Laptop</div>
+    <div class="badge">Session 1 • Page 3</div>
+  </div>
+
+  <h2>1. Choose Your Machine's Startup Pathway</h2>
+  <p>Follow the column that matches the machine you are sitting in front of today:</p>
+
+  <div class="dual-grid">
+    <!-- DESKTOP PATHWAY -->
+    <div class="dual-box">
+      <div class="dual-box-title">🖥️ If You Have a Desktop:</div>
+      
+      <div class="step-card">
+        <div class="step-num">1</div>
+        <div class="step-content">
+          <strong>Wall Switch & UPS:</strong> Ensure wall switch is ON. Press the power button on the black <strong>UPS</strong> box. Wait for the green light.
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-num">2</div>
+        <div class="step-content">
+          <strong>System Unit Power:</strong> Press the large circular power button <strong>[ (I) ]</strong> on the front of the System Unit once. Listen for the fan breeze.
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-num">3</div>
+        <div class="step-content">
+          <strong>Monitor Power:</strong> Look at the bottom-right rim of the monitor. If the small power light is off, press the monitor power button once.
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-num">4</div>
+        <div class="step-content">
+          <strong>Wait to Boot:</strong> Keep your hands off. Wait 30–60 seconds for the Desktop screen to load.
+        </div>
+      </div>
+    </div>
+
+    <!-- LAPTOP PATHWAY -->
+    <div class="dual-box highlight">
+      <div class="dual-box-title">💻 If You Have a Laptop:</div>
+
+      <div class="step-card">
+        <div class="step-num">1</div>
+        <div class="step-content">
+          <strong>Open the Lid Gently:</strong> Hold the base down with one hand. Use your other hand to lift the lid from the center until it forms an open angle.
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-num">2</div>
+        <div class="step-content">
+          <strong>Check Power Cord:</strong> If the battery is low, ensure the charging adapter cable is plugged into the small side charging port and wall socket.
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-num">3</div>
+        <div class="step-content">
+          <strong>Find Laptop Power Key:</strong> Look at the top-right corner of the built-in keyboard (or the side edge). Press the small power button <strong>once firmly</strong>.
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-num">4</div>
+        <div class="step-content">
+          <strong>Wait to Boot:</strong> Do not touch any keys. Wait for the screen to light up and show the Welcome screen.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h2>2. Workstation Ergonomics (Both Setups)</h2>
+  <!-- DIAGRAM: ERGONOMIC ADJUSTMENTS -->
+  <div class="diagram-container">
+    <svg width="620" height="150" viewBox="0 0 620 150" xmlns="http://www.w3.org/2000/svg">
+      <!-- Desktop Posture -->
+      <g transform="translate(20, 0)">
+        <circle cx="60" cy="35" r="14" fill="#F77F00"/>
+        <line x1="60" y1="49" x2="60" y2="95" stroke="#3A0CA3" stroke-width="4"/>
+        <line x1="60" y1="95" x2="95" y2="95" stroke="#3A0CA3" stroke-width="4"/>
+        <line x1="95" y1="95" x2="95" y2="135" stroke="#3A0CA3" stroke-width="4"/>
+        <line x1="60" y1="60" x2="90" y2="80" stroke="#3A0CA3" stroke-width="3"/>
+        <line x1="90" y1="80" x2="125" y2="80" stroke="#3A0CA3" stroke-width="3"/>
+        <line x1="120" y1="85" x2="180" y2="85" stroke="#4B5563" stroke-width="3"/> <!-- Desk -->
+        <rect x="150" y="30" width="8" height="55" fill="#1F2937"/> <!-- Desktop Screen -->
+        <line x1="74" y1="35" x2="150" y2="35" stroke="#2EC4B6" stroke-width="1.5" stroke-dasharray="3,3"/>
+        <text x="100" y="145" font-size="10" font-weight="bold" fill="#3A0CA3" text-anchor="middle">Desktop: Screen is eye-level naturally</text>
+      </g>
+
+      <!-- Laptop Posture Tip -->
+      <g transform="translate(340, 0)">
+        <circle cx="60" cy="35" r="14" fill="#F77F00"/>
+        <line x1="60" y1="49" x2="60" y2="95" stroke="#3A0CA3" stroke-width="4"/>
+        <line x1="60" y1="95" x2="95" y2="95" stroke="#3A0CA3" stroke-width="4"/>
+        <line x1="95" y1="95" x2="95" y2="135" stroke="#3A0CA3" stroke-width="4"/>
+        <line x1="60" y1="60" x2="90" y2="85" stroke="#3A0CA3" stroke-width="3"/>
+        <line x1="90" y1="85" x2="120" y2="85" stroke="#3A0CA3" stroke-width="3"/>
+        <line x1="110" y1="85" x2="190" y2="85" stroke="#4B5563" stroke-width="3"/> <!-- Desk -->
+        <!-- Laptop tilted -->
+        <line x1="130" y1="85" x2="155" y2="85" stroke="#1F2937" stroke-width="3"/>
+        <line x1="155" y1="85" x2="170" y2="50" stroke="#1F2937" stroke-width="3"/>
+        <path d="M 74,38 L 165,55" stroke="#E63946" stroke-width="1.5" stroke-dasharray="3,3"/>
+        <text x="140" y="115" font-size="9" fill="#E63946" font-weight="bold">Tilt screen back to avoid neck strain!</text>
+        <text x="130" y="145" font-size="10" font-weight="bold" fill="#3A0CA3" text-anchor="middle">Laptop: Tilt screen back; sit upright</text>
+      </g>
+    </svg>
+    <div class="diagram-caption">Figure 1.2: Ergonomic posture tips for both machines. Keep your back straight!</div>
+  </div>
+
+  <h2>3. Startup Troubleshooting ("What Went Wrong?")</h2>
+  <div class="panic-box">
+    <div class="panic-title">🚨 MY MACHINE IS NOT TURNING ON!</div>
+    <ul style="margin: 4px 0 0 15px; padding: 0;">
+      <li><strong>If using a Desktop:</strong> Check the monitor power light first. If the System Unit fan is dead silent, check whether the UPS or wall socket is switched ON.</li>
+      <li><strong>If using a Laptop:</strong> The battery might be completely flat ("dead"). Plug in the charging cord and look for a tiny amber/white charging LED on the side edge. Wait 2 minutes, then press the power button again.</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ========================================== -->
+<!-- PAGE 4: POINTER CONTROL - MOUSE VS TRACKPAD-->
+<!-- ========================================== -->
+<div class="page">
+  <div class="header-bar">
+    <div class="header-title">Pointer Control: Mouse vs. Touchpad</div>
+    <div class="badge">Session 1 • Page 4</div>
+  </div>
+
+  <h2>1. Controlling the Pointer (Two Ways)</h2>
+  <p>To control the arrow on screen, Desktop users use a <strong>Mouse</strong>, while Laptop users use a built-in <strong>Touchpad</strong> (also called a Trackpad). Both achieve the exact same results!</p>
+
+  <!-- DIAGRAM: MOUSE VS TOUCHPAD SIDE BY SIDE -->
+  <div class="diagram-container">
+    <svg width="720" height="195" viewBox="0 0 720 195" xmlns="http://www.w3.org/2000/svg">
+      <!-- LEFT: MOUSE -->
+      <g transform="translate(20, 0)">
+        <text x="150" y="20" font-size="12" font-weight="bold" fill="#3A0CA3" text-anchor="middle">DEVICE A: DESKTOP MOUSE</text>
+
+        <!-- Mouse Outline -->
+        <path d="M 80,120 C 80,50 220,50 220,120 C 220,185 80,185 80,120 Z" fill="#F9FAFB" stroke="#111827" stroke-width="2"/>
+        
+        <!-- Left Button -->
+        <path d="M 85,100 C 85,55 145,55 145,100 L 145,105 L 85,105 Z" fill="#2EC4B6" opacity="0.9"/>
+        <text x="115" y="85" font-size="11" font-weight="bold" fill="white" text-anchor="middle">LEFT</text>
+
+        <!-- Right Button -->
+        <path d="M 155,100 C 155,55 215,55 215,100 L 215,105 L 155,105 Z" fill="#F77F00" opacity="0.9"/>
+        <text x="185" y="85" font-size="11" font-weight="bold" fill="white" text-anchor="middle">RIGHT</text>
+
+        <!-- Scroll Wheel -->
+        <rect x="145" y="75" width="10" height="26" rx="2" fill="#4361EE"/>
+
+        <!-- Labels -->
+        <text x="115" y="130" font-size="10" fill="#0D9488" font-weight="bold" text-anchor="middle">Index Finger</text>
+        <text x="115" y="142" font-size="9" fill="#4B5563" text-anchor="middle">Primary Click</text>
+
+        <text x="185" y="130" font-size="10" fill="#D97706" font-weight="bold" text-anchor="middle">Middle Finger</text>
+        <text x="185" y="142" font-size="9" fill="#4B5563" text-anchor="middle">Options Menu</text>
+      </g>
+
+      <!-- DIVIDER -->
+      <line x1="360" y1="15" x2="360" y2="185" stroke="#D1D5DB" stroke-width="2" stroke-dasharray="3,3"/>
+
+      <!-- RIGHT: TOUCHPAD -->
+      <g transform="translate(380, 0)">
+        <text x="160" y="20" font-size="12" font-weight="bold" fill="#3A0CA3" text-anchor="middle">DEVICE B: LAPTOP TOUCHPAD</text>
+
+        <!-- Touchpad Outer Plate -->
+        <rect x="40" y="40" width="240" height="135" rx="8" fill="#F3F4F6" stroke="#1F2937" stroke-width="2"/>
+        
+        <!-- Gliding Surface Zone -->
+        <rect x="45" y="45" width="230" height="85" rx="4" fill="#EEF2FF"/>
+        <text x="160" y="75" font-size="11" font-weight="bold" fill="#4361EE" text-anchor="middle">GLIDE SURFACE</text>
+        <text x="160" y="92" font-size="9.5" fill="#4B5563" text-anchor="middle">Glide one index finger gently to move pointer</text>
+        <text x="160" y="106" font-size="9" fill="#6B7280" text-anchor="middle">(Light tap = Left-Click)</text>
+
+        <!-- Left Click Zone (Bottom Left) -->
+        <path d="M 45,135 L 155,135 L 155,170 L 53,170 A 8 8 0 0 1 45,162 Z" fill="#2EC4B6" opacity="0.85"/>
+        <text x="100" y="155" font-size="10" font-weight="bold" fill="white" text-anchor="middle">LEFT CLICK</text>
+
+        <!-- Right Click Zone (Bottom Right) -->
+        <path d="M 165,135 L 275,135 L 275,162 A 8 8 0 0 1 267,170 L 165,170 Z" fill="#F77F00" opacity="0.85"/>
+        <text x="220" y="155" font-size="10" font-weight="bold" fill="white" text-anchor="middle">RIGHT CLICK</text>
+      </g>
+    </svg>
+    <div class="diagram-caption">Figure 1.3: Mouse buttons vs. Touchpad click zones. Notice the left-right color match!</div>
+  </div>
+
+  <h2>2. Master Action Reference Guide</h2>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 20%;">Action</th>
+        <th style="width: 38%;">🖥️ How to do it with a MOUSE</th>
+        <th style="width: 42%;">💻 How to do it on a TOUCHPAD</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Move Pointer</strong></td>
+        <td>Slide the mouse across the pad.</td>
+        <td>Glide <strong>one finger</strong> lightly across the touchpad.</td>
+      </tr>
+      <tr>
+        <td><strong>Left-Click (Select)</strong></td>
+        <td>Tap the <strong>Left Button</strong> once with your index finger.</td>
+        <td>Click the <strong>bottom-left corner</strong> firmly, OR gently tap the pad surface once.</td>
+      </tr>
+      <tr>
+        <td><strong>Double-Click (Open)</strong></td>
+        <td>Tap the Left Button twice fast: <em>Click-Click!</em></td>
+        <td>Tap your finger twice quickly on the pad surface.</td>
+      </tr>
+      <tr>
+        <td><strong>Right-Click (Menu)</strong></td>
+        <td>Tap the <strong>Right Button</strong> with your middle finger.</td>
+        <td>Click the <strong>bottom-right corner</strong> firmly with one finger.</td>
+      </tr>
+      <tr>
+        <td><strong>Scroll Page</strong></td>
+        <td>Roll the center plastic wheel forward/back.</td>
+        <td>Place <strong>two fingers together</strong> and slide them up or down simultaneously.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>3. Screen Cursor Shapes</h2>
+  <div class="callout">
+    <strong>Look closely at your screen:</strong> The pointer changes shape to tell you what it is doing!
+    <br>&bull; <strong>White Arrow:</strong> Normal state, ready to point and select.
+    <br>&bull; <strong>Hand with Pointing Finger:</strong> You are hovering over a website link or clickable button.
+    <br>&bull; <strong>"I" Bar (I-Beam):</strong> You are over a text area; click here to start typing words.
+    <br>&bull; <strong>Spinning Blue Circle:</strong> Hold on! The computer is busy thinking. Do not click.
+  </div>
+</div>
+
+<!-- ========================================== -->
+<!-- PAGE 5: GUIDED LAB & SAFE SHUTDOWN        -->
+<!-- ========================================== -->
+<div class="page">
+  <div class="header-bar">
+    <div class="header-title">Hands-On Practice & Safe Shutdown</div>
+    <div class="badge">Session 1 • Page 5</div>
+  </div>
+
+  <h2>1. Guided Practical Lab: Your First Screen Actions</h2>
+  <p>Complete these 3 foundational challenges at your workstation:</p>
+
+  <div class="step-card">
+    <div class="step-num">A</div>
+    <div class="step-content">
+      <div class="step-title">Challenge 1: The Screen Orbit</div>
+      <strong>Mouse Users:</strong> Slide the mouse until the arrow reaches all 4 corners of your screen. If you run out of desk space, lift the mouse in the air, put it back in the middle of the pad, and glide again.
+      <br><strong>Touchpad Users:</strong> Practice gliding one index finger to each corner. If you reach the edge of the touchpad, lift your finger, place it in the center, and glide again!
+    </div>
+  </div>
+
+  <div class="step-card">
+    <div class="step-num">B</div>
+    <div class="step-content">
+      <div class="step-title">Challenge 2: Icon Selection Practice</div>
+      Move your arrow over the <strong>Recycle Bin</strong> icon on the desktop.
+      <br>Perform a <strong>single Left-Click</strong> (or tap once on your touchpad).
+      <br><em>Observation:</em> Notice how the icon is highlighted in blue. Now click any empty space on the wallpaper to deselect it.
+    </div>
+  </div>
+
+  <div class="step-card">
+    <div class="step-num">C</div>
+    <div class="step-content">
+      <div class="step-title">Challenge 3: Reveal the Secret Options Menu</div>
+      Move the pointer to an empty space on the desktop. Perform a <strong>Right-Click</strong> (Middle mouse button OR bottom-right touchpad corner).
+      <br><em>Observation:</em> A menu pops up! Tap the <code>[Esc]</code> key on your keyboard to close it safely.
+    </div>
+  </div>
+
+  <h2>2. Safe Software Shutdown (The Official Pathway)</h2>
+  <div class="callout">
+    <div class="callout-title">⚠️ UNIVERSAL RULE FOR BOTH DESKTOPS & LAPTOPS</div>
+    <strong>Never</strong> turn off a desktop at the wall, and <strong>never</strong> hold down the laptop power button to force it off! Doing so cuts power while the computer is storing files. Always follow the 4-step software shutdown:
+  </div>
+
+  <!-- DIAGRAM: 4-STEP SHUTDOWN PATHWAY -->
+  <div class="diagram-container">
+    <svg width="680" height="110" viewBox="0 0 680 110" xmlns="http://www.w3.org/2000/svg">
+      <rect x="15" y="15" width="140" height="75" rx="6" fill="#F8F9FA" stroke="#3A0CA3" stroke-width="2"/>
+      <rect x="30" y="35" width="14" height="14" fill="#3A0CA3"/>
+      <rect x="47" y="35" width="14" height="14" fill="#3A0CA3"/>
+      <rect x="30" y="52" width="14" height="14" fill="#3A0CA3"/>
+      <rect x="47" y="52" width="14" height="14" fill="#3A0CA3"/>
+      <text x="75" y="46" font-size="11" font-weight="bold" fill="#3A0CA3">Step 1</text>
+      <text x="75" y="60" font-size="10.5" fill="#1F2937">Click Start</text>
+      <text x="75" y="74" font-size="9" fill="#6B7280">(Bottom-left corner)</text>
+
+      <path d="M 165,52 L 195,52" stroke="#F77F00" stroke-width="3" fill="none"/>
+      <polygon points="200,52 192,47 192,57" fill="#F77F00"/>
+
+      <rect x="205" y="15" width="135" height="75" rx="6" fill="#F8F9FA" stroke="#3A0CA3" stroke-width="2"/>
+      <circle cx="235" cy="52" r="13" fill="none" stroke="#E63946" stroke-width="2"/>
+      <line x1="235" y1="40" x2="235" y2="52" stroke="#E63946" stroke-width="2"/>
+      <text x="260" y="46" font-size="11" font-weight="bold" fill="#3A0CA3">Step 2</text>
+      <text x="260" y="60" font-size="10.5" fill="#1F2937">Click Power</text>
+      <text x="260" y="74" font-size="9" fill="#6B7280">Power symbol</text>
+
+      <path d="M 350,52 L 380,52" stroke="#F77F00" stroke-width="3" fill="none"/>
+      <polygon points="385,52 377,47 377,57" fill="#F77F00"/>
+
+      <rect x="390" y="15" width="135" height="75" rx="6" fill="#F8F9FA" stroke="#E63946" stroke-width="2"/>
+      <rect x="405" y="38" width="105" height="28" rx="4" fill="#E63946"/>
+      <text x="457" y="56" font-size="10" font-weight="bold" fill="white" text-anchor="middle">Shut down</text>
+      <text x="457" y="30" font-size="11" font-weight="bold" fill="#E63946" text-anchor="middle">Step 3</text>
+
+      <path d="M 535,52 L 565,52" stroke="#F77F00" stroke-width="3" fill="none"/>
+      <polygon points="570,52 562,47 562,57" fill="#F77F00"/>
+
+      <rect x="575" y="15" width="95" height="75" rx="6" fill="#F3F4F6" stroke="#4B5563" stroke-width="2"/>
+      <text x="622" y="42" font-size="11" font-weight="bold" fill="#1F2937" text-anchor="middle">Step 4</text>
+      <text x="622" y="58" font-size="9.5" fill="#4B5563" text-anchor="middle">Wait for lights</text>
+      <text x="622" y="70" font-size="9.5" fill="#4B5563" text-anchor="middle">& fan to stop</text>
+    </svg>
+    <div class="diagram-caption">Figure 1.4: Universal 4-Step Software Shutdown Process.</div>
+  </div>
+
+  <h2>3. Departure Routine Checklist</h2>
+  <div class="dual-grid">
+    <div class="dual-box">
+      <div class="dual-box-title">🖥️ If You Used a Desktop:</div>
+      <div class="checkbox-item"><input type="checkbox"> The screen is black and the fan has stopped.</div>
+      <div class="checkbox-item"><input type="checkbox"> I turned off the monitor's power button.</div>
+      <div class="checkbox-item"><input type="checkbox"> Keyboard and mouse parked neatly on the desk.</div>
+    </div>
+    <div class="dual-box highlight">
+      <div class="dual-box-title">💻 If You Used a Laptop:</div>
+      <div class="checkbox-item"><input type="checkbox"> The screen is black and all side lights are off.</div>
+      <div class="checkbox-item"><input type="checkbox"> I gently closed the lid using two hands from center.</div>
+      <div class="checkbox-item"><input type="checkbox"> Charger cord neatly coiled (if unplugged).</div>
+    </div>
+  </div>
+</div>
+
+<!-- ========================================== -->
+<!-- PAGE 6: OFFLINE REVIEW & SELF-ASSESSMENT  -->
+<!-- ========================================== -->
+<div class="page">
+  <div class="header-bar">
+    <div class="header-title">Session 1 Review & Verification</div>
+    <div class="badge">Session 1 • Page 6</div>
+  </div>
+
+  <h2>1. Vocabulary Match-Up (Draw a Line)</h2>
+  <p>Draw a line connecting each computer term on the left to its correct job on the right:</p>
+
+  <div style="display: flex; justify-content: space-between; margin: 20px 25px; font-size: 13px;">
+    <div style="display: flex; flex-direction: column; gap: 20px; font-weight: bold; color: var(--bih-purple);">
+      <div>[ System Unit / Base ]</div>
+      <div>[ Touchpad ]</div>
+      <div>[ Monitor ]</div>
+      <div>[ UPS ]</div>
+      <div>[ Right-Click ]</div>
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 20px; color: var(--bih-dark);">
+      <div>• &nbsp; Touch-sensitive surface on a laptop that works like a mouse.</div>
+      <div>• &nbsp; Battery backup that prevents computers from cutting out during power outages.</div>
+      <div>• &nbsp; The main processing unit containing the computer's electronic "brain".</div>
+      <div>• &nbsp; Displays documents, pictures, and the desktop on its screen.</div>
+      <div>• &nbsp; Action that opens a secret options menu for the selected item.</div>
+    </div>
+  </div>
+
+  <h2>2. Written Review Questions</h2>
+  <p><strong>Question 1:</strong> Where is the "brain" (CPU) located on a laptop computer?</p>
+  <div class="answer-line" contenteditable="true">Write your answer here...</div>
+
+  <p><strong>Question 2:</strong> Why must you open a laptop lid gently from the center rather than pulling one corner?</p>
+  <div class="answer-line" contenteditable="true">Write your answer here...</div>
+
+  <p><strong>Question 3:</strong> You slide your mouse (or finger on the touchpad) and the cursor arrow reaches the far edge of the pad, but you still need it to travel further on screen. What physical movement do you do?</p>
+  <div class="answer-line" contenteditable="true">Write your answer here...</div>
+
+  <h2>3. Self-Assessment & Mentor Sign-Off</h2>
+  <p>Tick the box that honestly reflects your skill level today:</p>
+  <table>
+    <thead>
+      <tr>
+        <th>Competency Demonstrated</th>
+        <th style="width: 18%; text-align: center;">With Help</th>
+        <th style="width: 18%; text-align: center;">Almost Alone</th>
+        <th style="width: 18%; text-align: center;">All By Myself!</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1. I can identify whether my station is a Desktop or Laptop and name its parts.</td>
+        <td style="text-align: center;"><input type="radio" name="r1"></td>
+        <td style="text-align: center;"><input type="radio" name="r1"></td>
+        <td style="text-align: center;"><input type="radio" name="r1"></td>
+      </tr>
+      <tr>
+        <td>2. I can start up my machine safely following the correct sequence.</td>
+        <td style="text-align: center;"><input type="radio" name="r2"></td>
+        <td style="text-align: center;"><input type="radio" name="r2"></td>
+        <td style="text-align: center;"><input type="radio" name="r2"></td>
+      </tr>
+      <tr>
+        <td>3. I can accurately Left-Click and Right-Click using the Mouse or Touchpad.</td>
+        <td style="text-align: center;"><input type="radio" name="r3"></td>
+        <td style="text-align: center;"><input type="radio" name="r3"></td>
+        <td style="text-align: center;"><input type="radio" name="r3"></td>
+      </tr>
+      <tr>
+        <td>4. I can perform a safe software shutdown via the Start Menu.</td>
+        <td style="text-align: center;"><input type="radio" name="r4"></td>
+        <td style="text-align: center;"><input type="radio" name="r4"></td>
+        <td style="text-align: center;"><input type="radio" name="r4"></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div style="border-top: 1px solid var(--bih-border); margin-top: 25px; padding-top: 12px; display: flex; justify-content: space-between; font-size: 13px;">
+    <div><strong>Mentor Signature:</strong> _____________________________</div>
+    <div><strong>Date Completed:</strong> ____________________</div>
+  </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>BIH Tech Club - Session 12: Presentations & Slide Design</title>
+  <style>
+    :root {
+      --bih-purple: #3A0CA3;
+      --bih-accent: #4361EE;
+      --bih-gold: #F77F00;
+      --bih-green: #2EC4B6;
+      --bih-red: #E63946;
+      --bih-dark: #1E1E24;
+      --bih-light: #F8F9FA;
+      --bih-border: #CED4DA;
+      --ppt-orange: #C43E1C;
+      --slide-bg: #FFFFFF;
+    }
+
+    * {
+      box-sizing: border-box;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    body {
+      background-color: #E9ECEF;
+      color: var(--bih-dark);
+      margin: 0;
+      padding: 20px;
+      line-height: 1.55;
+    }
+
+    .page {
+      background: #FFFFFF;
+      max-width: 860px;
+      margin: 20px auto;
+      padding: 42px 50px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+      border-radius: 8px;
+      page-break-after: always;
+    }
+
+    @media print {
+      body { background: white; padding: 0; }
+      .page { box-shadow: none; margin: 0; padding: 30px; max-width: 100%; border-radius: 0; }
+      .no-print { display: none; }
+    }
+
+    /* Header Bar */
+    .header-bar {
+      border-bottom: 3px solid var(--bih-purple);
+      padding-bottom: 10px;
+      margin-bottom: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .header-title {
+      font-size: 19px;
+      font-weight: 800;
+      color: var(--bih-purple);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .badge {
+      background: var(--bih-gold);
+      color: #FFFFFF;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+    }
+
+    /* Student Meta Box */
+    .student-meta {
+      border: 2px dashed var(--bih-border);
+      border-radius: 8px;
+      padding: 12px 18px;
+      background: var(--bih-light);
+      margin-bottom: 20px;
+    }
+
+    .meta-row {
+      display: flex;
+      gap: 15px;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+    .meta-row:last-child { margin-bottom: 0; }
+
+    .meta-label {
+      font-size: 12.5px;
+      font-weight: 700;
+      color: var(--bih-dark);
+      min-width: 125px;
+    }
+
+    .editable-line {
+      border-bottom: 1.5px solid var(--bih-purple);
+      flex-grow: 1;
+      padding: 2px 6px;
+      font-size: 13.5px;
+      font-weight: 600;
+      color: var(--bih-purple);
+      outline: none;
+      min-height: 20px;
+    }
+
+    /* Typography */
+    h1 { color: var(--bih-purple); font-size: 22px; margin-top: 0; margin-bottom: 8px; }
+    h2 { color: var(--bih-purple); font-size: 16px; margin-top: 20px; margin-bottom: 10px; border-left: 4px solid var(--bih-gold); padding-left: 8px; }
+    p { font-size: 13px; margin: 6px 0; }
+
+    /* Dual Grid Layout */
+    .dual-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin: 12px 0;
+    }
+
+    .dual-box {
+      border: 1px solid var(--bih-border);
+      border-radius: 8px;
+      padding: 12px 14px;
+      background: #FAFAFA;
+    }
+    .dual-box-title {
+      font-size: 13px;
+      font-weight: 800;
+      color: var(--bih-purple);
+      margin-bottom: 6px;
+      border-bottom: 1px solid var(--bih-border);
+      padding-bottom: 4px;
+    }
+
+    /* Callouts & Alert Boxes */
+    .callout {
+      background: #FFF3CD;
+      border-left: 4px solid var(--bih-gold);
+      padding: 10px 14px;
+      margin: 14px 0;
+      border-radius: 0 8px 8px 0;
+      font-size: 12.5px;
+    }
+    .callout-title {
+      font-weight: 800;
+      color: #856404;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 2px;
+    }
+
+    .panic-box {
+      background: #F8D7DA;
+      border-left: 4px solid var(--bih-red);
+      padding: 12px 14px;
+      margin: 14px 0;
+      border-radius: 0 8px 8px 0;
+      font-size: 12.5px;
+    }
+    .panic-title {
+      font-weight: 800;
+      color: #721C24;
+      margin-bottom: 4px;
+    }
+
+    /* Step Cards */
+    .step-card {
+      display: flex;
+      gap: 12px;
+      background: var(--bih-light);
+      border: 1px solid var(--bih-border);
+      border-radius: 6px;
+      padding: 10px 12px;
+      margin-bottom: 8px;
+      align-items: flex-start;
+    }
+
+    .step-num {
+      background: var(--bih-purple);
+      color: white;
+      font-size: 13px;
+      font-weight: 800;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .step-content { flex-grow: 1; font-size: 12.5px; }
+
+    /* Diagrams */
+    .diagram-container {
+      background: #FAFAFA;
+      border: 1px solid var(--bih-border);
+      border-radius: 8px;
+      padding: 12px;
+      margin: 14px 0;
+      text-align: center;
+    }
+    .diagram-caption {
+      font-size: 11px;
+      color: #6C757D;
+      margin-top: 6px;
+      font-style: italic;
+    }
+
+    /* Tables */
+    table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 12.5px; }
+    th { background: var(--bih-purple); color: white; text-align: left; padding: 7px 10px; }
+    td { border: 1px solid var(--bih-border); padding: 7px 10px; vertical-align: top; }
+    tr:nth-child(even) { background-color: var(--bih-light); }
+
+    /* Key Badge */
+    .kbd-key {
+      display: inline-block;
+      background: #F3F4F6;
+      border: 1.5px solid #9CA3AF;
+      border-bottom: 3px solid #6B7280;
+      border-radius: 4px;
+      padding: 1px 6px;
+      font-family: monospace;
+      font-size: 12px;
+      font-weight: 700;
+      color: #1F2937;
+      margin: 0 2px;
+    }
+
+    /* Interactive Inputs */
+    .answer-line {
+      min-height: 24px;
+      border-bottom: 1px dashed var(--bih-purple);
+      margin: 4px 0;
+      outline: none;
+      font-size: 13px;
+      color: var(--bih-dark);
+      padding: 2px 4px;
+    }
+
+    .checkbox-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 6px;
+      font-size: 12.5px;
+    }
+    .checkbox-item input { width: 15px; height: 15px; cursor: pointer; }
+  </style>
+</head>
+<body>
+
+<!-- ========================================== -->
+<!-- PAGE 1: WHAT IS A PRESENTATION?            -->
+<!-- ========================================== -->
+<div class="page">
+  <div class="header-bar">
+    <div class="header-title">Bozoma Innovation Hub • Tech Club</div>
+    <div class="badge">Session 12 • Page 1</div>
+  </div>
+
+  <div class="student-meta">
+    <div class="meta-row">
+      <span class="meta-label">Learner Full Name:</span>
+      <div class="editable-line" contenteditable="true">Ama Mensah</div>
+    </div>
+    <div class="meta-row">
+      <span class="meta-label">School:</span>
+      <div class="editable-line" contenteditable="true">Bozoma Model School</div>
+      <span class="meta-label" style="min-width: 50px;">Class:</span>
+      <div class="editable-line" contenteditable="true" style="max-width: 90px;">JHS 1</div>
+    </div>
+    <div class="meta-row">
+      <span class="meta-label">Workstation Device:</span>
+      <div class="editable-line" contenteditable="true" style="max-width: 180px;">[ ] Desktop &nbsp; [ ] Laptop</div>
+      <span class="meta-label" style="min-width: 70px;">Station #:</span>
+      <div class="editable-line" contenteditable="true" style="max-width: 90px;">PC-01</div>
+    </div>
+  </div>
+
+  <h1>Session 12: Presentations & Slide Design (Part 1)</h1>
+  <p>In Levels 4 and 5, you learned how to type documents in a Word Processor and calculate data in a Spreadsheet. But what if you have a great idea and you need to convince your school assembly, your teachers, or your community elders to take action? You need a <strong>Digital Presentation</strong>!</p>
+
+  <h2>1. Plain Talk: The Speaker & The Signboard</h2>
+  <p>Imagine the senior school prefect speaking at morning assembly. If they hold up a giant cardboard sign with an entire textbook page written in tiny handwriting, no student can read it. But if their sign has a bold 3-word title and one clear drawing, <strong>everyone understands in a flash!</strong></p>
+  <p><strong>Presentation software</strong> (like Microsoft PowerPoint, Google Slides, or LibreOffice Impress) lets you create digital signboards called <strong>Slides</strong>. The slides project behind you on a screen or TV to support your voice.</p>
+
+  <!-- DIAGRAM: PRESENTATION SOFTWARE WINDOW ANATOMY -->
+  <div class="diagram-container">
+    <svg width="720" height="230" viewBox="0 0 720 230" xmlns="http://www.w3.org/2000/svg">
+      <!-- Outer Window Frame -->
+      <rect x="15" y="10" width="690" height="210" rx="6" fill="#F8FAFC" stroke="#334155" stroke-width="1.5"/>
+
+      <!-- Title Bar -->
+      <rect x="15" y="10" width="690" height="26" rx="5" fill="#C43E1C"/>
+      <text x="30" y="27" font-size="10.5" font-weight="bold" fill="white">Presentation1 - Slide Software</text>
+      <rect x="670" y="15" width="16" height="16" rx="2" fill="#E63946"/>
+      <line x1="674" y1="19" x2="682" y2="27" stroke="white" stroke-width="1.5"/>
+      <line x1="682" y1="19" x2="674" y2="27" stroke="white" stroke-width="1.5"/>
+
+      <!-- Ribbon Mockup -->
+      <rect x="15" y="36" width="690" height="26" fill="#F1F5F9" stroke="#E2E8F0" stroke-width="1"/>
+      <text x="30" y="53" font-size="9" font-weight="bold" fill="#C43E1C">Home</text>
+      <text x="70" y="53" font-size="9" fill="#64748B">Insert</text>
+      <text x="115" y="53" font-size="9" fill="#64748B">Design</text>
+      <text x="165" y="53" font-size="9" fill="#64748B">Transitions</text>
+      <text x="235" y="53" font-size="9" fill="#64748B">Slide Show</text>
+
+      <!-- SLIDE THUMBNAIL PANE (Left Column) -->
+      <g transform="translate(25, 70)">
+        <rect x="0" y="0" width="90" height="140" rx="3" fill="#E2E8F0" stroke="#CBD5E1" stroke-width="1"/>
+        <text x="45" y="14" font-size="8" font-weight="bold" fill="#64748B" text-anchor="middle">Slides</text>
+        
+        <!-- Mini Slide 1 (Selected) -->
+        <rect x="10" y="22" width="70" height="38" rx="2" fill="#FFFFFF" stroke="#C43E1C" stroke-width="2"/>
+        <text x="5" y="32" font-size="8" font-weight="bold" fill="#C43E1C">1</text>
+        <line x1="20" y1="36" x2="65" y2="36" stroke="#3A0CA3" stroke-width="2"/>
+
+        <!-- Mini Slide 2 -->
+        <rect x="10" y="68" width="70" height="38" rx="2" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1"/>
+        <text x="5" y="78" font-size="8" fill="#64748B">2</text>
+        <line x1="20" y1="80" x2="60" y2="80" stroke="#94A3B8" stroke-width="1.5"/>
+
+        <!-- Mini Slide 3 -->
+        <rect x="10" y="112" width="70" height="24" rx="2" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1"/>
+        <text x="5" y="122" font-size="8" fill="#64748B">3</text>
+      </g>
+
+      <!-- MAIN SLIDE CANVAS (Center Display) -->
+      <g transform="translate(130, 70)">
+        <!-- 16:9 Slide Canvas -->
+        <rect x="0" y="0" width="380" height="120" rx="4" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.5" filter="drop-shadow(0 2px 4px rgba(0,0,0,0.1))"/>
+        
+        <!-- Slide Content -->
+        <text x="190" y="45" font-size="14" font-weight="900" fill="#3A0CA3" text-anchor="middle">SAFE DRINKING WATER</text>
+        <line x1="80" y1="52" x2="300" y2="52" stroke="#F77F00" stroke-width="2"/>
+        <text x="190" y="75" font-size="10" font-style="italic" fill="#4B5563" text-anchor="middle">Community Project by BIH Tech Club</text>
+        <text x="190" y="92" font-size="9" font-weight="bold" fill="#107C41" text-anchor="middle">Presenter: Ama Mensah &bull; Form 1A</text>
+      </g>
+
+      <!-- SPEAKER NOTES PANE (Bottom Center) -->
+      <g transform="translate(130, 195)">
+        <rect x="0" y="0" width="380" height="18" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1"/>
+        <text x="10" y="12" font-size="8" fill="#64748B">Click to add speaker notes (reminders only you can see)...</text>
+      </g>
+
+      <!-- Callouts -->
+      <path d="M 115,110 L 80,110" stroke="#C43E1C" stroke-width="1.5"/>
+      <text x="110" y="155" font-size="8.5" font-weight="bold" fill="#C43E1C">Thumbnail Pane (Slide Order)</text>
+
+      <path d="M 515,130 L 550,130" stroke="#3A0CA3" stroke-width="1.5"/>
+      <text x="555" y="128" font-size="9" font-weight="bold" fill="#3A0CA3">Active Slide Canvas</text>
+      <text x="555" y="140" font-size="8" fill="#64748B">(What the audience sees)</text>
+    </svg>
+    <div class="diagram-caption">Figure 12.0: Anatomy of presentation software. Slides run down the left, and the active slide is built in the center.</div>
+  </div>
+
+  <h2>2. Essential Presentation Vocabulary</h2>
+  <ul>
+    <li><strong>Slide:</strong> A single digital page or screen in your presentation.</li>
+    <li><strong>Slide Deck:</strong> The complete collection of all slides saved together in one file.</li>
+    <li><strong>Placeholder:</strong> The dotted rectangular boxes on a slide that say <em>"Click to add title"</em> or <em>"Click to add text"</em>.</li>
+    <li><strong>Speaker Notes:</strong> Private written reminders at the bottom of the screen that only you can see on your laptop.</li>
+  </ul>
+</div>
+
+<!-- ========================================== -->
+<!-- PAGE 2: THE 6x6 RULE & VISUAL CONTRAST     -->
+<!-- ========================================== -->
+<div class="page">
+  <div class="header-bar">
+    <div class="header-title">The 6x6 Design Law & Contrast</div>
+    <div class="badge">Session 12 • Page 2</div>
+  </div>
+
+  <h2>1. The Cardinal Presentation Law</h2>
+  <div class="callout" style="background:#EEF2FF; border-left: 5px solid var(--bih-purple);">
+    <div class="callout-title" style="color:var(--bih-purple); font-size:13.5px;">👑 THE SPEAKER'S GOLDEN RULE:</div>
+    <div style="font-size: 14px; font-weight: 800; color: #1E1B4B; margin: 4px 0;">
+      SLIDES ARE MEANT TO SUPPORT YOU, NOT REPLACE YOU!
+    </div>
+    If you type every single word on your slide and stand with your back to the audience reading it out loud like a robot, your audience will fall asleep. Your slides should show <strong>keywords and pictures</strong>; your voice tells the story!
+  </div>
+
+  <h2>2. The Famous "6-by-6" Rule</h2>
+  <p>Follow this simple rule to keep your slides clean, readable, and punchy:</p>
+
+  <div class="dual-grid">
+    <div class="dual-box">
+      <div class="dual-box-title">1. Maximum 6 Bullets</div>
+      <p>Never put more than <strong>6 bullet points</strong> on a single slide. If you have 8 points, split them into two slides!</p>
+    </div>
+    <div class="dual-box">
+      <div class="dual-box-title">2. Maximum 6 Words</div>
+      <p>Keep each bullet point to a maximum of <strong>6 words</strong>. Use strong keywords instead of long, full sentences.</p>
+    </div>
+  </div>
+
+  <!-- DIAGRAM: BAD SLIDE VS GOOD SLIDE -->
+  <div class="diagram-container">
+    <svg width="700" height="185" viewBox="0 0 700 185" xmlns="http://www.w3.org/2000/svg">
+      <rect x="20" y="10" width="660" height="165" rx="6" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.5"/>
+
+      <!-- TERRIBLE SLIDE (Left) -->
+      <g transform="translate(40, 20)">
+        <text x="140" y="16" font-size="11" font-weight="bold" fill="#DC2626" text-anchor="middle">&#10008; TERRIBLE SLIDE (Text Overload)</text>
+        <rect x="15" y="25" width="250" height="120" rx="3" fill="#FFFFFF" stroke="#EF4444" stroke-width="1.5"/>
+        <text x="25" y="40" font-size="8" font-weight="bold" fill="#7F1D1D">Why We Must Protect Water In Ghana</text>
+        <!-- Tiny wall of text -->
+        <text x="25" y="55" font-size="6.5" fill="#4B5563">Water is very important for human survival and if people</text>
+        <text x="25" y="65" font-size="6.5" fill="#4B5563">dump rubbish and plastics into the river bodies then the</text>
+        <text x="25" y="75" font-size="6.5" fill="#4B5563">community will suffer from diseases like cholera and typhoid</text>
+        <text x="25" y="85" font-size="6.5" fill="#4B5563">which will make children miss school and hospital bills will</text>
+        <text x="25" y="95" font-size="6.5" fill="#4B5563">be high and parents will spend all their money on medicines...</text>
+        <text x="140" y="138" font-size="8" font-weight="bold" fill="#DC2626" text-anchor="middle">&uarr; Nobody can read this from the back!</text>
+      </g>
+
+      <!-- EXCELLENT SLIDE (Right) -->
+      <g transform="translate(370, 20)">
+        <text x="140" y="16" font-size="11" font-weight="bold" fill="#047857" text-anchor="middle">&#10004; EXCELLENT SLIDE (6x6 Rule & Contrast)</text>
+        <rect x="15" y="25" width="250" height="120" rx="3" fill="#FFFFFF" stroke="#10B981" stroke-width="1.5"/>
+        <text x="25" y="44" font-size="11" font-weight="bold" fill="#3A0CA3">Why Clean Water Matters</text>
+        <circle cx="30" cy="62" r="2" fill="#F77F00"/>
+        <text x="38" y="65" font-size="8.5" font-weight="bold" fill="#1E293B">Prevents Waterborne Diseases</text>
+        <circle cx="30" cy="80" r="2" fill="#F77F00"/>
+        <text x="38" y="83" font-size="8.5" font-weight="bold" fill="#1E293B">Improves School Attendance</text>
+        <circle cx="30" cy="98" r="2" fill="#F77F00"/>
+        <text x="38" y="101" font-size="8.5" font-weight="bold" fill="#1E293B">Protects Community Health</text>
+        <text x="140" y="138" font-size="8" font-weight="bold" fill="#047857" text-anchor="middle">&uarr; Clean, punchy, easy to read in 3 seconds!</text>
+      </g>
+    </svg>
+    <div class="diagram-caption">Figure 12.1: The 6x6 rule in action. Short phrases let the audience listen to the speaker.</div>
+  </div>
+
+  <h2>3. High Contrast: Colors That Work</h2>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 50%;">✅ EXCELLENT Color Combinations</th>
+        <th style="width: 50%;">❌ TERRIBLE Combinations (Unreadable!)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Deep Navy or Black text</strong> on a <strong>Pure White / Cream</strong> slide.</td>
+        <td>Yellow text on a White background (invisible!).</td>
+      </tr>
+      <tr>
+        <td><strong>Crisp White text</strong> on a <strong>Deep Purple or Dark Blue</strong> slide.</td>
+        <td>Red text on a Green background (blurs human eyes).</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ========================================== -->
+<!-- PAGE 3: SLIDE LAYOUTS & PICTURE RESIZING   -->
+<!-- ========================================== -->
+<div class="page">
+  <div class="header-bar">
+    <div class="header-title">Slide Layouts & Aspect Ratio</div>
+    <div class="badge">Session 12 • Page 3</div>
+  </div>
+
+  <h2>1. Standard Slide Layouts</h2>
+  <p>When you click <strong>"New Slide"</strong> on the ribbon, the software asks you which layout you need:</p>
+  <ul>
+    <li><strong>Title Slide:</strong> Used for Slide 1 only. Contains a giant Title box and a Subtitle box.</li>
+    <li><strong>Title and Content:</strong> The workhorse layout. Has a title at the top and a large bulleted box below.</li>
+    <li><strong>Two Content:</strong> Divides the slide into two columns (great for text on the left and a picture on the right!).</li>
+  </ul>
+
+  <h2>2. The Aspect Ratio Law: Never Squish a Picture!</h2>
+  <p>When you click a picture, eight small sizing dots (handles) appear around its border. <strong>How you drag them matters enormously:</strong></p>
+
+  <!-- DIAGRAM: PROPORTIONAL VS SQUISHED RESIZING -->
+  <div class="diagram-container">
+    <svg width="680" height="160" viewBox="0 0 680 160" xmlns="http://www.w3.org/2000/svg">
+      <rect x="20" y="10" width="640" height="140" rx="6" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.5"/>
+
+      <!-- CORRECT: CORNER HANDLE -->
+      <g transform="translate(50, 20)">
+        <text x="110" y="16" font-size="11" font-weight="bold" fill="#047857" text-anchor="middle">&#10004; THE RIGHT WAY: Corner Handles</text>
+        <rect x="35" y="25" width="150" height="95" rx="3" fill="#ECFDF5" stroke="#10B981" stroke-width="2"/>
+        <!-- Perfect circle inside -->
+        <circle cx="110" cy="72" r="30" fill="#2EC4B6"/>
+        <text x="110" y="76" font-size="9" font-weight="bold" fill="white" text-anchor="middle">Normal</text>
+        
+        <!-- Corner Dot Highlighted -->
+        <circle cx="185" cy="120" r="6" fill="#3A0CA3"/>
+        <path d="M 195,130 L 210,145" stroke="#3A0CA3" stroke-width="2"/>
+        <text x="215" y="145" font-size="8.5" font-weight="bold" fill="#3A0CA3">&larr; Drag Corner: Keeps natural shape!</text>
+      </g>
+
+      <!-- WRONG: SIDE HANDLE (SQUISHED) -->
+      <g transform="translate(390, 20)">
+        <text x="110" y="16" font-size="11" font-weight="bold" fill="#DC2626" text-anchor="middle">&#10008; THE WRONG WAY: Side Handles</text>
+        <!-- Squished rectangle -->
+        <rect x="50" y="25" width="120" height="95" rx="3" fill="#FEF2F2" stroke="#EF4444" stroke-width="2"/>
+        <!-- Squished oval inside -->
+        <ellipse cx="110" cy="72" rx="18" ry="30" fill="#E63946"/>
+        <text x="110" y="76" font-size="8" font-weight="bold" fill="white" text-anchor="middle">Smashed!</text>
+        
+        <!-- Side Dot Highlighted -->
+        <rect x="166" y="68" width="8" height="8" fill="#EF4444"/>
+        <path d="M 175,72 L 205,72" stroke="#EF4444" stroke-width="2"/>
+        <text x="210" y="75" font-size="8.5" font-weight="bold" fill="#DC2626">Squished & Deformed!</text>
+      </g>
+    </svg>
+    <div class="diagram-caption">Figure 12.2: Resizing images. Always drag from the CORNER handles to preserve the natural proportions.</div>
+  </div>
+
+  <h2>3. Panic Button / Troubleshooting</h2>
+  <div class="panic-box">
+    <div class="panic-title">🚨 MY PICTURE LOOKS SQUISHED LIKE A SMASHED PLANTAIN!</div>
+    <strong>Don't panic!</strong> You accidentally dragged a middle-side handle instead of a corner handle.
+    <br><strong>How to fix it:</strong> Immediately press <span class="kbd-key">Ctrl</span> + <span class="kbd-key">Z</span> to undo the resize. Then, find one of the four circular <strong>corner handles</strong>, click, and drag diagonally!
+  </div>
+</div>
+
+<!-- ========================================== -->
+<!-- PAGE 4: PLANNING ON PAPER (STORYBOARDING)  -->
+<!-- ========================================== -->
+<div class="page">
+  <div class="header-bar">
+    <div class="header-title">Planning on Paper: The 3-Slide Storyboard</div>
+    <div class="badge">Session 12 • Page 4</div>
+  </div>
+
+  <h2>1. Why Professionals Plan on Paper First</h2>
+  <p>The greatest mistake beginners make is opening presentation software immediately and getting distracted by fancy animations and colors. Expert presenters always plan on a sheet of paper first using a <strong>Storyboard</strong> (a sequence of quick hand-drawn sketch boxes).</p>
+
+  <h2>2. The Classic 3-Slide Action Formula</h2>
+  <p>For your Tech Club projects, you will use this powerful 3-step narrative arc:</p>
+
+  <!-- DIAGRAM: 3-SLIDE STORYBOARD FLOW -->
+  <div class="diagram-container">
+    <svg width="700" height="150" viewBox="0 0 700 150" xmlns="http://www.w3.org/2000/svg">
+      <rect x="15" y="10" width="670" height="130" rx="6" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.5"/>
+
+      <!-- SLIDE 1: THE HOOK -->
+      <g transform="translate(35, 20)">
+        <rect x="0" y="0" width="170" height="95" rx="3" fill="#FFFFFF" stroke="#3A0CA3" stroke-width="2"/>
+        <text x="85" y="24" font-size="10" font-weight="bold" fill="#3A0CA3" text-anchor="middle">SLIDE 1: Title & Hook</text>
+        <line x1="20" y1="30" x2="150" y2="30" stroke="#E2E8F0" stroke-width="1"/>
+        <text x="85" y="52" font-size="9" font-weight="bold" fill="#1E293B" text-anchor="middle">Safe Water For School</text>
+        <text x="85" y="68" font-size="7.5" fill="#64748B" text-anchor="middle">Ama Mensah &bull; JHS 1</text>
+        <text x="85" y="112" font-size="9" font-weight="bold" fill="#3A0CA3" text-anchor="middle">1. Who & What</text>
+      </g>
+
+      <!-- Arrow 1 -->
+      <path d="M 215,68 L 255,68" stroke="#F77F00" stroke-width="2.5"/>
+      <polygon points="260,68 252,64 252,72" fill="#F77F00"/>
+
+      <!-- SLIDE 2: THE PROBLEM -->
+      <g transform="translate(265, 20)">
+        <rect x="0" y="0" width="170" height="95" rx="3" fill="#FFFFFF" stroke="#F77F00" stroke-width="2"/>
+        <text x="85" y="24" font-size="10" font-weight="bold" fill="#F77F00" text-anchor="middle">SLIDE 2: The Problem</text>
+        <line x1="20" y1="30" x2="150" y2="30" stroke="#E2E8F0" stroke-width="1"/>
+        <text x="25" y="48" font-size="8" fill="#1E293B">&bull; Open storage drums</text>
+        <text x="25" y="64" font-size="8" fill="#1E293B">&bull; Mosquito breeding</text>
+        <text x="25" y="80" font-size="8" fill="#1E293B">&bull; Student stomach illnesses</text>
+        <text x="85" y="112" font-size="9" font-weight="bold" fill="#F77F00" text-anchor="middle">2. The Challenge</text>
+      </g>
+
+      <!-- Arrow 2 -->
+      <path d="M 445,68 L 485,68" stroke="#F77F00" stroke-width="2.5"/>
+      <polygon points="490,68 482,64 482,72" fill="#F77F00"/>
+
+      <!-- SLIDE 3: THE SOLUTION -->
+      <g transform="translate(495, 20)">
+        <rect x="0" y="0" width="170" height="95" rx="3" fill="#FFFFFF" stroke="#10B981" stroke-width="2"/>
+        <text x="85" y="24" font-size="10" font-weight="bold" fill="#10B981" text-anchor="middle">SLIDE 3: The Solution</text>
+        <line x1="20" y1="30" x2="150" y2="30" stroke="#E2E8F0" stroke-width="1"/>
+        <text x="25" y="48" font-size="8" fill="#1E293B">&bull; Fit tight drum lids</text>
+        <text x="25" y="64" font-size="8" fill="#1E293B">&bull; Clean storage weekly</text>
+        <text x="25" y="80" font-size="8" fill="#1E293B">&bull; Install ceramic filter</text>
+        <text x="85" y="112" font-size="9" font-weight="bold" fill="#10B981" text-anchor="middle">3. Practical Action</text>
+      </g>
+    </svg>
+    <div class="diagram-caption">Figure 12.3: The 3-Slide Storyboard. Hook the audience, state the challenge, and present the practical fix.</div>
+  </div>
+
+  <h2>3. Presentation Shortcut Pro-Tip</h2>
+  <div class="dual-grid">
+    <div class="dual-box">
+      <strong><span class="kbd-key">F5</span> Key</strong> : Starts your full-screen Slide Show from Slide 1!
+    </div>
+    <div class="dual-box">
+      <strong><span class="kbd-key">Esc</span> Key</strong> : Exits the slide show and returns to the editor.
+    </div>
+  </div>
+</div>
+
+<!-- ========================================== -->
+<!-- PAGE 5: GUIDED LAB - BUILD A 3-SLIDE DECK   -->
+<!-- ========================================== -->
+<div class="page">
+  <div class="header-bar">
+    <div class="header-title">Guided Hands-On Lab: Your First Deck</div>
+    <div class="badge">Session 12 • Page 5</div>
+  </div>
+
+  <h2>1. Lab Mission: Create a 3-Slide Campaign Deck</h2>
+  <p>Follow these 6 steps to build your first digital presentation in PowerPoint, Google Slides, or Impress:</p>
+
+  <div class="step-card">
+    <div class="step-num">1</div>
+    <div class="step-content">
+      <strong>Open Software & Choose Theme:</strong>
+      <br>Click Start &rarr; type <code>powerpoint</code> (or open <strong>Google Slides</strong> / <strong>Impress</strong>) &rarr; Choose a clean, simple theme with a white or light background.
+    </div>
+  </div>
+
+  <div class="step-card">
+    <div class="step-num">2</div>
+    <div class="step-content">
+      <strong>Build Slide 1 (Title Slide):</strong>
+      <br>&bull; Click in the Title placeholder box: type <code>SAFE WATER FOR OUR SCHOOL</code>.
+      <br>&bull; Click in the Subtitle box: type <code>Community Project by BIH Tech Club</code> &rarr; press Enter &rarr; type your name and class.
+    </div>
+  </div>
+
+  <div class="step-card">
+    <div class="step-num">3</div>
+    <div class="step-content">
+      <strong>Add Slide 2 (The Challenge):</strong>
+      <br>Click the <strong>New Slide</strong> button on the ribbon &rarr; select <strong>Title and Content</strong>.
+      <br>&bull; Title: <code>The Water Challenges We Face</code>
+      <br>&bull; Content box (3 short bullets):
+      <br>&nbsp;&nbsp;&bull; <em>Uncovered outdoor storage drums</em>
+      <br>&nbsp;&nbsp;&bull; <em>Mosquito breeding in stagnant water</em>
+      <br>&nbsp;&nbsp;&bull; <em>Waterborne illnesses cause missed classes</em>
+    </div>
+  </div>
+
+  <div class="step-card">
+    <div class="step-num">4</div>
+    <div class="step-content">
+      <strong>Add Slide 3 (The Action Steps):</strong>
+      <br>Click <strong>New Slide</strong> &rarr; select <strong>Title and Content</strong>.
+      <br>&bull; Title: <code>Our 3-Step Action Plan</code>
+      <br>&bull; Content box:
+      <br>&nbsp;&nbsp;&bull; <em>Cover all drums with tight lids</em>
+      <br>&nbsp;&nbsp;&bull; <em>Clean and scrub tanks weekly</em>
+      <br>&nbsp;&nbsp;&bull; <em>Install clean ceramic pot filters</em>
+    </div>
+  </div>
+
+  <div class="step-card">
+    <div class="step-num">5</div>
+    <div class="step-content">
+      <strong>Insert & Resize an Image:</strong>
+      <br>On Slide 3, click <strong>Insert &rarr; Pictures</strong> (or Shapes). Add a water drop or bucket icon.
+      <br><strong>Resize it using only the CORNER handles</strong> to keep its proportions clean.
+    </div>
+  </div>
+
+  <div class="step-card">
+    <div class="step-num">6</div>
+    <div class="step-content">
+      <strong>Run the Slide Show & Save:</strong>
+      <br>Press the <span class="kbd-key">F5</span> key on your keyboard. Your slides fill the whole screen!
+      <br>Tap the <span class="kbd-key">Spacebar</span> to advance through your slides. Tap <span class="kbd-key">Esc</span> to exit.
+      <br>Save: <strong>File &rarr; Save As</strong> &rarr; <code>Documents &gt; BIH_Practice</code> &rarr; Name: <code>Safe_Water_AmaMensah.pptx</code>.
+    </div>
+  </div>
+
+  <h2>2. Visual Target (Your Finished Slide 3)</h2>
+  <div style="border: 2px solid var(--bih-purple); border-radius: 6px; padding: 25px; background: white; margin: 15px 0;">
+    <div style="font-size: 18px; font-weight: bold; color: var(--bih-purple); margin-bottom: 12px; border-bottom: 2px solid var(--bih-gold); padding-bottom: 4px;">
+      Our 3-Step Action Plan
+    </div>
+    <div style="display: flex; justify-content: space-between; align-items: center;">
+      <ul style="font-size: 13px; line-height: 1.8; color: #1E293B; margin: 0 0 0 20px;">
+        <li>Cover all drums with tight lids</li>
+        <li>Clean and scrub tanks weekly</li>
+        <li>Install clean ceramic pot filters</li>
+      </ul>
+      <div style="background: #EEF2FF; border: 2px solid #4361EE; border-radius: 8px; width: 90px; height: 90px; display: flex; align-items: center; justify-content: center; font-size: 32px;">
+        💧
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ========================================== -->
+<!-- PAGE 6: REVIEW & SELF-ASSESSMENT           -->
+<!-- ========================================== -->
+<div class="page">
+  <div class="header-bar">
+    <div class="header-title">Session 12 Review & Verification</div>
+    <div class="badge">Session 12 • Page 6</div>
+  </div>
+
+  <h2>1. Storyboard Your Own 3-Slide Presentation</h2>
+  <p>In the three boxes below, sketch your own storyboard for a talk on <em>"How to Stop Littering at School"</em>:</p>
+
+  <div style="display: flex; gap: 12px; margin: 15px 0;">
+    <div style="flex: 1; border: 1.5px solid var(--bih-purple); border-radius: 6px; padding: 10px; background: var(--bih-light); min-height: 110px;">
+      <strong style="font-size: 11px; color: var(--bih-purple);">SLIDE 1: Title & Name</strong>
+      <div class="answer-line" contenteditable="true" style="margin-top: 15px;">Title:</div>
+      <div class="answer-line" contenteditable="true">By:</div>
+    </div>
+    <div style="flex: 1; border: 1.5px solid var(--bih-gold); border-radius: 6px; padding: 10px; background: var(--bih-light); min-height: 110px;">
+      <strong style="font-size: 11px; color: var(--bih-gold);">SLIDE 2: The Problem (Bullets)</strong>
+      <div class="answer-line" contenteditable="true" style="margin-top: 15px;">&bull; </div>
+      <div class="answer-line" contenteditable="true">&bull; </div>
+    </div>
+    <div style="flex: 1; border: 1.5px solid var(--bih-green); border-radius: 6px; padding: 10px; background: var(--bih-light); min-height: 110px;">
+      <strong style="font-size: 11px; color: #047857);">SLIDE 3: The Solution (Bullets)</strong>
+      <div class="answer-line" contenteditable="true" style="margin-top: 15px;">&bull; </div>
+      <div class="answer-line" contenteditable="true">&bull; </div>
+    </div>
+  </div>
+
+  <h2>2. Written Review Questions</h2>
+  <p><strong>Question 1:</strong> State the two parts of the <strong>6-by-6 Rule</strong> for slide design:</p>
+  <div class="answer-line" contenteditable="true">Part 1 (Bullets): ________________________________________________________________</div>
+  <div class="answer-line" contenteditable="true">Part 2 (Words): __________________________________________________________________</div>
+
+  <p><strong>Question 2:</strong> Why should you always resize pictures using the <strong>corner handles</strong> instead of the side handles?</p>
+  <div class="answer-line" contenteditable="true">Write your answer here...</div>
+
+  <p><strong>Question 3:</strong> What key on your keyboard launches the full-screen Slide Show? Answer: Key <span class="kbd-key">_________</span></p>
+
+  <h2>3. Self-Assessment & Mentor Sign-Off</h2>
+  <p>Tick the column that reflects your confidence at the end of Session 12:</p>
+  <table>
+    <thead>
+      <tr>
+        <th>Presentation & Slide Design Competency</th>
+        <th style="width: 18%; text-align: center;">With Help</th>
+        <th style="width: 18%; text-align: center;">Almost Alone</th>
+        <th style="width: 18%; text-align: center;">All By Myself!</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1. I can explain why slides should support the speaker rather than hold full essays.</td>
+        <td style="text-align: center;"><input type="radio" name="s12_1"></td>
+        <td style="text-align: center;"><input type="radio" name="s12_1"></td>
+        <td style="text-align: center;"><input type="radio" name="s12_1"></td>
+      </tr>
+      <tr>
+        <td>2. I can apply the 6x6 rule and choose high-contrast, readable color schemes.</td>
+        <td style="text-align: center;"><input type="radio" name="s12_2"></td>
+        <td style="text-align: center;"><input type="radio" name="s12_2"></td>
+        <td style="text-align: center;"><input type="radio" name="s12_2"></td>
+      </tr>
+      <tr>
+        <td>3. I know how to resize images proportionally using corner handles.</td>
+        <td style="text-align: center;"><input type="radio" name="s12_3"></td>
+        <td style="text-align: center;"><input type="radio" name="s12_3"></td>
+        <td style="text-align: center;"><input type="radio" name="s12_3"></td>
+      </tr>
+      <tr>
+        <td>4. I can build a 3-slide deck (Title, Problem, Solution) and run it using F5.</td>
+        <td style="text-align: center;"><input type="radio" name="s12_4"></td>
+        <td style="text-align: center;"><input type="radio" name="s12_4"></td>
+        <td style="text-align: center;"><input type="radio" name="s12_4"></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div style="border-top: 1px solid var(--bih-border); margin-top: 25px; padding-top: 12px; display: flex; justify-content: space-between; font-size: 13px;">
+    <div><strong>Mentor Signature:</strong> _____________________________</div>
+    <div><strong>Date Completed:</strong> ____________________</div>
+  </div>
+</div>
+
+</body>
+</html>

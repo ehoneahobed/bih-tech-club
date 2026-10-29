@@ -1,0 +1,39 @@
+{
+  "programme": "BIH JHS Tech Club",
+  "organisation": "Bozoma Innovation Hub",
+  "levels": [
+    { "id": "L0", "name": "Absolute Beginner", "theme": "Meet the Computer", "color": "#3A0CA3" },
+    { "id": "L1", "name": "Level 1 · Getting Comfortable", "theme": "The Desktop and Programmes", "color": "#4361EE" },
+    { "id": "L2", "name": "Level 2 · Typing & File Management", "theme": "Typing, Files and Folders", "color": "#2EC4B6" },
+    { "id": "L3", "name": "Level 3 · Internet & Email", "theme": "Searching the Web and Communicating", "color": "#0096C7" },
+    { "id": "L4", "name": "Level 4 · Word Processing", "theme": "Create and Format Documents", "color": "#4361EE" },
+    { "id": "L5", "name": "Level 5 · Spreadsheets & Data", "theme": "Tables, Formulas and Charts", "color": "#2A9D8F" },
+    { "id": "L6", "name": "Level 6 · Presentations", "theme": "Plan and Present Ideas", "color": "#F77F00" },
+    { "id": "L7", "name": "Level 7 · Collaboration", "theme": "Work Together with Digital Tools", "color": "#7209B7" },
+    { "id": "L8", "name": "Level 8 · Online Safety", "theme": "Stay Safe and Respectful Online", "color": "#E63946" },
+    { "id": "EXT", "name": "Extension · Block Programming", "theme": "Build with Blocks", "color": "#F4A261" },
+    { "id": "CAP", "name": "Capstone · Final Project", "theme": "Plan, Build and Share a Digital Project", "color": "#3A0CA3" }
+  ],
+  "sessions": [
+    { "n": 1, "level": "L0", "title": "Meet Your Computer", "summary": "Input, process and output; desktop vs laptop hardware; safe startup and shutdown; mouse and touchpad control.", "lab": "computer" },
+    { "n": 2, "level": "L0", "title": "Keyboard Mastery & First Typing", "summary": "The five keyboard zones, home row, Backspace vs Delete, posture and first typing drills.", "lab": "keyboard" },
+    { "n": 3, "level": "L1", "title": "The Desktop & Programmes", "summary": "Desktop anatomy, opening programmes, the three window buttons, moving, resizing and multitasking.", "lab": "desktop" },
+    { "n": 4, "level": "L2", "title": "Files, Folders & File Explorer", "summary": "Files vs folders, the filing hierarchy, File Explorer, the BIH file-naming standard and illegal characters.", "lab": "files" },
+    { "n": 5, "level": "L2", "title": "File Operations & Typing Fluency", "summary": "Copy vs cut, renaming with F2, the Recycle Bin, USB drives and safe ejection, typing fluency.", "lab": "files" },
+    { "n": 6, "level": "L3", "title": "Searching the Web & Internet Foundations", "summary": "Internet vs the Web, browsers, URLs and domains, HTTPS, keyword searching and checking sources.", "lab": "internet" },
+    { "n": 7, "level": "L3", "title": "Email & Digital Communication", "summary": "The digital post office, email addresses, To/Cc/Subject, netiquette and attachments.", "lab": "internet" },
+    { "n": 8, "level": "L4", "title": "Create & Format Documents (Part 1)", "summary": "Word processor vocabulary, fonts, formatting styles, alignment and fast text selection.", "lab": null },
+    { "n": 9, "level": "L4", "title": "Create & Format Documents (Part 2)", "summary": "Bullets vs numbers, visual hierarchy, built-in styles, spell-check and the Ghanaian name dilemma.", "lab": null },
+    { "n": 10, "level": "L5", "title": "Spreadsheets, Tables & Basic Formulas", "summary": "The market trader's ledger, cell addresses, data types, formulas, operators and AutoFill.", "lab": "chart" },
+    { "n": 11, "level": "L5", "title": "Functions, Ranges & Visual Charts", "summary": "Ranges, SUM/AVERAGE/MAX/MIN, choosing chart types and selecting the right cells.", "lab": "chart" },
+    { "n": 12, "level": "L6", "title": "Presentations & Slide Design", "summary": "The speaker and the signboard, the 6-by-6 rule, contrast, layouts and aspect ratio.", "lab": null },
+    { "n": 13, "level": "L6", "title": "Presentation Delivery & Public Speaking", "summary": "Animations without the carnival, slideshow shortcuts, delivery, citing sources and handling questions.", "lab": null },
+    { "n": 14, "level": "L7", "title": "Digital Collaboration & Teamwork", "summary": "Nnoboa teamwork, sharing permissions, collaborative roles, version history and helpful comments.", "lab": "internet" },
+    { "n": 15, "level": "L8", "title": "Online Safety & Digital Citizenship", "summary": "Personal information, digital footprints, T.H.I.N.K., strong passphrases and spotting phishing.", "lab": "password" },
+    { "n": 16, "level": "EXT", "title": "Block Programming & Algorithms", "summary": "The kelewele recipe algorithm, Scratch zones, events, motion blocks and the coordinate stage.", "lab": "coding" },
+    { "n": 17, "level": "EXT", "title": "Loops, Decisions & Debugging", "summary": "Loops, conditions, sensing, variables, bugs and a clean-up mini-game.", "lab": "coding" },
+    { "n": 18, "level": "CAP", "title": "Capstone Planning & Blueprint", "summary": "Choosing a capstone track, the project charter, safe data ethics and prototype v0.1.", "lab": null },
+    { "n": 19, "level": "CAP", "title": "Capstone Building, Testing & Iteration", "summary": "User testing, useful feedback, version tracking and the build-and-test sprint.", "lab": null },
+    { "n": 20, "level": "CAP", "title": "Showcase Demo Day & Graduation", "summary": "The 3-minute pitch formula, stage choreography, the pre-flight checklist and reflection.", "lab": null }
+  ]
+}

@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>BIH Tech Club - Session 6: Searching the Web & Internet Foundations</title>
+  <style>
+    :root {
+      --bih-purple: #3A0CA3;
+      --bih-accent: #4361EE;
+      --bih-gold: #F77F00;
+      --bih-green: #2EC4B6;
+      --bih-red: #E63946;
+      --bih-dark: #1E1E24;
+      --bih-light: #F8F9FA;
+      --bih-border: #CED4DA;
+      --browser-tab: #E2E8F0;
+    }
+
+    * {
+      box-sizing: border-box;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    body {
+      background-color: #E9ECEF;
+      color: var(--bih-dark);
+      margin: 0;
+      padding: 20px;
+      line-height: 1.55;
+    }
+
+    .page {
+      background: #FFFFFF;
+      max-width: 860px;
+      margin: 20px auto;
+      padding: 42px 50px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+      border-radius: 8px;
+      page-break-after: always;
+    }
+
+    @media print {
+      body { background: white; padding: 0; }
+      .page { box-shadow: none; margin: 0; padding: 30px; max-width: 100%; border-radius: 0; }
+      .no-print { display: none; }
+    }
+
+    /* Header Bar */
+    .header-bar {
+      border-bottom: 3px solid var(--bih-purple);
+      padding-bottom: 10px;
+      margin-bottom: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .header-title {
+      font-size: 19px;
+      font-weight: 800;
+      color: var(--bih-purple);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .badge {
+      background: var(--bih-gold);
+      color: #FFFFFF;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+    }
+
+    /* Student Meta Box */
+    .student-meta {
+      border: 2px dashed var(--bih-border);
+      border-radius: 8px;
+      padding: 12px 18px;
+      background: var(--bih-light);
+      margin-bottom: 20px;
+    }
+
+    .meta-row {
+      display: flex;
+      gap: 15px;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+    .meta-row:last-child { margin-bottom: 0; }
+
+    .meta-label {
+      font-size: 12.5px;
+      font-weight: 700;
+      color: var(--bih-dark);
+      min-width: 125px;
+    }
+
+    .editable-line {
+      border-bottom: 1.5px solid var(--bih-purple);
+      flex-grow: 1;
+      padding: 2px 6px;
+      font-size: 13.5px;
+      font-weight: 600;
+      color: var(--bih-purple);
+      outline: none;
+      min-height: 20px;
+    }
+
+    /* Typography */
+    h1 { color: var(--bih-purple); font-size: 22px; margin-top: 0; margin-bottom: 8px; }
+    h2 { color: var(--bih-purple); font-size: 16px; margin-top: 20px; margin-bottom: 10px; border-left: 4px solid var(--bih-gold); padding-left: 8px; }
+    p { font-size: 13px; margin: 6px 0; }
+
+    /* Dual Grid Layout */
+    .dual-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin: 12px 0;
+    }
+
+    .dual-box {
+      border: 1px solid var(--bih-border);
+      border-radius: 8px;
+      padding: 12px 14px;
+      background: #FAFAFA;
+    }
+    .dual-box-title {
+      font-size: 13px;
+      font-weight: 800;
+      color: var(--bih-purple);
+      margin-bottom: 6px;
+      border-bottom: 1px solid var(--bih-border);
+      padding-bottom: 4px;
+    }
+
+    /* Callouts & Alert Boxes */
+    .callout {
+      background: #FFF3CD;
+      border-left: 4px solid var(--bih-gold);
+      padding: 10px 14px;
+      margin: 14px 0;
+      border-radius: 0 8px 8px 0;
+      font-size: 12.5px;
+    }
+    .callout-title {
+      font-weight: 800;
+      color: #856404;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 2px;
+    }
+
+    .panic-box {
+      background: #F8D7DA;
+      border-left: 4px solid var(--bih-red);
+      padding: 12px 14px;
+      margin: 14px 0;
+      border-radius: 0 8px 8px 0;
+      font-size: 12.5px;
+    }
+    .panic-title {
+      font-weight: 800;
+      color: #721C24;
+      margin-bottom: 4px;
+    }
+
+    /* Step Cards */
+    .step-card {
+      display: flex;
+      gap: 12px;
+      background: var(--bih-light);
+      border: 1px solid var(--bih-border);
+      border-radius: 6px;
+      padding: 10px 12px;
+      margin-bottom: 8px;
+      align-items: flex-start;
+    }
+
+    .step-num {
+      background: var(--bih-purple);
+      color: white;
+      font-size: 13px;
+      font-weight: 800;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .step-content { flex-grow: 1; font-size: 12.5px; }
+
+    /* Diagrams */
+    .diagram-container {
+      background: #FAFAFA;
+      border: 1px solid var(--bih-border);
+      border-radius: 8px;
+      padding: 12px;
+      margin: 14px 0;
+      text-align: center;
+    }
+    .diagram-caption {
+      font-size: 11px;
+      color: #6C757D;
+      margin-top: 6px;
+      font-style: italic;
+    }
+
+    /* Tables */
+    table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 12.5px; }
+    th { background: var(--bih-purple); color: white; text-align: left; padding: 7px 10px; }
+    td { border: 1px solid var(--bih-border); padding: 7px 10px; vertical-align: top; }
+    tr:nth-child(even) { background-color: var(--bih-light); }
+
+    /* Key Badge */
+    .kbd-key {
+      display: inline-block;
+      background: #F3F4F6;
+      border: 1.5px solid #9CA3AF;
+      border-bottom: 3px solid #6B7280;
+      border-radius: 4px;
+      padding: 1px 6px;
+      font-family: monospace;
+      font-size: 12px;
+      font-weight: 700;
+      color: #1F2937;
+      margin: 0 2px;
+    }
+
+    /* Interactive Inputs */
+    .answer-line {
+      min-height: 24px;
+      border-bottom: 1px dashed var(--bih-purple);
+      margin: 4px 0;
+      outline: none;
+      font-size: 13px;
+      color: var(--bih-dark);
+      padding: 2px 4px;
+    }
+
+    .checkbox-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 6px;
+      font-size: 12.5px;
+    }
+    .checkbox-item input { width: 15px; height: 15px; cursor: pointer; }
+  </style>
+</head>
+<body>
+
+<!-- ========================================== -->
+<!-- PAGE 1: WHAT IS THE INTERNET?             -->
+<!-- ========================================== -->
+<div class="page">
+  <div class="header-bar">
+    <div class="header-title">Bozoma Innovation Hub • Tech Club</div>
+    <div class="badge">Session 6 • Page 1</div>
+  </div>
+
+  <div class="student-meta">
+    <div class="meta-row">
+      <span class="meta-label">Learner Full Name:</span>
+      <div class="editable-line" contenteditable="true">Ama Mensah</div>
+    </div>
+    <div class="meta-row">
+      <span class="meta-label">School:</span>
+      <div class="editable-line" contenteditable="true">Bozoma Model School</div>
+      <span class="meta-label" style="min-width: 50px;">Class:</span>
+      <div class="editable-line" contenteditable="true" style="max-width: 90px;">JHS 1</div>
+    </div>
+    <div class="meta-row">
+      <span class="meta-label">Workstation Device:</span>
+      <div class="editable-line" contenteditable="true" style="max-width: 180px;">[ ] Desktop &nbsp; [ ] Laptop</div>
+      <span class="meta-label" style="min-width: 70px;">Station #:</span>
+      <div class="editable-line" contenteditable="true" style="max-width: 90px;">PC-01</div>
+    </div>
+  </div>
+
+  <h1>Session 6: Searching the Web & Internet Foundations</h1>
+  <p>Until now, your computer has worked completely alone inside our classroom. But when you connect your computer to the <strong>Internet</strong>, it joins a worldwide conversation linking millions of schools, libraries, scientists, and communities across every continent!</p>
+
+  <h2>1. Plain Talk: The Road Network of Computers</h2>
+  <p>Think about the road network in Ghana: untarred feeder roads connect small villages to highways, which lead to major cities like Accra, Kumasi, and Tamale. Vehicles travel along these roads carrying goods and letters.</p>
+  <p>The <strong>Internet</strong> is an electronic road network: millions of computers connected by underground copper lines, radio cell towers, and <strong>giant undersea glass cables</strong> laid deep under the Atlantic Ocean that come ashore right here on the coast of Ghana (in Accra and Tema)!</p>
+
+  <!-- DIAGRAM: GLOBAL INTERNET INFRASTRUCTURE -->
+  <div class="diagram-container">
+    <svg width="700" height="155" viewBox="0 0 700 155" xmlns="http://www.w3.org/2000/svg">
+      <!-- 1. School Computer -->
+      <g transform="translate(20, 25)">
+        <rect x="10" y="15" width="80" height="55" rx="3" fill="#1F2937"/>
+        <rect x="15" y="20" width="70" height="45" rx="2" fill="#60A5FA"/>
+        <rect x="45" y="70" width="10" height="15" fill="#4B5563"/>
+        <rect x="35" y="85" width="30" height="4" fill="#374151"/>
+        <text x="50" y="105" font-size="9.5" font-weight="bold" fill="#3A0CA3" text-anchor="middle">Your School PC</text>
+        <text x="50" y="118" font-size="8.5" fill="#64748B" text-anchor="middle">(The Client)</text>
+      </g>
+
+      <!-- Local Wi-Fi / Tower -->
+      <path d="M 115,55 L 175,55" stroke="#4361EE" stroke-width="2" stroke-dasharray="3,3"/>
+      <g transform="translate(180, 20)">
+        <polygon points="25,10 5,85 45,85" fill="none" stroke="#374151" stroke-width="2"/>
+        <line x1="12" y1="60" x2="38" y2="60" stroke="#374151" stroke-width="1.5"/>
+        <line x1="18" y1="38" x2="32" y2="38" stroke="#374151" stroke-width="1.5"/>
+        <circle cx="25" cy="10" r="3" fill="#E63946"/>
+        <text x="25" y="105" font-size="9.5" font-weight="bold" fill="#3A0CA3" text-anchor="middle">School Wi-Fi /</text>
+        <text x="25" y="118" font-size="8.5" fill="#64748B" text-anchor="middle">Local Mast</text>
+      </g>
+
+      <!-- Subsea Cable -->
+      <path d="M 235,55 L 340,55" stroke="#2EC4B6" stroke-width="3"/>
+      <g transform="translate(345, 15)">
+        <!-- Ocean Waves -->
+        <path d="M 0,40 Q 25,30 50,40 T 100,40 T 150,40" stroke="#0284C7" stroke-width="2" fill="none"/>
+        <path d="M 0,55 Q 25,45 50,55 T 100,55 T 150,55" stroke="#0284C7" stroke-width="2" fill="none"/>
+        <!-- Cable on seabed -->
+        <line x1="10" y1="80" x2="140" y2="80" stroke="#F59E0B" stroke-width="4"/>
+        <text x="75" y="105" font-size="9.5" font-weight="bold" fill="#0D9488" text-anchor="middle">Undersea Fiber Cables</text>
+        <text x="75" y="118" font-size="8.5" fill="#64748B" text-anchor="middle">(Tema & Accra Landing)</text>
+      </g>
+
+      <!-- Global Web Server -->
+      <path d="M 500,55 L 560,55" stroke="#4361EE" stroke-width="2"/>
+      <polygon points="565,55 557,51 557,59" fill="#4361EE"/>
+
+      <g transform="translate(570, 15)">
+        <rect x="15" y="10" width="75" height="75" rx="5" fill="#1E1B4B" stroke="#3A0CA3" stroke-width="2"/>
+        <rect x="25" y="20" width="55" height="12" rx="2" fill="#312E81"/>
+        <circle cx="32" cy="26" r="2" fill="#10B981"/>
+        <rect x="25" y="40" width="55" height="12" rx="2" fill="#312E81"/>
+        <circle cx="32" cy="46" r="2" fill="#10B981"/>
+        <rect x="25" y="60" width="55" height="12" rx="2" fill="#312E81"/>
+        <circle cx="32" cy="66" r="2" fill="#10B981"/>
+        <text x="52" y="105" font-size="9.5" font-weight="bold" fill="#3A0CA3" text-anchor="middle">Global Web Server</text>
+        <text x="52" y="118" font-size="8.5" fill="#64748B" text-anchor="middle">(Stores Wikipedia, etc.)</text>
+      </g>
+    </svg>
+    <div class="diagram-caption">Figure 6.0: How your school computer connects across the Atlantic Ocean to reach global knowledge servers.</div>
+  </div>
+
+  <h2>2. Internet vs. World Wide Web: Don't Confuse Them!</h2>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 50%;">The Internet (The Physical Road)</th>
+        <th style="width: 50%;">The World Wide Web (The Cars on the Road)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>The massive worldwide network of physical computers, wires, routers, and radio signals.</td>
+        <td>The collection of multimedia pages, documents, pictures, and videos that travel across that network.</td>
+      </tr>
+      <tr>
+        <td><em>Analogy:</em> The train tracks and train stations.</td>
+        <td><em>Analogy:</em> The passenger train carrying passengers and books.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ========================================== -->
+<!-- PAGE 2: THE WEB BROWSER                   -->
+<!-- ========================================== -->
+<div class="page">
+  <div class="header-bar">
+    <div class="header-title">The Web Browser (Your Digital Vehicle)</div>
+    <div class="badge">Session 6 • Page 2</div>
+  </div>
+
+  <h2>1. What is a Web Browser?</h2>
+  <p>To visit a website, you need a specialized program called a <strong>Web Browser</strong>. The browser translates code written across the world into beautiful, readable pictures and text on your screen.</p>
+  <p>Common browsers you will see on Ghanaian computers include: <strong>Google Chrome</strong>, <strong>Microsoft Edge</strong>, <strong>Mozilla Firefox</strong>, and <strong>Apple Safari</strong>.</p>
+
+  <!-- DIAGRAM: BROWSER ANATOMY -->
+  <div class="diagram-container">
+    <svg width="720" height="210" viewBox="0 0 720 210" xmlns="http://www.w3.org/2000/svg">
+      <!-- Browser Window Frame -->
+      <rect x="10" y="10" width="700" height="190" rx="6" fill="#FFFFFF" stroke="#334155" stroke-width="1.5"/>
+
+      <!-- TAB STRIP (Top Row) -->
+      <rect x="10" y="10" width="700" height="32" rx="5" fill="#CBD5E1"/>
+      
+      <!-- Active Tab 1 -->
+      <path d="M 20,42 L 35,16 L 155,16 L 170,42 Z" fill="#FFFFFF"/>
+      <circle cx="48" cy="28" r="4" fill="#3B82F6"/>
+      <text x="60" y="31" font-size="9.5" font-weight="bold" fill="#1E293B">Ghana Education Service</text>
+      <text x="150" y="30" font-size="10" fill="#64748B">&times;</text>
+
+      <!-- Inactive Tab 2 -->
+      <path d="M 175,42 L 185,20 L 275,20 L 285,42 Z" fill="#94A3B8" opacity="0.6"/>
+      <text x="200" y="32" font-size="9" fill="#1E293B">Wikipedia</text>
+
+      <!-- New Tab Plus Button [+] -->
+      <rect x="295" y="20" width="16" height="16" rx="3" fill="#E2E8F0"/>
+      <text x="303" y="32" font-size="11" font-weight="bold" fill="#334155" text-anchor="middle">+</text>
+
+      <!-- Window controls -->
+      <rect x="665" y="16" width="12" height="12" rx="2" fill="#EF4444"/>
+
+      <!-- NAVIGATION BAR & ADDRESS BAR (Second Row) -->
+      <rect x="10" y="42" width="700" height="36" fill="#F1F5F9" stroke="#E2E8F0" stroke-width="1"/>
+      
+      <!-- Back Arrow -->
+      <circle cx="32" cy="60" r="11" fill="#E2E8F0"/>
+      <text x="32" y="64" font-size="12" font-weight="bold" fill="#334155" text-anchor="middle">&larr;</text>
+
+      <!-- Forward Arrow -->
+      <circle cx="58" cy="60" r="11" fill="#E2E8F0"/>
+      <text x="58" y="64" font-size="12" font-weight="bold" fill="#94A3B8" text-anchor="middle">&rarr;</text>
+
+      <!-- Refresh / Reload Button -->
+      <circle cx="84" cy="60" r="11" fill="#E2E8F0"/>
+      <text x="84" y="64" font-size="12" font-weight="bold" fill="#334155" text-anchor="middle">&#8635;</text>
+
+      <!-- ADDRESS BAR (URL BAR) -->
+      <rect x="110" y="48" width="540" height="24" rx="12" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.2"/>
+      <!-- Padlock -->
+      <text x="125" y="64" font-size="10" fill="#10B981">&#128274;</text>
+      <text x="142" y="64" font-size="10.5" fill="#1E293B">https://www.ges.gov.gh/curriculum</text>
+
+      <!-- Star / Bookmark -->
+      <text x="635" y="65" font-size="11" fill="#64748B">&#9734;</text>
+
+      <!-- WEBPAGE DISPLAY AREA -->
+      <rect x="15" y="82" width="690" height="110" fill="#FFFFFF"/>
+      <text x="360" y="135" font-size="14" fill="#94A3B8" text-anchor="middle">Actual Webpage Content Displays Here</text>
+
+      <!-- Callout Labels -->
+      <path d="M 32,75 L 32,95" stroke="#3A0CA3" stroke-width="1.5"/>
+      <text x="32" y="105" font-size="8.5" font-weight="bold" fill="#3A0CA3" text-anchor="middle">Back</text>
+
+      <path d="M 84,75 L 84,95" stroke="#3A0CA3" stroke-width="1.5"/>
+      <text x="84" y="105" font-size="8.5" font-weight="bold" fill="#3A0CA3" text-anchor="middle">Refresh</text>
+
+      <path d="M 350,75 L 350,95" stroke="#0D9488" stroke-width="1.5"/>
+      <text x="350" y="105" font-size="9" font-weight="bold" fill="#0D9488" text-anchor="middle">The Address Bar (URL Bar): Type website addresses here!</text>
+    </svg>
+    <div class="diagram-caption">Figure 6.1: Key controls of a modern Web Browser. Always notice the green Security Padlock on the left!</div>
+  </div>
+
+  <h2>2. Browser Navigation Controls Decoded</h2>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 25%;">Control Button</th>
+        <th style="width: 35%;">What It Does</th>
+        <th style="width: 40%;">When Should You Click It?</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Back Arrow (&larr;)</strong></td>
+        <td>Returns to the previous page you were reading.</td>
+        <td>When you opened a result and want to go back to the search list.</td>
+      </tr>
+      <tr>
+        <td><strong>Forward Arrow (&rarr;)</strong></td>
+        <td>Moves forward to the page you just backed out of.</td>
+        <td>When you hit Back by mistake!</td>
+      </tr>
+      <tr>
+        <td><strong>Refresh (&#8635;)</strong></td>
+        <td>Reloads the page from scratch across the network.</td>
+        <td>When a page loads slowly, shows an error, or freezes.</td>
+      </tr>
+      <tr>
+        <td><strong>New Tab (+)</strong></td>
+        <td>Opens a fresh, clean browsing page in the same window.</td>
+        <td>When you want to search something new without losing your current page.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ========================================== -->
+<!-- PAGE 3: URLS DECODED                       -->
+<!-- ========================================== -->
+<div class="page">
+  <div class="header-bar">
+    <div class="header-title">Web Addresses: URLs Decoded</div>
+    <div class="badge">Session 6 • Page 3</div>
+  </div>
+
+  <h2>1. What is a URL?</h2>
+  <p>Just as every home or school in Ghana has a physical location or GhanaPost GPS address (e.g., <code>GA-183-9024</code>), every single page on the World Wide Web has its own unique digital address called a <strong>URL</strong> (Uniform Resource Locator).</p>
+
+  <!-- DIAGRAM: URL ANATOMY BREAKDOWN -->
+  <div class="diagram-container">
+    <svg width="700" height="140" viewBox="0 0 700 140" xmlns="http://www.w3.org/2000/svg">
+      <rect x="15" y="15" width="670" height="50" rx="8" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.5"/>
+      
+      <!-- URL STRING -->
+      <g transform="translate(30, 45)" font-family="monospace" font-size="15" font-weight="bold">
+        <text x="0" y="0" fill="#10B981">https://</text>
+        <text x="80" y="0" fill="#64748B">www.</text>
+        <text x="125" y="0" fill="#3A0CA3">bihtechclub</text>
+        <text x="245" y="0" fill="#F77F00">.org</text>
+        <text x="290" y="0" fill="#4361EE">/science/water</text>
+      </g>
+
+      <!-- Brackets & Explanations -->
+      <!-- Protocol -->
+      <path d="M 65,72 L 65,85" stroke="#10B981" stroke-width="1.5"/>
+      <text x="65" y="98" font-size="9" font-weight="bold" fill="#047857" text-anchor="middle">1. Protocol</text>
+      <text x="65" y="110" font-size="8" fill="#64748B" text-anchor="middle">(Secure encrypted)</text>
+
+      <!-- Subdomain -->
+      <path d="M 130,72 L 130,85" stroke="#64748B" stroke-width="1.5"/>
+      <text x="130" y="98" font-size="9" font-weight="bold" fill="#475569" text-anchor="middle">2. Web</text>
+      <text x="130" y="110" font-size="8" fill="#64748B" text-anchor="middle">(World Wide Web)</text>
+
+      <!-- Domain Name -->
+      <path d="M 215,72 L 215,85" stroke="#3A0CA3" stroke-width="1.5"/>
+      <text x="215" y="98" font-size="9" font-weight="bold" fill="#3A0CA3" text-anchor="middle">3. Domain Name</text>
+      <text x="215" y="110" font-size="8" fill="#64748B" text-anchor="middle">(Name of organization)</text>
+
+      <!-- Domain Extension -->
+      <path d="M 305,72 L 305,85" stroke="#F77F00" stroke-width="1.5"/>
+      <text x="305" y="98" font-size="9" font-weight="bold" fill="#9A3412" text-anchor="middle">4. Extension</text>
+      <text x="305" y="110" font-size="8" fill="#64748B" text-anchor="middle">(Organization type)</text>
+
+      <!-- File Path -->
+      <path d="M 430,72 L 430,85" stroke="#4361EE" stroke-width="1.5"/>
+      <text x="430" y="98" font-size="9" font-weight="bold" fill="#4361EE" text-anchor="middle">5. Specific Page Path</text>
+      <text x="430" y="110" font-size="8" fill="#64748B" text-anchor="middle">(Folder & page inside site)</text>
+    </svg>
+    <div class="diagram-caption">Figure 6.2: Anatomy of a Web Address (URL). The extension tells you who runs the site!</div>
+  </div>
+
+  <h2>2. Domain Extensions: Who Runs the Website?</h2>
+  <p>The last few letters of a web address tell you what kind of organization created it:</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 22%;">Extension</th>
+        <th style="width: 38%;">What Kind of Organization</th>
+        <th style="width: 40%;">Reliability for School Homework</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>.edu / .edu.gh</strong></td>
+        <td>Universities, Polytechnics, and Colleges.</td>
+        <td><strong style="color:#047857;">HIGH:</strong> Verified academic professors & researchers.</td>
+      </tr>
+      <tr>
+        <td><strong>.gov / .gov.gh</strong></td>
+        <td>Official Government Ministries & Departments.</td>
+        <td><strong style="color:#047857;">HIGH:</strong> Official laws, public statistics, and curriculum.</td>
+      </tr>
+      <tr>
+        <td><strong>.org</strong></td>
+        <td>Non-profit charities, clubs, and global bodies.</td>
+        <td><strong style="color:#2563EB;">GOOD:</strong> Educational (e.g. Wikipedia, UNESCO, Red Cross).</td>
+      </tr>
+      <tr>
+        <td><strong>.com</strong></td>
+        <td>Commercial business company.</td>
+        <td><strong style="color:#D97706;">CAUTION:</strong> May be trying to sell you products or show ads!</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>3. The Security Padlock: HTTPS vs. HTTP</h2>
+  <div class="callout">
+    <div class="callout-title">🔒 THE MEANING OF THE PADLOCK</div>
+    When you look at the address bar, check if there is a tiny <strong>closed padlock icon</strong> and the letters <strong>https://</strong> (the 's' stands for <em>Secure</em>). This means information passing between your computer and that website is scrambled into secret code so thieves and eavesdroppers cannot steal it.
+  </div>
+</div>
+
+<!-- ========================================== -->
+<!-- PAGE 4: SEARCH ENGINES & SMART QUERIES     -->
+<!-- ========================================== -->
+<div class="page">
+  <div class="header-bar">
+    <div class="header-title">Search Engines & Smart Keywords</div>
+    <div class="badge">Session 6 • Page 4</div>
+  </div>
+
+  <h2>1. Browser vs. Search Engine: Don't Confuse Them!</h2>
+  <div class="dual-grid">
+    <div class="dual-box">
+      <div class="dual-box-title">🚗 THE WEB BROWSER (The Car)</div>
+      <p>The application software on your computer (Chrome, Edge, Firefox). It is the vehicle that drives you across the internet.</p>
+    </div>
+    <div class="dual-box">
+      <div class="dual-box-title">📚 THE SEARCH ENGINE (The Head Librarian)</div>
+      <p>A website living <em>inside</em> your browser (Google, Bing, DuckDuckGo) that keeps an enormous index of billions of pages to help you find answers.</p>
+    </div>
+  </div>
+
+  <h2>2. The Art of Keyword Searching</h2>
+  <p>Search engines do not need conversational chat words like "please" or "tell me". They hunt for <strong>Key Target Words</strong>:</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 45%;">❌ Weak Search (Too vague or full of filler)</th>
+        <th style="width: 55%;">✅ Smart Keyword Search (Specific & Direct)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>trees in ghana</code> (Millions of random results)</td>
+        <td><code>mangrove tree species coastal protection Ghana</code></td>
+      </tr>
+      <tr>
+        <td><code>how can our school get some clean drinking water?</code></td>
+        <td><code>ceramic pot water filtration schools Ghana</code></td>
+      </tr>
+      <tr>
+        <td><code>plastic</code></td>
+        <td><code>plastic sachet recycling projects Accra</code></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>3. The 4-Way Fact-Check Shield</h2>
+  <p>Anyone in the world can create a webpage and write completely false information. Before writing a fact into your Tech Club report, pass it through this 4-step shield:</p>
+
+  <!-- DIAGRAM: 4-WAY FACT CHECK SHIELD -->
+  <div class="diagram-container">
+    <svg width="680" height="120" viewBox="0 0 680 120" xmlns="http://www.w3.org/2000/svg">
+      <!-- Shield 1: WHO -->
+      <g transform="translate(20, 10)">
+        <polygon points="65,10 120,25 105,80 65,100 25,80 10,25" fill="#EEF2FF" stroke="#4361EE" stroke-width="2"/>
+        <text x="65" y="45" font-size="12" font-weight="bold" fill="#3A0CA3" text-anchor="middle">WHO?</text>
+        <text x="65" y="62" font-size="8.5" fill="#1E293B" text-anchor="middle">Who wrote this?</text>
+        <text x="65" y="74" font-size="8" fill="#64748B" text-anchor="middle">Is it an expert?</text>
+      </g>
+
+      <!-- Shield 2: WHEN -->
+      <g transform="translate(190, 10)">
+        <polygon points="65,10 120,25 105,80 65,100 25,80 10,25" fill="#ECFDF5" stroke="#2EC4B6" stroke-width="2"/>
+        <text x="65" y="45" font-size="12" font-weight="bold" fill="#065F46" text-anchor="middle">WHEN?</text>
+        <text x="65" y="62" font-size="8.5" fill="#1E293B" text-anchor="middle">When published?</text>
+        <text x="65" y="74" font-size="8" fill="#64748B" text-anchor="middle">Is it out of date?</text>
+      </g>
+
+      <!-- Shield 3: WHY -->
+      <g transform="translate(360, 10)">
+        <polygon points="65,10 120,25 105,80 65,100 25,80 10,25" fill="#FFF7ED" stroke="#F77F00" stroke-width="2"/>
+        <text x="65" y="45" font-size="12" font-weight="bold" fill="#9A3412" text-anchor="middle">WHY?</text>
+        <text x="65" y="62" font-size="8.5" fill="#1E293B" text-anchor="middle">Why does it exist?</text>
+        <text x="65" y="74" font-size="8" fill="#64748B" text-anchor="middle">To teach or sell?</text>
+      </g>
+
+      <!-- Shield 4: CHECK -->
+      <g transform="translate(530, 10)">
+        <polygon points="65,10 120,25 105,80 65,100 25,80 10,25" fill="#FEF2F2" stroke="#EF4444" stroke-width="2"/>
+        <text x="65" y="45" font-size="12" font-weight="bold" fill="#991B1B" text-anchor="middle">AGREE?</text>
+        <text x="65" y="62" font-size="8.5" fill="#1E293B" text-anchor="middle">Does another</text>
+        <text x="65" y="74" font-size="8" fill="#64748B" text-anchor="middle">source agree?</text>
+      </g>
+    </svg>
+    <div class="diagram-caption">Figure 6.3: The 4-Way Fact-Check Shield. If two independent reliable sources agree, the fact is trustworthy!</div>
+  </div>
+
+  <h2>4. Panic Button: Deceptive Pop-Ups & Flashing Traps</h2>
+  <div class="panic-box">
+    <div class="panic-title">🚨 WARNING: "YOU HAVE WON A FREE IPHONE & 5,000 CEDIS!"</div>
+    While browsing, you might see flashing boxes claiming you won a lottery or prize.
+    <br><strong>Rule:</strong> If you did not buy a ticket, you did not win! Never click these boxes. Never enter your name, school, or phone number. Immediately click the tiny <span style="color:#DC2626; font-weight:bold;">[ X ]</span> on the tab to close it!
+  </div>
+</div>
+
+<!-- ========================================== -->
+<!-- PAGE 5: GUIDED LAB - THE RESEARCHER        -->
+<!-- ========================================== -->
+<div class="page">
+  <div class="header-bar">
+    <div class="header-title">Guided Hands-On Lab: The Web Researcher</div>
+    <div class="badge">Session 6 • Page 5</div>
+  </div>
+
+  <h2>1. Lab Goal: Research a Real Ghanaian Environmental Topic</h2>
+  <p>Follow these 5 steps to conduct verified school research online:</p>
+
+  <div class="step-card">
+    <div class="step-num">1</div>
+    <div class="step-content">
+      <strong>Launch Your Web Browser:</strong>
+      <br>Double-click the <strong>Google Chrome</strong> or <strong>Microsoft Edge</strong> icon on your desktop (or find it via Start Menu).
+    </div>
+  </div>
+
+  <div class="step-card">
+    <div class="step-num">2</div>
+    <div class="step-content">
+      <strong>Direct Navigation Practice:</strong>
+      <br>Click directly inside the top <strong>Address Bar</strong>.
+      <br>Type: <code>https://en.wikipedia.org</code> and tap the <span class="kbd-key">Enter</span> key.
+      <br><em>Notice:</em> You went straight to the website without using a search engine!
+    </div>
+  </div>
+
+  <div class="step-card">
+    <div class="step-num">3</div>
+    <div class="step-content">
+      <strong>Open a New Tab:</strong>
+      <br>Press <span class="kbd-key">Ctrl</span> + <span class="kbd-key">T</span> to open a fresh tab.
+      <br>In the search box, type your research query: <code>Kakum national park canopy walkway wildlife Ghana</code> and press <span class="kbd-key">Enter</span>.
+    </div>
+  </div>
+
+  <div class="step-card">
+    <div class="step-num">4</div>
+    <div class="step-content">
+      <strong>Inspect Results:</strong>
+      <br>Do not click the first link blindly! Read the short summary text underneath each result title. Click a link ending in <code>.org</code>, <code>.edu</code>, or an official tourism board page.
+    </div>
+  </div>
+
+  <div class="step-card">
+    <div class="step-num">5</div>
+    <div class="step-content">
+      <strong>Record Your Findings:</strong> Fill in the research record sheet below based on what you discovered:
+    </div>
+  </div>
+
+  <h2>2. Student Research Record Sheet</h2>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 30%;">Research Field</th>
+        <th style="width: 70%;">Your Recorded Answer (Fill in below)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>1. Exact Web Address (URL)</strong></td>
+        <td><div class="answer-line" contenteditable="true">https://...</div></td>
+      </tr>
+      <tr>
+        <td><strong>2. Organization / Author</strong></td>
+        <td><div class="answer-line" contenteditable="true">e.g. Ghana Wildlife Society / UNESCO</div></td>
+      </tr>
+      <tr>
+        <td><strong>3. First Verified Fact</strong></td>
+        <td><div class="answer-line" contenteditable="true">e.g. Length or height of the walkway, animals protected...</div></td>
+      </tr>
+      <tr>
+        <td><strong>4. Second Verified Fact</strong></td>
+        <td><div class="answer-line" contenteditable="true">Write second fact here...</div></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>3. Useful Keyboard Shortcuts for Browsing</h2>
+  <div class="dual-grid">
+    <div class="dual-box">
+      <strong><span class="kbd-key">Ctrl</span> + <span class="kbd-key">T</span></strong> : Opens a brand-new Tab.
+    </div>
+    <div class="dual-box">
+      <strong><span class="kbd-key">Ctrl</span> + <span class="kbd-key">W</span></strong> : Closes the current active Tab.
+    </div>
+  </div>
+</div>
+
+<!-- ========================================== -->
+<!-- PAGE 6: REVIEW & SELF-ASSESSMENT           -->
+<!-- ========================================== -->
+<div class="page">
+  <div class="header-bar">
+    <div class="header-title">Session 6 Review & Verification</div>
+    <div class="badge">Session 6 • Page 6</div>
+  </div>
+
+  <h2>1. Match the Web Term to its Meaning</h2>
+  <p>Draw a line connecting each digital concept on the left to its definition on the right:</p>
+
+  <div style="display: flex; justify-content: space-between; margin: 20px 30px; font-size: 13px;">
+    <div style="display: flex; flex-direction: column; gap: 20px; font-weight: bold; font-family: monospace; font-size: 13.5px; color: var(--bih-purple);">
+      <div>[ Web Browser ]</div>
+      <div>[ Search Engine ]</div>
+      <div>[ URL ]</div>
+      <div>[ Undersea Cable ]</div>
+      <div>[ .gov.gh ]</div>
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 20px; color: var(--bih-dark);">
+      <div>&bull; &nbsp; Official domain extension for Ghanaian government institutions.</div>
+      <div>&bull; &nbsp; The program on your computer (Chrome, Edge) used to visit websites.</div>
+      <div>&bull; &nbsp; Physical glass fibers on the Atlantic seabed carrying internet data.</div>
+      <div>&bull; &nbsp; The unique address of a webpage (e.g. https://...).</div>
+      <div>&bull; &nbsp; A website (like Google) that helps you search the web using keywords.</div>
+    </div>
+  </div>
+
+  <h2>2. Written Review Questions</h2>
+  <p><strong>Question 1:</strong> You want to research how to purify river water using moringa seeds. Write three effective keywords you would type into a search engine:</p>
+  <div class="answer-line" contenteditable="true">Keywords: ________________________________________________________________</div>
+
+  <p><strong>Question 2:</strong> What does the tiny closed padlock icon in the browser address bar tell you?</p>
+  <div class="answer-line" contenteditable="true">Write your answer here...</div>
+
+  <p><strong>Question 3:</strong> Why is an educational website ending in <code>.edu.gh</code> generally more trustworthy for school research than a personal blog ending in <code>.com</code>?</p>
+  <div class="answer-line" contenteditable="true">Write your answer here...</div>
+
+  <h2>3. Self-Assessment & Mentor Sign-Off</h2>
+  <p>Tick the column that reflects your confidence at the end of Session 6:</p>
+  <table>
+    <thead>
+      <tr>
+        <th>Web Browsing & Research Competency</th>
+        <th style="width: 18%; text-align: center;">With Help</th>
+        <th style="width: 18%; text-align: center;">Almost Alone</th>
+        <th style="width: 18%; text-align: center;">All By Myself!</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1. I can explain the difference between the Internet and the World Wide Web.</td>
+        <td style="text-align: center;"><input type="radio" name="s6_1"></td>
+        <td style="text-align: center;"><input type="radio" name="s6_1"></td>
+        <td style="text-align: center;"><input type="radio" name="s6_1"></td>
+      </tr>
+      <tr>
+        <td>2. I can identify the difference between a Browser (Chrome) and a Search Engine (Google).</td>
+        <td style="text-align: center;"><input type="radio" name="s6_2"></td>
+        <td style="text-align: center;"><input type="radio" name="s6_2"></td>
+        <td style="text-align: center;"><input type="radio" name="s6_2"></td>
+      </tr>
+      <tr>
+        <td>3. I know how to type a direct URL into the address bar and use Back, Forward, and New Tab.</td>
+        <td style="text-align: center;"><input type="radio" name="s6_3"></td>
+        <td style="text-align: center;"><input type="radio" name="s6_3"></td>
+        <td style="text-align: center;"><input type="radio" name="s6_3"></td>
+      </tr>
+      <tr>
+        <td>4. I can use specific keywords to find educational information and spot deceptive ads.</td>
+        <td style="text-align: center;"><input type="radio" name="s6_4"></td>
+        <td style="text-align: center;"><input type="radio" name="s6_4"></td>
+        <td style="text-align: center;"><input type="radio" name="s6_4"></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div style="border-top: 1px solid var(--bih-border); margin-top: 25px; padding-top: 12px; display: flex; justify-content: space-between; font-size: 13px;">
+    <div><strong>Mentor Signature:</strong> _____________________________</div>
+    <div><strong>Date Completed:</strong> ____________________</div>
+  </div>
+</div>
+
+</body>
+</html>

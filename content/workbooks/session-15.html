@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>BIH Tech Club - Session 15: Online Safety & Digital Citizenship</title>
+  <style>
+    :root {
+      --bih-purple: #3A0CA3;
+      --bih-accent: #4361EE;
+      --bih-gold: #F77F00;
+      --bih-green: #2EC4B6;
+      --bih-red: #E63946;
+      --bih-dark: #1E1E24;
+      --bih-light: #F8F9FA;
+      --bih-border: #CED4DA;
+      --shield-blue: #0284C7;
+    }
+
+    * {
+      box-sizing: border-box;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    body {
+      background-color: #E9ECEF;
+      color: var(--bih-dark);
+      margin: 0;
+      padding: 20px;
+      line-height: 1.55;
+    }
+
+    .page {
+      background: #FFFFFF;
+      max-width: 860px;
+      margin: 20px auto;
+      padding: 42px 50px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+      border-radius: 8px;
+      page-break-after: always;
+    }
+
+    @media print {
+      body { background: white; padding: 0; }
+      .page { box-shadow: none; margin: 0; padding: 30px; max-width: 100%; border-radius: 0; }
+      .no-print { display: none; }
+    }
+
+    /* Header Bar */
+    .header-bar {
+      border-bottom: 3px solid var(--bih-purple);
+      padding-bottom: 10px;
+      margin-bottom: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .header-title {
+      font-size: 19px;
+      font-weight: 800;
+      color: var(--bih-purple);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .badge {
+      background: var(--bih-gold);
+      color: #FFFFFF;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+    }
+
+    /* Student Meta Box */
+    .student-meta {
+      border: 2px dashed var(--bih-border);
+      border-radius: 8px;
+      padding: 12px 18px;
+      background: var(--bih-light);
+      margin-bottom: 20px;
+    }
+
+    .meta-row {
+      display: flex;
+      gap: 15px;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+    .meta-row:last-child { margin-bottom: 0; }
+
+    .meta-label {
+      font-size: 12.5px;
+      font-weight: 700;
+      color: var(--bih-dark);
+      min-width: 125px;
+    }
+
+    .editable-line {
+      border-bottom: 1.5px solid var(--bih-purple);
+      flex-grow: 1;
+      padding: 2px 6px;
+      font-size: 13.5px;
+      font-weight: 600;
+      color: var(--bih-purple);
+      outline: none;
+      min-height: 20px;
+    }
+
+    /* Typography */
+    h1 { color: var(--bih-purple); font-size: 22px; margin-top: 0; margin-bottom: 8px; }
+    h2 { color: var(--bih-purple); font-size: 16px; margin-top: 20px; margin-bottom: 10px; border-left: 4px solid var(--bih-gold); padding-left: 8px; }
+    p { font-size: 13px; margin: 6px 0; }
+
+    /* Dual Grid Layout */
+    .dual-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin: 12px 0;
+    }
+
+    .dual-box {
+      border: 1px solid var(--bih-border);
+      border-radius: 8px;
+      padding: 12px 14px;
+      background: #FAFAFA;
+    }
+    .dual-box-title {
+      font-size: 13px;
+      font-weight: 800;
+      color: var(--bih-purple);
+      margin-bottom: 6px;
+      border-bottom: 1px solid var(--bih-border);
+      padding-bottom: 4px;
+    }
+
+    /* Callouts & Alert Boxes */
+    .callout {
+      background: #FFF3CD;
+      border-left: 4px solid var(--bih-gold);
+      padding: 10px 14px;
+      margin: 14px 0;
+      border-radius: 0 8px 8px 0;
+      font-size: 12.5px;
+    }
+    .callout-title {
+      font-weight: 800;
+      color: #856404;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 2px;
+    }
+
+    .panic-box {
+      background: #F8D7DA;
+      border-left: 4px solid var(--bih-red);
+      padding: 12px 14px;
+      margin: 14px 0;
+      border-radius: 0 8px 8px 0;
+      font-size: 12.5px;
+    }
+    .panic-title {
+      font-weight: 800;
+      color: #721C24;
+      margin-bottom: 4px;
+    }
+
+    /* Step Cards */
+    .step-card {
+      display: flex;
+      gap: 12px;
+      background: var(--bih-light);
+      border: 1px solid var(--bih-border);
+      border-radius: 6px;
+      padding: 10px 12px;
+      margin-bottom: 8px;
+      align-items: flex-start;
+    }
+
+    .step-num {
+      background: var(--bih-purple);
+      color: white;
+      font-size: 13px;
+      font-weight: 800;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .step-content { flex-grow: 1; font-size: 12.5px; }
+
+    /* Diagrams */
+    .diagram-container {
+      background: #FAFAFA;
+      border: 1px solid var(--bih-border);
+      border-radius: 8px;
+      padding: 12px;
+      margin: 14px 0;
+      text-align: center;
+    }
+    .diagram-caption {
+      font-size: 11px;
+      color: #6C757D;
+      margin-top: 6px;
+      font-style: italic;
+    }
+
+    /* Tables */
+    table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 12.5px; }
+    th { background: var(--bih-purple); color: white; text-align: left; padding: 7px 10px; }
+    td { border: 1px solid var(--bih-border); padding: 7px 10px; vertical-align: top; }
+    tr:nth-child(even) { background-color: var(--bih-light); }
+
+    /* Key Badge */
+    .kbd-key {
+      display: inline-block;
+      background: #F3F4F6;
+      border: 1.5px solid #9CA3AF;
+      border-bottom: 3px solid #6B7280;
+      border-radius: 4px;
+      padding: 1px 6px;
+      font-family: monospace;
+      font-size: 12px;
+      font-weight: 700;
+      color: #1F2937;
+      margin: 0 2px;
+    }
+
+    /* Interactive Inputs */
+    .answer-line {
+      min-height: 24px;
+      border-bottom: 1px dashed var(--bih-purple);
+      margin: 4px 0;
+      outline: none;
+      font-size: 13px;
+      color: var(--bih-dark);
+      padding: 2px 4px;
+    }
+
+    .checkbox-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 6px;
+      font-size: 12.5px;
+    }
+    .checkbox-item input { width: 15px; height: 15px; cursor: pointer; }
+  </style>
+</head>
+<body>
+
+<!-- ========================================== -->
+<!-- PAGE 1: DIGITAL CITIZENSHIP & P.I.I. SHIELD-->
+<!-- ========================================== -->
+<div class="page">
+  <div class="header-bar">
+    <div class="header-title">Bozoma Innovation Hub • Tech Club</div>
+    <div class="badge">Session 15 • Page 1</div>
+  </div>
+
+  <div class="student-meta">
+    <div class="meta-row">
+      <span class="meta-label">Learner Full Name:</span>
+      <div class="editable-line" contenteditable="true">Ama Mensah</div>
+      <span class="meta-label" style="min-width: 90px;">School:</span>
+      <div class="editable-line" contenteditable="true">Bozoma Model JHS</div>
+    </div>
+    <div class="meta-row">
+      <span class="meta-label">Assigned Workstation:</span>
+      <div class="editable-line" contenteditable="true" style="max-width: 140px;">PC-01</div>
+      <span class="meta-label" style="min-width: 50px;">Class:</span>
+      <div class="editable-line" contenteditable="true" style="max-width: 90px;">JHS 1</div>
+    </div>
+  </div>
+
+  <h1>Session 15: Online Safety & Digital Citizenship</h1>
+  <p>The internet connects you to incredible opportunities: coding tutorials, global libraries, and communication with mentors. But just like walking through a bustling city market or along a busy highway, you must know the safety rules to protect yourself and respect others.</p>
+
+  <h2>1. Plain Talk: What is a Digital Citizen?</h2>
+  <p>You are a citizen of Ghana: you follow laws, respect your elders, protect public property, and treat neighbors kindly. A <strong>Digital Citizen</strong> is simply someone who uses technology safely, responsibly, and respectfully. You represent yourself, your school, and your family whenever you are online!</p>
+
+  <h2>2. The P.I.I. Shield (Personally Identifiable Information)</h2>
+  <p><strong>Personally Identifiable Information (P.I.I.)</strong> is any private piece of data that can be used to track down where you live, where you study, or who you are. Keep your P.I.I. locked behind a protective shield at all times:</p>
+
+  <!-- DIAGRAM: THE PII PRIVACY SHIELD -->
+  <div class="diagram-container">
+    <svg width="680" height="175" viewBox="0 0 680 175" xmlns="http://www.w3.org/2000/svg">
+      <rect x="20" y="10" width="640" height="155" rx="6" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.5"/>
+
+      <!-- THE SHIELD (Center) -->
+      <g transform="translate(250, 15)">
+        <polygon points="90,10 170,25 150,110 90,140 30,110 10,25" fill="#3A0CA3" stroke="#1E1B4B" stroke-width="2"/>
+        <polygon points="90,18 160,30 142,102 90,128 38,102 20,30" fill="#4361EE"/>
+        <!-- Padlock symbol in shield -->
+        <rect x="75" y="65" width="30" height="24" rx="3" fill="#F77F00"/>
+        <path d="M 82,65 L 82,50 C 82,42 98,42 98,50 L 98,65" stroke="#FFFFFF" stroke-width="3" fill="none"/>
+        <circle cx="90" cy="77" r="2.5" fill="#FFFFFF"/>
+        <text x="90" y="105" font-size="9" font-weight="bold" fill="white" text-anchor="middle">SHIELDED</text>
+      </g>
+
+      <!-- LOCKED / PRIVATE ITEMS (Left side) -->
+      <g transform="translate(40, 25)">
+        <text x="0" y="16" font-size="11" font-weight="bold" fill="#DC2626">🚫 NEVER SHARE PUBLICLY:</text>
+        <text x="10" y="36" font-size="9.5" fill="#7F1D1D">&bull; Your Home Address or Town Area</text>
+        <text x="10" y="54" font-size="9.5" fill="#7F1D1D">&bull; Your Phone Number / MoMo Number</text>
+        <text x="10" y="72" font-size="9.5" fill="#7F1D1D">&bull; Secret Passwords or PIN codes</text>
+        <text x="10" y="90" font-size="9.5" fill="#7F1D1D">&bull; Daily Walking Route to School</text>
+        <text x="10" y="108" font-size="9.5" fill="#7F1D1D">&bull; Photos showing your School Badge</text>
+      </g>
+
+      <!-- SAFE ITEMS (Right side) -->
+      <g transform="translate(460, 25)">
+        <text x="0" y="16" font-size="11" font-weight="bold" fill="#047857">✅ SAFE TO SHARE:</text>
+        <text x="10" y="36" font-size="9.5" fill="#064E3B">&bull; Fun Avatars or Cartoon drawings</text>
+        <text x="10" y="54" font-size="9.5" fill="#064E3B">&bull; Fictional Usernames (e.g. TechStar24)</text>
+        <text x="10" y="72" font-size="9.5" fill="#064E3B">&bull; Favorite school subjects (Science/Math)</text>
+        <text x="10" y="90" font-size="9.5" fill="#064E3B">&bull; Your Scratch Coding creations</text>
+        <text x="10" y="108" font-size="9.5" fill="#064E3B">&bull; Community clean-up ideas</text>
+      </g>
+    </svg>
+    <div class="diagram-caption">Figure 15.0: The P.I.I. Shield. Lock away details that could locate or identify you in real life.</div>
+  </div>
+
+  <h2>3. The School Uniform Rule</h2>
+  <div class="callout">
+    <div class="callout-title">⚠️ WHY SCHOOL UNIFORMS POSE A RISK</div>
+    Your school uniform badge, crest, and colors broadcast your exact geographic location, town, and daily routine to total strangers. <strong>Never upload photos of yourself in school uniform to public social media or web forums without written permission from your parents and headteacher!</strong>
+  </div>
+</div>
+
+<!-- ========================================== -->
+<!-- PAGE 2: THE DIGITAL FOOTPRINT              -->
+<!-- ========================================== -->
+<div class="page">
+  <div class="header-bar">
+    <div class="header-title">The Digital Footprint: Wet Cement</div>
+    <div class="badge">Session 15 • Page 2</div>
+  </div>
+
+  <h2>1. What is a Digital Footprint?</h2>
+  <p>Whenever you search for a video, leave a comment, send a photo, or visit a webpage, you leave behind an invisible trail called your <strong>Digital Footprint</strong>.</p>
+  <p>Think of walking across a freshly paved sidewalk of <strong>wet cement</strong>: your feet leave deep impressions. When the cement hardens into solid rock, those footprints are frozen permanently. Even if you try to scrape them off later, the mark remains visible forever!</p>
+
+  <!-- DIAGRAM: DIGITAL FOOTPRINT IN WET CEMENT -->
+  <div class="diagram-container">
+    <svg width="680" height="150" viewBox="0 0 680 150" xmlns="http://www.w3.org/2000/svg">
+      <!-- Wet Cement Block -->
+      <rect x="30" y="15" width="620" height="120" rx="6" fill="#E2E8F0" stroke="#94A3B8" stroke-width="2"/>
+      <text x="50" y="35" font-size="10" font-weight="bold" fill="#64748B">THE INTERNET IS PERMANENT LIKE WET CEMENT</text>
+
+      <!-- Footprint Shape -->
+      <g transform="translate(180, 25)">
+        <!-- Heel -->
+        <ellipse cx="60" cy="80" rx="18" ry="14" fill="#CBD5E1"/>
+        <!-- Sole -->
+        <path d="M 42,75 C 38,45 45,25 60,20 C 75,25 82,45 78,75 Z" fill="#CBD5E1"/>
+        <!-- Toes -->
+        <circle cx="45" cy="12" r="5" fill="#CBD5E1"/>
+        <circle cx="55" cy="8" r="4.5" fill="#CBD5E1"/>
+        <circle cx="65" cy="8" r="4" fill="#CBD5E1"/>
+        <circle cx="74" cy="11" r="3.5" fill="#CBD5E1"/>
+        <circle cx="82" cy="16" r="3" fill="#CBD5E1"/>
+
+        <!-- Text labels inside footprint trail -->
+        <text x="60" y="42" font-size="7.5" font-weight="bold" fill="#334155" text-anchor="middle">Videos Watched</text>
+        <text x="60" y="55" font-size="7.5" font-weight="bold" fill="#334155" text-anchor="middle">Photos Uploaded</text>
+        <text x="60" y="68" font-size="7.5" font-weight="bold" fill="#334155" text-anchor="middle">Comments Left</text>
+        <text x="60" y="84" font-size="7.5" font-weight="bold" fill="#334155" text-anchor="middle">Chat Messages</text>
+      </g>
+
+      <!-- Explanatory Callout on Right -->
+      <g transform="translate(340, 30)">
+        <rect x="0" y="0" width="280" height="85" rx="4" fill="#FFFFFF" stroke="#3A0CA3" stroke-width="1.5"/>
+        <text x="15" y="22" font-size="10.5" font-weight="bold" fill="#3A0CA3">💡 THE SCREENSHOT FACTOR:</text>
+        <text x="15" y="40" font-size="9" fill="#1E293B">Even if you click "Delete" on a post,</text>
+        <text x="15" y="54" font-size="9" fill="#1E293B">someone else may have taken a</text>
+        <text x="15" y="68" font-size="9" font-weight="bold" fill="#C43E1C">Screenshot</text>
+        <text x="82" y="68" font-size="9" fill="#1E293B">in 1 second and saved it forever!</text>
+      </g>
+    </svg>
+    <div class="diagram-caption">Figure 15.1: Your Digital Footprint. Once information is online, you lose total control over where it travels.</div>
+  </div>
+
+  <h2>2. The "T.H.I.N.K." Filter Before You Post</h2>
+  <p>Before clicking Send, Post, or Comment, run your words through the 5-point <strong>T.H.I.N.K.</strong> test:</p>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 15%; text-align:center;">Letter</th>
+        <th style="width: 35%;">The Question to Ask Yourself</th>
+        <th style="width: 50%;">Why It Protects You and Others</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="text-align:center; font-weight:bold; font-size:16px; color:var(--bih-purple);">T</td>
+        <td>Is it <strong>TRUE</strong>?</td>
+        <td>Never forward unverified rumors or fake news on WhatsApp or web forums.</td>
+      </tr>
+      <tr>
+        <td style="text-align:center; font-weight:bold; font-size:16px; color:var(--bih-purple);">H</td>
+        <td>Is it <strong>HELPFUL</strong>?</td>
+        <td>Does your message build someone up or solve a real problem?</td>
+      </tr>
+      <tr>
+        <td style="text-align:center; font-weight:bold; font-size:16px; color:var(--bih-purple);">I</td>
+        <td>Is it <strong>INSPIRING</strong>?</td>
+        <td>Does it spread encouragement, knowledge, and community pride?</td>
+      </tr>
+      <tr>
+        <td style="text-align:center; font-weight:bold; font-size:16px; color:var(--bih-purple);">N</td>
+        <td>Is it <strong>NECESSARY</strong>?</td>
+        <td>Avoid posting spam, repetitive chatter, or unsolicited chain messages.</td>
+      </tr>
+      <tr>
+        <td style="text-align:center; font-weight:bold; font-size:16px; color:var(--bih-purple);">K</td>
+        <td>Is it <strong>KIND</strong>?</td>
+        <td>If you would not say it to your teacher's or mother's face, <strong>do not type it!</strong></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ========================================== -->
+<!-- PAGE 3: PASSWORD POWER & PASSPHRASES       -->
+<!-- ========================================== -->
+<div class="page">
+  <div class="header-bar">
+    <div class="header-title">Password Power: The Passphrase Revolution</div>
+    <div class="badge">Session 15 • Page 3</div>
+  </div>
+
+  <h2>1. Why Short Passwords Get Cracked in 2 Seconds</h2>
+  <p>Hackers do not sit and guess passwords by hand; they use automated computer programs that can test <strong>10 billion guesses every single second</strong>. Common passwords like <code>123456</code>, <code>ghana2026</code>, or <code>ama123</code> are cracked instantly!</p>
+
+  <h2>2. The Passphrase Secret: Length Beats Complexity</h2>
+  <p>Instead of trying to remember a painful, ugly password like <code>k$9!wP#2</code>, computer security experts recommend a <strong>Passphrase</strong>: three or four random, memorable words linked together into a long chain!</p>
+
+  <!-- DIAGRAM: WEAK PASSWORD VS UNBREAKABLE PASSPHRASE -->
+  <div class="diagram-container">
+    <svg width="680" height="155" viewBox="0 0 680 155" xmlns="http://www.w3.org/2000/svg">
+      <rect x="20" y="10" width="640" height="135" rx="6" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.5"/>
+
+      <!-- WEAK PASSWORD (Top) -->
+      <g transform="translate(40, 22)">
+        <rect x="0" y="0" width="220" height="40" rx="4" fill="#FEF2F2" stroke="#EF4444" stroke-width="1.5"/>
+        <text x="15" y="24" font-family="monospace" font-size="13" font-weight="bold" fill="#7F1D1D">kofi2026</text>
+        <text x="145" y="24" font-size="11" fill="#DC2626">❌ Weak</text>
+        
+        <path d="M 235,20 L 320,20" stroke="#DC2626" stroke-width="2"/>
+        <text x="330" y="24" font-size="10" font-weight="bold" fill="#DC2626">Cracked by computers in 0.2 seconds!</text>
+      </g>
+
+      <!-- STRONG PASSPHRASE (Bottom) -->
+      <g transform="translate(40, 75)">
+        <rect x="0" y="0" width="380" height="45" rx="4" fill="#ECFDF5" stroke="#10B981" stroke-width="2"/>
+        <text x="15" y="27" font-family="monospace" font-size="13" font-weight="bold" fill="#064E3B">BlueSkyPlantainWalk#4</text>
+        <text x="290" y="27" font-size="11" font-weight="bold" fill="#047857">&#10004; Unbreakable</text>
+
+        <path d="M 395,22 L 460,22" stroke="#10B981" stroke-width="2"/>
+        <text x="470" y="20" font-size="9.5" font-weight="bold" fill="#047857">Takes a supercomputer</text>
+        <text x="470" y="34" font-size="9.5" font-weight="bold" fill="#047857">10,000 YEARS to crack!</text>
+      </g>
+
+      <text x="340" y="136" font-size="9.5" font-weight="bold" fill="#3A0CA3" text-anchor="middle">Easy for your human brain to remember; impossible for a computer to guess!</text>
+    </svg>
+    <div class="diagram-caption">Figure 15.2: The Passphrase Revolution. 4 random words strung together provide impenetrable security.</div>
+  </div>
+
+  <h2>3. The Golden Password Pledge</h2>
+  <div class="panic-box">
+    <div class="panic-title">🔒 NEVER REVEAL A PASSWORD TO ANYONE!</div>
+    <ul style="margin: 4px 0 0 15px; padding: 0;">
+      <li><strong>Never</strong> write your real password on this workbook, desk, or wall.</li>
+      <li><strong>Never</strong> whisper your password to your best friend or classmate. (Friendships change; your security stays forever!).</li>
+      <li><strong>Never</strong> tell your password to someone claiming to be "IT Support" or "MTN Customer Service". Real companies will <strong>NEVER</strong> ask for your password or PIN!</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ========================================== -->
+<!-- PAGE 4: PHISHING & THE S.T.O.P. METHOD     -->
+<!-- ========================================== -->
+<div class="page">
+  <div class="header-bar">
+    <div class="header-title">Spotting Scams: The S.T.O.P. Method</div>
+    <div class="badge">Session 15 • Page 4</div>
+  </div>
+
+  <h2>1. What is "Phishing"?</h2>
+  <p>Think of a fisherman sitting by Lake Volta with a hook and worm bait. He drops the fake bait into the water hoping a fish will bite. In the digital world, cyber-criminals send fake emails, SMS messages, or website pop-ups (fake bait) hoping you will "bite" by clicking a link and typing your passwords, bank details, or Mobile Money PIN!</p>
+
+  <!-- DIAGRAM: DECONSTRUCTING A PHISHING ATTACK -->
+  <div class="diagram-container">
+    <svg width="680" height="175" viewBox="0 0 680 175" xmlns="http://www.w3.org/2000/svg">
+      <rect x="25" y="10" width="630" height="155" rx="6" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+      
+      <!-- Fake Message Box -->
+      <g transform="translate(45, 25)">
+        <text x="0" y="16" font-size="10" font-weight="bold" fill="#9A3412">FAKE SMS / EMAIL MESSAGE:</text>
+        
+        <!-- Suspicious Sender -->
+        <rect x="0" y="24" width="340" height="20" fill="#FFFFFF" stroke="#CBD5E1"/>
+        <text x="8" y="38" font-size="9" fill="#1E293B">From: <strong>service@momo-security-alert88.xyz</strong></text>
+
+        <!-- Message Body -->
+        <rect x="0" y="48" width="340" height="65" fill="#FFFFFF" stroke="#CBD5E1"/>
+        <text x="8" y="64" font-size="8.5" fill="#1E293B">URGENT! Your Mobile Money account will be</text>
+        <text x="8" y="78" font-size="8.5" fill="#DC2626" font-weight="bold">BLOCKED IN 15 MINUTES due to fraud!</text>
+        <text x="8" y="94" font-size="8.5" fill="#0284C7" text-decoration="underline">Click: http://momo-verify-pin-now.com</text>
+        <text x="8" y="106" font-size="8.5" fill="#1E293B">and type your secret 4-digit PIN to unlock.</text>
+      </g>
+
+      <!-- Red Flag Pointers on Right -->
+      <g transform="translate(415, 25)">
+        <text x="0" y="16" font-size="10.5" font-weight="bold" fill="#DC2626">🚩 THE 4 DEADLY WARNING SIGNS:</text>
+        <text x="0" y="38" font-size="9" fill="#7F1D1D"><strong>1. Fake Sender:</strong> Strange address with numbers & .xyz.</text>
+        <text x="0" y="62" font-size="9" fill="#7F1D1D"><strong>2. False Urgency:</strong> Threatens you with "15 MINUTES!".</text>
+        <text x="0" y="86" font-size="9" fill="#7F1D1D"><strong>3. Dangerous Link:</strong> Unofficial, unencrypted web link.</text>
+        <text x="0" y="106" font-size="9" fill="#7F1D1D"><strong>4. PIN / Password Demand:</strong> Real banks NEVER ask this!</text>
+      </g>
+    </svg>
+    <div class="diagram-caption">Figure 15.3: Anatomy of a Phishing Attack. Scammers use panic, fear, and fake urgency to trick you.</div>
+  </div>
+
+  <h2>2. The S.T.O.P. Protocol When Facing Any Strange Message</h2>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 15%; text-align:center;">Action</th>
+        <th style="width: 35%;">What You Must Check</th>
+        <th style="width: 50%;">How to React Safely</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="text-align:center; font-weight:bold; color:var(--bih-purple);">S</td>
+        <td><strong>SUSPICIOUS SENDER</strong></td>
+        <td>Look closely at the email or phone number. Is it an official address or a strange string of random letters and numbers?</td>
+      </tr>
+      <tr>
+        <td style="text-align:center; font-weight:bold; color:var(--bih-purple);">T</td>
+        <td><strong>TOO GOOD TO BE TRUE</strong></td>
+        <td>Did you win 50,000 Cedis in a contest you never entered? If it sounds too good to be true, it is 100% a scam!</td>
+      </tr>
+      <tr>
+        <td style="text-align:center; font-weight:bold; color:var(--bih-purple);">O</td>
+        <td><strong>OVER-URGENT TONE</strong></td>
+        <td>Scammers use panic (<em>"Act in 5 minutes or lose everything!"</em>) to stop your brain from thinking calmly.</td>
+      </tr>
+      <tr>
+        <td style="text-align:center; font-weight:bold; color:var(--bih-purple);">P</td>
+        <td><strong>PASSWORD / PIN REQUEST</strong></td>
+        <td><strong>STOP!</strong> No legitimate company or teacher will ever ask you to hand over your secret PIN or password.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ========================================== -->
+<!-- PAGE 5: GUIDED LAB - THE CYBER DEFENDER    -->
+<!-- ========================================== -->
+<div class="page">
+  <div class="header-bar">
+    <div class="header-title">Guided Hands-On Lab: Cyber Defense Squad</div>
+    <div class="badge">Session 15 • Page 5</div>
+  </div>
+
+  <h2>1. Lab Mission 1: The Profile Sanitizer</h2>
+  <p>Below is a fictional student profile posted on a public website. Read it carefully. <strong>Draw a line through every piece of dangerous Personally Identifiable Information (P.I.I.)</strong> that should be erased immediately:</p>
+
+  <div style="border: 2px dashed #DC2626; border-radius: 6px; padding: 16px; background: #FEF2F2; font-size: 13px; line-height: 1.8; margin: 15px 0;">
+    "Hello everyone! My name is <u>Kofi Boateng</u> and I am 13 years old. I live in <u>House Number B42, Dansoman, near the round-about</u>. I am a Form 1 student at <u>Bozoma Model JHS</u> and my mother's MTN number is <u>024-555-1234</u>. Every morning at 6:30 AM I walk alone along High Street to school. I love science, playing football, and my dream is to become a software engineer in Ghana!"
+  </div>
+
+  <p><strong>Safe Information Left Over:</strong> Age (13), loves science, plays football, dreams of software engineering. (Safe because nobody can locate or kidnap him with these!).</p>
+
+  <h2>2. Lab Mission 2: Design a Safe Passphrase (PRACTICE ONLY)</h2>
+  <p>Invent a safe 4-word passphrase using random objects you see around your classroom. <em>(Remember: this is just a classroom exercise; never use this exact phrase for your real accounts!)</em>:</p>
+
+  <div style="display: flex; gap: 8px; margin: 15px 0;">
+    <div style="flex: 1; border: 1.5px solid var(--bih-purple); border-radius: 6px; padding: 10px; background: var(--bih-light); text-align: center;">
+      <small style="color: #64748B;">Word 1 (Color)</small>
+      <div class="answer-line" contenteditable="true" style="text-align:center; font-weight:bold;">Green</div>
+    </div>
+    <div style="flex: 1; border: 1.5px solid var(--bih-gold); border-radius: 6px; padding: 10px; background: var(--bih-light); text-align: center;">
+      <small style="color: #64748B;">Word 2 (Food)</small>
+      <div class="answer-line" contenteditable="true" style="text-align:center; font-weight:bold;">Waakye</div>
+    </div>
+    <div style="flex: 1; border: 1.5px solid var(--bih-green); border-radius: 6px; padding: 10px; background: var(--bih-light); text-align: center;">
+      <small style="color: #64748B;">Word 3 (Action)</small>
+      <div class="answer-line" contenteditable="true" style="text-align:center; font-weight:bold;">Jumping</div>
+    </div>
+    <div style="flex: 1; border: 1.5px solid #0284C7; border-radius: 6px; padding: 10px; background: var(--bih-light); text-align: center;">
+      <small style="color: #64748B;">Word 4 + Symbol</small>
+      <div class="answer-line" contenteditable="true" style="text-align:center; font-weight:bold;">Stars#7</div>
+    </div>
+  </div>
+
+  <h2>3. The Digital Citizen's Safety Pledge</h2>
+  <div class="checkbox-item"><input type="checkbox"> I will keep my home address, passwords, and phone numbers shielded at all times.</div>
+  <div class="checkbox-item"><input type="checkbox"> I will apply the T.H.I.N.K. test before posting or commenting online.</div>
+  <div class="checkbox-item"><input type="checkbox"> I will ask permission (consent) before photographing or filming my classmates.</div>
+  <div class="checkbox-item"><input type="checkbox"> If an uncomfortable message, scam, or cyberbully targets me, I will immediately inform my mentor or teacher.</div>
+</div>
+
+<!-- ========================================== -->
+<!-- PAGE 6: REVIEW & SELF-ASSESSMENT           -->
+<!-- ========================================== -->
+<div class="page">
+  <div class="header-bar">
+    <div class="header-title">Session 15 Review & Verification</div>
+    <div class="badge">Session 15 • Page 6</div>
+  </div>
+
+  <h2>1. Scenario Decisions: Safe or Risky?</h2>
+  <p>Read each situation and tick whether the action is <strong>Safe</strong> or <strong>Risky</strong>:</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 65%;">Online Scenario</th>
+        <th style="width: 17%; text-align:center;">Safe Choice</th>
+        <th style="width: 18%; text-align:center;">Risky Trap!</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>A gaming site asks for your home address and school name to claim a free avatar.</td>
+        <td style="text-align:center;"><input type="radio" name="sc1"></td>
+        <td style="text-align:center;"><input type="radio" name="sc1"></td>
+      </tr>
+      <tr>
+        <td>You take a photo of your partner's science drawing after asking them: <em>"May I take a photo to show my sister?"</em></td>
+        <td style="text-align:center;"><input type="radio" name="sc2"></td>
+        <td style="text-align:center;"><input type="radio" name="sc2"></td>
+      </tr>
+      <tr>
+        <td>You receive a WhatsApp message from an unknown number with a link claiming: <em>"Free 50GB Data for all Ghanaian students! Click now!"</em></td>
+        <td style="text-align:center;"><input type="radio" name="sc3"></td>
+        <td style="text-align:center;"><input type="radio" name="sc3"></td>
+      </tr>
+      <tr>
+        <td>Your best friend asks you to give them your school portal password so they can check homework for you.</td>
+        <td style="text-align:center;"><input type="radio" name="sc4"></td>
+        <td style="text-align:center;"><input type="radio" name="sc4"></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>2. Written Review Questions</h2>
+  <p><strong>Question 1:</strong> Why is the internet compared to "wet cement" when it comes to your digital footprint?</p>
+  <div class="answer-line" contenteditable="true">Write your answer here...</div>
+  <div class="answer-line" contenteditable="true"></div>
+
+  <p><strong>Question 2:</strong> What are the four warning signs of the <strong>S.T.O.P.</strong> phishing method?</p>
+  <div class="answer-line" contenteditable="true">S: ___________________________________ &nbsp;&nbsp; T: ___________________________________</div>
+  <div class="answer-line" contenteditable="true">O: ___________________________________ &nbsp;&nbsp; P: ___________________________________</div>
+
+  <h2>3. Self-Assessment & Mentor Sign-Off</h2>
+  <p>Tick the column that reflects your confidence at the end of Level 8 (Online Safety):</p>
+  <table>
+    <thead>
+      <tr>
+        <th>Digital Safety & Citizenship Competency</th>
+        <th style="width: 18%; text-align: center;">With Help</th>
+        <th style="width: 18%; text-align: center;">Almost Alone</th>
+        <th style="width: 18%; text-align: center;">All By Myself!</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1. I can identify and protect Personally Identifiable Information (P.I.I.).</td>
+        <td style="text-align: center;"><input type="radio" name="s15_1"></td>
+        <td style="text-align: center;"><input type="radio" name="s15_1"></td>
+        <td style="text-align: center;"><input type="radio" name="s15_1"></td>
+      </tr>
+      <tr>
+        <td>2. I understand that digital footprints are permanent and apply the T.H.I.N.K. test.</td>
+        <td style="text-align: center;"><input type="radio" name="s15_2"></td>
+        <td style="text-align: center;"><input type="radio" name="s15_2"></td>
+        <td style="text-align: center;"><input type="radio" name="s15_2"></td>
+      </tr>
+      <tr>
+        <td>3. I know why 4-word passphrases beat weak passwords and keep them secret.</td>
+        <td style="text-align: center;"><input type="radio" name="s15_3"></td>
+        <td style="text-align: center;"><input type="radio" name="s15_3"></td>
+        <td style="text-align: center;"><input type="radio" name="s15_3"></td>
+      </tr>
+      <tr>
+        <td>4. I can spot phishing scams using S.T.O.P. and know how to report them safely.</td>
+        <td style="text-align: center;"><input type="radio" name="s15_4"></td>
+        <td style="text-align: center;"><input type="radio" name="s15_4"></td>
+        <td style="text-align: center;"><input type="radio" name="s15_4"></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div style="border-top: 1px solid var(--bih-border); margin-top: 25px; padding-top: 12px; display: flex; justify-content: space-between; font-size: 13px;">
+    <div><strong>Mentor Signature:</strong> _____________________________</div>
+    <div><strong>Date Completed:</strong> ____________________</div>
+  </div>
+</div>
+
+</body>
+</html>

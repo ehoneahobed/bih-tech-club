@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>BIH Tech Club - Session 2: Keyboard Mastery & First Typing</title>
+  <style>
+    :root {
+      --bih-purple: #3A0CA3;
+      --bih-accent: #4361EE;
+      --bih-gold: #F77F00;
+      --bih-green: #2EC4B6;
+      --bih-red: #E63946;
+      --bih-dark: #1E1E24;
+      --bih-light: #F8F9FA;
+      --bih-border: #CED4DA;
+      --key-base: #374151;
+      --key-cap: #F3F4F6;
+    }
+
+    * {
+      box-sizing: border-box;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    body {
+      background-color: #E9ECEF;
+      color: var(--bih-dark);
+      margin: 0;
+      padding: 20px;
+      line-height: 1.55;
+    }
+
+    .page {
+      background: #FFFFFF;
+      max-width: 860px;
+      margin: 20px auto;
+      padding: 42px 50px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+      border-radius: 8px;
+      page-break-after: always;
+    }
+
+    @media print {
+      body { background: white; padding: 0; }
+      .page { box-shadow: none; margin: 0; padding: 30px; max-width: 100%; border-radius: 0; }
+      .no-print { display: none; }
+    }
+
+    /* Header Bar */
+    .header-bar {
+      border-bottom: 3px solid var(--bih-purple);
+      padding-bottom: 10px;
+      margin-bottom: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .header-title {
+      font-size: 19px;
+      font-weight: 800;
+      color: var(--bih-purple);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .badge {
+      background: var(--bih-gold);
+      color: #FFFFFF;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+    }
+
+    /* Student Meta Box */
+    .student-meta {
+      border: 2px dashed var(--bih-border);
+      border-radius: 8px;
+      padding: 12px 18px;
+      background: var(--bih-light);
+      margin-bottom: 20px;
+    }
+
+    .meta-row {
+      display: flex;
+      gap: 15px;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+    .meta-row:last-child { margin-bottom: 0; }
+
+    .meta-label {
+      font-size: 12.5px;
+      font-weight: 700;
+      color: var(--bih-dark);
+      min-width: 125px;
+    }
+
+    .editable-line {
+      border-bottom: 1.5px solid var(--bih-purple);
+      flex-grow: 1;
+      padding: 2px 6px;
+      font-size: 13.5px;
+      font-weight: 600;
+      color: var(--bih-purple);
+      outline: none;
+      min-height: 20px;
+    }
+
+    /* Typography */
+    h1 { color: var(--bih-purple); font-size: 22px; margin-top: 0; margin-bottom: 8px; }
+    h2 { color: var(--bih-purple); font-size: 16px; margin-top: 20px; margin-bottom: 10px; border-left: 4px solid var(--bih-gold); padding-left: 8px; }
+    p { font-size: 13px; margin: 6px 0; }
+
+    /* Dual Grid */
+    .dual-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin: 12px 0;
+    }
+
+    .dual-box {
+      border: 1px solid var(--bih-border);
+      border-radius: 8px;
+      padding: 12px 14px;
+      background: #FAFAFA;
+    }
+    .dual-box-title {
+      font-size: 13px;
+      font-weight: 800;
+      color: var(--bih-purple);
+      margin-bottom: 6px;
+      border-bottom: 1px solid var(--bih-border);
+      padding-bottom: 4px;
+    }
+
+    /* Callouts & Alert Boxes */
+    .callout {
+      background: #FFF3CD;
+      border-left: 4px solid var(--bih-gold);
+      padding: 10px 14px;
+      margin: 14px 0;
+      border-radius: 0 8px 8px 0;
+      font-size: 12.5px;
+    }
+    .callout-title {
+      font-weight: 800;
+      color: #856404;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 2px;
+    }
+
+    .panic-box {
+      background: #F8D7DA;
+      border-left: 4px solid var(--bih-red);
+      padding: 12px 14px;
+      margin: 14px 0;
+      border-radius: 0 8px 8px 0;
+      font-size: 12.5px;
+    }
+    .panic-title {
+      font-weight: 800;
+      color: #721C24;
+      margin-bottom: 4px;
+    }
+
+    /* Step Cards */
+    .step-card {
+      display: flex;
+      gap: 12px;
+      background: var(--bih-light);
+      border: 1px solid var(--bih-border);
+      border-radius: 6px;
+      padding: 10px 12px;
+      margin-bottom: 8px;
+      align-items: flex-start;
+    }
+
+    .step-num {
+      background: var(--bih-purple);
+      color: white;
+      font-size: 13px;
+      font-weight: 800;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .step-content { flex-grow: 1; font-size: 12.5px; }
+
+    /* Diagrams */
+    .diagram-container {
+      background: #FAFAFA;
+      border: 1px solid var(--bih-border);
+      border-radius: 8px;
+      padding: 12px;
+      margin: 14px 0;
+      text-align: center;
+    }
+    .diagram-caption {
+      font-size: 11px;
+      color: #6C757D;
+      margin-top: 6px;
+      font-style: italic;
+    }
+
+    /* Tables */
+    table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 12.5px; }
+    th { background: var(--bih-purple); color: white; text-align: left; padding: 7px 10px; }
+    td { border: 1px solid var(--bih-border); padding: 7px 10px; vertical-align: top; }
+    tr:nth-child(even) { background-color: var(--bih-light); }
+
+    /* Key Visuals (Inline) */
+    .kbd-key {
+      display: inline-block;
+      background: #F3F4F6;
+      border: 1.5px solid #9CA3AF;
+      border-bottom: 3px solid #6B7280;
+      border-radius: 4px;
+      padding: 1px 6px;
+      font-family: monospace;
+      font-size: 12px;
+      font-weight: 700;
+      color: #1F2937;
+      margin: 0 2px;
+    }
+
+    /* Interactive Inputs */
+    .answer-line {
+      min-height: 24px;
+      border-bottom: 1px dashed var(--bih-purple);
+      margin: 4px 0;
+      outline: none;
+      font-size: 13px;
+      color: var(--bih-dark);
+      padding: 2px 4px;
+    }
+
+    .checkbox-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 6px;
+      font-size: 12.5px;
+    }
+    .checkbox-item input { width: 15px; height: 15px; cursor: pointer; }
+  </style>
+</head>
+<body>
+
+<!-- ========================================== -->
+<!-- PAGE 1: RECAP & KEYBOARD OVERVIEW          -->
+<!-- ========================================== -->
+<div class="page">
+  <div class="header-bar">
+    <div class="header-title">Bozoma Innovation Hub • Tech Club</div>
+    <div class="badge">Session 2 • Page 1</div>
+  </div>
+
+  <div class="student-meta">
+    <div class="meta-row">
+      <span class="meta-label">Learner Full Name:</span>
+      <div class="editable-line" contenteditable="true">Ama Mensah</div>
+    </div>
+    <div class="meta-row">
+      <span class="meta-label">School:</span>
+      <div class="editable-line" contenteditable="true">Bozoma Model School</div>
+      <span class="meta-label" style="min-width: 50px;">Class:</span>
+      <div class="editable-line" contenteditable="true" style="max-width: 90px;">JHS 1</div>
+    </div>
+    <div class="meta-row">
+      <span class="meta-label">Workstation Device:</span>
+      <div class="editable-line" contenteditable="true" style="max-width: 180px;">[ ] Desktop &nbsp; [ ] Laptop</div>
+      <span class="meta-label" style="min-width: 70px;">Station #:</span>
+      <div class="editable-line" contenteditable="true" style="max-width: 90px;">PC-01</div>
+    </div>
+  </div>
+
+  <h1>Session 2: Keyboard Mastery & First Typing</h1>
+  <p>In Session 1, you learned how to start up your computer safely and guide the pointer using the mouse or touchpad. Today, we conquer the <strong>Keyboard</strong>—the tool you use to write stories, calculate numbers, and give commands to the machine.</p>
+
+  <h2>1. Ghanaian Wisdom: "Tikro nkɔ agyina" (One finger cannot lift a calabash)</h2>
+  <p>When beginners see a keyboard, they usually start with "chicken pecking"—using a single index finger to search for letters slowly. Today, you will learn how to rest <strong>all 10 fingers</strong> on the keys so typing becomes fast, relaxed, and natural.</p>
+
+  <h2>2. Desktop Keyboard vs. Laptop Keyboard</h2>
+  <div class="dual-grid">
+    <div class="dual-box">
+      <div class="dual-box-title">🖥️ Desktop Keyboard (Full-Sized)</div>
+      <p>Has wide spacing between keys. On the far right side, it includes a separate <strong>Numeric Keypad</strong> (a block of number keys like a calculator). Connects with a USB wire.</p>
+    </div>
+    <div class="dual-box">
+      <div class="dual-box-title">💻 Laptop Keyboard (Compact)</div>
+      <p>Built directly into the laptop chassis. To save space, the number keys run in a single row across the top, and it includes a special <span class="kbd-key">Fn</span> (Function) key to adjust screen brightness and volume.</p>
+    </div>
+  </div>
+
+  <h2>3. The Five Major Keyboard Zones</h2>
+  <!-- DIAGRAM: KEYBOARD COLOR-CODED ZONES -->
+  <div class="diagram-container">
+    <svg width="740" height="185" viewBox="0 0 740 185" xmlns="http://www.w3.org/2000/svg">
+      <!-- Outer Base Plate -->
+      <rect x="10" y="10" width="720" height="165" rx="8" fill="#1F2937" stroke="#111827" stroke-width="2"/>
+
+      <!-- ZONE 1: Function Keys (Top row - Purple) -->
+      <rect x="25" y="20" width="460" height="22" rx="3" fill="#6366F1" opacity="0.85"/>
+      <text x="255" y="35" font-size="10" font-weight="bold" fill="white" text-anchor="middle">FUNCTION ZONE (Esc, F1 through F12)</text>
+
+      <!-- ZONE 2: Alphanumeric Main Block (Teal) -->
+      <rect x="25" y="47" width="460" height="118" rx="4" fill="#2EC4B6" opacity="0.85"/>
+      <text x="255" y="90" font-size="14" font-weight="bold" fill="white" text-anchor="middle">MAIN ALPHANUMERIC ZONE</text>
+      <text x="255" y="108" font-size="10" fill="#E6FFFA" text-anchor="middle">Letters (A-Z), Top Numbers (0-9), Punctuation & Spacebar</text>
+
+      <!-- ZONE 3: Navigation & Arrow Keys (Orange) -->
+      <rect x="495" y="47" width="80" height="118" rx="4" fill="#F77F00" opacity="0.85"/>
+      <text x="535" y="80" font-size="10" font-weight="bold" fill="white" text-anchor="middle">NAVIGATION</text>
+      <text x="535" y="95" font-size="8.5" fill="white" text-anchor="middle">PrntScrn, Delete</text>
+      <!-- Arrow mockup -->
+      <rect x="525" y="115" width="20" height="14" rx="2" fill="white" opacity="0.9"/>
+      <text x="535" y="125" font-size="9" font-weight="bold" fill="#1F2937" text-anchor="middle">&uarr;</text>
+      <rect x="502" y="132" width="20" height="14" rx="2" fill="white" opacity="0.9"/>
+      <text x="512" y="142" font-size="9" font-weight="bold" fill="#1F2937" text-anchor="middle">&larr;</text>
+      <rect x="525" y="132" width="20" height="14" rx="2" fill="white" opacity="0.9"/>
+      <text x="535" y="142" font-size="9" font-weight="bold" fill="#1F2937" text-anchor="middle">&darr;</text>
+      <rect x="548" y="132" width="20" height="14" rx="2" fill="white" opacity="0.9"/>
+      <text x="558" y="142" font-size="9" font-weight="bold" fill="#1F2937" text-anchor="middle">&rarr;</text>
+
+      <!-- ZONE 4: Numeric Keypad (Green - desktop only / shared on laptop) -->
+      <rect x="585" y="20" width="130" height="145" rx="4" fill="#10B981" opacity="0.85"/>
+      <text x="650" y="75" font-size="10" font-weight="bold" fill="white" text-anchor="middle">NUMERIC KEYPAD</text>
+      <text x="650" y="92" font-size="8.5" fill="#ECFDF5" text-anchor="middle">(Calculator Layout)</text>
+      <text x="650" y="110" font-size="8" fill="#D1FAE5" text-anchor="middle">*On Desktop keyboards</text>
+    </svg>
+    <div class="diagram-caption">Figure 2.0: Major zones of a computer keyboard. 90% of your daily schoolwork happens in the Main Alphanumeric Zone.</div>
+  </div>
+</div>
+
+<!-- ========================================== -->
+<!-- PAGE 2: ESSENTIAL ACTION KEYS             -->
+<!-- ========================================== -->
+<div class="page">
+  <div class="header-bar">
+    <div class="header-title">Essential Command Keys</div>
+    <div class="badge">Session 2 • Page 2</div>
+  </div>
+
+  <h2>1. Keys That Control Your Writing</h2>
+  <p>Before typing words, you must know what the special control keys do:</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 22%;">Key on Board</th>
+        <th style="width: 38%;">What Happens When You Press It</th>
+        <th style="width: 40%;">Everyday Life Analogy</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="kbd-key">Spacebar</span><br><small>(Long bar at bottom)</small></td>
+        <td>Inserts one empty space between words. Tap once with either thumb.</td>
+        <td>Like lifting your pencil to leave a gap between words on paper.</td>
+      </tr>
+      <tr>
+        <td><span class="kbd-key">Enter &crarr;</span><br><small>(Large key on right)</small></td>
+        <td>Drops your cursor down to start a <strong>brand-new line</strong>. Also confirms an action.</td>
+        <td>Like moving down to the next blue line in your exercise notebook.</td>
+      </tr>
+      <tr>
+        <td><span class="kbd-key">Backspace &larr;</span><br><small>(Top-right of main block)</small></td>
+        <td>Erases the character directly to the <strong>LEFT</strong> of the blinking cursor.</td>
+        <td>Like an eraser wiping out the last letter you just wrote.</td>
+      </tr>
+      <tr>
+        <td><span class="kbd-key">Delete</span><br><small>(Near navigation arrows)</small></td>
+        <td>Erases the character directly to the <strong>RIGHT</strong> of the blinking cursor.</td>
+        <td>Like pulling forward the next letter and wiping it out.</td>
+      </tr>
+      <tr>
+        <td><span class="kbd-key">Caps Lock</span><br><small>(Left side middle)</small></td>
+        <td>Locks typing into <strong>ALL CAPITAL LETTERS</strong>. An indicator light turns on.</td>
+        <td>Like turning on a megaphone: EVERYTHING BECOMES BIG!</td>
+      </tr>
+      <tr>
+        <td><span class="kbd-key">Shift &uarr;</span><br><small>(Left and Right sides)</small></td>
+        <td><strong>Hold down Shift</strong> while tapping a letter to make just <strong>one</strong> capital letter.</td>
+        <td>Like using your thumb to capitalize the first letter of a sentence or name.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>2. Backspace vs. Delete: The Great Confusion</h2>
+  <p>Beginners often mix these up. Study this diagram closely:</p>
+
+  <!-- DIAGRAM: BACKSPACE VS DELETE -->
+  <div class="diagram-container">
+    <svg width="640" height="135" viewBox="0 0 640 135" xmlns="http://www.w3.org/2000/svg">
+      <rect x="20" y="15" width="600" height="105" rx="8" fill="#F8F9FA" stroke="#D1D5DB" stroke-width="1.5"/>
+
+      <!-- Example Word: G H A | N A -->
+      <g transform="translate(180, 35)">
+        <text x="20" y="35" font-family="monospace" font-size="34" font-weight="bold" fill="#1F2937">G H A</text>
+        <!-- Blinking cursor -->
+        <line x1="145" y1="5" x2="145" y2="45" stroke="#E63946" stroke-width="3.5"/>
+        <text x="160" y="35" font-family="monospace" font-size="34" font-weight="bold" fill="#1F2937">N A</text>
+      </g>
+
+      <!-- Backspace Arrow -->
+      <path d="M 310,25 Q 260,10 220,25" stroke="#3A0CA3" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+      <polygon points="215,26 225,21 223,30" fill="#3A0CA3"/>
+      <rect x="180" y="8" width="105" height="20" rx="3" fill="#3A0CA3"/>
+      <text x="232" y="22" font-size="10" font-weight="bold" fill="white" text-anchor="middle">&larr; Backspace erases "A"</text>
+
+      <!-- Delete Arrow -->
+      <path d="M 340,25 Q 390,10 430,25" stroke="#F77F00" stroke-width="2" fill="none"/>
+      <polygon points="435,26 425,30 427,21" fill="#F77F00"/>
+      <rect x="360" y="8" width="105" height="20" rx="3" fill="#F77F00"/>
+      <text x="412" y="22" font-size="10" font-weight="bold" fill="white" text-anchor="middle">Delete erases "N" &rarr;</text>
+
+      <!-- Explanation note -->
+      <text x="320" y="105" font-size="11.5" font-weight="bold" fill="#4B5563" text-anchor="middle">The red line is your blinking cursor. Backspace eats backward; Delete eats forward!</text>
+    </svg>
+    <div class="diagram-caption">Figure 2.1: The physical difference between Backspace and Delete relative to the cursor.</div>
+  </div>
+
+  <h2>3. Check Your Knowledge</h2>
+  <p><strong>Scenario:</strong> You type the sentence: <code>Kwesi loves computter</code>. The blinking cursor is at the very end of the word (after the last 'r'). Which key do you tap, and how many times, to fix the double 't'?</p>
+  <div class="answer-line" contenteditable="true">Write your answer here...</div>
+</div>
+
+<!-- ========================================== -->
+<!-- PAGE 3: HOME ROW POSITIONING               -->
+<!-- ========================================== -->
+<div class="page">
+  <div class="header-bar">
+    <div class="header-title">Home Row: The 10-Finger Foundation</div>
+    <div class="badge">Session 2 • Page 3</div>
+  </div>
+
+  <h2>1. Finding Home Row Without Looking Down</h2>
+  <p>Close your eyes. Put your index fingers on the keyboard and slide them across the middle row. Do you feel the <strong>tiny raised plastic bumps</strong>?
+  <br>&bull; Your <strong>Left Index Finger</strong> rests on the bump on key <strong>F</strong>.
+  <br>&bull; Your <strong>Right Index Finger</strong> rests on the bump on key <strong>J</strong>.
+  <br>These bumps are your anchors. Every other finger lines up naturally beside them!</p>
+
+  <!-- DIAGRAM: HOME ROW HAND FINGER ALLOCATION -->
+  <div class="diagram-container">
+    <svg width="720" height="235" viewBox="0 0 720 235" xmlns="http://www.w3.org/2000/svg">
+      <!-- Keyboard Base -->
+      <rect x="20" y="10" width="680" height="120" rx="8" fill="#1F2937"/>
+
+      <!-- LEFT HAND KEYS -->
+      <!-- A -->
+      <rect x="40" y="25" width="55" height="50" rx="5" fill="#EF4444"/>
+      <text x="67" y="55" font-size="20" font-weight="bold" fill="white" text-anchor="middle">A</text>
+      <text x="67" y="100" font-size="10" fill="#FCA5A5" text-anchor="middle">Pinky</text>
+
+      <!-- S -->
+      <rect x="105" y="25" width="55" height="50" rx="5" fill="#F59E0B"/>
+      <text x="132" y="55" font-size="20" font-weight="bold" fill="white" text-anchor="middle">S</text>
+      <text x="132" y="100" font-size="10" fill="#FCD34D" text-anchor="middle">Ring</text>
+
+      <!-- D -->
+      <rect x="170" y="25" width="55" height="50" rx="5" fill="#10B981"/>
+      <text x="197" y="55" font-size="20" font-weight="bold" fill="white" text-anchor="middle">D</text>
+      <text x="197" y="100" font-size="10" fill="#6EE7B7" text-anchor="middle">Middle</text>
+
+      <!-- F (With Raised Bump) -->
+      <rect x="235" y="25" width="55" height="50" rx="5" fill="#3B82F6"/>
+      <text x="262" y="55" font-size="20" font-weight="bold" fill="white" text-anchor="middle">F</text>
+      <line x1="250" y1="65" x2="274" y2="65" stroke="white" stroke-width="2.5"/>
+      <text x="262" y="100" font-size="10" font-weight="bold" fill="#93C5FD" text-anchor="middle">Index [BUMP]</text>
+
+      <!-- G & H (Center neutral keys) -->
+      <rect x="298" y="25" width="45" height="50" rx="5" fill="#374151"/>
+      <text x="320" y="55" font-size="18" fill="#9CA3AF" text-anchor="middle">G</text>
+      <rect x="350" y="25" width="45" height="50" rx="5" fill="#374151"/>
+      <text x="372" y="55" font-size="18" fill="#9CA3AF" text-anchor="middle">H</text>
+
+      <!-- RIGHT HAND KEYS -->
+      <!-- J (With Raised Bump) -->
+      <rect x="403" y="25" width="55" height="50" rx="5" fill="#3B82F6"/>
+      <text x="430" y="55" font-size="20" font-weight="bold" fill="white" text-anchor="middle">J</text>
+      <line x1="418" y1="65" x2="442" y2="65" stroke="white" stroke-width="2.5"/>
+      <text x="430" y="100" font-size="10" font-weight="bold" fill="#93C5FD" text-anchor="middle">Index [BUMP]</text>
+
+      <!-- K -->
+      <rect x="468" y="25" width="55" height="50" rx="5" fill="#10B981"/>
+      <text x="495" y="55" font-size="20" font-weight="bold" fill="white" text-anchor="middle">K</text>
+      <text x="495" y="100" font-size="10" fill="#6EE7B7" text-anchor="middle">Middle</text>
+
+      <!-- L -->
+      <rect x="533" y="25" width="55" height="50" rx="5" fill="#F59E0B"/>
+      <text x="560" y="55" font-size="20" font-weight="bold" fill="white" text-anchor="middle">L</text>
+      <text x="560" y="100" font-size="10" fill="#FCD34D" text-anchor="middle">Ring</text>
+
+      <!-- ; (Semicolon) -->
+      <rect x="598" y="25" width="55" height="50" rx="5" fill="#EF4444"/>
+      <text x="625" y="55" font-size="20" font-weight="bold" fill="white" text-anchor="middle">;</text>
+      <text x="625" y="100" font-size="10" fill="#FCA5A5" text-anchor="middle">Pinky</text>
+
+      <!-- SPACEBAR WITH THUMBS -->
+      <rect x="220" y="145" width="280" height="30" rx="4" fill="#4B5563" stroke="#9CA3AF" stroke-width="1.5"/>
+      <text x="360" y="165" font-size="11" font-weight="bold" fill="white" text-anchor="middle">SPACEBAR (Rest Both Thumbs Here)</text>
+
+      <!-- Connecting brackets for hands -->
+      <path d="M 67,115 L 262,115" stroke="#4361EE" stroke-width="2" fill="none"/>
+      <text x="165" y="132" font-size="11" font-weight="bold" fill="#4361EE" text-anchor="middle">&larr; LEFT HAND FINGERS</text>
+
+      <path d="M 430,115 L 625,115" stroke="#4361EE" stroke-width="2" fill="none"/>
+      <text x="527" y="132" font-size="11" font-weight="bold" fill="#4361EE" text-anchor="middle">RIGHT HAND FINGERS &rarr;</text>
+    </svg>
+    <div class="diagram-caption">Figure 2.2: Home Row Finger Positions. Each finger has its own home key. Curved fingers, wrists off the desk!</div>
+  </div>
+
+  <h2>2. Posture & Wrist Health</h2>
+  <div class="callout">
+    <div class="callout-title">💡 TYPING LIKE A PIANIST</div>
+    Curve your fingers gently like you are holding a small egg in each palm. <strong>Do not rest your wrists flat against the desk while typing!</strong> Keep your wrists floating slightly so your hands can move freely without strain.
+  </div>
+
+  <h2>3. Tactile Anchor Check (Physical Verification)</h2>
+  <div class="checkbox-item"><input type="checkbox"> I closed my eyes and successfully felt the raised ridge on key <strong>F</strong> with my left index finger.</div>
+  <div class="checkbox-item"><input type="checkbox"> I closed my eyes and successfully felt the raised ridge on key <strong>J</strong> with my right index finger.</div>
+  <div class="checkbox-item"><input type="checkbox"> My thumbs are resting gently on the <strong>Spacebar</strong> without pushing it down.</div>
+</div>
+
+<!-- ========================================== -->
+<!-- PAGE 4: SHIFT VS CAPS LOCK & PUNCTUATION   -->
+<!-- ========================================== -->
+<div class="page">
+  <div class="header-bar">
+    <div class="header-title">Capital Letters & Punctuation</div>
+    <div class="badge">Session 2 • Page 4</div>
+  </div>
+
+  <h2>1. Making Capital Letters: Shift vs. Caps Lock</h2>
+  <div class="dual-grid">
+    <div class="dual-box">
+      <div class="dual-box-title">When to Use the SHIFT Key (95% of the time)</div>
+      <p>Use <span class="kbd-key">Shift</span> when you need <strong>only one capital letter</strong> (like the first letter of a name or sentence):</p>
+      <ol style="margin: 4px 0 0 16px; padding: 0;">
+        <li>Hold down <span class="kbd-key">Shift</span> with your left or right pinky finger.</li>
+        <li>Tap the letter key once with the other hand.</li>
+        <li>Release the <span class="kbd-key">Shift</span> key immediately.</li>
+      </ol>
+      <p><em>Example:</em> Holding Shift and tapping <code>k</code> types capital <code>K</code>.</p>
+    </div>
+
+    <div class="dual-box">
+      <div class="dual-box-title">When to Use the CAPS LOCK Key</div>
+      <p>Use <span class="kbd-key">Caps Lock</span> <strong>only</strong> when you need to type an entire paragraph or acronym in capitals (e.g., <code>GHANA</code> or <code>UNESCO</code>):</p>
+      <ol style="margin: 4px 0 0 16px; padding: 0;">
+        <li>Tap <span class="kbd-key">Caps Lock</span> once. A small green/amber light turns on.</li>
+        <li>Type your words (they will all be capitals).</li>
+        <li><strong>Remember to tap Caps Lock again</strong> to turn the light off!</li>
+      </ol>
+    </div>
+  </div>
+
+  <h2>2. Typing the "Top Symbols" on Keys</h2>
+  <p>Look at the number row at the top of your keyboard. Each key has <strong>two characters</strong> printed on it:</p>
+
+  <!-- DIAGRAM: TOP AND BOTTOM SYMBOL ON A KEY -->
+  <div class="diagram-container">
+    <svg width="450" height="110" viewBox="0 0 450 110" xmlns="http://www.w3.org/2000/svg">
+      <rect x="185" y="10" width="80" height="85" rx="8" fill="#F3F4F6" stroke="#4B5563" stroke-width="2"/>
+      <!-- Top character: ! -->
+      <text x="225" y="42" font-size="22" font-weight="bold" fill="#E63946" text-anchor="middle">!</text>
+      <!-- Bottom character: 1 -->
+      <text x="225" y="78" font-size="22" font-weight="bold" fill="#1F2937" text-anchor="middle">1</text>
+
+      <!-- Callout left: Shift key -->
+      <path d="M 120,38 L 180,38" stroke="#E63946" stroke-width="2"/>
+      <text x="110" y="35" font-size="11" font-weight="bold" fill="#E63946" text-anchor="end">Hold [Shift] + press this key</text>
+      <text x="110" y="48" font-size="9.5" fill="#4B5563" text-anchor="end">Types the TOP symbol: "!"</text>
+
+      <!-- Callout right: Normal press -->
+      <path d="M 330,72 L 270,72" stroke="#1F2937" stroke-width="2"/>
+      <text x="340" y="68" font-size="11" font-weight="bold" fill="#1F2937">Normal single press</text>
+      <text x="340" y="81" font-size="9.5" fill="#4B5563">Types the BOTTOM symbol: "1"</text>
+    </svg>
+    <div class="diagram-caption">Figure 2.3: How two-symbol keys work. Shift always unlocks the symbol sitting on top!</div>
+  </div>
+
+  <h2>3. Panic Button / Troubleshooting</h2>
+  <div class="panic-box">
+    <div class="panic-title">🚨 PROBLEM: Everything I type is screaming in ALL CAPS!</div>
+    Look down at your keyboard. Find the <span class="kbd-key">Caps Lock</span> key on the left. There is a tiny glowing LED light on the key or near the top right of the keyboard. Tap <span class="kbd-key">Caps Lock</span> once to turn off that light. Now type again—your lowercase letters are back!
+  </div>
+
+  <div class="panic-box" style="background: #EBF8FF; border-left-color: #3182CE;">
+    <div class="panic-title" style="color: #2B6CB0;">💡 PROBLEM: As I type new letters, my existing words are disappearing!</div>
+    You accidentally bumped the <span class="kbd-key">Insert</span> (or <span class="kbd-key">Ins</span>) key! This puts the computer in "Overtype Mode". Tap the <span class="kbd-key">Insert</span> key once to switch back to normal typing.
+  </div>
+</div>
+
+<!-- ========================================== -->
+<!-- PAGE 5: GUIDED LAB - OPENING NOTEPAD       -->
+<!-- ========================================== -->
+<div class="page">
+  <div class="header-bar">
+    <div class="header-title">Guided Hands-On Lab: First Words</div>
+    <div class="badge">Session 2 • Page 5</div>
+  </div>
+
+  <h2>1. Launching Your Writing Tool: Notepad</h2>
+  <p>Follow these steps to open the computer's simplest digital writing pad:</p>
+
+  <div class="step-card">
+    <div class="step-num">1</div>
+    <div class="step-content">
+      <strong>Click Start:</strong> Move your pointer to the bottom-left corner of the screen and click the <strong>Start</strong> button once.
+    </div>
+  </div>
+
+  <div class="step-card">
+    <div class="step-num">2</div>
+    <div class="step-content">
+      <strong>Search:</strong> Without clicking anything else, type the word <code>notepad</code> on your keyboard. A search box will automatically open and find the program.
+    </div>
+  </div>
+
+  <div class="step-card">
+    <div class="step-num">3</div>
+    <div class="step-content">
+      <strong>Open:</strong> Press the <span class="kbd-key">Enter</span> key once. A blank white window with a blinking vertical line (cursor) will appear!
+    </div>
+  </div>
+
+  <h2>2. Guided Typing Drills (Type Inside Notepad)</h2>
+  <p>Place your fingers on the Home Row anchors (<span class="kbd-key">F</span> and <span class="kbd-key">J</span>). Type each drill line exactly as shown:</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 20%;">Exercise</th>
+        <th style="width: 50%;">What You Must Type in Notepad</th>
+        <th style="width: 30%;">Skills Practiced</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Drill 1: Anchors</strong></td>
+        <td><code>asdf jkl; asdf jkl;</code></td>
+        <td>Home row finger discipline</td>
+      </tr>
+      <tr>
+        <td><strong>Drill 2: Shift Key</strong></td>
+        <td><code>Ghana Accra Kumasi Tamale</code></td>
+        <td>Capitalizing proper names</td>
+      </tr>
+      <tr>
+        <td><strong>Drill 3: Spacing</strong></td>
+        <td><code>I am learning with BIH Tech Club.</code></td>
+        <td>Spacebar, period, capitals</td>
+      </tr>
+      <tr>
+        <td><strong>Drill 4: Symbols</strong></td>
+        <td><code>Welcome! Ready? 100% yes!</code></td>
+        <td>Holding Shift for <code>!</code>, <code>?</code>, <code>%</code></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>3. Double-Click & Drag Practice</h2>
+  <p>Practice these two essential pointer techniques inside your Notepad document:</p>
+
+  <div class="dual-grid">
+    <div class="dual-box">
+      <div class="dual-box-title">🖱️ Double-Click to Select a Word</div>
+      <p>Move your mouse (or glide your touchpad finger) until the I-beam cursor touches the word <code>Ghana</code> that you typed.
+      <br><strong>Quickly tap twice:</strong> <em>Click-Click!</em>
+      <br><em>Observation:</em> The entire word highlights in blue. When text is highlighted, any new key you tap replaces it immediately.</p>
+    </div>
+
+    <div class="dual-box">
+      <div class="dual-box-title">🖱️ Click-and-Drag to Highlight</div>
+      <p>Place your pointer just before the letter <code>W</code> in <code>Welcome</code>.
+      <br><strong>Click and HOLD</strong> the left button down. While holding it, slide your pointer to the right over the word. Let go.
+      <br><em>Observation:</em> You have manually highlighted a selection of text!</p>
+    </div>
+  </div>
+</div>
+
+<!-- ========================================== -->
+<!-- PAGE 6: REVIEW & SELF-ASSESSMENT           -->
+<!-- ========================================== -->
+<div class="page">
+  <div class="header-bar">
+    <div class="header-title">Session 2 Review & Verification</div>
+    <div class="badge">Session 2 • Page 6</div>
+  </div>
+
+  <h2>1. Finger-to-Key Mapping Challenge</h2>
+  <p>Draw a line connecting each finger on your left hand to its correct Home Row key:</p>
+
+  <div style="display: flex; justify-content: space-between; margin: 15px 30px; font-size: 13px;">
+    <div style="display: flex; flex-direction: column; gap: 16px; font-weight: bold; color: var(--bih-purple);">
+      <div>Left Pinky Finger</div>
+      <div>Left Ring Finger</div>
+      <div>Left Middle Finger</div>
+      <div>Left Index Finger</div>
+      <div>Either Thumb</div>
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 16px; font-weight: bold; color: var(--bih-dark);">
+      <div>&bull; &nbsp; Key [ D ]</div>
+      <div>&bull; &nbsp; Spacebar</div>
+      <div>&bull; &nbsp; Key [ A ]</div>
+      <div>&bull; &nbsp; Key [ F ] (with tactile bump)</div>
+      <div>&bull; &nbsp; Key [ S ]</div>
+    </div>
+  </div>
+
+  <h2>2. Written Review Questions</h2>
+  <p><strong>Question 1:</strong> Why is it better to use the <span class="kbd-key">Shift</span> key instead of <span class="kbd-key">Caps Lock</span> when typing a person's name like "Kofi"?</p>
+  <div class="answer-line" contenteditable="true">Write your answer here...</div>
+
+  <p><strong>Question 2:</strong> What is the difference between what <span class="kbd-key">Backspace</span> does and what <span class="kbd-key">Delete</span> does?</p>
+  <div class="answer-line" contenteditable="true">Write your answer here...</div>
+
+  <p><strong>Question 3:</strong> Name the two keys that have tiny raised bumps to guide your index fingers:</p>
+  <div class="answer-line" contenteditable="true">Key 1: _________ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Key 2: _________</div>
+
+  <h2>3. Self-Assessment & Mentor Sign-Off</h2>
+  <p>Tick the column that reflects your confidence at the end of Session 2:</p>
+  <table>
+    <thead>
+      <tr>
+        <th>Typing & Interaction Skill</th>
+        <th style="width: 18%; text-align: center;">With Help</th>
+        <th style="width: 18%; text-align: center;">Almost Alone</th>
+        <th style="width: 18%; text-align: center;">All By Myself!</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1. I can find the Home Row bumps on F and J with my eyes closed.</td>
+        <td style="text-align: center;"><input type="radio" name="s2_1"></td>
+        <td style="text-align: center;"><input type="radio" name="s2_1"></td>
+        <td style="text-align: center;"><input type="radio" name="s2_1"></td>
+      </tr>
+      <tr>
+        <td>2. I can use the Shift key to type single capital letters and symbols like ! and ?.</td>
+        <td style="text-align: center;"><input type="radio" name="s2_2"></td>
+        <td style="text-align: center;"><input type="radio" name="s2_2"></td>
+        <td style="text-align: center;"><input type="radio" name="s2_2"></td>
+      </tr>
+      <tr>
+        <td>3. I can correctly erase typos using Backspace without deleting whole sentences.</td>
+        <td style="text-align: center;"><input type="radio" name="s2_3"></td>
+        <td style="text-align: center;"><input type="radio" name="s2_3"></td>
+        <td style="text-align: center;"><input type="radio" name="s2_3"></td>
+      </tr>
+      <tr>
+        <td>4. I can open Notepad, type a complete sentence, and double-click to highlight words.</td>
+        <td style="text-align: center;"><input type="radio" name="s2_4"></td>
+        <td style="text-align: center;"><input type="radio" name="s2_4"></td>
+        <td style="text-align: center;"><input type="radio" name="s2_4"></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div style="border-top: 1px solid var(--bih-border); margin-top: 25px; padding-top: 12px; display: flex; justify-content: space-between; font-size: 13px;">
+    <div><strong>Mentor Signature:</strong> _____________________________</div>
+    <div><strong>Date Completed:</strong> ____________________</div>
+  </div>
+</div>
+
+</body>
+</html>

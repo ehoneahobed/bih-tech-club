@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>BIH Tech Club - Session 13: Presentation Delivery & Public Speaking</title>
+  <style>
+    :root {
+      --bih-purple: #3A0CA3;
+      --bih-accent: #4361EE;
+      --bih-gold: #F77F00;
+      --bih-green: #2EC4B6;
+      --bih-red: #E63946;
+      --bih-dark: #1E1E24;
+      --bih-light: #F8F9FA;
+      --bih-border: #CED4DA;
+      --ppt-orange: #C43E1C;
+    }
+
+    * {
+      box-sizing: border-box;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    body {
+      background-color: #E9ECEF;
+      color: var(--bih-dark);
+      margin: 0;
+      padding: 20px;
+      line-height: 1.55;
+    }
+
+    .page {
+      background: #FFFFFF;
+      max-width: 860px;
+      margin: 20px auto;
+      padding: 42px 50px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+      border-radius: 8px;
+      page-break-after: always;
+    }
+
+    @media print {
+      body { background: white; padding: 0; }
+      .page { box-shadow: none; margin: 0; padding: 30px; max-width: 100%; border-radius: 0; }
+      .no-print { display: none; }
+    }
+
+    /* Header Bar */
+    .header-bar {
+      border-bottom: 3px solid var(--bih-purple);
+      padding-bottom: 10px;
+      margin-bottom: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .header-title {
+      font-size: 19px;
+      font-weight: 800;
+      color: var(--bih-purple);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .badge {
+      background: var(--bih-gold);
+      color: #FFFFFF;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+    }
+
+    /* Student Meta Box */
+    .student-meta {
+      border: 2px dashed var(--bih-border);
+      border-radius: 8px;
+      padding: 12px 18px;
+      background: var(--bih-light);
+      margin-bottom: 20px;
+    }
+
+    .meta-row {
+      display: flex;
+      gap: 15px;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+    .meta-row:last-child { margin-bottom: 0; }
+
+    .meta-label {
+      font-size: 12.5px;
+      font-weight: 700;
+      color: var(--bih-dark);
+      min-width: 125px;
+    }
+
+    .editable-line {
+      border-bottom: 1.5px solid var(--bih-purple);
+      flex-grow: 1;
+      padding: 2px 6px;
+      font-size: 13.5px;
+      font-weight: 600;
+      color: var(--bih-purple);
+      outline: none;
+      min-height: 20px;
+    }
+
+    /* Typography */
+    h1 { color: var(--bih-purple); font-size: 22px; margin-top: 0; margin-bottom: 8px; }
+    h2 { color: var(--bih-purple); font-size: 16px; margin-top: 20px; margin-bottom: 10px; border-left: 4px solid var(--bih-gold); padding-left: 8px; }
+    p { font-size: 13px; margin: 6px 0; }
+
+    /* Dual Grid Layout */
+    .dual-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin: 12px 0;
+    }
+
+    .dual-box {
+      border: 1px solid var(--bih-border);
+      border-radius: 8px;
+      padding: 12px 14px;
+      background: #FAFAFA;
+    }
+    .dual-box-title {
+      font-size: 13px;
+      font-weight: 800;
+      color: var(--bih-purple);
+      margin-bottom: 6px;
+      border-bottom: 1px solid var(--bih-border);
+      padding-bottom: 4px;
+    }
+
+    /* Callouts & Alert Boxes */
+    .callout {
+      background: #FFF3CD;
+      border-left: 4px solid var(--bih-gold);
+      padding: 10px 14px;
+      margin: 14px 0;
+      border-radius: 0 8px 8px 0;
+      font-size: 12.5px;
+    }
+    .callout-title {
+      font-weight: 800;
+      color: #856404;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 2px;
+    }
+
+    .panic-box {
+      background: #F8D7DA;
+      border-left: 4px solid var(--bih-red);
+      padding: 12px 14px;
+      margin: 14px 0;
+      border-radius: 0 8px 8px 0;
+      font-size: 12.5px;
+    }
+    .panic-title {
+      font-weight: 800;
+      color: #721C24;
+      margin-bottom: 4px;
+    }
+
+    /* Step Cards */
+    .step-card {
+      display: flex;
+      gap: 12px;
+      background: var(--bih-light);
+      border: 1px solid var(--bih-border);
+      border-radius: 6px;
+      padding: 10px 12px;
+      margin-bottom: 8px;
+      align-items: flex-start;
+    }
+
+    .step-num {
+      background: var(--bih-purple);
+      color: white;
+      font-size: 13px;
+      font-weight: 800;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .step-content { flex-grow: 1; font-size: 12.5px; }
+
+    /* Diagrams */
+    .diagram-container {
+      background: #FAFAFA;
+      border: 1px solid var(--bih-border);
+      border-radius: 8px;
+      padding: 12px;
+      margin: 14px 0;
+      text-align: center;
+    }
+    .diagram-caption {
+      font-size: 11px;
+      color: #6C757D;
+      margin-top: 6px;
+      font-style: italic;
+    }
+
+    /* Tables */
+    table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 12.5px; }
+    th { background: var(--bih-purple); color: white; text-align: left; padding: 7px 10px; }
+    td { border: 1px solid var(--bih-border); padding: 7px 10px; vertical-align: top; }
+    tr:nth-child(even) { background-color: var(--bih-light); }
+
+    /* Key Badge */
+    .kbd-key {
+      display: inline-block;
+      background: #F3F4F6;
+      border: 1.5px solid #9CA3AF;
+      border-bottom: 3px solid #6B7280;
+      border-radius: 4px;
+      padding: 1px 6px;
+      font-family: monospace;
+      font-size: 12px;
+      font-weight: 700;
+      color: #1F2937;
+      margin: 0 2px;
+    }
+
+    /* Interactive Inputs */
+    .answer-line {
+      min-height: 24px;
+      border-bottom: 1px dashed var(--bih-purple);
+      margin: 4px 0;
+      outline: none;
+      font-size: 13px;
+      color: var(--bih-dark);
+      padding: 2px 4px;
+    }
+
+    .checkbox-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 6px;
+      font-size: 12.5px;
+    }
+    .checkbox-item input { width: 15px; height: 15px; cursor: pointer; }
+  </style>
+</head>
+<body>
+
+<!-- ========================================== -->
+<!-- PAGE 1: TRANSITIONS VS ANIMATIONS          -->
+<!-- ========================================== -->
+<div class="page">
+  <div class="header-bar">
+    <div class="header-title">Bozoma Innovation Hub • Tech Club</div>
+    <div class="badge">Session 13 • Page 1</div>
+  </div>
+
+  <div class="student-meta">
+    <div class="meta-row">
+      <span class="meta-label">Learner Full Name:</span>
+      <div class="editable-line" contenteditable="true">Ama Mensah</div>
+    </div>
+    <div class="meta-row">
+      <span class="meta-label">School:</span>
+      <div class="editable-line" contenteditable="true">Bozoma Model School</div>
+      <span class="meta-label" style="min-width: 50px;">Class:</span>
+      <div class="editable-line" contenteditable="true" style="max-width: 90px;">JHS 1</div>
+    </div>
+    <div class="meta-row">
+      <span class="meta-label">Workstation Device:</span>
+      <div class="editable-line" contenteditable="true" style="max-width: 180px;">[ ] Desktop &nbsp; [ ] Laptop</div>
+      <span class="meta-label" style="min-width: 70px;">Station #:</span>
+      <div class="editable-line" contenteditable="true" style="max-width: 90px;">PC-01</div>
+    </div>
+  </div>
+
+  <h1>Session 13: Presentation Delivery & Public Speaking</h1>
+  <p>In Session 12, you built your first 3-slide presentation on clean community water. Today, you will learn how to bring your slides to life using <strong>Transitions</strong> and <strong>Animations</strong>, how to drive your slide show using secret keyboard controls, and how to deliver your talk with <strong>confidence and strong stage presence</strong>!</p>
+
+  <h2>1. Plain Talk: The Stage Curtain vs. The Actor</h2>
+  <div class="dual-grid">
+    <div class="dual-box">
+      <div class="dual-box-title">🎬 TRANSITION (The Stage Curtain)</div>
+      <p>A transition is the visual effect that happens when you move from <strong>one whole slide to the next slide</strong>.</p>
+      <p><em>Analogy:</em> Opening or closing the physical theater curtain between Scene 1 and Scene 2.</p>
+      <p><strong>Examples:</strong> <em>Fade</em>, <em>Push</em>, <em>Wipe</em>.</p>
+    </div>
+
+    <div class="dual-box">
+      <div class="dual-box-title">🎭 ANIMATION (The Actor on Stage)</div>
+      <p>An animation is movement applied to a <strong>single item inside a slide</strong> (such as one line of bullet text or a photo).</p>
+      <p><em>Analogy:</em> An actor walking onto the stage while the curtain is already wide open!</p>
+      <p><strong>Examples:</strong> <em>Appear</em>, <em>Fade In</em>, <em>Fly In</em>.</p>
+    </div>
+  </div>
+
+  <!-- DIAGRAM: TRANSITION VS ANIMATION -->
+  <div class="diagram-container">
+    <svg width="700" height="150" viewBox="0 0 700 150" xmlns="http://www.w3.org/2000/svg">
+      <rect x="20" y="10" width="660" height="125" rx="6" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.5"/>
+
+      <!-- TRANSITION TRACK (Top) -->
+      <g transform="translate(40, 20)">
+        <text x="0" y="18" font-size="10.5" font-weight="bold" fill="#3A0CA3">TRANSITION:</text>
+        
+        <!-- Slide 1 -->
+        <rect x="85" y="0" width="70" height="42" rx="2" fill="#FFFFFF" stroke="#334155" stroke-width="1.2"/>
+        <text x="120" y="25" font-size="8" font-weight="bold" fill="#3A0CA3" text-anchor="middle">Slide 1</text>
+
+        <!-- Motion Waves (Fade/Push) -->
+        <path d="M 165,21 Q 185,10 205,21" stroke="#F77F00" stroke-width="2.5" fill="none"/>
+        <polygon points="210,21 202,17 202,25" fill="#F77F00"/>
+        <text x="187" y="36" font-size="8" font-weight="bold" fill="#F77F00" text-anchor="middle">Smooth Fade</text>
+
+        <!-- Slide 2 -->
+        <rect x="220" y="0" width="70" height="42" rx="2" fill="#FFFFFF" stroke="#334155" stroke-width="1.2"/>
+        <text x="255" y="25" font-size="8" font-weight="bold" fill="#3A0CA3" text-anchor="middle">Slide 2</text>
+
+        <text x="310" y="25" font-size="10" font-weight="bold" fill="#0D9488">&larr; Moves the ENTIRE slide canvas!</text>
+      </g>
+
+      <!-- DIVIDER -->
+      <line x1="40" y1="75" x2="660" y2="75" stroke="#E2E8F0" stroke-width="1.5" stroke-dasharray="4,4"/>
+
+      <!-- ANIMATION TRACK (Bottom) -->
+      <g transform="translate(40, 85)">
+        <text x="0" y="24" font-size="10.5" font-weight="bold" fill="#C43E1C">ANIMATION:</text>
+
+        <!-- Inside Single Slide -->
+        <rect x="85" y="2" width="160" height="42" rx="2" fill="#FFFFFF" stroke="#334155" stroke-width="1.2"/>
+        <text x="95" y="16" font-size="8" font-weight="bold" fill="#1E293B">Our Solutions:</text>
+        
+        <!-- Bullet appearing one by one -->
+        <rect x="95" y="22" width="70" height="8" rx="1" fill="#EEF2FF"/>
+        <text x="98" y="29" font-size="6.5" font-weight="bold" fill="#3A0CA3">&bull; Point 1 (Click 1)</text>
+
+        <rect x="95" y="32" width="80" height="8" rx="1" fill="#ECFDF5"/>
+        <text x="98" y="39" font-size="6.5" font-weight="bold" fill="#047857">&bull; Point 2 (Click 2)</text>
+
+        <text x="260" y="25" font-size="10" font-weight="bold" fill="#C43E1C">&larr; Brings elements in ONE BY ONE inside a slide!</text>
+      </g>
+    </svg>
+    <div class="diagram-caption">Figure 13.0: Transitions move between whole slides; Animations reveal individual points inside a single slide.</div>
+  </div>
+
+  <h2>2. The "No-Carnival" Rule for Animations</h2>
+  <div class="callout" style="background:#FFF7ED; border-left: 5px solid var(--bih-gold);">
+    <div class="callout-title" style="color:#C2410C;">🎪 AVOID CIRCUS CLOWN ANIMATIONS!</div>
+    Beginners often make words spin in circles, bounce like rubber balls, or zoom in with screeching tire sound effects. This distracts the audience and makes your school presentation look childish.
+    <br><br>
+    <strong>The Professional Rule:</strong> Stick to simple, gentle effects like <strong>"Fade"</strong> or <strong>"Appear"</strong>. Use animation only when you want to hide points so the audience doesn't read ahead of you!
+  </div>
+</div>
+
+<!-- ========================================== -->
+<!-- PAGE 2: CONTROLLING THE SLIDE SHOW         -->
+<!-- ========================================== -->
+<div class="page">
+  <div class="header-bar">
+    <div class="header-title">Controlling the Live Slide Show</div>
+    <div class="badge">Session 13 • Page 2</div>
+  </div>
+
+  <h2>1. Keyboard Shortcuts to Drive Your Talk</h2>
+  <p>When you stand in front of your class, you do not want to hunt for tiny on-screen buttons with a mouse. Learn these essential keyboard steering keys:</p>
+
+  <!-- DIAGRAM: SLIDE SHOW NAVIGATION CONTROLS -->
+  <div class="diagram-container">
+    <svg width="700" height="150" viewBox="0 0 700 150" xmlns="http://www.w3.org/2000/svg">
+      <rect x="20" y="10" width="660" height="130" rx="6" fill="#1F2937"/>
+
+      <!-- F5 KEY (Start) -->
+      <g transform="translate(45, 30)">
+        <rect x="0" y="0" width="55" height="45" rx="5" fill="#10B981"/>
+        <text x="27" y="28" font-family="monospace" font-size="18" font-weight="bold" fill="white" text-anchor="middle">F5</text>
+        <text x="27" y="65" font-size="9" font-weight="bold" fill="#6EE7B7" text-anchor="middle">Launch Show</text>
+        <text x="27" y="77" font-size="8" fill="#9CA3AF" text-anchor="middle">(From Slide 1)</text>
+      </g>
+
+      <!-- SPACEBAR / RIGHT ARROW (Advance) -->
+      <g transform="translate(145, 30)">
+        <rect x="0" y="0" width="130" height="45" rx="5" fill="#4361EE"/>
+        <text x="65" y="28" font-family="monospace" font-size="14" font-weight="bold" fill="white" text-anchor="middle">SPACEBAR / &rarr;</text>
+        <text x="65" y="65" font-size="9" font-weight="bold" fill="#93C5FD" text-anchor="middle">Next Point / Slide</text>
+        <text x="65" y="77" font-size="8" fill="#9CA3AF" text-anchor="middle">(Move Forward)</text>
+      </g>
+
+      <!-- LEFT ARROW (Back) -->
+      <g transform="translate(315, 30)">
+        <rect x="0" y="0" width="55" height="45" rx="5" fill="#374151"/>
+        <text x="27" y="28" font-family="monospace" font-size="18" font-weight="bold" fill="white" text-anchor="middle">&larr;</text>
+        <text x="27" y="65" font-size="9" font-weight="bold" fill="#D1D5DB" text-anchor="middle">Previous</text>
+        <text x="27" y="77" font-size="8" fill="#9CA3AF" text-anchor="middle">(Go Back)</text>
+      </g>
+
+      <!-- B KEY (Secret Magic Trick) -->
+      <g transform="translate(415, 30)">
+        <rect x="0" y="0" width="55" height="45" rx="5" fill="#F77F00"/>
+        <text x="27" y="28" font-family="monospace" font-size="18" font-weight="bold" fill="white" text-anchor="middle">B</text>
+        <text x="27" y="65" font-size="9" font-weight="bold" fill="#FCD34D" text-anchor="middle">BLACK SCREEN</text>
+        <text x="27" y="77" font-size="8" fill="#FCD34D" text-anchor="middle">(Eyes on Speaker!)</text>
+      </g>
+
+      <!-- ESC KEY (Exit) -->
+      <g transform="translate(565, 30)">
+        <rect x="0" y="0" width="55" height="45" rx="5" fill="#EF4444"/>
+        <text x="27" y="28" font-family="monospace" font-size="15" font-weight="bold" fill="white" text-anchor="middle">Esc</text>
+        <text x="27" y="65" font-size="9" font-weight="bold" fill="#FCA5A5" text-anchor="middle">Exit Show</text>
+        <text x="27" y="77" font-size="8" fill="#9CA3AF" text-anchor="middle">(Return to edit)</text>
+      </g>
+    </svg>
+    <div class="diagram-caption">Figure 13.1: Master keyboard controls for running a live slide show seamlessly.</div>
+  </div>
+
+  <h2>2. The Secret "B" Key: All Eyes on You!</h2>
+  <div class="callout" style="background:#EEF2FF; border-left: 5px solid var(--bih-purple);">
+    <div class="callout-title" style="color:var(--bih-purple); font-size:13px;">💡 THE PROFESSIONAL SPEAKER'S SECRET WEAPON:</div>
+    Sometimes during your talk, you want to tell a personal story or make an important community plea, but the audience is distracted reading your slide.
+    <br><br>
+    <strong>Tap the letter <span class="kbd-key">B</span> on your keyboard once!</strong>
+    <br>The entire projector screen turns pitch black. The audience has nothing to look at except <strong>YOU</strong>! When you are ready to show your slides again, tap <span class="kbd-key">B</span> a second time and your slide returns instantly.
+  </div>
+
+  <h2>3. Check Your Knowledge</h2>
+  <p><strong>Scenario:</strong> You are presenting Slide 2 and a teacher asks you to re-read a point from Slide 1. Which key on your keyboard do you tap to jump backward?</p>
+  <div class="answer-line" contenteditable="true">Write the key name here:</div>
+</div>
+
+<!-- ========================================== -->
+<!-- PAGE 3: PUBLIC SPEAKING & STAGE PRESENCE   -->
+<!-- ========================================== -->
+<div class="page">
+  <div class="header-bar">
+    <div class="header-title">Public Speaking & Stage Presence</div>
+    <div class="badge">Session 13 • Page 3</div>
+  </div>
+
+  <h2>1. The Three Pillars of Great Delivery</h2>
+  <p>A brilliant slide deck with a terrified, silent speaker will fail. An average slide deck with an enthusiastic, clear speaker will succeed! Focus on these three pillars:</p>
+
+  <!-- DIAGRAM: PRESENTER BODY LANGUAGE & EYE CONTACT -->
+  <div class="diagram-container">
+    <svg width="700" height="195" viewBox="0 0 700 195" xmlns="http://www.w3.org/2000/svg">
+      <rect x="20" y="10" width="660" height="175" rx="6" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.5"/>
+
+      <!-- BAD PRESENTER (Left) -->
+      <g transform="translate(50, 20)">
+        <text x="110" y="16" font-size="11" font-weight="bold" fill="#DC2626" text-anchor="middle">&#10008; BACK TURNED TO AUDIENCE</text>
+        
+        <!-- Projection Screen on wall -->
+        <rect x="20" y="30" width="80" height="50" fill="#E2E8F0" stroke="#94A3B8" stroke-width="1"/>
+        <line x1="25" y1="45" x2="90" y2="45" stroke="#94A3B8" stroke-width="2"/>
+        <line x1="25" y1="58" x2="80" y2="58" stroke="#94A3B8" stroke-width="2"/>
+
+        <!-- Speaker staring directly at wall (Back turned) -->
+        <circle cx="140" cy="55" r="14" fill="#F77F00"/>
+        <line x1="140" y1="69" x2="140" y2="115" stroke="#374151" stroke-width="4"/>
+        <path d="M 132,55 L 105,55" stroke="#DC2626" stroke-width="2" stroke-dasharray="2,2"/> <!-- Gaze line to wall -->
+
+        <text x="110" y="140" font-size="8.5" fill="#7F1D1D" text-anchor="middle">Mumbling to the wall.</text>
+        <text x="110" y="152" font-size="8.5" fill="#7F1D1D" text-anchor="middle">Audience feels ignored!</text>
+      </g>
+
+      <!-- GOOD PRESENTER (Right) -->
+      <g transform="translate(380, 20)">
+        <text x="130" y="16" font-size="11" font-weight="bold" fill="#047857" text-anchor="middle">&#10004; FACING AUDIENCE WITH EYE CONTACT</text>
+
+        <!-- Speaker standing tall facing forward -->
+        <circle cx="60" cy="50" r="14" fill="#F77F00"/>
+        <line x1="60" y1="64" x2="60" y2="115" stroke="#3A0CA3" stroke-width="4"/>
+        <!-- Gesturing hands -->
+        <line x1="60" y1="75" x2="85" y2="85" stroke="#3A0CA3" stroke-width="3"/>
+        <line x1="60" y1="75" x2="35" y2="85" stroke="#3A0CA3" stroke-width="3"/>
+
+        <!-- Eye contact rays to audience -->
+        <path d="M 74,48 L 170,30" stroke="#10B981" stroke-width="1.5" stroke-dasharray="3,3"/>
+        <path d="M 74,52 L 180,60" stroke="#10B981" stroke-width="1.5" stroke-dasharray="3,3"/>
+        <path d="M 74,56 L 170,90" stroke="#10B981" stroke-width="1.5" stroke-dasharray="3,3"/>
+
+        <!-- Audience Mockup on right -->
+        <circle cx="190" cy="30" r="8" fill="#94A3B8"/>
+        <circle cx="205" cy="60" r="8" fill="#94A3B8"/>
+        <circle cx="190" cy="90" r="8" fill="#94A3B8"/>
+        <text x="215" y="65" font-size="8" fill="#64748B">Audience</text>
+
+        <text x="130" y="140" font-size="8.5" font-weight="bold" fill="#047857" text-anchor="middle">3-Zone Eye Contact (Left, Center, Right)</text>
+        <text x="130" y="152" font-size="8.5" fill="#4B5563" text-anchor="middle">Clear voice, upright posture, smiling.</text>
+      </g>
+    </svg>
+    <div class="diagram-caption">Figure 13.2: Stand tall and face the audience. Look at people, not the projection wall!</div>
+  </div>
+
+  <h2>2. Delivery Secrets: Pacing & Voice</h2>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 25%;">Pillar</th>
+        <th style="width: 35%;">The Trap to Avoid</th>
+        <th style="width: 40%;">What a BIH Tech Leader Does</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>1. Pace</strong></td>
+        <td>Rushing through words like an express tro-tro because you are nervous.</td>
+        <td><strong>Breathe.</strong> Pause for 2 seconds after each major bullet point to let ideas sink in.</td>
+      </tr>
+      <tr>
+        <td><strong>2. Volume</strong></td>
+        <td>Whispering so only the front desk can hear you.</td>
+        <td>Speak from your chest so the student at the very back of the classroom hears every word.</td>
+      </tr>
+      <tr>
+        <td><strong>3. Eye Contact</strong></td>
+        <td>Staring at your shoes or reading word-for-word from your laptop.</td>
+        <td>Sweep your eyes slowly: look at the left row, then center row, then right row.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ========================================== -->
+<!-- PAGE 4: CITATIONS & HANDLING QUESTIONS    -->
+<!-- ========================================== -->
+<div class="page">
+  <div class="header-bar">
+    <div class="header-title">Citing Sources & Answering Questions</div>
+    <div class="badge">Session 13 • Page 4</div>
+  </div>
+
+  <h2>1. Ethical Presenting: Citing Your Sources</h2>
+  <p>In tech and academia, using someone else's statistics or photos without giving them credit is wrong. Always add a small, subtle <strong>Source Citation</strong> at the bottom of your slide:</p>
+
+  <!-- DIAGRAM: SLIDE FOOTER CITATION -->
+  <div class="diagram-container">
+    <svg width="680" height="130" viewBox="0 0 680 130" xmlns="http://www.w3.org/2000/svg">
+      <rect x="40" y="10" width="600" height="110" rx="4" fill="#FFFFFF" stroke="#334155" stroke-width="1.5"/>
+      
+      <!-- Slide Heading -->
+      <text x="65" y="34" font-size="12" font-weight="bold" fill="#3A0CA3">Water Contamination Rates in JHS Schools</text>
+      
+      <!-- Content Bullets -->
+      <circle cx="70" cy="52" r="2" fill="#F77F00"/>
+      <text x="78" y="55" font-size="9" fill="#1E293B">42% of schools lack reliable piped water connections</text>
+      
+      <circle cx="70" cy="68" r="2" fill="#F77F00"/>
+      <text x="78" y="71" font-size="9" fill="#1E293B">Storage tanks require weekly chlorination and scrub</text>
+
+      <!-- FOOTER CITATION BOX (Bottom) -->
+      <line x1="40" y1="92" x2="640" y2="92" stroke="#E2E8F0" stroke-width="1"/>
+      <text x="65" y="105" font-size="8" font-style="italic" fill="#64748B">Source: Community Water and Sanitation Agency (CWSA) Ghana, 2024 Report</text>
+      
+      <!-- Pointer callout -->
+      <path d="M 460,105 L 510,105" stroke="#10B981" stroke-width="1.5"/>
+      <text x="515" y="107" font-size="8.5" font-weight="bold" fill="#047857">&larr; Small 8pt Source Footnote builds TRUST!</text>
+    </svg>
+    <div class="diagram-caption">Figure 13.3: A subtle citation in the bottom footer proves your facts are verified and real.</div>
+  </div>
+
+  <h2>2. How to Handle Questions from the Audience</h2>
+  <p>When you finish your talk, teachers and classmates will raise their hands to ask questions. Follow the <strong>3-Step Question Method</strong>:</p>
+
+  <div class="step-card">
+    <div class="step-num">1</div>
+    <div class="step-content">
+      <strong>Listen Carefully:</strong> Do not interrupt the questioner. Wait until they finish speaking completely.
+    </div>
+  </div>
+
+  <div class="step-card">
+    <div class="step-num">2</div>
+    <div class="step-content">
+      <strong>Say "Thank You":</strong> Start with: <em>"Thank you, Mr. Mensah, that is a great question."</em> This gives your brain 3 seconds to think!
+    </div>
+  </div>
+
+  <div class="step-card">
+    <div class="step-num">3</div>
+    <div class="step-content">
+      <strong>Answer Simply (or Admit You Will Research):</strong>
+      <br>If you know the answer, state it clearly in 1 or 2 sentences.
+      <br><strong>If you don't know:</strong> Never make up lies! Say: <em>"That is an excellent point. Our team has not tested that yet, but we will research it for our next session."</em>
+    </div>
+  </div>
+</div>
+
+<!-- ========================================== -->
+<!-- PAGE 5: GUIDED LAB - LIVE REHEARSAL        -->
+<!-- ========================================== -->
+<div class="page">
+  <div class="header-bar">
+    <div class="header-title">Guided Hands-On Lab: The Live Rehearsal</div>
+    <div class="badge">Session 13 • Page 5</div>
+  </div>
+
+  <h2>1. Lab Workout: Polish, Animate & Deliver</h2>
+  <p>Work with your workstation partner to polish your 3-slide deck and rehearse live:</p>
+
+  <div class="step-card">
+    <div class="step-num">1</div>
+    <div class="step-content">
+      <strong>Open Existing Presentation:</strong>
+      <br>Launch your software &rarr; Open <code>Safe_Water_AmaMensah.pptx</code> from your <code>BIH_Practice</code> folder.
+    </div>
+  </div>
+
+  <div class="step-card">
+    <div class="step-num">2</div>
+    <div class="step-content">
+      <strong>Add a Subtle Transition:</strong>
+      <br>Click the <strong>Transitions</strong> tab on the Ribbon &rarr; Select <strong>Fade</strong> &rarr; Click <strong>"Apply to All"</strong>.
+      <br><em>Now every slide glides in smoothly!</em>
+    </div>
+  </div>
+
+  <div class="step-card">
+    <div class="step-num">3</div>
+    <div class="step-content">
+      <strong>Add Bullet Animations to Slide 3:</strong>
+      <br>Go to Slide 3 (Action Steps). Click inside the bulleted text box.
+      <br>Click the <strong>Animations</strong> tab &rarr; Select <strong>Appear</strong> or <strong>Fade In</strong>.
+      <br><em>Test:</em> When you run the show, each action point appears only when you click!
+    </div>
+  </div>
+
+  <div class="step-card">
+    <div class="step-num">4</div>
+    <div class="step-content">
+      <strong>Add a Source Citation:</strong>
+      <br>On Slide 2, insert a small text box at the very bottom rim.
+      <br>Type: <code>Source: Community Water and Sanitation Agency (CWSA) Ghana</code>. Set font size to <strong>8 pt</strong> and color to gray.
+    </div>
+  </div>
+
+  <div class="step-card">
+    <div class="step-num">5</div>
+    <div class="step-content">
+      <strong>Live Rehearsal (Swap Roles!):</strong>
+      <br>&bull; <strong>Round 1:</strong> Student A stands tall, presses <span class="kbd-key">F5</span>, and delivers the 3-slide presentation (90 seconds). Practice using the <span class="kbd-key">B</span> key on Slide 2!
+      <br>&bull; <strong>Round 2:</strong> Student B evaluates Student A using the rubric on Page 6.
+      <br>&bull; <strong>Round 3:</strong> Swap roles and repeat!
+    </div>
+  </div>
+
+  <h2>2. Quick-Fire Rehearsal Timer</h2>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 25%;">Slide</th>
+        <th style="width: 45%;">What to Say Out Loud</th>
+        <th style="width: 30%;">Recommended Time</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Slide 1 (Title)</strong></td>
+        <td>Introduce yourself, your club, and your topic with a smile.</td>
+        <td><strong>20 seconds</strong></td>
+      </tr>
+      <tr>
+        <td><strong>Slide 2 (Problem)</strong></td>
+        <td>Explain why dirty water hurts students and missed classes.</td>
+        <td><strong>40 seconds</strong></td>
+      </tr>
+      <tr>
+        <td><strong>Slide 3 (Solution)</strong></td>
+        <td>Present the 3 actions. Make a call to action!</td>
+        <td><strong>30 seconds</strong></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ========================================== -->
+<!-- PAGE 6: PEER REVIEW & SELF-ASSESSMENT      -->
+<!-- ========================================== -->
+<div class="page">
+  <div class="header-bar">
+    <div class="header-title">Session 13 Review & Peer Assessment</div>
+    <div class="badge">Session 13 • Page 6</div>
+  </div>
+
+  <h2>1. Peer Evaluation Rubric (To Be Filled by Your Partner)</h2>
+  <p><em>Evaluate your partner's live presentation honestly and constructively:</em></p>
+
+  <div class="student-meta" style="margin-bottom: 12px; padding: 10px 14px;">
+    <strong>Presenter Name:</strong> <span class="editable-line" contenteditable="true" style="display:inline-block; width: 220px;"></span>
+    &nbsp;&nbsp;<strong>Evaluator:</strong> <span class="editable-line" contenteditable="true" style="display:inline-block; width: 200px;"></span>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 45%;">Presentation Skill Observed</th>
+        <th style="width: 18%; text-align:center;">Needs Work</th>
+        <th style="width: 18%; text-align:center;">Good Job!</th>
+        <th style="width: 19%; text-align:center;">Superstar! ⭐</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Eye Contact:</strong> Did they look at the audience instead of staring at the wall?</td>
+        <td style="text-align:center;"><input type="radio" name="p1"></td>
+        <td style="text-align:center;"><input type="radio" name="p1"></td>
+        <td style="text-align:center;"><input type="radio" name="p1"></td>
+      </tr>
+      <tr>
+        <td><strong>Voice & Pacing:</strong> Was their voice loud, clear, and calm (not rushed)?</td>
+        <td style="text-align:center;"><input type="radio" name="p2"></td>
+        <td style="text-align:center;"><input type="radio" name="p2"></td>
+        <td style="text-align:center;"><input type="radio" name="p2"></td>
+      </tr>
+      <tr>
+        <td><strong>Slide Design:</strong> Were the slides clean and readable using the 6x6 rule?</td>
+        <td style="text-align:center;"><input type="radio" name="p3"></td>
+        <td style="text-align:center;"><input type="radio" name="p3"></td>
+        <td style="text-align:center;"><input type="radio" name="p3"></td>
+      </tr>
+      <tr>
+        <td><strong>Control:</strong> Did they steer the show smoothly using keyboard shortcuts?</td>
+        <td style="text-align:center;"><input type="radio" name="p4"></td>
+        <td style="text-align:center;"><input type="radio" name="p4"></td>
+        <td style="text-align:center;"><input type="radio" name="p4"></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p><strong>One thing my partner did brilliantly:</strong></p>
+  <div class="answer-line" contenteditable="true">Write praise here...</div>
+
+  <p><strong>One tip to help my partner improve next time:</strong></p>
+  <div class="answer-line" contenteditable="true">Write suggestion here...</div>
+
+  <h2>2. Self-Assessment & Mentor Sign-Off</h2>
+  <p>Tick the column that reflects your confidence at the end of Level 6 (Presentations):</p>
+  <table>
+    <thead>
+      <tr>
+        <th>Presentation Delivery Competency</th>
+        <th style="width: 18%; text-align: center;">With Help</th>
+        <th style="width: 18%; text-align: center;">Almost Alone</th>
+        <th style="width: 18%; text-align: center;">All By Myself!</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1. I can explain the difference between a Transition and an Animation.</td>
+        <td style="text-align: center;"><input type="radio" name="s13_1"></td>
+        <td style="text-align: center;"><input type="radio" name="s13_1"></td>
+        <td style="text-align: center;"><input type="radio" name="s13_1"></td>
+      </tr>
+      <tr>
+        <td>2. I can control a live slide show using F5, Spacebar, Arrow keys, and B.</td>
+        <td style="text-align: center;"><input type="radio" name="s13_2"></td>
+        <td style="text-align: center;"><input type="radio" name="s13_2"></td>
+        <td style="text-align: center;"><input type="radio" name="s13_2"></td>
+      </tr>
+      <tr>
+        <td>3. I know how to maintain 3-zone eye contact and avoid turning my back.</td>
+        <td style="text-align: center;"><input type="radio" name="s13_3"></td>
+        <td style="text-align: center;"><input type="radio" name="s13_3"></td>
+        <td style="text-align: center;"><input type="radio" name="s13_3"></td>
+      </tr>
+      <tr>
+        <td>4. I can add source citation footnotes to give credit for facts and images.</td>
+        <td style="text-align: center;"><input type="radio" name="s13_4"></td>
+        <td style="text-align: center;"><input type="radio" name="s13_4"></td>
+        <td style="text-align: center;"><input type="radio" name="s13_4"></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div style="border-top: 1px solid var(--bih-border); margin-top: 25px; padding-top: 12px; display: flex; justify-content: space-between; font-size: 13px;">
+    <div><strong>Mentor Signature:</strong> _____________________________</div>
+    <div><strong>Date Completed:</strong> ____________________</div>
+  </div>
+</div>
+
+</body>
+</html>

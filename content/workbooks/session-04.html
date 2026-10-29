@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>BIH Tech Club - Session 4: Files, Folders & File Explorer</title>
+  <style>
+    :root {
+      --bih-purple: #3A0CA3;
+      --bih-accent: #4361EE;
+      --bih-gold: #F77F00;
+      --bih-green: #2EC4B6;
+      --bih-red: #E63946;
+      --bih-dark: #1E1E24;
+      --bih-light: #F8F9FA;
+      --bih-border: #CED4DA;
+      --folder-yellow: #F59E0B;
+    }
+
+    * {
+      box-sizing: border-box;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    body {
+      background-color: #E9ECEF;
+      color: var(--bih-dark);
+      margin: 0;
+      padding: 20px;
+      line-height: 1.55;
+    }
+
+    .page {
+      background: #FFFFFF;
+      max-width: 860px;
+      margin: 20px auto;
+      padding: 42px 50px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+      border-radius: 8px;
+      page-break-after: always;
+    }
+
+    @media print {
+      body { background: white; padding: 0; }
+      .page { box-shadow: none; margin: 0; padding: 30px; max-width: 100%; border-radius: 0; }
+      .no-print { display: none; }
+    }
+
+    /* Header Bar */
+    .header-bar {
+      border-bottom: 3px solid var(--bih-purple);
+      padding-bottom: 10px;
+      margin-bottom: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .header-title {
+      font-size: 19px;
+      font-weight: 800;
+      color: var(--bih-purple);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .badge {
+      background: var(--bih-gold);
+      color: #FFFFFF;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+    }
+
+    /* Student Meta Box */
+    .student-meta {
+      border: 2px dashed var(--bih-border);
+      border-radius: 8px;
+      padding: 12px 18px;
+      background: var(--bih-light);
+      margin-bottom: 20px;
+    }
+
+    .meta-row {
+      display: flex;
+      gap: 15px;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+    .meta-row:last-child { margin-bottom: 0; }
+
+    .meta-label {
+      font-size: 12.5px;
+      font-weight: 700;
+      color: var(--bih-dark);
+      min-width: 125px;
+    }
+
+    .editable-line {
+      border-bottom: 1.5px solid var(--bih-purple);
+      flex-grow: 1;
+      padding: 2px 6px;
+      font-size: 13.5px;
+      font-weight: 600;
+      color: var(--bih-purple);
+      outline: none;
+      min-height: 20px;
+    }
+
+    /* Typography */
+    h1 { color: var(--bih-purple); font-size: 22px; margin-top: 0; margin-bottom: 8px; }
+    h2 { color: var(--bih-purple); font-size: 16px; margin-top: 20px; margin-bottom: 10px; border-left: 4px solid var(--bih-gold); padding-left: 8px; }
+    p { font-size: 13px; margin: 6px 0; }
+
+    /* Dual Grid Layout */
+    .dual-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin: 12px 0;
+    }
+
+    .dual-box {
+      border: 1px solid var(--bih-border);
+      border-radius: 8px;
+      padding: 12px 14px;
+      background: #FAFAFA;
+    }
+    .dual-box-title {
+      font-size: 13px;
+      font-weight: 800;
+      color: var(--bih-purple);
+      margin-bottom: 6px;
+      border-bottom: 1px solid var(--bih-border);
+      padding-bottom: 4px;
+    }
+
+    /* Callouts & Alert Boxes */
+    .callout {
+      background: #FFF3CD;
+      border-left: 4px solid var(--bih-gold);
+      padding: 10px 14px;
+      margin: 14px 0;
+      border-radius: 0 8px 8px 0;
+      font-size: 12.5px;
+    }
+    .callout-title {
+      font-weight: 800;
+      color: #856404;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 2px;
+    }
+
+    .panic-box {
+      background: #F8D7DA;
+      border-left: 4px solid var(--bih-red);
+      padding: 12px 14px;
+      margin: 14px 0;
+      border-radius: 0 8px 8px 0;
+      font-size: 12.5px;
+    }
+    .panic-title {
+      font-weight: 800;
+      color: #721C24;
+      margin-bottom: 4px;
+    }
+
+    /* Step Cards */
+    .step-card {
+      display: flex;
+      gap: 12px;
+      background: var(--bih-light);
+      border: 1px solid var(--bih-border);
+      border-radius: 6px;
+      padding: 10px 12px;
+      margin-bottom: 8px;
+      align-items: flex-start;
+    }
+
+    .step-num {
+      background: var(--bih-purple);
+      color: white;
+      font-size: 13px;
+      font-weight: 800;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .step-content { flex-grow: 1; font-size: 12.5px; }
+
+    /* Diagrams */
+    .diagram-container {
+      background: #FAFAFA;
+      border: 1px solid var(--bih-border);
+      border-radius: 8px;
+      padding: 12px;
+      margin: 14px 0;
+      text-align: center;
+    }
+    .diagram-caption {
+      font-size: 11px;
+      color: #6C757D;
+      margin-top: 6px;
+      font-style: italic;
+    }
+
+    /* Tables */
+    table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 12.5px; }
+    th { background: var(--bih-purple); color: white; text-align: left; padding: 7px 10px; }
+    td { border: 1px solid var(--bih-border); padding: 7px 10px; vertical-align: top; }
+    tr:nth-child(even) { background-color: var(--bih-light); }
+
+    /* Key Badge */
+    .kbd-key {
+      display: inline-block;
+      background: #F3F4F6;
+      border: 1.5px solid #9CA3AF;
+      border-bottom: 3px solid #6B7280;
+      border-radius: 4px;
+      padding: 1px 6px;
+      font-family: monospace;
+      font-size: 12px;
+      font-weight: 700;
+      color: #1F2937;
+      margin: 0 2px;
+    }
+
+    /* Interactive Inputs */
+    .answer-line {
+      min-height: 24px;
+      border-bottom: 1px dashed var(--bih-purple);
+      margin: 4px 0;
+      outline: none;
+      font-size: 13px;
+      color: var(--bih-dark);
+      padding: 2px 4px;
+    }
+
+    .checkbox-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 6px;
+      font-size: 12.5px;
+    }
+    .checkbox-item input { width: 15px; height: 15px; cursor: pointer; }
+  </style>
+</head>
+<body>
+
+<!-- ========================================== -->
+<!-- PAGE 1: THE DIGITAL FILING CABINET         -->
+<!-- ========================================== -->
+<div class="page">
+  <div class="header-bar">
+    <div class="header-title">Bozoma Innovation Hub • Tech Club</div>
+    <div class="badge">Session 4 • Page 1</div>
+  </div>
+
+  <div class="student-meta">
+    <div class="meta-row">
+      <span class="meta-label">Learner Full Name:</span>
+      <div class="editable-line" contenteditable="true">Ama Mensah</div>
+    </div>
+    <div class="meta-row">
+      <span class="meta-label">School:</span>
+      <div class="editable-line" contenteditable="true">Bozoma Model School</div>
+      <span class="meta-label" style="min-width: 50px;">Class:</span>
+      <div class="editable-line" contenteditable="true" style="max-width: 90px;">JHS 1</div>
+    </div>
+    <div class="meta-row">
+      <span class="meta-label">Workstation Device:</span>
+      <div class="editable-line" contenteditable="true" style="max-width: 180px;">[ ] Desktop &nbsp; [ ] Laptop</div>
+      <span class="meta-label" style="min-width: 70px;">Station #:</span>
+      <div class="editable-line" contenteditable="true" style="max-width: 90px;">PC-01</div>
+    </div>
+  </div>
+
+  <h1>Session 4: Files, Folders & File Explorer</h1>
+  <p>Imagine if your headteacher threw all the school’s examination papers, receipts, letters, and student records into one giant pile in the middle of the staff room floor. Finding one student's terminal report would take days! That is why offices use <strong>filing cabinets</strong> with labeled <strong>folders</strong>. Today, you will learn how your computer organizes its digital filing cabinet.</p>
+
+  <h2>1. Plain Talk: What is a File vs. a Folder?</h2>
+  <div class="dual-grid">
+    <div class="dual-box">
+      <div class="dual-box-title">📄 A FILE (The Content)</div>
+      <p>A single finished piece of work that has been saved onto the computer. A file contains actual text, drawing strokes, or sound.</p>
+      <p><em>Real-world Analogy:</em> A single sheet of paper or an exercise book with your homework written inside.</p>
+      <p><strong>Examples:</strong> <code>My_Story.txt</code>, <code>Flag.png</code></p>
+    </div>
+
+    <div class="dual-box">
+      <div class="dual-box-title">📁 A FOLDER (The Container)</div>
+      <p>An empty, labeled digital container used strictly to hold and organize files or other subfolders. A folder contains <strong>no text of its own</strong>.</p>
+      <p><em>Real-world Analogy:</em> A yellow manila cardboard folder or ring binder kept on a shelf.</p>
+      <p><strong>Example:</strong> <code>Science_Homework_2026</code></p>
+    </div>
+  </div>
+
+  <h2>2. The Computer Filing Hierarchy (From Drive to File)</h2>
+  <!-- DIAGRAM: FILING CABINET HIERARCHY -->
+  <div class="diagram-container">
+    <svg width="700" height="150" viewBox="0 0 700 150" xmlns="http://www.w3.org/2000/svg">
+      <!-- LEVEL 1: Drive (Cabinet) -->
+      <g transform="translate(20, 20)">
+        <rect x="0" y="0" width="130" height="95" rx="6" fill="#1F2937" stroke="#111827" stroke-width="1.5"/>
+        <rect x="15" y="15" width="100" height="18" rx="2" fill="#374151"/>
+        <line x1="55" y1="24" x2="75" y2="24" stroke="#9CA3AF" stroke-width="2"/>
+        <rect x="15" y="42" width="100" height="18" rx="2" fill="#374151"/>
+        <line x1="55" y1="51" x2="75" y2="51" stroke="#9CA3AF" stroke-width="2"/>
+        <rect x="15" y="68" width="100" height="18" rx="2" fill="#374151"/>
+        <line x1="55" y1="77" x2="75" y2="77" stroke="#9CA3AF" stroke-width="2"/>
+        <text x="65" y="112" font-size="10.5" font-weight="bold" fill="#3A0CA3" text-anchor="middle">Hard Drive (C:)</text>
+        <text x="65" y="124" font-size="9" fill="#6B7280" text-anchor="middle">The Filing Cabinet</text>
+      </g>
+
+      <path d="M 160,65 L 195,65" stroke="#F77F00" stroke-width="2.5" fill="none"/>
+      <polygon points="200,65 192,60 192,70" fill="#F77F00"/>
+
+      <!-- LEVEL 2: Main Folder -->
+      <g transform="translate(210, 25)">
+        <path d="M 0,10 L 0,80 A 6 6 0 0 0 6,86 L 114,86 A 6 6 0 0 0 120,80 L 120,20 A 6 6 0 0 0 114,14 L 55,14 L 45,6 L 6,6 A 6 6 0 0 0 0,10 Z" fill="#F59E0B"/>
+        <rect x="10" y="24" width="100" height="52" rx="3" fill="#FBBF24"/>
+        <text x="60" y="55" font-size="11" font-weight="bold" fill="#78350F" text-anchor="middle">Documents</text>
+        <text x="60" y="107" font-size="10.5" font-weight="bold" fill="#3A0CA3" text-anchor="middle">Main Folder</text>
+        <text x="60" y="119" font-size="9" fill="#6B7280" text-anchor="middle">Cabinet Drawer</text>
+      </g>
+
+      <path d="M 340,65 L 375,65" stroke="#F77F00" stroke-width="2.5" fill="none"/>
+      <polygon points="380,65 372,60 372,70" fill="#F77F00"/>
+
+      <!-- LEVEL 3: Subfolder -->
+      <g transform="translate(390, 25)">
+        <path d="M 0,10 L 0,80 A 6 6 0 0 0 6,86 L 114,86 A 6 6 0 0 0 120,80 L 120,20 A 6 6 0 0 0 114,14 L 55,14 L 45,6 L 6,6 A 6 6 0 0 0 0,10 Z" fill="#F59E0B"/>
+        <rect x="10" y="24" width="100" height="52" rx="3" fill="#FDE68A"/>
+        <text x="60" y="55" font-size="10" font-weight="bold" fill="#78350F" text-anchor="middle">BIH_TechClub</text>
+        <text x="60" y="107" font-size="10.5" font-weight="bold" fill="#3A0CA3" text-anchor="middle">Subfolder</text>
+        <text x="60" y="119" font-size="9" fill="#6B7280" text-anchor="middle">Folder inside Folder</text>
+      </g>
+
+      <path d="M 520,65 L 555,65" stroke="#F77F00" stroke-width="2.5" fill="none"/>
+      <polygon points="560,65 552,60 552,70" fill="#F77F00"/>
+
+      <!-- LEVEL 4: File -->
+      <g transform="translate(570, 25)">
+        <polygon points="10,0 75,0 95,20 95,85 10,85" fill="#FFFFFF" stroke="#334155" stroke-width="1.5"/>
+        <polygon points="75,0 75,20 95,20" fill="#E2E8F0" stroke="#334155" stroke-width="1"/>
+        <!-- Text lines inside file -->
+        <line x1="22" y1="35" x2="80" y2="35" stroke="#4361EE" stroke-width="2"/>
+        <line x1="22" y1="48" x2="80" y2="48" stroke="#94A3B8" stroke-width="2"/>
+        <line x1="22" y1="61" x2="60" y2="61" stroke="#94A3B8" stroke-width="2"/>
+        <text x="52" y="107" font-size="10" font-weight="bold" fill="#3A0CA3" text-anchor="middle">Notes.txt</text>
+        <text x="52" y="119" font-size="9" fill="#6B7280" text-anchor="middle">The actual Data File</text>
+      </g>
+    </svg>
+    <div class="diagram-caption">Figure 4.0: The Path: From Drive (C:) &rarr; Main Folder (Documents) &rarr; Subfolder (BIH_TechClub) &rarr; File (Notes.txt).</div>
+  </div>
+</div>
+
+<!-- ========================================== -->
+<!-- PAGE 2: MEETING FILE EXPLORER              -->
+<!-- ========================================== -->
+<div class="page">
+  <div class="header-bar">
+    <div class="header-title">Meeting File Explorer</div>
+    <div class="badge">Session 4 • Page 2</div>
+  </div>
+
+  <h2>1. What is File Explorer?</h2>
+  <p><strong>File Explorer</strong> is the program built into your computer that lets you look inside your storage drives, open folders, create new folders, and arrange your files. Think of it as walking into the school library or records room.</p>
+
+  <div class="callout">
+    <div class="callout-title">⚡ THE FASTEST WAY TO OPEN FILE EXPLORER</div>
+    Look down at your keyboard. Hold down the <strong>Windows Key</strong> <span class="kbd-key">&#8862;</span> with your left thumb, and tap the letter <span class="kbd-key">E</span> once: <strong>[ Win + E ]</strong>. File Explorer will open instantly! You can also click the yellow folder icon on the bottom Taskbar.
+  </div>
+
+  <h2>2. Anatomy of the File Explorer Window</h2>
+  <!-- DIAGRAM: FILE EXPLORER ANATOMY -->
+  <div class="diagram-container">
+    <svg width="720" height="230" viewBox="0 0 720 230" xmlns="http://www.w3.org/2000/svg">
+      <!-- Window Outer Frame -->
+      <rect x="10" y="10" width="700" height="205" rx="6" fill="#FFFFFF" stroke="#334155" stroke-width="1.5"/>
+
+      <!-- Window Title & Ribbon -->
+      <rect x="10" y="10" width="700" height="30" rx="5" fill="#F1F5F9"/>
+      <text x="25" y="28" font-size="11" font-weight="bold" fill="#334155">File Explorer</text>
+      <rect x="660" y="16" width="14" height="14" rx="2" fill="#EF4444"/>
+      <line x1="664" y1="20" x2="672" y2="28" stroke="white" stroke-width="1.5"/>
+      <line x1="672" y1="20" x2="664" y2="28" stroke="white" stroke-width="1.5"/>
+
+      <!-- ADDRESS BAR / PATH (Top row) -->
+      <rect x="25" y="46" width="480" height="24" rx="3" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1"/>
+      <text x="35" y="62" font-size="10.5" fill="#0284C7">&larr; &rarr; &#8593; &nbsp; This PC &gt; Documents &gt; BIH_TechClub</text>
+
+      <!-- SEARCH BOX -->
+      <rect x="520" y="46" width="175" height="24" rx="3" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1"/>
+      <text x="530" y="62" font-size="10" fill="#94A3B8">Search BIH_TechClub...</text>
+
+      <!-- NAVIGATION PANE (Left Column) -->
+      <rect x="25" y="78" width="170" height="125" rx="3" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1"/>
+      <text x="35" y="96" font-size="10" font-weight="bold" fill="#64748B">Quick access</text>
+      <text x="45" y="115" font-size="10" fill="#334155">&#128187; Desktop</text>
+      <text x="45" y="134" font-size="10" fill="#334155">&#128229; Downloads</text>
+      <rect x="35" y="142" width="150" height="20" rx="2" fill="#E0E7FF"/>
+      <text x="45" y="156" font-size="10" font-weight="bold" fill="#3A0CA3">&#128193; Documents</text>
+      <text x="45" y="178" font-size="10" fill="#334155">&#128196; Pictures</text>
+
+      <!-- MAIN CONTENT AREA (Right Panel) -->
+      <rect x="205" y="78" width="490" height="125" rx="3" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1"/>
+
+      <!-- Item 1: Folder inside Documents -->
+      <g transform="translate(225, 92)">
+        <path d="M 0,4 L 0,26 A 2 2 0 0 0 2,28 L 34,28 A 2 2 0 0 0 36,26 L 36,8 A 2 2 0 0 0 34,6 L 18,6 L 14,2 L 2,2 A 2 2 0 0 0 0,4 Z" fill="#F59E0B"/>
+        <text x="45" y="16" font-size="10" font-weight="bold" fill="#1E293B">Term1_Notes</text>
+        <text x="45" y="27" font-size="8.5" fill="#64748B">File folder</text>
+      </g>
+
+      <!-- Item 2: File inside Documents -->
+      <g transform="translate(225, 130)">
+        <polygon points="4,0 24,0 30,6 30,26 4,26" fill="#FFFFFF" stroke="#64748B" stroke-width="1"/>
+        <text x="45" y="14" font-size="10" font-weight="bold" fill="#1E293B">First_Essay.txt</text>
+        <text x="45" y="25" font-size="8.5" fill="#64748B">Text Document &bull; 12 KB</text>
+      </g>
+
+      <!-- Callout Labels -->
+      <path d="M 280,44 L 280,32" stroke="#0284C7" stroke-width="1.5"/>
+      <text x="280" y="26" font-size="9" font-weight="bold" fill="#0284C7" text-anchor="middle">&uarr; Address Bar: Shows your exact folder location</text>
+
+      <path d="M 110,205 L 110,218" stroke="#3A0CA3" stroke-width="1.5"/>
+      <text x="110" y="226" font-size="9" font-weight="bold" fill="#3A0CA3" text-anchor="middle">Navigation Pane (Your shortcuts)</text>
+
+      <path d="M 450,205 L 450,218" stroke="#059669" stroke-width="1.5"/>
+      <text x="450" y="226" font-size="9" font-weight="bold" fill="#059669" text-anchor="middle">Main Display Area: Shows files inside the active folder</text>
+    </svg>
+    <div class="diagram-caption">Figure 4.1: Anatomy of File Explorer. Always check the Address Bar to see where you are!</div>
+  </div>
+
+  <h2>3. The Four Standard Personal Folders</h2>
+  <ul>
+    <li><strong>Documents:</strong> The primary home for your school reports, essays, and notes.</li>
+    <li><strong>Pictures:</strong> Where photos, diagrams, and drawings from Paint are stored.</li>
+    <li><strong>Downloads:</strong> Where files from the internet automatically land.</li>
+    <li><strong>Desktop:</strong> Shows the files and shortcuts sitting right on your wallpaper.</li>
+  </ul>
+</div>
+
+<!-- ========================================== -->
+<!-- PAGE 3: CREATING & NAMING FOLDERS          -->
+<!-- ========================================== -->
+<div class="page">
+  <div class="header-bar">
+    <div class="header-title">Creating & Naming Folders</div>
+    <div class="badge">Session 4 • Page 3</div>
+  </div>
+
+  <h2>1. How to Create a Brand-New Folder</h2>
+  <p>Follow these 3 simple steps to create a folder anywhere on your computer:</p>
+
+  <div class="step-card">
+    <div class="step-num">1</div>
+    <div class="step-content">
+      <strong>Right-Click on Empty Space:</strong> Inside File Explorer, move your pointer to an empty white space. Click the <strong>Right Mouse Button</strong> (or bottom-right corner of your laptop touchpad).
+    </div>
+  </div>
+
+  <div class="step-card">
+    <div class="step-num">2</div>
+    <div class="step-content">
+      <strong>Choose "New" &rarr; "Folder":</strong> In the menu that appears, hover your pointer over <strong>New</strong>, then glide across and left-click on <strong>Folder</strong>.
+    </div>
+  </div>
+
+  <div class="step-card">
+    <div class="step-num">3</div>
+    <div class="step-content">
+      <strong>Type the Name & Press Enter:</strong> A yellow folder appears with the words <em>"New folder"</em> highlighted in blue. <strong>Do not click!</strong> Immediately start typing your desired folder name on the keyboard, then tap the <span class="kbd-key">Enter</span> key.
+    </div>
+  </div>
+
+  <h2>2. The BIH Golden File-Naming Standard</h2>
+  <p>When sharing school computers, files named <code>doc1</code> or <code>essay</code> get lost immediately. Always use this 3-part naming formula:</p>
+
+  <div style="background: var(--bih-purple); color: white; padding: 12px 18px; border-radius: 6px; text-align: center; font-size: 15px; font-weight: bold; margin: 12px 0;">
+    [Subject or Project] _ [Topic] _ [YourName]
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 45%;">❌ BAD File Name (Avoid!)</th>
+        <th style="width: 55%;">✅ EXCELLENT BIH File Name</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>asdfghjkl.txt</code> (Nonsense typing)</td>
+        <td><code>Science_Photosynthesis_AmaMensah.txt</code></td>
+      </tr>
+      <tr>
+        <td><code>kofi's *awesome* drawing!!!.png</code></td>
+        <td><code>Art_GhanaFlag_KofiBoateng.png</code></td>
+      </tr>
+      <tr>
+        <td><code>homework.docx</code> (Which subject? Which week?)</td>
+        <td><code>English_Comprehension_Week4.docx</code></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>3. The Forbidden Characters (Illegal Symbols)</h2>
+  <div class="callout">
+    <div class="callout-title">🚫 SYMBOLS COMPUTERS WILL REJECT</div>
+    The computer uses certain punctuation marks for its own internal code commands. You can <strong>NEVER</strong> use these 9 characters in a file or folder name:
+    <div style="font-family: monospace; font-size: 18px; font-weight: bold; color: var(--bih-red); text-align: center; margin: 8px 0;">
+      \ &nbsp; / &nbsp; : &nbsp; * &nbsp; ? &nbsp; " &nbsp; &lt; &nbsp; &gt; &nbsp; |
+    </div>
+    If you try typing any of these, the computer will beep and show a warning message refusing to save the name!
+  </div>
+
+  <h2>4. Spot the Bad Names Challenge</h2>
+  <p>Look at the three file names below. Circle the <strong>ONE</strong> file name that is safe and valid:</p>
+  <div style="font-family: monospace; font-size: 13px; margin: 10px 0;">
+    [ &nbsp; ] A. <code>Math:Chapter1/Exercises.txt</code><br>
+    [ &nbsp; ] B. <code>SocialStudies_Rivers_KwesiAppiah.txt</code><br>
+    [ &nbsp; ] C. <code>What Is Technology?*.txt</code>
+  </div>
+</div>
+
+<!-- ========================================== -->
+<!-- PAGE 4: "SAVE" VS. "SAVE AS"               -->
+<!-- ========================================== -->
+<div class="page">
+  <div class="header-bar">
+    <div class="header-title">Saving Your Work: "Save" vs. "Save As"</div>
+    <div class="badge">Session 4 • Page 4</div>
+  </div>
+
+  <h2>1. What is the Difference?</h2>
+  <div class="dual-grid">
+    <div class="dual-box">
+      <div class="dual-box-title">"SAVE AS..." (Giving Birth to a File)</div>
+      <p>Use <strong>Save As</strong> when you are saving a file for the <strong>very first time</strong>. It forces you to make two critical decisions:</p>
+      <ul>
+        <li><strong>WHERE</strong> to put the file (which folder).</li>
+        <li><strong>WHAT</strong> to name the file.</li>
+      </ul>
+    </div>
+
+    <div class="dual-box">
+      <div class="dual-box-title">"SAVE" (Updating Your Work)</div>
+      <p>Use <strong>Save</strong> after the file already has a name. It updates the file on the drive with any new sentences or changes you made since the last save.</p>
+      <p>It does not ask where or what name—it overwrites the old version quietly in a split second!</p>
+    </div>
+  </div>
+
+  <h2>2. Anatomy of the "Save As" Dialog Window</h2>
+  <p>When you click <strong>File &rarr; Save As</strong> in any program, this window appears. Follow the numbered steps:</p>
+
+  <!-- DIAGRAM: SAVE AS DIALOG WINDOW -->
+  <div class="diagram-container">
+    <svg width="700" height="200" viewBox="0 0 700 200" xmlns="http://www.w3.org/2000/svg">
+      <rect x="10" y="10" width="680" height="180" rx="6" fill="#FFFFFF" stroke="#334155" stroke-width="2"/>
+      <rect x="10" y="10" width="680" height="26" rx="5" fill="#E2E8F0"/>
+      <text x="25" y="27" font-size="11" font-weight="bold" fill="#1E293B">Save As</text>
+
+      <!-- Step 1 & 2: Folder Location Path (Top & Left) -->
+      <rect x="25" y="44" width="650" height="22" rx="3" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1"/>
+      <text x="35" y="59" font-size="10" fill="#0284C7">&gt; Documents &gt; BIH_Practice</text>
+
+      <!-- Left folder picker -->
+      <rect x="25" y="72" width="140" height="65" rx="3" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1"/>
+      <text x="35" y="88" font-size="9" font-weight="bold" fill="#3A0CA3">&#128193; Documents</text>
+      <text x="45" y="104" font-size="8.5" fill="#4B5563">&#128193; BIH_Practice</text>
+
+      <!-- Right files preview -->
+      <rect x="175" y="72" width="500" height="65" rx="3" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1"/>
+      <text x="360" y="110" font-size="11" fill="#94A3B8" text-anchor="middle">(No matching files yet)</text>
+
+      <!-- File Name Input Area (Bottom) -->
+      <text x="60" y="157" font-size="10.5" font-weight="bold" fill="#1E293B">File name:</text>
+      <rect x="135" y="144" width="380" height="22" rx="3" fill="#FFFFFF" stroke="#3A0CA3" stroke-width="1.5"/>
+      <text x="145" y="159" font-size="10.5" font-weight="bold" fill="#3A0CA3">My_First_Story_Ama.txt</text>
+
+      <!-- Save & Cancel Buttons -->
+      <rect x="530" y="143" width="70" height="24" rx="3" fill="#3A0CA3"/>
+      <text x="565" y="158" font-size="10.5" font-weight="bold" fill="white" text-anchor="middle">Save</text>
+
+      <rect x="610" y="143" width="65" height="24" rx="3" fill="#E2E8F0" stroke="#94A3B8" stroke-width="1"/>
+      <text x="642" y="158" font-size="10.5" fill="#1E293B" text-anchor="middle">Cancel</text>
+
+      <!-- Step Badges -->
+      <circle cx="20" cy="55" r="9" fill="#F77F00"/>
+      <text x="20" y="59" font-size="10" font-weight="bold" fill="white" text-anchor="middle">1</text>
+
+      <circle cx="120" cy="155" r="9" fill="#F77F00"/>
+      <text x="120" y="159" font-size="10" font-weight="bold" fill="white" text-anchor="middle">2</text>
+
+      <circle cx="520" cy="155" r="9" fill="#F77F00"/>
+      <text x="520" y="159" font-size="10" font-weight="bold" fill="white" text-anchor="middle">3</text>
+    </svg>
+    <div class="diagram-caption">Figure 4.2: The 3-Step Save As Process: 1. Pick destination folder &rarr; 2. Type clean file name &rarr; 3. Click Save!</div>
+  </div>
+
+  <h2>3. The 5-Minute Save Habit (Ctrl + S)</h2>
+  <div class="callout">
+    <div class="callout-title">⚡ BEAT DUMSOR & ACCIDENTAL CLOSURES</div>
+    Every 5 minutes while working, press: <span class="kbd-key">Ctrl</span> + <span class="kbd-key">S</span>. This takes half a second and ensures that if power cuts, your essay is safely saved on the drive!
+  </div>
+</div>
+
+<!-- ========================================== -->
+<!-- PAGE 5: GUIDED HANDS-ON LAB                -->
+<!-- ========================================== -->
+<div class="page">
+  <div class="header-bar">
+    <div class="header-title">Guided Hands-On Lab: Your First Saved File</div>
+    <div class="badge">Session 4 • Page 5</div>
+  </div>
+
+  <h2>1. Lab Mission: Create a Folder & Save Your First Profile</h2>
+  <p>Follow these 5 micro-steps at your workstation right now:</p>
+
+  <div class="step-card">
+    <div class="step-num">1</div>
+    <div class="step-content">
+      <strong>Open File Explorer:</strong> Hold down <span class="kbd-key">&#8862; Win</span> and tap <span class="kbd-key">E</span>.
+      <br>On the left-hand navigation pane, left-click on <strong>Documents</strong>.
+    </div>
+  </div>
+
+  <div class="step-card">
+    <div class="step-num">2</div>
+    <div class="step-content">
+      <strong>Create Your Tech Club Folder:</strong> Right-click on empty white space &rarr; hover over <strong>New</strong> &rarr; click <strong>Folder</strong>.
+      <br>Immediately type: <code>BIH_Practice</code> and press <span class="kbd-key">Enter</span>.
+    </div>
+  </div>
+
+  <div class="step-card">
+    <div class="step-num">3</div>
+    <div class="step-content">
+      <strong>Launch Notepad & Write:</strong> Click the Start button, type <code>notepad</code>, and press <span class="kbd-key">Enter</span>.
+      <br>Type these exact 3 sentences (replace with your real name and school):
+      <br><em>"My name is Ama Mensah. I attend Bozoma Model JHS. In Tech Club, I want to learn how to create digital solutions for Ghana."</em>
+    </div>
+  </div>
+
+  <div class="step-card">
+    <div class="step-num">4</div>
+    <div class="step-content">
+      <strong>Save As:</strong> In Notepad, click <strong>File</strong> in the top menu &rarr; click <strong>Save As...</strong>
+      <br>&bull; In the left pane, click on <strong>Documents</strong>, then double-click your new <code>BIH_Practice</code> folder to open it.
+      <br>&bull; Click in the <strong>File name:</strong> box, erase any default text, and type:
+      <br><code>Profile_AmaMensah.txt</code> (use your own name).
+      <br>&bull; Click the <strong>Save</strong> button!
+    </div>
+  </div>
+
+  <div class="step-card">
+    <div class="step-num">5</div>
+    <div class="step-content">
+      <strong>The Proof Test:</strong> Close Notepad completely by clicking the red <span style="color:#DC2626;">[ X ]</span>.
+      <br>Go to your File Explorer window inside <code>BIH_Practice</code>. Do you see your file?
+      <br><strong>Double-click it!</strong> Notepad will open right back up with your saved words!
+    </div>
+  </div>
+
+  <h2>2. Panic Button / Troubleshooting</h2>
+  <div class="panic-box">
+    <div class="panic-title">🚨 I clicked "Save", but I don't know where my file went!</div>
+    Don't worry, your file is not lost!
+    <ol style="margin: 4px 0 0 15px; padding: 0;">
+      <li>Open File Explorer (<span class="kbd-key">Win + E</span>).</li>
+      <li>On the left pane, click <strong>Quick access</strong> or <strong>Home</strong> at the very top.</li>
+      <li>Look under the <strong>Recent Files</strong> section. Your newly saved file will be at the very top of the list!</li>
+    </ol>
+  </div>
+</div>
+
+<!-- ========================================== -->
+<!-- PAGE 6: REVIEW & SELF-ASSESSMENT           -->
+<!-- ========================================== -->
+<div class="page">
+  <div class="header-bar">
+    <div class="header-title">Session 4 Review & Verification</div>
+    <div class="badge">Session 4 • Page 6</div>
+  </div>
+
+  <h2>1. Build a Paper Folder Tree</h2>
+  <p>Imagine you must organize your JHS 1 school work on a computer. Complete the diagram below by writing the names of 3 school subjects into the empty subfolder boxes:</p>
+
+  <div style="background: var(--bih-light); border: 2px dashed var(--bih-border); padding: 20px; border-radius: 8px; font-family: monospace; font-size: 13px; margin: 15px 0;">
+    📁 Documents<br>
+    &nbsp;&nbsp;&nbsp;└── 📁 My_School_Subjects<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├── 📁 <span class="answer-line" contenteditable="true" style="display:inline-block; width: 200px;">Subfolder 1 (e.g. Science)</span><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├── 📁 <span class="answer-line" contenteditable="true" style="display:inline-block; width: 200px;">Subfolder 2</span><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└── 📁 <span class="answer-line" contenteditable="true" style="display:inline-block; width: 200px;">Subfolder 3</span>
+  </div>
+
+  <h2>2. Written Review Questions</h2>
+  <p><strong>Question 1:</strong> Explain in your own words the difference between a <strong>File</strong> and a <strong>Folder</strong>:</p>
+  <div class="answer-line" contenteditable="true">Write your answer here...</div>
+  <div class="answer-line" contenteditable="true"></div>
+
+  <p><strong>Question 2:</strong> What keyboard shortcut opens File Explorer instantly?</p>
+  <div class="answer-line" contenteditable="true">Shortcut: ___________________________</div>
+
+  <p><strong>Question 3:</strong> Why is it dangerous to name a school project file simply <code>doc1.txt</code>?</p>
+  <div class="answer-line" contenteditable="true">Write your answer here...</div>
+
+  <h2>3. Self-Assessment & Mentor Sign-Off</h2>
+  <p>Tick the column that reflects your confidence at the end of Session 4:</p>
+  <table>
+    <thead>
+      <tr>
+        <th>File & Folder Competency</th>
+        <th style="width: 18%; text-align: center;">With Help</th>
+        <th style="width: 18%; text-align: center;">Almost Alone</th>
+        <th style="width: 18%; text-align: center;">All By Myself!</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1. I can explain the difference between a file and a folder.</td>
+        <td style="text-align: center;"><input type="radio" name="s4_1"></td>
+        <td style="text-align: center;"><input type="radio" name="s4_1"></td>
+        <td style="text-align: center;"><input type="radio" name="s4_1"></td>
+      </tr>
+      <tr>
+        <td>2. I can launch File Explorer using the [Win + E] shortcut.</td>
+        <td style="text-align: center;"><input type="radio" name="s4_2"></td>
+        <td style="text-align: center;"><input type="radio" name="s4_2"></td>
+        <td style="text-align: center;"><input type="radio" name="s4_2"></td>
+      </tr>
+      <tr>
+        <td>3. I can create a new folder and rename it using clean naming rules.</td>
+        <td style="text-align: center;"><input type="radio" name="s4_3"></td>
+        <td style="text-align: center;"><input type="radio" name="s4_3"></td>
+        <td style="text-align: center;"><input type="radio" name="s4_3"></td>
+      </tr>
+      <tr>
+        <td>4. I can use "Save As..." to place a file into a specific folder and find it again.</td>
+        <td style="text-align: center;"><input type="radio" name="s4_4"></td>
+        <td style="text-align: center;"><input type="radio" name="s4_4"></td>
+        <td style="text-align: center;"><input type="radio" name="s4_4"></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div style="border-top: 1px solid var(--bih-border); margin-top: 25px; padding-top: 12px; display: flex; justify-content: space-between; font-size: 13px;">
+    <div><strong>Mentor Signature:</strong> _____________________________</div>
+    <div><strong>Date Completed:</strong> ____________________</div>
+  </div>
+</div>
+
+</body>
+</html>
