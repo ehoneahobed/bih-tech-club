@@ -22,7 +22,12 @@ export const LABS = {
   chart: { title: '3D Spreadsheet Charts', icon: '📊', blurb: 'Type numbers into a mini spreadsheet and watch columns and pie slices grow, with SUM, AVERAGE, MAX and MIN updating live.' },
   password: { title: 'Password Fortress', icon: '🛡️', blurb: 'Build a wall of bricks with a practice passphrase, then send the guessing robot to see whether it can break in.' },
   coding: { title: 'Code the Sprite', icon: '🤖', blurb: 'Snap together motion, loop and pen blocks, run them on an x/y stage, collect litter for points and debug step by step.' },
+  document: { title: 'Format a Real Document', icon: '📝', blurb: 'Select paragraphs on a 3D page and use the ribbon: bold, sizes, alignment, bullets, numbering, heading styles, spell check, then print it on a 3D printer.' },
+  slides: { title: 'Slide Design & Show Time', icon: '🎤', blurb: 'Fix a badly designed deck (contrast, the 6-by-6 rule, a squished picture, carnival animations), then present it in a 3D classroom with real slide-show keys.' },
+  phishing: { title: 'Spot the Phish', icon: '🎣', blurb: 'Emails land on your desk one by one. Check the sender, the subject and where the link really goes, then keep it or shred it.' },
+  capstone: { title: 'Build the Whole House', icon: '🏠', blurb: 'Each capstone step builds part of a 3D house: charter, prototype, testing and polish. Then practise your timed 3-minute pitch on the Demo Day stage. Saved between sessions.' },
 };
+const labsOf = (s) => (Array.isArray(s.lab) ? s.lab : s.lab ? [s.lab] : []);
 
 const pad = (n) => String(n).padStart(2, '0');
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
@@ -75,10 +80,9 @@ const IMPORT_MAP = (up) => `<script type="importmap">{"imports":{"three":"${up}v
 function labBlock(id, up) {
   const lab = LABS[id];
   return `<div class="lab" data-lab="${id}" aria-label="${esc(lab.title)} 3D lab">
-  <div class="lab-canvas"><div class="lab-status">Loading 3D lab…</div><span class="lab-hint">Drag to rotate · scroll or pinch to zoom · click things</span></div>
-  <div class="lab-side"><div class="lab-info" aria-live="polite"></div><div class="lab-controls"></div></div>
-</div>
-<script type="module" src="${up}labs/main.js"></script>`;
+  <div class="lab-canvas"><div class="lab-status">Loading 3D lab…</div><span class="lab-hint">Drag to look around · scroll or pinch to zoom · click things</span></div>
+  <div class="lab-side"><div class="lab-missions" aria-live="polite"></div><div class="lab-info" aria-live="polite"></div><div class="lab-controls"></div></div>
+</div>`;
 }
 
 // ---------- Build ----------
@@ -139,9 +143,9 @@ WHAT IS IN THIS PACK
                                  into the boxes; they are saved in that browser on that
                                  computer. Use "Print / Save as PDF" to keep a copy.
 ${s.hasPdf ? `- Session-${s.id}-Workbook.pdf   The same workbook, ready to print for paper practice.\n` : ''}
-${s.lab ? `3D LAB
-This session has an interactive 3D lab ("${LABS[s.lab].title}"). It needs the internet:
-open the Session ${s.n} page on the club website.\n` : ''}
+${labsOf(s).length ? `3D LAB
+This session has interactive 3D labs (${labsOf(s).map((l) => `"${LABS[l].title}"`).join(', ')}).
+They need the internet: open the Session ${s.n} page on the club website.\n` : ''}
 SAFETY REMINDERS
 - Use fictional information in practice tasks.
 - Never write a real password in your workbook.
@@ -156,7 +160,7 @@ const card = (s, up) => `<a class="card" href="${up}sessions/${s.id}/" style="--
   <span class="num">Session ${s.n}</span>
   <h4>${esc(s.title)}</h4>
   <p>${esc(s.summary)}</p>
-  <span class="tags">${s.lab ? `<span class="tag tag-lab">${LABS[s.lab].icon} 3D lab</span>` : ''}<span class="tag">Workbook</span>${s.hasPdf ? '<span class="tag">PDF</span>' : ''}</span>
+  <span class="tags">${labsOf(s).map((l) => `<span class="tag tag-lab">${LABS[l].icon} ${esc(LABS[l].title)}</span>`).join('')}<span class="tag">Workbook</span>${s.hasPdf ? '<span class="tag">PDF</span>' : ''}</span>
 </a>`;
 
 const byLevel = course.levels.map((l) => ({ l, items: sessions.filter((s) => s.level.id === l.id) })).filter((g) => g.items.length);
@@ -199,7 +203,7 @@ sessions.forEach((s, i) => {
     title: `Session ${s.n}: ${s.title} · BIH Tech Club`,
     description: s.summary,
     depth: 2,
-    head: s.lab ? IMPORT_MAP(up) : '',
+    head: labsOf(s).length ? IMPORT_MAP(up) : '',
     body: `
 <div class="session-hero" style="--accent:${s.level.color}"><div class="wrap">
   <div class="crumbs"><a href="${up}">All sessions</a> › ${esc(s.level.name)}</div>
@@ -212,17 +216,17 @@ sessions.forEach((s, i) => {
   </div>
   <div class="meta">Last updated ${fmtDate(s.updated)}</div>
 </div></div>
-${s.lab ? `<section><div class="wrap">
-  <h2 class="section-title">${LABS[s.lab].icon} 3D lab: ${esc(LABS[s.lab].title)}</h2>
-  <p class="section-lead">${esc(LABS[s.lab].blurb)}</p>
-  ${labBlock(s.lab, up)}
-</div></section>` : ''}
+${labsOf(s).map((l) => `<section><div class="wrap">
+  <h2 class="section-title">${LABS[l].icon} 3D lab: ${esc(LABS[l].title)}</h2>
+  <p class="section-lead">${esc(LABS[l].blurb)} Follow the 🎯 missions: they tell you what to do next.</p>
+  ${labBlock(l, up)}
+</div></section>`).join('')}${labsOf(s).length ? `<script type="module" src="${up}labs/main.js"></script>` : ''}
 <section><div class="wrap two">
   <div class="panel">
     <h2>How to use this session</h2>
     <ol class="pack-list">
       <li><b>In the lab:</b> open the workbook and type answers straight into the boxes. They are saved on that computer automatically.</li>
-      ${s.lab ? '<li><b>Explore:</b> try the 3D lab above. Your mentor will tell you when.</li>' : ''}
+      ${labsOf(s).length ? '<li><b>Explore:</b> try the 3D lab above and complete its 🎯 missions. Press 🔊 to have the instructions read aloud.</li>' : ''}
       <li><b>No internet or device at home?</b> Download the pack or print the PDF and practise on paper.</li>
     </ol>
   </div>
@@ -251,7 +255,7 @@ write('labs/index.html', layout({
   <h2 class="section-title">3D Labs</h2>
   <p class="section-lead">Hands-on 3D models you can rotate, click and play with. Each one belongs to a session. They run in the browser and work best on a computer with a mouse.</p>
   <div class="grid lab-gallery">${Object.entries(LABS).map(([id, lab]) => {
-    const used = sessions.filter((s) => s.lab === id);
+    const used = sessions.filter((s) => labsOf(s).includes(id));
     return `<a class="card" href="../sessions/${used[0].id}/" style="--accent:${used[0].level.color}">
       <span class="num">${used.map((s) => `Session ${s.n}`).join(' · ')}</span>
       <h4>${lab.icon} ${esc(lab.title)}</h4><p>${esc(lab.blurb)}</p></a>`;
@@ -271,6 +275,7 @@ write('mentors/index.html', layout({
     <div><b>1 · Share the link</b><p>Send <code>/sessions/01/</code>, <code>/sessions/02/</code> and so on. Learners open the workbook from there.</p></div>
     <div><b>2 · Offline labs</b><p>Download the session's .zip before you go. Unzip it onto each PC or a USB drive. The workbook opens in any browser with no internet.</p></div>
     <div><b>3 · Paper practice</b><p>Print the PDF for learners without devices at home. Fill-in boxes print as blank lines.</p></div>
+    <div><b>3D labs & missions</b><p>Every session has a 3D lab with 🎯 missions: a step-by-step checklist with hints. Project the lab and do mission 1 together, then let pairs continue. 🔊 reads instructions aloud.</p></div>
     <div><b>4 · Answers stay local</b><p>Typed answers are saved only in that browser on that PC. On shared machines, remind learners to print or save as PDF, then press <i>Clear my answers</i>.</p></div>
   </div>
   <h2 class="section-title" style="margin-top:36px">Downloads</h2>

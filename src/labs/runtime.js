@@ -82,10 +82,14 @@ export function createStage(host, opts = {}) {
     for (const h of hits) {
       let o = h.object;
       while (o && !clickables.has(o)) o = o.parent;
-      if (o && live(o)) return o;
+      if (o && live(o)) {
+        lastHit = h;
+        return o;
+      }
     }
     return null;
   }
+  let lastHit = null;
 
   // Raycasting ignores visibility, so skip hidden or removed objects ourselves.
   function live(o) {
@@ -104,7 +108,7 @@ export function createStage(host, opts = {}) {
     downAt = null;
     if (moved > 6) return; // that was a drag to rotate, not a click
     const o = pick(e);
-    if (o) clickables.get(o)(o, e);
+    if (o) clickables.get(o)(o, e, lastHit);
   });
   renderer.domElement.addEventListener('pointermove', (e) => {
     const o = pick(e);
@@ -172,6 +176,36 @@ export function createStage(host, opts = {}) {
     },
     wait(seconds) {
       return this.tween(() => {}, seconds, (k) => k);
+    },
+    confetti() {
+      const colors = [0x3a0ca3, 0x4361ee, 0xf77f00, 0x2ec4b6, 0xe63946, 0xffd166];
+      const bits = [];
+      const origin = controls.target.clone().add(new THREE.Vector3(0, 3, 0));
+      for (let i = 0; i < 160; i++) {
+        const m = new THREE.Mesh(new THREE.PlaneGeometry(0.16, 0.1), new THREE.MeshBasicMaterial({ color: colors[i % colors.length], side: THREE.DoubleSide }));
+        m.position.copy(origin);
+        m.userData.v = new THREE.Vector3((Math.random() - 0.5) * 9, Math.random() * 7 + 3, (Math.random() - 0.5) * 9);
+        m.userData.spin = new THREE.Vector3(Math.random() * 8, Math.random() * 8, 0);
+        scene.add(m);
+        bits.push(m);
+      }
+      let life = 0;
+      const off = this.onTick((dt) => {
+        life += dt;
+        for (const m of bits) {
+          m.userData.v.y -= 9 * dt;
+          m.position.addScaledVector(m.userData.v, dt);
+          m.rotation.x += m.userData.spin.x * dt;
+          m.rotation.y += m.userData.spin.y * dt;
+        }
+        if (life > 3.5) {
+          bits.forEach((m) => {
+            scene.remove(m);
+            m.geometry.dispose();
+          });
+          off();
+        }
+      });
     },
   };
 }
@@ -254,10 +288,69 @@ export function setLabel(sprite, text, opts = {}) {
 export function createUI(host) {
   const info = host.querySelector('.lab-info');
   const controls = host.querySelector('.lab-controls');
+  const missionsEl = host.querySelector('.lab-missions');
+  const canSpeak = 'speechSynthesis' in window;
+  let missions = [];
+  let done = new Set();
+  let storeKey = null;
+  let onFinish = () => {};
+
+  info.addEventListener('click', (e) => {
+    if (!e.target.closest('.speak')) return;
+    speechSynthesis.cancel();
+    const u = new SpeechSynthesisUtterance(info.innerText.replace('🔊', ''));
+    u.lang = 'en-GB';
+    u.rate = 0.9;
+    speechSynthesis.speak(u);
+  });
+
+  function renderMissions() {
+    if (!missionsEl || !missions.length) return;
+    const next = missions.find((m) => !done.has(m.id));
+    const count = missions.filter((m) => done.has(m.id)).length;
+    missionsEl.innerHTML = `
+      <div class="mission-head"><b>🎯 Missions</b><span>${count} of ${missions.length}</span><button type="button" class="mission-reset" title="Start the missions again">↺</button></div>
+      <div class="meter mission-meter"><span style="width:${(count / missions.length) * 100}%"></span></div>
+      ${next ? `<div class="mission-next"><span class="mission-label">👉 Do this next</span><b>${next.text}</b>${next.hint ? `<small>💡 ${next.hint}</small>` : ''}</div>` : '<div class="mission-next done"><b>🏆 All missions complete! Brilliant work.</b><small>Explore freely, or press ↺ to try again.</small></div>'}
+      <details><summary>See all missions</summary><ol>${missions.map((m) => `<li class="${done.has(m.id) ? 'ok' : ''}">${done.has(m.id) ? '✅' : '⬜'} ${m.text}</li>`).join('')}</ol></details>`;
+  }
+  missionsEl?.addEventListener('click', (e) => {
+    if (!e.target.closest('.mission-reset')) return;
+    done = new Set();
+    save();
+    renderMissions();
+  });
+  function save() {
+    try {
+      localStorage.setItem(storeKey, JSON.stringify([...done]));
+    } catch {}
+  }
+
   return {
     info(title, html) {
-      info.innerHTML = `<h4>${title}</h4>${html}`;
+      info.innerHTML = `<h4>${title}${canSpeak ? ' <button type="button" class="speak" title="Read this to me" aria-label="Read this to me">🔊</button>' : ''}</h4>${html}`;
     },
+    // Guided, step-by-step challenges shown above the info panel.
+    missions(labId, list, finish) {
+      missions = list;
+      storeKey = `bih-lab-${labId}`;
+      onFinish = finish ?? onFinish;
+      try {
+        done = new Set(JSON.parse(localStorage.getItem(storeKey) || '[]'));
+      } catch {}
+      renderMissions();
+    },
+    complete(id) {
+      if (done.has(id) || !missions.some((m) => m.id === id)) return;
+      done.add(id);
+      save();
+      renderMissions();
+      missionsEl?.classList.remove('pop');
+      void missionsEl?.offsetWidth;
+      missionsEl?.classList.add('pop');
+      if (missions.every((m) => done.has(m.id))) onFinish();
+    },
+    isDone: (id) => done.has(id),
     clear() {
       controls.innerHTML = '';
     },

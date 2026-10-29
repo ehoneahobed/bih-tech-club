@@ -48,6 +48,7 @@ export default function filesLab(stage, ui) {
     item.parent.open = true;
     updateBin();
     rebuild();
+    ui.complete('restore');
     ui.info('♻️ Restored!', `<p><b>${item.node.name}</b> went back to <b>${pathOf(item.node).join(' › ')}</b>. Right-click → <b>Restore</b> does the same on a real computer.</p>`);
   });
   function updateBin() {
@@ -171,11 +172,13 @@ export default function filesLab(stage, ui) {
       node.open = !node.open;
       selected = null;
       rebuild();
+      if (node.name === 'Science' && node.open) ui.complete('open-folder');
       ui.info(`📁 ${node.name}`, `<p><b>Path:</b> <code>${pathOf(node).join(' › ')}</code></p><p>${node.kind === 'drive' ? 'The <b>drive</b> is the big storage cabinet. Everything lives inside it.' : `A <b>folder</b> is a container. It holds <b>${node.children.length}</b> item(s). Click again to ${node.open ? 'close' : 'open'} it.`}</p>`);
       return;
     }
     selected = node;
     rebuild();
+    ui.complete('path');
     ui.info(`📄 ${node.name}`, `<p><b>Path:</b> <code>${pathOf(node).join(' › ')}</code></p><p>A <b>file</b> is one saved piece of work. Now choose <b>Copy</b>, <b>Cut</b>, <b>Rename</b> or <b>Delete</b>.</p>`);
   }
 
@@ -193,10 +196,12 @@ export default function filesLab(stage, ui) {
     if (mode === 'copy') {
       const copy = { ...node, name: folder === from ? node.name.replace(/(\.\w+)$/, ' - Copy$1') : node.name };
       folder.children.push(copy);
+      ui.complete('copy');
       ui.info('📋 Copied (Ctrl + C, Ctrl + V)', `<p>Like a photocopy machine: <b>${node.name}</b> is still in <b>${from.name}</b>, and a copy is now in <b>${folder.name}</b>. Two files exist.</p>`);
     } else {
       from.children.splice(from.children.indexOf(node), 1);
       folder.children.push(node);
+      ui.complete('move');
       ui.info('✂️ Moved (Ctrl + X, Ctrl + V)', `<p>Like moving a desk to a new room: <b>${node.name}</b> left <b>${from.name}</b> and now lives in <b>${folder.name}</b>. Still only one file.</p>`);
     }
     folder.open = true;
@@ -229,6 +234,7 @@ export default function filesLab(stage, ui) {
     stage.unclickable(g);
     objects.delete(selected);
     rebuild();
+    if (!/\s/.test(name)) ui.complete('rename');
     ui.info('Renamed', `<p><b>${old}</b> → <b>${name}</b>${/\s/.test(name) ? '<br>Tip: the BIH standard uses underscores instead of spaces.' : ''}</p>`);
   }, { group: ops });
   ui.button('🗑️ Delete', async () => {
@@ -248,6 +254,7 @@ export default function filesLab(stage, ui) {
     selected = null;
     updateBin();
     rebuild();
+    ui.complete('delete');
     ui.info('🗑️ Sent to the Recycle Bin', '<p>The file is not gone yet! <b>Click the Recycle Bin</b> to restore it. Files on a USB drive skip the bin — they are deleted immediately.</p>');
   }, { group: ops });
   ui.button('↺ Reset', () => {
@@ -268,3 +275,13 @@ export default function filesLab(stage, ui) {
 }
 
 export const config = { camera: [0, 10, 12.5], target: [0, 0, 0.5], shadowSize: 14, maxDistance: 30 };
+
+export const missions = [
+  { id: 'open-folder', text: 'Open the "Science" folder.', hint: 'Click the yellow Science folder under Documents.' },
+  { id: 'path', text: 'Click a file (a white page) to see its full path.', hint: 'The path shows every folder you pass through, like an address.' },
+  { id: 'copy', text: 'Copy a file into another folder.', hint: 'Click a file, press "Copy", then click the folder it should go to.' },
+  { id: 'move', text: 'Move a file with "Cut".', hint: 'Cut moves the file. It leaves its old folder.' },
+  { id: 'rename', text: 'Rename a file using the BIH standard (no spaces).', hint: 'Example: Science_Poster_Ama.docx. Use underscores _ instead of spaces.' },
+  { id: 'delete', text: 'Delete a file.', hint: 'Watch it fly into the Recycle Bin.' },
+  { id: 'restore', text: 'Rescue the file from the Recycle Bin.', hint: 'Click the grey bin to restore the last file you deleted.' },
+];

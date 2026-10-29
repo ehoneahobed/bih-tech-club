@@ -42,7 +42,8 @@ _Prepared 29 October 2026. This is a working document: edit it as decisions are 
 
 - **Share per session:** `https://<your-domain>/sessions/01/` … `/sessions/20/`. Each page has the workbook, the 3D lab (where there is one), a ZIP pack and a PDF.
 - **Offline:** the ZIP contains a workbook that runs with no internet, the PDF and a README. Download it to a USB drive before going to a school without internet.
-- **3D labs:** Computer (S1), Keyboard (S2), Desktop windows (S3), Filing tree (S4–5), Internet town (S6, S7, S14), Spreadsheet charts (S10–11), Password fortress (S15) and Code the Sprite (S16–17). They need WebGL, which almost every browser since 2015 supports. If it is missing, the page says so and the workbook still works.
+- **3D labs (every session has at least one):** Computer (S1), Keyboard (S2), Desktop windows (S3), Filing tree (S4–5), Internet town (S6, S7, S14), Spot the Phish (S7, S15), Document formatting (S8–9), Spreadsheet charts (S10–11), Slide design & slide show (S12–13), Password fortress (S15), Code the Sprite (S16–17) and Build the Whole House capstone planner (S18–20).
+- **Guided missions:** every lab has a 🎯 checklist that always shows the next step and a hint, saves progress on that computer and celebrates when finished. A 🔊 button reads the instructions aloud. The capstone lab saves the team's charter, change log and pitch plan between Sessions 18, 19 and 20, and prints a project card. That card could double as the Championship entry form. They need WebGL, which almost every browser since 2015 supports. If it is missing, the page says so and the workbook still works.
 - **Keeping it up to date:** edit `content/workbooks/session-NN.html`, run `npm run pdf -- NN`, then commit and push. Vercel rebuilds automatically. The "Last updated" date comes from git, and the build warns when a PDF is older than its workbook. See `README.md`.
 
 ## 4. Inter-Schools Tech Championship: draft structure
@@ -99,6 +100,5 @@ _Prepared 29 October 2026. This is a working document: edit it as decisions are 
 | Now | Deploy to Vercel and connect the GitHub repo | Pushes rebuild automatically. |
 | Next | Mentor notes per session (R2) | Markdown files → site pages. |
 | Next | Championship page: rules, rubric, timeline and FAQ | Once section 4 is agreed. |
-| Later | 3D labs for Sessions 8–9 (formatting), 12–13 (slide design and a pitch timer), 18–20 (a capstone "build the house" progress tracker) | All 20 sessions would then have a lab. |
 | Later | Championship registration form and results board | Needs a small backend or a form service. |
 | Later | Progress tracking per learner (R5) | Only with a clear consent and privacy plan for minors. |

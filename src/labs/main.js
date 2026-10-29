@@ -12,7 +12,9 @@ async function mount(host) {
   try {
     const mod = await import(`./${host.dataset.lab}.js`);
     const stage = createStage(host, mod.config);
-    mod.default(stage, createUI(host), host);
+    const ui = createUI(host);
+    if (mod.missions) ui.missions(host.dataset.lab, mod.missions, () => stage.confetti());
+    mod.default(stage, ui, host);
     status.remove();
   } catch (err) {
     console.error(err);

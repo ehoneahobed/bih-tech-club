@@ -154,6 +154,7 @@ export default function passwordLab(stage, ui) {
         bot.position.lerpVectors(start, over, k);
         bot.position.y = 0.6 + Math.sin(k * Math.PI) * (wallTop + 1.2);
       }, 1.2);
+      ui.complete('weak');
       ui.info('💥 Cracked!', `<p>The robot got in after <b>${text}</b>. Make your passphrase <b>longer</b> — add another unusual word.</p>`);
       await stage.wait(1.2);
     } else {
@@ -163,6 +164,8 @@ export default function passwordLab(stage, ui) {
         bot.position.lerpVectors(hit, home, k);
         bot.position.y = 0.6 + Math.sin(k * Math.PI) * 1.2;
       }, 0.7);
+      ui.complete('wall');
+      if (input.value.trim().split(/[\s\-_.]+/).filter((w) => w.length >= 3).length >= 5) ui.complete('five');
       ui.info('🛡️ The wall held!', `<p>The robot would need <b>${text}</b>. Now keep it secret: never share it, don't reuse it on other sites, and turn on 2-step verification when you can.</p>`);
     }
     bot.position.copy(home);
@@ -179,3 +182,9 @@ export default function passwordLab(stage, ui) {
 }
 
 export const config = { camera: [7, 6, -9], target: [0, 2, 0], shadowSize: 8 };
+
+export const missions = [
+  { id: 'weak', text: 'Try "password123" and send the robot. Watch it break in!', hint: 'Click the "password123" example, then "Send the robot!".' },
+  { id: 'wall', text: 'Build a wall that the robot CANNOT break.', hint: 'Make it long. Join several unusual words together.' },
+  { id: 'five', text: 'Make your own passphrase of 5 words that holds the robot back.', hint: 'Example idea: pick 5 random things you can see right now. Never use your real password here!' },
+];

@@ -107,6 +107,8 @@ export default function desktopLab(stage, ui) {
     group.scale.setScalar(0.05);
     focus(w);
     animate(w, w.home, 1);
+    ui.complete('open');
+    if (wins.size >= 2) ui.complete('multi');
     ui.info(`${app.name} is open`, '<p>A <b>window</b> is a framed area where a programme runs. Try the three buttons in its top-right corner: <b>–</b> minimise, <b>□</b> maximise, <b>✕</b> close. Open a second programme to practise <b>multitasking</b>.</p>');
   }
 
@@ -131,11 +133,13 @@ export default function desktopLab(stage, ui) {
   }
 
   function minimise(w) {
+    ui.complete('min');
     w.prev = w.state === 'max' ? 'max' : 'normal';
     w.state = 'min';
     animate(w, w.slot.position, 0.04, () => (w.group.visible = false));
   }
   function restore(w) {
+    ui.complete('restore');
     w.group.visible = true;
     w.state = w.prev ?? 'normal';
     focus(w);
@@ -148,11 +152,13 @@ export default function desktopLab(stage, ui) {
       animate(w, w.home, 1);
     } else {
       w.state = 'max';
+      ui.complete('max');
       focus(w);
       animate(w, new THREE.Vector3(0, 0.3, 0), 2.2);
     }
   }
   function close(w) {
+    ui.complete('close');
     wins.delete(w.app.id);
     root.remove(w.slot);
     animate(w, w.group.position, 0.01, () => root.remove(w.group));
@@ -184,3 +190,12 @@ function gradient() {
 }
 
 export const config = { camera: [0, 4.6, 13], target: [0, 4, 0], maxPolar: Math.PI * 0.6, minDistance: 6, shadowSize: 9 };
+
+export const missions = [
+  { id: 'open', text: 'Double-click the Paint icon to open it.', hint: 'Click twice quickly on the icon at the top left.' },
+  { id: 'min', text: 'Minimise the window with the – button.', hint: 'The window hides in the taskbar. It is still open!' },
+  { id: 'restore', text: 'Bring it back by clicking its button on the taskbar.', hint: 'The taskbar is the dark strip at the bottom of the screen.' },
+  { id: 'max', text: 'Make the window fill the screen with the □ button.', hint: 'This is called "maximise".' },
+  { id: 'multi', text: 'Open a second programme so two windows are open.', hint: 'Double-click Word. Working with two programmes is called multitasking.' },
+  { id: 'close', text: 'Close a programme with the ✕ button.', hint: 'Closing exits the programme. Always save your work first!' },
+];

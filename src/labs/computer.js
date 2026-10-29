@@ -148,6 +148,7 @@ export default function computerLab(stage, ui) {
       const [title, text] = PARTS[key];
       ui.info(title, `<p>${text}</p>`);
       flash(obj);
+      ui.complete('part-' + key);
     });
   }
 
@@ -198,11 +199,13 @@ export default function computerLab(stage, ui) {
     setScreen(true);
     const m = mode === 'desktop' ? screenMat : lidScreenMat;
     await stage.tween((k) => m.emissive.setRGB(0.16 + Math.sin(k * Math.PI * 3) * 0.3, 0.25, 0.7), 0.9);
+    ui.complete('ipo');
     ui.info('Input → Process → Output', '<p><b>3. OUTPUT</b> — the letter appears on the screen. Just like the corn mill: corn in, grinding, corn meal out!</p>');
   }
 
   async function power(on) {
     powered = on;
+    if (!on) ui.complete('shutdown');
     if (mode === 'laptop') {
       const from = hinge.rotation.x;
       const to = on ? -0.25 : Math.PI / 2 - 0.06; // closed = folded down onto the keyboard
@@ -248,3 +251,12 @@ export default function computerLab(stage, ui) {
 }
 
 export const config = { camera: [6, 7, 10], target: [0.5, 3, 0], shadowSize: 8 };
+
+export const missions = [
+  { id: 'part-monitor', text: 'Click the monitor (the screen).', hint: 'It is an OUTPUT device: it shows you the results.' },
+  { id: 'part-keyboard', text: 'Click the keyboard.', hint: 'It is an INPUT device: you put information in.' },
+  { id: 'part-tower', text: 'Click the system unit (the tall box).', hint: 'This is where the PROCESSING happens, like the grinding in a corn mill.' },
+  { id: 'ipo', text: 'Press the orange "Input → Process → Output" button and watch.', hint: 'Follow the glowing ball from the keyboard to the screen.' },
+  { id: 'part-touchpad', text: 'Switch to the Laptop and click its touchpad.', hint: 'Use the "Laptop" button first.' },
+  { id: 'shutdown', text: 'Shut the computer down the safe way.', hint: 'Power it on first, then press "Shut down".' },
+];

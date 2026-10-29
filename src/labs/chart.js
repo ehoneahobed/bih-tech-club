@@ -34,6 +34,9 @@ export default function chartLab(stage, ui) {
     if (i === undefined) return;
     rows[i][k] = k === 'value' ? Math.max(0, Math.min(500, Number(e.target.value) || 0)) : e.target.value;
     draw();
+    if (k === 'value') ui.complete('edit');
+    const top = Math.max(...rows.map((r) => r.value));
+    if (rows.findIndex((r) => r.value === top) !== 4) ui.complete('newmax');
   });
 
   const g = ui.group('Chart type');
@@ -41,6 +44,7 @@ export default function chartLab(stage, ui) {
   const bp = ui.button('🥧 Pie', () => setType('pie', bp), { group: g });
   function setType(t, b) {
     type = t;
+    if (t === 'pie') ui.complete('pie');
     ui.toggle([bc, bp], b);
     draw();
     ui.info(t === 'column' ? 'Column chart' : 'Pie chart', t === 'column'
@@ -76,7 +80,7 @@ export default function chartLab(stage, ui) {
     const t = label('', { scale: 0.5 });
     chart.add(t);
     tags.push(t);
-    stage.clickable(bar, () => ui.info(`Cell B${i + 2}`, `<p><b>${rows[i].item}</b>: GH₵ ${rows[i].value}. This value lives in cell <b>B${i + 2}</b> (column B, row ${i + 2}).</p>`));
+    stage.clickable(bar, () => ui.complete('cell') || ui.info(`Cell B${i + 2}`, `<p><b>${rows[i].item}</b>: GH₵ ${rows[i].value}. This value lives in cell <b>B${i + 2}</b> (column B, row ${i + 2}).</p>`));
   });
 
   const pie = new THREE.Group();
@@ -152,3 +156,10 @@ export default function chartLab(stage, ui) {
 }
 
 export const config = { camera: [0, 5.5, 12], target: [0, 2.6, 0], shadowSize: 8 };
+
+export const missions = [
+  { id: 'cell', text: 'Click a column to find out which cell it comes from.', hint: 'Every cell has an address: a column letter + a row number, like B3.' },
+  { id: 'edit', text: 'Change one of the sales numbers in column B.', hint: 'Watch the column grow or shrink, and the SUM change by itself.' },
+  { id: 'newmax', text: 'Make a different day the best day (the gold MAX column).', hint: 'Give Monday, Tuesday, Wednesday or Thursday a number bigger than Friday\'s.' },
+  { id: 'pie', text: 'Switch to a pie chart.', hint: 'A pie shows how big each part is compared to the whole.' },
+];

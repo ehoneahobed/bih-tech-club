@@ -83,9 +83,14 @@ export default function keyboardLab(stage, ui, host) {
 
   // ---------- Pressing ----------
   let drill = null;
+  const homeBumps = new Set();
   function press(code) {
     const k = keys.get(code);
     if (!k) return;
+    ui.complete('press-any');
+    if (code === 'KeyF' || code === 'KeyJ') homeBumps.add(code);
+    if (homeBumps.size === 2) ui.complete('bumps');
+    if (code === 'Backspace') ui.complete('backspace');
     k.mesh.position.y = k.baseY - 0.12;
     k.top.emissive.setHex(0x553300);
     setTimeout(() => {
@@ -135,6 +140,7 @@ export default function keyboardLab(stage, ui, host) {
           const acc = accuracy();
           drill = null;
           highlightTarget();
+          ui.complete('drill');
           ui.info('🎉 Drill complete!', `<p>Accuracy: <b>${acc}%</b>. Remember: <b>accuracy before speed</b>. Try again tomorrow and see if you can keep your eyes off the keys.</p>`);
           return;
         }
@@ -155,6 +161,7 @@ export default function keyboardLab(stage, ui, host) {
     paint();
     ui.toggle([bz, bf, bp], b);
     if (c === 'zones') ui.info('The five keyboard zones', Object.values(ZONES).map((z) => `<p><span class="swatch" style="background:#${z.color.toString(16).padStart(6, '0')}"></span><b>${z.name}</b></p>`).join(''));
+    if (c === 'fingers') ui.complete('fingers');
     if (c === 'fingers') ui.info('Which finger presses which key?', FINGERS.map((f) => `<span class="chip"><span class="swatch" style="background:#${f.color.toString(16).padStart(6, '0')}"></span>${f.name}</span>`).join(' ') + '<p>Thumbs share the Space bar.</p>');
   }
   const d = ui.group('Practise');
@@ -169,3 +176,11 @@ export default function keyboardLab(stage, ui, host) {
 }
 
 export const config = { camera: [0, 7, 6.5], target: [0, 0, 0.3], ground: true, minDistance: 4, shadowSize: 7 };
+
+export const missions = [
+  { id: 'press-any', text: 'Click the 3D keyboard, then press any key on your real keyboard.', hint: 'Watch the same key go down on the screen.' },
+  { id: 'bumps', text: 'Find the two keys with little bumps and press them: F and J.', hint: 'Feel for the bumps with your index fingers. They help you find home row without looking.' },
+  { id: 'backspace', text: 'Press Backspace.', hint: 'Backspace rubs out the letter to the LEFT of the cursor.' },
+  { id: 'fingers', text: 'Colour the keys by "Fingers".', hint: 'Each colour shows which finger should press that key.' },
+  { id: 'drill', text: 'Finish the home-row drill.', hint: 'Press "Start home-row drill" and type the glowing letters. Go slowly; accuracy matters more than speed.' },
+];

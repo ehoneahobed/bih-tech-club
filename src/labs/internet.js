@@ -82,7 +82,10 @@ export default function internetLab(stage, ui) {
     g.add(t);
     scene.add(g);
     n.group = g;
-    stage.clickable(g, () => ui.info(n.name, `<p>${n.info}</p>`));
+    stage.clickable(g, () => {
+      ui.info(n.name, `<p>${n.info}</p>`);
+      if (id === 'hub') ui.complete('globe');
+    });
   }
 
   for (const [a, b] of LINKS) {
@@ -163,6 +166,7 @@ export default function internetLab(stage, ui) {
     const page = packet('data', COLORS.blue);
     await send(page, ['web', 'hub', 'isp', 'router', 'you']);
     scene.remove(page);
+    ui.complete(site.secure ? 'https' : 'http');
     ui.info(site.url, `<p>✅ The web page arrived and your <b>browser</b> displayed it.</p><p>${site.secure ? 'The <b>padlock</b> means the data was <b>encrypted</b> (scrambled). The snooper only saw nonsense.' : '<b>No padlock:</b> the snooper on the network could read everything you sent. Never type passwords or personal details on an <code>http://</code> page.'}</p>`);
   }
 
@@ -185,6 +189,7 @@ export default function internetLab(stage, ui) {
     await Promise.all(jobs);
     scene.remove(m);
     if (c2) scene.remove(c2);
+    if (cc) ui.complete('email-cc');
     ui.info('📬 Delivered!', `<p>${cc ? '<b>Cc</b> (carbon copy) means "for your information": the teacher gets the same email but Kofi is the main person who should reply.' : 'One email, one recipient. Add <b>Cc</b> to keep someone else informed.'}</p><p>Remember: a clear <b>Subject</b>, a greeting, a short message and a polite closing.</p>`);
   }
 
@@ -208,6 +213,7 @@ export default function internetLab(stage, ui) {
     if (!allowed) {
       await stage.tween((k) => p.scale.setScalar(1 - k), 0.4);
       scene.remove(p);
+      ui.complete('blocked');
       ui.info('🚫 Not allowed', '<p>Yaw is a <b>Commenter</b>. Commenters can add digital sticky notes but cannot change the text. The three access levels are <b>Viewer</b> (read only), <b>Commenter</b> and <b>Editor</b>.</p><p>Sharing law: give people the <b>lowest</b> access they need.</p>');
       return;
     }
@@ -223,6 +229,7 @@ export default function internetLab(stage, ui) {
       const q = packet('data', NODES[who].color);
       return send(q, ['cloud', o]).then(() => scene.remove(q));
     }));
+    ui.complete('cloud-edit');
     ui.info('☁️ Saved to the cloud', `<p><b>${what}.</b> Everyone sees the change within seconds — no emailing files back and forth.</p><p><b>Version history</b> keeps every save (${history.map((h, i) => `v${i + 1}`).join(', ')}), so mistakes can be undone. That is the ultimate safety net.</p>`);
   }
 
@@ -230,3 +237,12 @@ export default function internetLab(stage, ui) {
 }
 
 export const config = { camera: [0, 13, 14], target: [0.5, 0, -0.5], shadowSize: 14, maxDistance: 35 };
+
+export const missions = [
+  { id: 'globe', text: 'Click the blue globe called "The Internet".', hint: 'The internet is like a road network that joins computers together.' },
+  { id: 'https', text: 'Visit a website that has a padlock 🔒.', hint: 'Watch what the snooper sees: only scrambled letters!' },
+  { id: 'http', text: 'Visit the website with the ⚠️ warning sign.', hint: 'No padlock means anyone on the network can read what you send.' },
+  { id: 'email-cc', text: 'Send an email to Kofi with your teacher in Cc.', hint: 'Count the envelopes when they reach the friend\'s mail server.' },
+  { id: 'cloud-edit', text: 'Make an edit to the shared document.', hint: 'Use "Ama (Editor) adds a paragraph" or "You fix a typo".' },
+  { id: 'blocked', text: 'Let Yaw (a Commenter) try to edit.', hint: 'What happens to Yaw\'s change? Why?' },
+];

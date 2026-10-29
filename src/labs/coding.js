@@ -257,8 +257,17 @@ export default function codingLab(stage, ui) {
       pc++;
     }
     renderProgram();
+    const finished = running;
     running = false;
     const blocks = program.length;
+    if (finished) {
+      ui.complete('run');
+      if (program.some((b) => b[0] === 'repeat')) ui.complete('loop');
+      if (step) ui.complete('debug');
+      const turns = program.filter((b) => b[0] === 'right' || b[0] === 'left');
+      if (turns.some((b) => b[1] === 144) && trail.children.length >= 5) ui.complete('star');
+      if (s.score === LITTER.length) ui.complete('litter');
+    }
     ui.info('✅ Finished', `<p>Your script has <b>${blocks}</b> blocks but the sprite carried out <b>${executed}</b> actions${program.some((b) => b[0] === 'repeat') ? ' — that is the power of a <b>loop</b>!' : '. Could a <b>repeat</b> loop make it shorter?'}</p>${s.score ? `<p>🧹 Litter collected: <b>${s.score}</b> of ${LITTER.length}. The <b>score</b> is a <b>variable</b> — a box that remembers a number.</p>` : ''}`);
   }
 
@@ -332,3 +341,11 @@ function gridTexture() {
 }
 
 export const config = { camera: [0, 8, 7.5], target: [0, 0, 0.3], shadowSize: 7, maxPolar: Math.PI * 0.45 };
+
+export const missions = [
+  { id: 'run', text: 'Press ▶ Run and watch the sprite draw a square.', hint: 'The sprite follows the blocks in order, from top to bottom.' },
+  { id: 'loop', text: 'Load "Square — the long way", then "Square — with a loop". Which is shorter?', hint: 'A repeat loop does the same job with fewer blocks.' },
+  { id: 'debug', text: 'Load "Buggy star" and run it in Debug mode, step by step.', hint: 'Press "Debug", then "Next step" again and again. Watch the numbers.' },
+  { id: 'star', text: 'Fix the bug so the sprite draws a 5-pointed star.', hint: 'Change the turn from 72 to 144 degrees, then Run.' },
+  { id: 'litter', text: 'Change the clean-up route so the sprite collects ALL 7 pieces of litter.', hint: 'Look at the x and y of each piece. You can add "go to x: y:" blocks.' },
+];

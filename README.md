@@ -1,6 +1,6 @@
 # BIH JHS Tech Club: Study Packs
 
-The website for the Bozoma Innovation Hub JHS Tech Club. It has a page for each of the 20 sessions, with an interactive workbook, a 3D lab (13 of them have one), a downloadable offline study pack (.zip) and a print-ready PDF.
+The website for the Bozoma Innovation Hub JHS Tech Club. It has a page for each of the 20 sessions, with an interactive workbook, at least one 3D lab with guided 🎯 missions, a downloadable offline study pack (.zip) and a print-ready PDF.
 
 The review, recommendations and the Inter-Schools Tech Championship plan are in [`docs/PLANNING.md`](docs/PLANNING.md).
 
@@ -37,7 +37,7 @@ npm run dev            # build and preview at http://localhost:4321
 
 The build prints a warning if a PDF is missing or older than its workbook.
 
-**Add a 3D lab to a session:** create `src/labs/<name>.js`, which exports a default `(stage, ui, host) => {}` and an optional `config`. Copy the pattern of an existing lab, register it in `LABS` in `scripts/build.mjs`, and set `"lab": "<name>"` on the session in `sessions.json`.
+**Add a 3D lab to a session:** create `src/labs/<name>.js`, which exports a default `(stage, ui, host) => {}`, an optional `config` and an optional `missions` list (`[{ id, text, hint }]`; call `ui.complete(id)` when a student does each step). Copy the pattern of an existing lab, register it in `LABS` in `scripts/build.mjs`, and set `"lab": "<name>"` (or a list, e.g. `["password", "phishing"]`) on the session in `sessions.json`.
 
 ## Deploying to Vercel
 
