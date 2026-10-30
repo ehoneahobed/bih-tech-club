@@ -41,7 +41,7 @@ By the end of the session, pupils can:
 - **PDF:** a "printed page in a file". It looks the same on every device and nobody changes it by accident, so it is how you send a finished letter or programme. Keep the .docx for editing.
 
 ## The 3D lab
-**Page Layout Studio** lets pupils lay out a real document: add a table and a picture, set margins and orientation, and add a header and footer. On the projector, demonstrate the table mission (add a row, then make the top row the header row) and the picture mission, deliberately dragging a side handle first so the class sees the squash. Pairs then do the margins/orientation and header/footer missions. Use the lab as a 7-minute warm-up before the real documents: every mission is a step pupils repeat in Word on Page 5.
+**Page Layout Studio** puts the Open Day poster on an A4 page on a drafting board, with a ribbon of buttons in the side panel. Its three missions are: (1) *Insert the Order of Events table, add a row, then make the top row a header row*; (2) *Insert the club logo, make it smaller with a corner handle and wrap text Square*; (3) *Make it a one-page poster: Landscape, Narrow margins, a header and a page number*. On the projector, demonstrate mission 2: the logo arrives far too big, so first drag a **side** handle on the page so the class sees the round badge squash into an oval, press Undo (Ctrl + Z), then drag the gold **corner** handle. Pairs then do missions 1 and 3. In mission 3 a red "spills onto page 2" bar appears if the picture is still too big for the landscape page: ask "what must get smaller?" Use the lab as a 7-minute warm-up: every mission is a step pupils repeat in Word on Page 5.
 
 ## Common mistakes and quick fixes
 | Pupils often… | Try this |
