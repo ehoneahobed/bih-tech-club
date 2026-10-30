@@ -40,7 +40,13 @@ By the end of the session, pupils can:
 - **Team points:** a point for each team whose designs pass the makeover checklist, stars from the gallery walk, and a helper point for pupils who help a neighbour find a Canva button.
 
 ## The 3D lab
-**Poster Studio** ("Design a poster on a 3D easel: pick a template, fix the layout, choose fonts and colours that work, and use only pictures you may reuse.") is a short, safe warm-up before the real Canva work. On the projector, demonstrate one fix (for example, picking a readable font pair or swapping a low-contrast colour) and ask the class why it is better. Pairs then work through the missions: choosing a template, fixing the layout and hierarchy, choosing fonts and colours with good contrast, and choosing only pictures they may reuse. The choices mirror the Page 3 makeover checklist and the Page 4 traffic light, so pupils carry the same decisions into Canva.
+**Poster Studio** ("Design a poster on a 3D easel: pick a template, fix the layout, choose fonts and colours that work, and use only pictures you may reuse.") is a short, safe warm-up before the real Canva work. The easel starts with Auntie Esi's heap poster from Page 1. On the projector, pick a template and demonstrate one fix (for example, swapping "White on yellow" for "White on plum" and reading the contrast check) and ask the class why it is better. Pairs then do the three missions:
+
+1. **Pick a template, then fix the layout: title, key information and details at the right levels, and delete what you don't need.** (CLEAN-UP DAY at Level 1, the date and place at Level 2, "Bring gloves…" at Level 3, and the SALE! sticker deleted.)
+2. **Choose two fonts at most and colours with good contrast.** (A plain font such as Open Sans for the key information and details, and a contrast of at least 4.5 : 1.)
+3. **Use only a picture you may reuse, and credit it if it is Creative Commons.** (Own photo or Canva's free library; the CC BY photo only with the credit line. The news photo, the cousin's WhatsApp photo and the Pro crown item turn the traffic light red.)
+
+The side panel's makeover checklist is the Page 3 checklist, and the picture traffic light is the Page 4 figure, so pupils carry the same decisions into Canva. "Step back 2 metres" rehearses the printing check in step 7.
 
 ## Common mistakes and quick fixes
 | Pupils often… | Try this |

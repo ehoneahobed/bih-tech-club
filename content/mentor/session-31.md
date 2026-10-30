@@ -42,7 +42,13 @@ By the end of the session, pupils can:
 - **Team points:** beat the deadline, complete notes, and helper points.
 
 ## The 3D lab
-**Online Classroom** ("Join a class, hand in an assignment, read the feedback and pick a good tutorial from a shelf of videos.") rehearses the real Google Classroom steps without accounts, so every pupil gets a turn even if the internet is slow. On the projector, show joining with a code and handing in; pause before Hand in and ask "Has the teacher got it yet?" Pairs then do the missions: joining, handing in, reading the feedback, and choosing the best tutorial from the shelf using the 4 checks from Page 3. Pupils then do the same steps for real on Page 5.
+**Online Classroom** ("Join a class, hand in an assignment, read the feedback and pick a good tutorial from a shelf of videos.") rehearses the real Google Classroom steps without accounts, so every pupil gets a turn even if the internet is slow. On the projector, show joining with the code on the 3D whiteboard and attaching the notes; pause before Hand in and ask "Has the teacher got it yet?" (the status still says Assigned and the teacher's pile is empty). Pairs then do the three missions:
+
+1. **Join the class with the code on the board, then open the assignment.** A wrong code gives the "read it back letter by letter" advice; the assignment shows its due date.
+2. **Attach your notes, press Hand in, send a private comment, then read the feedback.** Attaching alone leaves the work Assigned; only Hand in moves the book to the teacher's pile. Unsubmit brings it back. A class comment is pinned on the Stream noticeboard for everyone to see; the private comment is not. The mentor marks the work (9/10) and returns it, and the mission ticks once the pupil has read the feedback and sent a private comment.
+3. **Use the 4 checks to choose the best tutorial for Kwame.** Four videos about the area of a triangle; each poor one fails a different check (A: Who, Match and Second source; B: Match, it is university calculus; D: When, old syllabus). The mission ticks only when a pupil runs all four checks on video C and chooses it.
+
+Pupils then do the same steps for real on Page 5.
 
 ## Common mistakes and quick fixes
 | Pupils often… | Try this |

@@ -40,7 +40,13 @@ By the end of the session, pupils can:
 - **Team points:** the meeting race, all six checks done, and helper points.
 
 ## The 3D lab
-**Club Planner** ("Schedule a club meeting and invite members, run a mock video call, and move files into the cloud cupboard.") is a safe rehearsal of the real lab mission: nothing is sent to real people and nobody's camera is turned on. Demonstrate the scheduling mission on the projector (date, time, reminder, invitations), then let pairs run the mock video call (mute, camera, raise hand, share screen) and the cloud cupboard mission (folders, uploading, downloading). It mirrors the end-to-end plan on Page 5, so pupils who struggle with the real tools can show the same steps in the lab.
+**Club Planner** ("Schedule a club meeting and invite members, run a mock video call, and move files into the cloud cupboard.") is a safe rehearsal of the real lab mission: nothing is sent to real people and nobody's camera is turned on. The room shows the three tools from Figure 30.0: a wall calendar, a meeting-room screen and a cloud cupboard (with Hub PC-04 and a phone by a toy trotro). Demonstrate mission 1 on the projector, then let pairs do all three:
+
+1. **Schedule a club meeting with a title, date, start and end time and a reminder, then invite Kofi, Esi and Yaw.** It ticks only when all of these are set; they reply Yes, Maybe and No (as in Figure 30.1) and the reminder bell rings. Ask: "Why does Yaw still reply No?"
+2. **In the video call, turn your camera off or on, raise your hand, say hello, mute again and share your screen.** If a pupil stays unmuted, a cockerel, a generator or the TV takes over the call; speaking only works after raising a hand and being asked. The "Post the link on my public page" button shows a stranger joining.
+3. **In the cloud cupboard, make a folder, upload your poster, download a copy of a file, open the poster on your phone, then sign out.** The folder name must follow the naming standard (e.g. TechClub_OpenDay_Team3). The Hub PC screen shows the three sync icons from Page 4 (cloud = online only, green tick = also on this PC, arrows = syncing now). The mission only ticks when signing out comes last.
+
+It mirrors the end-to-end plan on Page 5, so pupils who struggle with the real tools can show the same steps in the lab.
 
 ## Common mistakes and quick fixes
 | Pupils often… | Try this |

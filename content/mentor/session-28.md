@@ -42,7 +42,13 @@ By the end of the session, pupils can:
 - **Team points:** a finished video of 30 seconds or less, a bonus for following all the consent rules, votes at the premiere, and helper points.
 
 ## The 3D lab
-**Media Studio** ("Crop and resize a photo, trim a voice note and cut a short video on a 3D editing desk, and see how file sizes change.") lets every pupil practise the editing moves before touching their own files, which matters when there is only one camera per team. On the projector, show one mission (for example, resizing a photo and reading the new file size) and ask "Why did the size drop so much?" Pairs then do the photo, audio and video missions. The file-size changes they see link straight to the Page 3 diagram and the record table on Page 5.
+**Media Studio** ("Crop and resize a photo, trim a voice note and cut a short video on a 3D editing desk, and see how file sizes change.") lets every pupil practise the editing moves before touching their own files, which matters when there is only one camera per team. A before-and-after file size tower on the desk shows how much each edit saves. The three missions are:
+
+1. **Fix the market photo: rotate, crop, resize and compress it to under 500 KB, then Save as copy.** The photo arrives sideways, 4000 × 3000 and 4 MB, with a stranger's elbow at the edge. Rotating doesn't change the size; cropping (4:3 rule of thirds or square) trims it a little; resizing to 1600 px and Medium quality brings it to about 320 KB. "Save (replace the original)" is refused as a mission finish: pupils must undo and use Save as copy.
+2. **Trim the voice note so only the speech is left: no "Erm… is it on?" at the start, no cough at the end.** Pupils move the start and end handles on a waveform (sliders or buttons), press Play to hear what is kept, then Trim and save. Cutting into "Welcome to Bozoma!" or the last sentence is caught too. The file drops from 336 KB to about 250 KB.
+3. **Cut a video of 30 seconds or less: clips in storyboard order, a title, credits and free music. Then export it.** The clip bin includes "Classmates in uniform" (faces and uniforms) and the music list includes a famous Afrobeats hit: export is refused until the uniform clip is removed, at least 5 storyboard clips are in order, the total is 30 s or less, the title and credits are added and the editor's free library music is chosen.
+
+On the projector, show mission 1 and ask "Why did the size drop so much?" (link it to 1 MB ≈ 1,000 KB from Session 6). Pairs then do the voice note and video missions. The file-size changes they see link straight to the Page 3 diagram and the record table on Page 5.
 
 ## Common mistakes and quick fixes
 | Pupils often… | Try this |
