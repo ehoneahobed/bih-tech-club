@@ -12,7 +12,8 @@ import { transformWorkbook } from './lib/workbook.mjs';
 import { renderMarkdown } from './lib/markdown.mjs';
 
 const ROOT = fileURLToPath(new URL('../', import.meta.url));
-const DIST = ROOT + 'dist/';
+// DIST_DIR lets several test builds run side by side (e.g. DIST_DIR=/tmp/a/).
+const DIST = process.env.DIST_DIR ? process.env.DIST_DIR.replace(/\/?$/, '/') : ROOT + 'dist/';
 const course = JSON.parse(readFileSync(ROOT + 'content/sessions.json', 'utf8'));
 // Link previews need absolute URLs. SITE_URL overrides it for a custom domain.
 const SITE = (process.env.SITE_URL || course.site).replace(/\/$/, '');
@@ -290,8 +291,10 @@ function stepsFor(s) {
   ].filter(Boolean);
 }
 
+// A picture of the session's 3D lab, made by `npm run thumbs`, if there is one.
+const thumb = (lab, up) => (lab && existsSync(ROOT + `assets/labs/${lab}.jpg`) ? `<img class="card-thumb" src="${up}assets/labs/${lab}.jpg" alt="" width="390" height="300" loading="lazy">` : '');
 const card = (s, up) => `<a class="card" href="${up}sessions/${s.id}/" style="--accent:${s.level.color}" data-card="${s.id}">
-  <span class="status"></span>
+  ${thumb(labsOf(s)[0], up)}<span class="status"></span>
   <span class="num">Session ${s.n}</span>
   <h4>${esc(s.title)}</h4>
   <p>${esc(s.summary)}</p>
@@ -485,7 +488,7 @@ write('labs/index.html', layout({
     const used = sessions.filter((s) => labsOf(s).includes(id));
     if (!used.length) return '';
     return `<a class="card" href="../sessions/${used[0].id}/#lab" style="--accent:${used[0].level.color}">
-      <span class="num">${used.map((s) => `Session ${s.n}`).join(' · ')}</span>
+      ${thumb(id, '../')}<span class="num">${used.map((s) => `Session ${s.n}`).join(' · ')}</span>
       <h4>${lab.icon} ${esc(lab.title)}</h4><p>${esc(lab.blurb)}</p></a>`;
   }).join('')}</div>
 </div></section>`,

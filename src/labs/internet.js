@@ -17,6 +17,15 @@ const NODES = {
   ama: { name: 'Ama (Editor)', pos: [-2.5, 0, -7], kind: 'pc', color: 0x2a9d8f, info: 'Ama can <b>edit</b> the shared document.' },
   yaw: { name: 'Yaw (Commenter)', pos: [5.5, 0, -7.5], kind: 'pc', color: 0xf4a261, info: 'Yaw can <b>comment</b> but not change the text.' },
 };
+// Cards for the most important places: [icon, title, text, point on it, dx, dy].
+const CALLOUTS = {
+  you: ['💻', 'Your computer', 'Every request starts here', [0, 1.3, 0], -30, 95],
+  router: ['📶', 'Wi-Fi router', 'Joins the lab to the ISP', [0, 0.3, 0], 150, 85],
+  hub: ['🌍', 'The Internet', 'A road network of computers', [0.6, 2.4, 0], 230, -105],
+  web: ['🗄️', 'Web server', 'Stores websites, sends pages', [0.5, 1.2, 0], 115, 5],
+  mailA: ['📮', 'Mail server', 'Your school\'s digital post office', [0, 1.4, 0], -70, -95],
+  cloud: ['☁️', 'Cloud drive', 'One shared file, saved online', [0, 1.9, 0], 0, -95],
+};
 const LINKS = [['you', 'router'], ['router', 'isp'], ['isp', 'hub'], ['hub', 'web'], ['router', 'mailA'], ['mailA', 'hub'], ['hub', 'mailB'], ['mailB', 'friend'], ['mailB', 'teacher'], ['hub', 'cloud'], ['ama', 'cloud'], ['yaw', 'cloud']];
 
 const SITES = [
@@ -77,16 +86,31 @@ export default function internetLab(stage, ui) {
         g.add(p);
       }
     }
-    const t = label(n.name, { scale: 0.62 });
-    t.position.y = n.kind === 'globe' ? 3.1 : n.kind === 'tower' ? 3.5 : 2.1;
-    g.add(t);
+    // The main places get a callout card (below); the rest keep a small tag.
+    if (!CALLOUTS[id]) {
+      const t = label(n.name, { scale: 0.62 });
+      t.position.y = n.kind === 'tower' ? 3.5 : 2.1;
+      g.add(t);
+    }
     scene.add(g);
     n.group = g;
-    stage.clickable(g, () => {
-      ui.info(n.name, `<p>${n.info}</p>`);
-      if (id === 'hub') ui.complete('globe');
-    });
+    stage.clickable(g, () => select(id));
   }
+
+  function select(id) {
+    const n = NODES[id];
+    ui.info(n.name, `<p>${n.info}</p>`);
+    if (id === 'hub') {
+      ui.complete('globe');
+      cards.hub.card.classList.add('done');
+    }
+  }
+  // Clicking a card does the same as clicking the place.
+  const cards = {};
+  for (const [id, [icon, title, text, at, dx, dy]] of Object.entries(CALLOUTS)) {
+    cards[id] = stage.callout(NODES[id].group, { icon, title, text, at, dx, dy, onClick: () => select(id) });
+  }
+  if (ui.isDone('globe')) cards.hub.card.classList.add('done');
 
   for (const [a, b] of LINKS) {
     const pa = pos(a).setY(0.08);
@@ -196,7 +220,7 @@ export default function internetLab(stage, ui) {
   // ---------- Shared document ----------
   const history = [];
   const histGroup = new THREE.Group();
-  histGroup.position.copy(pos('cloud')).add(new THREE.Vector3(1.6, 0, 0.5));
+  histGroup.position.copy(pos('cloud')).add(new THREE.Vector3(-1.9, 0, 0.6));
   scene.add(histGroup);
   const histTag = label('Version history: 0', { scale: 0.5 });
   histTag.position.set(0, 0.4, 0.8);
@@ -236,7 +260,7 @@ export default function internetLab(stage, ui) {
   ui.info('The internet: a road network of computers', '<p>Click any building to learn what it does, then send some traffic using the buttons. Drag to look around.</p>');
 }
 
-export const config = { camera: [0, 13, 14], target: [0.5, 0, -0.5], shadowSize: 14, maxDistance: 35 };
+export const config = { camera: [0, 13, 14], target: [0.5, 0, -0.5], shadowSize: 14, maxDistance: 35, frame: 1.2 };
 
 export const missions = [
   { id: 'globe', text: 'Click the blue globe called "The Internet".', hint: 'The internet is like a road network that joins computers together.' },

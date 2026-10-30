@@ -25,18 +25,22 @@ export default function desktopLab(stage, ui) {
   const wallpaper = new THREE.Mesh(new THREE.PlaneGeometry(SW, SH), new THREE.MeshBasicMaterial({ map: gradient() }));
   wallpaper.position.z = -0.04;
   root.add(wallpaper);
-  stage.clickable(wallpaper, () => ui.info('Desktop background (wallpaper)', '<p>The picture behind everything. Clicking it does nothing — it is just the "table top" your programmes sit on.</p>'));
+  const aboutWallpaper = () => ui.info('Desktop background (wallpaper)', '<p>The picture behind everything. Clicking it does nothing — it is just the "table top" your programmes sit on.</p>');
+  stage.clickable(wallpaper, aboutWallpaper);
 
   const taskbar = box(SW, 0.6, 0.05, 0x3a2b47);
   taskbar.position.set(0, TASKBAR_Y, 0);
   root.add(taskbar);
-  stage.clickable(taskbar, () => ui.info('Taskbar', '<p>The strip along the bottom. It shows the <b>Start</b> button and every programme that is open — even minimised ones. Click a programme here to bring it back.</p>'));
+  const aboutTaskbar = () => ui.info('Taskbar', '<p>The strip along the bottom. It shows the <b>Start</b> button and every programme that is open — even minimised ones. Click a programme here to bring it back.</p>');
+  stage.clickable(taskbar, aboutTaskbar);
   const start = new THREE.Mesh(new THREE.PlaneGeometry(0.5, 0.5), new THREE.MeshBasicMaterial({ map: textCanvas('⊞', { width: 128, height: 128, bg: '#4361EE', color: '#fff', font: 'bold 90px system-ui', radius: 16 }) }));
   start.position.set(-SW / 2 + 0.4, TASKBAR_Y, 0.04);
   root.add(start);
-  stage.clickable(start, () => ui.info('Start button', '<p>Opens the Start menu: a list of every programme, plus the <b>Power</b> button for a safe shutdown.</p>'));
+  const aboutStart = () => ui.info('Start button', '<p>Opens the Start menu: a list of every programme, plus the <b>Power</b> button for a safe shutdown.</p>');
+  stage.clickable(start, aboutStart);
 
   // Desktop icons
+  const icons = [];
   APPS.forEach((app, i) => {
     const icon = new THREE.Mesh(
       new THREE.PlaneGeometry(1.1, 1.1),
@@ -45,12 +49,14 @@ export default function desktopLab(stage, ui) {
     icon.position.set(-SW / 2 + 0.9, SH / 2 - 0.9 - i * 1.35, 0.01);
     root.add(icon);
     let last = 0;
-    stage.clickable(icon, () => {
+    const click = () => {
       const now = performance.now();
       if (now - last < 450) open(app);
       else ui.info(`${app.name} icon`, `<p>An <b>icon</b> is a small picture that stands for a programme. <b>Double-click</b> it (click twice quickly) to open ${app.name}.</p>`);
       last = now;
-    });
+    };
+    stage.clickable(icon, click);
+    icons.push({ mesh: icon, click });
   });
 
   // ---------- Windows ----------
@@ -74,29 +80,33 @@ export default function desktopLab(stage, ui) {
     content.position.set(0, -0.2, 0.035);
     group.add(body, title, content);
 
-    const btn = (sym, bg, x, fn, name, help) => {
+    const buttons = {};
+    const btn = (key, sym, bg, x, fn, name, help) => {
       const b = new THREE.Mesh(new THREE.PlaneGeometry(0.42, 0.36), new THREE.MeshBasicMaterial({ map: textCanvas(sym, { width: 128, height: 110, bg, color: '#fff', font: 'bold 80px system-ui', radius: 10 }) }));
       b.position.set(x, H / 2 - 0.225, 0.04);
       group.add(b);
-      stage.clickable(b, () => {
+      const click = () => {
         fn(w);
         ui.info(name, help);
-      });
+      };
+      stage.clickable(b, click);
+      buttons[key] = { mesh: b, click };
     };
-    btn('–', '#6c757d', W / 2 - 1.25, minimise, 'Minimise ( – )', '<p>Hides the window down to the taskbar. The programme is <b>still open</b> — your work is safe. Click its taskbar button to bring it back.</p>');
-    btn('□', '#6c757d', W / 2 - 0.77, toggleMax, 'Maximise / Restore ( □ )', '<p>Makes the window fill the whole screen. Click again to restore it to its smaller size.</p>');
-    btn('✕', '#E63946', W / 2 - 0.29, close, 'Close ( ✕ )', '<p>Exits the programme. If you have unsaved work, it will ask whether to save — read the question carefully!</p>');
+    btn('min', '–', '#6c757d', W / 2 - 1.25, minimise, 'Minimise ( – )', '<p>Hides the window down to the taskbar. The programme is <b>still open</b> — your work is safe. Click its taskbar button to bring it back.</p>');
+    btn('max', '□', '#6c757d', W / 2 - 0.77, toggleMax, 'Maximise / Restore ( □ )', '<p>Makes the window fill the whole screen. Click again to restore it to its smaller size.</p>');
+    btn('close', '✕', '#E63946', W / 2 - 0.29, close, 'Close ( ✕ )', '<p>Exits the programme. If you have unsaved work, it will ask whether to save — read the question carefully!</p>');
 
     const slot = new THREE.Mesh(new THREE.PlaneGeometry(0.5, 0.5), new THREE.MeshBasicMaterial({ map: textCanvas(app.icon, { width: 128, height: 128, bg: app.color, color: '#fff', font: '80px system-ui', radius: 16 }) }));
     root.add(slot);
-    stage.clickable(slot, () => {
+    const slotClick = () => {
       if (w.state === 'min') restore(w);
       else minimise(w);
       ui.info('Taskbar button', `<p>${app.name} is open. Clicking its taskbar button switches between showing and minimising it.</p>`);
-    });
+    };
+    stage.clickable(slot, slotClick);
 
     const offset = wins.size;
-    w = { app, group, slot, state: 'normal', home: new THREE.Vector3(-1.2 + offset * 0.9, 0.6 - offset * 0.5, 0), scale: 1 };
+    w = { app, group, slot, slotClick, buttons, state: 'normal', home: new THREE.Vector3(-1.2 + offset * 0.9, 0.6 - offset * 0.5, 0), scale: 1 };
     wins.set(app.id, w);
     stage.clickable(body, () => focus(w));
     stage.clickable(title, () => focus(w));
@@ -109,6 +119,7 @@ export default function desktopLab(stage, ui) {
     animate(w, w.home, 1);
     ui.complete('open');
     if (wins.size >= 2) ui.complete('multi');
+    drawCallouts();
     ui.info(`${app.name} is open`, '<p>A <b>window</b> is a framed area where a programme runs. Try the three buttons in its top-right corner: <b>–</b> minimise, <b>□</b> maximise, <b>✕</b> close. Open a second programme to practise <b>multitasking</b>.</p>');
   }
 
@@ -119,6 +130,8 @@ export default function desktopLab(stage, ui) {
   function focus(w) {
     z += 0.08;
     w.group.position.z = z;
+    w.z = z;
+    drawCallouts();
   }
 
   function animate(w, to, scale, done) {
@@ -136,6 +149,7 @@ export default function desktopLab(stage, ui) {
     ui.complete('min');
     w.prev = w.state === 'max' ? 'max' : 'normal';
     w.state = 'min';
+    drawCallouts();
     animate(w, w.slot.position, 0.04, () => (w.group.visible = false));
   }
   function restore(w) {
@@ -149,6 +163,7 @@ export default function desktopLab(stage, ui) {
   function toggleMax(w) {
     if (w.state === 'max') {
       w.state = 'normal';
+      drawCallouts();
       animate(w, w.home, 1);
     } else {
       w.state = 'max';
@@ -163,7 +178,40 @@ export default function desktopLab(stage, ui) {
     root.remove(w.slot);
     animate(w, w.group.position, 0.01, () => root.remove(w.group));
     layoutSlots();
+    drawCallouts();
   }
+
+  // ---------- Callouts ----------
+  // Cards for the desktop parts, plus the window buttons of the window on top and
+  // the taskbar button of a minimised programme. Redrawn whenever a window changes.
+  let cards = [];
+  function card(obj, icon, title, text, at, dx, dy, onClick, mission) {
+    const c = stage.callout(obj, { icon, title, text, at, dx, dy, onClick });
+    if (mission && ui.isDone(mission)) c.card.classList.add('done');
+    cards.push(c);
+  }
+  function drawCallouts() {
+    cards.forEach((c) => c.remove());
+    cards = [];
+    const open = [...wins.values()];
+    const top = open.filter((w) => w.state !== 'min').sort((a, b) => b.z - a.z)[0];
+    const hidden = open.find((w) => w.state === 'min');
+    if (top?.state !== 'max') card(icons[0].mesh, '🖱️', 'Icons', 'Double-click an icon to open it', [0.4, 0.5, 0], 70, -70, icons[0].click, 'open');
+    if (!open.length) card(wallpaper, '🖼️', 'Desktop', 'The background your programmes sit on', [2.5, -0.6, 0], 0, -40, aboutWallpaper);
+    card(start, '⊞', 'Start button', 'Every programme, and Power', [0, -0.25, 0], -10, 85, aboutStart);
+    card(taskbar, '📊', 'Taskbar', 'Shows every open programme', [3.5, -0.3, 0], 40, 85, aboutTaskbar);
+    if (hidden) card(hidden.slot, '⬆️', `${hidden.app.name} button`, `Click to bring ${hidden.app.name} back`, [0, 0.25, 0], 110, -75, hidden.slotClick, 'restore');
+    if (top) {
+      // Normal window: cards fan out to its right. Maximised: above and below the buttons.
+      const b = top.buttons;
+      const max = top.state === 'max';
+      card(b.min.mesh, '➖', 'Minimise', 'Hide it in the taskbar', [0, 0.18, 0], max ? -130 : 200, max ? -70 : -60, b.min.click, 'min');
+      card(b.max.mesh, '⬜', max ? 'Restore' : 'Maximise', max ? 'Back to a smaller window' : 'Fill the whole screen', [0, max ? 0.18 : 0, 0], max ? 0 : 170, max ? -95 : 5, b.max.click, 'max');
+      card(b.close.mesh, '❌', 'Close', 'Exit the programme', [0.21, 0, 0], max ? 60 : 140, max ? 75 : 70, b.close.click, 'close');
+    }
+  }
+
+  drawCallouts();
 
   ui.info('Your desktop', '<p>This is the screen you see after signing in. <b>Double-click an icon</b> on the left to open a programme, then use the window buttons. Click the taskbar or Start button to learn what they do.</p>');
   const g = ui.group('Shortcuts');
@@ -189,7 +237,7 @@ function gradient() {
   return t;
 }
 
-export const config = { camera: [0, 4.6, 13], target: [0, 4, 0], maxPolar: Math.PI * 0.6, minDistance: 6, shadowSize: 9 };
+export const config = { camera: [0, 4.6, 13], target: [0, 3.6, 0], frame: 1.2, maxPolar: Math.PI * 0.6, minDistance: 6, shadowSize: 9 };
 
 export const missions = [
   { id: 'open', text: 'Double-click the Paint icon to open it.', hint: 'Click twice quickly on the icon at the top left.' },

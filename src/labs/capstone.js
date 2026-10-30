@@ -86,6 +86,49 @@ export default function capstoneLab(stage, ui) {
     return g;
   });
 
+  // ---------- Callouts ----------
+  // One card per built part, one where the next part goes and one on the pitch
+  // stage. Clicking a card opens that step.
+  const PARTS = [
+    [foundation, '🧱', [2.5, 0.2, 2], 110, 60],
+    [walls, '🏗️', [2.5, 1.7, 0.4], 150, 10],
+    [roof, '🧪', [1.2, 0.3, 1.2], 170, -30],
+    [extras, '🚩', [0.82, 6.7, 0], 150, -10],
+  ];
+  const DONE = ['Step 1 done: foundation', 'Step 2 done: the walls', 'Step 3 done: the roof', 'Step 4 done: flag raised'];
+  // Where the next part will go, what to do to build it, and the card offset.
+  const NEXT = [
+    [[0, 0.1, 1.6], 'Fill in the charter to lay the foundation', 130, 60],
+    [[-1.6, 0.5, 1.6], 'Save a v0.1 file to put up the walls', 60, 110],
+    [[-1.6, 2.9, 1.9], 'Record 2 fixes to put on the roof', -110, -110],
+    [[0, 1.4, 1.95], 'Tick the checklist to add the door', 20, 130],
+  ];
+  // Cards are made and removed here (not just hidden) as parts come and go.
+  const cards = [];
+  let nextCard = null;
+  let next = -1;
+  const pitchCard = stage.callout(platform, { icon: '🎤', at: [0, 0.2, 1.25], dx: -40, dy: 75, onClick: () => openStep(4) });
+  function tagCards(built) {
+    PARTS.forEach(([obj, icon, at, dx, dy], i) => {
+      if (built[i] && !cards[i]) {
+        cards[i] = stage.callout(obj, { icon, title: STEPS[i], text: DONE[i], at, dx, dy, onClick: () => openStep(i) });
+        cards[i].card.classList.add('done');
+      }
+      if (!built[i] && cards[i]) {
+        cards[i].remove();
+        cards[i] = null;
+      }
+    });
+    const n = built.indexOf(false);
+    if (n !== next) {
+      nextCard?.remove();
+      nextCard = n === -1 ? null : stage.callout(null, { icon: '👉', title: `Next: ${STEPS[n].split(' · ')[1]}`, text: NEXT[n][1], at: NEXT[n][0], dx: NEXT[n][2], dy: NEXT[n][3], onClick: () => openStep(n) });
+      next = n;
+    }
+    if (!pitching) pitchCard.set(STEPS[4], p.pitched ? 'Practised: 3 minutes' : '3-minute timer, 3 acts');
+    pitchCard.card.classList.toggle('done', !!p.pitched);
+  }
+
   const targets = new Map(); // object -> target scale
   stage.onTick((dt) => {
     for (const [o, t] of targets) {
@@ -127,6 +170,9 @@ export default function capstoneLab(stage, ui) {
       const ok = [charterDone, protoDone, testDone, polishDone, () => p.pitched][b.dataset.step]();
       b.classList.toggle('ok', !!ok);
     });
+    // A part is only built once every step before it is done too.
+    const built = [charterDone, protoDone, testDone, polishDone].map((f) => !!f());
+    tagCards(built.map((_, i) => built.slice(0, i + 1).every(Boolean)));
     save();
   }
 
@@ -235,6 +281,7 @@ export default function capstoneLab(stage, ui) {
       const who = p.speakers[j] || 'someone';
       const idx = Math.max(0, p.roles.indexOf(p.speakers[j]));
       presenters.forEach((g, k) => (g.position.z = k === idx ? 1.6 : 1));
+      pitchCard.set(s.part.split(':')[0], `${who} speaks: ${s.secs} seconds`);
       info(`🎤 ${s.part}: ${who}`, `<p><b>${s.tip}</b></p><p>Time for this part: ${s.secs} seconds. (Practice mode: each second goes 4× faster.)</p>`);
       for (let k = 0; k < s.secs && pitching; k++) {
         // A real timer, not animation frames: those pause when the 3D view is scrolled off-screen.
@@ -255,6 +302,7 @@ export default function capstoneLab(stage, ui) {
     }
     pitching = false;
     setLabel(timerTag, '3:00', { width: 256 });
+    refresh();
   }
 
   function printCard() {

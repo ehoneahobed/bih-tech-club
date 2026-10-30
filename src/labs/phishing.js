@@ -1,7 +1,7 @@
 // Sessions 7 & 15 — Spot the Phish: emails fly onto the desk one at a time.
 // Read the sender, subject, message and link, then sort each into the inbox
 // tray (safe) or the shredder (phishing). Every answer explains the clues.
-import { THREE, COLORS, box, mat, label, setLabel } from './runtime.js';
+import { THREE, COLORS, box, mat } from './runtime.js';
 
 // All names and addresses are fictional except the well-known Google sign-in pattern.
 const EMAILS = [
@@ -90,9 +90,6 @@ export default function phishingLab(stage, ui) {
   }
   tray.position.set(-3.4, 1.65, 0.6);
   scene.add(tray);
-  const trayTag = label('✅ Inbox (safe): 0', { scale: 0.42 });
-  trayTag.position.set(-3.4, 2.8, 0.6);
-  scene.add(trayTag);
 
   const shredder = new THREE.Group();
   const sb = box(1.6, 1.3, 1.2, 0x343a40);
@@ -102,9 +99,6 @@ export default function phishingLab(stage, ui) {
   shredder.add(sb, mouth);
   shredder.position.set(3.4, 1.65, 0.6);
   scene.add(shredder);
-  const shredTag = label('🎣 Shredder (phishing): 0', { scale: 0.42 });
-  shredTag.position.set(3.4, 3.3, 0.6);
-  scene.add(shredTag);
   const strips = new THREE.Group();
   scene.add(strips);
 
@@ -116,6 +110,20 @@ export default function phishingLab(stage, ui) {
   flap.position.set(0, 0.04, -0.16);
   envelope.add(env, flap);
   scene.add(envelope);
+
+  // ---------- Callouts ----------
+  // Cards on the parts that stay put; their text follows the game.
+  const cards = {
+    lid: stage.callout(lid, { icon: '🔍', title: 'Check the clues', text: 'Who sent it? Where does the link go?', at: [0, 0.85, 0], dx: 0, dy: -60 }),
+    envelope: stage.callout(envelope, { icon: '📧', title: 'New email', at: [0.3, 0, 0.2], dx: 120, dy: 85 }),
+    tray: stage.callout(tray, { icon: '✅', title: 'Inbox (safe)', at: [0, 0.4, 0], dx: -60, dy: -95 }),
+    shredder: stage.callout(shredder, { icon: '🎣', title: 'Shredder', at: [0, 1.3, 0], dx: 70, dy: -95 }),
+  };
+  function setCounts(safe, phish) {
+    cards.tray.set('Inbox (safe)', `Safe emails go here: ${safe}`);
+    cards.shredder.set('Shredder', `Phishing goes here: ${phish}`);
+  }
+  setCounts(0, 0);
 
   // ---------- Email card (HTML) ----------
   const card = ui.element('<div class="mail-card"></div>', ui.group('📧 New email: read it carefully'));
@@ -138,6 +146,8 @@ export default function phishingLab(stage, ui) {
       ev.preventDefault();
       ui.info('😬 You clicked the link!', '<p>In real life, <b>never</b> click a link just to see what happens. First hover over it to check the real address. Then decide: safe or phishing?</p>');
     });
+    cards.envelope.set('New email', `Email ${at + 1} of ${EMAILS.length}: safe or phishing?`);
+    cards.lid.set('Check the clues', 'Who sent it? Where does the link go?', '🔍');
     envelope.visible = true;
     const from = new THREE.Vector3(0, 6, -4);
     const to = new THREE.Vector3(0, 1.75, 1.7);
@@ -176,13 +186,13 @@ export default function phishingLab(stage, ui) {
       }
     }
     envelope.visible = false;
-    setLabel(trayTag, `✅ Inbox (safe): ${at + 1 - caught}`);
-    setLabel(shredTag, `🎣 Shredder (phishing): ${caught}`);
+    setCounts(at + 1 - caught, caught);
     at++;
     busy = false;
     if (at < EMAILS.length) return showEmail();
     ui.complete('all');
     if (score >= 7) ui.complete('expert');
+    cards.lid.set('All sorted!', `${score} of ${EMAILS.length} right. Try a "New round"`, '🏁');
     mail.innerHTML = `<p class="mail-done">🏁 You sorted all ${EMAILS.length} emails and got <b>${score} of ${EMAILS.length}</b> right.</p>`;
     ui.info(score >= 7 ? '🏆 Phishing expert!' : 'Good effort!', `<p>Score: <b>${score}/${EMAILS.length}</b>.</p><p><b>The 4 big clues of phishing:</b></p><ul><li>Panic and hurry (URGENT!, 2 hours)</li><li>Asks for passwords, PINs, money or ID</li><li>A strange or misspelled address</li><li>Prizes you never entered for</li></ul>`);
   }
@@ -192,8 +202,7 @@ export default function phishingLab(stage, ui) {
     order = shuffle(order);
     at = score = caught = spotted = 0;
     strips.clear();
-    setLabel(trayTag, '✅ Inbox (safe): 0');
-    setLabel(shredTag, '🎣 Shredder (phishing): 0');
+    setCounts(0, 0);
     showEmail();
   }, { group: again });
 

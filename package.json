@@ -9,7 +9,8 @@
     "dev": "node scripts/build.mjs && npx --yes serve dist -l 4321",
     "pdf": "node scripts/pdf.mjs",
     "packs": "node scripts/pdf.mjs && node scripts/build.mjs",
-    "og": "node scripts/og.mjs"
+    "og": "node scripts/og.mjs",
+    "thumbs": "node scripts/thumbs.mjs"
   },
   "dependencies": {
     "@fontsource-variable/outfit": "5.2.6",

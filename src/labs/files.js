@@ -1,7 +1,7 @@
 // Sessions 4–5 — Files, Folders & File Operations: a 3D filing tree from the
 // drive down to files. Open folders, follow the path, then copy, cut, delete
 // and restore files from the Recycle Bin.
-import { THREE, COLORS, box, mat, label, setLabel } from './runtime.js';
+import { THREE, COLORS, box, mat, label } from './runtime.js';
 
 const tree = () => ({
   name: 'C: Drive', kind: 'drive', open: true, children: [
@@ -36,24 +36,18 @@ export default function filesLab(stage, ui) {
   can.position.y = 0.7;
   can.castShadow = true;
   binMesh.add(can);
-  const binTag = label('Recycle Bin (0)', { scale: 0.45 });
-  binTag.position.y = 1.9;
-  binMesh.add(binTag);
   binMesh.position.set(6.2, 0, 3.2);
   world.add(binMesh);
-  stage.clickable(binMesh, () => {
+  function binClick() {
     if (!bin.length) return ui.info('Recycle Bin', '<p>Empty. When you delete a file it waits here so you can still rescue it. Emptying the bin deletes files for good.</p>');
     const item = bin.pop();
     item.parent.children.push(item.node);
     item.parent.open = true;
-    updateBin();
-    rebuild();
     ui.complete('restore');
+    rebuild();
     ui.info('♻️ Restored!', `<p><b>${item.node.name}</b> went back to <b>${pathOf(item.node).join(' › ')}</b>. Right-click → <b>Restore</b> does the same on a real computer.</p>`);
-  });
-  function updateBin() {
-    setLabel(binTag, `Recycle Bin (${bin.length})`);
   }
+  stage.clickable(binMesh, binClick);
 
   function makeNode(node) {
     const g = new THREE.Group();
@@ -80,9 +74,13 @@ export default function filesLab(stage, ui) {
       band.position.y = 0.89;
       g.add(paper, band);
     }
-    const t = label(node.name, { scale: node.kind === 'drive' ? 0.5 : 0.42, color: node.kind === 'drive' ? '#24182E' : '#5A4470' });
-    t.position.y = node.kind === 'drive' ? 1.2 : 1.45;
-    g.add(t);
+    // The drive's name is on its callout card.
+    if (node.kind !== 'drive') {
+      const t = label(node.name, { scale: 0.42, color: '#5A4470' });
+      t.position.y = 1.45;
+      g.add(t);
+      g.userData.tag = t;
+    }
     world.add(g);
     stage.clickable(g, () => onClick(node));
     return g;
@@ -128,6 +126,11 @@ export default function filesLab(stage, ui) {
       }
       const g = objects.get(node);
       if (g.userData.front) g.userData.front.rotation.x = node.open ? -0.55 : -0.18;
+      // File names are long: every second file has its name below, so neighbours don't overlap.
+      if (!node.children && parent) {
+        const low = parent.children.indexOf(node) % 2 === 1;
+        g.userData.tag.position.set(0, low ? -0.3 : 1.45, low ? 0.3 : 0);
+      }
       const sel = node === selected;
       g.traverse((m) => m.isMesh && m.material.emissive?.setHex(sel ? 0x553300 : 0x000000));
       if (parent) {
@@ -139,6 +142,7 @@ export default function filesLab(stage, ui) {
       }
     }
     targets = pos;
+    drawCallouts();
   }
   stage.onTick((dt) => {
     for (const [node, g] of objects) {
@@ -210,15 +214,43 @@ export default function filesLab(stage, ui) {
     rebuild();
   }
 
+  // ---------- Callouts ----------
+  // Cards stay on the stable parts of the hierarchy (drive, Documents, Tech Club Practice, bin)
+  // and on one file: the selected one, or else the first file shown.
+  const cards = {};
+  function pin(key, obj, icon, title, text, at, dx, dy, onClick, mission) {
+    if (cards[key] && cards[key].obj !== obj) {
+      cards[key].remove();
+      delete cards[key];
+    }
+    if (!obj) return;
+    cards[key] ??= Object.assign(stage.callout(obj, { at, dx, dy, onClick }), { obj });
+    cards[key].set(title, text, icon);
+    cards[key].card.classList.toggle('done', !!mission && ui.isDone(mission));
+  }
+  function drawCallouts() {
+    const docs = root.children.find((c) => c.name === 'Documents');
+    const practice = docs?.children.find((c) => c.name === 'Tech Club Practice');
+    const file = selected ?? walk(root, null, 0, []).find((v) => !v.node.children)?.node;
+    pin('drive', objects.get(root), '💽', 'C: Drive', 'The storage cabinet: holds everything', [-1.2, 0.5, 0], -170, -30, () => onClick(root));
+    pin('main', objects.get(docs), '📁', 'Main folder', 'A container for your files', [-0.75, 0.5, 0], -150, -10, () => onClick(docs));
+    pin('sub', objects.get(practice), '📂', 'Subfolder', 'A folder inside a folder', [-0.75, 0.5, 0], -130, 0, () => onClick(practice));
+    const [title, text] = mode ? ['Pick a folder', `Click where it should go (${mode === 'copy' ? 'Copy' : 'Cut'})`] : selected ? ['Path', pathOf(parentOf(selected)).join(' › ')] : ['File', 'One saved piece of work'];
+    pin('file', objects.get(file), '📄', title, text, [0, 0.4, 0.03], -20, 110, () => onClick(file), 'path');
+    pin('bin', binMesh, '🗑️', `Recycle Bin (${bin.length})`, bin.length ? 'Click to restore the last file' : 'Deleted files wait here', [0, 0.3, 0.65], 20, 85, binClick, 'restore');
+  }
+
   const ops = ui.group('File operations');
   ui.button('📋 Copy', () => {
     if (!requireFile()) return;
     mode = 'copy';
+    drawCallouts();
     ui.info('Copy — now pick a destination', `<p>Click the folder where the copy should go. The original <b>${selected.name}</b> will stay where it is.</p>`);
   }, { group: ops });
   ui.button('✂️ Cut (Move)', () => {
     if (!requireFile()) return;
     mode = 'cut';
+    drawCallouts();
     ui.info('Cut — now pick a destination', `<p>Click the folder where <b>${selected.name}</b> should move to.</p>`);
   }, { group: ops });
   ui.button('✏️ Rename (F2)', () => {
@@ -252,7 +284,6 @@ export default function filesLab(stage, ui) {
     parent.children.splice(parent.children.indexOf(node), 1);
     bin.push({ node, parent });
     selected = null;
-    updateBin();
     rebuild();
     ui.complete('delete');
     ui.info('🗑️ Sent to the Recycle Bin', '<p>The file is not gone yet! <b>Click the Recycle Bin</b> to restore it. Files on a USB drive skip the bin — they are deleted immediately.</p>');
@@ -266,7 +297,6 @@ export default function filesLab(stage, ui) {
     root = tree();
     bin.length = 0;
     selected = mode = null;
-    updateBin();
     rebuild();
   }, { group: ops });
 
@@ -274,7 +304,7 @@ export default function filesLab(stage, ui) {
   ui.info('The computer filing hierarchy', '<p><b>Drive › Folder › Sub-folder › File.</b> Click folders to open and close them. Click a file to see its full path, then try copying, cutting and deleting it.</p>');
 }
 
-export const config = { camera: [0, 10, 12.5], target: [0, 0, 0.5], shadowSize: 14, maxDistance: 30 };
+export const config = { camera: [-1.2, 10, 12.5], target: [-1.2, 0, 0.5], shadowSize: 14, maxDistance: 30 };
 
 export const missions = [
   { id: 'open-folder', text: 'Open the "Science" folder.', hint: 'Click the yellow Science folder under Documents.' },

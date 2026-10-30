@@ -429,3 +429,14 @@ button.callout:hover, button.callout:focus-visible { border-color: var(--red); b
 /* Floating text labels in the 3D labs (drawn as HTML so they stay sharp) */
 .tag3d { position: absolute; left: 0; top: 0; pointer-events: none; white-space: nowrap; text-align: center; font: 600 13px/1.2 var(--display); padding: 3px 9px; border-radius: 8px; box-shadow: 0 2px 8px rgba(36, 24, 46, 0.1); border: 1px solid rgba(36, 24, 46, 0.12); will-change: transform; }
 .tag3d.bare { box-shadow: none; border: 0; padding: 0; }
+/* Lab pictures on session cards */
+.card-thumb { display: block; width: calc(100% + 44px); max-width: none; height: 160px; margin: -22px -22px 8px; object-fit: cover; border-radius: var(--radius) var(--radius) 0 0; border-bottom: 1px solid var(--line); background: #fbf6ee; }
+.callout.tour { border-color: var(--gold); box-shadow: 0 0 0 4px rgba(255, 190, 0, 0.45), 0 8px 20px rgba(36, 24, 46, 0.16); z-index: 2; }
+.lab-callouts.touring .callout:not(.tour) { opacity: 0.18; }
+.lab-callouts.touring .callout-dot, .lab-callouts.touring .lab-leaders { opacity: 0.35; }
+.callout { transition: opacity 0.25s; }
+.callout[hidden], .callout-dot[hidden], .tag3d[hidden] { display: none; }
+.callout { z-index: 1; }
+.tag3d { z-index: 0; }
+.lab-hint { transition: opacity 0.6s; }
+.lab-canvas.touched .lab-hint { opacity: 0; }

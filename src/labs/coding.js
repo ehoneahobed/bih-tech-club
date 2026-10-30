@@ -33,7 +33,7 @@ export default function codingLab(stage, ui) {
   floor.position.y = 0.02;
   floor.receiveShadow = true;
   scene.add(floor);
-  for (const [t, x, z] of [['x: -240', -5.3, 0], ['x: 240', 5.3, 0], ['y: 180', 0, -4.0], ['y: -180', 0, 4.0], ['(0, 0)', 0.6, 0.35]]) {
+  for (const [t, x, z] of [['x: -240', -5.3, 0], ['x: 240', 5.3, 0], ['y: 180', 0, -4.0], ['y: -180', 0, 4.0]]) {
     const l = label(t, { scale: 0.28, width: 256 });
     l.position.set(x, 0.4, z);
     scene.add(l);
@@ -62,16 +62,54 @@ export default function codingLab(stage, ui) {
   const litterGroup = new THREE.Group();
   scene.add(litterGroup);
 
+  // ---------- Callouts ----------
+  // The floor is rotated flat, so its local (x, y) is the stage's (x, y) in world units.
+  stage.callout(floor, { icon: '🎯', title: 'Centre (0, 0)', text: 'x: across · y: up and down', at: [0, 0, 0], dx: -140, dy: 90 });
+  const spriteCard = stage.callout(sprite, { icon: '🐥', title: 'Sprite', text: '', at: [0, 0.7, 0], dx: 120, dy: -70 });
+  let penCard = null;
+  let scoreCard = null;
+  let lastLitter = LITTER[0];
+  // The score card points at the next piece of litter, or where the last one was.
+  function pinScore() {
+    const next = litterGroup.children[0];
+    if (scoreCard && scoreCard.obj === (next ?? floor)) return;
+    scoreCard?.remove();
+    const [x, y] = next ? [0, 0] : lastLitter;
+    scoreCard = stage.callout(next ?? floor, { icon: '🧹', title: '', at: next ? [0, 0.05, 0] : [x * SCALE, y * SCALE, 0], dx: 130, dy: -50 });
+    tagScore();
+  }
+  function tagScore() {
+    scoreCard.set(`Score: ${s.score} of ${LITTER.length}`, 'The score is a variable');
+    scoreCard.card.classList.toggle('done', s.score === LITTER.length);
+  }
+  // place() runs every frame of a move, so only rewrite the sprite card a few times a second.
+  let spriteText = '';
+  let spriteAt = 0;
+  let spriteTimer = 0;
+  function tagSprite() {
+    const t = `x: ${Math.round(s.x)}, y: ${Math.round(s.y)}`;
+    if (t === spriteText) return;
+    clearTimeout(spriteTimer);
+    const wait = 150 - (performance.now() - spriteAt);
+    if (wait > 0) return void (spriteTimer = setTimeout(tagSprite, wait));
+    spriteText = t;
+    spriteAt = performance.now();
+    spriteCard.set('Sprite', t);
+  }
+
   // Sprite state in stage coordinates (Scratch-style: direction 90 = facing right).
   const s = { x: 0, y: 0, dir: 90, pen: false, score: 0 };
   function place() {
     sprite.position.set(s.x * SCALE, 0, -s.y * SCALE);
     sprite.rotation.y = -(s.dir * Math.PI) / 180; // the nose points to -z ("up" the stage) at direction 0
     readout.innerHTML = `x: <b>${Math.round(s.x)}</b> &nbsp; y: <b>${Math.round(s.y)}</b> &nbsp; direction: <b>${Math.round(s.dir)}°</b> &nbsp; score: <b>${s.score}</b>`;
+    tagSprite();
   }
   function reset() {
     Object.assign(s, { x: 0, y: 0, dir: 90, pen: false, score: 0 });
     trail.clear();
+    penCard?.remove();
+    penCard = null;
     litterGroup.clear();
     for (const [x, y] of LITTER) {
       const sachet = box(0.35, 0.08, 0.25, 0x4cc9f0);
@@ -80,6 +118,7 @@ export default function codingLab(stage, ui) {
       sachet.userData.xy = [x, y];
       litterGroup.add(sachet);
     }
+    pinScore();
     bubble.visible = false;
     place();
   }
@@ -89,6 +128,9 @@ export default function codingLab(stage, ui) {
       if (Math.hypot(x - s.x, y - s.y) < 35) {
         litterGroup.remove(l);
         s.score++;
+        lastLitter = [x, y];
+        pinScore();
+        tagScore();
       }
     }
   }
@@ -216,6 +258,10 @@ export default function codingLab(stage, ui) {
     seg.position.copy(a).lerp(b, 0.5);
     seg.lookAt(b);
     trail.add(seg);
+    // Pin the pen card to the first line drawn; reset() removes it with the trail.
+    if (!penCard) {
+      penCard = stage.callout(seg, { icon: '✏️', title: 'Pen trail', text: '"pen down" draws a line', dx: 110, dy: 120 });
+    }
   }
 
   async function run(step = false) {

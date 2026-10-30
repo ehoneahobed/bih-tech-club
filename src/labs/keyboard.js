@@ -99,6 +99,7 @@ export default function keyboardLab(stage, ui, host) {
     if (code === 'KeyF' || code === 'KeyJ') homeBumps.add(code);
     if (homeBumps.size === 2) ui.complete('bumps');
     if (code === 'Backspace') ui.complete('backspace');
+    if (homeBumps.has(code) || code === 'Backspace') cards[code]?.card.classList.add('done');
     k.mesh.position.y = k.baseY - 0.12;
     k.top.emissive.setHex(0x553300);
     setTimeout(() => {
@@ -159,6 +160,23 @@ export default function keyboardLab(stage, ui, host) {
     highlightTarget();
   }
 
+  // ---------- Callouts ----------
+  // Cards on the zones and the keys the missions ask for. Clicking a card presses its key.
+  const CALLOUTS = [
+    ['Backquote', '🔤', 'Main zone', 'Letters, numbers and command keys', [0, 0.14, -0.2], -40, -130],
+    ['F7', '🎛️', 'Function zone', 'Esc and F1–F12: shortcut keys', [0, 0.14, -0.2], 0, -95],
+    ['Backspace', '⌫', 'Backspace', 'Rubs out the letter to the left', [0.45, 0.14, -0.15], 60, -140],
+    ['KeyF', '👆', 'F bump', 'Left index finger rests here', [0, 0.14, 0.12], -70, 150],
+    ['KeyJ', '👆', 'J bump', 'Right index finger rests here', [0, 0.14, 0.12], 70, 150],
+    ['ArrowUp', '🧭', 'Navigation zone', 'Arrow keys move the cursor', [0, 0.14, 0.22], 70, 95],
+  ];
+  const cards = {};
+  for (const [code, icon, title, text, at, dx, dy] of CALLOUTS) {
+    cards[code] = stage.callout(keys.get(code).mesh, { icon, title, text, at, dx, dy, onClick: () => press(code) });
+  }
+  if (ui.isDone('bumps')) ['KeyF', 'KeyJ'].forEach((c) => cards[c].card.classList.add('done'));
+  if (ui.isDone('backspace')) cards.Backspace.card.classList.add('done');
+
   // ---------- Controls ----------
   const g = ui.group('Colour the keys by');
   const bz = ui.button('Zones', () => setColouring('zones', bz), { group: g });
@@ -183,7 +201,7 @@ export default function keyboardLab(stage, ui, host) {
   ui.info('Press any key!', '<p><b>Click the keyboard</b>, then press keys on your real keyboard. Watch the 3D key go down and find out its zone and which finger should press it.</p>');
 }
 
-export const config = { camera: [0, 7, 6.5], target: [0, 0, 0.3], ground: true, minDistance: 4, shadowSize: 7 };
+export const config = { camera: [0, 7, 6.5], target: [0, 0, 0.3], frame: 1.3, ground: true, minDistance: 4, shadowSize: 7 };
 
 export const missions = [
   { id: 'press-any', text: 'Click the 3D keyboard, then press any key on your real keyboard.', hint: 'Watch the same key go down on the screen.' },

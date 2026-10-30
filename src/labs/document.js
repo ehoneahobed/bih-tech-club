@@ -68,13 +68,39 @@ export default function documentLab(stage, ui, host) {
     if (!hit?.uv) return;
     const y = (1 - hit.uv.y) * H;
     const i = bounds.findIndex((b) => y >= b[0] && y <= b[1]);
-    if (i < 0) return;
-    if (e.shiftKey) selected.has(i) ? selected.delete(i) : selected.add(i);
-    else selected = new Set([i]);
+    if (i >= 0) pick(e.shiftKey ? toggle(i) : [i]);
+  });
+  const toggle = (i) => (selected.has(i) ? [...selected].filter((j) => j !== i) : [...selected, i]);
+  function pick(list) {
+    selected = new Set(list);
     render();
     ui.complete('select');
     describe();
-  });
+  }
+
+  // ---------- Callouts ----------
+  // Cards sit beside the page so they never cover its text. Clicking one
+  // selects that part of the page, runs the spell check or print preview.
+  let squiggleAt = 0; // canvas y of the first red squiggle
+  const PH = 4.6 * (H / W);
+  const pageY = (y) => PH / 2 - (y / H) * PH; // canvas y → page local y
+  const cards = {
+    title: stage.callout(page, { icon: '🔠', title: 'Title', text: 'Big, bold and centred', dx: -100, dy: 12, onClick: () => pick([0]) }),
+    heading: stage.callout(page, { icon: '🔖', title: 'Heading', text: 'Organises the page', dx: -100, dy: 22, onClick: () => pick([2, 6]) }),
+    bullets: stage.callout(page, { icon: '•', title: 'Bulleted list', text: 'Items in any order', dx: 150, dy: 0, onClick: () => pick([3, 4, 5]) }),
+    spell: stage.callout(page, { icon: '〰️', title: 'Red squiggle', text: 'Spell check (F7) finds it', dx: 150, dy: -20, onClick: () => spellCheck() }),
+    printer: stage.callout(printer, { icon: '🖨', title: 'Printer', text: 'Print preview checks first', at: [0.3, 0.9, 0.9], dx: 20, dy: 58, onClick: () => preview() }),
+  };
+  // Pin each card to the edge of its paragraph, wherever formatting moved it.
+  function placeCards() {
+    const mid = (i) => pageY((bounds[i][0] + bounds[i][1]) / 2);
+    cards.title.at?.set(-2.3, mid(0), 0);
+    cards.heading.at?.set(-2.3, mid(2), 0);
+    cards.bullets.at?.set(2.3, (mid(3) + mid(5)) / 2, 0);
+    const left = SPELLING.filter((s) => !dictionary.has(s.word) && paras.some((p) => p.text.includes(s.word)));
+    if (squiggleAt) cards.spell.at?.set(2.3, pageY(squiggleAt), 0);
+    cards.spell.set(left.length ? 'Red squiggle' : 'Spelling checked', left.length ? 'Spell check (F7) finds it' : 'No red squiggles left', left.length ? '〰️' : '✅');
+  }
 
   // ---------- Rendering the page ----------
   function render() {
@@ -85,6 +111,7 @@ export default function documentLab(stage, ui, host) {
     let y = 90;
     let num = 0;
     bounds = [];
+    squiggleAt = 0;
     paras.forEach((p, i) => {
       const px = p.size * 3;
       const indent = p.list ? 50 : 0;
@@ -118,12 +145,14 @@ export default function documentLab(stage, ui, host) {
           if (at < 0) continue;
           const sx = x + g.measureText(line.slice(0, at)).width;
           squiggle(g, sx, by + 6, g.measureText(s.word).width);
+          squiggleAt ||= by;
         }
       });
       bounds.push([top - px * 0.6, top + lines.length * lh]);
       y += lines.length * lh + (p.role === 'heading' || p.role === 'title' ? px * 0.55 : px * 0.5);
     });
     tex.needsUpdate = true;
+    placeCards();
     checkMissions();
   }
 

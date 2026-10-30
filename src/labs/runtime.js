@@ -36,6 +36,10 @@ export function createStage(host, opts = {}) {
   renderer.shadowMap.type = THREE.PCFSoftShadowMap;
   renderer.toneMapping = THREE.NeutralToneMapping;
   wrap.appendChild(renderer.domElement);
+  // The "Drag to look around" hint fades once the pupil has tried it (or after 8 seconds).
+  const touched = () => wrap.classList.add('touched');
+  renderer.domElement.addEventListener('pointerdown', touched, { once: true });
+  setTimeout(touched, 8000);
 
   const scene = new THREE.Scene();
   if (opts.background !== undefined) scene.background = new THREE.Color(opts.background);
@@ -345,6 +349,7 @@ function createCallouts(wrap, camera, renderer, live, scene, pxPerUnit) {
       const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
       svg.appendChild(line);
       layer.append(dot, card);
+      // c.at (a Vector3, local to obj) can be changed later to move the dot.
       const c = { obj, at: new THREE.Vector3(...at), dx, dy, card, dot, line };
       c.set = (t, x = '', i = icon) => {
         card.innerHTML = `${i ? `<span class="callout-icon" aria-hidden="true">${i}</span>` : ''}<span><b>${t}</b>${x ? `<small>${x}</small>` : ''}</span>`;
@@ -356,7 +361,9 @@ function createCallouts(wrap, camera, renderer, live, scene, pxPerUnit) {
       return c;
     },
     clear() { [...list].forEach((c) => c.remove()); },
+    items: () => [...list].filter((c) => !c.card.hidden),
     show(on) { shown = on; layer.classList.toggle('off', !on); },
+    touring(on) { layer.classList.toggle('touring', on); },
     get shown() { return shown; },
     update() {
       const r = renderer.domElement;
@@ -379,15 +386,21 @@ function createCallouts(wrap, camera, renderer, live, scene, pxPerUnit) {
         const cw = c.card.offsetWidth;
         const ch = c.card.offsetHeight;
         // Keep the card inside the canvas.
-        const left = Math.max(6, Math.min(W - cw - 6, x + c.dx - cw / 2));
-        let top = Math.max(6, Math.min(H - ch - 44, y + c.dy - ch / 2));
-        // Push a card up or down until it no longer covers one already placed.
-        for (let tries = 0; tries < 6; tries++) {
+        // On narrow (phone) canvases keep cards closer to their dots.
+        const near = Math.min(1, W / 700);
+        const left = Math.max(6, Math.min(W - cw - 6, x + c.dx * near - cw / 2));
+        // Keep clear of the toolbar at the bottom; if the spot is taken, try just
+        // below or above the card in the way, whichever stays on the canvas.
+        const maxTop = H - ch - 62;
+        const clamp = (t) => Math.max(6, Math.min(maxTop, t));
+        const free = (t) => !placed.some((p) => left < p.r && left + cw > p.l && t < p.b && t + ch > p.t);
+        let top = clamp(y + c.dy * near - ch / 2);
+        for (let tries = 0; tries < 6 && !free(top); tries++) {
           const hit = placed.find((p) => left < p.r && left + cw > p.l && top < p.b && top + ch > p.t);
-          if (!hit) break;
-          top = c.dy >= 0 ? hit.b + 6 : hit.t - ch - 6;
+          const down = clamp(hit.b + 6);
+          const up = clamp(hit.t - ch - 6);
+          top = (c.dy >= 0 ? [down, up] : [up, down]).find(free) ?? (c.dy >= 0 ? down : up);
         }
-        top = Math.max(6, Math.min(H - ch - 44, top));
         placed.push({ l: left, r: left + cw, t: top, b: top + ch });
         c.card.style.transform = `translate(${left}px, ${top}px)`;
         c.dot.style.transform = `translate(${x - 6}px, ${y - 6}px)`;
@@ -439,9 +452,48 @@ function createViewBar(wrap, { camera, controls, start, target0, ortho, tween, c
   btn('⟳', 'Turn right', () => turn(45));
   btn('−', 'Zoom out', () => zoom(1 / 1.25));
   btn('+', 'Zoom in', () => zoom(1.25));
+  // "Show me": glide to each labelled part in turn and light up its card.
+  // It only shows; pupils still click the parts themselves to finish missions.
+  let touring = false;
+  const tourBtn = btn('▶', 'Show me around', async () => {
+    if (touring) { touring = false; return; }
+    const stops = callouts.items();
+    if (!stops.length) return;
+    touring = true;
+    tourBtn.classList.add('on');
+    tourBtn.innerHTML = '■';
+    callouts.show(true);
+    callouts.touring(true);
+    lb.classList.add('on');
+    const p = new THREE.Vector3();
+    for (const c of stops) {
+      if (!touring) break;
+      p.copy(c.at);
+      c.obj?.localToWorld(p);
+      const t0 = controls.target.clone();
+      const c0 = camera.position.clone();
+      const z0 = camera.zoom;
+      const z1 = ortho ? Math.min(controls.maxZoom, 1.45) : z0;
+      await tween((k) => {
+        controls.target.lerpVectors(t0, p, k);
+        camera.position.copy(c0).add(controls.target.clone().sub(t0));
+        if (ortho) { camera.zoom = z0 + (z1 - z0) * k; camera.updateProjectionMatrix(); }
+      }, 0.8);
+      c.card.classList.add('tour');
+      for (let i = 0; i < 28 && touring; i++) await tween(() => {}, 0.1);
+      c.card.classList.remove('tour');
+    }
+    touring = false;
+    callouts.touring(false);
+    tourBtn.classList.remove('on');
+    tourBtn.innerHTML = '▶';
+    reset();
+  });
+  // Dragging the model stops the tour.
+  controls.addEventListener('start', () => { touring = false; });
   const lb = btn('🏷️', 'Show or hide labels', () => { callouts.show(!callouts.shown); lb.classList.toggle('on', callouts.shown); });
   lb.classList.add('on');
-  btn('⌂', 'Reset the view', () => {
+  const reset = () => {
     const p0 = camera.position.clone();
     const t0 = controls.target.clone();
     const z0 = camera.zoom;
@@ -450,7 +502,8 @@ function createViewBar(wrap, { camera, controls, start, target0, ortho, tween, c
       controls.target.lerpVectors(t0, target0, k);
       if (ortho) { camera.zoom = z0 + (1 - z0) * k; camera.updateProjectionMatrix(); }
     }, 0.6);
-  });
+  };
+  btn('⌂', 'Reset the view', reset);
   wrap.appendChild(bar);
   return { turn, zoom, bar };
 }

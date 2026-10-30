@@ -81,11 +81,25 @@ export default function chartLab(stage, ui) {
     const t = label('', { scale: 0.5 });
     chart.add(t);
     tags.push(t);
-    stage.clickable(bar, () => ui.complete('cell') || ui.info(`Cell B${i + 2}`, `<p><b>${rows[i].item}</b>: GH₵ ${rows[i].value}. This value lives in cell <b>B${i + 2}</b> (column B, row ${i + 2}).</p>`));
+    stage.clickable(bar, () => cellInfo(i));
   });
+  const cellInfo = (i) => ui.complete('cell') || ui.info(`Cell B${i + 2}`, `<p><b>${rows[i].item}</b>: GH₵ ${rows[i].value}. This value lives in cell <b>B${i + 2}</b> (column B, row ${i + 2}).</p>`);
 
   const pie = new THREE.Group();
   scene.add(pie);
+
+  // ---------- Callouts ----------
+  // Each view gets its own cards. A card on a column does the same as clicking that column.
+  const cards = {};
+  function pin(key, obj, o) {
+    if (cards[key]?.obj !== obj) {
+      cards[key]?.remove();
+      cards[key] = Object.assign(stage.callout(obj, o), { obj });
+    }
+    cards[key].set(o.title, o.text, o.icon);
+  }
+  const unpin = (...keys) => keys.forEach((k) => (cards[k]?.remove(), delete cards[k]));
+  const pinBar = (key, i, o) => pin(key, bars[i].mesh, { at: [0, 1, 0], ...o, onClick: () => cellInfo(i) });
 
   function stats() {
     const v = rows.map((r) => r.value);
@@ -123,6 +137,13 @@ export default function chartLab(stage, ui) {
         tags[i].scale.set(1.45, 0.62, 1);
         tags[i].userData.x = x;
       });
+      const top = rows.findIndex((r) => r.value === s.max);
+      const cell = top === 0 ? 1 : 0;
+      unpin('pie');
+      pin('title', title, { icon: '🏷️', title: 'Chart title', text: 'What the chart shows', dx: 190, dy: -45 });
+      pin('axis', axis, { icon: '📏', title: 'Axis', text: `The scale: 0 to ${scaleMax}`, at: [-4.2, 5, -1.1], dx: -140, dy: -30 });
+      pinBar('max', top, { icon: '🏆', title: 'MAX', text: `Gold = best day: ${rows[top].item}`, dx: 70, dy: -65 });
+      pinBar('cell', cell, { icon: '🔗', title: `Cell B${cell + 2}`, text: `Holds ${rows[cell].item}'s number`, at: [0, 0.3, 0.55], dx: -130, dy: 70 });
     } else {
       pie.clear();
       let a = 0;
@@ -141,6 +162,9 @@ export default function chartLab(stage, ui) {
         pie.add(t);
         a += share * Math.PI * 2;
       });
+      unpin('axis', 'max', 'cell');
+      pin('title', title, { icon: '🏷️', title: 'Chart title', text: 'What the chart shows', dx: 190, dy: -45 });
+      pin('pie', pie, { icon: '🥧', title: 'Whole = SUM', text: `The slices add up to GH₵ ${s.sum}`, at: [0, 1.2, 0], dx: -150, dy: 170 });
     }
   }
 

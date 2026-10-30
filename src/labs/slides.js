@@ -100,6 +100,18 @@ export default function slidesLab(stage, ui, host) {
     } else audience.forEach((a) => (a.position.y = 0));
   });
 
+  // ---------- Callouts ----------
+  // Only in the editor view: during the show the camera sits among the audience.
+  let cards = [];
+  function drawCallouts() {
+    cards.forEach((c) => c.remove());
+    cards = [
+      stage.callout(screen, { icon: '🖼️', title: `Slide ${current + 1}`, text: 'Signboard: keywords, pictures', at: [-4.8, 2.2, 0], dx: -115, dy: -40 }),
+      stage.callout(speaker, { icon: '🎤', title: 'Speaker', text: 'The star: face the audience', at: [0, 1.9, 0.3], dx: 50, dy: 85 }),
+      stage.callout(audience[15], { icon: '👥', title: 'Audience', text: 'The back row must read it', at: [0, 1.5, 0], dx: -60, dy: 65 }),
+    ];
+  }
+
   // ---------- Drawing a slide ----------
   const picture = drawPicture();
   function draw(alpha = 1) {
@@ -174,6 +186,7 @@ export default function slidesLab(stage, ui, host) {
     html += `<label class="lab-field">Slide animation <select data-ed="anim">${['none', 'fade', 'fly', 'carnival'].map((a) => `<option${a === anim ? ' selected' : ''} value="${a}">${{ none: 'None', fade: 'Fade (calm)', fly: 'Fly in', carnival: '🎪 Spin + bounce + sparkle' }[a]}</option>`).join('')}</select></label>`;
     pane.innerHTML = html;
     navBtns.forEach((b, i) => b.classList.toggle('active', i === current));
+    cards[0]?.set(`Slide ${current + 1}`, 'Signboard: keywords, pictures');
     check();
   }
 
@@ -265,6 +278,8 @@ export default function slidesLab(stage, ui, host) {
   async function startShow() {
     showing = true;
     ui.complete('show');
+    cards.forEach((c) => c.remove());
+    cards = [];
     host.focus({ preventScroll: true });
     await fly(SHOW_CAM);
     go(0);
@@ -275,6 +290,7 @@ export default function slidesLab(stage, ui, host) {
     blacked = false;
     draw();
     await fly(EDIT_CAM);
+    if (!showing) drawCallouts();
     renderEditor();
   }
 
@@ -316,6 +332,7 @@ export default function slidesLab(stage, ui, host) {
 
   camera.position.copy(EDIT_CAM.pos);
   controls.target.copy(EDIT_CAM.target);
+  drawCallouts();
   go(0);
   ui.info('Fix this deck!', '<p>This team\'s slides have design problems. Use the slide buttons to look at each slide and fix it. Then present it to the class.</p><p><b>Remember:</b> the speaker is the star. The slides are just the signboard.</p>');
 }

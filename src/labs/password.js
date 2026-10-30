@@ -1,6 +1,6 @@
 // Session 15 — Online Safety: build a password fortress. Longer passphrases
 // stack more bricks; then send the "guessing robot" to attack the wall.
-import { THREE, COLORS, box, mat, label, setLabel } from './runtime.js';
+import { THREE, COLORS, box, mat } from './runtime.js';
 
 const COMMON = ['password', '123456', '12345678', 'qwerty', 'abc123', 'letmein', 'iloveyou', 'admin', 'welcome', 'football', 'ghana', 'blackstars', 'jesus', 'princess', 'monkey', '111111', '000000', 'password1'];
 const SEQUENCES = ['0123456789', 'abcdefghijklmnopqrstuvwxyz', 'qwertyuiop', 'asdfghjkl', 'zxcvbnm'];
@@ -89,17 +89,11 @@ export default function passwordLab(stage, ui) {
   const home = new THREE.Vector3(0, 0.6, -4.5);
   bot.position.copy(home);
   scene.add(bot);
-  const botTag = label('🤖 Guessing robot', { scale: 0.38, color: '#CA1F3F' });
-  botTag.position.set(0, 1.7, 0);
-  bot.add(botTag);
 
   const treasure = new THREE.Mesh(new THREE.OctahedronGeometry(0.6), mat(COLORS.gold, { emissive: COLORS.gold, emissiveIntensity: 0.4, metalness: 0.6, roughness: 0.2 }));
   treasure.position.set(0, 0.8, 3);
   treasure.castShadow = true;
   scene.add(treasure);
-  const tTag = label('Your account', { scale: 0.34 });
-  tTag.position.set(0, 1.9, 3);
-  scene.add(tTag);
   stage.onTick((dt, t) => {
     treasure.rotation.y += dt;
     bot.position.x = attacking ? bot.position.x : Math.sin(t * 1.3) * 0.6;
@@ -119,6 +113,14 @@ export default function passwordLab(stage, ui) {
   const bar = panel.querySelector('.meter span');
   const crack = panel.querySelector('.crack');
 
+  // ---------- Callouts ----------
+  // The wall card rides on the bottom-middle brick, so it shows once the wall exists.
+  const cards = {
+    account: stage.callout(treasure, { icon: '💎', title: 'Your account', text: 'The treasure the robot wants', at: [0, 0.6, 0], dx: -170, dy: -60 }),
+    bot: stage.callout(bot, { icon: '🤖', title: 'Guessing robot', text: '10 billion guesses every second', at: [0, 0.6, 0], dx: 130, dy: 90, onClick: () => sendRobot() }),
+    wall: stage.callout(bricks[3], { icon: '🧱', title: 'Password wall', at: [0, 0.22, 0], dx: -110, dy: 85 }),
+  };
+
   let current = { bits: 0, notes: [] };
   function update() {
     current = strength(input.value);
@@ -132,6 +134,7 @@ export default function passwordLab(stage, ui) {
     bar.style.width = `${Math.min(100, (current.bits / 80) * 100)}%`;
     bar.style.background = `#${col.getHexString()}`;
     const t = crackTime(current.bits);
+    cards.wall.set(`Wall: ${current.bits} bits`, t.text === 'instantly' ? 'Cracked instantly!' : `Robot needs ${t.text}`);
     crack.innerHTML = input.value ? `A robot guessing 10 billion times a second needs <b>${t.text}</b>.` : '';
     ui.info(`Strength: ${current.bits} bits`, input.value
       ? (current.notes.length ? `<ul>${current.notes.map((n) => `<li>${n}</li>`).join('')}</ul>` : '<p>Nice — no obvious patterns found.</p>') + '<p>Every extra character multiplies the guesses needed. <b>Five random words</b> beat a short jumble of symbols.</p>'
@@ -141,7 +144,7 @@ export default function passwordLab(stage, ui) {
 
   let attacking = false;
   const g = ui.group('Test it');
-  ui.button('🤖 Send the robot!', async () => {
+  async function sendRobot() {
     if (attacking) return;
     if (!input.value) return ui.info('Type a practice password first', '<p>The robot needs something to attack! Try one of the examples below.</p>');
     attacking = true;
@@ -171,7 +174,8 @@ export default function passwordLab(stage, ui) {
     }
     bot.position.copy(home);
     attacking = false;
-  }, { primary: true, group: g });
+  }
+  ui.button('🤖 Send the robot!', sendRobot, { primary: true, group: g });
   const ex = ui.group('Compare examples');
   for (const sample of ['password123', 'Kwame2012', 'T#9k!', 'mango-trotro-sunrise-42', 'mango trotro sunrise kente jollof'])
     ui.button(sample, () => {
