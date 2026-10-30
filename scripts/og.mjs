@@ -85,7 +85,7 @@ await shot(card({ kicker: 'Bozoma Innovation Hub · JHS Tech Club', title: 'Lear
 for (const s of course.sessions) {
   const id = String(s.n).padStart(2, '0');
   const l = levels[s.level];
-  await shot(card({ kicker: `Session ${s.n} · ${l.name.replace(/^Level \d+ · /, '')}`, title: esc(s.title), sub: 'BIH JHS Tech Club · workbook · 3D lab · study pack', white }), `assets/og/session-${id}.jpg`);
+  await shot(card({ kicker: `Session ${s.n} · ${l.name.replace(/^(Level|Block) \d+ · /, '')}`, title: esc(s.title), sub: 'BIH JHS Tech Club · workbook · 3D lab · study pack', white }), `assets/og/session-${id}.jpg`);
 }
 
 // Square icons: the logo's mark (x 241–456, y 142–357 in logo.png) centred on white.
