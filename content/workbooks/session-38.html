@@ -255,53 +255,456 @@
 </head>
 <body>
 
+<!-- ========================================== -->
+<!-- PAGE 1: WHAT IS A WEBSITE?                  -->
+<!-- ========================================== -->
 <div class="page">
   <div class="header-bar">
     <div class="header-title">Bozoma Innovation Hub • Tech Club</div>
     <div class="badge">Session 38 • Page 1</div>
   </div>
+
+  <div class="student-meta">
+    <div class="meta-row">
+      <span class="meta-label">Learner Full Name:</span>
+      <div class="editable-line" contenteditable="true">Ama Mensah</div>
+      <span class="meta-label" style="min-width: 90px;">School:</span>
+      <div class="editable-line" contenteditable="true">Bozoma Model JHS</div>
+    </div>
+    <div class="meta-row">
+      <span class="meta-label">Assigned Workstation:</span>
+      <div class="editable-line" contenteditable="true" style="max-width: 140px;">PC-01</div>
+      <span class="meta-label" style="min-width: 50px;">Class:</span>
+      <div class="editable-line" contenteditable="true" style="max-width: 90px;">JHS 1</div>
+    </div>
+  </div>
+
   <h1>Session 38: Build a Web Page</h1>
-  <p>DRAFT PLACEHOLDER: this workbook is being written.</p>
+  <p>Since Session 11 you have visited hundreds of web pages. Today you switch sides: you become a <strong>web builder</strong>. You will plan a small website about your community, build it with <strong>Google Sites</strong>, publish it for the Hub, and then peek behind the curtain at <strong>HTML</strong>, the language every web page is written in.</p>
+
+  <h2>1. Plain Talk: A Website Is a Compound House</h2>
+  <p>Think of a family compound house. At the front is the <strong>gate with a signboard</strong>: that is the <strong>home page</strong>, the first page visitors see. Inside are <strong>rooms</strong>: those are the other <strong>pages</strong>. A <strong>corridor</strong> joins all the rooms: that is the <strong>menu</strong> (navigation bar). The <strong>doors</strong> that take you from room to room, or out to another house, are <strong>links</strong>. And just as every house can have a GhanaPost GPS digital address, every website has a <strong>web address</strong> (URL) so people can find it.</p>
+
+  <!-- DIAGRAM: WEBSITE AS A HOUSE -->
+  <div class="diagram-container">
+    <svg width="680" height="250" viewBox="0 0 680 250" xmlns="http://www.w3.org/2000/svg">
+      <!-- address bar -->
+      <rect x="20" y="10" width="640" height="26" rx="13" fill="#F1F5F9" stroke="#94A3B8"/>
+      <text x="36" y="27" font-size="10.5" fill="#334155">🔒 sites.google.com/view/our-bozoma</text>
+      <text x="645" y="27" font-size="9.5" font-weight="bold" fill="#9A3412" text-anchor="end">① Web address (URL) = the house's address</text>
+      <!-- menu bar -->
+      <rect x="20" y="46" width="640" height="30" fill="#3A0CA3"/>
+      <text x="40" y="66" font-size="11" font-weight="bold" fill="#FFFFFF">Our Bozoma</text>
+      <text x="300" y="66" font-size="10.5" fill="#FFFFFF">Home</text>
+      <text x="360" y="66" font-size="10.5" fill="#FFFFFF">Places to Visit</text>
+      <text x="470" y="66" font-size="10.5" fill="#FFFFFF">Food</text>
+      <text x="530" y="66" font-size="10.5" fill="#FFFFFF">Our Map</text>
+      <line x1="300" y1="70" x2="328" y2="70" stroke="#F77F00" stroke-width="2"/>
+      <!-- home page body -->
+      <rect x="20" y="76" width="640" height="120" fill="#FFFFFF" stroke="#CBD5E1"/>
+      <rect x="40" y="90" width="200" height="90" rx="6" fill="#BAE6FD"/>
+      <text x="140" y="140" font-size="10" fill="#0C4A6E" text-anchor="middle">picture of the market</text>
+      <text x="260" y="106" font-size="15" font-weight="bold" fill="#1E293B">Welcome to Bozoma!</text>
+      <rect x="260" y="116" width="250" height="7" rx="3" fill="#CBD5E1"/>
+      <rect x="260" y="130" width="230" height="7" rx="3" fill="#CBD5E1"/>
+      <rect x="260" y="144" width="240" height="7" rx="3" fill="#CBD5E1"/>
+      <text x="260" y="172" font-size="10.5" fill="#2563EB" text-decoration="underline">Read about our festival →</text>
+      <!-- labels -->
+      <g font-size="9.5" font-weight="bold" fill="#9A3412">
+        <text x="20" y="215">② Menu (navigation bar) = the corridor joining all the rooms</text>
+        <text x="20" y="231">③ Home page = the gate and signboard visitors see first</text>
+        <text x="380" y="215">④ Link = a door to another page or website</text>
+        <text x="380" y="231">⑤ Each menu item = another room (page)</text>
+      </g>
+      <path d="M 300,206 L 300,80" stroke="#F77F00" stroke-width="1.2" stroke-dasharray="3,3"/>
+      <path d="M 440,206 L 400,178" stroke="#F77F00" stroke-width="1.2" stroke-dasharray="3,3"/>
+    </svg>
+    <div class="diagram-caption">Figure 38.0: The parts of a website. A site is a set of pages joined by a menu and links, found at one web address.</div>
+  </div>
+
+  <div class="dual-grid">
+    <div class="dual-box">
+      <div class="dual-box-title">📄 Web page</div>
+      <p>One single page, like one room. For example, the "Food" page.</p>
+    </div>
+    <div class="dual-box">
+      <div class="dual-box-title">🏠 Website</div>
+      <p>A group of pages that belong together, with one name and one address, like the whole compound house.</p>
+    </div>
+  </div>
 </div>
+
+<!-- ========================================== -->
+<!-- PAGE 2: PLAN BEFORE YOU BUILD               -->
+<!-- ========================================== -->
 <div class="page">
   <div class="header-bar">
-    <div class="header-title">Coming soon</div>
+    <div class="header-title">Plan Before You Build: The Sitemap</div>
     <div class="badge">Session 38 • Page 2</div>
   </div>
-  
-  <p>DRAFT PLACEHOLDER: this workbook is being written.</p>
+
+  <h2>1. Three Planning Questions</h2>
+  <p>No mason builds a house without a plan. Before you open Google Sites, answer three questions:</p>
+  <div class="dual-grid" style="grid-template-columns: 1fr 1fr 1fr;">
+    <div class="dual-box">
+      <div class="dual-box-title">🎯 1. Purpose</div>
+      <p>Why does this site exist? <em>"To tell visitors about the good things in our town."</em></p>
+    </div>
+    <div class="dual-box">
+      <div class="dual-box-title">👥 2. Audience</div>
+      <p>Who will read it? <em>"Pupils at the Hub and visitors to our town."</em> Write for them.</p>
+    </div>
+    <div class="dual-box">
+      <div class="dual-box-title">🗂️ 3. Pages</div>
+      <p>What rooms does the house need? Keep it small: <strong>3 or 4 pages</strong> is plenty.</p>
+    </div>
+  </div>
+
+  <h2>2. Draw a Sitemap</h2>
+  <p>A <strong>sitemap</strong> is a quick drawing of all the pages and how they connect. It is like the family tree you drew for folders in Session 4: the home page is at the top.</p>
+  <!-- DIAGRAM: SITEMAP -->
+  <div class="diagram-container">
+    <svg width="680" height="175" viewBox="0 0 680 175" xmlns="http://www.w3.org/2000/svg">
+      <g stroke="#3A0CA3" stroke-width="2"><line x1="340" y1="56" x2="340" y2="80"/><line x1="105" y1="80" x2="575" y2="80"/><line x1="105" y1="80" x2="105" y2="100"/><line x1="262" y1="80" x2="262" y2="100"/><line x1="418" y1="80" x2="418" y2="100"/><line x1="575" y1="80" x2="575" y2="100"/></g>
+      <rect x="250" y="12" width="180" height="44" rx="8" fill="#3A0CA3"/>
+      <text x="340" y="32" font-size="12" font-weight="bold" fill="#FFFFFF" text-anchor="middle">HOME</text>
+      <text x="340" y="48" font-size="9.5" fill="#E0E7FF" text-anchor="middle">welcome, picture, short intro</text>
+      <g text-anchor="middle">
+        <rect x="30" y="100" width="150" height="62" rx="8" fill="#EEF2FF" stroke="#3A0CA3"/>
+        <text x="105" y="120" font-size="11" font-weight="bold" fill="#3A0CA3">About Our Town</text>
+        <text x="105" y="137" font-size="9.5" fill="#334155">history, festival,</text><text x="105" y="150" font-size="9.5" fill="#334155">what we are proud of</text>
+        <rect x="187" y="100" width="150" height="62" rx="8" fill="#FFF7ED" stroke="#F77F00"/>
+        <text x="262" y="120" font-size="11" font-weight="bold" fill="#9A3412">Places to Visit</text>
+        <text x="262" y="137" font-size="9.5" fill="#334155">market, park, river,</text><text x="262" y="150" font-size="9.5" fill="#334155">photos of places</text>
+        <rect x="343" y="100" width="150" height="62" rx="8" fill="#ECFDF5" stroke="#10B981"/>
+        <text x="418" y="120" font-size="11" font-weight="bold" fill="#047857">Food</text>
+        <text x="418" y="137" font-size="9.5" fill="#334155">local dishes and</text><text x="418" y="150" font-size="9.5" fill="#334155">where to buy them</text>
+        <rect x="500" y="100" width="150" height="62" rx="8" fill="#FEF2F2" stroke="#E63946"/>
+        <text x="575" y="120" font-size="11" font-weight="bold" fill="#B91C1C">Our Map</text>
+        <text x="575" y="137" font-size="9.5" fill="#334155">a Google map and</text><text x="575" y="150" font-size="9.5" fill="#334155">useful links</text>
+      </g>
+    </svg>
+    <div class="diagram-caption">Figure 38.1: A sitemap for "Our Bozoma". One home page at the top, four pages below it.</div>
+  </div>
+
+  <h2>3. Your Turn: Plan Your Community Site</h2>
+  <table>
+    <thead><tr><th style="width: 30%;">Planning question</th><th>My plan</th></tr></thead>
+    <tbody>
+      <tr><td>Site name</td><td><div class="answer-line" contenteditable="true">Our …</div></td></tr>
+      <tr><td>Purpose</td><td><div class="answer-line" contenteditable="true">This site exists to…</div></td></tr>
+      <tr><td>Audience</td><td><div class="answer-line" contenteditable="true"></div></td></tr>
+      <tr><td>Pages (3 or 4)</td><td><div class="answer-line" contenteditable="true">Home, …</div></td></tr>
+    </tbody>
+  </table>
+
+  <div class="panic-box">
+    <div class="panic-title">🛡️ THE WEB BUILDER'S SAFETY RULES</div>
+    1. <strong>No personal details:</strong> no full names, phone numbers, house addresses, your school timetable or your route home (Session 33's P.I.I. shield).<br>
+    2. <strong>No faces without consent:</strong> use photos of places and things, not people, unless you have their (and a parent's) permission.<br>
+    3. <strong>Only pictures you may use:</strong> your own photos, or ones your mentor gives you (Session 27). Never copy any picture from Google Images.<br>
+    4. <strong>Publish to the Hub only</strong>, not the whole world, unless your mentor says otherwise.
+  </div>
 </div>
+
+<!-- ========================================== -->
+<!-- PAGE 3: BUILDING WITH GOOGLE SITES          -->
+<!-- ========================================== -->
 <div class="page">
   <div class="header-bar">
-    <div class="header-title">Coming soon</div>
+    <div class="header-title">Building with Google Sites</div>
     <div class="badge">Session 38 • Page 3</div>
   </div>
-  
-  <p>DRAFT PLACEHOLDER: this workbook is being written.</p>
+
+  <h2>1. The Google Sites Editor</h2>
+  <p><strong>Google Sites</strong> is a free website builder. You don't write any code: you click, type and drag, like making a slide in Session 23. Go to <strong>sites.google.com</strong> and sign in with the Hub's learning account.</p>
+
+  <!-- DIAGRAM: SITES EDITOR -->
+  <div class="diagram-container">
+    <svg width="680" height="235" viewBox="0 0 680 235" xmlns="http://www.w3.org/2000/svg">
+      <rect x="10" y="10" width="660" height="215" rx="8" fill="#FFFFFF" stroke="#94A3B8"/>
+      <!-- top bar -->
+      <rect x="10" y="10" width="660" height="30" rx="8" fill="#F1F5F9"/>
+      <text x="24" y="30" font-size="10.5" font-weight="bold" fill="#1E293B">Our Bozoma</text>
+      <text x="110" y="30" font-size="9" fill="#64748B">All changes saved in Drive</text>
+      <text x="440" y="30" font-size="12" fill="#334155">↶ ↷</text>
+      <text x="478" y="30" font-size="12" fill="#334155">👁</text>
+      <text x="500" y="30" font-size="12" fill="#334155">🔗</text>
+      <rect x="590" y="16" width="66" height="19" rx="9" fill="#2563EB"/><text x="623" y="29" font-size="10" font-weight="bold" fill="#FFFFFF" text-anchor="middle">Publish</text>
+      <!-- canvas -->
+      <rect x="20" y="48" width="470" height="168" fill="#F8FAFC" stroke="#E2E8F0"/>
+      <rect x="20" y="48" width="470" height="62" fill="#C7D2FE"/>
+      <text x="255" y="86" font-size="16" font-weight="bold" fill="#1E1B4B" text-anchor="middle">Welcome to Bozoma!</text>
+      <rect x="40" y="124" width="200" height="80" rx="4" fill="#FFFFFF" stroke="#94A3B8" stroke-dasharray="4,3"/>
+      <text x="140" y="168" font-size="9.5" fill="#64748B" text-anchor="middle">text box: click to type</text>
+      <rect x="260" y="124" width="210" height="80" rx="4" fill="#BAE6FD"/>
+      <text x="365" y="168" font-size="9.5" fill="#0C4A6E" text-anchor="middle">image</text>
+      <!-- side panel -->
+      <rect x="498" y="48" width="162" height="168" fill="#FFFFFF" stroke="#E2E8F0"/>
+      <text x="520" y="66" font-size="10" font-weight="bold" fill="#2563EB">Insert</text>
+      <text x="566" y="66" font-size="10" fill="#334155">Pages</text>
+      <text x="612" y="66" font-size="10" fill="#334155">Themes</text>
+      <line x1="510" y1="72" x2="556" y2="72" stroke="#2563EB" stroke-width="2"/>
+      <g font-size="9.5" fill="#334155">
+        <text x="512" y="92">T  Text box</text><text x="592" y="92">🖼 Images</text>
+        <text x="512" y="110">&lt;&gt; Embed</text><text x="592" y="110">📁 Drive</text>
+        <text x="512" y="132" font-weight="bold">Layouts ▦ ▦</text>
+        <text x="512" y="154">▭ Button</text><text x="592" y="154">— Divider</text>
+        <text x="512" y="172">▶ YouTube</text><text x="592" y="172">📍 Map</text>
+        <text x="512" y="190">📅 Calendar</text><text x="592" y="190">📝 Forms</text>
+      </g>
+    </svg>
+    <div class="diagram-caption">Figure 38.2: The Google Sites editor: your page on the left, the Insert, Pages and Themes tabs on the right, and Preview (👁) and Publish at the top. It may look slightly different.</div>
+  </div>
+
+  <h2>2. The Six Builder Moves</h2>
+  <table>
+    <thead><tr><th style="width: 24%;">Move</th><th>How to do it</th></tr></thead>
+    <tbody>
+      <tr><td><strong>1. Start a site</strong></td><td>Click <strong>Blank site (+)</strong>. Type the site name top-left (for example <em>Our Bozoma</em>) and click the big title on the page to change it.</td></tr>
+      <tr><td><strong>2. Add content</strong></td><td><strong>Insert</strong> tab → <em>Text box</em>, <em>Images</em> (Upload) or <em>Map</em> (search for a place, then Select). Drag blocks to move them.</td></tr>
+      <tr><td><strong>3. Add a link</strong></td><td>Select some words, press <span class="kbd-key">Ctrl</span> + <span class="kbd-key">K</span> (or the 🔗 button), paste or choose the address and click <strong>Apply</strong>.</td></tr>
+      <tr><td><strong>4. Add pages</strong></td><td><strong>Pages</strong> tab → <strong>+</strong> at the bottom → <em>New page</em> → type its name → <strong>Done</strong>. It appears in the menu by itself.</td></tr>
+      <tr><td><strong>5. Choose a theme</strong></td><td><strong>Themes</strong> tab → pick one theme and one colour for the whole site. Every page then matches.</td></tr>
+      <tr><td><strong>6. Preview and publish</strong></td><td>Click <strong>Preview 👁</strong> and use the phone, tablet and computer buttons to check every size. Then <strong>Publish</strong> (see Page 5).</td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout">
+    <div class="callout-title">💡 GOOD WEB DESIGN = GOOD SLIDE DESIGN</div>
+    Use the same rules you learnt for slides in Session 23: short text, big clear headings, strong contrast, one theme and colour scheme, and pictures that help the words. Most people will read your site on a phone, so <strong>always check the phone preview</strong>.
+  </div>
 </div>
+
+<!-- ========================================== -->
+<!-- PAGE 4: A FIRST LOOK AT HTML                -->
+<!-- ========================================== -->
 <div class="page">
   <div class="header-bar">
-    <div class="header-title">Coming soon</div>
+    <div class="header-title">Behind the Curtain: A First Look at HTML</div>
     <div class="badge">Session 38 • Page 4</div>
   </div>
-  
-  <p>DRAFT PLACEHOLDER: this workbook is being written.</p>
+
+  <h2>1. What Is HTML?</h2>
+  <p>Google Sites writes the code for you, but every web page in the world is really made of <strong>HTML</strong> (HyperText Markup Language). HTML uses <strong>tags</strong> in angle brackets to tell the browser what each piece of the page is: a heading, a paragraph, a picture or a link.</p>
+
+  <!-- DIAGRAM: TAG ANATOMY -->
+  <div class="diagram-container">
+    <svg width="680" height="110" viewBox="0 0 680 110" xmlns="http://www.w3.org/2000/svg">
+      <text x="178" y="50" font-size="22" font-weight="bold" fill="#3A0CA3" text-anchor="middle">&lt;h1&gt;</text>
+      <text x="340" y="50" font-size="22" fill="#1E293B" text-anchor="middle">Welcome to Bozoma</text>
+      <text x="509" y="50" font-size="22" font-weight="bold" fill="#E63946" text-anchor="middle">&lt;/h1&gt;</text>
+      <path d="M 148,60 L 208,60" stroke="#3A0CA3" stroke-width="3"/>
+      <path d="M 240,60 L 440,60" stroke="#64748B" stroke-width="3"/>
+      <path d="M 472,60 L 546,60" stroke="#E63946" stroke-width="3"/>
+      <text x="178" y="80" font-size="10.5" font-weight="bold" fill="#3A0CA3" text-anchor="middle">opening tag</text>
+      <text x="340" y="80" font-size="10.5" font-weight="bold" fill="#334155" text-anchor="middle">content (what people see)</text>
+      <text x="509" y="80" font-size="10.5" font-weight="bold" fill="#B91C1C" text-anchor="middle">closing tag (with /)</text>
+      <text x="340" y="101" font-size="10" fill="#64748B" text-anchor="middle">Together they make one element: a big heading.</text>
+    </svg>
+    <div class="diagram-caption">Figure 38.3: An HTML element. Most tags come in pairs: an opening tag and a closing tag with a slash.</div>
+  </div>
+
+  <h2>2. Four Tags to Start With</h2>
+  <table>
+    <thead><tr><th style="width: 34%;">Tag</th><th>What it makes</th></tr></thead>
+    <tbody>
+      <tr><td><code style="font-family: Consolas, monospace; background: #F1F5F9; padding: 0 3px; border-radius: 3px;">&lt;h1&gt;…&lt;/h1&gt;</code></td><td>The main heading. (<code style="font-family: Consolas, monospace; background: #F1F5F9; padding: 0 3px; border-radius: 3px;">&lt;h2&gt;</code> is a smaller heading, like the Heading styles in Session 17.)</td></tr>
+      <tr><td><code style="font-family: Consolas, monospace; background: #F1F5F9; padding: 0 3px; border-radius: 3px;">&lt;p&gt;…&lt;/p&gt;</code></td><td>A paragraph of text.</td></tr>
+      <tr><td><code style="font-family: Consolas, monospace; background: #F1F5F9; padding: 0 3px; border-radius: 3px;">&lt;a href="…"&gt;…&lt;/a&gt;</code></td><td>A link. <code style="font-family: Consolas, monospace; background: #F1F5F9; padding: 0 3px; border-radius: 3px;">href</code> holds the address it goes to; the words between the tags are what you click.</td></tr>
+      <tr><td><code style="font-family: Consolas, monospace; background: #F1F5F9; padding: 0 3px; border-radius: 3px;">&lt;img src="…" alt="…"&gt;</code></td><td>A picture. <code style="font-family: Consolas, monospace; background: #F1F5F9; padding: 0 3px; border-radius: 3px;">src</code> is the picture file; <code style="font-family: Consolas, monospace; background: #F1F5F9; padding: 0 3px; border-radius: 3px;">alt</code> describes it for people who can't see it. No closing tag.</td></tr>
+    </tbody>
+  </table>
+
+  <!-- DIAGRAM: CODE TO BROWSER -->
+  <div class="diagram-container">
+    <svg width="680" height="170" viewBox="0 0 680 170" xmlns="http://www.w3.org/2000/svg">
+      <defs><marker id="h38a" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#F77F00"/></marker></defs>
+      <rect x="10" y="10" width="330" height="150" rx="8" fill="#1E293B"/>
+      <text x="22" y="28" font-size="9.5" fill="#94A3B8">my-page.html (Notepad)</text>
+      <g font-family="monospace" font-size="10.5">
+        <text x="22" y="52" fill="#C4B5FD">&lt;h1&gt;<tspan fill="#F8FAFC">Our Bozoma</tspan>&lt;/h1&gt;</text>
+        <text x="22" y="74" fill="#C4B5FD">&lt;p&gt;<tspan fill="#F8FAFC">Our market opens at 6 am.</tspan>&lt;/p&gt;</text>
+        <text x="22" y="96" fill="#C4B5FD">&lt;img <tspan fill="#FDE68A">src="market.jpg"</tspan></text>
+        <text x="40" y="112" fill="#FDE68A">alt="Our busy market"<tspan fill="#C4B5FD">&gt;</tspan></text>
+        <text x="22" y="134" fill="#C4B5FD">&lt;a <tspan fill="#FDE68A">href="https://scratch.mit.edu"</tspan>&gt;</text>
+        <text x="40" y="150" fill="#F8FAFC">Play my game<tspan fill="#C4B5FD">&lt;/a&gt;</tspan></text>
+      </g>
+      <path d="M 348,85 L 380,85" stroke="#F77F00" stroke-width="3" marker-end="url(#h38a)"/>
+      <rect x="390" y="10" width="280" height="150" rx="8" fill="#FFFFFF" stroke="#94A3B8"/>
+      <rect x="390" y="10" width="280" height="20" rx="8" fill="#F1F5F9"/>
+      <text x="400" y="24" font-size="9" fill="#64748B">Browser</text>
+      <text x="402" y="54" font-size="17" font-weight="bold" fill="#1E293B">Our Bozoma</text>
+      <text x="402" y="74" font-size="10.5" fill="#1E293B">Our market opens at 6 am.</text>
+      <rect x="402" y="84" width="110" height="44" rx="4" fill="#BAE6FD"/><text x="457" y="110" font-size="9" fill="#0C4A6E" text-anchor="middle">market.jpg</text>
+      <text x="402" y="148" font-size="10.5" fill="#2563EB" text-decoration="underline">Play my game</text>
+    </svg>
+    <div class="diagram-caption">Figure 38.4: The browser reads the tags (left) and draws the page (right). The tags themselves stay hidden.</div>
+  </div>
+
+  <div class="callout">
+    <div class="callout-title">🔗 HTML AND YOUR SCRATCH CODE</div>
+    HTML <strong>describes</strong> a page; it has no loops or IF blocks like your Scratch games in Sessions 36–37. But the same law applies: the computer does <em>exactly</em> what you write. A missing <code style="font-family: Consolas, monospace; background: #F1F5F9; padding: 0 3px; border-radius: 3px;">/</code> or <code style="font-family: Consolas, monospace; background: #F1F5F9; padding: 0 3px; border-radius: 3px;">&gt;</code> is a bug. Debug it like a coder: spot it, trace it, fix one thing.
+  </div>
+  <p><strong>Spot the bug:</strong> <code style="font-family: Consolas, monospace; background: #F1F5F9; padding: 0 3px; border-radius: 3px;">&lt;p&gt;Kelewele is the best snack&lt;p&gt;</code> What is wrong?</p>
+  <div class="answer-line" contenteditable="true">The bug is…</div>
 </div>
+
+<!-- ========================================== -->
+<!-- PAGE 5: GUIDED LAB - BUILD AND PUBLISH      -->
+<!-- ========================================== -->
 <div class="page">
   <div class="header-bar">
-    <div class="header-title">Coming soon</div>
+    <div class="header-title">Guided Hands-On Lab: Build &amp; Publish</div>
     <div class="badge">Session 38 • Page 5</div>
   </div>
-  
-  <p>DRAFT PLACEHOLDER: this workbook is being written.</p>
+
+  <p>Warm up in the <strong>Web Page Builder</strong> 3D lab on your session page: build a page about your community from blocks, then peek at the HTML behind it and change it. Then build the real thing.</p>
+
+  <h2>1. Mission 1: Your Community Site in Google Sites</h2>
+  <div class="step-card">
+    <div class="step-num">1</div>
+    <div class="step-content">At <strong>sites.google.com</strong>, click <strong>Blank site (+)</strong>. Give the site your planned name, and type a welcome title and two or three sentences on the home page.</div>
+  </div>
+  <div class="step-card">
+    <div class="step-num">2</div>
+    <div class="step-content"><strong>Pages</strong> tab → add 2 or 3 pages from your sitemap. On each, add a heading and a short text box.</div>
+  </div>
+  <div class="step-card">
+    <div class="step-num">3</div>
+    <div class="step-content"><strong>Insert → Images</strong> and add one allowed picture (places, not faces): <em>Upload</em> it from the <em>Community Photos</em> folder on the PC, or <em>Select image</em> → <em>Drive</em> if your mentor shared it there. On the map page, <strong>Insert → Map</strong>, search for a place in your town and click <strong>Select</strong>.</div>
+  </div>
+  <div class="step-card">
+    <div class="step-num">4</div>
+    <div class="step-content">Add one <strong>link</strong> (for example to <em>scratch.mit.edu</em>, or from the home page to another page of your own site). Pick a <strong>theme</strong>. Click <strong>Preview 👁</strong> and check the phone view.</div>
+  </div>
+  <div class="step-card">
+    <div class="step-num">5</div>
+    <div class="step-content">Click <strong>Publish</strong>. Type a web address (for example <em>our-bozoma-ama</em>). Under <em>Who can view my site</em>, keep it to people in the Hub's organisation, as your mentor shows you. Click <strong>Publish</strong>, then open the link to check it works.</div>
+  </div>
+
+  <h2>2. Mission 2: Write a Tiny Page in Notepad</h2>
+  <div class="step-card">
+    <div class="step-num">6</div>
+    <div class="step-content">Open <strong>Notepad</strong>. Type the four lines from Figure 38.4, using your own town and words. Then <strong>File → Save as</strong>, choose the <em>MyWebPage</em> folder on the desktop (it already holds <em>market.jpg</em>), set <em>Save as type</em> to <strong>All files</strong> and name it <strong>my-page.html</strong>.</div>
+  </div>
+  <div class="step-card">
+    <div class="step-num">7</div>
+    <div class="step-content">In File Explorer, double-click <strong>my-page.html</strong>: it opens in the browser. Change a word in Notepad, press <span class="kbd-key">Ctrl</span> + <span class="kbd-key">S</span>, then press <span class="kbd-key">F5</span> in the browser to see your change.</div>
+  </div>
+
+  <table>
+    <thead><tr><th style="width: 46%;">Builder's checklist</th><th style="width: 12%; text-align:center;">Done</th><th>Notes</th></tr></thead>
+    <tbody>
+      <tr><td>Home page + at least 2 more pages in the menu</td><td style="text-align:center;"><input type="checkbox"></td><td><div class="answer-line" contenteditable="true"></div></td></tr>
+      <tr><td>An allowed image, a map and a working link</td><td style="text-align:center;"><input type="checkbox"></td><td><div class="answer-line" contenteditable="true"></div></td></tr>
+      <tr><td>One theme; checked in phone preview; no personal details</td><td style="text-align:center;"><input type="checkbox"></td><td><div class="answer-line" contenteditable="true"></div></td></tr>
+      <tr><td>Published to the Hub. My web address:</td><td style="text-align:center;"><input type="checkbox"></td><td><div class="answer-line" contenteditable="true">sites.google.com/view/…</div></td></tr>
+      <tr><td>my-page.html opens in the browser with h1, p, img and a</td><td style="text-align:center;"><input type="checkbox"></td><td><div class="answer-line" contenteditable="true"></div></td></tr>
+    </tbody>
+  </table>
 </div>
+
+<!-- ========================================== -->
+<!-- PAGE 6: REVIEW & SELF-ASSESSMENT            -->
+<!-- ========================================== -->
 <div class="page">
   <div class="header-bar">
-    <div class="header-title">Coming soon</div>
+    <div class="header-title">Session 38 Review &amp; Verification</div>
     <div class="badge">Session 38 • Page 6</div>
   </div>
-  
-  <p>DRAFT PLACEHOLDER: this workbook is being written.</p>
+
+  <h2>1. True or False?</h2>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 66%;">Statement</th>
+        <th style="width: 17%; text-align:center;">True</th>
+        <th style="width: 17%; text-align:center;">False</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>A website is a group of web pages joined by a menu and links, found at one web address.</td>
+        <td style="text-align:center;"><input type="radio" name="w38t1"></td>
+        <td style="text-align:center;"><input type="radio" name="w38t1"></td>
+      </tr>
+      <tr>
+        <td>It is fine to put a classmate's photo and phone number on your community website.</td>
+        <td style="text-align:center;"><input type="radio" name="w38t2"></td>
+        <td style="text-align:center;"><input type="radio" name="w38t2"></td>
+      </tr>
+      <tr>
+        <td>You should check how your site looks on a phone before you publish it.</td>
+        <td style="text-align:center;"><input type="radio" name="w38t3"></td>
+        <td style="text-align:center;"><input type="radio" name="w38t3"></td>
+      </tr>
+      <tr>
+        <td>In HTML, <code style="font-family: Consolas, monospace; background: #F1F5F9; padding: 0 3px; border-radius: 3px;">&lt;a href="…"&gt;</code> makes a picture.</td>
+        <td style="text-align:center;"><input type="radio" name="w38t4"></td>
+        <td style="text-align:center;"><input type="radio" name="w38t4"></td>
+      </tr>
+      <tr>
+        <td>A closing tag has a slash, like <code style="font-family: Consolas, monospace; background: #F1F5F9; padding: 0 3px; border-radius: 3px;">&lt;/p&gt;</code>.</td>
+        <td style="text-align:center;"><input type="radio" name="w38t5"></td>
+        <td style="text-align:center;"><input type="radio" name="w38t5"></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>2. Written Review Questions</h2>
+  <p><strong>Question 1:</strong> What three questions should you answer before you build a website, and what is a sitemap?</p>
+  <div class="answer-line" contenteditable="true">Write your answer here...</div>
+  <div class="answer-line" contenteditable="true"></div>
+
+  <p><strong>Question 2:</strong> Write the HTML for a heading that says <em>Welcome</em> and a paragraph that says <em>Akwaaba to our town</em>.</p>
+  <div class="answer-line" contenteditable="true">Write your code here...</div>
+  <div class="answer-line" contenteditable="true"></div>
+
+  <h2>3. Self-Assessment &amp; Mentor Sign-Off</h2>
+  <p>Tick the column that reflects your confidence at the end of Session 38:</p>
+  <table>
+    <thead>
+      <tr>
+        <th>Web Building Competency</th>
+        <th style="width: 18%; text-align: center;">With Help</th>
+        <th style="width: 18%; text-align: center;">Almost Alone</th>
+        <th style="width: 18%; text-align: center;">All By Myself!</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1. I can plan a website: purpose, audience, pages and a sitemap.</td>
+        <td style="text-align: center;"><input type="radio" name="w38a1"></td>
+        <td style="text-align: center;"><input type="radio" name="w38a1"></td>
+        <td style="text-align: center;"><input type="radio" name="w38a1"></td>
+      </tr>
+      <tr>
+        <td>2. I can build pages in Google Sites with text, images, a map, links and a theme.</td>
+        <td style="text-align: center;"><input type="radio" name="w38a2"></td>
+        <td style="text-align: center;"><input type="radio" name="w38a2"></td>
+        <td style="text-align: center;"><input type="radio" name="w38a2"></td>
+      </tr>
+      <tr>
+        <td>3. I can preview a site on a phone and publish it safely to the Hub.</td>
+        <td style="text-align: center;"><input type="radio" name="w38a3"></td>
+        <td style="text-align: center;"><input type="radio" name="w38a3"></td>
+        <td style="text-align: center;"><input type="radio" name="w38a3"></td>
+      </tr>
+      <tr>
+        <td>4. I can write a tiny HTML page with h1, p, a and img and open it in a browser.</td>
+        <td style="text-align: center;"><input type="radio" name="w38a4"></td>
+        <td style="text-align: center;"><input type="radio" name="w38a4"></td>
+        <td style="text-align: center;"><input type="radio" name="w38a4"></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div style="border-top: 1px solid var(--bih-border); margin-top: 25px; padding-top: 12px; display: flex; justify-content: space-between; font-size: 13px;">
+    <div><strong>Mentor Signature:</strong> _____________________________</div>
+    <div><strong>Date Completed:</strong> ____________________</div>
+  </div>
 </div>
+
 </body>
 </html>

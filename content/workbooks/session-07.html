@@ -255,53 +255,395 @@
 </head>
 <body>
 
+
+<!-- ========================================== -->
+<!-- PAGE 1: THE TROTRO STATION & DEVICE SORT    -->
+<!-- ========================================== -->
 <div class="page">
   <div class="header-bar">
     <div class="header-title">Bozoma Innovation Hub • Tech Club</div>
     <div class="badge">Session 7 • Page 1</div>
   </div>
+
+  <div class="student-meta">
+    <div class="meta-row">
+      <span class="meta-label">Learner Full Name:</span>
+      <div class="editable-line" contenteditable="true">Ama Mensah</div>
+      <span class="meta-label" style="min-width: 90px;">School:</span>
+      <div class="editable-line" contenteditable="true">Bozoma Model JHS</div>
+    </div>
+    <div class="meta-row">
+      <span class="meta-label">Assigned Workstation:</span>
+      <div class="editable-line" contenteditable="true" style="max-width: 140px;">PC-01</div>
+      <span class="meta-label" style="min-width: 50px;">Class:</span>
+      <div class="editable-line" contenteditable="true" style="max-width: 90px;">JHS 1</div>
+    </div>
+  </div>
+
   <h1>Session 7: Peripherals &amp; Connections</h1>
-  <p>DRAFT PLACEHOLDER: this workbook is being written.</p>
+  <p>A <strong>peripheral</strong> is any device you connect to a computer to give it extra powers: a printer, a headset, a webcam, a projector. Today you will learn what each device does, which hole (<strong>port</strong>) it plugs into, how to connect without wires, and how to print without wasting paper.</p>
+
+  <h2>1. Plain Talk: The Trotro Station</h2>
+  <p>At a big trotro station like Kaneshie or Kejetia, every trotro has its own <strong>lane</strong>. The Madina bus waits in the Madina lane, the Kasoa bus in the Kasoa lane. Drive into the wrong lane and nobody gets anywhere. A computer is the same: every device needs the <strong>right port</strong>, and every port has its own shape so the wrong plug will not fit.</p>
+
+  <!-- DIAGRAM: TROTRO STATION -->
+  <div class="diagram-container">
+    <svg width="680" height="165" viewBox="0 0 680 165" xmlns="http://www.w3.org/2000/svg">
+      <rect x="15" y="10" width="650" height="145" rx="10" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.5"/>
+      <text x="340" y="30" font-size="12" font-weight="bold" fill="#3A0CA3" text-anchor="middle">THE COMPUTER'S "STATION": EACH DEVICE HAS ITS OWN LANE</text>
+      <g font-size="10" text-anchor="middle">
+        <rect x="35" y="45" width="110" height="95" rx="8" fill="#FFFFFF" stroke="#4361EE" stroke-width="2"/>
+        <rect x="70" y="58" width="40" height="18" rx="2" fill="#1E293B"/><rect x="76" y="62" width="28" height="6" fill="#94A3B8"/>
+        <text x="90" y="98" font-weight="bold" fill="#3A0CA3">USB lane</text>
+        <text x="90" y="114" fill="#334155">mouse, keyboard,</text><text x="90" y="127" fill="#334155">pen drive, printer</text>
+
+        <rect x="160" y="45" width="110" height="95" rx="8" fill="#FFFFFF" stroke="#F77F00" stroke-width="2"/>
+        <path d="M 190,58 L 240,58 L 234,76 L 196,76 Z" fill="#1E293B"/>
+        <text x="215" y="98" font-weight="bold" fill="#9A3412">HDMI lane</text>
+        <text x="215" y="114" fill="#334155">monitor, TV,</text><text x="215" y="127" fill="#334155">projector</text>
+
+        <rect x="285" y="45" width="110" height="95" rx="8" fill="#FFFFFF" stroke="#10B981" stroke-width="2"/>
+        <circle cx="340" cy="67" r="10" fill="#22C55E" stroke="#15803D" stroke-width="2"/><circle cx="340" cy="67" r="4" fill="#1E293B"/>
+        <text x="340" y="98" font-weight="bold" fill="#047857">Audio lane</text>
+        <text x="340" y="114" fill="#334155">headphones,</text><text x="340" y="127" fill="#334155">speakers</text>
+
+        <rect x="410" y="45" width="110" height="95" rx="8" fill="#FFFFFF" stroke="#0284C7" stroke-width="2"/>
+        <rect x="447" y="56" width="26" height="22" rx="2" fill="#1E293B"/><rect x="453" y="72" width="14" height="6" fill="#F8FAFC"/>
+        <text x="465" y="98" font-weight="bold" fill="#0369A1">Network lane</text>
+        <text x="465" y="114" fill="#334155">Ethernet cable</text><text x="465" y="127" fill="#334155">to the internet</text>
+
+        <rect x="535" y="45" width="110" height="95" rx="8" fill="#FFFFFF" stroke="#E63946" stroke-width="2"/>
+        <circle cx="590" cy="67" r="11" fill="#1E293B"/><circle cx="590" cy="67" r="4" fill="#F8FAFC"/>
+        <text x="590" y="98" font-weight="bold" fill="#B91C1C">Power lane</text>
+        <text x="590" y="114" fill="#334155">charger or</text><text x="590" y="127" fill="#334155">power cable</text>
+      </g>
+    </svg>
+    <div class="diagram-caption">Figure 7.0: Like lanes at a trotro station, each kind of device has its own port. The shapes stop you using the wrong one.</div>
+  </div>
+
+  <h2>2. Sort the Devices: Input, Output, Storage or Both?</h2>
+  <p>Remember Session 1: <strong>input</strong> sends information <em>into</em> the computer, <strong>output</strong> brings it <em>out</em> to you, <strong>storage</strong> keeps files. Some devices do <strong>both</strong> input and output. Write each device in the right box.</p>
+  <p style="background: var(--bih-light); border: 1px solid var(--bih-border); border-radius: 6px; padding: 8px 12px; font-size: 12.5px;"><strong>Word bank:</strong> scanner &bull; webcam &bull; microphone &bull; printer &bull; speakers &bull; projector &bull; headset with microphone &bull; external hard drive &bull; memory card reader &bull; keyboard &bull; mouse &bull; touchscreen &bull; game controller &bull; graphics tablet</p>
+  <div class="dual-grid" style="gap: 10px; margin-top: 8px;">
+    <div class="dual-box"><div class="dual-box-title">⬅️ INPUT</div><div class="answer-line" contenteditable="true"></div><div class="answer-line" contenteditable="true"></div></div>
+    <div class="dual-box"><div class="dual-box-title">➡️ OUTPUT</div><div class="answer-line" contenteditable="true"></div><div class="answer-line" contenteditable="true"></div></div>
+    <div class="dual-box"><div class="dual-box-title">💾 STORAGE</div><div class="answer-line" contenteditable="true"></div></div>
+    <div class="dual-box"><div class="dual-box-title">↔️ BOTH INPUT &amp; OUTPUT</div><div class="answer-line" contenteditable="true"></div></div>
+  </div>
 </div>
+
+<!-- ========================================== -->
+<!-- PAGE 2: PORTS AND PLUGS                     -->
+<!-- ========================================== -->
 <div class="page">
   <div class="header-bar">
-    <div class="header-title">Coming soon</div>
+    <div class="header-title">Ports &amp; Plugs: Find the Right Lane</div>
     <div class="badge">Session 7 • Page 2</div>
   </div>
-  
-  <p>DRAFT PLACEHOLDER: this workbook is being written.</p>
+
+  <h2>1. Meet the Ports</h2>
+  <p>Look at the back of a desktop or the sides of a laptop. These are the ports you will find most often:</p>
+
+  <!-- DIAGRAM: PORT SHAPES -->
+  <div class="diagram-container">
+    <svg width="680" height="200" viewBox="0 0 680 200" xmlns="http://www.w3.org/2000/svg">
+      <g font-size="10" text-anchor="middle">
+        <!-- USB-A -->
+        <rect x="20" y="15" width="150" height="80" rx="8" fill="#FFFFFF" stroke="#CBD5E1"/>
+        <rect x="65" y="30" width="60" height="24" rx="2" fill="#1E293B"/><rect x="72" y="35" width="46" height="8" fill="#60A5FA"/>
+        <text x="95" y="72" font-weight="bold" fill="#3A0CA3">A. USB-A</text>
+        <text x="95" y="86" fill="#475569">flat rectangle, one way up</text>
+        <!-- USB-C -->
+        <rect x="185" y="15" width="150" height="80" rx="8" fill="#FFFFFF" stroke="#CBD5E1"/>
+        <rect x="235" y="34" width="50" height="16" rx="8" fill="#1E293B"/><rect x="245" y="40" width="30" height="4" rx="2" fill="#94A3B8"/>
+        <text x="260" y="72" font-weight="bold" fill="#3A0CA3">B. USB-C</text>
+        <text x="260" y="86" fill="#475569">small oval, fits either way</text>
+        <!-- HDMI -->
+        <rect x="350" y="15" width="150" height="80" rx="8" fill="#FFFFFF" stroke="#CBD5E1"/>
+        <path d="M 395,32 L 455,32 L 455,44 L 447,52 L 403,52 L 395,44 Z" fill="#1E293B"/>
+        <text x="425" y="72" font-weight="bold" fill="#3A0CA3">C. HDMI</text>
+        <text x="425" y="86" fill="#475569">wide, two cut corners</text>
+        <!-- VGA -->
+        <rect x="515" y="15" width="150" height="80" rx="8" fill="#FFFFFF" stroke="#CBD5E1"/>
+        <circle cx="552" cy="41" r="5" fill="#94A3B8"/><circle cx="628" cy="41" r="5" fill="#94A3B8"/>
+        <path d="M 563,30 L 617,30 L 611,52 L 569,52 Z" fill="#2563EB"/>
+        <g fill="#1E3A8A"><circle cx="572" cy="36" r="1.6"/><circle cx="581" cy="36" r="1.6"/><circle cx="590" cy="36" r="1.6"/><circle cx="599" cy="36" r="1.6"/><circle cx="608" cy="36" r="1.6"/><circle cx="576" cy="42" r="1.6"/><circle cx="585" cy="42" r="1.6"/><circle cx="594" cy="42" r="1.6"/><circle cx="603" cy="42" r="1.6"/><circle cx="578" cy="48" r="1.6"/><circle cx="590" cy="48" r="1.6"/><circle cx="602" cy="48" r="1.6"/></g>
+        <text x="590" y="72" font-weight="bold" fill="#3A0CA3">D. VGA</text>
+        <text x="590" y="86" fill="#475569">blue, 15 pins, 2 screws</text>
+        <!-- Audio -->
+        <rect x="20" y="108" width="205" height="80" rx="8" fill="#FFFFFF" stroke="#CBD5E1"/>
+        <circle cx="95" cy="133" r="9" fill="#22C55E" stroke="#15803D" stroke-width="2"/><circle cx="95" cy="133" r="3.5" fill="#1E293B"/>
+        <circle cx="150" cy="133" r="9" fill="#F472B6" stroke="#BE185D" stroke-width="2"/><circle cx="150" cy="133" r="3.5" fill="#1E293B"/>
+        <text x="122" y="164" font-weight="bold" fill="#3A0CA3">E. Audio jack (3.5 mm)</text>
+        <text x="122" y="178" fill="#475569">green = sound out, pink = microphone</text>
+        <!-- Ethernet -->
+        <rect x="238" y="108" width="205" height="80" rx="8" fill="#FFFFFF" stroke="#CBD5E1"/>
+        <rect x="320" y="118" width="40" height="30" rx="2" fill="#1E293B"/><rect x="330" y="140" width="20" height="8" fill="#F8FAFC"/>
+        <text x="340" y="164" font-weight="bold" fill="#3A0CA3">F. Ethernet (network)</text>
+        <text x="340" y="178" fill="#475569">square-ish, the plug clicks in</text>
+        <!-- Power -->
+        <rect x="456" y="108" width="209" height="80" rx="8" fill="#FFFFFF" stroke="#CBD5E1"/>
+        <circle cx="530" cy="133" r="11" fill="#1E293B"/><circle cx="530" cy="133" r="4" fill="#F8FAFC"/>
+        <rect x="575" y="125" width="34" height="16" rx="8" fill="#1E293B"/>
+        <text x="560" y="164" font-weight="bold" fill="#3A0CA3">G. Charging / power</text>
+        <text x="560" y="178" fill="#475569">round barrel, or USB-C on new laptops</text>
+      </g>
+    </svg>
+    <div class="diagram-caption">Figure 7.1: The seven ports you will meet most often. Learn the shapes: the plug only fits its own port.</div>
+  </div>
+
+  <h2>2. What Plugs In Where?</h2>
+  <table>
+    <thead><tr><th style="width: 22%;">Port</th><th style="width: 78%;">What plugs in</th></tr></thead>
+    <tbody>
+      <tr><td><strong>USB-A</strong></td><td>Mouse, keyboard, pen drive, printer cable, webcam, wired headset. The most common port of all.</td></tr>
+      <tr><td><strong>USB-C</strong></td><td>Newer phones and laptops: charging, fast drives, even a monitor on some laptops.</td></tr>
+      <tr><td><strong>HDMI</strong></td><td>Monitor, TV or projector. Carries picture <em>and</em> sound.</td></tr>
+      <tr><td><strong>VGA</strong></td><td>Older monitors and projectors (picture only). Still common in schools.</td></tr>
+      <tr><td><strong>Audio jack</strong></td><td>Headphones, speakers (green), microphone (pink). Laptops often have one jack for both.</td></tr>
+      <tr><td><strong>Ethernet</strong></td><td>A network cable to the router: steadier internet than Wi-Fi.</td></tr>
+      <tr><td><strong>Charging / power</strong></td><td>The laptop charger or the desktop's power cable.</td></tr>
+    </tbody>
+  </table>
+
+  <div class="panic-box">
+    <div class="panic-title">🚨 NEVER FORCE A PLUG</div>
+    If a plug does not slide in gently, it is the wrong port or upside down. Look, turn it over and try again (remember the USB tongue from Session 5). Forcing it bends the pins and can break the port for good. Only plug in the power cable with dry hands, and ask an adult to handle wall sockets.
+  </div>
 </div>
+
+<!-- ========================================== -->
+<!-- PAGE 3: WIRED VS WIRELESS                   -->
+<!-- ========================================== -->
 <div class="page">
   <div class="header-bar">
-    <div class="header-title">Coming soon</div>
+    <div class="header-title">Wired vs Wireless: Bluetooth &amp; Wi-Fi Devices</div>
     <div class="badge">Session 7 • Page 3</div>
   </div>
-  
-  <p>DRAFT PLACEHOLDER: this workbook is being written.</p>
+
+  <h2>1. Two Ways to Connect</h2>
+  <div class="dual-grid">
+    <div class="dual-box">
+      <div class="dual-box-title">🔌 WIRED</div>
+      <p>&bull; Plug a cable into a port. Usually works straight away.</p>
+      <p>&bull; Steady, no batteries needed, hard to lose.</p>
+      <p>&bull; But you are tied to the computer by the cable.</p>
+    </div>
+    <div class="dual-box">
+      <div class="dual-box-title">📶 WIRELESS</div>
+      <p>&bull; <strong>Bluetooth:</strong> connects one device to another over a short distance (about 10 metres): headsets, speakers, mice, phones.</p>
+      <p>&bull; <strong>Wi-Fi:</strong> connects devices to a network, for example a printer the whole room can use.</p>
+      <p>&bull; No cables, but needs charged batteries and setting up once.</p>
+    </div>
+  </div>
+
+  <h2>2. Pairing a Bluetooth Headset (Windows 11)</h2>
+  <p>Connecting two Bluetooth devices for the first time is called <strong>pairing</strong>. After that, they find each other by themselves.</p>
+  <div class="step-card"><div class="step-num">1</div><div class="step-content"><strong>Put the headset in pairing mode.</strong> Usually you hold its power or Bluetooth button until a light flashes (check its instructions).</div></div>
+  <div class="step-card"><div class="step-num">2</div><div class="step-content">On the PC: <strong>Start &rarr; Settings &rarr; Bluetooth &amp; devices</strong>. Make sure <strong>Bluetooth</strong> is <strong>On</strong>.</div></div>
+  <div class="step-card"><div class="step-num">3</div><div class="step-content">Click <strong>Add device</strong> &rarr; <strong>Bluetooth</strong>. Wait for the headset's name to appear and click it.</div></div>
+  <div class="step-card"><div class="step-num">4</div><div class="step-content">When it says <strong>"Your device is ready to go"</strong>, click <strong>Done</strong>. Play a sound to test it. To disconnect, switch the headset off or click it in Bluetooth &amp; devices.</div></div>
+
+  <!-- DIAGRAM: PAIRING -->
+  <div class="diagram-container">
+    <svg width="680" height="120" viewBox="0 0 680 120" xmlns="http://www.w3.org/2000/svg">
+      <defs><marker id="ar7a" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#0284C7"/></marker></defs>
+      <rect x="40" y="25" width="120" height="70" rx="6" fill="#1E293B"/><rect x="48" y="32" width="104" height="50" rx="2" fill="#E0F2FE"/>
+      <text x="100" y="55" font-size="10" font-weight="bold" fill="#0369A1" text-anchor="middle">Add device</text>
+      <text x="100" y="70" font-size="9.5" fill="#0369A1" text-anchor="middle">searching…</text>
+      <text x="100" y="112" font-size="10" fill="#334155" text-anchor="middle">PC: Bluetooth On</text>
+      <path d="M 180,45 L 490,45" stroke="#0284C7" stroke-width="2.5" stroke-dasharray="6 4" marker-end="url(#ar7a)"/>
+      <path d="M 490,75 L 180,75" stroke="#0284C7" stroke-width="2.5" stroke-dasharray="6 4" marker-end="url(#ar7a)"/>
+      <text x="335" y="38" font-size="10" font-weight="bold" fill="#0369A1" text-anchor="middle">"Is anyone there?"</text>
+      <text x="335" y="92" font-size="10" font-weight="bold" fill="#0369A1" text-anchor="middle">"Yes! I am Selasi's headset."</text>
+      <path d="M 530,75 Q 560,20 590,75" fill="none" stroke="#3A0CA3" stroke-width="7"/>
+      <rect x="518" y="68" width="22" height="30" rx="8" fill="#3A0CA3"/><rect x="580" y="68" width="22" height="30" rx="8" fill="#3A0CA3"/>
+      <circle cx="529" cy="62" r="4" fill="#38BDF8"/>
+      <text x="560" y="112" font-size="10" fill="#334155" text-anchor="middle">Headset: pairing mode (flashing)</text>
+    </svg>
+    <div class="diagram-caption">Figure 7.2: Pairing. The PC searches, the headset in pairing mode answers, and the two remember each other.</div>
+  </div>
+
+  <h2>3. Wi-Fi Printers and Batteries</h2>
+  <p>A <strong>Wi-Fi printer</strong> joins the same network as the computers, so everyone in the room can print to it without a cable. It appears in the print list like any other printer.</p>
+  <div class="callout">
+    <div class="callout-title">🔋 WIRELESS TROUBLE? CHECK THE BATTERY FIRST</div>
+    A wireless mouse that stops moving or a headset that crackles usually has a flat battery. Charge it or swap the batteries before anything else. Switch wireless devices off when you finish, to save the battery.
+  </div>
+  <p><strong>Your turn:</strong> Fatima's Bluetooth speaker does not appear in the "Add device" list. Give two things she should check.</p>
+  <div class="answer-line" contenteditable="true">1.</div>
+  <div class="answer-line" contenteditable="true">2.</div>
 </div>
+
+<!-- ========================================== -->
+<!-- PAGE 4: PRINTING WELL & SCANNING            -->
+<!-- ========================================== -->
 <div class="page">
   <div class="header-bar">
-    <div class="header-title">Coming soon</div>
+    <div class="header-title">Printing Well &amp; Scanning</div>
     <div class="badge">Session 7 • Page 4</div>
   </div>
-  
-  <p>DRAFT PLACEHOLDER: this workbook is being written.</p>
+
+  <h2>1. The Print Dialog</h2>
+  <p>In almost every programme, press <span class="kbd-key">Ctrl</span> + <span class="kbd-key">P</span> to print. A <strong>print dialog</strong> opens. It may look slightly different in Word, Chrome or Edge, but the choices are the same:</p>
+
+  <!-- DIAGRAM: PRINT DIALOG -->
+  <div class="diagram-container">
+    <svg width="680" height="205" viewBox="0 0 680 205" xmlns="http://www.w3.org/2000/svg">
+      <rect x="20" y="10" width="640" height="185" rx="8" fill="#FFFFFF" stroke="#94A3B8" stroke-width="1.5"/>
+      <rect x="20" y="10" width="640" height="26" rx="8" fill="#E2E8F0"/>
+      <text x="35" y="28" font-size="11" font-weight="bold" fill="#1E293B">Print</text>
+      <!-- preview -->
+      <rect x="40" y="48" width="150" height="135" rx="4" fill="#F1F5F9" stroke="#CBD5E1"/>
+      <rect x="62" y="56" width="106" height="120" fill="#FFFFFF" stroke="#94A3B8"/>
+      <line x1="72" y1="72" x2="150" y2="72" stroke="#94A3B8" stroke-width="3"/><line x1="72" y1="84" x2="158" y2="84" stroke="#CBD5E1" stroke-width="2"/><line x1="72" y1="94" x2="154" y2="94" stroke="#CBD5E1" stroke-width="2"/><line x1="72" y1="104" x2="158" y2="104" stroke="#CBD5E1" stroke-width="2"/>
+      <text x="115" y="150" font-size="9.5" fill="#64748B" text-anchor="middle">Print preview</text>
+      <!-- options -->
+      <g font-size="10.5" fill="#1E293B">
+        <text x="215" y="62" font-weight="bold">1 Printer</text><rect x="330" y="50" width="200" height="18" rx="3" fill="#F8FAFC" stroke="#94A3B8"/><text x="338" y="63">Microsoft Print to PDF ▾</text>
+        <text x="215" y="88" font-weight="bold">2 Pages</text><rect x="330" y="76" width="200" height="18" rx="3" fill="#F8FAFC" stroke="#94A3B8"/><text x="338" y="89">All  /  Custom: 2-3 ▾</text>
+        <text x="215" y="114" font-weight="bold">3 Copies</text><rect x="330" y="102" width="60" height="18" rx="3" fill="#F8FAFC" stroke="#94A3B8"/><text x="338" y="115">1</text>
+        <text x="215" y="140" font-weight="bold">4 Colour</text><rect x="330" y="128" width="200" height="18" rx="3" fill="#F8FAFC" stroke="#94A3B8"/><text x="338" y="141">Black and white ▾</text>
+        <text x="215" y="166" font-weight="bold">5 Two-sided</text><rect x="330" y="154" width="200" height="18" rx="3" fill="#F8FAFC" stroke="#94A3B8"/><text x="338" y="167">Print on both sides ▾</text>
+      </g>
+      <rect x="560" y="160" width="80" height="24" rx="4" fill="#3A0CA3"/><text x="600" y="176" font-size="11" font-weight="bold" fill="#FFFFFF" text-anchor="middle">Print</text>
+    </svg>
+    <div class="diagram-caption">Figure 7.3: A typical print dialog. Check the preview and all five choices before you press Print.</div>
+  </div>
+
+  <div class="dual-grid">
+    <div class="dual-box">
+      <div class="dual-box-title">📄 PRINT TO A FILE (PDF)</div>
+      <p>No printer? Choose <strong>Microsoft Print to PDF</strong> (in Word and most Windows apps) or <strong>Save as PDF</strong> (in Chrome and Edge). Click Print or Save, pick a folder and type a BIH file name. You get a PDF that looks exactly like the printed page.</p>
+    </div>
+    <div class="dual-box">
+      <div class="dual-box-title">🌳 SAVE PAPER AND INK</div>
+      <p>&bull; Always check the <strong>preview</strong> first.<br>&bull; Print only the <strong>pages</strong> you need.<br>&bull; Choose <strong>black and white</strong> unless colour matters.<br>&bull; Use <strong>two-sided</strong> printing for long documents.<br>&bull; Press Print <strong>once</strong>. Pressing again prints it twice!</p>
+    </div>
+  </div>
+
+  <h2>2. Scanning: Paper Into the Computer</h2>
+  <p>A <strong>scanner</strong> turns a paper page into a picture or PDF file. Lift the lid, lay the page face down, close it, then use the scanner's app (or the Windows <strong>Scan</strong> app) to choose PDF or JPG and click <strong>Scan</strong>. No scanner? Many phones can scan documents with the camera app or with the <strong>Scan</strong> button in the Google Drive app. Lay the page flat in good light, keep the phone straight above it, and crop to the edges.</p>
+  <p><strong>Your turn:</strong> Kwabena wants to print only page 3 of a 10-page document, in black and white. What should he set in the dialog?</p>
+  <div class="answer-line" contenteditable="true">Pages: ___ , Colour: ___</div>
 </div>
+
+<!-- ========================================== -->
+<!-- PAGE 5: GUIDED LAB - CONNECT IT             -->
+<!-- ========================================== -->
 <div class="page">
   <div class="header-bar">
-    <div class="header-title">Coming soon</div>
+    <div class="header-title">Guided Hands-On Lab: Connect, Project &amp; Print</div>
     <div class="badge">Session 7 • Page 5</div>
   </div>
-  
-  <p>DRAFT PLACEHOLDER: this workbook is being written.</p>
+
+  <h2>1. Warm-Up: Plug It In</h2>
+  <p>Open the <strong>Plug It In</strong> 3D lab on your session page. Connect each device to the right port, pair the Bluetooth headset and set up the projector. Real devices your Hub does not have? You can still practise every one here.</p>
+
+  <h2>2. Lab Mission: Three Stations</h2>
+  <p>Your mentor will move you round the stations. Tick each step when it works.</p>
+
+  <div class="step-card">
+    <div class="step-num">A</div>
+    <div class="step-content"><strong>Sound station:</strong> plug a headset or speakers into the audio jack (or a USB port, or pair by Bluetooth). Click the <strong>speaker icon</strong> on the taskbar, then the arrow <strong>&gt;</strong> next to the volume slider and choose your device. (Or <strong>Settings &rarr; System &rarr; Sound &rarr; Output</strong>.) Play a short sound and set a comfortable volume.</div>
+  </div>
+  <div class="step-card">
+    <div class="step-num">B</div>
+    <div class="step-content"><strong>Projector station:</strong> connect the projector's HDMI or VGA cable to the PC and switch the projector on. Press <span class="kbd-key">Windows</span> + <span class="kbd-key">P</span> and try each mode: <strong>PC screen only</strong> (projector blank), <strong>Duplicate</strong> (same on both), <strong>Extend</strong> (one big desktop across both), <strong>Second screen only</strong> (only the projector). End on <strong>Duplicate</strong>.</div>
+  </div>
+  <div class="step-card">
+    <div class="step-num">C</div>
+    <div class="step-content"><strong>Print station:</strong> open the file your mentor gives you, press <span class="kbd-key">Ctrl</span> + <span class="kbd-key">P</span> and choose: <strong>page 1 only</strong>, <strong>1 copy</strong>, <strong>black and white</strong>. Print it on the real printer if your mentor says so, or choose <strong>Microsoft Print to PDF</strong> and save it in your BIH_Practice folder as <code>Print_Test_YourName</code>.</div>
+  </div>
+
+  <table>
+    <thead>
+      <tr><th style="width: 30%;">Station</th><th style="width: 14%; text-align:center;">Done?</th><th style="width: 56%;">What I used / what I noticed</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>A. Sound: device and port</td><td style="text-align:center;"><input type="checkbox"></td><td><div class="answer-line" contenteditable="true">e.g. headset in the green jack...</div></td></tr>
+      <tr><td>B. Projector: cable used</td><td style="text-align:center;"><input type="checkbox"></td><td><div class="answer-line" contenteditable="true">HDMI / VGA</div></td></tr>
+      <tr><td>B. Mode best for showing the class</td><td style="text-align:center;"><input type="checkbox"></td><td><div class="answer-line" contenteditable="true"></div></td></tr>
+      <tr><td>C. Printed or saved as PDF?</td><td style="text-align:center;"><input type="checkbox"></td><td><div class="answer-line" contenteditable="true">Where it went:</div></td></tr>
+      <tr><td>Plug It In lab finished</td><td style="text-align:center;"><input type="checkbox"></td><td><div class="answer-line" contenteditable="true">Hardest port to find:</div></td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout">
+    <div class="callout-title">💡 EXTEND IS A PRESENTER'S SECRET</div>
+    In Extend mode, the projector becomes a second desktop. You can drag a window across to it and keep your notes on your own screen where the class cannot see them.
+  </div>
 </div>
+
+<!-- ========================================== -->
+<!-- PAGE 6: REVIEW & SELF-ASSESSMENT            -->
+<!-- ========================================== -->
 <div class="page">
   <div class="header-bar">
-    <div class="header-title">Coming soon</div>
+    <div class="header-title">Session 7 Review &amp; Verification</div>
     <div class="badge">Session 7 • Page 6</div>
   </div>
-  
-  <p>DRAFT PLACEHOLDER: this workbook is being written.</p>
+
+  <h2>1. Which Device Would You Use?</h2>
+  <table>
+    <thead><tr><th style="width: 46%;">Job</th><th style="width: 54%;">Device (choose one)</th></tr></thead>
+    <tbody>
+      <tr><td>1. Put a signed paper form into the computer.</td><td>
+        <label class="checkbox-item"><input type="radio" name="s7q1"> Printer</label>
+        <label class="checkbox-item"><input type="radio" name="s7q1"> Scanner</label>
+        <label class="checkbox-item"><input type="radio" name="s7q1"> Speakers</label></td></tr>
+      <tr><td>2. Show your slides to the whole class on the wall.</td><td>
+        <label class="checkbox-item"><input type="radio" name="s7q2"> Projector</label>
+        <label class="checkbox-item"><input type="radio" name="s7q2"> Webcam</label>
+        <label class="checkbox-item"><input type="radio" name="s7q2"> Card reader</label></td></tr>
+      <tr><td>3. Talk and listen in an online lesson without disturbing others.</td><td>
+        <label class="checkbox-item"><input type="radio" name="s7q3"> Speakers</label>
+        <label class="checkbox-item"><input type="radio" name="s7q3"> Headset with microphone</label>
+        <label class="checkbox-item"><input type="radio" name="s7q3"> Graphics tablet</label></td></tr>
+    </tbody>
+  </table>
+
+  <h2>2. Match the Port</h2>
+  <p>Write the letter of the port from Figure 7.1 (A to G).</p>
+  <table>
+    <thead><tr><th style="width: 75%;">Device</th><th style="width: 25%; text-align:center;">Port letter</th></tr></thead>
+    <tbody>
+      <tr><td>An old blue-plug projector at school</td><td><div class="answer-line" contenteditable="true" style="text-align:center;"></div></td></tr>
+      <tr><td>A wired mouse</td><td><div class="answer-line" contenteditable="true" style="text-align:center;"></div></td></tr>
+      <tr><td>A flat-screen TV, picture and sound together</td><td><div class="answer-line" contenteditable="true" style="text-align:center;"></div></td></tr>
+      <tr><td>A network cable from the router</td><td><div class="answer-line" contenteditable="true" style="text-align:center;"></div></td></tr>
+    </tbody>
+  </table>
+
+  <h2>3. Written Review Questions</h2>
+  <p><strong>Question 1:</strong> What is the difference between Duplicate and Extend when you press Windows + P?</p>
+  <div class="answer-line" contenteditable="true">Write your answer here...</div>
+  <p><strong>Question 2:</strong> Give three ways to save paper and ink when printing.</p>
+  <div class="answer-line" contenteditable="true">Write your answer here...</div>
+
+  <h2>4. Self-Assessment &amp; Mentor Sign-Off</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Peripherals Competency</th>
+        <th style="width: 18%; text-align: center;">With Help</th>
+        <th style="width: 18%; text-align: center;">Almost Alone</th>
+        <th style="width: 18%; text-align: center;">All By Myself!</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>1. I can sort devices into input, output, storage or both.</td><td style="text-align: center;"><input type="radio" name="s7_1"></td><td style="text-align: center;"><input type="radio" name="s7_1"></td><td style="text-align: center;"><input type="radio" name="s7_1"></td></tr>
+      <tr><td>2. I can name the main ports and what plugs into each.</td><td style="text-align: center;"><input type="radio" name="s7_2"></td><td style="text-align: center;"><input type="radio" name="s7_2"></td><td style="text-align: center;"><input type="radio" name="s7_2"></td></tr>
+      <tr><td>3. I can connect sound and switch to a projector.</td><td style="text-align: center;"><input type="radio" name="s7_3"></td><td style="text-align: center;"><input type="radio" name="s7_3"></td><td style="text-align: center;"><input type="radio" name="s7_3"></td></tr>
+      <tr><td>4. I can print or save as PDF with the settings I choose.</td><td style="text-align: center;"><input type="radio" name="s7_4"></td><td style="text-align: center;"><input type="radio" name="s7_4"></td><td style="text-align: center;"><input type="radio" name="s7_4"></td></tr>
+    </tbody>
+  </table>
+
+  <div style="border-top: 1px solid var(--bih-border); margin-top: 25px; padding-top: 12px; display: flex; justify-content: space-between; font-size: 13px;">
+    <div><strong>Mentor Signature:</strong> _____________________________</div>
+    <div><strong>Date Completed:</strong> ____________________</div>
+  </div>
 </div>
+
 </body>
 </html>

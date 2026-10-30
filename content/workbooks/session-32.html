@@ -255,53 +255,475 @@
 </head>
 <body>
 
+<!-- ========================================== -->
+<!-- PAGE 1: A COMPUTER IN YOUR POCKET           -->
+<!-- ========================================== -->
 <div class="page">
   <div class="header-bar">
     <div class="header-title">Bozoma Innovation Hub • Tech Club</div>
     <div class="badge">Session 32 • Page 1</div>
   </div>
+
+  <div class="student-meta">
+    <div class="meta-row">
+      <span class="meta-label">Learner Full Name:</span>
+      <div class="editable-line" contenteditable="true">Ama Mensah</div>
+      <span class="meta-label" style="min-width: 90px;">School:</span>
+      <div class="editable-line" contenteditable="true">Bozoma Model JHS</div>
+    </div>
+    <div class="meta-row">
+      <span class="meta-label">Assigned Workstation:</span>
+      <div class="editable-line" contenteditable="true" style="max-width: 140px;">PC-01</div>
+      <span class="meta-label" style="min-width: 50px;">Class:</span>
+      <div class="editable-line" contenteditable="true" style="max-width: 90px;">JHS 1</div>
+    </div>
+  </div>
+
   <h1>Session 32: Smartphones &amp; Tablets</h1>
-  <p>DRAFT PLACEHOLDER: this workbook is being written.</p>
+  <p>In most Ghanaian homes, the first "computer" anybody owns is a phone. Your mother pays for electricity with it, your uncle checks the football scores on it, and your grandmother talks to family abroad on it. Today you will learn to use a smartphone or tablet like an expert: change its settings, install apps safely, save data, share internet, find your way with maps and keep the family's Mobile Money safe.</p>
+
+  <h2>1. Plain Talk: A Whole Market in Your Pocket</h2>
+  <p>A <strong>smartphone</strong> is a small computer that can also make calls. A <strong>tablet</strong> is the same thing with a bigger screen (and often no SIM card for calls). Both have a processor, memory and storage, just like the computers you met in Session 6.</p>
+  <p>Think of a busy market like Makola or Kejetia. At the entrance you can see the stalls; you walk to the one you need (the tailor, the fish seller, the phone repairer). A smartphone works the same way. The <strong>home screen</strong> is the market entrance, and every <strong>app</strong> is a stall that does one job: a torch, a calculator, a radio, a camera, a map, even a bank counter.</p>
+
+  <div class="callout">
+    <div class="callout-title">💡 MOST PHONES IN GHANA RUN ANDROID</div>
+    In Session 8 you met operating systems. Most phones here (Samsung, Tecno, Infinix, itel, Nokia and others) run <strong>Android</strong>, made by Google. iPhones and iPads run <strong>iOS</strong> and <strong>iPadOS</strong>, made by Apple. This session teaches Android, with notes on how iPhones differ. Every brand looks slightly different, but the ideas are the same.
+  </div>
+
+  <h2>2. The Android Home Screen</h2>
+  <!-- DIAGRAM: HOME SCREEN ANATOMY -->
+  <div class="diagram-container">
+    <svg width="680" height="330" viewBox="0 0 680 330" xmlns="http://www.w3.org/2000/svg">
+      <defs><marker id="p32a" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#3A0CA3"/></marker></defs>
+      <!-- phone body -->
+      <rect x="260" y="10" width="160" height="310" rx="22" fill="#1E1E24"/>
+      <rect x="268" y="22" width="144" height="286" rx="14" fill="#DBEAFE"/>
+      <circle cx="340" cy="30" r="3" fill="#475569"/>
+      <!-- status bar -->
+      <rect x="268" y="36" width="144" height="16" fill="#BFDBFE"/>
+      <text x="276" y="48" font-size="9" font-weight="bold" fill="#1E293B">10:45</text>
+      <text x="300" y="48" font-size="9" fill="#1E293B">✉</text>
+      <rect x="372" y="41" width="5" height="7" fill="#1E293B"/><rect x="379" y="39" width="5" height="9" fill="#1E293B"/>
+      <rect x="390" y="40" width="14" height="8" rx="2" fill="none" stroke="#1E293B"/><rect x="392" y="42" width="8" height="4" fill="#16A34A"/>
+      <!-- search bar widget -->
+      <rect x="280" y="64" width="120" height="20" rx="10" fill="#FFFFFF" stroke="#93C5FD"/>
+      <text x="292" y="78" font-size="9" fill="#64748B">G  Search…</text>
+      <!-- app grid -->
+      <g font-size="8" fill="#1E293B" text-anchor="middle">
+        <rect x="284" y="100" width="26" height="26" rx="7" fill="#F59E0B"/><text x="297" y="137">Camera</text>
+        <rect x="327" y="100" width="26" height="26" rx="7" fill="#16A34A"/><text x="340" y="137">Maps</text>
+        <rect x="370" y="100" width="26" height="26" rx="7" fill="#64748B"/><text x="383" y="137">Settings</text>
+        <rect x="284" y="150" width="26" height="26" rx="7" fill="#4361EE"/><text x="297" y="187">Play Store</text>
+        <rect x="327" y="150" width="26" height="26" rx="7" fill="#E63946"/><text x="340" y="187">YouTube</text>
+        <rect x="370" y="150" width="26" height="26" rx="7" fill="#FACC15"/><text x="383" y="187">MoMo</text>
+      </g>
+      <!-- dock -->
+      <rect x="276" y="236" width="128" height="34" rx="10" fill="#93C5FD" opacity="0.7"/>
+      <circle cx="296" cy="253" r="10" fill="#16A34A"/><circle cx="326" cy="253" r="10" fill="#0284C7"/><circle cx="356" cy="253" r="10" fill="#22C55E"/><circle cx="386" cy="253" r="10" fill="#F77F00"/>
+      <!-- nav bar -->
+      <rect x="268" y="282" width="144" height="26" fill="#BFDBFE"/>
+      <path d="M 296,290 L 290,295 L 296,300" stroke="#1E293B" stroke-width="2" fill="none"/>
+      <circle cx="340" cy="295" r="5" fill="none" stroke="#1E293B" stroke-width="2"/>
+      <rect x="380" y="290" width="9" height="9" fill="none" stroke="#1E293B" stroke-width="2"/>
+
+      <!-- LEFT LABELS -->
+      <g font-size="10.5" fill="#1E293B">
+        <text x="10" y="40" font-weight="bold" fill="#3A0CA3">① Status bar</text>
+        <text x="10" y="54">time, notification icons, signal,</text>
+        <text x="10" y="67">Wi-Fi and battery</text>
+        <path d="M 180,46 L 262,46" stroke="#3A0CA3" stroke-width="1.5" marker-end="url(#p32a)"/>
+
+        <text x="10" y="112" font-weight="bold" fill="#3A0CA3">② App icons</text>
+        <text x="10" y="126">tap once to open an app;</text>
+        <text x="10" y="139">press and hold for more options</text>
+        <path d="M 180,125 L 278,125" stroke="#3A0CA3" stroke-width="1.5" marker-end="url(#p32a)"/>
+
+        <text x="10" y="238" font-weight="bold" fill="#3A0CA3">③ The dock</text>
+        <text x="10" y="252">favourite apps that stay on</text>
+        <text x="10" y="265">every home screen page</text>
+        <path d="M 180,252 L 272,252" stroke="#3A0CA3" stroke-width="1.5" marker-end="url(#p32a)"/>
+      </g>
+      <!-- RIGHT LABELS -->
+      <g font-size="10.5" fill="#1E293B">
+        <text x="460" y="40" font-weight="bold" fill="#9A3412">④ Swipe down from the top</text>
+        <text x="460" y="54">once: notifications</text>
+        <text x="460" y="67">twice: Quick Settings</text>
+        <path d="M 455,50 L 420,50" stroke="#F77F00" stroke-width="1.5" marker-end="url(#p32a)"/>
+
+        <text x="460" y="150" font-weight="bold" fill="#9A3412">⑤ Swipe up from the bottom</text>
+        <text x="460" y="164">opens the app drawer: a list</text>
+        <text x="460" y="177">of every app on the phone</text>
+
+        <text x="460" y="270" font-weight="bold" fill="#9A3412">⑥ Navigation</text>
+        <text x="460" y="284">◁ Back   ○ Home   ▢ Recent apps</text>
+        <text x="460" y="297">(newer phones use swipe gestures)</text>
+        <path d="M 455,290 L 414,295" stroke="#F77F00" stroke-width="1.5" marker-end="url(#p32a)"/>
+      </g>
+    </svg>
+    <div class="diagram-caption">Figure 32.0: The parts of an Android home screen. Your phone's layout and icons may look slightly different.</div>
+  </div>
 </div>
+
+<!-- ========================================== -->
+<!-- PAGE 2: QUICK SETTINGS & SETTINGS           -->
+<!-- ========================================== -->
 <div class="page">
   <div class="header-bar">
-    <div class="header-title">Coming soon</div>
+    <div class="header-title">Quick Settings &amp; the Settings App</div>
     <div class="badge">Session 32 • Page 2</div>
   </div>
-  
-  <p>DRAFT PLACEHOLDER: this workbook is being written.</p>
+
+  <h2>1. Quick Settings: The Light Switches</h2>
+  <p>Swipe down from the top of the screen twice to open <strong>Quick Settings</strong>. Each tile is like a light switch: tap it to turn something on (the tile lights up) or off. <strong>Press and hold</strong> a tile to jump to its full settings.</p>
+
+  <!-- DIAGRAM: QUICK SETTINGS -->
+  <div class="diagram-container">
+    <svg width="680" height="150" viewBox="0 0 680 150" xmlns="http://www.w3.org/2000/svg">
+      <rect x="20" y="10" width="640" height="130" rx="12" fill="#1E293B"/>
+      <rect x="40" y="22" width="600" height="10" rx="5" fill="#475569"/>
+      <circle cx="330" cy="27" r="8" fill="#F8FAFC"/>
+      <text x="48" y="48" font-size="9" fill="#CBD5E1">Brightness slider</text>
+      <g font-size="10" font-weight="bold" text-anchor="middle">
+        <rect x="40" y="58" width="140" height="32" rx="16" fill="#60A5FA"/><text x="110" y="78" fill="#0F172A">📶 Wi-Fi: on</text>
+        <rect x="190" y="58" width="140" height="32" rx="16" fill="#60A5FA"/><text x="260" y="78" fill="#0F172A">⇅ Mobile data: on</text>
+        <rect x="340" y="58" width="140" height="32" rx="16" fill="#334155"/><text x="410" y="78" fill="#E2E8F0">ᛒ Bluetooth: off</text>
+        <rect x="490" y="58" width="150" height="32" rx="16" fill="#334155"/><text x="565" y="78" fill="#E2E8F0">✈ Aeroplane mode</text>
+        <rect x="40" y="98" width="140" height="32" rx="16" fill="#334155"/><text x="110" y="118" fill="#E2E8F0">🔦 Torch</text>
+        <rect x="190" y="98" width="140" height="32" rx="16" fill="#334155"/><text x="260" y="118" fill="#E2E8F0">🔄 Auto-rotate</text>
+        <rect x="340" y="98" width="140" height="32" rx="16" fill="#334155"/><text x="410" y="118" fill="#E2E8F0">🔋 Battery saver</text>
+        <rect x="490" y="98" width="150" height="32" rx="16" fill="#334155"/><text x="565" y="118" fill="#E2E8F0">📡 Hotspot</text>
+      </g>
+    </svg>
+    <div class="diagram-caption">Figure 32.1: Quick Settings. Blue tiles are on; dark tiles are off. Tap the pencil (Edit) button to choose which tiles appear.</div>
+  </div>
+
+  <h2>2. A Tour of the Settings App</h2>
+  <p>For everything else, open the <strong>Settings</strong> app (the grey gear ⚙). Samsung calls some sections by different names, shown in brackets.</p>
+  <table>
+    <thead>
+      <tr><th style="width: 30%;">Settings section</th><th>What you can do there</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>Network &amp; internet</strong> (Samsung: Connections)</td><td>Join a Wi-Fi network, turn mobile data on or off, see how much data each app used, turn on Data Saver and the hotspot.</td></tr>
+      <tr><td><strong>Connected devices</strong> (Samsung: Connections)</td><td>Turn on <strong>Bluetooth</strong> and pair a speaker or earbuds, just like the headset in Session 7.</td></tr>
+      <tr><td><strong>Display</strong></td><td>Brightness, dark theme, font size, and <strong>screen timeout</strong> (how fast the screen goes dark).</td></tr>
+      <tr><td><strong>Sound</strong> (and vibration)</td><td>Ringtone, volume, vibrate, and Do Not Disturb for homework time.</td></tr>
+      <tr><td><strong>Storage</strong></td><td>See what is filling the phone: photos, videos, apps, WhatsApp files.</td></tr>
+      <tr><td><strong>Battery</strong></td><td>See which apps use the most power, and turn on Battery Saver.</td></tr>
+      <tr><td><strong>Security</strong> (and privacy)</td><td>Set a <strong>screen lock</strong>: a PIN, pattern, password or fingerprint.</td></tr>
+    </tbody>
+  </table>
+
+  <div class="panic-box">
+    <div class="panic-title">🔒 ALWAYS USE A SCREEN LOCK</div>
+    A phone with no lock is like a house with the door wide open: anyone who picks it up can read the messages and open the MoMo app. Use a PIN of at least 6 digits or a fingerprint, never <strong>1234</strong>, <strong>0000</strong> or your birthday, and don't let friends watch you unlock it.
+  </div>
+
+  <div class="dual-grid">
+    <div class="dual-box">
+      <div class="dual-box-title">🤖 Android</div>
+      <p>Swipe down from the top for Quick Settings. Apps come from the <strong>Google Play Store</strong>. Settings → Network &amp; internet → Hotspot.</p>
+    </div>
+    <div class="dual-box">
+      <div class="dual-box-title">🍎 iPhone and iPad (iOS)</div>
+      <p>Swipe down from the top-right corner for <strong>Control Centre</strong>. Apps come from the <strong>App Store</strong>. Settings → Personal Hotspot.</p>
+    </div>
+  </div>
+
+  <p><strong>Your turn:</strong> Kofi's phone screen goes dark after 15 seconds while he reads. Which setting should he change, and where is it?</p>
+  <div class="answer-line" contenteditable="true">He should change… in Settings → …</div>
 </div>
+
+<!-- ========================================== -->
+<!-- PAGE 3: APPS, PERMISSIONS & STORAGE         -->
+<!-- ========================================== -->
 <div class="page">
   <div class="header-bar">
-    <div class="header-title">Coming soon</div>
+    <div class="header-title">Installing Apps Safely &amp; Freeing Storage</div>
     <div class="badge">Session 32 • Page 3</div>
   </div>
-  
-  <p>DRAFT PLACEHOLDER: this workbook is being written.</p>
+
+  <h2>1. The 4 Checks Before You Press Install</h2>
+  <p>Only install apps from the official store: the <strong>Google Play Store</strong> on Android, or the <strong>App Store</strong> on iPhone. Fake apps copy the name and logo of popular apps to steal money or data, so check before you tap <strong>Install</strong>:</p>
+  <div class="step-card">
+    <div class="step-num">1</div>
+    <div class="step-content"><strong>Developer:</strong> under the app's name. Is it the real company? (The real WhatsApp is from <em>WhatsApp LLC</em>, not "WhatsApp Free Gold Edition".)</div>
+  </div>
+  <div class="step-card">
+    <div class="step-num">2</div>
+    <div class="step-content"><strong>Downloads and rating:</strong> a popular app has many downloads and a good star rating. A copy may have very few.</div>
+  </div>
+  <div class="step-card">
+    <div class="step-num">3</div>
+    <div class="step-content"><strong>Reviews:</strong> read some of the newest reviews, not just the stars. "It stole my data" is a red flag.</div>
+  </div>
+  <div class="step-card">
+    <div class="step-num">4</div>
+    <div class="step-content"><strong>Data safety:</strong> scroll to the <em>Data safety</em> section to see what the app collects and shares. Does it need all that?</div>
+  </div>
+
+  <div class="panic-box">
+    <div class="panic-title">⚠️ NEVER INSTALL APPS FROM A WHATSAPP LINK</div>
+    Messages like <em>"Download this app to get free data!"</em> often send an <strong>APK</strong> file: an Android app from outside the Play Store. Android warns you before it will install one. Such apps can hide viruses or steal MoMo details. If you see a warning, press <strong>Cancel</strong> and tell an adult.
+  </div>
+
+  <h2>2. App Permissions: Who Gets the Keys?</h2>
+  <p>A <strong>permission</strong> is your "yes" or "no" when an app asks to use part of your phone, such as the camera, microphone, location or contacts. Android lets you choose:</p>
+  <!-- DIAGRAM: PERMISSION PROMPT -->
+  <div class="diagram-container">
+    <svg width="680" height="150" viewBox="0 0 680 150" xmlns="http://www.w3.org/2000/svg">
+      <rect x="20" y="10" width="300" height="130" rx="14" fill="#FFFFFF" stroke="#94A3B8" stroke-width="1.5"/>
+      <text x="170" y="34" font-size="20" text-anchor="middle">📍</text>
+      <text x="170" y="55" font-size="10.5" font-weight="bold" fill="#1E293B" text-anchor="middle">Allow Torch Light to access</text>
+      <text x="170" y="69" font-size="10.5" font-weight="bold" fill="#1E293B" text-anchor="middle">this device's location?</text>
+      <rect x="40" y="78" width="260" height="17" rx="8" fill="#DBEAFE"/><text x="170" y="90" font-size="9.5" fill="#1E3A8A" text-anchor="middle">While using the app</text>
+      <rect x="40" y="98" width="260" height="17" rx="8" fill="#DBEAFE"/><text x="170" y="110" font-size="9.5" fill="#1E3A8A" text-anchor="middle">Only this time</text>
+      <rect x="40" y="118" width="260" height="17" rx="8" fill="#DBEAFE"/><text x="170" y="130" font-size="9.5" fill="#1E3A8A" text-anchor="middle">Don't allow</text>
+
+      <text x="345" y="36" font-size="12" font-weight="bold" fill="#3A0CA3">ASK: DOES THIS APP NEED IT?</text>
+      <text x="345" y="58" font-size="10.5" fill="#1E293B">✅ Maps wants your location: yes, to give directions.</text>
+      <text x="345" y="78" font-size="10.5" fill="#1E293B">✅ Camera app wants the camera: of course.</text>
+      <text x="345" y="98" font-size="10.5" fill="#B91C1C">❌ A torch app wants your location: why?</text>
+      <text x="345" y="118" font-size="10.5" fill="#B91C1C">❌ A game wants your contacts: say no.</text>
+    </svg>
+    <div class="diagram-caption">Figure 32.2: A permission request. If the reason doesn't make sense, choose Don't allow. You can change it later in Settings → Apps → (the app) → Permissions.</div>
+  </div>
+
+  <h2>3. "Storage Full!" How to Free Space</h2>
+  <div class="dual-grid">
+    <div class="dual-box">
+      <div class="dual-box-title">🧹 Clear out</div>
+      <p>• Uninstall apps you never use.<br>• Delete WhatsApp videos and voice notes you don't need (WhatsApp → Settings → Storage and data → Manage storage).<br>• Empty the photo app's bin.</p>
+    </div>
+    <div class="dual-box">
+      <div class="dual-box-title">☁️ Back up first</div>
+      <p>Photos can be backed up to the cloud (for example in <strong>Google Photos</strong>), as in Session 30. Back up <strong>on Wi-Fi</strong>, check they are safe, then free space on the phone.</p>
+    </div>
+  </div>
 </div>
+
+<!-- ========================================== -->
+<!-- PAGE 4: DATA, HOTSPOTS & MOBILE MONEY       -->
+<!-- ========================================== -->
 <div class="page">
   <div class="header-bar">
-    <div class="header-title">Coming soon</div>
+    <div class="header-title">Data Bundles, Hotspots &amp; MoMo Safety</div>
     <div class="badge">Session 32 • Page 4</div>
   </div>
-  
-  <p>DRAFT PLACEHOLDER: this workbook is being written.</p>
+
+  <h2>1. Where Does My Data Bundle Go?</h2>
+  <p><strong>Mobile data</strong> is internet from the phone network, paid for with a <strong>data bundle</strong>. <strong>Wi-Fi</strong> is internet from a router (at home, school or the Hub) and does not use your bundle. Some things use far more data than others:</p>
+  <table>
+    <thead><tr><th style="width: 34%;">Uses a LOT of data 🔴</th><th style="width: 33%;">Uses some data 🟠</th><th style="width: 33%;">Uses very little 🟢</th></tr></thead>
+    <tbody>
+      <tr><td>Watching videos (YouTube, TikTok): an hour can use 1 GB or more</td><td>Voice and video calls on WhatsApp</td><td>Text messages on WhatsApp</td></tr>
+      <tr><td>App and phone updates; backing up photos and videos</td><td>Scrolling social media with pictures</td><td>Checking email (without big attachments)</td></tr>
+    </tbody>
+  </table>
+  <div class="callout">
+    <div class="callout-title">💡 SIX WAYS TO MAKE A BUNDLE LAST</div>
+    1. Use Wi-Fi when you can. 2. Turn on <strong>Data Saver</strong> (Settings → Network &amp; internet → Data Saver). 3. Set the Play Store to update apps over Wi-Fi only. 4. Back up photos on Wi-Fi only. 5. Watch videos at a lower quality. 6. Turn mobile data off when you are not using it.
+  </div>
+
+  <h2>2. Sharing Internet with a Hotspot</h2>
+  <p>A <strong>hotspot</strong> turns a phone into a little Wi-Fi router, so a laptop can use the phone's data. Find it in Quick Settings, or Settings → Network &amp; internet → Hotspot &amp; tethering (Samsung: Connections → Mobile Hotspot and Tethering).</p>
+  <!-- DIAGRAM: HOTSPOT -->
+  <div class="diagram-container">
+    <svg width="680" height="130" viewBox="0 0 680 130" xmlns="http://www.w3.org/2000/svg">
+      <text x="70" y="22" font-size="10" font-weight="bold" fill="#3A0CA3" text-anchor="middle">Phone network mast</text>
+      <path d="M 70,30 L 55,95 M 70,30 L 85,95 M 60,70 L 80,70" stroke="#475569" stroke-width="3"/>
+      <path d="M 100,60 L 240,60" stroke="#F77F00" stroke-width="2.5" stroke-dasharray="6,4"/>
+      <text x="170" y="52" font-size="9.5" fill="#9A3412" text-anchor="middle">mobile data (bundle)</text>
+      <rect x="250" y="25" width="44" height="80" rx="8" fill="#1E1E24"/><rect x="255" y="32" width="34" height="62" rx="4" fill="#DBEAFE"/>
+      <text x="272" y="68" font-size="14" text-anchor="middle">📡</text>
+      <text x="272" y="120" font-size="10" font-weight="bold" fill="#1E293B" text-anchor="middle">Phone (hotspot on)</text>
+      <path d="M 305,60 Q 330,40 355,60 M 315,60 Q 330,50 345,60" stroke="#0284C7" stroke-width="2.5" fill="none"/>
+      <path d="M 365,60 L 470,60" stroke="#0284C7" stroke-width="2.5" stroke-dasharray="6,4"/>
+      <text x="418" y="52" font-size="9.5" fill="#0369A1" text-anchor="middle">Wi-Fi + password</text>
+      <rect x="490" y="35" width="90" height="55" rx="4" fill="#334155"/><rect x="496" y="41" width="78" height="43" fill="#E0F2FE"/>
+      <rect x="478" y="90" width="114" height="8" rx="3" fill="#475569"/>
+      <text x="535" y="120" font-size="10" font-weight="bold" fill="#1E293B" text-anchor="middle">Laptop</text>
+    </svg>
+    <div class="diagram-caption">Figure 32.3: A hotspot. The laptop joins the phone's Wi-Fi, but every megabyte comes from the phone's data bundle.</div>
+  </div>
+  <p><strong>Hotspot rules:</strong> set a strong hotspot password (never leave it open), share it only with people you know, watch the bundle (a laptop can download big updates quickly) and <strong>turn the hotspot off</strong> when you finish, because it also drains the battery.</p>
+
+  <h2>3. Mobile Money: Protect the Family's Wallet</h2>
+  <div class="dual-grid">
+    <div class="dual-box" style="background:#FEF2F2; border-color:#FCA5A5;">
+      <div class="dual-box-title" style="color:#B91C1C;">📩 A typical scam message</div>
+      <p style="font-family: monospace; font-size: 11.5px;">From: 0551234567<br>"You have received GHS 500.00 from Kwame A. New balance GHS 512.40." Then a call: "Sorry, I sent it to you by mistake. Please send it back quickly!"</p>
+    </div>
+    <div class="dual-box" style="background:#ECFDF5; border-color:#6EE7B7;">
+      <div class="dual-box-title" style="color:#047857;">✅ What a smart family does</div>
+      <p>The real message comes from the network's official name, not an ordinary number. <strong>Check the balance yourself</strong> in the network's official MoMo menu or app. If no money came in, it is a scam: send nothing.</p>
+    </div>
+  </div>
+  <div class="panic-box">
+    <div class="panic-title">🛑 THE GOLDEN MOMO RULES</div>
+    1. <strong>Never share the MoMo PIN</strong> with anyone, not even someone who says they work for the network. The network will <strong>never</strong> call or text to ask for it.<br>
+    2. "You have won a prize! Send a fee to claim it" is always a scam.<br>
+    3. Never approve a payment request you did not start.<br>
+    4. If something feels wrong, stop, tell a parent, and call the network's official customer service number to report it.
+  </div>
 </div>
+
+<!-- ========================================== -->
+<!-- PAGE 5: GUIDED LAB - PHONE EXPLORER         -->
+<!-- ========================================== -->
 <div class="page">
   <div class="header-bar">
-    <div class="header-title">Coming soon</div>
+    <div class="header-title">Guided Hands-On Lab: Phone Explorer</div>
     <div class="badge">Session 32 • Page 5</div>
   </div>
-  
-  <p>DRAFT PLACEHOLDER: this workbook is being written.</p>
+
+  <h2>1. Lab Mission: Explore a Real Phone or Tablet</h2>
+  <p>Work in pairs with one of the Hub's phones or tablets (or a parent's phone, <strong>with their permission</strong>, at home). First warm up in the <strong>Smartphone Explorer</strong> 3D lab on your session page: change settings, install an app safely, free up storage, turn on a hotspot and spot a Mobile Money scam. Then do the same on the real device. <strong>Don't change anyone's passwords, and don't open MoMo or messages.</strong></p>
+
+  <div class="step-card">
+    <div class="step-num">1</div>
+    <div class="step-content"><strong>Quick Settings:</strong> swipe down twice. Turn the torch on and off. Press and hold the Wi-Fi tile and write down the name of the network the device is using.</div>
+  </div>
+  <div class="step-card">
+    <div class="step-num">2</div>
+    <div class="step-content"><strong>Detective work in Settings:</strong> open <em>Battery</em> and <em>Storage</em>. Write down the battery level, how much storage is used and free, and which kind of file takes the most space.</div>
+  </div>
+  <div class="step-card">
+    <div class="step-num">3</div>
+    <div class="step-content"><strong>Check one app's permissions:</strong> Settings → Apps → choose the Camera or Maps app → Permissions. Which permissions does it have?</div>
+  </div>
+  <div class="step-card">
+    <div class="step-num">4</div>
+    <div class="step-content"><strong>Inspect an app (don't install it):</strong> open the Play Store and search for <em>Google Classroom</em>. Write its developer, rating and number of downloads, then go back.</div>
+  </div>
+  <div class="step-card">
+    <div class="step-num">5</div>
+    <div class="step-content"><strong>Maps:</strong> open Google Maps, search for a place near the Hub (a market, a hospital or a school), tap <strong>Directions</strong> and choose the walking 🚶 icon. How long would the walk take?</div>
+  </div>
+  <div class="step-card">
+    <div class="step-num">6</div>
+    <div class="step-content"><strong>Camera:</strong> photograph an object on your desk (no faces). Hold the phone steady, tap the object to focus, then take one photo upright and one sideways (landscape). Delete them when your mentor has seen them.</div>
+  </div>
+
+  <table>
+    <thead><tr><th style="width: 40%;">What I found</th><th>My answer</th></tr></thead>
+    <tbody>
+      <tr><td>1. Wi-Fi network name</td><td><div class="answer-line" contenteditable="true"></div></td></tr>
+      <tr><td>2. Battery level / storage used and free</td><td><div class="answer-line" contenteditable="true">___% battery; ___ GB used, ___ GB free</div></td></tr>
+      <tr><td>2. What takes the most space?</td><td><div class="answer-line" contenteditable="true"></div></td></tr>
+      <tr><td>3. The app's permissions</td><td><div class="answer-line" contenteditable="true"></div></td></tr>
+      <tr><td>4. Developer / rating / downloads</td><td><div class="answer-line" contenteditable="true"></div></td></tr>
+      <tr><td>5. Place searched and walking time</td><td><div class="answer-line" contenteditable="true"></div></td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout">
+    <div class="callout-title">📍 SHARING YOUR LOCATION</div>
+    Google Maps can share where you are, live (tap your profile picture → <em>Location sharing</em>). Only ever share it with your own family, and only with a parent's agreement. Never share your live location with a stranger or in a public post.
+  </div>
 </div>
+
+<!-- ========================================== -->
+<!-- PAGE 6: REVIEW & SELF-ASSESSMENT            -->
+<!-- ========================================== -->
 <div class="page">
   <div class="header-bar">
-    <div class="header-title">Coming soon</div>
+    <div class="header-title">Session 32 Review &amp; Verification</div>
     <div class="badge">Session 32 • Page 6</div>
   </div>
-  
-  <p>DRAFT PLACEHOLDER: this workbook is being written.</p>
+
+  <h2>1. Scenario Decisions: Smart or Risky?</h2>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 66%;">Phone Scenario</th>
+        <th style="width: 17%; text-align:center;">Smart ✅</th>
+        <th style="width: 17%; text-align:center;">Risky ❌</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>A WhatsApp message says "Install this app for free 20 GB data" with a link to download an APK file. Esi taps it.</td>
+        <td style="text-align:center;"><input type="radio" name="p32s1"></td>
+        <td style="text-align:center;"><input type="radio" name="p32s1"></td>
+      </tr>
+      <tr>
+        <td>Before installing a game, Yaw checks the developer, the reviews and the Data safety section in the Play Store.</td>
+        <td style="text-align:center;"><input type="radio" name="p32s2"></td>
+        <td style="text-align:center;"><input type="radio" name="p32s2"></td>
+      </tr>
+      <tr>
+        <td>A caller says he works for the network and needs Mum's MoMo PIN to "fix her account". Akosua reads it out to him.</td>
+        <td style="text-align:center;"><input type="radio" name="p32s3"></td>
+        <td style="text-align:center;"><input type="radio" name="p32s3"></td>
+      </tr>
+      <tr>
+        <td>Selasi shares his phone's hotspot with his sister's laptop, sets a password and turns it off when she finishes.</td>
+        <td style="text-align:center;"><input type="radio" name="p32s4"></td>
+        <td style="text-align:center;"><input type="radio" name="p32s4"></td>
+      </tr>
+      <tr>
+        <td>A calculator app asks to read Naa's contacts and location. She taps "Allow" so it stops asking.</td>
+        <td style="text-align:center;"><input type="radio" name="p32s5"></td>
+        <td style="text-align:center;"><input type="radio" name="p32s5"></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>2. Written Review Questions</h2>
+  <p><strong>Question 1:</strong> Name two things that use a lot of mobile data, and two ways to make a data bundle last longer.</p>
+  <div class="answer-line" contenteditable="true">Write your answer here...</div>
+  <div class="answer-line" contenteditable="true"></div>
+
+  <p><strong>Question 2:</strong> Someone calls Grandpa: "I sent GHS 300 to your MoMo by mistake, please send it back." What should he do first, and why?</p>
+  <div class="answer-line" contenteditable="true">Write your answer here...</div>
+  <div class="answer-line" contenteditable="true"></div>
+
+  <h2>3. Self-Assessment &amp; Mentor Sign-Off</h2>
+  <p>Tick the column that reflects your confidence at the end of Session 32:</p>
+  <table>
+    <thead>
+      <tr>
+        <th>Smartphone Competency</th>
+        <th style="width: 18%; text-align: center;">With Help</th>
+        <th style="width: 18%; text-align: center;">Almost Alone</th>
+        <th style="width: 18%; text-align: center;">All By Myself!</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1. I can use the home screen, Quick Settings and the Settings app.</td>
+        <td style="text-align: center;"><input type="radio" name="p32a1"></td>
+        <td style="text-align: center;"><input type="radio" name="p32a1"></td>
+        <td style="text-align: center;"><input type="radio" name="p32a1"></td>
+      </tr>
+      <tr>
+        <td>2. I can check an app and its permissions before and after installing it.</td>
+        <td style="text-align: center;"><input type="radio" name="p32a2"></td>
+        <td style="text-align: center;"><input type="radio" name="p32a2"></td>
+        <td style="text-align: center;"><input type="radio" name="p32a2"></td>
+      </tr>
+      <tr>
+        <td>3. I can save data, free storage and share a hotspot safely.</td>
+        <td style="text-align: center;"><input type="radio" name="p32a3"></td>
+        <td style="text-align: center;"><input type="radio" name="p32a3"></td>
+        <td style="text-align: center;"><input type="radio" name="p32a3"></td>
+      </tr>
+      <tr>
+        <td>4. I can use Maps and the camera, and spot a Mobile Money scam.</td>
+        <td style="text-align: center;"><input type="radio" name="p32a4"></td>
+        <td style="text-align: center;"><input type="radio" name="p32a4"></td>
+        <td style="text-align: center;"><input type="radio" name="p32a4"></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div style="border-top: 1px solid var(--bih-border); margin-top: 25px; padding-top: 12px; display: flex; justify-content: space-between; font-size: 13px;">
+    <div><strong>Mentor Signature:</strong> _____________________________</div>
+    <div><strong>Date Completed:</strong> ____________________</div>
+  </div>
 </div>
+
 </body>
 </html>

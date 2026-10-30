@@ -255,53 +255,458 @@
 </head>
 <body>
 
+
+<!-- ========================================== -->
+<!-- PAGE 1: THE CHOP BAR KITCHEN                -->
+<!-- ========================================== -->
 <div class="page">
   <div class="header-bar">
     <div class="header-title">Bozoma Innovation Hub • Tech Club</div>
     <div class="badge">Session 6 • Page 1</div>
   </div>
+
+  <div class="student-meta">
+    <div class="meta-row">
+      <span class="meta-label">Learner Full Name:</span>
+      <div class="editable-line" contenteditable="true">Ama Mensah</div>
+      <span class="meta-label" style="min-width: 90px;">School:</span>
+      <div class="editable-line" contenteditable="true">Bozoma Model JHS</div>
+    </div>
+    <div class="meta-row">
+      <span class="meta-label">Assigned Workstation:</span>
+      <div class="editable-line" contenteditable="true" style="max-width: 140px;">PC-01</div>
+      <span class="meta-label" style="min-width: 50px;">Class:</span>
+      <div class="editable-line" contenteditable="true" style="max-width: 90px;">JHS 1</div>
+    </div>
+  </div>
+
   <h1>Session 6: Inside the Computer: Processor, Memory &amp; Storage</h1>
-  <p>DRAFT PLACEHOLDER: this workbook is being written.</p>
+  <p>In Session 1 you met the outside of a computer: the monitor, keyboard, mouse and system unit. Today we open the box (in our imagination and in the 3D lab, <strong>never</strong> with a screwdriver!) and meet the three parts that do the real work. By the end you will know why some computers are fast, why some are slow, and why a power cut can eat your work.</p>
+
+  <h2>1. Plain Talk: The Chop Bar Kitchen</h2>
+  <p>Picture the kitchen behind a busy chop bar. Orders keep coming in: "One fufu and light soup! Two waakye!" Three things make the kitchen work:</p>
+
+  <!-- DIAGRAM: CHOP BAR KITCHEN -->
+  <div class="diagram-container">
+    <svg width="680" height="215" viewBox="0 0 680 215" xmlns="http://www.w3.org/2000/svg">
+      <defs><marker id="ar6a" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#64748B"/></marker></defs>
+      <!-- Cook -->
+      <rect x="15" y="12" width="200" height="190" rx="10" fill="#EEF2FF" stroke="#3A0CA3" stroke-width="2"/>
+      <circle cx="115" cy="58" r="22" fill="#A16207"/>
+      <rect x="96" y="28" width="38" height="14" rx="4" fill="#FFFFFF" stroke="#94A3B8"/>
+      <rect x="90" y="80" width="50" height="40" rx="8" fill="#FFFFFF" stroke="#94A3B8"/>
+      <text x="115" y="142" font-size="13" font-weight="bold" fill="#3A0CA3" text-anchor="middle">THE COOK</text>
+      <text x="115" y="160" font-size="10.5" fill="#1E293B" text-anchor="middle">does the work</text>
+      <rect x="35" y="170" width="160" height="24" rx="12" fill="#3A0CA3"/>
+      <text x="115" y="186" font-size="10.5" font-weight="bold" fill="#FFFFFF" text-anchor="middle">= PROCESSOR (CPU)</text>
+
+      <!-- Worktable -->
+      <rect x="240" y="12" width="200" height="190" rx="10" fill="#FFF7ED" stroke="#F77F00" stroke-width="2"/>
+      <rect x="265" y="78" width="150" height="14" rx="3" fill="#B45309"/>
+      <rect x="275" y="92" width="8" height="34" fill="#92400E"/><rect x="397" y="92" width="8" height="34" fill="#92400E"/>
+      <circle cx="295" cy="68" r="9" fill="#FDE68A" stroke="#D97706"/>
+      <circle cx="325" cy="68" r="9" fill="#FCA5A5" stroke="#DC2626"/>
+      <rect x="345" y="58" width="22" height="18" rx="3" fill="#86EFAC" stroke="#15803D"/>
+      <circle cx="390" cy="68" r="9" fill="#FDE68A" stroke="#D97706"/>
+      <text x="340" y="142" font-size="13" font-weight="bold" fill="#9A3412" text-anchor="middle">THE WORKTABLE</text>
+      <text x="340" y="160" font-size="10.5" fill="#1E293B" text-anchor="middle">fast, small, cleared at closing</text>
+      <rect x="260" y="170" width="160" height="24" rx="12" fill="#F77F00"/>
+      <text x="340" y="186" font-size="10.5" font-weight="bold" fill="#FFFFFF" text-anchor="middle">= MEMORY (RAM)</text>
+
+      <!-- Storeroom -->
+      <rect x="465" y="12" width="200" height="190" rx="10" fill="#ECFDF5" stroke="#10B981" stroke-width="2"/>
+      <rect x="505" y="30" width="120" height="96" rx="4" fill="#FFFFFF" stroke="#047857" stroke-width="1.5"/>
+      <line x1="505" y1="62" x2="625" y2="62" stroke="#047857"/><line x1="505" y1="94" x2="625" y2="94" stroke="#047857"/>
+      <rect x="515" y="40" width="20" height="20" fill="#FDE68A"/><rect x="540" y="40" width="20" height="20" fill="#FCA5A5"/><rect x="565" y="40" width="20" height="20" fill="#86EFAC"/><rect x="590" y="40" width="20" height="20" fill="#FDE68A"/>
+      <rect x="515" y="72" width="20" height="20" fill="#86EFAC"/><rect x="540" y="72" width="20" height="20" fill="#FDE68A"/><rect x="565" y="72" width="20" height="20" fill="#FCA5A5"/><rect x="590" y="72" width="20" height="20" fill="#86EFAC"/>
+      <rect x="515" y="102" width="20" height="20" fill="#FCA5A5"/><rect x="540" y="102" width="20" height="20" fill="#86EFAC"/><rect x="565" y="102" width="20" height="20" fill="#FDE68A"/><rect x="590" y="102" width="20" height="20" fill="#FCA5A5"/>
+      <text x="565" y="142" font-size="13" font-weight="bold" fill="#047857" text-anchor="middle">THE STOREROOM</text>
+      <text x="565" y="160" font-size="10.5" fill="#1E293B" text-anchor="middle">big, permanent, a walk away</text>
+      <rect x="485" y="170" width="160" height="24" rx="12" fill="#10B981"/>
+      <text x="565" y="186" font-size="10.5" font-weight="bold" fill="#FFFFFF" text-anchor="middle">= STORAGE (drive)</text>
+
+      <path d="M 218,100 L 237,100" stroke="#64748B" stroke-width="2.5" marker-end="url(#ar6a)"/>
+      <path d="M 462,100 L 443,100" stroke="#64748B" stroke-width="2.5" marker-end="url(#ar6a)"/>
+    </svg>
+    <div class="diagram-caption">Figure 6.0: The chop bar kitchen. The cook works only on what is on the worktable; ingredients are fetched from the storeroom.</div>
+  </div>
+
+  <table>
+    <thead>
+      <tr><th style="width: 22%;">Part</th><th style="width: 40%;">What it does</th><th style="width: 38%;">You might see it written as…</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>Processor (CPU)</strong></td><td>The "brain" that follows instructions and does every calculation, billions per second.</td><td>Intel Core i5, AMD Ryzen 5, Intel Celeron</td></tr>
+      <tr><td><strong>Memory (RAM)</strong></td><td>Holds the programmes and files you are using <em>right now</em>.</td><td>4 GB, 8 GB or 16 GB RAM</td></tr>
+      <tr><td><strong>Storage</strong></td><td>Keeps your files, photos and programmes, even when the power is off.</td><td>256 GB SSD, 1 TB hard drive</td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout">
+    <div class="callout-title">💡 THE SMALL-TABLE PROBLEM</div>
+    If the worktable is tiny, the cook keeps putting things back and walking to the storeroom for more. The food comes out slowly, even with a fast cook! A computer with too little RAM does the same: it keeps swapping things to the storage drive, and everything feels slow.
+  </div>
 </div>
+
+<!-- ========================================== -->
+<!-- PAGE 2: MEMORY VS STORAGE                   -->
+<!-- ========================================== -->
 <div class="page">
   <div class="header-bar">
-    <div class="header-title">Coming soon</div>
+    <div class="header-title">Memory vs Storage: The Worktable &amp; the Storeroom</div>
     <div class="badge">Session 6 • Page 2</div>
   </div>
-  
-  <p>DRAFT PLACEHOLDER: this workbook is being written.</p>
+
+  <h2>1. Two Kinds of "Space" in a Computer</h2>
+  <p>People often mix these two up, because both are measured in GB. They are very different jobs.</p>
+  <div class="dual-grid">
+    <div class="dual-box">
+      <div class="dual-box-title">🍲 MEMORY (RAM) = the worktable</div>
+      <p>&bull; Very <strong>fast</strong>, but <strong>small</strong> (usually 4 to 16 GB).</p>
+      <p>&bull; Holds only what you are working on <strong>now</strong>: open programmes, open files, open browser tabs.</p>
+      <p>&bull; <strong>Temporary:</strong> it is wiped clean when the computer shuts down or the power goes off.</p>
+    </div>
+    <div class="dual-box">
+      <div class="dual-box-title">📦 STORAGE = the storeroom</div>
+      <p>&bull; Much <strong>bigger</strong> (often 256 GB to 1 TB or more), but slower to reach.</p>
+      <p>&bull; Keeps <strong>everything</strong>: Windows, your programmes, saved documents, photos, music.</p>
+      <p>&bull; <strong>Permanent:</strong> files stay there when the power is off, until you delete them.</p>
+    </div>
+  </div>
+
+  <h2>2. What Happens When You Open, Work and Save</h2>
+  <!-- DIAGRAM: OPEN, WORK, SAVE -->
+  <div class="diagram-container">
+    <svg width="680" height="175" viewBox="0 0 680 175" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="ar6b" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#3A0CA3"/></marker>
+        <marker id="ar6c" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#10B981"/></marker>
+      </defs>
+      <rect x="20" y="40" width="170" height="90" rx="10" fill="#ECFDF5" stroke="#10B981" stroke-width="2"/>
+      <text x="105" y="70" font-size="12.5" font-weight="bold" fill="#047857" text-anchor="middle">STORAGE</text>
+      <text x="105" y="90" font-size="10" fill="#1E293B" text-anchor="middle">Essay_Holidays_Esi.docx</text>
+      <text x="105" y="108" font-size="10" fill="#1E293B" text-anchor="middle">safe when power is off</text>
+
+      <rect x="255" y="40" width="170" height="90" rx="10" fill="#FFF7ED" stroke="#F77F00" stroke-width="2"/>
+      <text x="340" y="70" font-size="12.5" font-weight="bold" fill="#9A3412" text-anchor="middle">MEMORY (RAM)</text>
+      <text x="340" y="90" font-size="10" fill="#1E293B" text-anchor="middle">the copy you are typing on</text>
+      <text x="340" y="108" font-size="10" fill="#B91C1C" font-weight="bold" text-anchor="middle">lost if the power goes!</text>
+
+      <rect x="490" y="40" width="170" height="90" rx="10" fill="#EEF2FF" stroke="#3A0CA3" stroke-width="2"/>
+      <text x="575" y="70" font-size="12.5" font-weight="bold" fill="#3A0CA3" text-anchor="middle">PROCESSOR</text>
+      <text x="575" y="90" font-size="10" fill="#1E293B" text-anchor="middle">puts each letter you type</text>
+      <text x="575" y="108" font-size="10" fill="#1E293B" text-anchor="middle">on the screen</text>
+
+      <path d="M 192,62 L 250,62" stroke="#3A0CA3" stroke-width="2.5" marker-end="url(#ar6b)"/>
+      <text x="221" y="30" font-size="10" font-weight="bold" fill="#3A0CA3" text-anchor="middle">1. OPEN</text>
+      <path d="M 427,85 L 485,85" stroke="#3A0CA3" stroke-width="2.5" marker-end="url(#ar6b)"/>
+      <path d="M 485,100 L 431,100" stroke="#3A0CA3" stroke-width="2.5" marker-end="url(#ar6b)"/>
+      <text x="457" y="30" font-size="10" font-weight="bold" fill="#3A0CA3" text-anchor="middle">2. WORK</text>
+      <path d="M 252,112 L 196,112" stroke="#10B981" stroke-width="3" marker-end="url(#ar6c)"/>
+      <text x="222" y="152" font-size="10.5" font-weight="bold" fill="#047857" text-anchor="middle">3. SAVE (Ctrl + S) copies it back</text>
+    </svg>
+    <div class="diagram-caption">Figure 6.1: Opening copies a file from storage onto the worktable (RAM). Only saving copies your changes back to the storeroom.</div>
+  </div>
+
+  <div class="panic-box">
+    <div class="panic-title">⚡ WHY DUMSOR EATS UNSAVED WORK</div>
+    When the lights go off, a desktop PC switches off at once and the worktable (RAM) is wiped. Every sentence you typed since your last save was <strong>only on the worktable</strong>, so it is gone. Whatever you saved is safe in the storeroom. This is why Session 4 taught you the habit: press <span class="kbd-key">Ctrl</span> + <span class="kbd-key">S</span> every 5 minutes!
+  </div>
+
+  <h2>3. Your Turn</h2>
+  <p><strong>a)</strong> Esi typed for 20 minutes and never saved. Kofi saved every 5 minutes. The power went off. Who lost more work, and why?</p>
+  <div class="answer-line" contenteditable="true">Write your answer here...</div>
+  <p><strong>b)</strong> Yaw's laptop has 4 GB of RAM and a 1 TB drive. His friend says "1 TB is huge, so your laptop must be very fast!" Is the friend right? Explain using the kitchen.</p>
+  <div class="answer-line" contenteditable="true">Write your answer here...</div>
+  <div class="answer-line" contenteditable="true"></div>
 </div>
+
+<!-- ========================================== -->
+<!-- PAGE 3: THE SIZE LADDER                     -->
+<!-- ========================================== -->
 <div class="page">
   <div class="header-bar">
-    <div class="header-title">Coming soon</div>
+    <div class="header-title">How Big Is It? The Size Ladder</div>
     <div class="badge">Session 6 • Page 3</div>
   </div>
-  
-  <p>DRAFT PLACEHOLDER: this workbook is being written.</p>
+
+  <h2>1. Bits and Bytes</h2>
+  <p>Deep down, a computer stores everything as tiny on/off switches. Each one is a <strong>bit</strong> (it is either 0 or 1). Eight bits make one <strong>byte</strong>, which is enough to store one letter, such as <strong>A</strong>. From there, each step up the ladder is about <strong>1,000 times</strong> bigger (exactly 1,024 inside the computer, but 1,000 is close enough for us).</p>
+
+  <!-- DIAGRAM: SIZE LADDER -->
+  <div class="diagram-container">
+    <svg width="680" height="240" viewBox="0 0 680 240" xmlns="http://www.w3.org/2000/svg">
+      <g font-size="11" font-weight="bold">
+        <rect x="20" y="198" width="90" height="32" rx="6" fill="#E0E7FF" stroke="#3A0CA3"/>
+        <text x="65" y="213" fill="#3A0CA3" text-anchor="middle">bit</text><text x="65" y="225" font-size="9" font-weight="normal" fill="#334155" text-anchor="middle">a single 0 or 1</text>
+        <rect x="128" y="166" width="90" height="64" rx="6" fill="#C7D2FE" stroke="#3A0CA3"/>
+        <text x="173" y="186" fill="#3A0CA3" text-anchor="middle">byte (B)</text><text x="173" y="200" font-size="9" font-weight="normal" fill="#334155" text-anchor="middle">8 bits</text><text x="173" y="213" font-size="9" font-weight="normal" fill="#334155" text-anchor="middle">one letter</text>
+        <rect x="236" y="134" width="90" height="96" rx="6" fill="#FDE68A" stroke="#D97706"/>
+        <text x="281" y="154" fill="#92400E" text-anchor="middle">kilobyte (KB)</text><text x="281" y="168" font-size="9" font-weight="normal" fill="#334155" text-anchor="middle">about 1,000 B</text><text x="281" y="181" font-size="9" font-weight="normal" fill="#334155" text-anchor="middle">an SMS</text>
+        <rect x="344" y="102" width="90" height="128" rx="6" fill="#FDBA74" stroke="#EA580C"/>
+        <text x="389" y="122" fill="#9A3412" text-anchor="middle">megabyte (MB)</text><text x="389" y="136" font-size="9" font-weight="normal" fill="#334155" text-anchor="middle">about 1,000 KB</text><text x="389" y="149" font-size="9" font-weight="normal" fill="#334155" text-anchor="middle">a photo, a song</text>
+        <rect x="452" y="70" width="90" height="160" rx="6" fill="#86EFAC" stroke="#15803D"/>
+        <text x="497" y="90" fill="#14532D" text-anchor="middle">gigabyte (GB)</text><text x="497" y="104" font-size="9" font-weight="normal" fill="#334155" text-anchor="middle">about 1,000 MB</text><text x="497" y="117" font-size="9" font-weight="normal" fill="#334155" text-anchor="middle">a film, RAM</text>
+        <rect x="560" y="38" width="100" height="192" rx="6" fill="#5EEAD4" stroke="#0F766E"/>
+        <text x="610" y="58" fill="#134E4A" text-anchor="middle">terabyte (TB)</text><text x="610" y="72" font-size="9" font-weight="normal" fill="#334155" text-anchor="middle">about 1,000 GB</text><text x="610" y="85" font-size="9" font-weight="normal" fill="#334155" text-anchor="middle">a big hard drive</text>
+      </g>
+      <text x="20" y="40" font-size="12" font-weight="bold" fill="#3A0CA3">Each step is about 1,000 × bigger</text>
+      <text x="20" y="58" font-size="10" fill="#64748B">Small letter b = bit, capital B = byte.</text>
+    </svg>
+    <div class="diagram-caption">Figure 6.2: The size ladder, from a single bit to a terabyte.</div>
+  </div>
+
+  <h2>2. How Big Are Everyday Files? (Approximate)</h2>
+  <table>
+    <thead>
+      <tr><th style="width: 55%;">Thing</th><th style="width: 45%;">About how big? (sizes vary)</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>One SMS text message</td><td>Under 1 KB</td></tr>
+      <tr><td>A one-page typed letter (.docx)</td><td>About 20 to 50 KB</td></tr>
+      <tr><td>A photo taken on a phone</td><td>About 3 to 5 MB</td></tr>
+      <tr><td>A song (MP3)</td><td>About 4 MB</td></tr>
+      <tr><td>One hour of HD video</td><td>About 1 to 3 GB</td></tr>
+      <tr><td>Windows 11 itself</td><td>Tens of GB of storage</td></tr>
+    </tbody>
+  </table>
+
+  <h2>3. Your Turn: Quick Sums</h2>
+  <p>Use <strong>1 GB = 1,000 MB</strong> to keep the sums easy.</p>
+  <table>
+    <thead><tr><th style="width: 65%;">Question</th><th style="width: 35%;">Answer</th></tr></thead>
+    <tbody>
+      <tr><td>1. How many 4 MB songs fit in 1 GB?</td><td><div class="answer-line" contenteditable="true">about ___ songs</div></td></tr>
+      <tr><td>2. Naa's phone has 2 GB free. About how many 4 MB photos can she still take?</td><td><div class="answer-line" contenteditable="true">about ___ photos</div></td></tr>
+      <tr><td>3. Which is bigger: 500 MB or 1 GB?</td><td><div class="answer-line" contenteditable="true"></div></td></tr>
+      <tr><td>4. Put in order, smallest first: GB, KB, TB, MB</td><td><div class="answer-line" contenteditable="true"></div></td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout">
+    <div class="callout-title">📱 MOBILE DATA USES THE SAME LADDER</div>
+    When someone buys a "2 GB data bundle", that is the same gigabyte. Watching one hour of HD video could use up most of it!
+  </div>
 </div>
+
+<!-- ========================================== -->
+<!-- PAGE 4: KINDS OF STORAGE, FILE TYPES, ZIP   -->
+<!-- ========================================== -->
 <div class="page">
   <div class="header-bar">
-    <div class="header-title">Coming soon</div>
+    <div class="header-title">Kinds of Storage, File Types &amp; ZIP Files</div>
     <div class="badge">Session 6 • Page 4</div>
   </div>
-  
-  <p>DRAFT PLACEHOLDER: this workbook is being written.</p>
+
+  <h2>1. Where Can Files Live?</h2>
+  <table>
+    <thead>
+      <tr><th style="width: 24%;">Storage</th><th style="width: 44%;">What it is</th><th style="width: 16%;">Speed</th><th style="width: 16%;">Cost per GB</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>Hard drive (HDD)</strong></td><td>Spinning metal discs inside older and cheaper PCs. Big, but can break if knocked.</td><td>Slow</td><td>Cheap</td></tr>
+      <tr><td><strong>SSD</strong> (solid-state drive)</td><td>Memory chips, no moving parts. Inside most new laptops.</td><td>Very fast</td><td>Medium</td></tr>
+      <tr><td><strong>USB pen drive</strong></td><td>Small and portable (Session 5). Easy to lose!</td><td>Medium</td><td>Medium</td></tr>
+      <tr><td><strong>Memory card</strong> (microSD)</td><td>Tiny card for phones and cameras.</td><td>Medium</td><td>Medium</td></tr>
+      <tr><td><strong>Phone storage</strong></td><td>Built-in storage, for example "64 GB".</td><td>Fast</td><td>Costly</td></tr>
+      <tr><td><strong>Cloud</strong></td><td>Storage on someone else's computers, reached over the internet (Google Drive, OneDrive).</td><td>Needs internet</td><td>Free to start</td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout">
+    <div class="callout-title">🛟 THE TWO-PLACES RULE (BACKUPS)</div>
+    Any important file should live in <strong>at least two places</strong>, for example on the PC <em>and</em> on a pen drive or in the cloud. A copy kept in case the first one is lost is called a <strong>backup</strong>. Drives break, phones get stolen, pen drives fall in the gutter. A backup means you shrug instead of cry.
+  </div>
+
+  <h2>2. File Types and Extensions</h2>
+  <p>The letters after the dot in a file name are its <strong>extension</strong>. They tell Windows which programme opens the file.</p>
+  <div class="dual-grid" style="grid-template-columns: 1fr 1fr 1fr; gap: 10px;">
+    <div class="dual-box"><p><strong>.docx</strong> Word document<br><strong>.xlsx</strong> Excel spreadsheet</p></div>
+    <div class="dual-box"><p><strong>.pptx</strong> PowerPoint slides<br><strong>.pdf</strong> PDF (looks the same everywhere)</p></div>
+    <div class="dual-box"><p><strong>.jpg</strong> photo or picture<br><strong>.mp4</strong> video<br><strong>.zip</strong> packed folder</p></div>
+  </div>
+  <p><strong>Show extensions in File Explorer:</strong> Windows 11: <strong>View &rarr; Show &rarr; File name extensions</strong>. Windows 10: <strong>View</strong> tab &rarr; tick <strong>File name extensions</strong>. When you rename a file, never change or delete the extension, or the file may not open.</p>
+
+  <h2>3. ZIP Files: A Packed Bag</h2>
+  <!-- DIAGRAM: ZIP -->
+  <div class="diagram-container">
+    <svg width="680" height="110" viewBox="0 0 680 110" xmlns="http://www.w3.org/2000/svg">
+      <defs><marker id="ar6d" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#3A0CA3"/></marker></defs>
+      <g font-size="9.5" fill="#1E293B">
+        <rect x="20" y="20" width="60" height="30" rx="4" fill="#FFFFFF" stroke="#94A3B8"/><text x="50" y="39" text-anchor="middle">.pdf</text>
+        <rect x="90" y="20" width="60" height="30" rx="4" fill="#FFFFFF" stroke="#94A3B8"/><text x="120" y="39" text-anchor="middle">.html</text>
+        <rect x="55" y="58" width="60" height="30" rx="4" fill="#FFFFFF" stroke="#94A3B8"/><text x="85" y="77" text-anchor="middle">.png</text>
+      </g>
+      <text x="85" y="104" font-size="10" fill="#64748B" text-anchor="middle">many files</text>
+      <path d="M 165,55 L 225,55" stroke="#3A0CA3" stroke-width="2.5" marker-end="url(#ar6d)"/>
+      <text x="195" y="45" font-size="10" font-weight="bold" fill="#3A0CA3" text-anchor="middle">zip</text>
+      <rect x="240" y="22" width="190" height="66" rx="8" fill="#FEF3C7" stroke="#D97706" stroke-width="2"/>
+      <line x1="335" y1="22" x2="335" y2="88" stroke="#92400E" stroke-width="3" stroke-dasharray="4 3"/>
+      <text x="335" y="16" font-size="10.5" font-weight="bold" fill="#92400E" text-anchor="middle">BIH-Tech-Club-Session-06.zip</text>
+      <text x="335" y="104" font-size="10" fill="#64748B" text-anchor="middle">one smaller file, easy to download</text>
+      <path d="M 445,55 L 505,55" stroke="#3A0CA3" stroke-width="2.5" marker-end="url(#ar6d)"/>
+      <text x="475" y="45" font-size="10" font-weight="bold" fill="#3A0CA3" text-anchor="middle">Extract All</text>
+      <rect x="520" y="22" width="140" height="66" rx="8" fill="#FFFFFF" stroke="#10B981" stroke-width="2"/>
+      <text x="590" y="50" font-size="10.5" font-weight="bold" fill="#047857" text-anchor="middle">normal folder</text>
+      <text x="590" y="66" font-size="9.5" fill="#1E293B" text-anchor="middle">ready to use</text>
+    </svg>
+    <div class="diagram-caption">Figure 6.3: A ZIP file packs many files into one smaller file. "Extract All" unpacks it into a normal folder.</div>
+  </div>
+  <p>The club's study packs are ZIP files. To unpack one: <strong>right-click the .zip file &rarr; Extract All… &rarr; Extract</strong>. A new normal folder appears next to it. Always extract first, then open the files from the new folder.</p>
 </div>
+
+<!-- ========================================== -->
+<!-- PAGE 5: GUIDED LAB - THIS PC'S SPEC SHEET   -->
+<!-- ========================================== -->
 <div class="page">
   <div class="header-bar">
-    <div class="header-title">Coming soon</div>
+    <div class="header-title">Guided Hands-On Lab: My PC's Spec Sheet</div>
     <div class="badge">Session 6 • Page 5</div>
   </div>
-  
-  <p>DRAFT PLACEHOLDER: this workbook is being written.</p>
+
+  <h2>1. Warm-Up: Inside the Box</h2>
+  <p>Open the <strong>Inside the Box</strong> 3D lab on your session page. Lift out the processor, memory and storage and read what each one does. Then run the busy kitchen with a small worktable and a big one, and write what changed:</p>
+  <div class="answer-line" contenteditable="true">With a small worktable, the kitchen...</div>
+
+  <h2>2. Lab Mission: Find Your Computer's Parts</h2>
+  <p>Every computer can tell you what is inside it. You will be a detective and write a <strong>spec sheet</strong> (a list of the specifications, or main facts, about a machine).</p>
+
+  <div class="step-card">
+    <div class="step-num">1</div>
+    <div class="step-content"><strong>Open About:</strong> Click <strong>Start</strong> &rarr; <strong>Settings</strong> (the gear) &rarr; <strong>System</strong> &rarr; scroll down and click <strong>About</strong>. (Shortcut: <span class="kbd-key">Windows</span> + <span class="kbd-key">Pause</span> on some keyboards.) It may look slightly different on Windows 10.</div>
+  </div>
+  <div class="step-card">
+    <div class="step-num">2</div>
+    <div class="step-content"><strong>Read the Device specifications:</strong> find the <strong>Device name</strong>, <strong>Processor</strong> and <strong>Installed RAM</strong>. Copy them into the table below. Under <strong>Windows specifications</strong>, find the <strong>Edition</strong> (for example Windows 11 Home).</div>
+  </div>
+  <div class="step-card">
+    <div class="step-num">3</div>
+    <div class="step-content"><strong>Check the storage:</strong> press <span class="kbd-key">Windows</span> + <span class="kbd-key">E</span> to open File Explorer, then click <strong>This PC</strong>. Under the <strong>Local Disk (C:)</strong> bar you will see something like <em>"120 GB free of 237 GB"</em>. A bar that turns <strong>red</strong> means the drive is nearly full.</div>
+  </div>
+  <div class="step-card">
+    <div class="step-num">4</div>
+    <div class="step-content"><strong>Do the sum:</strong> a class photo is about <strong>4 MB</strong>. How many class photos fit in the free space? (Free GB &times; 1,000 &divide; 4.)</div>
+  </div>
+
+  <table>
+    <thead>
+      <tr><th style="width: 40%;">Spec sheet for my PC</th><th style="width: 60%;">What I found</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Device name</td><td><div class="answer-line" contenteditable="true"></div></td></tr>
+      <tr><td>Processor (the cook)</td><td><div class="answer-line" contenteditable="true">e.g. Intel Core i3...</div></td></tr>
+      <tr><td>Installed RAM (the worktable)</td><td><div class="answer-line" contenteditable="true">___ GB</div></td></tr>
+      <tr><td>Windows edition</td><td><div class="answer-line" contenteditable="true"></div></td></tr>
+      <tr><td>Drive C: total size (the storeroom)</td><td><div class="answer-line" contenteditable="true">___ GB</div></td></tr>
+      <tr><td>Drive C: free space</td><td><div class="answer-line" contenteditable="true">___ GB free</div></td></tr>
+      <tr><td>Class photos that fit (4 MB each)</td><td><div class="answer-line" contenteditable="true">___ &times; 1,000 &divide; 4 = about ___ photos</div></td></tr>
+    </tbody>
+  </table>
+
+  <p><strong>Compare with a neighbour:</strong> whose PC has the bigger worktable (RAM)? Whose storeroom has more free space?</p>
+  <div class="answer-line" contenteditable="true">Write what you found...</div>
+
+  <div class="panic-box">
+    <div class="panic-title">🚨 LOOK, DON'T CHANGE</div>
+    Apart from showing file extensions, today you are only <strong>reading</strong> information. Don't click "Rename this PC", don't change anything, and never open a computer case. Inside there is mains electricity and parts that break easily.
+  </div>
 </div>
+
+<!-- ========================================== -->
+<!-- PAGE 6: REVIEW & SELF-ASSESSMENT            -->
+<!-- ========================================== -->
 <div class="page">
   <div class="header-bar">
-    <div class="header-title">Coming soon</div>
+    <div class="header-title">Session 6 Review &amp; Verification</div>
     <div class="badge">Session 6 • Page 6</div>
   </div>
-  
-  <p>DRAFT PLACEHOLDER: this workbook is being written.</p>
+
+  <h2>1. "Why Is My Computer Slow?" Pick the Best Fix</h2>
+  <table>
+    <thead>
+      <tr><th style="width: 46%;">Problem</th><th style="width: 54%;">Best fix (choose one)</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1. Akosua has 25 browser tabs open, plus Word and a game. Everything is crawling.</td>
+        <td>
+          <label class="checkbox-item"><input type="radio" name="s6q1"> Buy a bigger hard drive</label>
+          <label class="checkbox-item"><input type="radio" name="s6q1"> Close the tabs and programmes she is not using</label>
+          <label class="checkbox-item"><input type="radio" name="s6q1"> Turn the screen brightness down</label>
+        </td>
+      </tr>
+      <tr>
+        <td>2. In This PC, Kwame's C: drive bar is red: "1.2 GB free of 237 GB". The PC is slow and will not install updates.</td>
+        <td>
+          <label class="checkbox-item"><input type="radio" name="s6q2"> Move old videos to a pen drive or the cloud and empty the Recycle Bin</label>
+          <label class="checkbox-item"><input type="radio" name="s6q2"> Open more programmes</label>
+          <label class="checkbox-item"><input type="radio" name="s6q2"> Unplug the mouse</label>
+        </td>
+      </tr>
+      <tr>
+        <td>3. The office PC is 10 years old, has an old hard drive and takes 5 minutes to start.</td>
+        <td>
+          <label class="checkbox-item"><input type="radio" name="s6q3"> Shout at it</label>
+          <label class="checkbox-item"><input type="radio" name="s6q3"> Ask a technician about replacing the hard drive with an SSD</label>
+          <label class="checkbox-item"><input type="radio" name="s6q3"> Save files more often</label>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>2. Written Review Questions</h2>
+  <p><strong>Question 1:</strong> What is the difference between memory (RAM) and storage? Use the chop bar kitchen in your answer.</p>
+  <div class="answer-line" contenteditable="true">Write your answer here...</div>
+  <div class="answer-line" contenteditable="true"></div>
+
+  <p><strong>Question 2:</strong> Selasi's science project is saved only on one pen drive. What could go wrong, and what should he do?</p>
+  <div class="answer-line" contenteditable="true">Write your answer here...</div>
+  <div class="answer-line" contenteditable="true"></div>
+
+  <h2>3. Self-Assessment &amp; Mentor Sign-Off</h2>
+  <p>Tick the column that reflects your confidence at the end of Session 6:</p>
+  <table>
+    <thead>
+      <tr>
+        <th>Inside-the-Computer Competency</th>
+        <th style="width: 18%; text-align: center;">With Help</th>
+        <th style="width: 18%; text-align: center;">Almost Alone</th>
+        <th style="width: 18%; text-align: center;">All By Myself!</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1. I can explain what the processor, memory and storage do.</td>
+        <td style="text-align: center;"><input type="radio" name="s6_1"></td>
+        <td style="text-align: center;"><input type="radio" name="s6_1"></td>
+        <td style="text-align: center;"><input type="radio" name="s6_1"></td>
+      </tr>
+      <tr>
+        <td>2. I can put KB, MB, GB and TB in order and do simple size sums.</td>
+        <td style="text-align: center;"><input type="radio" name="s6_2"></td>
+        <td style="text-align: center;"><input type="radio" name="s6_2"></td>
+        <td style="text-align: center;"><input type="radio" name="s6_2"></td>
+      </tr>
+      <tr>
+        <td>3. I can find a PC's processor, RAM and free storage.</td>
+        <td style="text-align: center;"><input type="radio" name="s6_3"></td>
+        <td style="text-align: center;"><input type="radio" name="s6_3"></td>
+        <td style="text-align: center;"><input type="radio" name="s6_3"></td>
+      </tr>
+      <tr>
+        <td>4. I can show file extensions and extract a ZIP file.</td>
+        <td style="text-align: center;"><input type="radio" name="s6_4"></td>
+        <td style="text-align: center;"><input type="radio" name="s6_4"></td>
+        <td style="text-align: center;"><input type="radio" name="s6_4"></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div style="border-top: 1px solid var(--bih-border); margin-top: 25px; padding-top: 12px; display: flex; justify-content: space-between; font-size: 13px;">
+    <div><strong>Mentor Signature:</strong> _____________________________</div>
+    <div><strong>Date Completed:</strong> ____________________</div>
+  </div>
 </div>
+
 </body>
 </html>

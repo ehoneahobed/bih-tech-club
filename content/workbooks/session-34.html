@@ -255,53 +255,425 @@
 </head>
 <body>
 
+<!-- ========================================== -->
+<!-- PAGE 1: HOW A FEED WORKS                    -->
+<!-- ========================================== -->
 <div class="page">
   <div class="header-bar">
     <div class="header-title">Bozoma Innovation Hub • Tech Club</div>
     <div class="badge">Session 34 • Page 1</div>
   </div>
+
+  <div class="student-meta">
+    <div class="meta-row">
+      <span class="meta-label">Learner Full Name:</span>
+      <div class="editable-line" contenteditable="true">Ama Mensah</div>
+      <span class="meta-label" style="min-width: 90px;">School:</span>
+      <div class="editable-line" contenteditable="true">Bozoma Model JHS</div>
+    </div>
+    <div class="meta-row">
+      <span class="meta-label">Assigned Workstation:</span>
+      <div class="editable-line" contenteditable="true" style="max-width: 140px;">PC-01</div>
+      <span class="meta-label" style="min-width: 50px;">Class:</span>
+      <div class="editable-line" contenteditable="true" style="max-width: 90px;">JHS 1</div>
+    </div>
+  </div>
+
   <h1>Session 34: Social Media &amp; Misinformation</h1>
-  <p>DRAFT PLACEHOLDER: this workbook is being written.</p>
+  <p>TikTok, YouTube, Instagram, Facebook, Snapchat and WhatsApp channels: millions of Ghanaians scroll through them every day. In Session 33 you learnt to protect your personal information and to T.H.I.N.K. before you post. Today you will look behind the screen: how an app decides what to show you, why fake news spreads so fast, how to check a viral post, what to do about cyberbullying, and how to keep social media healthy and fun. <strong>You don't need a social media account for any of it.</strong></p>
+
+  <h2>1. Plain Talk: The Seller Who Watches You</h2>
+  <p>Imagine a clever kenkey seller at the lorry station. She notices that every time you pass, you slow down at the fried fish. The next day she puts fried fish right at the front of her table, where you will see it first. Soon you only ever see fried fish, even though she sells many other things.</p>
+  <p>A social media <strong>feed</strong> (the endless list of posts and videos you scroll through) works the same way. A computer program called an <strong>algorithm</strong> watches what you do, and keeps putting more of the same at the front of your feed.</p>
+
+  <!-- DIAGRAM: THE FEED LOOP -->
+  <div class="diagram-container">
+    <svg width="680" height="240" viewBox="0 0 680 240" xmlns="http://www.w3.org/2000/svg">
+      <defs><marker id="f34a" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#3A0CA3"/></marker></defs>
+      <!-- 4 boxes in a loop -->
+      <rect x="240" y="10" width="200" height="56" rx="10" fill="#EEF2FF" stroke="#3A0CA3" stroke-width="2"/>
+      <text x="340" y="33" font-size="12" font-weight="bold" fill="#3A0CA3" text-anchor="middle">1. YOU WATCH</text>
+      <text x="340" y="52" font-size="10" fill="#1E293B" text-anchor="middle">You stop on a football video.</text>
+
+      <rect x="460" y="92" width="210" height="56" rx="10" fill="#FFF7ED" stroke="#F77F00" stroke-width="2"/>
+      <text x="565" y="115" font-size="12" font-weight="bold" fill="#9A3412" text-anchor="middle">2. THE APP RECORDS</text>
+      <text x="565" y="134" font-size="10" fill="#1E293B" text-anchor="middle">how long you watched, likes, shares</text>
+
+      <rect x="240" y="174" width="200" height="56" rx="10" fill="#ECFDF5" stroke="#10B981" stroke-width="2"/>
+      <text x="340" y="197" font-size="12" font-weight="bold" fill="#047857" text-anchor="middle">3. IT PREDICTS</text>
+      <text x="340" y="216" font-size="10" fill="#1E293B" text-anchor="middle">"This person likes football."</text>
+
+      <rect x="10" y="92" width="210" height="56" rx="10" fill="#FEF2F2" stroke="#E63946" stroke-width="2"/>
+      <text x="115" y="115" font-size="12" font-weight="bold" fill="#B91C1C" text-anchor="middle">4. IT SHOWS MORE</text>
+      <text x="115" y="134" font-size="10" fill="#1E293B" text-anchor="middle">more football, at the top</text>
+
+      <path d="M 445,45 Q 540,55 560,86" stroke="#3A0CA3" stroke-width="2.5" fill="none" marker-end="url(#f34a)"/>
+      <path d="M 560,154 Q 540,190 446,200" stroke="#3A0CA3" stroke-width="2.5" fill="none" marker-end="url(#f34a)"/>
+      <path d="M 235,200 Q 140,190 120,154" stroke="#3A0CA3" stroke-width="2.5" fill="none" marker-end="url(#f34a)"/>
+      <path d="M 120,86 Q 140,52 234,40" stroke="#3A0CA3" stroke-width="2.5" fill="none" marker-end="url(#f34a)"/>
+      <text x="340" y="112" font-size="11" font-weight="bold" fill="#3A0CA3" text-anchor="middle">THE FEED LOOP</text>
+      <text x="340" y="128" font-size="9.5" fill="#64748B" text-anchor="middle">round and round,</text>
+      <text x="340" y="141" font-size="9.5" fill="#64748B" text-anchor="middle">every time you scroll</text>
+    </svg>
+    <div class="diagram-caption">Figure 34.0: The feed loop. Every action you take teaches the algorithm what to show you next.</div>
+  </div>
+
+  <div class="callout">
+    <div class="callout-title">🔗 YOU WILL MEET THIS AGAIN IN SESSION 39</div>
+    The feed is an AI that <strong>predicts</strong>: it learns from examples of what you watched, and guesses what will keep you scrolling. In Session 39 you will train an AI yourself and see how it learns patterns from examples.
+  </div>
 </div>
+
+<!-- ========================================== -->
+<!-- PAGE 2: ALGORITHMS & ECHO CHAMBERS          -->
+<!-- ========================================== -->
 <div class="page">
   <div class="header-bar">
-    <div class="header-title">Coming soon</div>
+    <div class="header-title">What the Algorithm Notices &amp; Echo Chambers</div>
     <div class="badge">Session 34 • Page 2</div>
   </div>
-  
-  <p>DRAFT PLACEHOLDER: this workbook is being written.</p>
+
+  <h2>1. The Clues the App Collects</h2>
+  <p>The algorithm doesn't read your mind. It watches <strong>signals</strong>: small clues about what you like. The strongest signal is often simply <strong>how long you watch</strong>.</p>
+  <table>
+    <thead><tr><th style="width: 32%;">Signal</th><th>What it tells the app</th></tr></thead>
+    <tbody>
+      <tr><td>⏱ Watch time</td><td>You watched the whole video, or watched it twice: "Show more like this."</td></tr>
+      <tr><td>❤️ Likes and comments</td><td>You reacted to it: it matters to you.</td></tr>
+      <tr><td>↗️ Shares</td><td>You sent it to friends: it is worth spreading.</td></tr>
+      <tr><td>👤 Follows</td><td>You want more from this person or page.</td></tr>
+      <tr><td>⏭ Scrolling past quickly</td><td>Not interested: show less of it.</td></tr>
+      <tr><td>🔍 Searches</td><td>What you looked for, and sometimes where you are and what time it is.</td></tr>
+    </tbody>
+  </table>
+
+  <div class="panic-box">
+    <div class="panic-title">⚠️ WHY APPS WANT YOU TO KEEP SCROLLING</div>
+    Most social media apps are free because they earn money from <strong>adverts</strong>. The longer you scroll, the more adverts you see. So the algorithm's job is to keep you watching, not to show you what is true or what is good for you.
+  </div>
+
+  <h2>2. Echo Chambers: Stuck in a Bubble</h2>
+  <p>If you only ever see one kind of post, your feed becomes an <strong>echo chamber</strong>: a room where you only hear your own voice echoing back. You might start to believe that <em>everyone</em> thinks the same, or that a rumour must be true because you have seen it ten times.</p>
+
+  <!-- DIAGRAM: ECHO CHAMBER -->
+  <div class="diagram-container">
+    <svg width="680" height="170" viewBox="0 0 680 170" xmlns="http://www.w3.org/2000/svg">
+      <!-- left: bubble -->
+      <circle cx="170" cy="85" r="75" fill="#FEF2F2" stroke="#E63946" stroke-width="2" stroke-dasharray="6,4"/>
+      <text x="170" y="80" font-size="24" text-anchor="middle">🙂</text>
+      <g font-size="9" fill="#B91C1C" font-weight="bold" text-anchor="middle">
+        <rect x="112" y="24" width="56" height="16" rx="8" fill="#FECACA"/><text x="140" y="35">same idea</text>
+        <rect x="186" y="34" width="56" height="16" rx="8" fill="#FECACA"/><text x="214" y="45">same idea</text>
+        <rect x="104" y="106" width="56" height="16" rx="8" fill="#FECACA"/><text x="132" y="117">same idea</text>
+        <rect x="180" y="118" width="56" height="16" rx="8" fill="#FECACA"/><text x="208" y="129">same idea</text>
+      </g>
+      <text x="170" y="104" font-size="10" fill="#1E293B" text-anchor="middle">"Everyone agrees!"</text>
+      <text x="320" y="70" font-size="12" font-weight="bold" fill="#B91C1C" text-anchor="middle">ECHO CHAMBER</text>
+      <text x="320" y="88" font-size="10" fill="#334155" text-anchor="middle">Only one view gets in.</text>
+      <text x="320" y="102" font-size="10" fill="#334155" text-anchor="middle">Rumours feel true.</text>
+
+      <!-- right: open feed -->
+      <rect x="420" y="15" width="245" height="140" rx="12" fill="#ECFDF5" stroke="#10B981" stroke-width="2"/>
+      <text x="542" y="80" font-size="24" text-anchor="middle">🙂</text>
+      <g font-size="9" font-weight="bold" text-anchor="middle">
+        <rect x="435" y="26" width="66" height="16" rx="8" fill="#BBF7D0"/><text x="468" y="37" fill="#047857">football</text>
+        <rect x="580" y="26" width="70" height="16" rx="8" fill="#BFDBFE"/><text x="615" y="37" fill="#1E3A8A">science</text>
+        <rect x="435" y="124" width="66" height="16" rx="8" fill="#FDE68A"/><text x="468" y="135" fill="#92400E">music</text>
+        <rect x="580" y="124" width="70" height="16" rx="8" fill="#E9D5FF"/><text x="615" y="135" fill="#6B21A8">other views</text>
+      </g>
+      <text x="542" y="104" font-size="10" fill="#1E293B" text-anchor="middle">"Let me hear all sides."</text>
+    </svg>
+    <div class="diagram-caption">Figure 34.1: An echo chamber (left) versus a healthy, varied feed (right).</div>
+  </div>
+
+  <div class="callout">
+    <div class="callout-title">💡 HOW TO POP THE BUBBLE</div>
+    Follow a mix of people and topics. Tap <strong>"Not interested"</strong> on things you don't want. Search for the other side of a story. Get news from trusted news organisations too, not only from your feed.
+  </div>
+
+  <p><strong>Your turn:</strong> Yaw watched three funny cat videos to the end last night. What will his feed probably show him today, and why?</p>
+  <div class="answer-line" contenteditable="true">His feed will show… because…</div>
 </div>
+
+<!-- ========================================== -->
+<!-- PAGE 3: FAKE NEWS & THE W.A.I.T. CHECK      -->
+<!-- ========================================== -->
 <div class="page">
   <div class="header-bar">
-    <div class="header-title">Coming soon</div>
+    <div class="header-title">Fake News &amp; the W.A.I.T. Check</div>
     <div class="badge">Session 34 • Page 3</div>
   </div>
-  
-  <p>DRAFT PLACEHOLDER: this workbook is being written.</p>
+
+  <h2>1. Why Fake News Spreads So Fast</h2>
+  <p><strong>Misinformation</strong> is false information shared by people who think it is true. <strong>Disinformation</strong> is false information spread <em>on purpose</em>, to trick people or make money. Both spread fast for two reasons: <strong>emotion</strong> (shocking, scary or angry posts make us share without thinking) and <strong>speed</strong> (one tap sends it to a whole group).</p>
+
+  <!-- DIAGRAM: SPREAD TREE -->
+  <div class="diagram-container">
+    <svg width="680" height="170" viewBox="0 0 680 170" xmlns="http://www.w3.org/2000/svg">
+      <g stroke="#94A3B8" stroke-width="1.5">
+        <line x1="80" y1="85" x2="200" y2="45"/><line x1="80" y1="85" x2="200" y2="125"/>
+        <line x1="200" y1="45" x2="330" y2="25"/><line x1="200" y1="45" x2="330" y2="65"/>
+        <line x1="200" y1="125" x2="330" y2="105"/><line x1="200" y1="125" x2="330" y2="145"/>
+        <line x1="330" y1="25" x2="460" y2="15"/><line x1="330" y1="25" x2="460" y2="35"/>
+        <line x1="330" y1="65" x2="460" y2="55"/><line x1="330" y1="65" x2="460" y2="75"/>
+        <line x1="330" y1="105" x2="460" y2="95"/><line x1="330" y1="105" x2="460" y2="115"/>
+        <line x1="330" y1="145" x2="460" y2="135"/><line x1="330" y1="145" x2="460" y2="155"/>
+      </g>
+      <circle cx="80" cy="85" r="16" fill="#E63946"/><text x="80" y="90" font-size="12" text-anchor="middle" fill="#FFFFFF">1</text>
+      <g fill="#F77F00"><circle cx="200" cy="45" r="11"/><circle cx="200" cy="125" r="11"/></g>
+      <g fill="#FBBF24"><circle cx="330" cy="25" r="8"/><circle cx="330" cy="65" r="8"/><circle cx="330" cy="105" r="8"/><circle cx="330" cy="145" r="8"/></g>
+      <g fill="#FDE68A"><circle cx="460" cy="15" r="6"/><circle cx="460" cy="35" r="6"/><circle cx="460" cy="55" r="6"/><circle cx="460" cy="75" r="6"/><circle cx="460" cy="95" r="6"/><circle cx="460" cy="115" r="6"/><circle cx="460" cy="135" r="6"/><circle cx="460" cy="155" r="6"/></g>
+      <text x="80" y="122" font-size="9.5" fill="#334155" text-anchor="middle">1 person</text>
+      <text x="200" y="152" font-size="9.5" fill="#334155" text-anchor="middle">shares to 2</text>
+      <text x="490" y="50" font-size="10" fill="#1E293B">If each person shares to just</text>
+      <text x="490" y="64" font-size="10" fill="#1E293B">2 more, after 20 rounds of</text>
+      <text x="490" y="78" font-size="10" fill="#1E293B">sharing over <tspan font-weight="bold">1 million</tspan></text>
+      <text x="490" y="92" font-size="10" fill="#1E293B">people have it.</text>
+      <text x="490" y="116" font-size="10" font-weight="bold" fill="#B91C1C">Truth can't catch up</text>
+      <text x="490" y="130" font-size="10" font-weight="bold" fill="#B91C1C">if you don't stop it.</text>
+    </svg>
+    <div class="diagram-caption">Figure 34.2: How one post becomes viral. Each forward doubles the number of people who see it.</div>
+  </div>
+
+  <h2>2. Five Kinds of Fake</h2>
+  <p><strong>Made up</strong> (a story that never happened) · <strong>Old photo, new story</strong> (a real flood picture from years ago, shared as "today") · <strong>Edited</strong> (a photo or screenshot changed) · <strong>Deepfake</strong> (a video or voice made by AI, as in Session 40) · <strong>Fake account</strong> (a page pretending to be a famous person, school or news station).</p>
+
+  <h2>3. Before You Share, W.A.I.T.</h2>
+  <table>
+    <thead><tr><th style="width: 22%;">Letter</th><th>Ask yourself…</th></tr></thead>
+    <tbody>
+      <tr><td><strong>W</strong> – Who posted it?</td><td>A real news organisation or official account, or a page you have never heard of? Is the account new? Does the name look slightly wrong?</td></tr>
+      <tr><td><strong>A</strong> – Anyone else reporting it?</td><td>Search for it. If it were true, would trusted news websites or the official organisation be saying it too?</td></tr>
+      <tr><td><strong>I</strong> – Image check</td><td>Do a <strong>reverse image search</strong> (Session 12) to see if the picture is old or from somewhere else. Look for deepfake signs: odd hands, blurry edges, lips not matching the words.</td></tr>
+      <tr><td><strong>T</strong> – Time and date</td><td>When was it posted? Is it an old story being shared again? Does it say "share before they delete it!"? That is pressure, not proof.</td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout">
+    <div class="callout-title">✋ IF YOU ARE NOT SURE, DON'T SHARE</div>
+    You never have to be first. If a post fails W.A.I.T., don't forward it, and if it is in a group, kindly say <em>"I checked: this isn't true"</em> and share the link that proves it.
+  </div>
 </div>
+
+<!-- ========================================== -->
+<!-- PAGE 4: CYBERBULLYING, PRIVACY & WELLBEING  -->
+<!-- ========================================== -->
 <div class="page">
   <div class="header-bar">
-    <div class="header-title">Coming soon</div>
+    <div class="header-title">Cyberbullying, Privacy &amp; Healthy Use</div>
     <div class="badge">Session 34 • Page 4</div>
   </div>
-  
-  <p>DRAFT PLACEHOLDER: this workbook is being written.</p>
+
+  <h2>1. Cyberbullying: What It Is and What To Do</h2>
+  <p><strong>Cyberbullying</strong> is using phones or the internet to hurt, scare or embarrass someone again and again: cruel messages, spreading rumours, sharing embarrassing photos, leaving someone out of a group on purpose, or pretending to be them. It is never the victim's fault.</p>
+
+  <!-- DIAGRAM: 5 STEPS -->
+  <div class="diagram-container">
+    <svg width="680" height="120" viewBox="0 0 680 120" xmlns="http://www.w3.org/2000/svg">
+      <defs><marker id="f34b" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#94A3B8"/></marker></defs>
+      <g text-anchor="middle">
+        <rect x="8" y="12" width="118" height="96" rx="10" fill="#FEF2F2" stroke="#E63946" stroke-width="1.5"/>
+        <text x="67" y="40" font-size="20">🤐</text><text x="67" y="62" font-size="11" font-weight="bold" fill="#B91C1C">1. DON'T REPLY</text>
+        <text x="67" y="80" font-size="9.5" fill="#334155">Replying gives</text><text x="67" y="93" font-size="9.5" fill="#334155">them a reaction.</text>
+
+        <rect x="142" y="12" width="118" height="96" rx="10" fill="#FFF7ED" stroke="#F77F00" stroke-width="1.5"/>
+        <text x="201" y="40" font-size="20">📸</text><text x="201" y="62" font-size="11" font-weight="bold" fill="#9A3412">2. SCREENSHOT</text>
+        <text x="201" y="80" font-size="9.5" fill="#334155">Keep evidence</text><text x="201" y="93" font-size="9.5" fill="#334155">with date and name.</text>
+
+        <rect x="276" y="12" width="118" height="96" rx="10" fill="#FEFCE8" stroke="#CA8A04" stroke-width="1.5"/>
+        <text x="335" y="40" font-size="20">🚫</text><text x="335" y="62" font-size="11" font-weight="bold" fill="#854D0E">3. BLOCK</text>
+        <text x="335" y="80" font-size="9.5" fill="#334155">They can't contact</text><text x="335" y="93" font-size="9.5" fill="#334155">you any more.</text>
+
+        <rect x="410" y="12" width="118" height="96" rx="10" fill="#EEF2FF" stroke="#4361EE" stroke-width="1.5"/>
+        <text x="469" y="40" font-size="20">🚩</text><text x="469" y="62" font-size="11" font-weight="bold" fill="#3A0CA3">4. REPORT</text>
+        <text x="469" y="80" font-size="9.5" fill="#334155">Every app has a</text><text x="469" y="93" font-size="9.5" fill="#334155">Report button.</text>
+
+        <rect x="544" y="12" width="128" height="96" rx="10" fill="#ECFDF5" stroke="#10B981" stroke-width="1.5"/>
+        <text x="608" y="40" font-size="20">🗣️</text><text x="608" y="62" font-size="11" font-weight="bold" fill="#047857">5. TELL AN ADULT</text>
+        <text x="608" y="80" font-size="9.5" fill="#334155">A parent, teacher</text><text x="608" y="93" font-size="9.5" fill="#334155">or mentor you trust.</text>
+      </g>
+    </svg>
+    <div class="diagram-caption">Figure 34.3: Five steps if you, or someone you know, is being bullied online.</div>
+  </div>
+  <p><strong>Be an upstander, not a bystander.</strong> If you see someone being bullied: don't like or share the cruel post, send the person a kind private message ("Are you okay? That wasn't fair"), report the post, and tell an adult.</p>
+
+  <h2>2. Privacy Settings and Age Limits</h2>
+  <div class="dual-grid">
+    <div class="dual-box">
+      <div class="dual-box-title">🔐 Four settings to check (when you are old enough)</div>
+      <p>• <strong>Private account:</strong> only people you approve see your posts.<br>• <strong>Who can message me:</strong> friends only.<br>• <strong>Location:</strong> off, and don't tag where you are.<br>• <strong>Tags:</strong> approve posts others tag you in.</p>
+    </div>
+    <div class="dual-box">
+      <div class="dual-box-title">🎂 Why 13+?</div>
+      <p>Most platforms (TikTok, Instagram, Facebook, Snapchat, and YouTube for your own account) say you must be <strong>at least 13</strong>, and some features are only for older users. The limits exist to protect children's data and safety. Lying about your age removes that protection.</p>
+    </div>
+  </div>
+
+  <h2>3. Healthy Use: You Are in Charge, Not the App</h2>
+  <table>
+    <thead><tr><th style="width: 32%;">Habit</th><th>Why it helps</th></tr></thead>
+    <tbody>
+      <tr><td>⏰ Set a time limit</td><td>Use <em>Digital Wellbeing</em> (Android) or <em>Screen Time</em> (iPhone) to see your hours and set limits.</td></tr>
+      <tr><td>😴 Screens off an hour before bed</td><td>Bright screens and exciting videos keep your brain awake. Sleep helps you learn.</td></tr>
+      <tr><td>🪞 Remember the highlight reel</td><td>People post their best moments, often with filters. Comparing your whole life with their best day isn't fair to you.</td></tr>
+      <tr><td>🔕 Turn off notifications</td><td>Fewer buzzes, fewer reasons to pick up the phone during homework.</td></tr>
+    </tbody>
+  </table>
+  <p><strong>Your turn:</strong> Write one healthy social media rule you could suggest to your family.</p>
+  <div class="answer-line" contenteditable="true">Our family rule could be…</div>
 </div>
+
+<!-- ========================================== -->
+<!-- PAGE 5: GUIDED LAB - FEED DETECTIVES        -->
+<!-- ========================================== -->
 <div class="page">
   <div class="header-bar">
-    <div class="header-title">Coming soon</div>
+    <div class="header-title">Guided Hands-On Lab: Feed Detectives</div>
     <div class="badge">Session 34 • Page 5</div>
   </div>
-  
-  <p>DRAFT PLACEHOLDER: this workbook is being written.</p>
+
+  <h2>1. Mission 1: Feed Check (3D Lab)</h2>
+  <p>Open the <strong>Feed Check</strong> 3D lab on your session page. Scroll a pretend social media feed: spot fake news, report bullying, fix privacy settings and see how the feed learns what you like. Write what happened:</p>
+  <table>
+    <thead><tr><th style="width: 45%;">In the lab</th><th>What I did or saw</th></tr></thead>
+    <tbody>
+      <tr><td>A post I caught as fake, and the W.A.I.T. clue that gave it away</td><td><div class="answer-line" contenteditable="true"></div></td></tr>
+      <tr><td>What I did about the bullying comment</td><td><div class="answer-line" contenteditable="true"></div></td></tr>
+      <tr><td>How the feed changed after I watched one kind of post</td><td><div class="answer-line" contenteditable="true"></div></td></tr>
+    </tbody>
+  </table>
+
+  <h2>2. Mission 2: Check a Viral Post (Real Browser)</h2>
+  <p>Your mentor has saved a picture on your desktop called <strong>viral-flood.jpg</strong>. It has been shared in a WhatsApp group with this message:</p>
+  <div class="panic-box" style="background:#F1F5F9; border-left-color:#64748B;">
+    <div class="panic-title" style="color:#334155;">📲 Forwarded many times</div>
+    "BREAKING!!! This is Kaneshie RIGHT NOW. All schools in Accra closed tomorrow by order of the Ministry. Share to every parent before they delete it!!!" (from a page called <em>Ghana Newz Update 24/7</em>, created last week)
+  </div>
+  <div class="step-card">
+    <div class="step-num">1</div>
+    <div class="step-content"><strong>Reverse image search:</strong> open Chrome and go to <strong>images.google.com</strong>. Click the camera icon (<em>Search by image</em>), then upload <strong>viral-flood.jpg</strong> from the desktop. Look at where else the picture appears and how old those pages are.</div>
+  </div>
+  <div class="step-card">
+    <div class="step-num">2</div>
+    <div class="step-content"><strong>Anyone else?</strong> In a new tab, search for <em>Accra schools closed</em> and click <strong>News</strong>. Is any trusted news website or the Ministry of Education saying this?</div>
+  </div>
+  <div class="step-card">
+    <div class="step-num">3</div>
+    <div class="step-content"><strong>Find the Report button:</strong> search for <em>how to report a post on TikTok</em> (or Facebook, Instagram or WhatsApp). Open the platform's <strong>own</strong> help page and write the steps.</div>
+  </div>
+  <table>
+    <thead><tr><th style="width: 20%;">W.A.I.T.</th><th>What I found</th></tr></thead>
+    <tbody>
+      <tr><td><strong>W</strong>ho</td><td><div class="answer-line" contenteditable="true"></div></td></tr>
+      <tr><td><strong>A</strong>nyone else</td><td><div class="answer-line" contenteditable="true"></div></td></tr>
+      <tr><td><strong>I</strong>mage</td><td><div class="answer-line" contenteditable="true">The picture first appeared…</div></td></tr>
+      <tr><td><strong>T</strong>ime</td><td><div class="answer-line" contenteditable="true"></div></td></tr>
+      <tr><td><strong>My decision</strong></td><td><div class="answer-line" contenteditable="true">Share / Don't share, because…</div></td></tr>
+      <tr><td>How to report a post</td><td><div class="answer-line" contenteditable="true">On ______: tap … then …</div></td></tr>
+    </tbody>
+  </table>
 </div>
+
+<!-- ========================================== -->
+<!-- PAGE 6: REVIEW & SELF-ASSESSMENT            -->
+<!-- ========================================== -->
 <div class="page">
   <div class="header-bar">
-    <div class="header-title">Coming soon</div>
+    <div class="header-title">Session 34 Review &amp; Verification</div>
     <div class="badge">Session 34 • Page 6</div>
   </div>
-  
-  <p>DRAFT PLACEHOLDER: this workbook is being written.</p>
+
+  <h2>1. Scenario Decisions: Wise or Unwise?</h2>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 66%;">Social Media Scenario</th>
+        <th style="width: 17%; text-align:center;">Wise ✅</th>
+        <th style="width: 17%; text-align:center;">Unwise ❌</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>A post says "Drinking hot water with lime cures malaria! Share to save lives!" Kwesi forwards it to his family group straight away.</td>
+        <td style="text-align:center;"><input type="radio" name="f34s1"></td>
+        <td style="text-align:center;"><input type="radio" name="f34s1"></td>
+      </tr>
+      <tr>
+        <td>Someone posts cruel comments about Fatima every day. She doesn't reply, takes screenshots, blocks them and tells her teacher.</td>
+        <td style="text-align:center;"><input type="radio" name="f34s2"></td>
+        <td style="text-align:center;"><input type="radio" name="f34s2"></td>
+      </tr>
+      <tr>
+        <td>Naa sees a classmate being mocked in a group chat. She laughs along with an emoji so she won't be next.</td>
+        <td style="text-align:center;"><input type="radio" name="f34s3"></td>
+        <td style="text-align:center;"><input type="radio" name="f34s3"></td>
+      </tr>
+      <tr>
+        <td>Before sharing a shocking photo, Kojo does a reverse image search and finds it is from 2015.</td>
+        <td style="text-align:center;"><input type="radio" name="f34s4"></td>
+        <td style="text-align:center;"><input type="radio" name="f34s4"></td>
+      </tr>
+      <tr>
+        <td>Abena, aged 11, enters a fake birth year so she can open her own TikTok account.</td>
+        <td style="text-align:center;"><input type="radio" name="f34s5"></td>
+        <td style="text-align:center;"><input type="radio" name="f34s5"></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>2. Written Review Questions</h2>
+  <p><strong>Question 1:</strong> How does a social media feed decide what to show you? Use the words <em>signals</em> and <em>predict</em>.</p>
+  <div class="answer-line" contenteditable="true">Write your answer here...</div>
+  <div class="answer-line" contenteditable="true"></div>
+
+  <p><strong>Question 2:</strong> What do the letters of W.A.I.T. stand for, and why does fake news spread so fast?</p>
+  <div class="answer-line" contenteditable="true">Write your answer here...</div>
+  <div class="answer-line" contenteditable="true"></div>
+
+  <h2>3. Self-Assessment &amp; Mentor Sign-Off</h2>
+  <p>Tick the column that reflects your confidence at the end of Session 34:</p>
+  <table>
+    <thead>
+      <tr>
+        <th>Social Media Competency</th>
+        <th style="width: 18%; text-align: center;">With Help</th>
+        <th style="width: 18%; text-align: center;">Almost Alone</th>
+        <th style="width: 18%; text-align: center;">All By Myself!</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1. I can explain how a feed learns what to show me, and what an echo chamber is.</td>
+        <td style="text-align: center;"><input type="radio" name="f34a1"></td>
+        <td style="text-align: center;"><input type="radio" name="f34a1"></td>
+        <td style="text-align: center;"><input type="radio" name="f34a1"></td>
+      </tr>
+      <tr>
+        <td>2. I can check a viral post with W.A.I.T., including a reverse image search.</td>
+        <td style="text-align: center;"><input type="radio" name="f34a2"></td>
+        <td style="text-align: center;"><input type="radio" name="f34a2"></td>
+        <td style="text-align: center;"><input type="radio" name="f34a2"></td>
+      </tr>
+      <tr>
+        <td>3. I know the five steps for cyberbullying and how to be an upstander.</td>
+        <td style="text-align: center;"><input type="radio" name="f34a3"></td>
+        <td style="text-align: center;"><input type="radio" name="f34a3"></td>
+        <td style="text-align: center;"><input type="radio" name="f34a3"></td>
+      </tr>
+      <tr>
+        <td>4. I can explain privacy settings, age limits and healthy habits.</td>
+        <td style="text-align: center;"><input type="radio" name="f34a4"></td>
+        <td style="text-align: center;"><input type="radio" name="f34a4"></td>
+        <td style="text-align: center;"><input type="radio" name="f34a4"></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div style="border-top: 1px solid var(--bih-border); margin-top: 25px; padding-top: 12px; display: flex; justify-content: space-between; font-size: 13px;">
+    <div><strong>Mentor Signature:</strong> _____________________________</div>
+    <div><strong>Date Completed:</strong> ____________________</div>
+  </div>
 </div>
+
 </body>
 </html>

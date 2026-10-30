@@ -255,53 +255,338 @@
 </head>
 <body>
 
+
+<!-- ========================================== -->
+<!-- PAGE 1: THE HEADTEACHER                     -->
+<!-- ========================================== -->
 <div class="page">
   <div class="header-bar">
     <div class="header-title">Bozoma Innovation Hub • Tech Club</div>
     <div class="badge">Session 8 • Page 1</div>
   </div>
+
+  <div class="student-meta">
+    <div class="meta-row">
+      <span class="meta-label">Learner Full Name:</span>
+      <div class="editable-line" contenteditable="true">Ama Mensah</div>
+      <span class="meta-label" style="min-width: 90px;">School:</span>
+      <div class="editable-line" contenteditable="true">Bozoma Model JHS</div>
+    </div>
+    <div class="meta-row">
+      <span class="meta-label">Assigned Workstation:</span>
+      <div class="editable-line" contenteditable="true" style="max-width: 140px;">PC-01</div>
+      <span class="meta-label" style="min-width: 50px;">Class:</span>
+      <div class="editable-line" contenteditable="true" style="max-width: 90px;">JHS 1</div>
+    </div>
+  </div>
+
   <h1>Session 8: Operating Systems &amp; Settings</h1>
-  <p>DRAFT PLACEHOLDER: this workbook is being written.</p>
+  <p>When you switch on a computer, the first big programme that wakes up is not Word or Chrome. It is the <strong>operating system</strong> (OS for short). Today you will learn what it does, meet the main operating systems, take charge of the Settings, keep a computer healthy and rescue a frozen programme. The Hub's computers are yours to practise on, so you will do all of it for real.</p>
+
+  <h2>1. Plain Talk: The Headteacher</h2>
+  <p>Think of your school. Pupils do not walk straight into the staff room, take chalk from the store or move into any classroom they like. The <strong>headteacher</strong> decides who uses which classroom, when, and keeps order so everything runs smoothly. On a computer, the <strong>programmes</strong> (apps) are the pupils, the <strong>hardware</strong> (processor, memory, storage, printer) is the classrooms, staff and store, and the <strong>operating system</strong> is the headteacher.</p>
+
+  <!-- DIAGRAM: OS LAYERS -->
+  <div class="diagram-container">
+    <svg width="680" height="215" viewBox="0 0 680 215" xmlns="http://www.w3.org/2000/svg">
+      <defs><marker id="ar8a" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#64748B"/></marker></defs>
+      <!-- apps -->
+      <text x="20" y="22" font-size="11" font-weight="bold" fill="#64748B">THE PUPILS</text>
+      <g font-size="10.5" font-weight="bold" text-anchor="middle">
+        <rect x="140" y="8" width="95" height="30" rx="6" fill="#DBEAFE" stroke="#2563EB"/><text x="187" y="28" fill="#1E3A8A">Word</text>
+        <rect x="245" y="8" width="95" height="30" rx="6" fill="#DBEAFE" stroke="#2563EB"/><text x="292" y="28" fill="#1E3A8A">Chrome</text>
+        <rect x="350" y="8" width="95" height="30" rx="6" fill="#DBEAFE" stroke="#2563EB"/><text x="397" y="28" fill="#1E3A8A">Paint</text>
+        <rect x="455" y="8" width="95" height="30" rx="6" fill="#DBEAFE" stroke="#2563EB"/><text x="502" y="28" fill="#1E3A8A">a game</text>
+      </g>
+      <text x="345" y="56" font-size="10" fill="#334155" text-anchor="middle">"Please may I use the printer?"  "I need more memory!"</text>
+      <path d="M 345,62 L 345,78" stroke="#64748B" stroke-width="2.5" marker-end="url(#ar8a)"/>
+      <!-- OS -->
+      <text x="20" y="104" font-size="11" font-weight="bold" fill="#3A0CA3">THE HEADTEACHER</text>
+      <rect x="140" y="82" width="410" height="40" rx="8" fill="#3A0CA3"/>
+      <text x="345" y="100" font-size="12.5" font-weight="bold" fill="#FFFFFF" text-anchor="middle">OPERATING SYSTEM (Windows, macOS, Android…)</text>
+      <text x="345" y="115" font-size="9.5" fill="#E0E7FF" text-anchor="middle">decides who uses what, and keeps order</text>
+      <path d="M 345,126 L 345,142" stroke="#64748B" stroke-width="2.5" marker-end="url(#ar8a)"/>
+      <!-- hardware -->
+      <text x="20" y="172" font-size="11" font-weight="bold" fill="#047857">CLASSROOMS,</text>
+      <text x="20" y="186" font-size="11" font-weight="bold" fill="#047857">STAFF &amp; STORE</text>
+      <g font-size="10.5" font-weight="bold" text-anchor="middle">
+        <rect x="140" y="148" width="75" height="48" rx="6" fill="#ECFDF5" stroke="#10B981"/><text x="177" y="176" fill="#047857">Processor</text>
+        <rect x="223" y="148" width="75" height="48" rx="6" fill="#ECFDF5" stroke="#10B981"/><text x="260" y="176" fill="#047857">Memory</text>
+        <rect x="306" y="148" width="75" height="48" rx="6" fill="#ECFDF5" stroke="#10B981"/><text x="343" y="176" fill="#047857">Storage</text>
+        <rect x="389" y="148" width="75" height="48" rx="6" fill="#ECFDF5" stroke="#10B981"/><text x="426" y="176" fill="#047857">Screen</text>
+        <rect x="472" y="148" width="78" height="48" rx="6" fill="#ECFDF5" stroke="#10B981"/><text x="511" y="176" fill="#047857">Printer</text>
+      </g>
+    </svg>
+    <div class="diagram-caption">Figure 8.0: Apps never go straight to the hardware. They ask the operating system, which shares out the hardware fairly.</div>
+  </div>
+
+  <h2>2. The Headteacher's Five Big Jobs</h2>
+  <div class="dual-grid" style="grid-template-columns: 1fr 1fr 1fr; gap: 10px;">
+    <div class="dual-box"><p><strong>1. Starts the computer</strong> and shows you the desktop.</p><p><strong>2. Runs programmes</strong> and shares out the processor and memory.</p></div>
+    <div class="dual-box"><p><strong>3. Looks after files</strong> and folders (File Explorer is part of Windows).</p><p><strong>4. Talks to devices:</strong> keyboard, printer, Wi-Fi, sound.</p></div>
+    <div class="dual-box"><p><strong>5. Keeps it safe:</strong> user accounts, passwords, updates and antivirus.</p></div>
+  </div>
 </div>
+
+<!-- ========================================== -->
+<!-- PAGE 2: OPERATING SYSTEMS & ACCOUNTS        -->
+<!-- ========================================== -->
 <div class="page">
   <div class="header-bar">
-    <div class="header-title">Coming soon</div>
+    <div class="header-title">Meet the Operating Systems &amp; User Accounts</div>
     <div class="badge">Session 8 • Page 2</div>
   </div>
-  
-  <p>DRAFT PLACEHOLDER: this workbook is being written.</p>
+
+  <h2>1. Different Schools, Different Headteachers</h2>
+  <table>
+    <thead><tr><th style="width: 18%;">OS</th><th style="width: 24%;">Made by</th><th style="width: 58%;">Where you will meet it</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Windows</strong></td><td>Microsoft</td><td>Most desktops and laptops in Ghana, including the Hub's PCs (Windows 11 or 10).</td></tr>
+      <tr><td><strong>macOS</strong></td><td>Apple</td><td>Apple's Mac laptops and desktops (MacBook, iMac).</td></tr>
+      <tr><td><strong>ChromeOS</strong></td><td>Google</td><td>Chromebooks: simple laptops that work mostly through the Chrome browser.</td></tr>
+      <tr><td><strong>Linux</strong></td><td>Free, made by people all over the world</td><td>Many web servers and supercomputers, and some laptops (for example Ubuntu). Free to download and use.</td></tr>
+      <tr><td><strong>Android</strong></td><td>Google</td><td>Most smartphones and tablets in Ghana (Tecno, Infinix, Samsung, itel…).</td></tr>
+      <tr><td><strong>iOS</strong></td><td>Apple</td><td>iPhones (iPads use iPadOS, a close cousin).</td></tr>
+    </tbody>
+  </table>
+  <p>They look different, but every one does the same five jobs. Once you know one well, learning another is much easier.</p>
+
+  <h2>2. User Accounts: Who Is Signed In?</h2>
+  <p>A <strong>user account</strong> is your own space on a computer: your desktop, your Documents folder and your settings. You <strong>sign in</strong> with a name and a password or PIN. There are two main kinds:</p>
+  <div class="dual-grid">
+    <div class="dual-box">
+      <div class="dual-box-title">👤 STANDARD USER</div>
+      <p>Can use programmes, save files and change their <em>own</em> settings. Must ask an administrator before installing some apps or changing settings for everyone. This is the safest account for everyday work.</p>
+    </div>
+    <div class="dual-box">
+      <div class="dual-box-title">🔑 ADMINISTRATOR</div>
+      <p>The "headteacher's key". Can install anything, change any setting and manage other accounts. When Windows asks <em>"Do you want to allow this app to make changes to your device?"</em>, it is asking for administrator permission. Only say Yes if you know exactly what it is.</p>
+    </div>
+  </div>
+  <p>To see which kind you are: <strong>Settings &rarr; Accounts &rarr; Your info</strong>. It may say <em>Administrator</em> or <em>Standard</em> (it may look slightly different on Windows 10).</p>
+
+  <div class="callout">
+    <div class="callout-title">🔒 LOCK IT BEFORE YOU LEAVE: <span class="kbd-key">Windows</span> + <span class="kbd-key">L</span></div>
+    On a shared computer, going to the toilet without locking is like leaving your school bag open on the bench. Press <strong>Windows + L</strong>: the screen locks, everything stays open, and only you can unlock it with your PIN or password. Never tell anyone your password, and never use a real one in this workbook.
+  </div>
+
+  <p><strong>Your turn:</strong> Yaw wants to install a game on the Hub PC, but Windows asks for an administrator password. What should he do?</p>
+  <div class="answer-line" contenteditable="true">Write your answer here...</div>
 </div>
+
+<!-- ========================================== -->
+<!-- PAGE 3: SETTINGS TOUR                       -->
+<!-- ========================================== -->
 <div class="page">
   <div class="header-bar">
-    <div class="header-title">Coming soon</div>
+    <div class="header-title">A Tour of Settings</div>
     <div class="badge">Session 8 • Page 3</div>
   </div>
-  
-  <p>DRAFT PLACEHOLDER: this workbook is being written.</p>
+
+  <p>Open Settings with <strong>Start &rarr; Settings</strong> (the gear), or press <span class="kbd-key">Windows</span> + <span class="kbd-key">I</span>. The menu down the left side takes you to each area. This is Windows 11; Windows 10 looks slightly different.</p>
+
+  <!-- DIAGRAM: SETTINGS WINDOW -->
+  <div class="diagram-container">
+    <svg width="680" height="170" viewBox="0 0 680 170" xmlns="http://www.w3.org/2000/svg">
+      <rect x="20" y="8" width="640" height="155" rx="8" fill="#FFFFFF" stroke="#94A3B8" stroke-width="1.5"/>
+      <rect x="20" y="8" width="640" height="24" rx="8" fill="#E2E8F0"/>
+      <text x="34" y="25" font-size="11" font-weight="bold" fill="#1E293B">Settings</text>
+      <rect x="30" y="40" width="170" height="20" rx="4" fill="#F1F5F9" stroke="#CBD5E1"/><text x="40" y="54" font-size="9.5" fill="#94A3B8">Find a setting</text>
+      <g font-size="10" fill="#1E293B">
+        <rect x="30" y="64" width="170" height="16" rx="3" fill="#E0E7FF"/><text x="40" y="76" font-weight="bold" fill="#3A0CA3">System</text>
+        <text x="40" y="93">Bluetooth &amp; devices</text>
+        <text x="40" y="108">Network &amp; internet</text>
+        <text x="40" y="123">Personalisation · Apps · Accounts</text>
+        <text x="40" y="138">Time &amp; language · Accessibility</text>
+        <text x="40" y="153">Privacy &amp; security · Windows Update</text>
+      </g>
+      <text x="225" y="56" font-size="13" font-weight="bold" fill="#1E293B">System</text>
+      <g font-size="10" fill="#1E293B">
+        <rect x="225" y="66" width="420" height="20" rx="3" fill="#F8FAFC" stroke="#E2E8F0"/><text x="235" y="80">Display: brightness, text and app size, resolution</text>
+        <rect x="225" y="89" width="420" height="20" rx="3" fill="#F8FAFC" stroke="#E2E8F0"/><text x="235" y="103">Sound: output and input device, volume</text>
+        <rect x="225" y="112" width="420" height="20" rx="3" fill="#F8FAFC" stroke="#E2E8F0"/><text x="235" y="126">Storage: what is filling the drive</text>
+        <rect x="225" y="135" width="420" height="20" rx="3" fill="#F8FAFC" stroke="#E2E8F0"/><text x="235" y="149">About: processor, RAM, Windows edition (Session 6)</text>
+      </g>
+    </svg>
+    <div class="diagram-caption">Figure 8.1: The Settings window. Pick an area on the left; its options appear on the right. Lost? Type in "Find a setting".</div>
+  </div>
+
+  <table>
+    <thead><tr><th style="width: 24%;">I want to…</th><th style="width: 76%;">Go to</th></tr></thead>
+    <tbody>
+      <tr><td>Connect to Wi-Fi or a phone hotspot</td><td>Click the <strong>network icon</strong> on the taskbar (bottom right) &rarr; the arrow <strong>&gt;</strong> beside Wi-Fi &rarr; choose the network &rarr; <strong>Connect</strong> &rarr; type the network's password (ask the owner). Also in <strong>Settings &rarr; Network &amp; internet &rarr; Wi-Fi</strong>.</td></tr>
+      <tr><td>Change brightness or make everything bigger</td><td><strong>System &rarr; Display</strong> (Brightness, and Scale: 100%, 125%…)</td></tr>
+      <tr><td>Pick speakers or headset, change volume</td><td><strong>System &rarr; Sound</strong> (Session 7)</td></tr>
+      <tr><td>Add a keyboard layout</td><td><strong>Time &amp; language &rarr; Language &amp; region</strong> &rarr; the <strong>⋯</strong> beside your language &rarr; <strong>Language options</strong> &rarr; <strong>Add a keyboard</strong>. Switch layouts with <span class="kbd-key">Windows</span> + <span class="kbd-key">Space</span>.</td></tr>
+      <tr><td>Make text easier to read</td><td><strong>Accessibility &rarr; Text size</strong> (drag the slider, click Apply), or <strong>Accessibility &rarr; Contrast themes</strong></td></tr>
+      <tr><td>Have the computer read aloud</td><td><strong>Accessibility &rarr; Narrator</strong> (or press <span class="kbd-key">Windows</span> + <span class="kbd-key">Ctrl</span> + <span class="kbd-key">Enter</span> to turn it on and off)</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Screenshots: A Picture of Your Screen</h2>
+  <p>Press <span class="kbd-key">Windows</span> + <span class="kbd-key">Shift</span> + <span class="kbd-key">S</span>, then drag a box round what you want. The picture is copied, so you can paste it (<span class="kbd-key">Ctrl</span> + <span class="kbd-key">V</span>) into Paint or a document, or click the pop-up to open it in the <strong>Snipping Tool</strong> and save it. <span class="kbd-key">Windows</span> + <span class="kbd-key">PrtScn</span> saves the whole screen in <strong>Pictures &rarr; Screenshots</strong>. Screenshots are great for showing a helper an error message (Session 9).</p>
 </div>
+
+<!-- ========================================== -->
+<!-- PAGE 4: KEEPING A COMPUTER HEALTHY          -->
+<!-- ========================================== -->
 <div class="page">
   <div class="header-bar">
-    <div class="header-title">Coming soon</div>
+    <div class="header-title">Keeping a Computer Healthy</div>
     <div class="badge">Session 8 • Page 4</div>
   </div>
-  
-  <p>DRAFT PLACEHOLDER: this workbook is being written.</p>
+
+  <h2>1. Four Healthy Habits</h2>
+  <div class="dual-grid">
+    <div class="dual-box">
+      <div class="dual-box-title">🔄 1. INSTALL UPDATES</div>
+      <p>Updates fix mistakes and close holes that criminals use to break in. <strong>Settings &rarr; Windows Update &rarr; Check for updates.</strong> When it asks you to restart, save your work first, and never switch off during "Working on updates".</p>
+    </div>
+    <div class="dual-box">
+      <div class="dual-box-title">🛡️ 2. KEEP ANTIVIRUS ON</div>
+      <p>Windows comes with <strong>Windows Security</strong>, a free antivirus. Open <strong>Start</strong>, type <em>Windows Security</em> &rarr; <strong>Virus &amp; threat protection</strong>. Green ticks mean you are protected. <strong>Quick scan</strong> checks for harmful programmes (called <strong>malware</strong>).</p>
+    </div>
+    <div class="dual-box">
+      <div class="dual-box-title">🔁 3. RESTART NOW AND THEN</div>
+      <p>A restart clears the worktable (Session 6) and finishes updates. If a PC has been on for days and feels slow, <strong>Start &rarr; Power &rarr; Restart</strong> often fixes it.</p>
+    </div>
+    <div class="dual-box">
+      <div class="dual-box-title">🧹 4. INSTALL CAREFULLY, REMOVE WHAT YOU DON'T USE</div>
+      <p>To uninstall: <strong>Settings &rarr; Apps &rarr; Installed apps</strong> &rarr; the <strong>⋯</strong> beside the app &rarr; <strong>Uninstall</strong>. Fewer apps means more free space and fewer things running.</p>
+    </div>
+  </div>
+
+  <h2>2. Where Is It Safe to Get Apps?</h2>
+  <!-- DIAGRAM: TRAFFIC LIGHT -->
+  <div class="diagram-container">
+    <svg width="680" height="150" viewBox="0 0 680 150" xmlns="http://www.w3.org/2000/svg">
+      <rect x="20" y="15" width="60" height="125" rx="12" fill="#1E293B"/>
+      <circle cx="50" cy="40" r="15" fill="#22C55E"/><circle cx="50" cy="78" r="15" fill="#F59E0B"/><circle cx="50" cy="116" r="15" fill="#EF4444"/>
+      <rect x="95" y="20" width="565" height="36" rx="6" fill="#ECFDF5" stroke="#22C55E"/>
+      <text x="108" y="35" font-size="11" font-weight="bold" fill="#047857">GO: the Microsoft Store, or the maker's own official website</text>
+      <text x="108" y="49" font-size="9.5" fill="#1E293B">e.g. the Store's "Get" button; zoom.us for Zoom; google.com/chrome for Chrome</text>
+      <rect x="95" y="60" width="565" height="36" rx="6" fill="#FFFBEB" stroke="#F59E0B"/>
+      <text x="108" y="75" font-size="11" font-weight="bold" fill="#92400E">WAIT: not sure who made it, or Windows asks for permission?</text>
+      <text x="108" y="89" font-size="9.5" fill="#1E293B">Stop and ask your mentor or a trusted adult before you click Yes</text>
+      <rect x="95" y="100" width="565" height="36" rx="6" fill="#FEF2F2" stroke="#EF4444"/>
+      <text x="108" y="115" font-size="11" font-weight="bold" fill="#B91C1C">STOP: random websites, pop-ups, "free" paid games, files sent by strangers</text>
+      <text x="108" y="129" font-size="9.5" fill="#1E293B">These often hide malware that steals passwords or breaks the computer</text>
+    </svg>
+    <div class="diagram-caption">Figure 8.2: The app traffic light. Only install from places you can trust.</div>
+  </div>
+
+  <div class="panic-box">
+    <div class="panic-title">🚨 "YOUR PC IS INFECTED! CALL THIS NUMBER NOW!"</div>
+    A pop-up in a web page that flashes red, beeps and tells you to call a number or download a "cleaner" is a <strong>scam</strong>. Real Windows Security never asks you to phone anyone. Do not click anything inside it. Close the browser tab (or the whole browser with Task Manager), tell your mentor, and run a Quick scan if you are worried.
+  </div>
+
+  <p><strong>Your turn:</strong> Name two reasons why updates matter.</p>
+  <div class="answer-line" contenteditable="true">1.</div>
+  <div class="answer-line" contenteditable="true">2.</div>
 </div>
+
+<!-- ========================================== -->
+<!-- PAGE 5: GUIDED LAB - TAKE CHARGE            -->
+<!-- ========================================== -->
 <div class="page">
   <div class="header-bar">
-    <div class="header-title">Coming soon</div>
+    <div class="header-title">Guided Hands-On Lab: Take Charge of Your PC</div>
     <div class="badge">Session 8 • Page 5</div>
   </div>
-  
-  <p>DRAFT PLACEHOLDER: this workbook is being written.</p>
+
+  <p>First open <strong>The Headteacher's Office</strong> 3D lab on your session page: watch the OS sit between the apps and the hardware, switch a laptop between Windows, ChromeOS and Linux, and rescue a frozen app. Then do it for real:</p>
+
+  <div class="step-card"><div class="step-num">1</div><div class="step-content"><strong>Change 3 settings, then change them back.</strong> Pick three (for example brightness, text size, a contrast theme, the desktop background, adding a keyboard layout). Write what each was <em>before</em> in the table, change it, check it worked, then put it back.</div></div>
+  <div class="step-card"><div class="step-num">2</div><div class="step-content"><strong>Check for updates:</strong> Settings &rarr; Windows Update &rarr; Check for updates. Write what it says. Don't restart unless your mentor says so.</div></div>
+  <div class="step-card"><div class="step-num">3</div><div class="step-content"><strong>Install and uninstall an app:</strong> open the <strong>Microsoft Store</strong>, search for the free app your mentor names, click <strong>Get</strong> (or Install), open it once, then uninstall it (Settings &rarr; Apps &rarr; Installed apps &rarr; ⋯ &rarr; Uninstall).</div></div>
+  <div class="step-card"><div class="step-num">4</div><div class="step-content"><strong>Take a screenshot</strong> of the Settings window with <span class="kbd-key">Windows</span> + <span class="kbd-key">Shift</span> + <span class="kbd-key">S</span>. Save it in BIH_Practice as <code>Screenshot_Settings_YourName</code>.</div></div>
+  <div class="step-card"><div class="step-num">5</div><div class="step-content"><strong>Rescue a "frozen" programme:</strong> open Notepad (we will pretend it is frozen). Press <span class="kbd-key">Ctrl</span> + <span class="kbd-key">Shift</span> + <span class="kbd-key">Esc</span> to open <strong>Task Manager</strong> (click <em>More details</em> if it is small). In <strong>Processes</strong>, click <strong>Notepad</strong> &rarr; <strong>End task</strong>. Only end programmes you opened yourself!</div></div>
+
+  <table>
+    <thead><tr><th style="width: 28%;">Setting I changed</th><th style="width: 26%;">Before</th><th style="width: 26%;">Changed to</th><th style="width: 20%; text-align:center;">Put back? ✓</th></tr></thead>
+    <tbody>
+      <tr><td><div class="answer-line" contenteditable="true">1.</div></td><td><div class="answer-line" contenteditable="true"></div></td><td><div class="answer-line" contenteditable="true"></div></td><td style="text-align:center;"><input type="checkbox"></td></tr>
+      <tr><td><div class="answer-line" contenteditable="true">2.</div></td><td><div class="answer-line" contenteditable="true"></div></td><td><div class="answer-line" contenteditable="true"></div></td><td style="text-align:center;"><input type="checkbox"></td></tr>
+      <tr><td><div class="answer-line" contenteditable="true">3.</div></td><td><div class="answer-line" contenteditable="true"></div></td><td><div class="answer-line" contenteditable="true"></div></td><td style="text-align:center;"><input type="checkbox"></td></tr>
+    </tbody>
+  </table>
+  <table>
+    <thead><tr><th style="width: 40%;">Task</th><th style="width: 60%;">What happened</th></tr></thead>
+    <tbody>
+      <tr><td>Windows Update said…</td><td><div class="answer-line" contenteditable="true">e.g. You're up to date</div></td></tr>
+      <tr><td>App I installed and uninstalled</td><td><div class="answer-line" contenteditable="true"></div></td></tr>
+      <tr><td>Screenshot saved as</td><td><div class="answer-line" contenteditable="true"></div></td></tr>
+      <tr><td>Task Manager: programme I ended</td><td><div class="answer-line" contenteditable="true"></div></td></tr>
+    </tbody>
+  </table>
 </div>
+
+<!-- ========================================== -->
+<!-- PAGE 6: REVIEW & SELF-ASSESSMENT            -->
+<!-- ========================================== -->
 <div class="page">
   <div class="header-bar">
-    <div class="header-title">Coming soon</div>
+    <div class="header-title">Session 8 Review &amp; Verification</div>
     <div class="badge">Session 8 • Page 6</div>
   </div>
-  
-  <p>DRAFT PLACEHOLDER: this workbook is being written.</p>
+
+  <h2>1. Match the OS to the Device</h2>
+  <p>Choose from: <strong>Windows &bull; macOS &bull; ChromeOS &bull; Android &bull; iOS</strong></p>
+  <table>
+    <thead><tr><th style="width: 60%;">Device</th><th style="width: 40%;">Operating system</th></tr></thead>
+    <tbody>
+      <tr><td>Esi's Tecno smartphone</td><td><div class="answer-line" contenteditable="true"></div></td></tr>
+      <tr><td>The Hub's desktop PCs</td><td><div class="answer-line" contenteditable="true"></div></td></tr>
+      <tr><td>Uncle Kojo's iPhone</td><td><div class="answer-line" contenteditable="true"></div></td></tr>
+      <tr><td>A Chromebook laptop</td><td><div class="answer-line" contenteditable="true"></div></td></tr>
+      <tr><td>A MacBook laptop</td><td><div class="answer-line" contenteditable="true"></div></td></tr>
+    </tbody>
+  </table>
+
+  <h2>2. What Would You Do?</h2>
+  <table>
+    <thead><tr><th style="width: 46%;">Situation</th><th style="width: 54%;">Best choice</th></tr></thead>
+    <tbody>
+      <tr><td>1. A web page suddenly flashes: "VIRUS FOUND! Call 0800 now to fix your PC!"</td><td>
+        <label class="checkbox-item"><input type="radio" name="s8q1"> Call the number quickly</label>
+        <label class="checkbox-item"><input type="radio" name="s8q1"> Close the tab without clicking it and tell the mentor</label>
+        <label class="checkbox-item"><input type="radio" name="s8q1"> Click "Download cleaner"</label></td></tr>
+      <tr><td>2. Kofi finds a website offering a paid football game "free". It asks to download <em>setup.exe</em>.</td><td>
+        <label class="checkbox-item"><input type="radio" name="s8q2"> Download it, it's free!</label>
+        <label class="checkbox-item"><input type="radio" name="s8q2"> Don't download; look in the Microsoft Store or ask the mentor</label>
+        <label class="checkbox-item"><input type="radio" name="s8q2"> Turn off Windows Security first</label></td></tr>
+    </tbody>
+  </table>
+
+  <h2>3. Written Review Questions</h2>
+  <p><strong>Question 1:</strong> Explain what an operating system does, using the headteacher.</p>
+  <div class="answer-line" contenteditable="true">Write your answer here...</div>
+  <p><strong>Question 2:</strong> A programme has frozen and will not close. What keys do you press, and what do you do next?</p>
+  <div class="answer-line" contenteditable="true">Write your answer here...</div>
+
+  <h2>4. Self-Assessment &amp; Mentor Sign-Off</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Operating System Competency</th>
+        <th style="width: 18%; text-align: center;">With Help</th>
+        <th style="width: 18%; text-align: center;">Almost Alone</th>
+        <th style="width: 18%; text-align: center;">All By Myself!</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>1. I can explain what an OS does and name four operating systems.</td><td style="text-align: center;"><input type="radio" name="s8_1"></td><td style="text-align: center;"><input type="radio" name="s8_1"></td><td style="text-align: center;"><input type="radio" name="s8_1"></td></tr>
+      <tr><td>2. I can find and change settings, then put them back.</td><td style="text-align: center;"><input type="radio" name="s8_2"></td><td style="text-align: center;"><input type="radio" name="s8_2"></td><td style="text-align: center;"><input type="radio" name="s8_2"></td></tr>
+      <tr><td>3. I can check for updates and install and uninstall an app safely.</td><td style="text-align: center;"><input type="radio" name="s8_3"></td><td style="text-align: center;"><input type="radio" name="s8_3"></td><td style="text-align: center;"><input type="radio" name="s8_3"></td></tr>
+      <tr><td>4. I can take a screenshot and close a frozen app with Task Manager.</td><td style="text-align: center;"><input type="radio" name="s8_4"></td><td style="text-align: center;"><input type="radio" name="s8_4"></td><td style="text-align: center;"><input type="radio" name="s8_4"></td></tr>
+    </tbody>
+  </table>
+
+  <div style="border-top: 1px solid var(--bih-border); margin-top: 25px; padding-top: 12px; display: flex; justify-content: space-between; font-size: 13px;">
+    <div><strong>Mentor Signature:</strong> _____________________________</div>
+    <div><strong>Date Completed:</strong> ____________________</div>
+  </div>
 </div>
+
 </body>
 </html>

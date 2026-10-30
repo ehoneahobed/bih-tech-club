@@ -1,78 +1,93 @@
-# Session 11: Searching the Web & Internet Foundations
+# Session 11: The Internet & Your Browser
 
-> **At a glance:** pupils tell the Internet from the Web and a browser from a search engine, read a URL, check for the padlock, and run a smart keyword search they fact-check. · **Time:** 90 minutes (adjust the timings if your period is shorter) · **Workbook pages:** 6
+> **At a glance:** pupils tell the Internet from the Web, read a URL and its domain, check for the padlock, and drive a browser with confidence: tabs, bookmarks, history, downloads, zoom, Find on page, private windows and leaving a shared computer safely. · **Time:** 90 minutes (adjust the timings if your period is shorter) · **Workbook pages:** 6
 
 ## Learning outcomes
 By the end of the session, pupils can:
-1. Explain the Internet vs the World Wide Web, and a browser vs a search engine.
-2. Type a URL straight into the address bar, name its parts and domain extension, and use Back, Forward, Refresh and New Tab.
-3. Spot the padlock and https:// and say what it means.
-4. Turn a chatty question into specific keywords and check a fact with the 4-Way Fact-Check Shield (Who? When? Why? Agree?).
+1. Explain the difference between the Internet and the World Wide Web, name common browsers on computers and phones, and read a URL: its protocol, domain, extension and padlock.
+2. Use the browser's controls and shortcuts: the address bar, Back, Forward and Refresh, tabs (open, switch, close and reopen with Ctrl + Shift + T), bookmarks, history, zoom and Find on page (Ctrl + F).
+3. Download a file, find it in the Downloads folder, and leave a shared computer safely: private windows, signing out and clearing browsing data.
 
 ## Before the session
-- [ ] Check early that en.wikipedia.org and a search engine load on the PCs.
-- [ ] Note which browser each PC has (Chrome, Edge or Firefox) so you can tell pupils which icon to look for.
+- [ ] Check early that en.wikipedia.org, ges.gov.gh and ug.edu.gh load on the PCs.
+- [ ] Note which browser each PC has (Chrome, Edge or Firefox) and remove any old bookmarks pupils from other classes left on the bookmarks bar.
+- [ ] Check that pupils may save files to the Downloads folder and that File Explorer shows it.
 - [ ] Load the Internet Town 3D lab on the projector PC and check it runs.
-- [ ] Copy the offline pack to USB, with a few saved web pages or printed screenshots of a search results page, in case the internet fails.
+- [ ] Write the eight circuit skills on the board with a column per team for points.
+- [ ] Copy the offline pack to USB, with a saved copy of the Wikipedia Kakum National Park page (Ctrl + S in the browser) in case the internet fails.
 
 ## Running order
 | Time | Activity | Workbook | What the mentor does |
 |---|---|---|---|
-| 0–10 min | Welcome and the road network of computers | Page 1 | Trace Figure 11.0 from the school PC to the undersea cables at Accra and Tema. |
-| 10–20 min | Internet vs Web; the browser and its buttons | Pages 1–2 | Show the real browser and its controls on the projector. |
-| 20–30 min | Reading a URL, domain extensions, the padlock | Page 3 | Break down an address on the board. Ask "who runs this site?" |
-| 30–40 min | Browser vs search engine, keywords, fact-check, pop-ups | Page 4 | Pairs improve the weak searches. Cover the 4-Way Shield and the "free iPhone" panic button. |
-| 40–55 min | Internet Town 3D lab | — | Demonstrate, then pairs try the missions. |
-| 55–75 min | Hands-on lab: The Web Researcher (Kakum) | Page 5 | Check pupils read summaries before clicking. |
-| 75–85 min | Review and verification | Page 6 | Pupils work alone, then mark together. |
-| 85–90 min | Self-assessment, sign-off | Page 6 | Sign off; everyone closes the browser. |
+| 0–10 min | Typing warm-up | – | Pupils open the typing trainer and do today's drill while you take the register and switch on the projector. |
+| 10–20 min | The road network of computers; Internet vs Web | Page 1 | Trace Figure 11.0 from the Hub PC to the undersea cables and the server. Ask: "Is WhatsApp the Web?" (it uses the Internet, but it is not the Web). |
+| 20–30 min | The browser and its buttons | Page 2 | Show the real browser on the projector and point to the eight numbered parts. Pupils answer the "Your turn". |
+| 30–40 min | URLs, domain extensions, the padlock | Page 3 | Break down an address on the board. Ask "Who runs this site?" for each "Your turn" row. |
+| 40–50 min | Browser toolkit, downloads, shared computers | Page 4 | Demonstrate each shortcut once on the projector; the class shouts the keys back. Show where a download lands. |
+| 50–58 min | Internet Town 3D lab | Page 5 | Demonstrate the padlock mission, then pairs try the web missions. |
+| 58–78 min | Browser Skills Circuit (team race) | Page 5 | Teams race through the eight skills. Check each pupil's bookmark and downloaded picture before awarding the point. |
+| 78–86 min | True or false and written review | Page 6 | Show of hands for each statement; pupils write the two answers alone. |
+| 86–90 min | Self-assessment, sign-off, leave no trace | Page 6 | Sign off. Everyone signs out, closes private windows and closes the browser. Announce the winning team. |
 
 ## Key ideas and how to explain them
-- **Internet vs World Wide Web:** the Internet is the physical road (cables, masts, routers); the Web is the cars: the pages and videos that travel on it.
-- **Browser vs search engine:** the browser is your window on the web (Chrome, Edge); the search engine is the head librarian you ask, a website you open inside that window (Google, Bing).
-- **URL:** like a GhanaPost GPS address, every page has its own. Read https://www.example.org/science/water part by part (example.org is a made-up teaching address, not the club's site).
-- **Domain extensions:** .gov.gh and .edu.gh are high reliability; .org is often a non-profit but anyone can register one, so still check who wrote it; .com needs caution because it may be selling.
-- **Padlock / https:** look for a closed padlock (grey or black, not green, in modern browsers; newer Chrome shows a small "tune" settings icon in the same place). The "s" means Secure: what you send is scrambled so snoopers cannot read it. Stress that it protects the journey, not the truth of the page; a padlocked site can still be wrong.
-- **4-Way Fact-Check Shield:** Who? When? Why? Agree? Two independent reliable sources agreeing makes a fact trustworthy.
+- **Internet vs World Wide Web:** the Internet is the roads (cables, masts, routers, undersea fibre); the Web is the trotros on them: the pages, pictures and videos. Email and WhatsApp use the same roads but are not the Web.
+- **The browser:** the program that fetches pages and shows them. Chrome, Edge and Firefox on computers; Chrome, Safari, Samsung Internet and Opera on phones. They all do the same job.
+- **URL:** like a GhanaPost GPS address, every page has its own. Read https://www.example.org/science/water part by part (example.org is a made-up teaching address). The domain is the website's name.
+- **Domain extensions:** .gov.gh and .edu.gh are high reliability; .org is often a non-profit but anyone can register one; .com needs caution. It is a clue, not a guarantee.
+- **Padlock / https:** the "s" means secure: what you send is scrambled so snoopers cannot read it. Newer Chrome shows a small "tune" (settings) icon instead of the padlock; it means the same. It protects the journey, not the truth.
+- **Tabs:** one page per tab. Ctrl + T new, Ctrl + Tab switch, Ctrl + W close, and the class favourite, Ctrl + Shift + T, to bring back a tab closed by mistake.
+- **Bookmarks and history:** a bookmark is a page you chose to keep (Ctrl + D, the star; Edge calls them Favourites). History is everything you visited (Ctrl + H). History is the safety net when you forgot to bookmark.
+- **Downloads:** unless you choose otherwise, files go to the Downloads folder. Ctrl + J (Chrome, Edge) shows the list; File Explorer > Downloads shows the folder. Then rename and move the file into a proper folder (Session 4 naming standard).
+- **Zoom and Find:** Ctrl + plus / minus / 0 and Ctrl + F. Pupils with weak eyesight benefit straight away.
+- **Leave no trace:** a private window forgets its own history and sign-ins when closed, but it does not hide you from websites or the network, and downloads stay. On a shared PC: sign out, never save passwords, clear browsing data (Ctrl + Shift + Delete) if allowed, close the browser.
+- **Team points:** one point per circuit skill done correctly, a bonus point when every team member finishes, and a point for helping another team without touching their mouse.
 
 ## The 3D lab
-Use **Internet Town**. On the projector, demonstrate **Click the blue globe called "The Internet"** to anchor the road-network idea. Then pairs do **Visit a website that has a padlock**, followed by **Visit the website with the warning sign**, and compare what the snooper sees each time (scrambled letters vs readable text). Leave the email and shared-document missions for Session 13 and later.
+Use **Internet Town** ("Send a web request (and see why HTTPS matters), follow an email through the digital post office, and co-edit a cloud document"). On the projector, send a web request so the class sees it travel from the PC to the server and back, matching Figure 11.0. Then pairs visit a website with a padlock and one with a warning sign and compare what the snooper sees each time (scrambled letters vs readable text). A browser mission is being added to the lab (tabs, bookmarks and downloads); if it is there, pairs do it as the warm-up for the circuit. Leave the email and shared-document missions for Sessions 13 and 29.
 
 ## Common mistakes and quick fixes
 | Pupils often… | Try this |
 |---|---|
 | Type the web address into the search box on the page | Point to the long bar at the very top; click inside it first, then type. |
-| Type whole questions ("how can our school get clean water?") | Ask "Which words would the librarian need?" and cross out the filler. |
-| Click the very first result | Make them read the short summary and the web address under each title first. |
-| Think Google is the internet | Ask: "Is Google the window or the librarian?" |
-| Copy a fact straight from one site | Ask "Who? When? Why? Does another source agree?" before it goes on the record sheet. |
+| Press Ctrl + W and lose a page | Celebrate: it is the perfect moment to teach Ctrl + Shift + T. |
+| Cannot find the bookmarks bar | Ctrl + Shift + B shows it (in Edge it is the Favourites bar). |
+| Download a file and "lose" it | Ctrl + J, then "Show in folder"; or File Explorer > Downloads. |
+| Press Ctrl and + on the number row and nothing happens | Some keyboards need the + on the number pad, or Ctrl and the = key (same key as +). |
+| Think a private window makes them invisible | Ask: "Does the Hub's Wi-Fi still carry your pages?" Yes, so the network and the website can still see them. |
+| Think the padlock means the site is true | "The padlock locks the trotro door; it does not tell you whether the driver is honest." |
 
 ## When things go wrong
-- **No internet:** run Internet Town and do the URL and keyword work on paper. Use the saved pages or screenshots from the offline pack for the record sheet.
-- **Not enough PCs:** pairs or threes with a driver and a navigator who reads the steps aloud; swap at step 3 of the lab.
-- **A PC freezes or the power goes:** press Refresh first; if the whole PC hangs, move the pair to a neighbour. Nothing is saved in this session, so no work is lost; the record sheet is on paper.
+- **No internet:** run Internet Town from the offline pack. Open the saved Kakum page from a USB drive in the browser (it opens as a local file): tabs, bookmarks, Find, zoom, history and "Save image as" all still work. Do the URL work on paper.
+- **Not enough PCs:** pairs with a driver and a navigator who reads the step aloud; swap after step 4. Each pupil must still do the shortcuts once themselves.
+- **A PC freezes or the power goes:** press Refresh first; if the whole PC hangs, move the pair to a neighbour. Nothing important is saved today except the downloaded picture, which can be downloaded again.
 
 ## Answer key
-**1. Match the Web Term to its Meaning**
-- Web Browser: the program on your computer (Chrome, Edge) used to visit websites.
-- Search Engine: a website (like Google) that helps you search the web using keywords.
-- URL: the unique address of a webpage (e.g. https://...).
-- Undersea Cable: physical glass fibres on the Atlantic seabed carrying internet data.
-- .gov.gh: official domain extension for Ghanaian government institutions.
+**Your turn (Page 2):** answers vary: Chrome (three dots ⋮), Edge (three dots in a row ⋯) or Firefox (three lines ☰).
+
+**Who runs each website? (Page 3)**
+- https://www.ug.edu.gh: a university in Ghana (the University of Ghana); .edu.gh means education.
+- https://ges.gov.gh: the government (the Ghana Education Service); .gov.gh means a government organisation.
+- http://free-phones-winner.example.com: a company or anyone at all, and it has no "s" (not secure) and promises free phones: do not trust it or type anything into it.
+
+**Circuit record sheet (Page 5):** times vary. Two or three tabs at once; the number of times "canopy" appears varies as Wikipedia is edited; the file is in the Downloads folder; yes, the bookmark is still on the bar in a private window (bookmarks are kept, history is not).
+
+**1. True or False? (Page 6)**
+1. The Internet is the network; the Web is the pages that travel on it: **True**.
+2. Ctrl + Shift + T brings back a closed tab: **True**.
+3. A website with a padlock always tells the truth: **False** (the padlock protects the connection, not the truth).
+4. Downloads go into the Downloads folder unless you choose another place: **True**.
+5. In a private window nobody, not even the website, can see what you do: **False** (only the browser forgets; the website and the network can still see).
 
 **2. Written Review Questions**
-1. Look for: three specific target words with no filler, for example "moringa seed water purification", "moringa river water treatment Ghana". 
-2. The connection is secure (https): information passing between the computer and the website is scrambled into secret code so eavesdroppers cannot steal it. Bonus if a pupil adds that it does not prove the information is true.
-3. Look for: .edu.gh sites are run by Ghanaian schools, colleges and universities; a .com is commercial and may be selling or showing ads, and a personal blog is not checked by experts.
-
-**Lab record sheet:** answers vary. Check the URL is complete, the organisation is named, and the two facts come from a .org, .edu or official tourism page.
+1. Any three of: sign out of her email; close the browser; do not let the browser save her password (or remove it); clear browsing data with Ctrl + Shift + Delete if allowed; close any private windows; take her downloaded files with her or delete them.
+2. It tells you the connection is secure: what you send is scrambled so snoopers cannot read it. It does NOT tell you that the website is honest or that the information on it is true.
 
 ## Support and stretch
-- **Needs more support:** give them the URL card with the five parts already labelled and let them match a second address to it.
-- **Finished early:** find the same Kakum fact on a second, independent site and note both URLs.
+- **Needs more support:** give them a shortcut card with the seven toolkit shortcuts and let them do the circuit with a partner who reads each step aloud. Focus on address bar, tabs and Ctrl + Shift + T first.
+- **Finished early:** make a bookmarks-bar folder called "Club Sites" and put three bookmarks in it; find out how to change where downloads are saved (Settings > Downloads) and explain it to a friend, without changing it on a Hub PC.
 
 ## Evidence for sign-off
-The pupil can, without prompting: type a URL into the address bar and open a new tab; point to the padlock and say what it means; explain browser vs search engine in one sentence; and show a completed record sheet with a full URL, an organisation and two facts.
+The pupil can, without prompting: type a URL into the address bar; open, switch, close and reopen a tab; show a bookmark they made on the bookmarks bar; find their downloaded picture in the Downloads folder; use Ctrl + F and Ctrl + 0; point to the padlock and say what it means; and say three things to do before leaving a shared computer. They get at least 4 of the 5 true-or-false statements right.
 
 ## Safety and wellbeing
-Remind pupils of the panic button: if you did not buy a ticket, you did not win. Never click prize pop-ups and never type a name, school or phone number into one; close the tab and tell you. Pupils should not sign in to anything today. Watch screens during searching and steer back gently from unsuitable results. At the end, everyone closes the browser so the next class does not inherit open tabs.
+Pupils should not sign in to anything today; if your Hub uses learning accounts, they sign in only when you say and sign out before leaving. Remind them: if a page promises prizes or asks for personal details, close the tab and tell you. Explain private windows honestly: they are for leaving no trace on a shared computer, not for hiding from parents or mentors, and the network can still see what is visited. Watch screens during the circuit and steer back gently from unsuitable pages. At the end, everyone closes the browser so the next class does not inherit open tabs or sign-ins.
