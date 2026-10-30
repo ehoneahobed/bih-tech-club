@@ -12,6 +12,8 @@
     "og": "node scripts/og.mjs"
   },
   "dependencies": {
+    "@fontsource-variable/outfit": "5.2.6",
+    "@fontsource-variable/rubik": "5.2.6",
     "esbuild": "0.25.10",
     "fflate": "0.8.2",
     "three": "0.180.0"

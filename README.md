@@ -4,6 +4,21 @@ The website for the Bozoma Innovation Hub JHS Tech Club. It has a page for each 
 
 Live at https://bih-tech-club.vercel.app
 
+## Branding
+The site, workbooks, PDFs, 3D labs and link previews use the Bozoma Innovation Hub brand, taken from [bozomainnovationhub.com](https://bozomainnovationhub.com):
+
+| Token | Value | Used for |
+|---|---|---|
+| Plum | `#24182E` | Header, footer, headings, hero bands |
+| Red | `#CA1F3F` | Main buttons, accents, workbook badges |
+| Gold | `#FFBE00` (text on white: `#8A5C00`) | Highlights, labels, the call-to-action band |
+| Fonts | Outfit (headings), Rubik (text) | Self-hosted from `@fontsource-variable`, and embedded in each workbook so offline packs and PDFs match |
+
+The tokens live at the top of `src/site.css`. The workbooks are rebranded when published (`scripts/lib/workbook.mjs`): the old purple/orange palette is swapped for these colours, while colours that draw real software (Excel green, Word blue, Scratch blocks) are kept. `npm run og` makes the preview cards, icons and the transparent and white logo versions from `assets/logo.png`.
+
+## Self-study
+Every session page has a numbered path (learn → 3D lab → Lab Mission → check → save). Learners tick steps as they go, the lab step ticks itself when its missions are done, and *Finished? Check your answers* shows the answer key from the mentor guide. Progress is stored only in that browser (`bih-progress`). The home page shows *Continue* and a status on each session card. `/start/` explains how to study. The step wording is in `stepsFor()` in `scripts/build.mjs`; Sessions 18 and 20 have their own paths. Each session's *What you need* line is `needs` in `content/sessions.json`.
+
 The review, recommendations and the Inter-Schools Tech Championship plan are in [`docs/PLANNING.md`](docs/PLANNING.md).
 
 ## Project layout
@@ -17,11 +32,12 @@ src/
   labs/                  three.js 3D labs (one file per lab + runtime.js)
   workbook.js            Autosave + toolbar added to every workbook
   sw.js                  Service worker: the site keeps working offline after one visit
-  site.css               Website styles
+  site.css               Website styles (brand tokens at the top)
+  site.js                Progress ticks, Continue, status chips and offline saving
 scripts/
   build.mjs              Builds the site into dist/ (Vercel runs this)
   pdf.mjs                Renders workbooks to A4 PDFs in packs/pdf/
-  og.mjs                 Makes the link-preview cards (assets/og/) and app icons
+  og.mjs                 Makes the link-preview cards (assets/og/), app icons and logo versions
   lib/workbook.mjs       Shared workbook transform (hints, toolbar, autosave)
   lib/markdown.mjs       Small Markdown renderer for the mentor guides
 packs/pdf/               Generated PDFs (committed, so Vercel needs no browser)

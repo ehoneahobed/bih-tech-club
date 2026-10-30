@@ -80,7 +80,7 @@ export default function filesLab(stage, ui) {
       band.position.y = 0.89;
       g.add(paper, band);
     }
-    const t = label(node.name, { scale: node.kind === 'drive' ? 0.5 : 0.42, color: node.kind === 'drive' ? '#1E1E24' : '#3A0CA3' });
+    const t = label(node.name, { scale: node.kind === 'drive' ? 0.5 : 0.42, color: node.kind === 'drive' ? '#24182E' : '#5A4470' });
     t.position.y = node.kind === 'drive' ? 1.2 : 1.45;
     g.add(t);
     world.add(g);

@@ -8,6 +8,12 @@ importers:
 
   .:
     dependencies:
+      '@fontsource-variable/outfit':
+        specifier: 5.2.6
+        version: 5.2.6
+      '@fontsource-variable/rubik':
+        specifier: 5.2.6
+        version: 5.2.6
       esbuild:
         specifier: 0.25.10
         version: 0.25.10
@@ -180,6 +186,12 @@ packages:
     cpu: [x64]
     os: [win32]
 
+  '@fontsource-variable/outfit@5.2.6':
+    resolution: {integrity: sha512-0wNlmsinE4taUgmRySxld13//NtnGwN58mBegexyhYuFqiQG/4Ho+5CCkiFxXijnojmCiaBaKkYt72LDwZHiKg==}
+
+  '@fontsource-variable/rubik@5.2.6':
+    resolution: {integrity: sha512-vMOZRIKXE46Q28QN+RKCq0KJW9eg8WAOrlb/W5rjBSzFeINC83ArLvWW4bH9H+bCrp5IeVovH6PqEAjdOU2+xA==}
+
   esbuild@0.25.10:
     resolution: {integrity: sha512-9RiGKvCwaqxO2owP61uQ4BgNborAQskMR6QusfWzQqv7AZOg5oGehdY2pRJMTKuwxd1IDBP4rSbI5lHzU7SMsQ==}
     engines: {node: '>=18'}
@@ -275,6 +287,10 @@ snapshots:
 
   '@esbuild/win32-x64@0.25.10':
     optional: true
+
+  '@fontsource-variable/outfit@5.2.6': {}
+
+  '@fontsource-variable/rubik@5.2.6': {}
 
   esbuild@0.25.10:
     optionalDependencies:

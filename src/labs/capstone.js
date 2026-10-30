@@ -240,7 +240,7 @@ export default function capstoneLab(stage, ui) {
         // A real timer, not animation frames: those pause when the 3D view is scrolled off-screen.
         await new Promise((r) => setTimeout(r, 250));
         t--;
-        setLabel(timerTag, `${Math.floor(t / 60)}:${String(t % 60).padStart(2, '0')}`, { width: 256, color: t < 30 ? '#E63946' : '#3A0CA3' });
+        setLabel(timerTag, `${Math.floor(t / 60)}:${String(t % 60).padStart(2, '0')}`, { width: 256, color: t < 30 ? '#CA1F3F' : '#24182E' });
       }
     }
     presenters.forEach((g) => (g.position.z = 1));
@@ -263,8 +263,8 @@ export default function capstoneLab(stage, ui) {
     const t = TRACKS[p.track];
     const e = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;');
     w.document.write(`<!doctype html><meta charset="utf-8"><title>${e(p.team)} · Project card</title>
-      <body style="font-family:Arial,sans-serif;max-width:720px;margin:30px auto;color:#1E1E24">
-      <h1 style="color:#3A0CA3;margin-bottom:0">${e(p.team || 'Our team')}</h1>
+      <body style="font-family:Arial,sans-serif;max-width:720px;margin:30px auto;color:#24182E">
+      <p style="color:#CA1F3F;font-weight:700;letter-spacing:2px;font-size:12px;margin:0">BOZOMA INNOVATION HUB · BIH JHS TECH CLUB</p><h1 style="color:#24182E;margin-bottom:0">${e(p.team || 'Our team')}</h1>
       <p style="margin-top:4px">BIH JHS Tech Club · Capstone project card</p>
       <h3>${t ? `${t.icon} Track ${p.track}: ${t.name}` : 'Track: not chosen'}</h3>
       <p><b>Who has the problem:</b> ${e(p.who)}</p><p><b>The problem:</b> ${e(p.problem)}</p>

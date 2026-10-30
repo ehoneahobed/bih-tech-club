@@ -5,16 +5,17 @@ import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 
 export { THREE };
 
+// Bozoma Innovation Hub colours (plum, red, gold), plus a few helpers.
 export const COLORS = {
-  purple: 0x3a0ca3,
-  blue: 0x4361ee,
-  gold: 0xf77f00,
+  purple: 0x24182e,
+  blue: 0x5a4470,
+  gold: 0xffbe00,
   green: 0x2ec4b6,
-  red: 0xe63946,
-  dark: 0x1e1e24,
-  light: 0xf8f9fa,
-  grey: 0xced4da,
-  sky: 0xeef1ff,
+  red: 0xca1f3f,
+  dark: 0x24182e,
+  light: 0xf9f9f9,
+  grey: 0xd9d3de,
+  sky: 0xf4f0f6,
 };
 
 export function webglAvailable() {
@@ -60,7 +61,7 @@ export function createStage(host, opts = {}) {
   if (opts.ground !== false) {
     const ground = new THREE.Mesh(
       new THREE.CircleGeometry(opts.groundSize ?? 30, 64),
-      new THREE.MeshStandardMaterial({ color: opts.groundColor ?? 0xdde3ff, roughness: 1 })
+      new THREE.MeshStandardMaterial({ color: opts.groundColor ?? 0xe6dfeb, roughness: 1 })
     );
     ground.rotation.x = -Math.PI / 2;
     ground.position.y = opts.groundY ?? 0;
@@ -178,7 +179,7 @@ export function createStage(host, opts = {}) {
       return this.tween(() => {}, seconds, (k) => k);
     },
     confetti() {
-      const colors = [0x3a0ca3, 0x4361ee, 0xf77f00, 0x2ec4b6, 0xe63946, 0xffd166];
+      const colors = [0x24182e, 0xca1f3f, 0xffbe00, 0x5a4470, 0x2ec4b6, 0xffffff];
       const bits = [];
       const origin = controls.target.clone().add(new THREE.Vector3(0, 3, 0));
       for (let i = 0; i < 160; i++) {
@@ -237,7 +238,7 @@ export function box(w, h, d, color, extra) {
 }
 
 // Canvas-drawn text, used both for floating labels and for flat textures.
-export function textCanvas(lines, { width = 512, height = 128, bg = null, color = '#1E1E24', font = 'bold 54px system-ui, sans-serif', align = 'center', radius = 24 } = {}) {
+export function textCanvas(lines, { width = 512, height = 128, bg = null, color = '#24182E', font = 'bold 54px Rubik, system-ui, sans-serif', align = 'center', radius = 24 } = {}) {
   const c = document.createElement('canvas');
   c.width = width;
   c.height = height;
@@ -268,7 +269,7 @@ export function textCanvas(lines, { width = 512, height = 128, bg = null, color 
   return tex;
 }
 
-export function label(text, { scale = 1, bg = 'rgba(255,255,255,0.92)', color = '#3A0CA3', width = 512, height = 128, font } = {}) {
+export function label(text, { scale = 1, bg = 'rgba(255,255,255,0.92)', color = '#24182E', width = 512, height = 128, font } = {}) {
   const sprite = new THREE.Sprite(
     new THREE.SpriteMaterial({ map: textCanvas(text, { width, height, bg, color, font }), depthTest: false, transparent: true })
   );
@@ -279,7 +280,7 @@ export function label(text, { scale = 1, bg = 'rgba(255,255,255,0.92)', color = 
 
 export function setLabel(sprite, text, opts = {}) {
   const old = sprite.material.map;
-  sprite.material.map = textCanvas(text, { width: 512, height: 128, bg: 'rgba(255,255,255,0.92)', color: '#3A0CA3', ...opts });
+  sprite.material.map = textCanvas(text, { width: 512, height: 128, bg: 'rgba(255,255,255,0.92)', color: '#24182E', ...opts });
   sprite.material.needsUpdate = true;
   old?.dispose();
 }
@@ -308,6 +309,8 @@ export function createUI(host) {
     if (!missionsEl || !missions.length) return;
     const next = missions.find((m) => !done.has(m.id));
     const count = missions.filter((m) => done.has(m.id)).length;
+    // Lets the session page show "3 of 6 missions" in its step-by-step path.
+    host.dispatchEvent(new CustomEvent('bih-missions', { bubbles: true, detail: { lab: host.dataset.lab, done: count, total: missions.length } }));
     missionsEl.innerHTML = `
       <div class="mission-head"><b>🎯 Missions</b><span>${count} of ${missions.length}</span><button type="button" class="mission-reset" title="Start the missions again">↺</button></div>
       <div class="meter mission-meter"><span style="width:${(count / missions.length) * 100}%"></span></div>

@@ -93,7 +93,7 @@ self.addEventListener('fetch', (event) => {
 
   // three.js sits in a versioned folder and never changes: saved copy first.
   // Pictures and PDFs: saved copy first too.
-  if (url.pathname.startsWith('/vendor/') || /\.(png|jpe?g|svg|pdf|webmanifest)$/.test(url.pathname)) {
+  if (url.pathname.startsWith('/vendor/') || /\.(png|jpe?g|svg|pdf|webmanifest|woff2)$/.test(url.pathname)) {
     event.respondWith(caches.match(request).then((hit) => hit || fetch(request).then((res) => saveCopy(request, res))));
     return;
   }

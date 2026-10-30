@@ -89,7 +89,7 @@ export default function passwordLab(stage, ui) {
   const home = new THREE.Vector3(0, 0.6, -4.5);
   bot.position.copy(home);
   scene.add(bot);
-  const botTag = label('🤖 Guessing robot', { scale: 0.38, color: '#E63946' });
+  const botTag = label('🤖 Guessing robot', { scale: 0.38, color: '#CA1F3F' });
   botTag.position.set(0, 1.7, 0);
   bot.add(botTag);
 

@@ -180,8 +180,8 @@ function gradient() {
   c.height = 300;
   const g = c.getContext('2d');
   const grd = g.createLinearGradient(0, 0, 512, 300);
-  grd.addColorStop(0, '#3A0CA3');
-  grd.addColorStop(1, '#4CC9F0');
+  grd.addColorStop(0, '#24182E');
+  grd.addColorStop(1, '#5A4470');
   g.fillStyle = grd;
   g.fillRect(0, 0, 512, 300);
   const t = new THREE.CanvasTexture(c);

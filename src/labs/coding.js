@@ -329,7 +329,7 @@ function gridTexture() {
     g.lineTo(960, y);
     g.stroke();
   }
-  g.strokeStyle = '#4361EE';
+  g.strokeStyle = '#CA1F3F';
   g.lineWidth = 4;
   g.beginPath();
   g.moveTo(480, 0);

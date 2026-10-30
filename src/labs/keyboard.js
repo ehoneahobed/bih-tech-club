@@ -57,7 +57,7 @@ export default function keyboardLab(stage, ui, host) {
     let x = -7.5 * U;
     for (const [text, code, w, zone] of row) {
       const geo = new THREE.BoxGeometry(w * U - 0.07, 0.28, U - 0.07);
-      const top = new THREE.MeshStandardMaterial({ map: textCanvas(text, { width: 256 * Math.min(w, 2.5), height: 256, bg: '#F8F9FA', font: `bold ${text.length > 2 ? 64 : 110}px system-ui, sans-serif`, radius: 30 }), roughness: 0.6 });
+      const top = new THREE.MeshStandardMaterial({ map: textCanvas(text, { width: 256 * Math.min(w, 2.5), height: 256, bg: '#F8F9FA', font: `bold ${text.length > 2 ? 64 : 110}px Rubik, system-ui, sans-serif`, radius: 30 }), roughness: 0.6 });
       const side = mat(0xdee2e6);
       const mesh = new THREE.Mesh(geo, [side, side, top, side, side, side]);
       mesh.castShadow = true;

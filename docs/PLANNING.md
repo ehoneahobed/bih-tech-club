@@ -133,6 +133,7 @@ About 60 problems were found in three rounds: while writing the mentor guides, t
 |---|---|---|
 | Done | Deploy to Vercel and connect the GitHub repo | Pushes rebuild automatically. |
 | Done | Mentor guides (R2), offline mode, USB kit, link previews, 404 page, sitemap | 30 Oct 2026. The guides need a BIH review. |
+| Done | BIH branding and self-study path | 30 Oct 2026: BIH colours and fonts across the site, workbooks, PDFs and labs; step-by-step session path with progress, answer check and a Start here page. |
 | Next | AI literacy session or thread; links to the GES JHS Computing curriculum | Needs a decision from BIH. |
 | Next | Short self-marking quiz per session | Reuses the workbook review questions; feeds the Championship quiz. |
 | Next | Championship page: rules, rubric, timeline and FAQ | Once section 4 is agreed. |

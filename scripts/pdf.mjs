@@ -47,7 +47,7 @@ for (const s of course.sessions) {
     margin: { top: '10mm', bottom: '12mm', left: '10mm', right: '10mm' },
     displayHeaderFooter: true,
     headerTemplate: '<span></span>',
-    footerTemplate: `<div style="font-size:8px;width:100%;text-align:center;color:#888">BIH JHS Tech Club · Session ${s.n} · page <span class="pageNumber"></span> of <span class="totalPages"></span></div>`,
+    footerTemplate: `<div style="font:8px Helvetica,Arial,sans-serif;width:100%;text-align:center;color:#6B6373">Bozoma Innovation Hub · BIH JHS Tech Club · Session ${s.n} · page <span class="pageNumber"></span> of <span class="totalPages"></span></div>`,
   });
   console.log(`PDF  session ${id}  scale ${scale}  ${s.title}`);
 }

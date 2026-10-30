@@ -9,7 +9,8 @@ const START = [
   ['Thursday', 72],
   ['Friday', 90],
 ];
-const PALETTE = [0x4361ee, 0xf77f00, 0x2ec4b6, 0xe63946, 0x7209b7, 0x2a9d8f];
+// No gold here: gold is kept for the MAX column.
+const PALETTE = [0x5a4470, 0xca1f3f, 0x2ec4b6, 0x8a7a98, 0x24182e, 0x2a9d8f];
 
 export default function chartLab(stage, ui) {
   const { scene } = stage;
@@ -48,7 +49,7 @@ export default function chartLab(stage, ui) {
     ui.toggle([bc, bp], b);
     draw();
     ui.info(t === 'column' ? 'Column chart' : 'Pie chart', t === 'column'
-      ? '<p><b>Column charts compare amounts.</b> Taller column = bigger number. The <b style="color:#F77F00">gold</b> column is the MAX.</p><p>Tip: select only <code>A1:B6</code> — never include the total row, or every other bar will look tiny.</p>'
+      ? '<p><b>Column charts compare amounts.</b> Taller column = bigger number. The <b style="color:#8A5C00">gold</b> column is the MAX.</p><p>Tip: select only <code>A1:B6</code> — never include the total row, or every other bar will look tiny.</p>'
       : '<p><b>Pie charts show parts of a whole.</b> Each slice is that day\'s share of the week\'s total (the SUM). Use them for a few categories that add up to 100%.</p>');
   }
 

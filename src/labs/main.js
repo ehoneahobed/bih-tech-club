@@ -1,7 +1,11 @@
 // Mounts every <div class="lab" data-lab="name"> on the page.
 import { createStage, createUI, webglAvailable } from './runtime.js';
 
-for (const host of document.querySelectorAll('.lab[data-lab]')) mount(host);
+// Wait (briefly) for the brand fonts, so 3D labels are drawn in Rubik.
+// (No top-level await: the USB kit bundles this file as a classic script.)
+Promise.race([document.fonts?.ready, new Promise((r) => setTimeout(r, 1500))]).then(() => {
+  for (const host of document.querySelectorAll('.lab[data-lab]')) mount(host);
+});
 
 async function mount(host) {
   const status = host.querySelector('.lab-status');

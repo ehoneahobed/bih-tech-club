@@ -100,10 +100,10 @@ export default function internetLab(stage, ui) {
   }
 
   // Eavesdropper on the café-style network, used to explain HTTPS.
-  const spy = label('👀 Snooper', { scale: 0.55, color: '#E63946' });
+  const spy = label('👀 Snooper', { scale: 0.55, color: '#CA1F3F' });
   spy.position.set(-2.4, 1.2, 4.6);
   scene.add(spy);
-  const spyBubble = label('…', { scale: 0.6, color: '#E63946', width: 768 });
+  const spyBubble = label('…', { scale: 0.6, color: '#CA1F3F', width: 768 });
   spyBubble.position.set(-2.4, 2.0, 4.6);
   spyBubble.visible = false;
   scene.add(spyBubble);
@@ -158,7 +158,7 @@ export default function internetLab(stage, ui) {
     await send(req, ['you', 'router', 'isp', 'hub', 'web'], 0.55, (a) => {
       if (a === 'router') {
         spyBubble.visible = true;
-        setLabel(spyBubble, site.secure ? 'k#9@x!q2Zr… (scrambled!)' : 'GET /prize?phone=024…', { width: 768, color: '#E63946' });
+        setLabel(spyBubble, site.secure ? 'k#9@x!q2Zr… (scrambled!)' : 'GET /prize?phone=024…', { width: 768, color: '#CA1F3F' });
       }
       if (a === 'isp') spyBubble.visible = false;
     });

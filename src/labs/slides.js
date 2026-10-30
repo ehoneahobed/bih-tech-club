@@ -9,7 +9,7 @@ const THEMES = [
   { name: 'Sunshine', bg: '#FFF3A0', fg: '#FFD166' },
   { name: 'Clean white', bg: '#FFFFFF', fg: '#1E1E24' },
   { name: 'Night', bg: '#1E1E24', fg: '#FFFFFF' },
-  { name: 'BIH purple', bg: '#3A0CA3', fg: '#FFFFFF' },
+  { name: 'BIH plum', bg: '#24182E', fg: '#FFFFFF' },
   { name: 'Red on green', bg: '#2A9D8F', fg: '#E63946' },
 ];
 const deck = () => [
@@ -83,7 +83,7 @@ export default function slidesLab(stage, ui, host) {
       const g = new THREE.Group();
       const chair = box(0.8, 0.5, 0.8, 0x6c757d);
       chair.position.y = 0.25;
-      const body = new THREE.Mesh(new THREE.CylinderGeometry(0.22, 0.28, 0.8, 12), mat([0xf77f00, 0x2ec4b6, 0x4361ee, 0xe63946][(r + c) % 4]));
+      const body = new THREE.Mesh(new THREE.CylinderGeometry(0.22, 0.28, 0.8, 12), mat([0xffbe00, 0x2ec4b6, 0x5a4470, 0xca1f3f][(r + c) % 4]));
       body.position.y = 0.9;
       const head = new THREE.Mesh(new THREE.SphereGeometry(0.2, 12, 10), mat([0x8d5524, 0x6b3e1f, 0xa0662f][(r * 6 + c) % 3]));
       head.position.y = 1.5;
@@ -357,7 +357,7 @@ function drawPicture() {
 }
 
 export const missions = [
-  { id: 'contrast', text: 'Slide 1: choose a theme with good contrast.', hint: 'Yellow on yellow is hard to read. Try "Night", "Clean white" or "BIH purple".' },
+  { id: 'contrast', text: 'Slide 1: choose a theme with good contrast.', hint: 'Yellow on yellow is hard to read. Try "Night", "Clean white" or "BIH plum".' },
   { id: 'sixsix', text: 'Slide 2: follow the 6-by-6 rule.', hint: 'No more than 6 bullets, and no more than 6 words in each. Delete or shorten bullets.' },
   { id: 'aspect', text: 'Slide 3: fix the squished picture.', hint: 'Tick "Lock aspect ratio" so the picture keeps its true shape.' },
   { id: 'calm', text: 'Choose a calm animation (None or Fade), not the carnival!', hint: 'Animations should help your message, not distract from it.' },

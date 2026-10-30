@@ -89,7 +89,7 @@ export default function documentLab(stage, ui, host) {
       const px = p.size * 3;
       const indent = p.list ? 50 : 0;
       g.font = `${p.italic ? 'italic ' : ''}${p.bold ? 'bold ' : ''}${px}px Calibri, Carlito, "Segoe UI", Arial, sans-serif`;
-      g.fillStyle = p.role === 'heading' ? '#3A0CA3' : '#1E1E24';
+      g.fillStyle = p.role === 'heading' ? '#24182E' : '#3B3343';
       g.textBaseline = 'alphabetic';
       const maxW = W - 2 * M - indent;
       const lines = wrap(g, p.text, maxW);
@@ -98,7 +98,7 @@ export default function documentLab(stage, ui, host) {
       if (selected.has(i)) {
         g.fillStyle = 'rgba(67,97,238,0.16)';
         g.fillRect(M - 14, top - px * 0.6, W - 2 * M + 28, lines.length * lh + px * 0.35);
-        g.fillStyle = p.role === 'heading' ? '#3A0CA3' : '#1E1E24';
+        g.fillStyle = p.role === 'heading' ? '#24182E' : '#3B3343';
       }
       num = p.list === 'number' ? num + 1 : 0;
       lines.forEach((line, li) => {
