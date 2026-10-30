@@ -64,7 +64,7 @@ export default function capstoneLab(stage, ui) {
   scene.add(sign);
 
   // The Demo Day stage beside the house.
-  const platform = box(4, 0.4, 2.5, 0x3a0ca3);
+  const platform = box(4, 0.4, 2.5, 0x24182e);
   platform.position.set(-6.5, 0.2, 1);
   scene.add(platform);
   const spot = new THREE.SpotLight(0xffe8a3, 0, 12, 0.5, 0.4);

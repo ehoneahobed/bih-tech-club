@@ -1,6 +1,6 @@
 // Session 1 — Meet Your Computer: explore desktop vs laptop parts and watch
 // Input -> Process -> Output travel through the machine.
-import { THREE, COLORS, box, mat, label } from './runtime.js';
+import { THREE, COLORS, box, mat } from './runtime.js';
 
 const PARTS = {
   monitor: ['Monitor (Output)', 'The screen that <b>shows</b> words, pictures and actions. It is an <b>output</b> device — the corn meal pouring into your basin.'],
@@ -47,7 +47,7 @@ export default function computerLab(stage, ui) {
   parts.monitor = monitor;
 
   const tower = new THREE.Group();
-  const shell = box(1.1, 2.4, 2.4, 0x2b2d42);
+  const shell = box(1.1, 2.4, 2.4, 0x3a2b47);
   shell.position.y = 1.2;
   const pwr = new THREE.Mesh(new THREE.CylinderGeometry(0.14, 0.14, 0.05, 24), mat(0x88ff99, { emissive: 0x000000 }));
   pwr.rotation.x = Math.PI / 2;
@@ -58,7 +58,7 @@ export default function computerLab(stage, ui) {
   parts.tower = tower;
 
   const keyboard = new THREE.Group();
-  keyboard.add(box(3.4, 0.12, 1.15, 0x2b2d42));
+  keyboard.add(box(3.4, 0.12, 1.15, 0x3a2b47));
   for (let r = 0; r < 4; r++)
     for (let c = 0; c < 13; c++) {
       const k = box(0.2, 0.08, 0.2, 0xf1f3f5);
@@ -97,7 +97,7 @@ export default function computerLab(stage, ui) {
   const lapkeys = new THREE.Group();
   for (let r = 0; r < 4; r++)
     for (let c = 0; c < 12; c++) {
-      const k = box(0.2, 0.04, 0.2, 0x2b2d42);
+      const k = box(0.2, 0.04, 0.2, 0x3a2b47);
       k.position.set(-1.33 + c * 0.242, 0, -0.45 + r * 0.25);
       lapkeys.add(k);
     }
@@ -126,31 +126,41 @@ export default function computerLab(stage, ui) {
   laptop.add(hinge);
   parts.lid = lid;
 
-  // ---------- Labels & clicks ----------
-  const tags = new THREE.Group();
-  scene.add(tags);
-  const tagSpec = {
-    desktop: [['Monitor', [-0.4, 5.3, -1.1]], ['System Unit', [3.4, 5.0, -0.6]], ['Keyboard', [-0.5, 2.7, 1.6]], ['Mouse', [1.9, 2.7, 1.4]], ['UPS', [3.4, 1.4, 1.9]]],
-    laptop: [['Screen', [0, 4.9, -1.2]], ['Keyboard', [-2.5, 2.7, 0.0]], ['Touchpad', [0, 2.6, 1.9]], ['Base + Battery', [2.7, 2.6, 0.9]]],
+  // ---------- Callouts & clicks ----------
+  // Cards pinned to each part. Clicking a card does the same as clicking the part.
+  const CALLOUTS = {
+    desktop: [
+      ['monitor', '🖥️', 'Monitor', 'Output: shows you the results', [0, 3.2, 0], -170, -40],
+      ['tower', '🗄️', 'System unit', 'Process: the computer\'s brain', [0, 2.4, 0], 150, -60],
+      ['keyboard', '⌨️', 'Keyboard', 'Input: type letters and numbers', [-1.4, 0.1, 0.3], -150, 80],
+      ['mouse', '🖱️', 'Mouse', 'Input: point and click', [0, 0.1, 0], 60, 150],
+      ['ups', '🔋', 'UPS', 'Keeps power on in "lights out"', [0, 0.9, 0.7], 170, -10],
+    ],
+    laptop: [
+      ['lid', '💻', 'Screen', 'Output: folds over the keys', [0, 2.3, 0], -150, -50],
+      ['lapkeys', '⌨️', 'Keyboard', 'Input: built in', [-1.2, 0, -0.3], -170, 70],
+      ['touchpad', '👆', 'Touchpad', 'Input: the built-in mouse', [0, 0, 0.3], 60, 110],
+      ['base', '🔋', 'Base', 'Processor and battery inside', [1.8, 0.08, 0.4], 160, 30],
+    ],
   };
   let mode = 'desktop';
-  function drawTags() {
-    tags.clear();
-    for (const [t, p] of tagSpec[mode]) {
-      const l = label(t, { scale: 0.42 });
-      l.position.set(...p);
-      tags.add(l);
+  const cards = {};
+  function drawCallouts() {
+    Object.values(cards).forEach((c) => c.remove());
+    for (const [key, icon, title, text, at, dx, dy] of CALLOUTS[mode]) {
+      cards[key] = stage.callout(parts[key], { icon, title, text, at, dx, dy, onClick: () => select(key) });
+      if (ui.isDone('part-' + key)) cards[key].card.classList.add('done');
     }
   }
 
-  for (const [key, obj] of Object.entries(parts)) {
-    stage.clickable(obj, () => {
-      const [title, text] = PARTS[key];
-      ui.info(title, `<p>${text}</p>`);
-      flash(obj);
-      ui.complete('part-' + key);
-    });
+  function select(key) {
+    const [title, text] = PARTS[key];
+    ui.info(title, `<p>${text}</p>`);
+    flash(parts[key]);
+    ui.complete('part-' + key);
+    cards[key]?.card.classList.add('done');
   }
+  for (const key of Object.keys(parts)) stage.clickable(parts[key], () => select(key));
 
   function flash(obj) {
     const meshes = [];
@@ -160,10 +170,41 @@ export default function computerLab(stage, ui) {
 
   // ---------- Power + IPO animation ----------
   let powered = false;
+  // A tiny desktop drawn on the screen when the computer is on.
+  const deskTex = (() => {
+    const c = document.createElement('canvas');
+    c.width = 512;
+    c.height = 320;
+    const g = c.getContext('2d');
+    const grd = g.createLinearGradient(0, 0, 512, 320);
+    grd.addColorStop(0, '#24182E');
+    grd.addColorStop(1, '#5A4470');
+    g.fillStyle = grd;
+    g.fillRect(0, 0, 512, 320);
+    g.fillStyle = 'rgba(255,190,0,0.9)';
+    g.beginPath();
+    g.arc(420, 90, 46, 0, Math.PI * 2);
+    g.fill();
+    ['📁', '🌐', '📝', '🎨'].forEach((icon, i) => {
+      g.fillStyle = 'rgba(255,255,255,0.14)';
+      g.fillRect(22, 18 + i * 62, 50, 50);
+      g.font = '30px sans-serif';
+      g.fillText(icon, 31, 54 + i * 62);
+    });
+    g.fillStyle = 'rgba(255,253,249,0.92)';
+    g.fillRect(0, 286, 512, 34);
+    g.fillStyle = '#CA1F3F';
+    g.fillRect(12, 292, 22, 22);
+    const t = new THREE.CanvasTexture(c);
+    t.colorSpace = THREE.SRGBColorSpace;
+    return t;
+  })();
   function setScreen(on) {
     const m = mode === 'desktop' ? screenMat : lidScreenMat;
-    m.color.setHex(on ? 0x4361ee : 0x0b0b14);
-    m.emissive.setHex(on ? 0x2a3fb0 : 0x000000);
+    m.map = on ? deskTex : null;
+    m.color.setHex(on ? 0xffffff : 0x0b0b14);
+    m.emissive.setHex(on ? 0x1a1424 : 0x000000);
+    m.needsUpdate = true;
     if (mode === 'desktop') pwr.material.emissive.setHex(on ? 0x22cc55 : 0x000000);
   }
 
@@ -198,7 +239,8 @@ export default function computerLab(stage, ui) {
     await travel(pts, steps);
     setScreen(true);
     const m = mode === 'desktop' ? screenMat : lidScreenMat;
-    await stage.tween((k) => m.emissive.setRGB(0.16 + Math.sin(k * Math.PI * 3) * 0.3, 0.25, 0.7), 0.9);
+    await stage.tween((k) => m.emissive.setRGB(0.1 + Math.abs(Math.sin(k * Math.PI * 3)) * 0.35, 0.08 + Math.abs(Math.sin(k * Math.PI * 3)) * 0.25, 0.1), 0.9);
+    m.emissive.setHex(0x1a1424);
     ui.complete('ipo');
     ui.info('Input → Process → Output', '<p><b>3. OUTPUT</b> — the letter appears on the screen. Just like the corn mill: corn in, grinding, corn meal out!</p>');
   }
@@ -239,7 +281,7 @@ export default function computerLab(stage, ui) {
     laptop.visible = m === 'laptop';
     hinge.rotation.x = -0.25;
     ui.toggle([bDesk, bLap], m === 'desktop' ? bDesk : bLap);
-    drawTags();
+    drawCallouts();
     ui.info(
       m === 'desktop' ? 'Desktop computer' : 'Laptop computer',
       m === 'desktop'
@@ -256,7 +298,7 @@ export const missions = [
   { id: 'part-monitor', text: 'Click the monitor (the screen).', hint: 'It is an OUTPUT device: it shows you the results.' },
   { id: 'part-keyboard', text: 'Click the keyboard.', hint: 'It is an INPUT device: you put information in.' },
   { id: 'part-tower', text: 'Click the system unit (the tall box).', hint: 'This is where the PROCESSING happens, like the grinding in a corn mill.' },
-  { id: 'ipo', text: 'Press the orange "Input → Process → Output" button and watch.', hint: 'Follow the glowing ball from the keyboard to the screen.' },
+  { id: 'ipo', text: 'Press the red "Input → Process → Output" button and watch.', hint: 'Follow the glowing ball from the keyboard to the screen.' },
   { id: 'part-touchpad', text: 'Switch to the Laptop and click its touchpad.', hint: 'Use the "Laptop" button first.' },
   { id: 'shutdown', text: 'Shut the computer down the safe way.', hint: 'Power it on first, then press "Shut down".' },
 ];

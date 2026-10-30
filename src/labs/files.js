@@ -135,7 +135,7 @@ export default function filesLab(stage, ui) {
         const b = pos.get(node).clone().setY(0.05);
         const mid = a.clone().setZ((a.z + b.z) / 2);
         const pts = [a, mid, mid.clone().setX(b.x), b];
-        lines.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(pts), new THREE.LineBasicMaterial({ color: 0x3a0ca3 })));
+        lines.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(pts), new THREE.LineBasicMaterial({ color: 0x24182e })));
       }
     }
     targets = pos;

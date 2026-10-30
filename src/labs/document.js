@@ -292,4 +292,4 @@ export const missions = [
   { id: 'print', text: 'Open Print preview and print your page.', hint: 'Print preview checks your work first.' },
 ];
 
-export const config = { camera: [1.5, 6.5, 11], target: [0.5, 4.6, 0], shadowSize: 9, minDistance: 5 };
+export const config = { camera: [5, 6.5, 10], target: [0.5, 4.4, 0], shadowSize: 9, minDistance: 5 };

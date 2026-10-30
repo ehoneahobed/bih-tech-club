@@ -599,6 +599,9 @@ for (const f of siteFiles) {
   if (/^(downloads\/[^/]+\.zip|assets\/og\/|labs\/[^/]+\.js$|vendor\/three@[^/]+\/(three|addons))/.test(f) || /^(sw\.js|manifest\.webmanifest|robots\.txt|sitemap\.xml|version\.json|404\.html)$/.test(f)) continue;
   let data = readFileSync(DIST + f);
   if (f.endsWith('.html')) data = strToU8(kitPage(data.toString('utf8')));
+  // Browsers refuse to load font files from file://, so the kit's stylesheet carries them inside.
+  if (f === 'site.css') data = strToU8(data.toString('utf8').replace(/url\(fonts\/(\w+)\.woff2\)/g, (m, name) => `url(data:font/woff2;base64,${readFileSync(ROOT + FONTS[name]).toString('base64')})`));
+  if (f.startsWith('fonts/')) continue;
   kit[KIT + f] = data;
 }
 kit[`${KIT}README.txt`] = strToU8(`BIH JHS TECH CLUB · OFFLINE CLUB KIT
@@ -620,7 +623,7 @@ function kitPage(html) {
   return html
     .replace(/<script type="importmap">[\s\S]*?<\/script>\n?/, '')
     .replace(/<script type="module" src="([^"]*)labs\/main\.js"><\/script>/, '<script src="$1labs/labs.bundle.js"></script>')
-    .replace(/<link rel="(manifest|canonical)"[^>]*>\n?/g, '')
+    .replace(/<link rel="(manifest|canonical|preload)"[^>]*>\n?/g, '')
     .replace(/<!--web-->[\s\S]*?<!--\/web-->/g, '')
     .replace(/<!--kit([\s\S]*?)kit-->/g, '$1')
     // file:// shows a folder listing for "sessions/01/", so name the file.

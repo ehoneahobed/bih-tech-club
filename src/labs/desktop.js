@@ -19,7 +19,7 @@ export default function desktopLab(stage, ui) {
   root.position.y = SH / 2 + 0.6;
   scene.add(root);
 
-  const bezel = box(SW + 0.5, SH + 0.5, 0.3, 0x1e1e24);
+  const bezel = box(SW + 0.5, SH + 0.5, 0.3, 0x24182e);
   bezel.position.z = -0.2;
   root.add(bezel);
   const wallpaper = new THREE.Mesh(new THREE.PlaneGeometry(SW, SH), new THREE.MeshBasicMaterial({ map: gradient() }));
@@ -27,7 +27,7 @@ export default function desktopLab(stage, ui) {
   root.add(wallpaper);
   stage.clickable(wallpaper, () => ui.info('Desktop background (wallpaper)', '<p>The picture behind everything. Clicking it does nothing — it is just the "table top" your programmes sit on.</p>'));
 
-  const taskbar = box(SW, 0.6, 0.05, 0x2b2d42);
+  const taskbar = box(SW, 0.6, 0.05, 0x3a2b47);
   taskbar.position.set(0, TASKBAR_Y, 0);
   root.add(taskbar);
   stage.clickable(taskbar, () => ui.info('Taskbar', '<p>The strip along the bottom. It shows the <b>Start</b> button and every programme that is open — even minimised ones. Click a programme here to bring it back.</p>'));

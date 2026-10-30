@@ -211,10 +211,15 @@ details.answers[open] { padding-bottom: 12px; }
 /* 3D lab */
 .lab { display: grid; grid-template-columns: minmax(0, 1fr) 380px; background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; outline: none; }
 .lab:focus-visible { box-shadow: 0 0 0 3px var(--gold); }
-.lab-canvas { position: relative; height: 600px; background: var(--plum-tint); }
+.lab-canvas { position: relative; height: 600px; overflow: hidden; container-type: inline-size;
+  /* Warm drawing paper with a faint grid, behind a transparent 3D canvas */
+  background-color: #fbf6ee;
+  background-image: radial-gradient(ellipse at 50% 40%, rgba(255, 255, 255, 0.9), rgba(251, 246, 238, 0) 65%),
+    linear-gradient(rgba(36, 24, 46, 0.055) 1px, transparent 1px), linear-gradient(90deg, rgba(36, 24, 46, 0.055) 1px, transparent 1px);
+  background-size: 100% 100%, 28px 28px, 28px 28px; }
 .lab-canvas canvas { display: block; width: 100% !important; height: 100% !important; touch-action: none; }
 .lab-status { position: absolute; inset: 0; display: grid; place-items: center; padding: 24px; text-align: center; color: var(--muted); }
-.lab-hint { position: absolute; left: 12px; bottom: 10px; font-size: 12px; color: var(--muted); background: rgba(255, 255, 255, 0.88); padding: 4px 12px; border-radius: 999px; pointer-events: none; }
+.lab-hint { position: absolute; left: 12px; top: 10px; font-size: 12px; color: var(--muted); background: rgba(255, 255, 255, 0.88); padding: 4px 12px; border-radius: 999px; pointer-events: none; }
 .lab-side { border-left: 1px solid var(--line); display: flex; flex-direction: column; max-height: 600px; overflow: auto; }
 .lab-info, .lab-controls, .lab-missions { flex-shrink: 0; }
 .lab-info { padding: 16px 18px; background: #fcfbfd; border-bottom: 1px solid var(--line); min-height: 140px; font-size: 14.5px; }
@@ -396,3 +401,31 @@ label.inline { display: flex; gap: 8px; align-items: flex-start; font-size: 13.5
 }
 .mentor-table { max-width: 900px; background: #fff; font-size: 14.5px; border-radius: 14px; overflow: hidden; }
 .mentor-table th, .mentor-table td { padding: 8px 12px; }
+
+/* 3D lab callouts: cards pinned to parts with a dot and a dashed leader line */
+.lab-callouts { position: absolute; inset: 0; pointer-events: none; }
+.lab-callouts.off { display: none; }
+.lab-leaders { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.lab-leaders line { stroke: var(--plum); stroke-width: 1.4; stroke-dasharray: 4 4; opacity: 0.75; }
+.callout { position: absolute; left: 0; top: 0; pointer-events: auto; display: flex; gap: 8px; align-items: flex-start; max-width: 190px; text-align: left; font: inherit; color: var(--ink); background: #fffdf9; border: 1.5px solid rgba(36, 24, 46, 0.18); border-radius: 12px; padding: 8px 11px; box-shadow: 0 6px 16px rgba(36, 24, 46, 0.1); will-change: transform; }
+button.callout { cursor: pointer; }
+button.callout:hover, button.callout:focus-visible { border-color: var(--red); box-shadow: 0 0 0 3px var(--red-tint), 0 6px 16px rgba(36, 24, 46, 0.12); }
+.callout b { display: block; font: 600 12.5px/1.2 var(--display); letter-spacing: 0.08em; text-transform: uppercase; }
+.callout small { display: block; margin-top: 3px; font-size: 11.5px; line-height: 1.35; color: var(--muted); }
+.callout-icon { font-size: 18px; line-height: 1; margin-top: 1px; }
+.callout.done { border-color: #bfe3d7; }
+.callout.done b::after { content: " ✓"; color: var(--green); }
+.callout-dot { position: absolute; left: 0; top: 0; width: 12px; height: 12px; border-radius: 50%; background: #fff; border: 3px solid var(--red); box-shadow: 0 0 0 0 rgba(202, 31, 63, 0.45); animation: dot-pulse 2.2s infinite; }
+@keyframes dot-pulse { 0% { box-shadow: 0 0 0 0 rgba(202, 31, 63, 0.45); } 70% { box-shadow: 0 0 0 10px rgba(202, 31, 63, 0); } 100% { box-shadow: 0 0 0 0 rgba(202, 31, 63, 0); } }
+@media (prefers-reduced-motion: reduce) { .callout-dot { animation: none; } }
+/* Small canvases (phones): titles only */
+@container (max-width: 560px) { .callout small { display: none; } .callout { padding: 6px 9px; max-width: 150px; } .callout-icon { font-size: 15px; } }
+
+/* View toolbar under the model */
+.lab-viewbar { position: absolute; left: 50%; bottom: 12px; transform: translateX(-50%); display: flex; gap: 2px; padding: 4px; background: rgba(255, 253, 249, 0.95); border: 1.5px solid rgba(36, 24, 46, 0.14); border-radius: 999px; box-shadow: 0 6px 16px rgba(36, 24, 46, 0.1); }
+.lab-viewbar button { width: 36px; height: 34px; border: 0; background: transparent; border-radius: 999px; font: 600 17px/1 var(--font); color: var(--ink); cursor: pointer; }
+.lab-viewbar button:hover { background: var(--plum-tint); }
+.lab-viewbar button.on { background: var(--gold-tint); }
+/* Floating text labels in the 3D labs (drawn as HTML so they stay sharp) */
+.tag3d { position: absolute; left: 0; top: 0; pointer-events: none; white-space: nowrap; text-align: center; font: 600 13px/1.2 var(--display); padding: 3px 9px; border-radius: 8px; box-shadow: 0 2px 8px rgba(36, 24, 46, 0.1); border: 1px solid rgba(36, 24, 46, 0.12); will-change: transform; }
+.tag3d.bare { box-shadow: none; border: 0; padding: 0; }

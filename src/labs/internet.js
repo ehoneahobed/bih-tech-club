@@ -12,7 +12,7 @@ const NODES = {
   mailA: { name: 'School mail server', pos: [-5, 0, -3], kind: 'server', color: COLORS.gold, info: 'Your school\'s digital post office. It sends your outgoing mail.' },
   mailB: { name: 'Friend\'s mail server', pos: [6.5, 0, 1.5], kind: 'server', color: COLORS.gold, info: 'The receiving post office. It keeps the email until your friend opens their inbox.' },
   friend: { name: 'Friend\'s computer', pos: [8.5, 0, 4.5], kind: 'pc', color: COLORS.red, info: 'Kofi, at another school.' },
-  teacher: { name: 'Teacher\'s computer', pos: [4, 0, 5.5], kind: 'pc', color: 0x7209b7, info: 'Your teacher, who was Cc\'d.' },
+  teacher: { name: 'Teacher\'s computer', pos: [4, 0, 5.5], kind: 'pc', color: 0x5a4470, info: 'Your teacher, who was Cc\'d.' },
   cloud: { name: 'Cloud drive', pos: [1.5, 0, -5.5], kind: 'cloud', color: 0x90e0ef, info: 'A file stored online so the whole team can work on it at once.' },
   ama: { name: 'Ama (Editor)', pos: [-2.5, 0, -7], kind: 'pc', color: 0x2a9d8f, info: 'Ama can <b>edit</b> the shared document.' },
   yaw: { name: 'Yaw (Commenter)', pos: [5.5, 0, -7.5], kind: 'pc', color: 0xf4a261, info: 'Yaw can <b>comment</b> but not change the text.' },
@@ -34,7 +34,7 @@ export default function internetLab(stage, ui) {
     const g = new THREE.Group();
     g.position.copy(pos(id));
     if (n.kind === 'pc') {
-      const s = box(1.1, 0.75, 0.08, 0x1e1e24);
+      const s = box(1.1, 0.75, 0.08, 0x24182e);
       s.position.y = 0.9;
       const scr = box(0.98, 0.62, 0.02, n.color);
       scr.position.set(0, 0.9, 0.05);
@@ -43,7 +43,7 @@ export default function internetLab(stage, ui) {
       g.add(s, scr, st);
     } else if (n.kind === 'server') {
       for (let i = 0; i < 3; i++) {
-        const u = box(1, 0.42, 1, 0x2b2d42);
+        const u = box(1, 0.42, 1, 0x3a2b47);
         u.position.y = 0.25 + i * 0.46;
         const led = box(0.5, 0.06, 0.02, n.color, { emissive: n.color, emissiveIntensity: 0.6 });
         led.position.set(0, 0.25 + i * 0.46, 0.51);

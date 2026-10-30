@@ -156,7 +156,7 @@ export default function chartLab(stage, ui) {
   setType('column', bc);
 }
 
-export const config = { camera: [0, 5.5, 12], target: [0, 2.6, 0], shadowSize: 8 };
+export const config = { camera: [6, 6.5, 11], target: [0, 2.4, 0], shadowSize: 8 };
 
 export const missions = [
   { id: 'cell', text: 'Click a column to find out which cell it comes from.', hint: 'Every cell has an address: a column letter + a row number, like B3.' },

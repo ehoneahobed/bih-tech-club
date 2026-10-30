@@ -74,7 +74,7 @@ export default function phishingLab(stage, ui) {
   lid.position.set(0, 2.6, -0.5);
   lid.rotation.x = -0.2;
   scene.add(lid);
-  const screenGlow = box(2.4, 1.5, 0.02, 0x4361ee, { emissive: 0x2a3fb0 });
+  const screenGlow = box(2.4, 1.5, 0.02, 0x5a4470, { emissive: 0x24182e });
   screenGlow.position.set(0, 2.6, -0.45);
   screenGlow.rotation.x = -0.2;
   scene.add(screenGlow);
@@ -219,4 +219,4 @@ export const missions = [
   { id: 'expert', text: 'Score 7 or more out of 8 (press "New round" to try again).', hint: 'Hover over links to see where they really go.' },
 ];
 
-export const config = { camera: [0, 7, 8.5], target: [0, 2, 0.5], shadowSize: 8 };
+export const config = { camera: [4.5, 7, 8], target: [0, 2, 0.5], shadowSize: 8 };

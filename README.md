@@ -61,6 +61,11 @@ The build prints a warning if a PDF is missing or older than its workbook. If yo
 
 **Update a mentor guide:** edit `content/mentor/session-07.md` and push. Keep the headings from `_TEMPLATE.md`. Use plain Markdown: headings, paragraphs, `- ` bullets, `1. ` lists, `- [ ] ` checklists, tables, `**bold**`, `*italic*`. Guides appear at `/mentors/07/`. They contain answer keys, so they are linked only from the mentors page and hidden from search engines. They are not password-protected.
 
+**3D lab style.** The labs are drawn like technical illustrations: a fixed-angle orthographic camera, ink outlines on every solid (added automatically by `inkScene()` in `src/labs/runtime.js`), soft shadows on a paper-and-grid background, and a view toolbar (turn, zoom, labels on/off, reset). A lab can opt out of the orthographic camera with `config.perspective = true` (the slides lab does, for its slide-show fly-in), and set `config.frame` to frame the scene tighter (<1) or looser (>1). Give an object `userData.noInk = true` to skip its outline.
+
+- `stage.callout(object, { icon, title, text, at, dx, dy, onClick })` pins a card to a part with a dot and a dashed leader line. `at` is a point on the object, and `dx`/`dy` move the card in pixels; cards push each other apart if they overlap. Clicking a card can do the same as clicking the part (see `computer.js`).
+- `label(text, { scale, color, bg })` and `setLabel()` make small floating text tags. They are drawn as HTML, so they stay sharp and never shrink below 11px.
+
 **Add a 3D lab to a session:** create `src/labs/<name>.js`, which exports a default `(stage, ui, host) => {}`, an optional `config` and an optional `missions` list (`[{ id, text, hint }]`; call `ui.complete(id)` when a student does each step). Copy the pattern of an existing lab, register it in `LABS` in `scripts/build.mjs`, and set `"lab": "<name>"` (or a list, e.g. `["password", "phishing"]`) on the session in `sessions.json`.
 
 ## Deploying to Vercel

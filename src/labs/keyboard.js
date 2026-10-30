@@ -4,8 +4,8 @@ import { THREE, COLORS, box, mat, textCanvas } from './runtime.js';
 
 // The four zones from workbook Figure 2.0. This keyboard is laptop-sized, so it has no numeric keypad.
 const ZONES = {
-  fn: { name: 'Function zone', color: 0x7209b7 },
-  main: { name: 'Main alphanumeric zone', color: 0x4361ee },
+  fn: { name: 'Function zone', color: 0xca1f3f },
+  main: { name: 'Main alphanumeric zone', color: 0x5a4470 },
   nav: { name: 'Navigation zone', color: 0x2ec4b6 },
   pad: { name: 'Numeric keypad (desktop keyboards only, not on this one)', color: 0xadb5bd },
 };
@@ -49,7 +49,7 @@ export default function keyboardLab(stage, ui, host) {
   const board = new THREE.Group();
   scene.add(board);
 
-  const caseMesh = box(15 * U + 0.5, 0.35, 6 * U + 0.6, 0x2b2d42);
+  const caseMesh = box(15 * U + 0.5, 0.35, 6 * U + 0.6, 0x3a2b47);
   caseMesh.position.y = 0.17;
   board.add(caseMesh);
 
