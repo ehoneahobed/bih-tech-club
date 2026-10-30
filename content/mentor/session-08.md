@@ -39,7 +39,7 @@ By the end of the session, pupils can:
 - **Team points:** 1 per scavenger-hunt win, 2 for all five lab steps done with tables filled in, 1 for helping a neighbour find a setting.
 
 ## The 3D lab
-**The Headteacher's Office** shows how the operating system sits between apps and hardware, lets pupils switch a laptop between Windows, ChromeOS and Linux, and has them rescue a frozen app. On the projector, show an app asking the OS for the printer and the OS passing the request on, then switch the laptop between the three operating systems and ask "What changed? What stayed the same?" (the look changes, the jobs stay). Pairs then do the frozen-app rescue before they try Task Manager for real in step 5.
+**The Headteacher's Office** shows how the operating system sits between apps and hardware, lets pupils switch a laptop between Windows, ChromeOS and Linux, and has them judge app installs and rescue a frozen app. Its three missions are: 1. *Send 3 different app requests through the OS to the hardware.* 2. *Switch the laptop to Windows, ChromeOS and Linux, and say what stays the same.* 3. *Judge all 6 app installs with the traffic light, and rescue a frozen app.* On the projector, show an app asking the OS for the printer and the OS passing the request on, then switch the laptop between the three operating systems and ask "What changed? What stayed the same?" (the look changes, the jobs stay). Pairs then sort the six installs with the app traffic light (Figure 8.2) and do the frozen-app rescue (Ctrl + Shift + Esc → choose the app that is Not responding → End task) before they try Task Manager for real in step 5.
 
 ## Common mistakes and quick fixes
 | Pupils often… | Try this |
