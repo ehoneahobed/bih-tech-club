@@ -266,6 +266,11 @@ details.answers[open] { padding-bottom: 12px; }
 .script .empty { color: var(--muted); font-size: 13px; }
 .readout { margin: 6px 0 0; font: 13px ui-monospace, Menlo, monospace; width: 100%; }
 
+/* Warm-up banner on session pages (sits in the plum hero) */
+.warmup-banner { display: inline-flex; align-items: center; gap: 10px; margin-top: 18px; padding: 9px 16px; border-radius: 999px; background: rgba(255, 190, 0, 0.14); border: 1px solid rgba(255, 190, 0, 0.5); color: #fff; text-decoration: none; font-weight: 500; font-size: 15px; }
+.warmup-banner:hover { background: rgba(255, 190, 0, 0.24); }
+.warmup-banner b { color: var(--gold); font-weight: 600; }
+
 /* Footer: plum, like the BIH site */
 footer { background: var(--plum); color: rgba(255, 255, 255, 0.78); padding: 56px 0 28px; font-size: 14.5px; }
 .foot-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1.2fr; gap: 32px; }
@@ -378,8 +383,8 @@ label.inline { display: flex; gap: 8px; align-items: flex-start; font-size: 13.5
   .site-head .wrap { flex-direction: column; align-items: stretch; padding-top: 12px; padding-bottom: 10px; gap: 8px; min-height: 0; }
   .brand img { height: 30px; }
   .nav { justify-content: space-between; flex-wrap: nowrap; }
-  .nav a { padding: 6px 8px; font-size: 13.5px; white-space: nowrap; }
-  .nav a.nav-cta { margin-left: 0; padding: 6px 12px; }
+  .nav a { padding: 6px 5px; font-size: 13px; white-space: nowrap; }
+  .nav a.nav-cta { margin-left: 0; padding: 6px 10px; }
   .hero { padding: 44px 0 52px; }
   section { padding: 40px 0; }
   .btn { width: 100%; }
@@ -388,6 +393,9 @@ label.inline { display: flex; gap: 8px; align-items: flex-start; font-size: 13.5
   .foot-grid { grid-template-columns: 1fr; }
   .guide { padding: 20px 16px; }
   .start-list li { padding-left: 22px; padding-top: 58px; }
+}
+@media (max-width: 360px) {
+  .nav { flex-wrap: wrap; justify-content: flex-start; row-gap: 4px; }
 }
 @media print {
   .site-head, footer, .no-print { display: none !important; }

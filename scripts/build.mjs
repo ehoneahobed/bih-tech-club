@@ -3,6 +3,7 @@
 //   content/workbooks/*.html   -> the authored workbooks
 //   packs/pdf/*.pdf            -> PDFs made locally with `npm run pdf`
 //   content/mentor/*.md        -> mentor guides
+//   content/typing.json        -> words for the typing trainer and its warm-ups
 import { cpSync, existsSync, mkdirSync, readdirSync, readFileSync, rmSync, statSync, writeFileSync } from 'node:fs';
 import { execFileSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
@@ -19,6 +20,9 @@ const course = JSON.parse(readFileSync(ROOT + 'content/sessions.json', 'utf8'));
 const SITE = (process.env.SITE_URL || course.site).replace(/\/$/, '');
 const VERSION = new Date().toISOString();
 const levels = Object.fromEntries(course.levels.map((l) => [l.id, l]));
+// Warm-up words are keyed by session title, so renumbering sessions keeps them.
+const typing = JSON.parse(readFileSync(ROOT + 'content/typing.json', 'utf8'));
+const slug = (title) => title.toLowerCase().replace(/&/g, ' ').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 
 export const LABS = {
   computer: { title: 'Explore the Computer', icon: '🖥️', blurb: 'Click every part of a desktop and a laptop, power them on, and follow a key press from input to process to output.' },
@@ -88,7 +92,7 @@ function layout({ title, description, body, path, active, image = 'site', noinde
   // The 404 page is served at whatever address was asked for, so it links from the site root.
   const up = path === '404.html' ? '/' : '../'.repeat(depth);
   const url = `${SITE}/${path.replace(/index\.html$/, '')}`;
-  const nav = [['', 'Sessions', 'home'], ['labs/', '3D Labs', 'labs'], ['mentors/', 'For mentors', 'mentors']]
+  const nav = [['', 'Sessions', 'home'], ['labs/', '3D Labs', 'labs'], ['typing/', 'Typing', 'typing'], ['mentors/', 'For mentors', 'mentors']]
     .map(([href, text, key]) => `<a href="${up}${href}"${active === key ? ' aria-current="page"' : ''}>${text}</a>`).join('')
     + `<a class="nav-cta" href="${up}start/"${active === 'start' ? ' aria-current="page"' : ''}>Start here</a>`;
   return `<!doctype html>
@@ -133,6 +137,7 @@ ${head}
       <li><a href="${up}start/">Start here</a></li>
       <li><a href="${up}">All ${course.sessions.length} sessions</a></li>
       <li><a href="${up}labs/">3D labs</a></li>
+      <li><a href="${up}typing/">Typing trainer</a></li>
       <li><a href="${up}mentors/">For mentors</a></li>
     </ul></div>
     <div><h4>Downloads</h4><ul>
@@ -457,6 +462,7 @@ sessions.forEach((s, i) => {
     <a class="btn btn-light" href="${up}workbooks/session-${s.id}.html">📖 Open the workbook</a>
   </div>
   <div class="course-bar"><div class="meter" data-course-done="${sessions.length}"><span></span></div><span></span></div>
+  ${s.n >= 2 ? `<a class="warmup-banner" href="${up}typing/?warmup=${slug(s.title)}"><span>⌨️ Start with your <b>10-minute typing warm-up</b></span><span aria-hidden="true">→</span></a>` : ''}
 </div></div>
 <section><div class="wrap two">
   <div class="outcomes">
@@ -556,6 +562,43 @@ guides.forEach((s, i) => {
 });
 const hasGuide = new Set(guides.map((s) => s.id));
 
+// ---------- Typing trainer ----------
+// One classic script with the words inside, so it runs from file:// in the USB kit too.
+for (const s of sessions) if (s.n >= 2 && !typing.warmup[s.title]) warnings.push(`Session ${s.n}: no warm-up words in content/typing.json for "${s.title}"`);
+const typingData = { bank: typing.bank, sessions: sessions.map((s) => ({ id: s.id, n: s.n, title: s.title, slug: slug(s.title), words: typing.warmup[s.title] || [] })) };
+const typingBundle = await esbuild({ entryPoints: [ROOT + 'src/typing/main.js'], bundle: true, format: 'iife', minify: true, write: false, logLevel: 'error', define: { TYPING_DATA: JSON.stringify(typingData) } });
+write('typing/typing.js', typingBundle.outputFiles[0].contents);
+cpSync(ROOT + 'src/typing/typing.css', DIST + 'typing/typing.css');
+write('typing/index.html', layout({
+  title: 'Typing Trainer · BIH Tech Club',
+  description: 'Learn to touch type step by step, warm up before every session, check your speed and play Trotro Race and Falling Mangoes.',
+  path: 'typing/',
+  active: 'typing',
+  head: '<link rel="stylesheet" href="typing.css">',
+  body: `${pageHero({ eyebrow: 'Typing trainer', title: 'Type fast, type right', lead: 'Learn every key one stage at a time, warm up before each session, and race your trotro to Circle. Accuracy first: speed will follow.' })}
+<section><div class="wrap">
+  <div id="tt-app" class="tt-app"><p class="tt-loading">Loading the typing trainer…</p><noscript><p>The typing trainer needs JavaScript switched on in your browser.</p></noscript></div>
+</div></section>
+<script src="typing.js" defer></script>
+<section class="band-white"><div class="wrap">
+  <span class="eyebrow">Your Typing Passport</span>
+  <h2 class="section-title">Every graduate types fast and accurately</h2>
+  <p class="section-lead">Take the 3-minute speed check to earn each level. You need the speed <b>and</b> the accuracy.</p>
+  <div class="tt-targets">
+    <div><span>🥉</span><b>Bronze</b><p>15 words a minute at 90% accuracy</p></div>
+    <div><span>🥈</span><b>Silver</b><p>25 words a minute at 92% accuracy</p></div>
+    <div><span>🥇</span><b>Gold</b><p>35 words a minute at 95% accuracy</p></div>
+  </div>
+  <div class="help-grid" style="margin-top:22px">
+    <div><b>🎯 Accuracy before speed</b><p>You move up a stage only with 95% accuracy. A wrong key turns red: rub it out with Backspace, then type the right key.</p></div>
+    <div><b>👀 Don't look at the keys</b><p>Feel the bumps on F and J and keep your eyes on the screen. The keyboard picture shows which finger to use.</p></div>
+    <div><b>🪑 Sit well</b><p>Feet flat, back straight, wrists up. Take a short break if your hands feel tired.</p></div>
+    <div><b>⚡ Badges at 20, 30 and 40 wpm</b><p>Earn them in any speed check with 90% accuracy or more. Ten minutes a day makes a big difference.</p></div>
+  </div>
+  <p class="small-tip" style="margin-top:16px">Your typing progress is saved only in this browser on this computer. The keyboard pictures show the common US layout: on a UK keyboard, <b>@</b> and <b>"</b> swap places, and that is fine.</p>
+</div></section>`,
+}));
+
 write('mentors/index.html', layout({
   title: 'For mentors · BIH Tech Club',
   description: 'Mentor guides, session links and downloads for running the BIH JHS Tech Club.',
@@ -568,6 +611,7 @@ write('mentors/index.html', layout({
     ${web(`<div><b>2 · No internet at the school?</b><p>Two options. <b>Easiest:</b> on each lab PC, while it has internet, open this page and press the button below. The whole course, labs included, then works offline on that PC. <b>Or:</b> copy the <a href="../downloads/BIH-Tech-Club-Offline-Kit.zip" download>Offline Club Kit</a> to a USB drive, unzip it on each PC and open <i>index.html</i>.</p></div>`)}${kitOnly(`<div><b>2 · This is the Offline Club Kit</b><p>Everything here, the 3D labs included, works with no internet. When you next have internet, get the newest kit from <b>${SITE.replace('https://', '')}/mentors/</b>.</p></div>`)}
     <div><b>3 · Paper practice</b><p>Print the PDF for learners without devices at home. Fill-in boxes print as blank lines.</p></div>
     <div><b>3D labs & missions</b><p>Every session has a 3D lab with 🎯 missions: a step-by-step checklist with hints. Project the lab and do mission 1 together, then let pairs continue. 🔊 reads instructions aloud.</p></div>
+    <div><b>⌨️ Typing warm-up</b><p>From Session 2, open every session with the 10-minute warm-up: press the button at the top of the session page. Pupils can also practise at home in the <a href="../typing/">Typing Trainer</a>.</p></div>
     <div><b>4 · Answers stay local</b><p>Typed answers are saved only in that browser on that PC. On shared machines, remind learners to print or save as PDF, then press <i>Clear my answers</i>.</p></div>
   </div>
   <h2 class="section-title" style="margin-top:44px" id="downloads">Mentor guides and downloads</h2>
@@ -591,7 +635,7 @@ write('404.html', layout({
 write('version.json', JSON.stringify({ built: VERSION, sessions: sessions.map((s) => ({ n: s.n, title: s.title, updated: s.updated, pdf: s.hasPdf, mentorGuide: hasGuide.has(s.id) })) }, null, 2));
 
 // ---------- Search engines and installable app ----------
-const publicPages = ['', 'start/', 'labs/', 'mentors/', ...sessions.map((s) => `sessions/${s.id}/`)];
+const publicPages = ['', 'start/', 'labs/', 'typing/', 'mentors/', ...sessions.map((s) => `sessions/${s.id}/`)];
 write('robots.txt', `User-agent: *\nAllow: /\n\nSitemap: ${SITE}/sitemap.xml\n`);
 write('sitemap.xml', `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
@@ -616,7 +660,7 @@ const ALL = siteFiles
   .filter((f) => !/^(downloads\/[^/]+\.zip|assets\/og\/)/.test(f) && !/\.(json|txt|xml)$|LICENSE$|^sw\.js$/.test(f))
   .map((f) => '/' + f.replace(/(^|\/)index\.html$/, '$1'));
 // Saved on the first visit: about 100 KB compressed. PDFs are saved only by "Save the whole course".
-const CORE = ALL.filter((u) => /^\/(start\/|sessions\/\d+\/|labs\/|mentors\/|404\.html|site\.(css|js)|fonts\/\w+\.woff2|assets\/(logo|logo-white|icon-192)\.png)?$/.test(u));
+const CORE = ALL.filter((u) => /^\/(start\/|sessions\/\d+\/|labs\/|typing\/(typing\.(js|css))?|mentors\/|404\.html|site\.(css|js)|fonts\/\w+\.woff2|assets\/(logo|logo-white|icon-192)\.png)?$/.test(u));
 const SW_ALL = ALL.filter((u) => !u.startsWith('/downloads/pdf/'));
 write('sw.js', readFileSync(ROOT + 'src/sw.js', 'utf8').replace('__VERSION__', VERSION).replace('__CORE__', JSON.stringify(CORE)).replace('__ALL__', JSON.stringify(SW_ALL)));
 
@@ -661,6 +705,7 @@ function kitPage(html) {
     // file:// shows a folder listing for "sessions/01/", so name the file.
     .replace(/href="((?:\.\.\/)*(?:[\w-]+\/)*)"/g, 'href="$1index.html"')
     .replace(/href="((?:\.\.\/)+(?:[\w-]+\/)*|(?:[\w-]+\/)+)(#[\w-]+)"/g, 'href="$1index.html$2"')
+    .replace(/href="((?:\.\.\/)*(?:[\w-]+\/)+)\?/g, 'href="$1index.html?')
     .replace(/href="\/(labs\/)?"/g, (m, sub) => `href="${sub || ''}index.html"`);
 }
 
