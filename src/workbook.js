@@ -1,6 +1,28 @@
 // Added to every workbook page: autosaves typed answers, ticks and choices in
 // this browser, and powers the toolbar (print / save as PDF, clear answers).
 (function () {
+  // October 2026: two AI sessions became 18 and 19, so the capstone moved from
+  // 18–20 to 20–22. Move work saved under the old numbers, once per browser.
+  try {
+    if (!localStorage.getItem('bih-renumbered-22')) {
+      ['20', '19', '18'].forEach(function (from) {
+        var to = String(+from + 2);
+        ['', '-old'].forEach(function (end) {
+          var v = localStorage.getItem('bih-workbook-' + from + end);
+          if (v !== null) { localStorage.setItem('bih-workbook-' + to + end, v); localStorage.removeItem('bih-workbook-' + from + end); }
+        });
+      });
+      var p = JSON.parse(localStorage.getItem('bih-progress') || 'null');
+      if (p && p.sessions) {
+        var moved = {};
+        Object.keys(p.sessions).forEach(function (id) { moved[+id >= 18 && +id <= 20 ? String(+id + 2) : id] = p.sessions[id]; });
+        p.sessions = moved;
+        if (p.last && +p.last.id >= 18 && +p.last.id <= 20) p.last.id = String(+p.last.id + 2);
+        localStorage.setItem('bih-progress', JSON.stringify(p));
+      }
+      localStorage.setItem('bih-renumbered-22', '1');
+    }
+  } catch (e) {}
   var key = 'bih-workbook-' + (document.documentElement.dataset.session || location.pathname);
   var FIELD = '[contenteditable="true"], input[type="checkbox"], input[type="radio"], input[type="text"], textarea';
 

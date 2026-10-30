@@ -32,6 +32,8 @@ export const LABS = {
   document: { title: 'Format a Real Document', icon: '📝', blurb: 'Select paragraphs on a 3D page and use the ribbon: bold, sizes, alignment, bullets, numbering, heading styles, spell check, then print it on a 3D printer.' },
   slides: { title: 'Slide Design & Show Time', icon: '🎤', blurb: 'Fix a badly designed deck (contrast, the 6-by-6 rule, a squished picture, carnival animations), then present it in a 3D classroom with real slide-show keys.' },
   phishing: { title: 'Spot the Phish', icon: '🎣', blurb: 'Emails land on your desk one by one. Check the sender, the subject and where the link really goes, then keep it or shred it.' },
+  sorter: { title: 'Teach the Robot', icon: '🧠', blurb: 'Show a recycling robot examples of plastic, paper and cans, then watch it sort things it has never seen. Give it bad examples and see how AI gets things wrong.' },
+  aihelper: { title: 'AI Helper Check', icon: '💬', blurb: 'Ask a pretend AI helper on a 3D phone. Build a clear prompt, catch its confident mistakes against a trusted source, and decide what you should never type into a chatbot.' },
   capstone: { title: 'Build the Whole House', icon: '🏠', blurb: 'Each capstone step builds part of a 3D house: charter, prototype, testing and polish. Then practise your timed 3-minute pitch on the Demo Day stage. Saved between sessions.' },
 };
 const labsOf = (s) => (Array.isArray(s.lab) ? s.lab : s.lab ? [s.lab] : []);
@@ -251,7 +253,7 @@ const guideSection = (id, heading) => {
 const outcomesOf = (id) => guideSection(id, 'Learning outcomes').split('\n').filter((l) => /^\d+\.\s/.test(l)).map((l) => l.replace(/^\d+\.\s+/, ''));
 
 // The steps through each session. Most workbooks teach on pages 1–4, have the
-// hands-on Lab Mission on page 5 and the review on page 6; 18 and 20 differ.
+// hands-on Lab Mission on page 5 and the review on page 6; 20 and 22 (capstone) differ.
 function stepsFor(s) {
   const wb = (page) => `../../workbooks/session-${s.id}.html${page ? `#page-${page}` : ''}`;
   const open = (page, text) => `<a class="btn btn-primary btn-small" href="${wb(page)}">${text}</a>`;
@@ -268,7 +270,7 @@ function stepsFor(s) {
     after: answers ? `<details class="answers"><summary>Finished? Check your answers</summary><div class="answers-body">${renderMarkdown(answers)}</div></details>` : '',
   });
   const save = { title: 'Rate yourself and save your work', time: '5 min', text: 'Tick how confident you feel on the last page, then press <b>🖨 Print / Save as PDF</b> in the workbook to keep a copy. On a shared computer, press <b>Clear my answers</b> when you have saved it.', actions: open(6, '📖 Open the last page') };
-  if (s.n === 18) return [
+  if (s.n === 20) return [
     { title: 'Learn the plan', time: '25 min', text: 'Read pages 1–3 of the workbook: how a real project is planned, and the four project tracks.', actions: open(1, '📖 Open the workbook') },
     { title: 'Fill in your project canvas', time: '20 min', text: 'With your team, complete the project canvas on page 4, including a role for every member.', actions: open(4, '📖 Open page 4') },
     lab,
@@ -276,7 +278,7 @@ function stepsFor(s) {
     check(6, 'Work through the Milestone 1 checklist on page 6 with your team.'),
     save,
   ].filter(Boolean);
-  if (s.n === 20) return [
+  if (s.n === 22) return [
     { title: 'Get ready for Demo Day', time: '20 min', text: 'Read pages 1–3: the 3-act pitch, staying calm on stage, and what to do if something goes wrong.', actions: open(1, '📖 Open the workbook') },
     lab,
     { title: 'Give your pitch', time: '40 min', text: 'Follow the Lab Mission on page 4: present your project in 3 minutes, then answer questions for 1 minute.', actions: open(4, '📖 Open page 4') },

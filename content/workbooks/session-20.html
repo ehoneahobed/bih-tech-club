@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>BIH Tech Club - Session 20: Showcase Demo Day & Graduation</title>
+  <title>BIH Tech Club - Session 20: Capstone Planning & Blueprint</title>
   <style>
     :root {
       --bih-purple: #3A0CA3;
@@ -13,8 +13,7 @@
       --bih-dark: #1E1E24;
       --bih-light: #F8F9FA;
       --bih-border: #CED4DA;
-      --grad-gold: #D97706;
-      --cert-border: #B45309;
+      --capstone-gold: #D97706;
     }
 
     * {
@@ -72,18 +71,6 @@
       font-size: 11px;
       font-weight: 800;
       letter-spacing: 0.5px;
-    }
-
-    .badge-grad {
-      background: linear-gradient(135deg, #F59E0B, #B45309);
-      color: white;
-      padding: 5px 16px;
-      border-radius: 20px;
-      font-size: 12px;
-      font-weight: 900;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      box-shadow: 0 2px 6px rgba(180,83,9,0.3);
     }
 
     /* Student Meta Box */
@@ -241,6 +228,17 @@
       padding: 2px 4px;
     }
 
+    .answer-box {
+      border: 1px solid var(--bih-border);
+      border-radius: 6px;
+      min-height: 60px;
+      padding: 8px 10px;
+      margin-top: 6px;
+      outline: none;
+      background: #FCFCFC;
+      font-size: 13px;
+    }
+
     .checkbox-item {
       display: flex;
       align-items: center;
@@ -249,28 +247,17 @@
       font-size: 12.5px;
     }
     .checkbox-item input { width: 15px; height: 15px; cursor: pointer; }
-
-    /* Graduation Certificate Box */
-    .cert-frame {
-      border: 6px double var(--cert-border);
-      border-radius: 12px;
-      padding: 30px 40px;
-      background: #FFFDF9;
-      text-align: center;
-      margin: 20px 0;
-      position: relative;
-    }
   </style>
 </head>
 <body>
 
 <!-- ========================================== -->
-<!-- PAGE 1: DEMO DAY & THE 3-MINUTE PITCH      -->
+<!-- PAGE 1: THE CAPSTONE MISSION               -->
 <!-- ========================================== -->
 <div class="page">
   <div class="header-bar">
     <div class="header-title">Bozoma Innovation Hub • Tech Club</div>
-    <div class="badge-grad">Session 20 • Showcase Day!</div>
+    <div class="badge">Session 20 • Page 1</div>
   </div>
 
   <div class="student-meta">
@@ -281,428 +268,454 @@
       <div class="editable-line" contenteditable="true">Bozoma Model JHS</div>
     </div>
     <div class="meta-row">
-      <span class="meta-label">Final Project Title:</span>
-      <div class="editable-line" contenteditable="true">Track A: Safe Water for Our School</div>
+      <span class="meta-label">Team Members (3–4):</span>
+      <div class="editable-line" contenteditable="true">Ama Mensah, Kofi Boateng, Kwesi Appiah</div>
       <span class="meta-label" style="min-width: 50px;">Class:</span>
       <div class="editable-line" contenteditable="true" style="max-width: 90px;">JHS 1</div>
     </div>
   </div>
 
-  <h1>Session 20: Showcase Demo Day & Graduation</h1>
-  <p>Today is the culmination of your entire BIH Tech Club journey! Today, you are not just students sitting at desks; you are <strong>innovators, presenters, and solution builders</strong> taking the stage to showcase your digital creation to your teachers, mentors, classmates, and community guests.</p>
+  <h1>Session 20: Capstone Planning & Blueprint</h1>
+  <p>Congratulations! Over the past 17 sessions, you started from zero: touching a computer for the first time, mastering typing, managing files, researching safely online, writing formatted reports, building automated spreadsheets, presenting slides, and coding algorithms in Scratch. Now comes the ultimate test: <strong>The Capstone Final Project</strong>!</p>
 
-  <h2>1. The 3-Minute Showcase Pitch Formula</h2>
-  <p>In tech innovation hubs around the world, entrepreneurs pitch multi-million cedi ideas in just three minutes. You have exactly <strong>180 seconds</strong> on stage. Divide your pitch into three tight acts:</p>
+  <h2>1. Plain Talk: Building the Whole House</h2>
+  <p>Think about a master mason constructing a house: first, they gather sand, stones, cement, water, and timber. Those are the individual materials. But the materials alone are not a house! The mason must study a <strong>Blueprint</strong>, mix the cement, lay the foundation blocks, raise the walls, and put on the roof.</p>
+  <p>In this final module (Sessions 20, 21, and 22), you will unite your digital tools to build a genuine, working solution for an issue in your school or neighborhood in Ghana!</p>
 
-  <!-- DIAGRAM: THE 3-MINUTE PITCH ARC -->
+  <!-- DIAGRAM: THE CAPSTONE SOLUTION BRIDGE -->
   <div class="diagram-container">
-    <svg width="680" height="155" viewBox="0 0 680 155" xmlns="http://www.w3.org/2000/svg">
-      <rect x="25" y="10" width="630" height="135" rx="6" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.5"/>
+    <svg width="700" height="155" viewBox="0 0 700 155" xmlns="http://www.w3.org/2000/svg">
+      <rect x="20" y="10" width="660" height="135" rx="6" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.5"/>
 
-      <!-- ACT 1: THE HOOK & PROBLEM (30s) -->
-      <g transform="translate(45, 25)">
-        <rect x="0" y="0" width="165" height="90" rx="5" fill="#EEF2FF" stroke="#4361EE" stroke-width="1.5"/>
-        <text x="82" y="20" font-size="10.5" font-weight="bold" fill="#3A0CA3" text-anchor="middle">ACT 1: HOOK &amp; PROBLEM</text>
-        <line x1="15" y1="28" x2="150" y2="28" stroke="#CBD5E1" stroke-width="1"/>
-        <text x="82" y="46" font-size="9" fill="#1E293B" text-anchor="middle">State the community issue</text>
-        <text x="82" y="60" font-size="9" fill="#1E293B" text-anchor="middle">Who is affected?</text>
-        <rect x="35" y="72" width="95" height="16" rx="8" fill="#3A0CA3"/>
-        <text x="82" y="83" font-size="8" font-weight="bold" fill="white" text-anchor="middle">⏱️ 0 to 30 Seconds</text>
+      <!-- Left Pillar: Digital Skills Mastered -->
+      <g transform="translate(40, 25)">
+        <rect x="0" y="0" width="160" height="100" rx="5" fill="#3A0CA3"/>
+        <text x="80" y="24" font-size="10.5" font-weight="bold" fill="#FCD34D" text-anchor="middle">YOUR TOOLKIT</text>
+        <line x1="15" y1="32" x2="145" y2="32" stroke="#4361EE" stroke-width="1.5"/>
+        <text x="20" y="48" font-size="8.5" fill="white">&bull; Word Processing Docs</text>
+        <text x="20" y="62" font-size="8.5" fill="white">&bull; Spreadsheet Formulas</text>
+        <text x="20" y="76" font-size="8.5" fill="white">&bull; Slide Presentations</text>
+        <text x="20" y="90" font-size="8.5" fill="white">&bull; Scratch Coding Logic</text>
       </g>
 
-      <path d="M 215,70 L 255,70" stroke="#F77F00" stroke-width="2.5"/>
-      <polygon points="260,70 252,66 252,74" fill="#F77F00"/>
-
-      <!-- ACT 2: LIVE DEMO (90s) -->
-      <g transform="translate(265, 20)">
-        <rect x="0" y="0" width="170" height="100" rx="5" fill="#ECFDF5" stroke="#10B981" stroke-width="2"/>
-        <text x="85" y="20" font-size="11" font-weight="bold" fill="#047857" text-anchor="middle">ACT 2: LIVE DEMO ⭐</text>
-        <line x1="15" y1="28" x2="155" y2="28" stroke="#A7F3D0" stroke-width="1"/>
-        <text x="85" y="46" font-size="9" fill="#064E3B" text-anchor="middle">Show your digital tool live!</text>
-        <text x="85" y="60" font-size="8.5" fill="#064E3B" text-anchor="middle">Run game / Click formulas</text>
-        <text x="85" y="74" font-size="8.5" fill="#064E3B" text-anchor="middle">Flip clean slides</text>
-        <rect x="35" y="80" width="100" height="16" rx="8" fill="#10B981"/>
-        <text x="85" y="91" font-size="8" font-weight="bold" fill="white" text-anchor="middle">⏱️ 30s to 2:00 Min</text>
+      <!-- The Connecting Bridge -->
+      <path d="M 210,75 L 325,75" stroke="#F77F00" stroke-width="4"/>
+      <polygon points="330,75 320,70 320,80" fill="#F77F00"/>
+      <g transform="translate(230, 42)">
+        <rect x="0" y="0" width="80" height="24" rx="3" fill="#FFF7ED" stroke="#F77F00" stroke-width="1.2"/>
+        <text x="40" y="16" font-size="9" font-weight="bold" fill="#C2410C" text-anchor="middle">CAPSTONE</text>
       </g>
 
-      <path d="M 440,70 L 480,70" stroke="#F77F00" stroke-width="2.5"/>
-      <polygon points="485,70 477,66 477,74" fill="#F77F00"/>
+      <!-- Center Icon: Community Innovation -->
+      <g transform="translate(345, 30)">
+        <circle cx="45" cy="45" r="35" fill="#ECFDF5" stroke="#10B981" stroke-width="2.5"/>
+        <text x="45" y="42" font-size="20" text-anchor="middle">💡</text>
+        <text x="45" y="62" font-size="8.5" font-weight="bold" fill="#047857" text-anchor="middle">GHANA IMPACT</text>
+      </g>
 
-      <!-- ACT 3: LEARNING & CALL TO ACTION (60s) -->
-      <g transform="translate(485, 25)">
-        <rect x="0" y="0" width="165" height="90" rx="5" fill="#FFF7ED" stroke="#F77F00" stroke-width="1.5"/>
-        <text x="82" y="20" font-size="10.5" font-weight="bold" fill="#9A3412" text-anchor="middle">ACT 3: FIX &amp; ACTION</text>
-        <line x1="15" y1="28" x2="150" y2="28" stroke="#FED7AA" stroke-width="1"/>
-        <text x="82" y="46" font-size="9" fill="#7C2D12" text-anchor="middle">What bug did you fix?</text>
-        <text x="82" y="60" font-size="9" fill="#7C2D12" text-anchor="middle">How can this help Ghana?</text>
-        <rect x="35" y="72" width="95" height="16" rx="8" fill="#F77F00"/>
-        <text x="82" y="83" font-size="8" font-weight="bold" fill="white" text-anchor="middle">⏱️ 2:00 to 3:00 Min</text>
+      <!-- The Connecting Bridge 2 -->
+      <path d="M 435,75 L 485,75" stroke="#F77F00" stroke-width="4"/>
+      <polygon points="490,75 480,70 480,80" fill="#F77F00"/>
+
+      <!-- Right Pillar: Real Community Challenges -->
+      <g transform="translate(500, 25)">
+        <rect x="0" y="0" width="160" height="100" rx="5" fill="#1E293B"/>
+        <text x="80" y="24" font-size="10.5" font-weight="bold" fill="#38BDF8" text-anchor="middle">REAL PROBLEMS</text>
+        <line x1="15" y1="32" x2="145" y2="32" stroke="#475569" stroke-width="1.5"/>
+        <text x="20" y="48" font-size="8.5" fill="white">&bull; Plastic sachet litter</text>
+        <text x="20" y="62" font-size="8.5" fill="white">&bull; Canteen bookkeeping</text>
+        <text x="20" y="76" font-size="8.5" fill="white">&bull; Drinking water health</text>
+        <text x="20" y="90" font-size="8.5" fill="white">&bull; Library book tracking</text>
       </g>
     </svg>
-    <div class="diagram-caption">Figure 20.0: The 3-Minute Showcase Pitch Arc, followed by 1 minute of audience Q&amp;A. Keep strictly to time so every team has their moment on stage!</div>
+    <div class="diagram-caption">Figure 20.0: The Capstone Bridge. You are using technology tools to create tangible solutions for your community.</div>
   </div>
 
-  <h2>2. Showcase Vocabulary</h2>
-  <ul>
-    <li><strong>Demo Day:</strong> An official showcase exhibition where technology students demonstrate working prototypes.</li>
-    <li><strong>The Pitch:</strong> A short, persuasive spoken presentation explaining why your project matters and how it works.</li>
-    <li><strong>Live Demonstration:</strong> Operating your digital file on the big projector screen in real time before the audience.</li>
-    <li><strong>Call to Action:</strong> The final inspiring statement asking people to change a habit, support the project, or adopt the tool.</li>
-  </ul>
-</div>
-
-<!-- ========================================== -->
-<!-- PAGE 2: STAGE CHOREOGRAPHY & READINESS     -->
-<!-- ========================================== -->
-<div class="page">
-  <div class="header-bar">
-    <div class="header-title">Stage Choreography & Readiness</div>
-    <div class="badge">Session 20 • Page 2</div>
-  </div>
-
-  <h2>1. Team Stage Choreography: Everyone Has a Voice!</h2>
-  <p>In a strong team, one person does not hog the microphone while the others stand like statues. Divide speaking duties so every single member shines on stage:</p>
-
-  <!-- DIAGRAM: STAGE TEAM SETUP -->
-  <div class="diagram-container">
-    <svg width="680" height="160" viewBox="0 0 680 160" xmlns="http://www.w3.org/2000/svg">
-      <rect x="25" y="10" width="630" height="140" rx="6" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.5"/>
-
-      <!-- Big Projection Screen behind -->
-      <g transform="translate(180, 18)">
-        <rect x="0" y="0" width="320" height="65" rx="3" fill="#1E293B" stroke="#0F172A" stroke-width="1.5"/>
-        <rect x="6" y="6" width="308" height="53" fill="#60A5FA"/>
-        <text x="160" y="32" font-size="11" font-weight="bold" fill="white" text-anchor="middle">LIVE PROJECT ON STAGE</text>
-        <text x="160" y="46" font-size="8" fill="#E0F2FE" text-anchor="middle">(Clean Water / Game / Canteen Sheet)</text>
-      </g>
-
-      <!-- SPEAKER 1: Intro & Problem -->
-      <g transform="translate(70, 45)">
-        <circle cx="35" cy="30" r="12" fill="#F77F00"/>
-        <line x1="35" y1="42" x2="35" y2="75" stroke="#3A0CA3" stroke-width="3"/>
-        <line x1="35" y1="52" x2="52" y2="45" stroke="#3A0CA3" stroke-width="2.5"/> <!-- Mic in hand -->
-        <circle cx="54" cy="43" r="3" fill="#1E293B"/>
-        <text x="35" y="92" font-size="8.5" font-weight="bold" fill="#3A0CA3" text-anchor="middle">Speaker 1: Ama</text>
-        <text x="35" y="103" font-size="7.5" fill="#64748B" text-anchor="middle">(Introduces Problem)</text>
-      </g>
-
-      <!-- SPEAKER 2: Driver & Live Demo -->
-      <g transform="translate(300, 75)">
-        <!-- Podium desk with Laptop -->
-        <rect x="10" y="20" width="60" height="25" fill="#475569"/>
-        <polygon points="20,20 28,8 52,8 60,20" fill="#1E293B"/>
-        <circle cx="40" cy="5" r="10" fill="#10B981"/>
-        <line x1="40" y1="15" x2="40" y2="45" stroke="#1E293B" stroke-width="3"/>
-        <text x="40" y="58" font-size="8.5" font-weight="bold" fill="#047857" text-anchor="middle">Speaker 2: Kofi</text>
-        <text x="40" y="69" font-size="7.5" fill="#64748B" text-anchor="middle">(Drives the Laptop)</text>
-      </g>
-
-      <!-- SPEAKER 3: Learning & Q&A -->
-      <g transform="translate(530, 45)">
-        <circle cx="35" cy="30" r="12" fill="#2EC4B6"/>
-        <line x1="35" y1="42" x2="35" y2="75" stroke="#3A0CA3" stroke-width="3"/>
-        <text x="35" y="92" font-size="8.5" font-weight="bold" fill="#0D9488" text-anchor="middle">Speaker 3: Kwesi</text>
-        <text x="35" y="103" font-size="7.5" fill="#64748B" text-anchor="middle">(Explains Bug & Fix)</text>
-      </g>
-    </svg>
-    <div class="diagram-caption">Figure 20.1: Stage Choreography. One teammate speaks, one drives the laptop, and one explains the learning journey.</div>
-  </div>
-
-  <h2>2. Pre-Flight Technical Checklist (Before Walking on Stage)</h2>
-  <div class="dual-grid">
-    <div class="dual-box">
-      <div class="dual-box-title">💻 Laptop & File Setup</div>
-      <div class="checkbox-item"><input type="checkbox"> File opened from <code>Final_Showcase</code> folder.</div>
-      <div class="checkbox-item"><input type="checkbox"> Unnecessary browser tabs and apps closed.</div>
-      <div class="checkbox-item"><input type="checkbox"> Sound volume set to 75% for Scratch sounds.</div>
-    </div>
-    <div class="dual-box">
-      <div class="dual-box-title">🎤 Presentation Readiness</div>
-      <div class="checkbox-item"><input type="checkbox"> All team members know their speaking order.</div>
-      <div class="checkbox-item"><input type="checkbox"> Eye contact practiced (look at audience rows).</div>
-      <div class="checkbox-item"><input type="checkbox"> Smiling and standing tall!</div>
-    </div>
-  </div>
-
-  <h2>3. Panic Button / Stage Resilience</h2>
-  <div class="panic-box">
-    <div class="panic-title">🚨 WHAT IF THE PROJECTOR TURNS BLACK ON STAGE?</div>
-    <strong>Stay calm and keep smiling!</strong> True tech leaders never freeze.
-    <br>If a cable comes loose or power flickers, <strong>Speaker 1 must keep speaking from memory</strong>: describe your project with passion. If needed, Speaker 2 keeps talking while the mentor checks the cable and power. Never touch cables or plugs yourself!
-  </div>
-</div>
-
-<!-- ========================================== -->
-<!-- PAGE 3: THE JOURNEY OF TRANSFORMATION      -->
-<!-- ========================================== -->
-<div class="page">
-  <div class="header-bar">
-    <div class="header-title">Your Journey of Transformation</div>
-    <div class="badge">Session 20 • Page 3</div>
-  </div>
-
-  <h2>1. Look How Far You Have Come!</h2>
-  <p>Take a deep breath and look back at Session 1. Many students in this room had never touched a computer mouse, did not know what an operating system was, and had never typed a sentence on a keyboard. Today, you are certified digital creators!</p>
-
-  <!-- DIAGRAM: THE 20-SESSION TRANSFORMATION TIMELINE -->
-  <div class="diagram-container">
-    <svg width="680" height="150" viewBox="0 0 680 150" xmlns="http://www.w3.org/2000/svg">
-      <rect x="20" y="10" width="640" height="130" rx="6" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.5"/>
-
-      <!-- Timeline Rail -->
-      <line x1="50" y1="65" x2="630" y2="65" stroke="#CBD5E1" stroke-width="4"/>
-
-      <!-- Milestone 1: S1-S3 -->
-      <g transform="translate(60, 35)">
-        <circle cx="15" cy="30" r="12" fill="#3A0CA3"/>
-        <text x="15" y="34" font-size="9" font-weight="bold" fill="white" text-anchor="middle">1</text>
-        <text x="15" y="55" font-size="8.5" font-weight="bold" fill="#3A0CA3" text-anchor="middle">FOUNDATIONS</text>
-        <text x="15" y="66" font-size="7.5" fill="#64748B" text-anchor="middle">Hardware & Mouse</text>
-      </g>
-
-      <!-- Milestone 2: S4-S7 -->
-      <g transform="translate(190, 35)">
-        <circle cx="15" cy="30" r="12" fill="#4361EE"/>
-        <text x="15" y="34" font-size="9" font-weight="bold" fill="white" text-anchor="middle">2</text>
-        <text x="15" y="55" font-size="8.5" font-weight="bold" fill="#4361EE" text-anchor="middle">FILES & WEB</text>
-        <text x="15" y="66" font-size="7.5" fill="#64748B" text-anchor="middle">Typing & Research</text>
-      </g>
-
-      <!-- Milestone 3: S8-S13 -->
-      <g transform="translate(320, 35)">
-        <circle cx="15" cy="30" r="12" fill="#F77F00"/>
-        <text x="15" y="34" font-size="9" font-weight="bold" fill="white" text-anchor="middle">3</text>
-        <text x="15" y="55" font-size="8.5" font-weight="bold" fill="#9A3412" text-anchor="middle">OFFICE SUITE</text>
-        <text x="15" y="66" font-size="7.5" fill="#64748B" text-anchor="middle">Docs, Sheets, Slides</text>
-      </g>
-
-      <!-- Milestone 4: S14-S17 -->
-      <g transform="translate(450, 35)">
-        <circle cx="15" cy="30" r="12" fill="#2EC4B6"/>
-        <text x="15" y="34" font-size="9" font-weight="bold" fill="white" text-anchor="middle">4</text>
-        <text x="15" y="55" font-size="8.5" font-weight="bold" fill="#0D9488" text-anchor="middle">CODE & SAFETY</text>
-        <text x="15" y="66" font-size="7.5" fill="#64748B" text-anchor="middle">Scratch & Passwords</text>
-      </g>
-
-      <!-- Milestone 5: S18-S20 -->
-      <g transform="translate(580, 35)">
-        <circle cx="15" cy="30" r="14" fill="#D97706" stroke="#B45309" stroke-width="2"/>
-        <text x="15" y="35" font-size="11" font-weight="bold" fill="white" text-anchor="middle">🎓</text>
-        <text x="15" y="55" font-size="9" font-weight="bold" fill="#B45309" text-anchor="middle">CAPSTONE</text>
-        <text x="15" y="66" font-size="7.5" fill="#B45309" text-anchor="middle">Graduation!</text>
-      </g>
-    </svg>
-    <div class="diagram-caption">Figure 20.2: Your 20-session learning journey. From absolute beginner to certified digital innovator!</div>
-  </div>
-
-  <h2>2. Personal Growth Reflection</h2>
-  <p>Think deeply about your transformation over this term. Write your honest reflections below:</p>
-
-  <p><strong>1. The hardest computer skill that I completely mastered was:</strong></p>
-  <div class="answer-line" contenteditable="true">e.g. Writing spreadsheet formulas with =SUM or debugging loops in Scratch...</div>
-
-  <p><strong>2. The most exciting thing my team built was:</strong></p>
-  <div class="answer-line" contenteditable="true">Write about your capstone project here...</div>
-
-  <p><strong>3. How I will use my computer skills to help my school, family, or community next term:</strong></p>
-  <div class="answer-line" contenteditable="true">Write your future plan here...</div>
-</div>
-
-<!-- ========================================== -->
-<!-- PAGE 4: GUIDED LAB - THE LIVE DEMO         -->
-<!-- ========================================== -->
-<div class="page">
-  <div class="header-bar">
-    <div class="header-title">Guided Hands-On Lab: The Final Showcase</div>
-    <div class="badge">Session 20 • Page 4</div>
-  </div>
-
-  <h2>1. Lab Mission: Execute Your 3-Minute Demo Pitch</h2>
-  <p>Follow these 5 structured steps as your team takes the stage today:</p>
-
-  <div class="step-card">
-    <div class="step-num">1</div>
-    <div class="step-content">
-      <strong>Launch from Final Showcase:</strong>
-      <br>Navigate to <code>Documents &gt; BIH_Practice &gt; Capstone_[TeamName] &gt; Final_Showcase</code>.
-      <br>Double-click your final verified file (<code>Capstone_v1.1</code>). Put it into presentation mode or full-screen.
-    </div>
-  </div>
-
-  <div class="step-card">
-    <div class="step-num">2</div>
-    <div class="step-content">
-      <strong>Deliver Act 1: The Hook & Problem (30 Seconds):</strong>
-      <br>Speaker 1 steps forward, smiles, looks at the audience, and introduces the team and the real Ghanaian challenge.
-    </div>
-  </div>
-
-  <div class="step-card">
-    <div class="step-num">3</div>
-    <div class="step-content">
-      <strong>Deliver Act 2: Live Digital Demonstration (90 Seconds):</strong>
-      <br>Speaker 2 operates the computer: shows the document layout, triggers dynamic recalculations in the spreadsheet, runs through the 6x6 presentation slides, or plays the Scratch cleanup game.
-    </div>
-  </div>
-
-  <div class="step-card">
-    <div class="step-num">4</div>
-    <div class="step-content">
-      <strong>Deliver Act 3: Bug Fix & Call to Action (60 Seconds):</strong>
-      <br>Speaker 3 explains one real bug from the Change Log that was solved after user testing, and concludes with a clear call to action for Ghana!
-    </div>
-  </div>
-
-  <div class="step-card">
-    <div class="step-num">5</div>
-    <div class="step-content">
-      <strong>Audience Q&A (1 Minute):</strong>
-      <br>Answer two questions from the audience using the 3-step method: Listen &rarr; Thank &rarr; Answer simply!
-    </div>
-  </div>
-
-  <h2>2. Live Pitch Timing Clock</h2>
+  <h2>2. The Capstone Schedule (3 Sessions)</h2>
   <table>
     <thead>
       <tr>
-        <th style="width: 25%;">Section</th>
-        <th style="width: 45%;">Who Speaks / What Happens</th>
-        <th style="width: 30%;">Target Clock</th>
+        <th style="width: 25%;">Session</th>
+        <th style="width: 45%;">Core Deliverables</th>
+        <th style="width: 30%;">Status Goal</th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td><strong>Act 1: Hook &amp; Problem</strong></td>
-        <td>Team name, members, problem statement.</td>
-        <td><strong>0:00 - 0:30</strong></td>
+        <td><strong>Session 20 (Today)</strong></td>
+        <td>Choose track, write Project Charter, build directory tree, and create <strong>Prototype v0.1</strong>.</td>
+        <td><strong style="color:var(--bih-gold);">Blueprint Approved</strong></td>
       </tr>
       <tr>
-        <td><strong>Act 2: Live Demo</strong></td>
-        <td>Demonstrating the working digital solution.</td>
-        <td><strong>0:30 - 2:00</strong></td>
+        <td><strong>Session 21</strong></td>
+        <td>Build working prototype, test with peer reviewers, record feedback, and debug.</td>
+        <td><strong style="color:var(--bih-accent);">Working Prototype</strong></td>
       </tr>
       <tr>
-        <td><strong>Act 3: Bug Fix &amp; Call to Action</strong></td>
-        <td>Bug fixed from Change Log + call to action.</td>
-        <td><strong>2:00 - 3:00</strong></td>
-      </tr>
-      <tr>
-        <td><strong>Audience Q&amp;A</strong></td>
-        <td>Two questions: Listen &rarr; Thank &rarr; Answer simply.</td>
-        <td><strong>3:00 - 4:00</strong></td>
+        <td><strong>Session 22</strong></td>
+        <td>Final visual polish, 3-minute stage showcase, peer Q&A, and club graduation!</td>
+        <td><strong style="color:var(--bih-green);">Graduation & Showcase</strong></td>
       </tr>
     </tbody>
   </table>
 </div>
 
 <!-- ========================================== -->
-<!-- PAGE 5: THE DIGITAL LEADER'S OATH          -->
+<!-- PAGE 2: THE FOUR PROJECT TRACKS            -->
 <!-- ========================================== -->
 <div class="page">
   <div class="header-bar">
-    <div class="header-title">The Digital Leader's Pledge</div>
-    <div class="badge">Session 20 • Page 5</div>
+    <div class="header-title">Choosing Your Project Track</div>
+    <div class="badge">Session 20 • Page 2</div>
   </div>
 
-  <h2>1. What Happens After Today?</h2>
-  <p>Finishing this 20-session study pack is not the end of your technology journey—it is the <strong>starting line</strong>. You now have real digital skills that can open doors for you and help your community. With great knowledge comes great responsibility!</p>
+  <h2>1. The Four Approved Capstone Tracks</h2>
+  <p>Read through the four project options below with your team. Pick <strong>ONE</strong> track that excites you most:</p>
 
-  <h2>2. The BIH Tech Club Digital Leader's Oath</h2>
-  <p>Read each commitment aloud. Tick each box to seal your pledge as an official technology leader:</p>
+  <div class="dual-grid">
+    <!-- TRACK A -->
+    <div class="dual-box">
+      <div class="dual-box-title">🌿 TRACK A: School Health & Environment</div>
+      <p><strong>The Challenge:</strong> Gutters clogged with plastic sachets or uncovered water drums causing mosquito breeding.</p>
+      <p><strong>What You Build:</strong></p>
+      <ul style="margin: 4px 0 0 15px; padding: 0; font-size: 12px;">
+        <li>A professional 1-page campaign notice (Word).</li>
+        <li>A 3-slide visual pitch presentation (PowerPoint).</li>
+      </ul>
+    </div>
 
-  <div style="border: 2px solid var(--bih-purple); border-radius: 8px; padding: 20px; background: #FAF5FF; margin: 15px 0;">
-    <div class="checkbox-item" style="margin-bottom: 12px;">
-      <input type="checkbox"> <strong>1. Community Solution Builder:</strong> I will use computers to solve real challenges in my school, church, and neighborhood, not just for entertainment.
-    </div>
-    <div class="checkbox-item" style="margin-bottom: 12px;">
-      <input type="checkbox"> <strong>2. The Teacher's Helper:</strong> I will patiently teach classmates and family members who have never touched a computer, never snatching the mouse from their hands.
-    </div>
-    <div class="checkbox-item" style="margin-bottom: 12px;">
-      <input type="checkbox"> <strong>3. Uncompromising Privacy:</strong> I will protect my personal information, keep passphrases secret, and never share someone else's photo without consent.
-    </div>
-    <div class="checkbox-item" style="margin-bottom: 12px;">
-      <input type="checkbox"> <strong>4. Digital Kindness & Respect:</strong> I will be an upstander against cyberbullying, use respectful language, and always honor my family and school online.
-    </div>
-    <div class="checkbox-item">
-      <input type="checkbox"> <strong>5. Lifelong Practice:</strong> I will continue practicing typing, spreadsheets, research, and coding so my skills stay sharp and strong.
+    <!-- TRACK B -->
+    <div class="dual-box">
+      <div class="dual-box-title">📊 TRACK B: Market & Canteen Bookkeeper</div>
+      <p><strong>The Challenge:</strong> Local food vendors or school canteen losing track of daily sales, costs, and profit.</p>
+      <p><strong>What You Build:</strong></p>
+      <ul style="margin: 4px 0 0 15px; padding: 0; font-size: 12px;">
+        <li>A table with SUM/AVERAGE formulas.</li>
+        <li>A column chart comparing items (or a pie chart showing each item's share of the total).</li>
+      </ul>
     </div>
   </div>
 
-  <h2>3. The 10 Core Competencies You Have Mastered</h2>
-  <div class="dual-grid" style="font-size: 12px;">
+  <div class="dual-grid">
+    <!-- TRACK C -->
     <div class="dual-box">
-      &bull; [x] Hardware, Ports & Safe Shutdown<br>
-      &bull; [x] Touch Typing & Home Row Discipline<br>
-      &bull; [x] File Explorer & Directory Trees<br>
-      &bull; [x] Web Research & The 4-Way Fact Check<br>
-      &bull; [x] Online Safety, Email & Netiquette
+      <div class="dual-box-title">🎮 TRACK C: Interactive Educational Game</div>
+      <p><strong>The Challenge:</strong> Younger primary school students find hygiene or road safety rules boring to memorize.</p>
+      <p><strong>What You Build:</strong></p>
+      <ul style="margin: 4px 0 0 15px; padding: 0; font-size: 12px;">
+        <li>A playable Scratch animation or mini-quiz.</li>
+        <li>Includes a live Score variable and restart loop.</li>
+      </ul>
     </div>
+
+    <!-- TRACK D -->
     <div class="dual-box">
-      &bull; [x] Word Processing & Document Hierarchy<br>
-      &bull; [x] Spreadsheets, Formulas & Visual Charts<br>
-      &bull; [x] Presentations & The 6x6 Slide Rule<br>
-      &bull; [x] Block-Based Coding Logic & Debugging<br>
-      &bull; [x] Collaborative Teamwork & User Testing
+      <div class="dual-box-title">🏛️ TRACK D: Culture & Community Tourism</div>
+      <p><strong>The Challenge:</strong> Promoting local historic landmarks, festivals, or eco-tourism sites in your region.</p>
+      <p><strong>What You Build:</strong></p>
+      <ul style="margin: 4px 0 0 15px; padding: 0; font-size: 12px;">
+        <li>A verified digital research report with citations.</li>
+        <li>A multimedia digital photo/slide guide.</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2>2. The "Keep It Manageable" Rule</h2>
+  <div class="callout">
+    <div class="callout-title">⚠️ DO NOT TRY TO BUILD FACEBOOK IN 3 DAYS!</div>
+    The most common mistake young innovators make is choosing an impossible project (e.g. <em>"We want to build a self-driving car in Scratch"</em>).
+    <br><br>
+    <strong>The Pro Rule:</strong> Choose a clear, simple problem that you can build, polish, and demonstrate beautifully in 3 sessions. One finished, bug-free spreadsheet or 3-slide presentation beats a broken, half-finished giant dream!
+  </div>
+</div>
+
+<!-- ========================================== -->
+<!-- PAGE 3: WHAT IS A PROTOTYPE?               -->
+<!-- ========================================== -->
+<div class="page">
+  <div class="header-bar">
+    <div class="header-title">What is a Prototype? (Version 0.1)</div>
+    <div class="badge">Session 20 • Page 3</div>
+  </div>
+
+  <h2>1. Plain Talk: The Cardboard Model House</h2>
+  <p>An architect never pours concrete on day one. First, they cut cardboard and tape together a small scale model of the building. It has no real glass windows or working light switches, but it shows everyone the size, shape, and door positions.</p>
+  <p>In tech, this early working draft is called a <strong>Prototype (Version 0.1)</strong>. It is built quickly so you can test if your concept makes sense before spending hours on final styling!</p>
+
+  <!-- DIAGRAM: THE 3-STAGE PROJECT EVOLUTION -->
+  <div class="diagram-container">
+    <svg width="680" height="150" viewBox="0 0 680 150" xmlns="http://www.w3.org/2000/svg">
+      <rect x="25" y="10" width="630" height="130" rx="6" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.5"/>
+
+      <!-- STAGE 1: BLUEPRINT (Today) -->
+      <g transform="translate(45, 25)">
+        <rect x="0" y="0" width="150" height="85" rx="4" fill="#FFFFFF" stroke="#3A0CA3" stroke-width="2"/>
+        <text x="75" y="22" font-size="10" font-weight="bold" fill="#3A0CA3" text-anchor="middle">STAGE 1: Blueprint</text>
+        <line x1="15" y1="28" x2="135" y2="28" stroke="#E2E8F0" stroke-width="1"/>
+        <text x="75" y="48" font-size="8.5" fill="#64748B" text-anchor="middle">&bull; Problem defined</text>
+        <text x="75" y="62" font-size="8.5" fill="#64748B" text-anchor="middle">&bull; Paper wireframe</text>
+        <text x="75" y="76" font-size="8.5" fill="#64748B" text-anchor="middle">&bull; Folders created</text>
+        <text x="75" y="102" font-size="9" font-weight="bold" fill="#3A0CA3" text-anchor="middle">Session 20 (Today)</text>
+      </g>
+
+      <path d="M 205,68 L 245,68" stroke="#F77F00" stroke-width="2.5"/>
+      <polygon points="250,68 242,64 242,72" fill="#F77F00"/>
+
+      <!-- STAGE 2: PROTOTYPE (Session 21) -->
+      <g transform="translate(260, 25)">
+        <rect x="0" y="0" width="150" height="85" rx="4" fill="#FFFFFF" stroke="#F77F00" stroke-width="2"/>
+        <text x="75" y="22" font-size="10" font-weight="bold" fill="#C2410C" text-anchor="middle">STAGE 2: Prototype</text>
+        <line x1="15" y1="28" x2="135" y2="28" stroke="#E2E8F0" stroke-width="1"/>
+        <text x="75" y="48" font-size="8.5" fill="#64748B" text-anchor="middle">&bull; Working formulas/code</text>
+        <text x="75" y="62" font-size="8.5" fill="#64748B" text-anchor="middle">&bull; Tested by peers</text>
+        <text x="75" y="76" font-size="8.5" fill="#64748B" text-anchor="middle">&bull; Bugs fixed</text>
+        <text x="75" y="102" font-size="9" font-weight="bold" fill="#C2410C" text-anchor="middle">Session 21</text>
+      </g>
+
+      <path d="M 420,68 L 460,68" stroke="#F77F00" stroke-width="2.5"/>
+      <polygon points="465,68 457,64 457,72" fill="#F77F00"/>
+
+      <!-- STAGE 3: SHOWCASE (Session 22) -->
+      <g transform="translate(475, 25)">
+        <rect x="0" y="0" width="150" height="85" rx="4" fill="#FFFFFF" stroke="#10B981" stroke-width="2"/>
+        <text x="75" y="22" font-size="10" font-weight="bold" fill="#047857" text-anchor="middle">STAGE 3: Showcase</text>
+        <line x1="15" y1="28" x2="135" y2="28" stroke="#E2E8F0" stroke-width="1"/>
+        <text x="75" y="48" font-size="8.5" fill="#64748B" text-anchor="middle">&bull; Final visual polish</text>
+        <text x="75" y="62" font-size="8.5" fill="#64748B" text-anchor="middle">&bull; Stage presentation</text>
+        <text x="75" y="76" font-size="8.5" fill="#64748B" text-anchor="middle">&bull; Graduation!</text>
+        <text x="75" y="102" font-size="9" font-weight="bold" fill="#047857" text-anchor="middle">Session 22</text>
+      </g>
+    </svg>
+    <div class="diagram-caption">Figure 20.1: The Capstone Evolution. Today we lock in the Blueprint and start the raw Prototype.</div>
+  </div>
+
+  <h2>2. Safe Data Ethics for Capstone</h2>
+  <div class="panic-box">
+    <div class="panic-title">🔒 CAPSTONE DATA PROTECTION LAW</div>
+    Do <strong>not</strong> collect real telephone numbers, personal home addresses, or secret financial records from real people in your neighborhood!
+    <br><br>
+    <strong>Use Realistic Simulated Data:</strong> If building a canteen spreadsheet, use sample items (<em>Jollof Rice, Meat Pie, Sobolo</em>) and approximate prices. Protect community privacy at all times!
+  </div>
+</div>
+
+<!-- ========================================== -->
+<!-- PAGE 4: MASTER PROJECT PLANNING CANVAS     -->
+<!-- ========================================== -->
+<div class="page">
+  <div class="header-bar">
+    <div class="header-title">The Master Project Planning Canvas</div>
+    <div class="badge">Session 20 • Page 4</div>
+  </div>
+
+  <h2>1. Complete Your Team's Project Charter</h2>
+  <p>Fill in every section of this canvas. This is your official agreement with your Tech Club mentor:</p>
+
+  <div style="border: 2px solid var(--bih-purple); border-radius: 8px; padding: 18px; background: #FFFFFF; margin: 10px 0;">
+    <!-- 1. Title -->
+    <div style="margin-bottom: 12px;">
+      <strong style="color: var(--bih-purple); font-size: 13px;">1. Project Title:</strong>
+      <div class="answer-line" contenteditable="true" style="font-weight:bold;">e.g. Clean Hands, Healthy School Campaign</div>
+    </div>
+
+    <!-- 2. Track -->
+    <div style="margin-bottom: 12px;">
+      <strong style="color: var(--bih-purple); font-size: 13px;">2. Chosen Track (Tick One):</strong>
+      <div style="margin-top: 4px; font-size: 12.5px;">
+        [ &nbsp; ] Track A: Health & Environment &nbsp;&nbsp;&nbsp;&nbsp; [ &nbsp; ] Track B: Canteen / Market Bookkeeper<br>
+        [ &nbsp; ] Track C: Scratch Educational Game &nbsp;&nbsp;&nbsp;&nbsp; [ &nbsp; ] Track D: Culture & Tourism Guide
+      </div>
+    </div>
+
+    <!-- 3. Problem Statement -->
+    <div style="margin-bottom: 12px;">
+      <strong style="color: var(--bih-purple); font-size: 13px;">3. The Real Problem We Are Addressing:</strong>
+      <div class="answer-box" contenteditable="true">
+        Describe the problem clearly in 2 sentences... (e.g., Many students at our school eat lunch without washing their hands with soap, leading to stomach illnesses and missed school days).
+      </div>
+    </div>
+
+    <!-- 4. Target Audience -->
+    <div style="margin-bottom: 12px;">
+      <strong style="color: var(--bih-purple); font-size: 13px;">4. Who Will Use / Read This Solution? (Target Audience):</strong>
+      <div class="answer-line" contenteditable="true">e.g. JHS 1 and Primary 6 students, school food vendors, teachers...</div>
+    </div>
+
+    <!-- 5. Solution Description -->
+    <div style="margin-bottom: 12px;">
+      <strong style="color: var(--bih-purple); font-size: 13px;">5. What Will Our Finished Solution Be?</strong>
+      <div class="answer-box" contenteditable="true">
+        Explain what digital files you will build... (e.g., A 1-page illustrated guide showing the 4 steps of handwashing, plus a 3-slide presentation pitched to morning assembly).
+      </div>
+    </div>
+
+    <!-- 6. Tools Needed -->
+    <div style="margin-bottom: 12px;">
+      <strong style="color: var(--bih-purple); font-size: 13px;">6. Software Tools We Will Use:</strong>
+      <div style="margin-top: 4px; font-size: 12.5px;">
+        <label><input type="checkbox"> Word Processor</label> &nbsp;&nbsp;
+        <label><input type="checkbox"> Spreadsheet</label> &nbsp;&nbsp;
+        <label><input type="checkbox"> Presentation Slides</label> &nbsp;&nbsp;
+        <label><input type="checkbox"> Scratch Coding</label> &nbsp;&nbsp;
+        <label><input type="checkbox"> Web Browser Research</label>
+      </div>
+    </div>
+
+    <!-- 7. Team Roles -->
+    <div>
+      <strong style="color: var(--bih-purple); font-size: 13px;">7. Team Roles</strong> <span style="font-size: 11.5px;">(every member needs a role; one person may hold two):</span>
+      <div style="margin-top: 4px; font-size: 12.5px; line-height: 2;">
+        Project Manager: ____________________ &nbsp;&nbsp; Designer / Builder: ____________________<br>
+        Researcher / Tester: ________________ &nbsp;&nbsp; Presenter: ____________________________
+      </div>
     </div>
   </div>
 </div>
 
 <!-- ========================================== -->
-<!-- PAGE 6: OFFICIAL GRADUATION CERTIFICATE   -->
+<!-- PAGE 5: GUIDED LAB - DIRECTORY & V0.1       -->
 <!-- ========================================== -->
 <div class="page">
   <div class="header-bar">
-    <div class="header-title">Certificate of Completion</div>
-    <div class="badge-grad">Official BIH Credential</div>
+    <div class="header-title">Guided Hands-On Lab: Setting the Foundation</div>
+    <div class="badge">Session 20 • Page 5</div>
   </div>
 
-  <!-- THE OFFICIAL PRINTABLE CERTIFICATE -->
-  <div class="cert-frame">
-    <!-- Header Seal Icon -->
-    <div style="font-size: 36px; margin-bottom: 4px;">🏅</div>
-    <div style="font-size: 12px; font-weight: 800; color: var(--cert-border); letter-spacing: 2px; text-transform: uppercase;">
-      Bozoma Innovation Hub &bull; Tech Club Network
-    </div>
-    <div style="font-size: 24px; font-weight: 900; color: var(--bih-purple); margin: 6px 0; text-transform: uppercase;">
-      Certificate of Digital Mastery
-    </div>
-    <div style="font-size: 12.5px; color: #4B5563; font-style: italic; margin-bottom: 12px;">
-      This is to officially certify that
-    </div>
+  <h2>1. Lab Mission: Set Up Folders & Build Prototype v0.1</h2>
+  <p>Follow these 5 steps to organize your files and begin your project skeleton:</p>
 
-    <!-- Student Name -->
-    <div style="font-size: 22px; font-weight: 800; color: #1E1B4B; border-bottom: 2px solid var(--bih-gold); display: inline-block; padding: 2px 30px; margin-bottom: 12px;">
-      <span contenteditable="true">Ama Mensah</span>
-    </div>
-
-    <div style="font-size: 12.5px; line-height: 1.6; color: #374151; max-width: 580px; margin: 0 auto 18px auto;">
-      has successfully completed the comprehensive 20-session practical computing curriculum, mastering hardware foundations, file systems, internet research, office productivity tools, block programming, and delivering an approved community <strong>Capstone Final Project</strong>.
-    </div>
-
-    <!-- Signatures Grid -->
-    <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-top: 25px; padding-top: 15px; border-top: 1px dashed #CBD5E1;">
-      <div style="text-align: center; width: 180px;">
-        <div class="answer-line" contenteditable="true" style="border-bottom: 1.5px solid #1E293B;"></div>
-        <div style="font-size: 10px; font-weight: bold; color: #64748B; margin-top: 4px;">TECH CLUB MENTOR</div>
-      </div>
-
-      <!-- Center Gold Badge Crest -->
-      <div style="text-align: center;">
-        <div style="width: 55px; height: 55px; border-radius: 50%; background: #FEF3C7; border: 2px solid var(--cert-border); display: flex; align-items: center; justify-content: center; font-size: 22px; margin: 0 auto;">
-          ⭐
-        </div>
-        <div style="font-size: 8px; font-weight: bold; color: var(--cert-border); margin-top: 3px;">BIH VERIFIED</div>
-      </div>
-
-      <div style="text-align: center; width: 180px;">
-        <div class="answer-line" contenteditable="true" style="border-bottom: 1.5px solid #1E293B;"></div>
-        <div style="font-size: 10px; font-weight: bold; color: #64748B; margin-top: 4px;">HEADTEACHER / LEAD</div>
-      </div>
+  <div class="step-card">
+    <div class="step-num">1</div>
+    <div class="step-content">
+      <strong>Build Your Capstone Directory Tree:</strong>
+      <br>Press <span class="kbd-key">&#8862; Win + E</span> &rarr; Navigate to <strong>Documents &gt; BIH_Practice</strong>.
+      <br>Create a main folder: <code>Capstone_[TeamName]</code>.
+      <br>Inside it, create two subfolders: <code>Drafts</code> and <code>Final_Showcase</code>.
     </div>
   </div>
 
-  <div style="text-align: center; margin-top: 15px; font-size: 12px; font-weight: bold; color: var(--bih-purple);">
-    Congratulations, Digital Leader! Go forward and build the future of Ghana! 🇬🇭
+  <div class="step-card">
+    <div class="step-num">2</div>
+    <div class="step-content">
+      <strong>Launch Your Chosen Software Tool:</strong>
+      <br>&bull; <strong>Track A:</strong> Open Word (notice); PowerPoint later (3-slide pitch).
+      <br>&bull; <strong>Track B:</strong> Open Excel / Calc &rarr; Create blank workbook.
+      <br>&bull; <strong>Track C:</strong> Open Scratch &rarr; Start fresh project.
+      <br>&bull; <strong>Track D:</strong> Open Word (report); PowerPoint later (photo/slide guide).
+    </div>
+  </div>
+
+  <div class="step-card">
+    <div class="step-num">3</div>
+    <div class="step-content">
+      <strong>Build the "Skeleton" Structure (Version 0.1):</strong>
+      <br>Do not worry about colors or fancy graphics today! Build the structure:
+      <br>&bull; <em>Word users:</em> Type the main Title and 3 section headings.
+      <br>&bull; <em>Excel users:</em> Type Column Headers across Row 1 (Item, Qty, Price, Total).
+      <br>&bull; <em>PowerPoint users:</em> Create your 3 slides and type the titles on each.
+      <br>&bull; <em>Scratch users:</em> Choose your main Sprite and Backdrop.
+    </div>
+  </div>
+
+  <div class="step-card">
+    <div class="step-num">4</div>
+    <div class="step-content">
+      <strong>Initial Save (Save As...):</strong>
+      <br>Save your file into <code>Documents &gt; BIH_Practice &gt; Capstone_[TeamName] &gt; Drafts</code>.
+      <br>Use the naming formula: <code>Capstone_v0.1_[ProjectName].docx</code> (or <code>.xlsx</code> / <code>.pptx</code> / <code>.sb3</code>).
+    </div>
+  </div>
+
+  <div class="step-card">
+    <div class="step-num">5</div>
+    <div class="step-content">
+      <strong>Mentor Blueprint Inspection:</strong>
+      <br>Raise your hand and show your <strong>Canvas (Page 4)</strong> and your <strong>Version 0.1 Skeleton</strong> to your mentor for sign-off!
+    </div>
+  </div>
+
+  <h2>2. Visual Target (Sample Folder Directory Structure)</h2>
+  <div style="background: var(--bih-light); border: 2px dashed var(--bih-border); padding: 18px; border-radius: 8px; font-family: monospace; font-size: 13px; margin: 15px 0;">
+    📁 Documents<br>
+    &nbsp;&nbsp;&nbsp;└── 📁 BIH_Practice<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└── 📁 Capstone_EcoTech<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├── 📁 Drafts<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;└── 📄 Capstone_v0.1_CleanWater.docx<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└── 📁 Final_Showcase<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└── (Ready for Session 22!)
+  </div>
+</div>
+
+<!-- ========================================== -->
+<!-- PAGE 6: REVIEW & MENTOR APPROVAL           -->
+<!-- ========================================== -->
+<div class="page">
+  <div class="header-bar">
+    <div class="header-title">Session 20 Milestone & Approval</div>
+    <div class="badge">Session 20 • Page 6</div>
+  </div>
+
+  <h2>1. Milestone 1 Checklist (To Be Completed Today)</h2>
+  <p>Verify that your team has completed all four foundation milestones:</p>
+  <div class="checkbox-item"><input type="checkbox"> We formed our team and selected one approved Capstone Track (A, B, C, or D).</div>
+  <div class="checkbox-item"><input type="checkbox"> We completed all 7 boxes of the Project Planning Canvas on Page 4.</div>
+  <div class="checkbox-item"><input type="checkbox"> We built our folder directory tree inside <code>Documents &gt; BIH_Practice</code>.</div>
+  <div class="checkbox-item"><input type="checkbox"> We built and saved our initial <strong>Version 0.1 Skeleton file</strong>.</div>
+
+  <h2>2. Written Reflection</h2>
+  <p><strong>Question 1:</strong> Why is it smart to build a rough "Prototype" before spending hours perfecting colors and animations?</p>
+  <div class="answer-line" contenteditable="true">Write your answer here...</div>
+  <div class="answer-line" contenteditable="true"></div>
+
+  <p><strong>Question 2:</strong> What is one challenge your team might face during Session 21 (building and testing), and how will you solve it?</p>
+  <div class="answer-line" contenteditable="true">Write your answer here...</div>
+
+  <h2>3. Official Mentor Capstone Approval Sign-Off</h2>
+  <p><em>(Your mentor must review and sign below before your team can begin Session 21 building!)</em></p>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 45%;">Mentor Evaluation Criteria</th>
+        <th style="width: 18%; text-align:center;">Needs Revision</th>
+        <th style="width: 18%; text-align:center;">Approved &#10004;</th>
+        <th style="width: 19%; text-align:center;">Outstanding! ⭐</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Community Relevance:</strong> Does the project address a real issue?</td>
+        <td style="text-align:center;"><input type="radio" name="m1"></td>
+        <td style="text-align:center;"><input type="radio" name="m1"></td>
+        <td style="text-align:center;"><input type="radio" name="m1"></td>
+      </tr>
+      <tr>
+        <td><strong>Feasibility:</strong> Can the team realistically finish in 3 sessions?</td>
+        <td style="text-align:center;"><input type="radio" name="m2"></td>
+        <td style="text-align:center;"><input type="radio" name="m2"></td>
+        <td style="text-align:center;"><input type="radio" name="m2"></td>
+      </tr>
+      <tr>
+        <td><strong>Data Safety:</strong> Does the plan respect privacy and P.I.I. rules?</td>
+        <td style="text-align:center;"><input type="radio" name="m3"></td>
+        <td style="text-align:center;"><input type="radio" name="m3"></td>
+        <td style="text-align:center;"><input type="radio" name="m3"></td>
+      </tr>
+      <tr>
+        <td><strong>File Setup:</strong> Are directories and v0.1 files created properly?</td>
+        <td style="text-align:center;"><input type="radio" name="m4"></td>
+        <td style="text-align:center;"><input type="radio" name="m4"></td>
+        <td style="text-align:center;"><input type="radio" name="m4"></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div style="border: 2px solid var(--bih-green); border-radius: 6px; padding: 12px; background: #ECFDF5; margin-top: 15px;">
+    <strong>Mentor Notes / Advice for Session 21:</strong>
+    <div class="answer-line" contenteditable="true" style="border-bottom-color: #059669;">Write advice here...</div>
+    <div style="display: flex; justify-content: space-between; margin-top: 10px; font-size: 13px;">
+      <div><strong>Mentor Signature:</strong> _____________________________</div>
+      <div><strong>Date Approved:</strong> ____________________</div>
+    </div>
   </div>
 </div>
 

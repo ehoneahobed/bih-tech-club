@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>BIH Tech Club - Session 18: Capstone Planning & Blueprint</title>
+  <title>BIH Tech Club - Session 18: What Is AI? Machines That Learn</title>
   <style>
     :root {
       --bih-purple: #3A0CA3;
@@ -13,7 +13,7 @@
       --bih-dark: #1E1E24;
       --bih-light: #F8F9FA;
       --bih-border: #CED4DA;
-      --capstone-gold: #D97706;
+      --shield-blue: #0284C7;
     }
 
     * {
@@ -94,7 +94,7 @@
       font-size: 12.5px;
       font-weight: 700;
       color: var(--bih-dark);
-      min-width: 135px;
+      min-width: 125px;
     }
 
     .editable-line {
@@ -217,6 +217,21 @@
     td { border: 1px solid var(--bih-border); padding: 7px 10px; vertical-align: top; }
     tr:nth-child(even) { background-color: var(--bih-light); }
 
+    /* Key Badge */
+    .kbd-key {
+      display: inline-block;
+      background: #F3F4F6;
+      border: 1.5px solid #9CA3AF;
+      border-bottom: 3px solid #6B7280;
+      border-radius: 4px;
+      padding: 1px 6px;
+      font-family: monospace;
+      font-size: 12px;
+      font-weight: 700;
+      color: #1F2937;
+      margin: 0 2px;
+    }
+
     /* Interactive Inputs */
     .answer-line {
       min-height: 24px;
@@ -226,17 +241,6 @@
       font-size: 13px;
       color: var(--bih-dark);
       padding: 2px 4px;
-    }
-
-    .answer-box {
-      border: 1px solid var(--bih-border);
-      border-radius: 6px;
-      min-height: 60px;
-      padding: 8px 10px;
-      margin-top: 6px;
-      outline: none;
-      background: #FCFCFC;
-      font-size: 13px;
     }
 
     .checkbox-item {
@@ -252,7 +256,7 @@
 <body>
 
 <!-- ========================================== -->
-<!-- PAGE 1: THE CAPSTONE MISSION               -->
+<!-- PAGE 1: WHAT IS AI?                         -->
 <!-- ========================================== -->
 <div class="page">
   <div class="header-bar">
@@ -262,460 +266,436 @@
 
   <div class="student-meta">
     <div class="meta-row">
-      <span class="meta-label">Capstone Team Name:</span>
-      <div class="editable-line" contenteditable="true">EcoTech Ghana Innovators</div>
+      <span class="meta-label">Learner Full Name:</span>
+      <div class="editable-line" contenteditable="true">Ama Mensah</div>
       <span class="meta-label" style="min-width: 90px;">School:</span>
       <div class="editable-line" contenteditable="true">Bozoma Model JHS</div>
     </div>
     <div class="meta-row">
-      <span class="meta-label">Team Members (3–4):</span>
-      <div class="editable-line" contenteditable="true">Ama Mensah, Kofi Boateng, Kwesi Appiah</div>
+      <span class="meta-label">Assigned Workstation:</span>
+      <div class="editable-line" contenteditable="true" style="max-width: 140px;">PC-01</div>
       <span class="meta-label" style="min-width: 50px;">Class:</span>
       <div class="editable-line" contenteditable="true" style="max-width: 90px;">JHS 1</div>
     </div>
   </div>
 
-  <h1>Session 18: Capstone Planning & Blueprint</h1>
-  <p>Congratulations! Over the past 17 sessions, you started from zero: touching a computer for the first time, mastering typing, managing files, researching safely online, writing formatted reports, building automated spreadsheets, presenting slides, and coding algorithms in Scratch. Now comes the ultimate test: <strong>The Capstone Final Project</strong>!</p>
+  <h1>Session 18: What Is AI? Machines That Learn</h1>
+  <p>You hear about it on the radio, on TV and from older brothers and sisters: <strong>AI</strong>. Some people say it will do everything; some people are afraid of it. Today you will find out what AI really is, how it learns, and why it sometimes gets things badly wrong. No magic, just ideas you can understand.</p>
 
-  <h2>1. Plain Talk: Building the Whole House</h2>
-  <p>Think about a master mason constructing a house: first, they gather sand, stones, cement, water, and timber. Those are the individual materials. But the materials alone are not a house! The mason must study a <strong>Blueprint</strong>, mix the cement, lay the foundation blocks, raise the walls, and put on the roof.</p>
-  <p>In this final module (Sessions 18, 19, and 20), you will unite your digital tools to build a genuine, working solution for an issue in your school or neighborhood in Ghana!</p>
+  <h2>1. Plain Talk: What Is Artificial Intelligence?</h2>
+  <p><strong>Artificial Intelligence (AI)</strong> is a computer program that has learned to spot <strong>patterns</strong> from a very large number of <strong>examples</strong>, so it can make a good guess about something new.</p>
+  <p>Think about how you learned to tell a ripe plantain from an unripe one. Nobody gave you a rule book. Your grandmother simply showed you plantain after plantain: <em>"This one is ripe. This one is not ready."</em> After many examples, you could look at a plantain you had never seen before and guess correctly. <strong>AI learns in a similar way: from examples, not from a list of rules.</strong></p>
 
-  <!-- DIAGRAM: THE CAPSTONE SOLUTION BRIDGE -->
-  <div class="diagram-container">
-    <svg width="700" height="155" viewBox="0 0 700 155" xmlns="http://www.w3.org/2000/svg">
-      <rect x="20" y="10" width="660" height="135" rx="6" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.5"/>
-
-      <!-- Left Pillar: Digital Skills Mastered -->
-      <g transform="translate(40, 25)">
-        <rect x="0" y="0" width="160" height="100" rx="5" fill="#3A0CA3"/>
-        <text x="80" y="24" font-size="10.5" font-weight="bold" fill="#FCD34D" text-anchor="middle">YOUR TOOLKIT</text>
-        <line x1="15" y1="32" x2="145" y2="32" stroke="#4361EE" stroke-width="1.5"/>
-        <text x="20" y="48" font-size="8.5" fill="white">&bull; Word Processing Docs</text>
-        <text x="20" y="62" font-size="8.5" fill="white">&bull; Spreadsheet Formulas</text>
-        <text x="20" y="76" font-size="8.5" fill="white">&bull; Slide Presentations</text>
-        <text x="20" y="90" font-size="8.5" fill="white">&bull; Scratch Coding Logic</text>
-      </g>
-
-      <!-- The Connecting Bridge -->
-      <path d="M 210,75 L 325,75" stroke="#F77F00" stroke-width="4"/>
-      <polygon points="330,75 320,70 320,80" fill="#F77F00"/>
-      <g transform="translate(230, 42)">
-        <rect x="0" y="0" width="80" height="24" rx="3" fill="#FFF7ED" stroke="#F77F00" stroke-width="1.2"/>
-        <text x="40" y="16" font-size="9" font-weight="bold" fill="#C2410C" text-anchor="middle">CAPSTONE</text>
-      </g>
-
-      <!-- Center Icon: Community Innovation -->
-      <g transform="translate(345, 30)">
-        <circle cx="45" cy="45" r="35" fill="#ECFDF5" stroke="#10B981" stroke-width="2.5"/>
-        <text x="45" y="42" font-size="20" text-anchor="middle">💡</text>
-        <text x="45" y="62" font-size="8.5" font-weight="bold" fill="#047857" text-anchor="middle">GHANA IMPACT</text>
-      </g>
-
-      <!-- The Connecting Bridge 2 -->
-      <path d="M 435,75 L 485,75" stroke="#F77F00" stroke-width="4"/>
-      <polygon points="490,75 480,70 480,80" fill="#F77F00"/>
-
-      <!-- Right Pillar: Real Community Challenges -->
-      <g transform="translate(500, 25)">
-        <rect x="0" y="0" width="160" height="100" rx="5" fill="#1E293B"/>
-        <text x="80" y="24" font-size="10.5" font-weight="bold" fill="#38BDF8" text-anchor="middle">REAL PROBLEMS</text>
-        <line x1="15" y1="32" x2="145" y2="32" stroke="#475569" stroke-width="1.5"/>
-        <text x="20" y="48" font-size="8.5" fill="white">&bull; Plastic sachet litter</text>
-        <text x="20" y="62" font-size="8.5" fill="white">&bull; Canteen bookkeeping</text>
-        <text x="20" y="76" font-size="8.5" fill="white">&bull; Drinking water health</text>
-        <text x="20" y="90" font-size="8.5" fill="white">&bull; Library book tracking</text>
-      </g>
-    </svg>
-    <div class="diagram-caption">Figure 18.0: The Capstone Bridge. You are using technology tools to create tangible solutions for your community.</div>
+  <div class="callout">
+    <div class="callout-title">💡 AI IS NOT ALIVE</div>
+    AI does not think, feel or understand like a person. It has no opinions and does not "know" things the way you do. It is a very powerful pattern-guessing machine, built and controlled by people.
   </div>
 
-  <h2>2. The Capstone Schedule (3 Sessions)</h2>
-  <table>
-    <thead>
-      <tr>
-        <th style="width: 25%;">Session</th>
-        <th style="width: 45%;">Core Deliverables</th>
-        <th style="width: 30%;">Status Goal</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><strong>Session 18 (Today)</strong></td>
-        <td>Choose track, write Project Charter, build directory tree, and create <strong>Prototype v0.1</strong>.</td>
-        <td><strong style="color:var(--bih-gold);">Blueprint Approved</strong></td>
-      </tr>
-      <tr>
-        <td><strong>Session 19</strong></td>
-        <td>Build working prototype, test with peer reviewers, record feedback, and debug.</td>
-        <td><strong style="color:var(--bih-accent);">Working Prototype</strong></td>
-      </tr>
-      <tr>
-        <td><strong>Session 20</strong></td>
-        <td>Final visual polish, 3-minute stage showcase, peer Q&A, and club graduation!</td>
-        <td><strong style="color:var(--bih-green);">Graduation & Showcase</strong></td>
-      </tr>
-    </tbody>
-  </table>
+  <h2>2. Rules or Examples? Two Ways to Make a Computer Smart</h2>
+  <p>In Sessions 16 and 17 you wrote programs in Scratch. You gave the computer exact <strong>rules</strong>: <em>"IF touching sachet THEN change score by 1."</em> AI works differently: people give it <strong>examples</strong> and it works out the pattern by itself.</p>
+
+  <!-- DIAGRAM: RULES VS EXAMPLES -->
+  <div class="diagram-container">
+    <svg width="680" height="190" viewBox="0 0 680 190" xmlns="http://www.w3.org/2000/svg">
+      <rect x="15" y="10" width="315" height="170" rx="8" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.5"/>
+      <rect x="350" y="10" width="315" height="170" rx="8" fill="#FFF7ED" stroke="#F77F00" stroke-width="1.5"/>
+
+      <!-- LEFT: RULES -->
+      <text x="172" y="34" font-size="12" font-weight="bold" fill="#3A0CA3" text-anchor="middle">NORMAL PROGRAM: PEOPLE WRITE RULES</text>
+      <rect x="40" y="48" width="200" height="26" rx="5" fill="#FFAB19"/>
+      <text x="50" y="66" font-size="10.5" font-weight="bold" fill="#FFFFFF">if colour is yellow then</text>
+      <rect x="56" y="76" width="184" height="24" rx="5" fill="#9966FF"/>
+      <text x="66" y="92" font-size="10.5" font-weight="bold" fill="#FFFFFF">say "Ripe!"</text>
+      <rect x="40" y="102" width="200" height="22" rx="5" fill="#FFAB19"/>
+      <text x="50" y="117" font-size="10.5" font-weight="bold" fill="#FFFFFF">else say "Not ready"</text>
+      <text x="172" y="148" font-size="10" fill="#334155" text-anchor="middle">The computer only does exactly what the rules say.</text>
+      <text x="172" y="164" font-size="10" fill="#334155" text-anchor="middle">A brown, spotty ripe plantain? The rule fails!</text>
+
+      <!-- RIGHT: EXAMPLES -->
+      <text x="507" y="34" font-size="12" font-weight="bold" fill="#9A3412" text-anchor="middle">AI: PEOPLE GIVE EXAMPLES</text>
+      <g transform="translate(372, 48)">
+        <rect x="0" y="0" width="34" height="34" rx="6" fill="#FDE68A" stroke="#D97706"/><text x="17" y="22" font-size="9" text-anchor="middle" fill="#78350F">ripe</text>
+        <rect x="40" y="0" width="34" height="34" rx="6" fill="#A16207" stroke="#78350F"/><text x="57" y="22" font-size="9" text-anchor="middle" fill="#FFFFFF">ripe</text>
+        <rect x="0" y="40" width="34" height="34" rx="6" fill="#86EFAC" stroke="#15803D"/><text x="17" y="57" font-size="7.5" text-anchor="middle" fill="#14532D">not</text><text x="17" y="66" font-size="7.5" text-anchor="middle" fill="#14532D">ready</text>
+        <rect x="40" y="40" width="34" height="34" rx="6" fill="#BEF264" stroke="#4D7C0F"/><text x="57" y="57" font-size="7.5" text-anchor="middle" fill="#365314">not</text><text x="57" y="66" font-size="7.5" text-anchor="middle" fill="#365314">ready</text>
+      </g>
+      <text x="410" y="140" font-size="9" fill="#64748B" text-anchor="middle">…thousands more</text>
+      <path d="M 455,85 L 495,85" stroke="#F77F00" stroke-width="3" marker-end="url(#ar18)"/>
+      <defs><marker id="ar18" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#F77F00"/></marker></defs>
+      <rect x="500" y="62" width="70" height="46" rx="8" fill="#3A0CA3"/>
+      <text x="535" y="82" font-size="10" font-weight="bold" fill="#FFFFFF" text-anchor="middle">finds the</text>
+      <text x="535" y="96" font-size="10" font-weight="bold" fill="#FFFFFF" text-anchor="middle">pattern</text>
+      <path d="M 575,85 L 600,85" stroke="#F77F00" stroke-width="3" marker-end="url(#ar18)"/>
+      <text x="630" y="82" font-size="10" font-weight="bold" fill="#9A3412" text-anchor="middle">new one?</text>
+      <text x="630" y="96" font-size="10" font-weight="bold" fill="#047857" text-anchor="middle">"Ripe!"</text>
+      <text x="507" y="164" font-size="10" fill="#334155" text-anchor="middle">It makes a guess about plantains it has never seen.</text>
+    </svg>
+    <div class="diagram-caption">Figure 18.0: Rules vs examples. A normal program follows rules people wrote; AI learns a pattern from many examples.</div>
+  </div>
 </div>
 
 <!-- ========================================== -->
-<!-- PAGE 2: THE FOUR PROJECT TRACKS            -->
+<!-- PAGE 2: AI YOU ALREADY USE                  -->
 <!-- ========================================== -->
 <div class="page">
   <div class="header-bar">
-    <div class="header-title">Choosing Your Project Track</div>
+    <div class="header-title">AI Is Already All Around You</div>
     <div class="badge">Session 18 • Page 2</div>
   </div>
 
-  <h2>1. The Four Approved Capstone Tracks</h2>
-  <p>Read through the four project options below with your team. Pick <strong>ONE</strong> track that excites you most:</p>
-
-  <div class="dual-grid">
-    <!-- TRACK A -->
+  <h2>1. Three Jobs AI Can Do</h2>
+  <p>Most AI you will meet does one of three jobs:</p>
+  <div class="dual-grid" style="grid-template-columns: 1fr 1fr 1fr;">
     <div class="dual-box">
-      <div class="dual-box-title">🌿 TRACK A: School Health & Environment</div>
-      <p><strong>The Challenge:</strong> Gutters clogged with plastic sachets or uncovered water drums causing mosquito breeding.</p>
-      <p><strong>What You Build:</strong></p>
-      <ul style="margin: 4px 0 0 15px; padding: 0; font-size: 12px;">
-        <li>A professional 1-page campaign notice (Word).</li>
-        <li>A 3-slide visual pitch presentation (PowerPoint).</li>
-      </ul>
+      <div class="dual-box-title">👁️ 1. RECOGNISE</div>
+      <p>It works out <strong>what something is</strong>: a face, a voice, a word in a photo, a sick cassava leaf.</p>
     </div>
-
-    <!-- TRACK B -->
     <div class="dual-box">
-      <div class="dual-box-title">📊 TRACK B: Market & Canteen Bookkeeper</div>
-      <p><strong>The Challenge:</strong> Local food vendors or school canteen losing track of daily sales, costs, and profit.</p>
-      <p><strong>What You Build:</strong></p>
-      <ul style="margin: 4px 0 0 15px; padding: 0; font-size: 12px;">
-        <li>A table with SUM/AVERAGE formulas.</li>
-        <li>A column chart comparing items (or a pie chart showing each item's share of the total).</li>
-      </ul>
+      <div class="dual-box-title">🔮 2. PREDICT</div>
+      <p>It guesses <strong>what comes next</strong>: the next word you will type, the next video you might like, tomorrow's rain.</p>
     </div>
-  </div>
-
-  <div class="dual-grid">
-    <!-- TRACK C -->
     <div class="dual-box">
-      <div class="dual-box-title">🎮 TRACK C: Interactive Educational Game</div>
-      <p><strong>The Challenge:</strong> Younger primary school students find hygiene or road safety rules boring to memorize.</p>
-      <p><strong>What You Build:</strong></p>
-      <ul style="margin: 4px 0 0 15px; padding: 0; font-size: 12px;">
-        <li>A playable Scratch animation or mini-quiz.</li>
-        <li>Includes a live Score variable and restart loop.</li>
-      </ul>
-    </div>
-
-    <!-- TRACK D -->
-    <div class="dual-box">
-      <div class="dual-box-title">🏛️ TRACK D: Culture & Community Tourism</div>
-      <p><strong>The Challenge:</strong> Promoting local historic landmarks, festivals, or eco-tourism sites in your region.</p>
-      <p><strong>What You Build:</strong></p>
-      <ul style="margin: 4px 0 0 15px; padding: 0; font-size: 12px;">
-        <li>A verified digital research report with citations.</li>
-        <li>A multimedia digital photo/slide guide.</li>
-      </ul>
+      <div class="dual-box-title">✨ 3. CREATE</div>
+      <p>It <strong>makes something new</strong> from patterns it learned: a paragraph, a picture, a song, a voice. This is called <strong>generative AI</strong>.</p>
     </div>
   </div>
 
-  <h2>2. The "Keep It Manageable" Rule</h2>
-  <div class="callout">
-    <div class="callout-title">⚠️ DO NOT TRY TO BUILD FACEBOOK IN 3 DAYS!</div>
-    The most common mistake young innovators make is choosing an impossible project (e.g. <em>"We want to build a self-driving car in Scratch"</em>).
-    <br><br>
-    <strong>The Pro Rule:</strong> Choose a clear, simple problem that you can build, polish, and demonstrate beautifully in 3 sessions. One finished, bug-free spreadsheet or 3-slide presentation beats a broken, half-finished giant dream!
-  </div>
-</div>
-
-<!-- ========================================== -->
-<!-- PAGE 3: WHAT IS A PROTOTYPE?               -->
-<!-- ========================================== -->
-<div class="page">
-  <div class="header-bar">
-    <div class="header-title">What is a Prototype? (Version 0.1)</div>
-    <div class="badge">Session 18 • Page 3</div>
-  </div>
-
-  <h2>1. Plain Talk: The Cardboard Model House</h2>
-  <p>An architect never pours concrete on day one. First, they cut cardboard and tape together a small scale model of the building. It has no real glass windows or working light switches, but it shows everyone the size, shape, and door positions.</p>
-  <p>In tech, this early working draft is called a <strong>Prototype (Version 0.1)</strong>. It is built quickly so you can test if your concept makes sense before spending hours on final styling!</p>
-
-  <!-- DIAGRAM: THE 3-STAGE PROJECT EVOLUTION -->
-  <div class="diagram-container">
-    <svg width="680" height="150" viewBox="0 0 680 150" xmlns="http://www.w3.org/2000/svg">
-      <rect x="25" y="10" width="630" height="130" rx="6" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.5"/>
-
-      <!-- STAGE 1: BLUEPRINT (Today) -->
-      <g transform="translate(45, 25)">
-        <rect x="0" y="0" width="150" height="85" rx="4" fill="#FFFFFF" stroke="#3A0CA3" stroke-width="2"/>
-        <text x="75" y="22" font-size="10" font-weight="bold" fill="#3A0CA3" text-anchor="middle">STAGE 1: Blueprint</text>
-        <line x1="15" y1="28" x2="135" y2="28" stroke="#E2E8F0" stroke-width="1"/>
-        <text x="75" y="48" font-size="8.5" fill="#64748B" text-anchor="middle">&bull; Problem defined</text>
-        <text x="75" y="62" font-size="8.5" fill="#64748B" text-anchor="middle">&bull; Paper wireframe</text>
-        <text x="75" y="76" font-size="8.5" fill="#64748B" text-anchor="middle">&bull; Folders created</text>
-        <text x="75" y="102" font-size="9" font-weight="bold" fill="#3A0CA3" text-anchor="middle">Session 18 (Today)</text>
-      </g>
-
-      <path d="M 205,68 L 245,68" stroke="#F77F00" stroke-width="2.5"/>
-      <polygon points="250,68 242,64 242,72" fill="#F77F00"/>
-
-      <!-- STAGE 2: PROTOTYPE (Session 19) -->
-      <g transform="translate(260, 25)">
-        <rect x="0" y="0" width="150" height="85" rx="4" fill="#FFFFFF" stroke="#F77F00" stroke-width="2"/>
-        <text x="75" y="22" font-size="10" font-weight="bold" fill="#C2410C" text-anchor="middle">STAGE 2: Prototype</text>
-        <line x1="15" y1="28" x2="135" y2="28" stroke="#E2E8F0" stroke-width="1"/>
-        <text x="75" y="48" font-size="8.5" fill="#64748B" text-anchor="middle">&bull; Working formulas/code</text>
-        <text x="75" y="62" font-size="8.5" fill="#64748B" text-anchor="middle">&bull; Tested by peers</text>
-        <text x="75" y="76" font-size="8.5" fill="#64748B" text-anchor="middle">&bull; Bugs fixed</text>
-        <text x="75" y="102" font-size="9" font-weight="bold" fill="#C2410C" text-anchor="middle">Session 19</text>
-      </g>
-
-      <path d="M 420,68 L 460,68" stroke="#F77F00" stroke-width="2.5"/>
-      <polygon points="465,68 457,64 457,72" fill="#F77F00"/>
-
-      <!-- STAGE 3: SHOWCASE (Session 20) -->
-      <g transform="translate(475, 25)">
-        <rect x="0" y="0" width="150" height="85" rx="4" fill="#FFFFFF" stroke="#10B981" stroke-width="2"/>
-        <text x="75" y="22" font-size="10" font-weight="bold" fill="#047857" text-anchor="middle">STAGE 3: Showcase</text>
-        <line x1="15" y1="28" x2="135" y2="28" stroke="#E2E8F0" stroke-width="1"/>
-        <text x="75" y="48" font-size="8.5" fill="#64748B" text-anchor="middle">&bull; Final visual polish</text>
-        <text x="75" y="62" font-size="8.5" fill="#64748B" text-anchor="middle">&bull; Stage presentation</text>
-        <text x="75" y="76" font-size="8.5" fill="#64748B" text-anchor="middle">&bull; Graduation!</text>
-        <text x="75" y="102" font-size="9" font-weight="bold" fill="#047857" text-anchor="middle">Session 20</text>
-      </g>
-    </svg>
-    <div class="diagram-caption">Figure 18.1: The Capstone Evolution. Today we lock in the Blueprint and start the raw Prototype.</div>
-  </div>
-
-  <h2>2. Safe Data Ethics for Capstone</h2>
-  <div class="panic-box">
-    <div class="panic-title">🔒 CAPSTONE DATA PROTECTION LAW</div>
-    Do <strong>not</strong> collect real telephone numbers, personal home addresses, or secret financial records from real people in your neighborhood!
-    <br><br>
-    <strong>Use Realistic Simulated Data:</strong> If building a canteen spreadsheet, use sample items (<em>Jollof Rice, Meat Pie, Sobolo</em>) and approximate prices. Protect community privacy at all times!
-  </div>
-</div>
-
-<!-- ========================================== -->
-<!-- PAGE 4: MASTER PROJECT PLANNING CANVAS     -->
-<!-- ========================================== -->
-<div class="page">
-  <div class="header-bar">
-    <div class="header-title">The Master Project Planning Canvas</div>
-    <div class="badge">Session 18 • Page 4</div>
-  </div>
-
-  <h2>1. Complete Your Team's Project Charter</h2>
-  <p>Fill in every section of this canvas. This is your official agreement with your Tech Club mentor:</p>
-
-  <div style="border: 2px solid var(--bih-purple); border-radius: 8px; padding: 18px; background: #FFFFFF; margin: 10px 0;">
-    <!-- 1. Title -->
-    <div style="margin-bottom: 12px;">
-      <strong style="color: var(--bih-purple); font-size: 13px;">1. Project Title:</strong>
-      <div class="answer-line" contenteditable="true" style="font-weight:bold;">e.g. Clean Hands, Healthy School Campaign</div>
-    </div>
-
-    <!-- 2. Track -->
-    <div style="margin-bottom: 12px;">
-      <strong style="color: var(--bih-purple); font-size: 13px;">2. Chosen Track (Tick One):</strong>
-      <div style="margin-top: 4px; font-size: 12.5px;">
-        [ &nbsp; ] Track A: Health & Environment &nbsp;&nbsp;&nbsp;&nbsp; [ &nbsp; ] Track B: Canteen / Market Bookkeeper<br>
-        [ &nbsp; ] Track C: Scratch Educational Game &nbsp;&nbsp;&nbsp;&nbsp; [ &nbsp; ] Track D: Culture & Tourism Guide
-      </div>
-    </div>
-
-    <!-- 3. Problem Statement -->
-    <div style="margin-bottom: 12px;">
-      <strong style="color: var(--bih-purple); font-size: 13px;">3. The Real Problem We Are Addressing:</strong>
-      <div class="answer-box" contenteditable="true">
-        Describe the problem clearly in 2 sentences... (e.g., Many students at our school eat lunch without washing their hands with soap, leading to stomach illnesses and missed school days).
-      </div>
-    </div>
-
-    <!-- 4. Target Audience -->
-    <div style="margin-bottom: 12px;">
-      <strong style="color: var(--bih-purple); font-size: 13px;">4. Who Will Use / Read This Solution? (Target Audience):</strong>
-      <div class="answer-line" contenteditable="true">e.g. JHS 1 and Primary 6 students, school food vendors, teachers...</div>
-    </div>
-
-    <!-- 5. Solution Description -->
-    <div style="margin-bottom: 12px;">
-      <strong style="color: var(--bih-purple); font-size: 13px;">5. What Will Our Finished Solution Be?</strong>
-      <div class="answer-box" contenteditable="true">
-        Explain what digital files you will build... (e.g., A 1-page illustrated guide showing the 4 steps of handwashing, plus a 3-slide presentation pitched to morning assembly).
-      </div>
-    </div>
-
-    <!-- 6. Tools Needed -->
-    <div style="margin-bottom: 12px;">
-      <strong style="color: var(--bih-purple); font-size: 13px;">6. Software Tools We Will Use:</strong>
-      <div style="margin-top: 4px; font-size: 12.5px;">
-        <label><input type="checkbox"> Word Processor</label> &nbsp;&nbsp;
-        <label><input type="checkbox"> Spreadsheet</label> &nbsp;&nbsp;
-        <label><input type="checkbox"> Presentation Slides</label> &nbsp;&nbsp;
-        <label><input type="checkbox"> Scratch Coding</label> &nbsp;&nbsp;
-        <label><input type="checkbox"> Web Browser Research</label>
-      </div>
-    </div>
-
-    <!-- 7. Team Roles -->
-    <div>
-      <strong style="color: var(--bih-purple); font-size: 13px;">7. Team Roles</strong> <span style="font-size: 11.5px;">(every member needs a role; one person may hold two):</span>
-      <div style="margin-top: 4px; font-size: 12.5px; line-height: 2;">
-        Project Manager: ____________________ &nbsp;&nbsp; Designer / Builder: ____________________<br>
-        Researcher / Tester: ________________ &nbsp;&nbsp; Presenter: ____________________________
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- ========================================== -->
-<!-- PAGE 5: GUIDED LAB - DIRECTORY & V0.1       -->
-<!-- ========================================== -->
-<div class="page">
-  <div class="header-bar">
-    <div class="header-title">Guided Hands-On Lab: Setting the Foundation</div>
-    <div class="badge">Session 18 • Page 5</div>
-  </div>
-
-  <h2>1. Lab Mission: Set Up Folders & Build Prototype v0.1</h2>
-  <p>Follow these 5 steps to organize your files and begin your project skeleton:</p>
-
-  <div class="step-card">
-    <div class="step-num">1</div>
-    <div class="step-content">
-      <strong>Build Your Capstone Directory Tree:</strong>
-      <br>Press <span class="kbd-key">&#8862; Win + E</span> &rarr; Navigate to <strong>Documents &gt; BIH_Practice</strong>.
-      <br>Create a main folder: <code>Capstone_[TeamName]</code>.
-      <br>Inside it, create two subfolders: <code>Drafts</code> and <code>Final_Showcase</code>.
-    </div>
-  </div>
-
-  <div class="step-card">
-    <div class="step-num">2</div>
-    <div class="step-content">
-      <strong>Launch Your Chosen Software Tool:</strong>
-      <br>&bull; <strong>Track A:</strong> Open Word (notice); PowerPoint later (3-slide pitch).
-      <br>&bull; <strong>Track B:</strong> Open Excel / Calc &rarr; Create blank workbook.
-      <br>&bull; <strong>Track C:</strong> Open Scratch &rarr; Start fresh project.
-      <br>&bull; <strong>Track D:</strong> Open Word (report); PowerPoint later (photo/slide guide).
-    </div>
-  </div>
-
-  <div class="step-card">
-    <div class="step-num">3</div>
-    <div class="step-content">
-      <strong>Build the "Skeleton" Structure (Version 0.1):</strong>
-      <br>Do not worry about colors or fancy graphics today! Build the structure:
-      <br>&bull; <em>Word users:</em> Type the main Title and 3 section headings.
-      <br>&bull; <em>Excel users:</em> Type Column Headers across Row 1 (Item, Qty, Price, Total).
-      <br>&bull; <em>PowerPoint users:</em> Create your 3 slides and type the titles on each.
-      <br>&bull; <em>Scratch users:</em> Choose your main Sprite and Backdrop.
-    </div>
-  </div>
-
-  <div class="step-card">
-    <div class="step-num">4</div>
-    <div class="step-content">
-      <strong>Initial Save (Save As...):</strong>
-      <br>Save your file into <code>Documents &gt; BIH_Practice &gt; Capstone_[TeamName] &gt; Drafts</code>.
-      <br>Use the naming formula: <code>Capstone_v0.1_[ProjectName].docx</code> (or <code>.xlsx</code> / <code>.pptx</code> / <code>.sb3</code>).
-    </div>
-  </div>
-
-  <div class="step-card">
-    <div class="step-num">5</div>
-    <div class="step-content">
-      <strong>Mentor Blueprint Inspection:</strong>
-      <br>Raise your hand and show your <strong>Canvas (Page 4)</strong> and your <strong>Version 0.1 Skeleton</strong> to your mentor for sign-off!
-    </div>
-  </div>
-
-  <h2>2. Visual Target (Sample Folder Directory Structure)</h2>
-  <div style="background: var(--bih-light); border: 2px dashed var(--bih-border); padding: 18px; border-radius: 8px; font-family: monospace; font-size: 13px; margin: 15px 0;">
-    📁 Documents<br>
-    &nbsp;&nbsp;&nbsp;└── 📁 BIH_Practice<br>
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└── 📁 Capstone_EcoTech<br>
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├── 📁 Drafts<br>
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;└── 📄 Capstone_v0.1_CleanWater.docx<br>
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└── 📁 Final_Showcase<br>
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└── (Ready for Session 20!)
-  </div>
-</div>
-
-<!-- ========================================== -->
-<!-- PAGE 6: REVIEW & MENTOR APPROVAL           -->
-<!-- ========================================== -->
-<div class="page">
-  <div class="header-bar">
-    <div class="header-title">Session 18 Milestone & Approval</div>
-    <div class="badge">Session 18 • Page 6</div>
-  </div>
-
-  <h2>1. Milestone 1 Checklist (To Be Completed Today)</h2>
-  <p>Verify that your team has completed all four foundation milestones:</p>
-  <div class="checkbox-item"><input type="checkbox"> We formed our team and selected one approved Capstone Track (A, B, C, or D).</div>
-  <div class="checkbox-item"><input type="checkbox"> We completed all 7 boxes of the Project Planning Canvas on Page 4.</div>
-  <div class="checkbox-item"><input type="checkbox"> We built our folder directory tree inside <code>Documents &gt; BIH_Practice</code>.</div>
-  <div class="checkbox-item"><input type="checkbox"> We built and saved our initial <strong>Version 0.1 Skeleton file</strong>.</div>
-
-  <h2>2. Written Reflection</h2>
-  <p><strong>Question 1:</strong> Why is it smart to build a rough "Prototype" before spending hours perfecting colors and animations?</p>
-  <div class="answer-line" contenteditable="true">Write your answer here...</div>
-  <div class="answer-line" contenteditable="true"></div>
-
-  <p><strong>Question 2:</strong> What is one challenge your team might face during Session 19 (building and testing), and how will you solve it?</p>
-  <div class="answer-line" contenteditable="true">Write your answer here...</div>
-
-  <h2>3. Official Mentor Capstone Approval Sign-Off</h2>
-  <p><em>(Your mentor must review and sign below before your team can begin Session 19 building!)</em></p>
-
+  <h2>2. Where Have You Seen AI?</h2>
+  <p>Many people use AI every day without knowing it. Tick every one you (or someone in your family) has seen, and write which job it does: <strong>R</strong> (recognise), <strong>P</strong> (predict) or <strong>C</strong> (create).</p>
   <table>
     <thead>
       <tr>
-        <th style="width: 45%;">Mentor Evaluation Criteria</th>
-        <th style="width: 18%; text-align:center;">Needs Revision</th>
-        <th style="width: 18%; text-align:center;">Approved &#10004;</th>
-        <th style="width: 19%; text-align:center;">Outstanding! ⭐</th>
+        <th style="width: 8%; text-align:center;">Seen?</th>
+        <th style="width: 72%;">Where AI hides</th>
+        <th style="width: 20%; text-align:center;">Job (R, P or C)</th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td><strong>Community Relevance:</strong> Does the project address a real issue?</td>
-        <td style="text-align:center;"><input type="radio" name="m1"></td>
-        <td style="text-align:center;"><input type="radio" name="m1"></td>
-        <td style="text-align:center;"><input type="radio" name="m1"></td>
+        <td style="text-align:center;"><input type="checkbox"></td>
+        <td>A phone keyboard suggests the next word as you type a message.</td>
+        <td><div class="answer-line" contenteditable="true" style="text-align:center;"></div></td>
       </tr>
       <tr>
-        <td><strong>Feasibility:</strong> Can the team realistically finish in 3 sessions?</td>
-        <td style="text-align:center;"><input type="radio" name="m2"></td>
-        <td style="text-align:center;"><input type="radio" name="m2"></td>
-        <td style="text-align:center;"><input type="radio" name="m2"></td>
+        <td style="text-align:center;"><input type="checkbox"></td>
+        <td>A phone unlocks when it sees its owner's face.</td>
+        <td><div class="answer-line" contenteditable="true" style="text-align:center;"></div></td>
       </tr>
       <tr>
-        <td><strong>Data Safety:</strong> Does the plan respect privacy and P.I.I. rules?</td>
-        <td style="text-align:center;"><input type="radio" name="m3"></td>
-        <td style="text-align:center;"><input type="radio" name="m3"></td>
-        <td style="text-align:center;"><input type="radio" name="m3"></td>
+        <td style="text-align:center;"><input type="checkbox"></td>
+        <td>YouTube or TikTok shows "videos you might like".</td>
+        <td><div class="answer-line" contenteditable="true" style="text-align:center;"></div></td>
       </tr>
       <tr>
-        <td><strong>File Setup:</strong> Are directories and v0.1 files created properly?</td>
-        <td style="text-align:center;"><input type="radio" name="m4"></td>
-        <td style="text-align:center;"><input type="radio" name="m4"></td>
-        <td style="text-align:center;"><input type="radio" name="m4"></td>
+        <td style="text-align:center;"><input type="checkbox"></td>
+        <td>Google Translate turns an English sentence into Twi, Ewe or Hausa.</td>
+        <td><div class="answer-line" contenteditable="true" style="text-align:center;"></div></td>
+      </tr>
+      <tr>
+        <td style="text-align:center;"><input type="checkbox"></td>
+        <td>An email inbox moves scam messages into the Spam folder by itself.</td>
+        <td><div class="answer-line" contenteditable="true" style="text-align:center;"></div></td>
+      </tr>
+      <tr>
+        <td style="text-align:center;"><input type="checkbox"></td>
+        <td>A chatbot (ChatGPT, Gemini, Meta AI in WhatsApp, Copilot) writes an answer to a question.</td>
+        <td><div class="answer-line" contenteditable="true" style="text-align:center;"></div></td>
+      </tr>
+    </tbody>
+  </table>
+  <p><strong>One more:</strong> Where else do you think AI might be used in Ghana (farming, hospitals, markets, transport, banking)?</p>
+  <div class="answer-line" contenteditable="true">Write your idea here...</div>
+
+  <div class="callout">
+    <div class="callout-title">🇬🇭 AI MADE IN AFRICA</div>
+    In 2019 Google opened an AI research centre in Accra, its first in Africa. Researchers across the continent are building AI that understands African languages and helps farmers spot crop diseases from a phone photo. Maybe one day you will build some too!
+  </div>
+</div>
+
+<!-- ========================================== -->
+<!-- PAGE 3: HOW A MACHINE LEARNS                -->
+<!-- ========================================== -->
+<div class="page">
+  <div class="header-bar">
+    <div class="header-title">How a Machine Learns: Training Data</div>
+    <div class="badge">Session 18 • Page 3</div>
+  </div>
+
+  <h2>1. The Three Steps of Machine Learning</h2>
+  <p>The examples we give an AI are called <strong>training data</strong>. Learning from them is called <strong>training</strong>. Every AI goes through the same three steps:</p>
+
+  <!-- DIAGRAM: COLLECT, TRAIN, TEST -->
+  <div class="diagram-container">
+    <svg width="680" height="150" viewBox="0 0 680 150" xmlns="http://www.w3.org/2000/svg">
+      <defs><marker id="ar18b" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#3A0CA3"/></marker></defs>
+      <rect x="20" y="20" width="190" height="105" rx="10" fill="#EEF2FF" stroke="#3A0CA3" stroke-width="2"/>
+      <circle cx="45" cy="45" r="14" fill="#3A0CA3"/><text x="45" y="50" font-size="13" font-weight="bold" fill="#FFFFFF" text-anchor="middle">1</text>
+      <text x="68" y="50" font-size="12.5" font-weight="bold" fill="#3A0CA3">COLLECT DATA</text>
+      <text x="35" y="78" font-size="10" fill="#1E293B">Gather lots of examples, each</text>
+      <text x="35" y="93" font-size="10" fill="#1E293B">with the right label: "bottle =</text>
+      <text x="35" y="108" font-size="10" fill="#1E293B">plastic", "newspaper = paper".</text>
+
+      <path d="M 214,72 L 240,72" stroke="#3A0CA3" stroke-width="3" marker-end="url(#ar18b)"/>
+
+      <rect x="245" y="20" width="190" height="105" rx="10" fill="#FFF7ED" stroke="#F77F00" stroke-width="2"/>
+      <circle cx="270" cy="45" r="14" fill="#F77F00"/><text x="270" y="50" font-size="13" font-weight="bold" fill="#FFFFFF" text-anchor="middle">2</text>
+      <text x="293" y="50" font-size="12.5" font-weight="bold" fill="#9A3412">TRAIN</text>
+      <text x="260" y="78" font-size="10" fill="#1E293B">The computer compares the</text>
+      <text x="260" y="93" font-size="10" fill="#1E293B">examples again and again and</text>
+      <text x="260" y="108" font-size="10" fill="#1E293B">finds the pattern in them.</text>
+
+      <path d="M 439,72 L 465,72" stroke="#3A0CA3" stroke-width="3" marker-end="url(#ar18b)"/>
+
+      <rect x="470" y="20" width="190" height="105" rx="10" fill="#ECFDF5" stroke="#10B981" stroke-width="2"/>
+      <circle cx="495" cy="45" r="14" fill="#10B981"/><text x="495" y="50" font-size="13" font-weight="bold" fill="#FFFFFF" text-anchor="middle">3</text>
+      <text x="518" y="50" font-size="12.5" font-weight="bold" fill="#047857">TEST &amp; USE</text>
+      <text x="485" y="78" font-size="10" fill="#1E293B">Show it something new. It</text>
+      <text x="485" y="93" font-size="10" fill="#1E293B">guesses. People check the</text>
+      <text x="485" y="108" font-size="10" fill="#1E293B">guesses and fix the data.</text>
+    </svg>
+    <div class="diagram-caption">Figure 18.1: Collect, train, test. Real AI systems learn from millions of examples, not just a handful.</div>
+  </div>
+
+  <h2>2. Be the Machine! (Plantain Puzzle)</h2>
+  <p>Here is your training data. Study the pattern, then label the three new plantains.</p>
+  <table>
+    <thead>
+      <tr><th>Plantain</th><th>Skin colour</th><th>When you press it</th><th>Label (the answer)</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Example A</td><td>Green</td><td>Hard</td><td><strong>Not ready</strong></td></tr>
+      <tr><td>Example B</td><td>Yellow</td><td>Soft</td><td><strong>Ripe</strong></td></tr>
+      <tr><td>Example C</td><td>Black with spots</td><td>Very soft</td><td><strong>Ripe</strong></td></tr>
+      <tr><td>Example D</td><td>Green-yellow</td><td>Hard</td><td><strong>Not ready</strong></td></tr>
+    </tbody>
+  </table>
+  <table>
+    <thead>
+      <tr><th style="width: 22%;">New plantain</th><th style="width: 24%;">Skin colour</th><th style="width: 24%;">When you press it</th><th style="width: 30%;">Your guess</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Mystery 1</td><td>Yellow with brown spots</td><td>Soft</td><td><div class="answer-line" contenteditable="true"></div></td></tr>
+      <tr><td>Mystery 2</td><td>Dark green</td><td>Hard</td><td><div class="answer-line" contenteditable="true"></div></td></tr>
+      <tr><td>Mystery 3</td><td>Black</td><td>Very soft</td><td><div class="answer-line" contenteditable="true"></div></td></tr>
+    </tbody>
+  </table>
+  <p><strong>What pattern did you use?</strong></p>
+  <div class="answer-line" contenteditable="true">The pattern I noticed was...</div>
+
+  <div class="callout">
+    <div class="callout-title">🧺 MORE (AND VARIED) EXAMPLES = BETTER GUESSES</div>
+    If you had only seen yellow plantains, would you know a black one can be ripe too? An AI is only as good as the examples it learned from. That is why AI companies collect <strong>huge</strong> amounts of data.
+  </div>
+</div>
+
+<!-- ========================================== -->
+<!-- PAGE 4: WHEN AI GETS IT WRONG               -->
+<!-- ========================================== -->
+<div class="page">
+  <div class="header-bar">
+    <div class="header-title">When AI Gets It Wrong: Mistakes &amp; Bias</div>
+    <div class="badge">Session 18 • Page 4</div>
+  </div>
+
+  <h2>1. AI Always Guesses, and Guesses Can Be Wrong</h2>
+  <p>AI never knows an answer for certain. It makes its best guess from the patterns it learned. Sometimes the guess is wrong, and the worrying part is that AI can sound <strong>just as confident when it is wrong</strong> as when it is right.</p>
+
+  <h2>2. Garbage In, Garbage Out</h2>
+  <p>Computer scientists have a saying: <strong>"Garbage in, garbage out."</strong> If the training data is wrong, too small or one-sided, the AI learns the wrong pattern:</p>
+
+  <!-- DIAGRAM: THREE KINDS OF BAD DATA -->
+  <div class="diagram-container">
+    <svg width="680" height="140" viewBox="0 0 680 140" xmlns="http://www.w3.org/2000/svg">
+      <g transform="translate(20, 12)">
+        <rect x="0" y="0" width="200" height="116" rx="8" fill="#FEF2F2" stroke="#EF4444" stroke-width="1.5"/>
+        <text x="100" y="24" font-size="12" font-weight="bold" fill="#B91C1C" text-anchor="middle">❌ WRONG LABELS</text>
+        <text x="100" y="48" font-size="9.5" fill="#7F1D1D" text-anchor="middle">Someone labels a plastic</text>
+        <text x="100" y="62" font-size="9.5" fill="#7F1D1D" text-anchor="middle">bottle as "paper".</text>
+        <text x="100" y="86" font-size="9.5" font-weight="bold" fill="#7F1D1D" text-anchor="middle">The AI learns the mistake</text>
+        <text x="100" y="100" font-size="9.5" font-weight="bold" fill="#7F1D1D" text-anchor="middle">and repeats it.</text>
+      </g>
+      <g transform="translate(240, 12)">
+        <rect x="0" y="0" width="200" height="116" rx="8" fill="#FFF7ED" stroke="#F97316" stroke-width="1.5"/>
+        <text x="100" y="24" font-size="12" font-weight="bold" fill="#9A3412" text-anchor="middle">🤏 TOO FEW EXAMPLES</text>
+        <text x="100" y="48" font-size="9.5" fill="#7C2D12" text-anchor="middle">It saw only 2 things,</text>
+        <text x="100" y="62" font-size="9.5" fill="#7C2D12" text-anchor="middle">so it has not seen enough.</text>
+        <text x="100" y="86" font-size="9.5" font-weight="bold" fill="#7C2D12" text-anchor="middle">It guesses wildly on</text>
+        <text x="100" y="100" font-size="9.5" font-weight="bold" fill="#7C2D12" text-anchor="middle">anything new.</text>
+      </g>
+      <g transform="translate(460, 12)">
+        <rect x="0" y="0" width="200" height="116" rx="8" fill="#EEF2FF" stroke="#4361EE" stroke-width="1.5"/>
+        <text x="100" y="24" font-size="12" font-weight="bold" fill="#3A0CA3" text-anchor="middle">⚖️ ONE-SIDED DATA</text>
+        <text x="100" y="48" font-size="9.5" fill="#1E1B4B" text-anchor="middle">It saw many bottles but</text>
+        <text x="100" y="62" font-size="9.5" fill="#1E1B4B" text-anchor="middle">hardly any sachets.</text>
+        <text x="100" y="86" font-size="9.5" font-weight="bold" fill="#1E1B4B" text-anchor="middle">It works well for some</text>
+        <text x="100" y="100" font-size="9.5" font-weight="bold" fill="#1E1B4B" text-anchor="middle">things and badly for others.</text>
+      </g>
+    </svg>
+    <div class="diagram-caption">Figure 18.2: Garbage in, garbage out. Bad training data teaches the AI bad patterns.</div>
+  </div>
+
+  <h2>3. Bias: When AI Is Unfair</h2>
+  <p>When one-sided data makes an AI treat some people worse than others, we call it <strong>bias</strong>. In 2018, a researcher named <strong>Joy Buolamwini</strong>, whose family comes from Ghana, tested face-analysis programs from big technology companies. They made far more mistakes on darker-skinned women than on lighter-skinned men, largely because the photos used to train and test them were mostly of lighter-skinned faces. Her work pushed companies to improve their systems.</p>
+
+  <div class="panic-box">
+    <div class="panic-title">🧑🏾‍⚖️ PEOPLE MUST STAY IN CHARGE</div>
+    AI can help doctors, teachers, farmers and banks, but a <strong>person</strong> should check its important decisions. AI should be a helper, never the final judge of someone's exam, health or future.
+  </div>
+
+  <p><strong>Think about it:</strong> A school builds an AI to mark handwriting, but trains it only on very neat handwriting. Who might it treat unfairly, and how could the school fix it?</p>
+  <div class="answer-line" contenteditable="true">Write your answer here...</div>
+  <div class="answer-line" contenteditable="true"></div>
+</div>
+
+<!-- ========================================== -->
+<!-- PAGE 5: GUIDED LAB - TEACH THE ROBOT        -->
+<!-- ========================================== -->
+<div class="page">
+  <div class="header-bar">
+    <div class="header-title">Guided Hands-On Lab: Teach the Robot</div>
+    <div class="badge">Session 18 • Page 5</div>
+  </div>
+
+  <h2>1. Lab Mission: Train a Recycling Robot</h2>
+  <p>Open the <strong>Teach the Robot</strong> 3D lab on your session page. You will teach a robot to sort rubbish into <strong>Plastic</strong>, <strong>Paper</strong> and <strong>Cans</strong>, just by showing it examples. Then you will test how well it learned.</p>
+
+  <div class="step-card">
+    <div class="step-num">1</div>
+    <div class="step-content"><strong>Too few examples:</strong> Label only <strong>2</strong> items, then press <strong>Let the robot sort</strong>. Write its score below.</div>
+  </div>
+  <div class="step-card">
+    <div class="step-num">2</div>
+    <div class="step-content"><strong>Good training data:</strong> Press <strong>Forget everything</strong>. Now teach it at least <strong>2 examples of every kind</strong> (6 or more), then test it again.</div>
+  </div>
+  <div class="step-card">
+    <div class="step-num">3</div>
+    <div class="step-content"><strong>Garbage in:</strong> Teach it one <strong>wrong</strong> example on purpose (for example, call a bottle "Paper"). Test it, and watch for the mistake it learned from you.</div>
+  </div>
+
+  <table>
+    <thead>
+      <tr><th style="width: 34%;">Round</th><th style="width: 22%; text-align:center;">Examples taught</th><th style="width: 22%; text-align:center;">Score (out of 5)</th><th style="width: 22%; text-align:center;">Mistakes</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>1. Too few examples</td><td><div class="answer-line" contenteditable="true" style="text-align:center;"></div></td><td><div class="answer-line" contenteditable="true" style="text-align:center;"></div></td><td><div class="answer-line" contenteditable="true" style="text-align:center;"></div></td></tr>
+      <tr><td>2. Good training data</td><td><div class="answer-line" contenteditable="true" style="text-align:center;"></div></td><td><div class="answer-line" contenteditable="true" style="text-align:center;"></div></td><td><div class="answer-line" contenteditable="true" style="text-align:center;"></div></td></tr>
+      <tr><td>3. One wrong example</td><td><div class="answer-line" contenteditable="true" style="text-align:center;"></div></td><td><div class="answer-line" contenteditable="true" style="text-align:center;"></div></td><td><div class="answer-line" contenteditable="true" style="text-align:center;"></div></td></tr>
+    </tbody>
+  </table>
+
+  <p><strong>What did you notice?</strong> Which round gave the best score, and why?</p>
+  <div class="answer-line" contenteditable="true">Round ___ was best because...</div>
+  <p><strong>In Round 3,</strong> what did the robot get wrong because of your wrong example?</p>
+  <div class="answer-line" contenteditable="true">The robot...</div>
+
+  <h2>2. Spot AI at Home (With a Parent or Mentor)</h2>
+  <p>Ask a parent, guardian or mentor to open a message on their phone (no need to send it!). Type <strong>"I am going to"</strong> and write the three words the keyboard suggests. That is AI predicting the next word from patterns in the owner's past messages and millions of others.</p>
+  <div style="display: flex; gap: 8px; margin: 10px 0;">
+    <div style="flex: 1; border: 1.5px solid var(--bih-purple); border-radius: 6px; padding: 8px; text-align: center;"><small style="color:#64748B;">Suggestion 1</small><div class="answer-line" contenteditable="true" style="text-align:center;"></div></div>
+    <div style="flex: 1; border: 1.5px solid var(--bih-gold); border-radius: 6px; padding: 8px; text-align: center;"><small style="color:#64748B;">Suggestion 2</small><div class="answer-line" contenteditable="true" style="text-align:center;"></div></div>
+    <div style="flex: 1; border: 1.5px solid var(--bih-green); border-radius: 6px; padding: 8px; text-align: center;"><small style="color:#64748B;">Suggestion 3</small><div class="answer-line" contenteditable="true" style="text-align:center;"></div></div>
+  </div>
+  <p class="no-print" style="font-size: 12px; color: #64748B;">No phone at home? Skip this one: your mentor will show it on the projector.</p>
+</div>
+
+<!-- ========================================== -->
+<!-- PAGE 6: REVIEW & SELF-ASSESSMENT            -->
+<!-- ========================================== -->
+<div class="page">
+  <div class="header-bar">
+    <div class="header-title">Session 18 Review &amp; Verification</div>
+    <div class="badge">Session 18 • Page 6</div>
+  </div>
+
+  <h2>1. True or False?</h2>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 66%;">Statement</th>
+        <th style="width: 17%; text-align:center;">True</th>
+        <th style="width: 17%; text-align:center;">False</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>AI is alive and thinks and feels like a person.</td>
+        <td style="text-align:center;"><input type="radio" name="tf1"></td>
+        <td style="text-align:center;"><input type="radio" name="tf1"></td>
+      </tr>
+      <tr>
+        <td>AI learns patterns from examples called training data.</td>
+        <td style="text-align:center;"><input type="radio" name="tf2"></td>
+        <td style="text-align:center;"><input type="radio" name="tf2"></td>
+      </tr>
+      <tr>
+        <td>If an AI sounds very sure of its answer, the answer must be correct.</td>
+        <td style="text-align:center;"><input type="radio" name="tf3"></td>
+        <td style="text-align:center;"><input type="radio" name="tf3"></td>
+      </tr>
+      <tr>
+        <td>An AI trained mostly on one group of people can be unfair to other groups.</td>
+        <td style="text-align:center;"><input type="radio" name="tf4"></td>
+        <td style="text-align:center;"><input type="radio" name="tf4"></td>
+      </tr>
+      <tr>
+        <td>Your phone keyboard suggesting the next word is an example of AI predicting.</td>
+        <td style="text-align:center;"><input type="radio" name="tf5"></td>
+        <td style="text-align:center;"><input type="radio" name="tf5"></td>
       </tr>
     </tbody>
   </table>
 
-  <div style="border: 2px solid var(--bih-green); border-radius: 6px; padding: 12px; background: #ECFDF5; margin-top: 15px;">
-    <strong>Mentor Notes / Advice for Session 19:</strong>
-    <div class="answer-line" contenteditable="true" style="border-bottom-color: #059669;">Write advice here...</div>
-    <div style="display: flex; justify-content: space-between; margin-top: 10px; font-size: 13px;">
-      <div><strong>Mentor Signature:</strong> _____________________________</div>
-      <div><strong>Date Approved:</strong> ____________________</div>
-    </div>
+  <h2>2. Written Review Questions</h2>
+  <p><strong>Question 1:</strong> What is the difference between a normal program (like your Scratch game) and an AI?</p>
+  <div class="answer-line" contenteditable="true">Write your answer here...</div>
+  <div class="answer-line" contenteditable="true"></div>
+
+  <p><strong>Question 2:</strong> What does "garbage in, garbage out" mean? Give an example.</p>
+  <div class="answer-line" contenteditable="true">Write your answer here...</div>
+  <div class="answer-line" contenteditable="true"></div>
+
+  <h2>3. Self-Assessment &amp; Mentor Sign-Off</h2>
+  <p>Tick the column that reflects your confidence at the end of Session 18:</p>
+  <table>
+    <thead>
+      <tr>
+        <th>AI Understanding Competency</th>
+        <th style="width: 18%; text-align: center;">With Help</th>
+        <th style="width: 18%; text-align: center;">Almost Alone</th>
+        <th style="width: 18%; text-align: center;">All By Myself!</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1. I can explain what AI is in my own words.</td>
+        <td style="text-align: center;"><input type="radio" name="s18_1"></td>
+        <td style="text-align: center;"><input type="radio" name="s18_1"></td>
+        <td style="text-align: center;"><input type="radio" name="s18_1"></td>
+      </tr>
+      <tr>
+        <td>2. I can give examples of AI that recognises, predicts and creates.</td>
+        <td style="text-align: center;"><input type="radio" name="s18_2"></td>
+        <td style="text-align: center;"><input type="radio" name="s18_2"></td>
+        <td style="text-align: center;"><input type="radio" name="s18_2"></td>
+      </tr>
+      <tr>
+        <td>3. I can describe how AI learns from training data (collect, train, test).</td>
+        <td style="text-align: center;"><input type="radio" name="s18_3"></td>
+        <td style="text-align: center;"><input type="radio" name="s18_3"></td>
+        <td style="text-align: center;"><input type="radio" name="s18_3"></td>
+      </tr>
+      <tr>
+        <td>4. I can explain why AI makes mistakes and how bias happens.</td>
+        <td style="text-align: center;"><input type="radio" name="s18_4"></td>
+        <td style="text-align: center;"><input type="radio" name="s18_4"></td>
+        <td style="text-align: center;"><input type="radio" name="s18_4"></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div style="border-top: 1px solid var(--bih-border); margin-top: 25px; padding-top: 12px; display: flex; justify-content: space-between; font-size: 13px;">
+    <div><strong>Mentor Signature:</strong> _____________________________</div>
+    <div><strong>Date Completed:</strong> ____________________</div>
   </div>
 </div>
 

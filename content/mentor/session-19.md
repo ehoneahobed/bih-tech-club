@@ -1,83 +1,90 @@
-# Session 19: Capstone Building, Testing & Iteration
+# Session 19: Using AI Wisely & Safely
 
-> **At a glance:** teams turn their v0.1 skeleton into a working v1.0, run a silent user test with another team, record fixes in a Change Log and save an improved v1.1 ready for Demo Day. · **Time:** 90 minutes (adjust the timings if your period is shorter) · **Workbook pages:** 6
+> **At a glance:** pupils learn how chatbots produce answers, write C.L.E.A.R. prompts, fact-check AI answers, recognise deepfake scams, keep private information out of AI tools and use AI honestly. · **Time:** 90 minutes (adjust the timings if your period is shorter) · **Workbook pages:** 6
 
 ## Learning outcomes
 By the end of the session, pupils can:
-1. Explain iteration using the clay potter at the wheel: build, user test, feedback, refine.
-2. Run a silent user test, watching without explaining or defending (the Zip-Lip Rule).
-3. Sort feedback into Fix Now, Upgrade and Ignore buckets, and accept critique calmly.
-4. Record at least two fixes in a Change Log.
-5. Save `Capstone_v1.1_[ProjectName]` in the `Final_Showcase` folder.
+1. Explain that a chatbot predicts likely words, so its answers can sound sure but be wrong ("hallucinations").
+2. Write a clear prompt using C.L.E.A.R., and check an AI answer against a trusted source.
+3. Keep their personal information out of AI tools, spot a deepfake scam and tell honest use of AI from cheating.
 
 ## Before the session
-- [ ] Check each team's v0.1 file is in `BIH_Practice > Capstone_[TeamName] > Drafts` on the same PC they used in Session 18.
-- [ ] Pair up teams for testing in advance, ideally different tracks, and write the pairs on the board.
-- [ ] Have a visible clock or phone timer for the 25-minute build, 5-minute silent test and 20-minute refine.
-- [ ] Check internet if Track D teams need research, and have backup printed notes or fact sheets if it is down.
-- [ ] Open the Build the Whole House 3D lab on each team PC; it should remember their Session 18 charter on that computer.
+- [ ] Test the AI Helper Check lab on the projector PC and a pupil PC. It uses a pretend AI with pre-written answers, so it needs no internet and no account.
+- [ ] Decide whether you will show a real chatbot today. If so, use **your own** account on the projector PC, check your organisation's and the school's rules, and type the prompts yourself. Pupils under 13 must not use their own accounts, and under-18s need a parent's or guardian's permission (most AI tools set these limits).
+- [ ] Turn off chat history or memory in your AI tool if you can, and never type pupils' names into it.
+- [ ] Have a Social Studies textbook (or a printout) ready for the fact-check on Page 3.
+- [ ] Prepare a short note to parents and guardians explaining the optional supervised home task (Page 5, Mission 2), if you plan to send it home.
 
 ## Running order
 | Time | Activity | Workbook | What the mentor does |
 |---|---|---|---|
-| 0–10 min | The clay potter, the iteration cycle and vocabulary | Page 1 | Go through the four vocabulary words. |
-| 10–20 min | Silent user test, red flags, feedback triage | Pages 2–3 | Model the Zip-Lip Rule with a volunteer. Explain the three buckets. |
-| 20–45 min | Phase 1: build working prototype v1.0 | Page 5 | Check formulas, loops, citations and the 6x6 rule. Save as `Capstone_v1.0_[ProjectName]`. |
-| 45–55 min | Phases 2–3: the swap and peer evaluation | Pages 5–6 | Swap PCs; 5 minutes of silence. Testers fill in the Page 6 form. |
-| 55–60 min | Triage the feedback | Pages 3–4 | Teams sort the notes into the three buckets. |
-| 60–80 min | Phase 4: refine to v1.1 and fill the Change Log | Pages 4–5 | At least two concrete improvements, written in the Change Log. |
-| 80–85 min | 3D lab: record fixes and tick the polish checklist | – | Teams enter fixes and tick the polish checklist. |
-| 85–90 min | Phase 5: final save, readiness checklist, clearance | Pages 5–6 | Check saves in `Final_Showcase`; complete the clearance. |
+| 0–8 min | From Session 18 to chatbots | Page 1 | Recall "AI is a pattern-guesser". Play next-word prediction: say "On Saturday I will go to the…" and let the class shout words. |
+| 8–15 min | Age rules and supervision | Page 1 | Explain the club rule: real AI only with a mentor, at the Hub or with a parent. |
+| 15–30 min | Prompts and C.L.E.A.R. | Page 2 | Do the "send a cousin to the market" role-play. Pupils rewrite the two vague prompts in pairs. |
+| 30–45 min | AI Helper Check lab | Page 5 | Demonstrate the prompt builder on the projector, then pairs do all three missions and fill in the table. |
+| 45–57 min | Hallucinations and the 3 checks | Page 3 | Do the fact-check challenge together with the textbook. |
+| 57–70 min | Deepfakes, privacy and honesty | Page 4 | Link deepfakes to S.T.O.P. from Session 15. Vote on the Helper-or-Cheater table. |
+| 70–80 min | Real AI demo (optional) | Page 5 | Type 2–3 pupils' C.L.E.A.R. prompts into a chatbot on the projector. Fact-check one answer as a class. |
+| 80–86 min | Scenarios and review questions | Page 6 | Discuss each scenario aloud. |
+| 86–90 min | Self-assessment and sign-off | Page 6 | Sign off using the evidence below. |
 
 ## Key ideas and how to explain them
-- **Iteration:** the potter spins, checks the thickness, smooths the cracks and trims the rim. Software gets better the same way, cycle after cycle.
-- **You cannot test your own work:** creators are biased. A confused tester proves the design needs to be clearer.
-- **The Zip-Lip Rule:** do not explain or defend. Watch where the tester hesitates and write it down.
-- **The same four tracks as Session 18:** Track A is a Word notice plus a 3-slide pitch, Track B a spreadsheet with SUM/AVERAGE plus a column chart comparing items (or a pie chart showing each item's share of the total), Track C a Scratch game, and Track D a researched report with citations plus a photo/slide guide. Tracks A and D test both of their files.
-- **Feedback triage:** Bucket 1 (Fix Now) is broken formulas (such as `#VALUE!`), crashes or tiny text; Bucket 2 (Upgrade) is a chart title, better contrast or punchier bullets; Bucket 3 (Ignore) is "add 10 more levels", "make it 3D" or personal colour gripes.
-- **Change Log:** never "we fixed some stuff". Write what was wrong and exactly how it was fixed, like reselecting the chart data so it covers only the item rows and leaves out the total row.
+- **Chatbots predict words:** trained on huge amounts of text, they write answers one likely word at a time, like a super-powered phone keyboard. Likely-sounding is not the same as true.
+- **Hallucination:** a confident, made-up answer (wrong dates, invented books or links). Always do the 3 checks: a trusted source, does it make sense, a second source.
+- **C.L.E.A.R.:** Context, Limits, Examples and details, Ask one clear task, Review. The market errand ("buy food" vs "6 eggs and a tin of tomatoes under 50 cedis") makes it land.
+- **Deepfakes:** AI-made fake photos, videos and voices. The defence is the same as for phishing: panic and money requests are red flags, so stop and check another way (call back on a known number).
+- **Privacy:** what you type may be stored and used for training. Treat a chatbot like a public noticeboard: no P.I.I., no passwords, no photos of other people.
+- **Honesty:** AI as a tutor (explain, quiz me) is fine; AI as a ghost-writer for work you hand in is cheating. Follow school rules and say when you used AI.
 
 ## The 3D lab
-Use **Build the Whole House**, continuing from Session 18:
-1. "Step 3: record at least 2 fixes from user testing." Teams copy Fix 1 and Fix 2 from their Change Log. The roof appears when two fixes are recorded.
-2. "Step 4: tick every item on the polish checklist." The lab's seven items are: spell check done on everything; every team member's name is on the title; formulas start with = (spreadsheets); pictures resized from the corner handles; sources cited (in a footer or last slide); no real private data, only fictional names and numbers; final file saved as `…_v1.1`. The workbook's Pre-Showcase Readiness Checklist (Page 5) has the same seven items. Teams should tick only what is truly done.
-
-The lab saves progress on one computer only. If two teams share a PC, only one team's house is stored; let the other team use a different PC or rely on the paper workbook.
+**AI Helper Check** has three missions on a pretend AI phone. On the projector, demonstrate the first: send the vague prompt, then add pieces (the task, who it is for, the format and a tone) and watch the clarity meter and the answer improve. Pairs then check the helper's answers. Some are confidently wrong, and *Check the source* opens the textbook. Last, they sort what is OK to ask AI and what must never be typed in. Ask pairs which wrong answer surprised them most. It is the same lesson as Page 3: it sounded sure, and it was wrong. No real AI is used, so this is safe for every pupil.
 
 ## Common mistakes and quick fixes
 | Pupils often… | Try this |
 |---|---|
-| Talk the tester through the project | Remind them of the Zip-Lip Rule. Ask them to write notes instead. |
-| Write "it was nice" on the peer form | Ask the tester for one specific thing that confused them, as the form asks. |
-| Try to fix every suggestion | Fix Now first, then Upgrade. Ignore anything too big for one session. |
-| See `#####` in Excel | That is not an error: the column is too narrow, so widen it. If totals are wrong, check formulas start with `=`, such as `=B2*C2` and `=SUM`. |
-| See `#VALUE!` in Excel | A formula is using a cell with text in it. Check the Qty and Price cells hold only numbers (no "GH₵" typed in). |
-| Save v1.1 over v1.0 in Drafts | Use Save As, rename to `Capstone_v1.1_[ProjectName]` and choose `Final_Showcase`. |
+| Believe an answer because it is long and polite | Point to the fact-check challenge: neat writing, wrong facts. |
+| Write a prompt with no task ("I am a JHS 1 pupil") | Ask "What exactly do you want it to do?" The A in C.L.E.A.R. is the task. |
+| Think a chatbot is searching the internet like Google | Some tools can search, but the answer is still written by prediction, so check it. |
+| Think deleting a chat deletes it from the company | It may already be stored. Not typing private things is the only safe choice. |
+| Feel any use of AI for school is cheating | Show the Helper column: explaining, quizzing and brainstorming are fine when you do the work yourself and are honest. |
 
 ## When things go wrong
-- **No internet:** only research and citations need it. Track D teams (and any Track A team checking facts) can use printed notes and add citations later; the rest of the session is offline.
-- **Not enough PCs:** test in turns while other teams keep building.
-- **A PC freezes or the power goes:** this is why there are versions. Reopen the latest saved version and carry on. Save every 10 minutes.
-- **A team's file is missing:** search the PC for "Capstone" and check Downloads.
+- **No internet:** the lab and all six pages work offline. Skip the real AI demo, or show screenshots you prepared before.
+- **Not enough PCs:** threes for the lab, rotating the mouse each mission; the others read the answers aloud and check the textbook.
+- **A PC freezes or the power goes:** do the fact-check, the prompt rewrites and the Helper-or-Cheater vote on paper. Read out "AI answers" from the lab missions yourself and let pupils hold up ✅ or ❌ cards.
+- **The real AI gives an unsuitable or upsetting answer:** stop sharing the screen calmly and say "this is exactly why we check AI and why adults supervise". Report it using the tool's feedback button later.
 
 ## Answer key
-This session has no questions with fixed answers. Use this guidance for the written parts.
+**Your Turn: Fix These Prompts (Page 2):** open task. Look for all five parts, for example: "I am a JHS 1 pupil in Ghana. Explain how plants make food (photosynthesis) in 5 simple steps, using examples from a cocoa farm." And: "I am a JHS pupil from Cape Coast. Write a 100-word paragraph for a school project describing 3 interesting things about my town for visitors." (Pupils should name a town, not their street or house.)
 
-**Change Log (Page 4), Fix 1 and Fix 2:** Look for: a specific problem the tester found (for example, "the total was in the chart", "the score didn't reset", "the heading was too small", "a fact in the report had no source") and a specific fix ("reselected data", "added `set [Score] to (0)`", "made the heading 20 pt"). "We fixed it" is not enough.
+**Fact-Check Challenge (Page 3)**
+- Mistake 1: independence was on **6 March 1957**, not 1960. (1960 is when Ghana became a republic, with Nkrumah as its first president.)
+- Mistake 2: the capital is **Accra**, not Kumasi.
+- Kwame Nkrumah and Lake Volta are correct. Lake Volta is one of the largest man-made lakes in the world by surface area.
+- Trusted sources: a Social Studies textbook, a teacher or mentor, an official `.gov.gh` website, an encyclopedia.
 
-**Peer Testing Evaluation Form (Page 6):** Look for: an honest tick in each row, one real piece of praise and one specific, constructive suggestion. Ask testers to rewrite any comment that is unkind or vague.
+**Helper or Cheater (Page 4):** 1. Helper. 2. Cheater. 3. Helper. 4. Cheater.
 
-**Pre-Showcase Readiness Checklist (Page 5):** each item should be checked on screen, not just ticked. Not every item applies to every track: for example, a Scratch game may have no formulas. Mark "not needed" rather than ticking falsely.
+**Lab table (Page 5):** Mission 1: adding the task, who it is for and the format (a tone is optional) made the answer better. Mission 2: **3 of the 6** answers were wrong (the independence date, "a spider is an insect" and "the Sun goes around the Earth"). Mission 3: for example a password or PIN, a home address, a full name with a school, or photos of friends.
+
+**Real AI tool (Page 5, Mission 2):** open task. Look for a C.L.E.A.R. prompt with no P.I.I., a one-sentence summary, one fact checked in a named source and a sensible follow-up question.
+
+**Scenario Decisions (Page 6)**
+1. Checking a chatbot's date in the textbook: **Wise**.
+2. Typing full name, school and home address: **Unwise** (P.I.I.).
+3. Calling the uncle back on his usual number before doing anything: **Wise**.
+4. Sharing a shocking video straight away: **Unwise** (it could be a deepfake. T.H.I.N.K.: is it true?).
+
+**Written Review Questions**
+1. A chatbot writes by predicting words that are likely to come next, from patterns in its training text. It does not check whether something is true, so it can sound sure and still be wrong.
+2. Context, Limits, Examples and details, Ask, Review.
 
 ## Support and stretch
-- **Needs more support:** cut v1.0 back to the minimum (for example, 3 sheet items, or just the loop and score). Sit with them for the triage.
-- **Finished early:** make a third Change Log fix, test with a second team, or start writing who says what in the 3-minute pitch for Session 20.
+- **Needs more support:** do the lab's prompt builder together first, then rewrite just one vague prompt with a sentence starter ("I am a… Explain… in…"). Read the fact-check paragraph aloud.
+- **Finished early:** write a C.L.E.A.R. prompt that would help them revise for an upcoming test. Or write three tips for parents on using AI safely at home, to share with their family.
 
 ## Evidence for sign-off
-- A v1.1 file in `Final_Showcase` that opens and works without crashing.
-- A Change Log with at least two specific fixes linked to the peer feedback.
-- A completed peer evaluation form from the testing team.
-- Tick the Milestone 2 boxes only when all of the above are true; otherwise give a clear to-do list.
+The pupil writes at least one full C.L.E.A.R. prompt, finds both mistakes in the fact-check challenge with the correct facts, completes all three AI Helper Check missions, and gets all four scenarios right. They can explain in their own words why a chatbot can be confidently wrong.
 
 ## Safety and wellbeing
-Feedback must be kind and specific. Stop any mocking straight away. Check again that projects use only fictional names, prices and data, with no real phone numbers or addresses. Testers must not change or delete the other team's files. Photos of people need their permission.
+Pupils must not create AI accounts in the club or use their own: use a mentor's account on the projector, or supervised access at the Hub. Never type pupils' names, photos or other personal details into an AI tool. Deepfakes and voice-clone scams can be frightening; reassure pupils that the S.T.O.P. habit protects them, and that they should tell a trusted adult about any strange call or message. If a pupil mentions being targeted by fake images of themselves, listen calmly, don't promise secrecy, and follow your school's safeguarding procedure. When suggesting the home task, make clear it is optional and only with a parent's or guardian's permission and supervision.

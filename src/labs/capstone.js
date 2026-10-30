@@ -1,4 +1,4 @@
-// Sessions 18–20 — Capstone: "building the whole house". Each project stage
+// Sessions 20–22 — Capstone: "building the whole house". Each project stage
 // adds a part of a 3D house: charter = foundation, prototype v0.1 = walls,
 // user testing = roof, polish v1.1 = paint + door + flag, then a timed
 // 3-minute pitch on stage. Progress is saved so teams continue next session.
@@ -12,7 +12,7 @@ const TRACKS = {
   D: { name: 'Culture & Community Tourism', icon: '🏛️', builds: 'A researched report with citations + a photo/slide guide' },
 };
 const ROLES = ['Project Manager', 'Designer / Builder', 'Researcher / Tester', 'Presenter'];
-// The same three acts as the Session 20 workbook (180 seconds in all).
+// The same three acts as the Session 22 workbook (180 seconds in all).
 const PITCH = [
   { part: 'Act 1: The Hook & Problem', secs: 30, tip: 'Introduce the team, grab attention with a question or a surprising fact, and name the real Ghanaian challenge.' },
   { part: 'Act 2: Live Digital Demonstration', secs: 90, tip: 'Show it working. Point at the screen and explain each step. The demo always takes longer than you think.' },

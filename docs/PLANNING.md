@@ -6,10 +6,10 @@ _Prepared 29 October 2026. This is a working document: edit it as decisions are 
 
 | Asset | State |
 |---|---|
-| 20 session workbooks (`content/workbooks/`) | Complete. Each is 6 pages and follows the same design. |
+| 22 session workbooks (`content/workbooks/`) | Complete. Sessions 18–19 (AI) were added on 30 Oct 2026, and the capstone moved from 18–20 to 20–22. Each is 6 pages and follows the same design. |
 | Word study pack (`docs/source/…Study_Packs.docx`) | A condensed 11-unit version of the same journey (about 5,200 words). |
 | Logo | 1600 × 500 PNG. |
-| Website | Live at https://bih-tech-club.vercel.app: session pages, 12 interactive 3D labs, offline ZIP packs, print-ready PDFs, an Offline Club Kit for USB and 20 mentor guides. |
+| Website | Live at https://bih-tech-club.vercel.app: session pages, 14 interactive 3D labs, offline ZIP packs, print-ready PDFs, an Offline Club Kit for USB and 22 mentor guides. |
 | Inter-Schools Tech Championship | **No materials yet.** A draft structure is in section 4. |
 
 ## 2. Review of the session workbooks
@@ -19,11 +19,11 @@ _Prepared 29 October 2026. This is a working document: edit it as decisions are 
 - **Separate desktop and laptop paths** from Session 1. This suits mixed school labs.
 - **A consistent rhythm.** Each session moves from plain-talk concept to vocabulary, a guided lab, a "panic button" troubleshooting box, a knowledge check and a self-rating.
 - **Safety throughout.** Pupils use fictional data, never write real passwords, and ask before deleting or sharing. Session 15 brings these together.
-- **A real progression to a product.** Sessions 18–20 take pupils from charter to prototype to tested v1.1 to a 3-minute pitch, across four sensible tracks.
+- **A real progression to a product.** Sessions 20–22 take pupils from charter to prototype to tested v1.1 to a 3-minute pitch, across four sensible tracks.
 
 ### Fixed in this pass
 1. **Session 15 numbering.** Page 1 had two headings numbered "2.". The second is now "3. The School Uniform Rule".
-2. **Sample text in fill-in boxes.** Boxes held text like "Type your full name here…", "PC-01" and (in Sessions 19–20) a whole example team, "EcoTech Ghana Innovators". Pupils had to delete it, and it printed. The build now turns this text into a faint hint that disappears when typing or printing. The source files are unchanged.
+2. **Sample text in fill-in boxes.** Boxes held text like "Type your full name here…", "PC-01" and (in Sessions 21–22) a whole example team, "EcoTech Ghana Innovators". Pupils had to delete it, and it printed. The build now turns this text into a faint hint that disappears when typing or printing. The source files are unchanged.
 3. **Printing overflowed A4.** The 6-page workbooks printed as 9 pages, with half-empty sheets. PDFs are now auto-fitted so each workbook page fills exactly one A4 sheet. Scaling ranges from 78% (Session 9) to 100%.
 4. **Answers were lost on refresh.** Typed answers, ticks and self-ratings now autosave in the browser. A "Clear my answers" button is provided for shared PCs.
 5. **No phone layout.** Workbooks now stack to one column on narrow screens.
@@ -56,7 +56,7 @@ About 60 problems were found in three rounds: while writing the mentor guides, t
   - Windows 11 Notepad silently keeping one pupil's text for the next.
 - **Contradictions:**
   - keyboard zones (workbook 4, lab 5; the lab now shows the workbook's 4);
-  - capstone tracks, roles, file names and pitch acts across Sessions 18–20 and the capstone lab (all aligned; the lab's pitch timer now uses the workbook's 3 acts);
+  - capstone tracks, roles, file names and pitch acts across the capstone sessions (then 18–20, now 20–22) and the capstone lab (all aligned; the lab's pitch timer now uses the workbook's 3 acts);
   - password advice versus the Password Fortress lab (now five random words everywhere; the lab also counts CamelCase words).
 - **Honesty and safety:**
   - an unsourced statistic credited to a real agency, and two other unsourced figures, removed or marked as practice data;
@@ -72,12 +72,12 @@ About 60 problems were found in three rounds: while writing the mentor guides, t
 
 ## 3. How the website works
 
-- **Share per session:** `https://<your-domain>/sessions/01/` … `/sessions/20/`. Each page has the workbook, the 3D lab (where there is one), a ZIP pack and a PDF.
+- **Share per session:** `https://<your-domain>/sessions/01/` … `/sessions/22/`. Each page has the workbook, the 3D lab (where there is one), a ZIP pack and a PDF.
 - **Offline, three ways:** (1) on each lab PC, open the Mentors page while online and press **Save the whole course on this computer**; the whole course, labs included, then works offline on that PC (phones save only the pages they open); (2) the **Offline Club Kit** ZIP on the Mentors page is the whole site for a USB drive (open `index.html`); (3) each session's own ZIP has the workbook, the PDF and a README.
 - **Sharing on WhatsApp:** every page has a preview card with the logo and session title.
-- **Mentor guides:** `/mentors/01/` … `/mentors/20/`, linked from the Mentors page.
-- **3D labs (every session has at least one):** Computer (S1), Keyboard (S2), Desktop windows (S3), Filing tree (S4–5), Internet town (S6, S7, S14), Spot the Phish (S7, S15), Document formatting (S8–9), Spreadsheet charts (S10–11), Slide design & slide show (S12–13), Password fortress (S15), Code the Sprite (S16–17) and Build the Whole House capstone planner (S18–20).
-- **Guided missions:** every lab has a 🎯 checklist that always shows the next step and a hint, saves progress on that computer and celebrates when finished. A 🔊 button reads the instructions aloud. The capstone lab saves the team's charter, change log and pitch plan between Sessions 18, 19 and 20, and prints a project card. That card could double as the Championship entry form. They need WebGL, which almost every browser since 2015 supports. If it is missing, the page says so and the workbook still works.
+- **Mentor guides:** `/mentors/01/` … `/mentors/22/`, linked from the Mentors page.
+- **3D labs (every session has at least one):** Computer (S1), Keyboard (S2), Desktop windows (S3), Filing tree (S4–5), Internet town (S6, S7, S14), Spot the Phish (S7, S15), Document formatting (S8–9), Spreadsheet charts (S10–11), Slide design & slide show (S12–13), Password fortress (S15), Code the Sprite (S16–17), Teach the Robot (S18), AI Helper Check (S19) and Build the Whole House capstone planner (S20–22).
+- **Guided missions:** every lab has a 🎯 checklist that always shows the next step and a hint, saves progress on that computer and celebrates when finished. A 🔊 button reads the instructions aloud. The capstone lab saves the team's charter, change log and pitch plan between Sessions 20, 21 and 22, and prints a project card. That card could double as the Championship entry form. They need WebGL, which almost every browser since 2015 supports. If it is missing, the page says so and the workbook still works.
 - **Keeping it up to date:** edit `content/workbooks/session-NN.html`, run `npm run pdf -- NN`, then commit and push. Vercel rebuilds automatically. The "Last updated" date comes from git, and the build warns when a PDF is older than its workbook. See `README.md`.
 
 ## 4. Inter-Schools Tech Championship: draft structure
@@ -87,13 +87,13 @@ About 60 problems were found in three rounds: while writing the mentor guides, t
 **Purpose:** give every club a goal to work towards and a public stage for the capstone work, and bring the participating schools together.
 
 ### Format: two stages
-1. **School round (Session 20 Demo Day).** Each club holds its Demo Day as normal and picks **one capstone team** plus **two individual skills competitors** to represent the school.
+1. **School round (Session 22 Demo Day).** Each club holds its Demo Day as normal and picks **one capstone team** plus **two individual skills competitors** to represent the school.
 2. **Championship Day (one day, one venue).** All schools come together.
 
 ### Championship events
 | Event | Who | What it tests | Format |
 |---|---|---|---|
-| **Capstone Showcase** (main prize) | School team (3–4) | Sessions 18–20 | 3-minute pitch + 2-minute Q&A, using the existing pitch formula. Entered in one of the four capstone tracks: A Health & Environment, B Market & Canteen Bookkeeper, C Educational Game (Scratch), D Culture & Community Tourism. |
+| **Capstone Showcase** (main prize) | School team (3–4) | Sessions 20–22 | 3-minute pitch + 2-minute Q&A, using the existing pitch formula. Entered in one of the four capstone tracks: A Health & Environment, B Market & Canteen Bookkeeper, C Educational Game (Scratch), D Culture & Community Tourism. |
 | **Digital Skills Relay** | 2 per school | Sessions 1–11 | Timed stations: home-row typing accuracy, create the BIH folder structure and correctly named file, fix a broken spreadsheet formula and chart, format a one-page notice. Judges check accuracy first, then time. |
 | **Code Sprint** | 1–2 per school | Sessions 16–17 | 30 minutes to build a set Scratch mini-game from a brief (loop + condition + score variable). Brief is revealed on the day. |
 | **Digital Citizen Quiz** | Whole team | Sessions 6, 7, 14, 15 | Buzzer quiz: spot the phishing email, HTTPS or not, T.H.I.N.K., the right sharing permission. |
@@ -109,7 +109,7 @@ About 60 problems were found in three rounds: while writing the mentor guides, t
 
 ### Decisions needed from the BIH team
 1. **Date and venue.** Does it need a lab with enough PCs for the Relay and Code Sprint? About 2 PCs per school.
-2. **How many schools,** and whether the club has run all 20 sessions in each one by then.
+2. **How many schools,** and whether the club has run all 22 sessions in each one by then.
 3. **Eligibility:** JHS 1 only, or JHS 1–3? Is there a team size limit?
 4. **Judges:** suggest 3 per panel (an industry volunteer, a teacher from a non-competing school, a BIH mentor).
 5. **Prizes and certificates.** Every participant should get a certificate, not only the winners.
@@ -120,8 +120,8 @@ About 60 problems were found in three rounds: while writing the mentor guides, t
 | When | Milestone |
 |---|---|
 | C − 12 weeks | Confirm schools, date, venue, judges. Publish the rules and rubric on the site. |
-| C − 8 weeks | Clubs reach Session 18; teams choose a track. |
-| C − 4 weeks | School Demo Days (Session 20) select representatives. |
+| C − 8 weeks | Clubs reach Session 20; teams choose a track. |
+| C − 4 weeks | School Demo Days (Session 22) select representatives. |
 | C − 2 weeks | Teams submit project title, track and a 1-paragraph summary. Mentors receive the judging pack. |
 | C − 1 week | Device check at the venue; offline software installed. |
 | C | Championship Day. |
@@ -134,7 +134,8 @@ About 60 problems were found in three rounds: while writing the mentor guides, t
 | Done | Deploy to Vercel and connect the GitHub repo | Pushes rebuild automatically. |
 | Done | Mentor guides (R2), offline mode, USB kit, link previews, 404 page, sitemap | 30 Oct 2026. The guides need a BIH review. |
 | Done | BIH branding and self-study path | 30 Oct 2026: BIH colours and fonts across the site, workbooks, PDFs and labs; step-by-step session path with progress, answer check and a Start here page. |
-| Next | AI literacy session or thread; links to the GES JHS Computing curriculum | Needs a decision from BIH. |
+| Done | AI literacy | 30 Oct 2026: Session 18 "What Is AI? Machines That Learn" (Teach the Robot lab) and Session 19 "Using AI Wisely & Safely" (AI Helper Check lab). Pupils learn the ideas without accounts; real AI tools only with a mentor, at the Hub or with a parent. Saved progress and answers for the old Sessions 18–20 move to 20–22 automatically. |
+| Next | Links to the GES JHS Computing curriculum | Needs a decision from BIH. |
 | Next | Short self-marking quiz per session | Reuses the workbook review questions; feeds the Championship quiz. |
 | Next | Championship page: rules, rubric, timeline and FAQ | Once section 4 is agreed. |
 | Later | Championship registration form and results board | Needs a small backend or a form service. |
