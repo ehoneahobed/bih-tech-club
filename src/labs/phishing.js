@@ -1,4 +1,4 @@
-// Sessions 7 & 15 — Spot the Phish: emails fly onto the desk one at a time.
+// Sessions 13 & 33 — Spot the Phish: emails fly onto the desk one at a time.
 // Read the sender, subject, message and link, then sort each into the inbox
 // tray (safe) or the shredder (phishing). Every answer explains the clues.
 import { THREE, COLORS, box, rbox, mat, decal } from './runtime.js';

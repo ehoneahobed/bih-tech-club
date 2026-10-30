@@ -1,4 +1,4 @@
-# Session 18: What Is AI? Machines That Learn
+# Session 39: What Is AI? Machines That Learn
 
 > **At a glance:** pupils learn that AI finds patterns in examples instead of following written rules, spot AI they already use, train a robot with good and bad examples, and explain why AI makes mistakes and can be unfair. · **Time:** 90 minutes (adjust the timings if your period is shorter) · **Workbook pages:** 6
 
@@ -12,13 +12,13 @@ By the end of the session, pupils can:
 - [ ] Test the Teach the Robot lab on the projector PC and a pupil PC. It needs no internet and no AI account; keep the offline pack on USB.
 - [ ] Bring 4–6 real plantains (or pictures) at different stages of ripeness for the opening, if you can.
 - [ ] Have a smartphone ready to show predictive text on the projector (or just hold it up) for pupils with no phone at home.
-- [ ] Draw the rules vs examples diagram (Figure 18.0) on the board.
+- [ ] Draw the rules vs examples diagram (Figure 39.0) on the board.
 
 ## Running order
 | Time | Activity | Workbook | What the mentor does |
 |---|---|---|---|
 | 0–10 min | What do you already think AI is? | Page 1 | Collect ideas on the board without correcting them yet ("robots", "ChatGPT", "it will take jobs"). Then read the plain-talk definition together. |
-| 10–20 min | Rules vs examples | Page 1 | Hold up the plantains. "Which rule would tell a computer this black one is ripe?" Link to the IF blocks from Sessions 16–17. |
+| 10–20 min | Rules vs examples | Page 1 | Hold up the plantains. "Which rule would tell a computer this black one is ripe?" Link to the IF blocks from Sessions 36–37. |
 | 20–30 min | Three jobs and AI around you | Page 2 | Pupils tick the table in pairs and add R, P or C. Show predictive text on a phone. |
 | 30–40 min | Collect, train, test and the plantain puzzle | Page 3 | Pupils are "the machine": they solve the puzzle, then explain the pattern they used. |
 | 40–55 min | Teach the Robot lab | Page 5 | Demonstrate Mission 1 on the projector, then pairs do all three missions and fill in the table. |
@@ -82,4 +82,4 @@ By the end of the session, pupils can:
 The pupil explains rules vs examples in their own words, solves the plantain puzzle, completes all three Teach the Robot missions with the table filled in, and gets at least 4 of the 5 true-or-false statements right. They can explain "garbage in, garbage out" with an example from the lab.
 
 ## Safety and wellbeing
-Some pupils may have heard frightening things about AI ("robots will take over", "AI will take all the jobs"). Take worries seriously and keep the tone calm and practical: AI is a tool made and controlled by people, and learning about it is how they stay in charge. The home task only uses a parent's phone to look at keyboard suggestions: pupils must not send messages or open other apps. Real AI chatbots come in Session 19, and only with supervision.
+Some pupils may have heard frightening things about AI ("robots will take over", "AI will take all the jobs"). Take worries seriously and keep the tone calm and practical: AI is a tool made and controlled by people, and learning about it is how they stay in charge. The home task only uses a parent's phone to look at keyboard suggestions: pupils must not send messages or open other apps. Real AI chatbots come in Session 40, and only with supervision.

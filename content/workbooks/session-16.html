@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>BIH Tech Club - Session 16: Block Programming & Algorithms</title>
+  <title>BIH Tech Club - Session 16: Word Processing & Document Formatting</title>
   <style>
     :root {
       --bih-purple: #3A0CA3;
@@ -13,11 +13,8 @@
       --bih-dark: #1E1E24;
       --bih-light: #F8F9FA;
       --bih-border: #CED4DA;
-      --scratch-orange: #FFAB19;
-      --scratch-blue: #4C97FF;
-      --scratch-purple: #9966FF;
-      --scratch-yellow: #FFBF00;
-      --scratch-green: #0FBD8C;
+      --word-blue: #2563EB;
+      --ribbon-gray: #F1F5F9;
     }
 
     * {
@@ -221,6 +218,21 @@
     td { border: 1px solid var(--bih-border); padding: 7px 10px; vertical-align: top; }
     tr:nth-child(even) { background-color: var(--bih-light); }
 
+    /* Key Badge */
+    .kbd-key {
+      display: inline-block;
+      background: #F3F4F6;
+      border: 1.5px solid #9CA3AF;
+      border-bottom: 3px solid #6B7280;
+      border-radius: 4px;
+      padding: 1px 6px;
+      font-family: monospace;
+      font-size: 12px;
+      font-weight: 700;
+      color: #1F2937;
+      margin: 0 2px;
+    }
+
     /* Interactive Inputs */
     .answer-line {
       min-height: 24px;
@@ -245,7 +257,7 @@
 <body>
 
 <!-- ========================================== -->
-<!-- PAGE 1: WHAT IS AN ALGORITHM & CODING?     -->
+<!-- PAGE 1: MEET THE WORD PROCESSOR            -->
 <!-- ========================================== -->
 <div class="page">
   <div class="header-bar">
@@ -257,421 +269,475 @@
     <div class="meta-row">
       <span class="meta-label">Learner Full Name:</span>
       <div class="editable-line" contenteditable="true">Ama Mensah</div>
-      <span class="meta-label" style="min-width: 90px;">School:</span>
-      <div class="editable-line" contenteditable="true">Bozoma Model JHS</div>
+    </div>
+    <div class="meta-row">
+      <span class="meta-label">School:</span>
+      <div class="editable-line" contenteditable="true">Bozoma Model School</div>
+      <span class="meta-label" style="min-width: 50px;">Class:</span>
+      <div class="editable-line" contenteditable="true" style="max-width: 90px;">JHS 1</div>
     </div>
     <div class="meta-row">
       <span class="meta-label">Workstation Device:</span>
       <div class="editable-line" contenteditable="true" style="max-width: 180px;">[ ] Desktop &nbsp; [ ] Laptop</div>
-      <span class="meta-label" style="min-width: 50px;">Class:</span>
-      <div class="editable-line" contenteditable="true" style="max-width: 90px;">JHS 1</div>
+      <span class="meta-label" style="min-width: 70px;">Station #:</span>
+      <div class="editable-line" contenteditable="true" style="max-width: 90px;">PC-01</div>
     </div>
   </div>
 
-  <h1>Session 16: Block Programming & Algorithms</h1>
-  <p>Until today, you have used software that other people built (Word, Excel, PowerPoint, Web Browsers). Today, you step across the line from being a technology <em>consumer</em> to becoming a technology <strong>creator</strong>: you will write your first computer program!</p>
+  <h1>Session 16: Create & Format Documents (Part 1)</h1>
+  <p>In earlier sessions, we used <em>Notepad</em> to practice typing. Notepad is simple, but it cannot change the color of words, center a title, or add pictures. Today, we step into the world of full <strong>Word Processors</strong>!</p>
 
-  <h2>1. Plain Talk: The Kelewele Recipe (What is an Algorithm?)</h2>
-  <p>Computers are lightning fast, but they are as dumb as a stone—they cannot guess what you want. They can only follow an <strong>Algorithm</strong>: a step-by-step list of clear, ordered instructions to accomplish a specific goal.</p>
-  <p>Think about making spicy fried plantain (<em>Kelewele</em>):</p>
+  <h2>1. Plain Talk: The Old Typewriter vs. Digital Word Processor</h2>
+  <p>Before computers, office secretaries in Ghana typed on mechanical <strong>typewriters</strong>. If they made a single spelling mistake near the bottom of the page, they had to throw the entire sheet of paper away and start over! With a modern digital <strong>Word Processor</strong> (such as Microsoft Word, Google Docs, or LibreOffice Writer), you can edit, correct, recolor, and format your text as many times as you like before printing a single sheet of paper.</p>
 
-  <!-- DIAGRAM: ALGORITHM FLOWCHART VS CODE SEQUENCE -->
+  <!-- DIAGRAM: WORD PROCESSOR INTERFACE ANATOMY -->
   <div class="diagram-container">
-    <svg width="680" height="150" viewBox="0 0 680 150" xmlns="http://www.w3.org/2000/svg">
-      <rect x="20" y="10" width="640" height="130" rx="6" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.5"/>
+    <svg width="720" height="230" viewBox="0 0 720 230" xmlns="http://www.w3.org/2000/svg">
+      <!-- Window Outer Frame -->
+      <rect x="15" y="10" width="690" height="210" rx="6" fill="#F8FAFC" stroke="#334155" stroke-width="1.5"/>
 
-      <!-- Step 1: Peel -->
-      <g transform="translate(40, 30)">
-        <rect x="0" y="0" width="110" height="55" rx="4" fill="#EEF2FF" stroke="#4361EE" stroke-width="1.5"/>
-        <text x="55" y="24" font-size="10" font-weight="bold" fill="#3A0CA3" text-anchor="middle">Step 1</text>
-        <text x="55" y="40" font-size="8.5" fill="#1E293B" text-anchor="middle">Peel ripe plantain</text>
+      <!-- Title Bar -->
+      <rect x="15" y="10" width="690" height="26" rx="5" fill="#2563EB"/>
+      <text x="30" y="27" font-size="10.5" font-weight="bold" fill="white">Document1 - Word Processor</text>
+      <rect x="670" y="15" width="16" height="16" rx="2" fill="#E63946"/>
+      <line x1="674" y1="19" x2="682" y2="27" stroke="white" stroke-width="1.5"/>
+      <line x1="682" y1="19" x2="674" y2="27" stroke="white" stroke-width="1.5"/>
+
+      <!-- THE RIBBON (Menu Tabs + Toolbar) -->
+      <rect x="15" y="36" width="690" height="48" fill="#F1F5F9" stroke="#E2E8F0" stroke-width="1"/>
+      <!-- Tabs -->
+      <text x="30" y="49" font-size="9" font-weight="bold" fill="#2563EB">Home</text>
+      <line x1="28" y1="52" x2="55" y2="52" stroke="#2563EB" stroke-width="2"/>
+      <text x="70" y="49" font-size="9" fill="#64748B">Insert</text>
+      <text x="110" y="49" font-size="9" fill="#64748B">Layout</text>
+      <text x="155" y="49" font-size="9" fill="#64748B">Review</text>
+
+      <!-- Formatting Cluster inside Ribbon -->
+      <g transform="translate(25, 58)">
+        <!-- Font family box -->
+        <rect x="0" y="0" width="80" height="18" rx="2" fill="white" stroke="#CBD5E1" stroke-width="1"/>
+        <text x="8" y="12" font-size="8.5" fill="#1E293B">Calibri &or;</text>
+
+        <!-- Font size box -->
+        <rect x="85" y="0" width="30" height="18" rx="2" fill="white" stroke="#CBD5E1" stroke-width="1"/>
+        <text x="92" y="12" font-size="8.5" fill="#1E293B">12 &or;</text>
+
+        <!-- B I U buttons -->
+        <rect x="120" y="0" width="18" height="18" rx="2" fill="#E2E8F0"/>
+        <text x="125" y="13" font-size="10" font-weight="bold" fill="#1E293B">B</text>
+
+        <rect x="140" y="0" width="18" height="18" rx="2" fill="#E2E8F0"/>
+        <text x="146" y="13" font-size="10" font-style="italic" font-weight="bold" fill="#1E293B">I</text>
+
+        <rect x="160" y="0" width="18" height="18" rx="2" fill="#E2E8F0"/>
+        <text x="165" y="13" font-size="10" text-decoration="underline" font-weight="bold" fill="#1E293B">U</text>
+
+        <!-- Alignments -->
+        <rect x="185" y="0" width="18" height="18" rx="2" fill="#E2E8F0"/>
+        <text x="189" y="12" font-size="9" fill="#1E293B">&equiv;</text>
+
+        <rect x="205" y="0" width="18" height="18" rx="2" fill="#DBEAFE" stroke="#2563EB" stroke-width="1"/>
+        <text x="209" y="12" font-size="9" fill="#2563EB">&equiv;</text>
       </g>
 
-      <path d="M 155,57 L 185,57" stroke="#F77F00" stroke-width="2.5"/>
-      <polygon points="190,57 182,53 182,61" fill="#F77F00"/>
+      <!-- THE WHITE DOCUMENT SHEET (Canvas) -->
+      <rect x="160" y="90" width="400" height="115" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1" filter="drop-shadow(0 2px 4px rgba(0,0,0,0.06))"/>
+      
+      <!-- Mock text on canvas -->
+      <!-- Title -->
+      <line x1="280" y1="108" x2="440" y2="108" stroke="#3A0CA3" stroke-width="3.5"/>
+      <!-- Subtitle -->
+      <line x1="310" y1="120" x2="410" y2="120" stroke="#F77F00" stroke-width="2"/>
+      <!-- Paragraph -->
+      <line x1="190" y1="138" x2="530" y2="138" stroke="#94A3B8" stroke-width="1.8"/>
+      <line x1="190" y1="150" x2="530" y2="150" stroke="#94A3B8" stroke-width="1.8"/>
+      <line x1="190" y1="162" x2="450" y2="162" stroke="#94A3B8" stroke-width="1.8"/>
 
-      <!-- Step 2: Cut -->
-      <g transform="translate(195, 30)">
-        <rect x="0" y="0" width="110" height="55" rx="4" fill="#FFF7ED" stroke="#F77F00" stroke-width="1.5"/>
-        <text x="55" y="24" font-size="10" font-weight="bold" fill="#9A3412" text-anchor="middle">Step 2</text>
-        <text x="55" y="40" font-size="8.5" fill="#1E293B" text-anchor="middle">Cut into small cubes</text>
-      </g>
+      <!-- STATUS BAR (Bottom) -->
+      <rect x="15" y="208" width="690" height="12" fill="#F1F5F9"/>
+      <text x="30" y="217" font-size="7.5" fill="#64748B">Page 1 of 1 &bull; 45 words</text>
+      <text x="640" y="217" font-size="7.5" fill="#64748B">100% Zoom &plusmn;</text>
 
-      <path d="M 310,57 L 340,57" stroke="#F77F00" stroke-width="2.5"/>
-      <polygon points="345,57 337,53 337,61" fill="#F77F00"/>
+      <!-- Callout Labels -->
+      <path d="M 230,42 L 310,42" stroke="#2563EB" stroke-width="1.5"/>
+      <text x="315" y="45" font-size="9" font-weight="bold" fill="#2563EB">The Ribbon (Your Formatting Toolbox)</text>
 
-      <!-- Step 3: Season -->
-      <g transform="translate(350, 30)">
-        <rect x="0" y="0" width="110" height="55" rx="4" fill="#ECFDF5" stroke="#10B981" stroke-width="1.5"/>
-        <text x="55" y="24" font-size="10" font-weight="bold" fill="#047857" text-anchor="middle">Step 3</text>
-        <text x="55" y="40" font-size="8.5" fill="#1E293B" text-anchor="middle">Mix ginger & pepper</text>
-      </g>
-
-      <path d="M 465,57 L 495,57" stroke="#F77F00" stroke-width="2.5"/>
-      <polygon points="500,57 492,53 492,61" fill="#F77F00"/>
-
-      <!-- Step 4: Fry -->
-      <g transform="translate(505, 30)">
-        <rect x="0" y="0" width="110" height="55" rx="4" fill="#FEF2F2" stroke="#EF4444" stroke-width="1.5"/>
-        <text x="55" y="24" font-size="10" font-weight="bold" fill="#B91C1C" text-anchor="middle">Step 4</text>
-        <text x="55" y="40" font-size="8.5" fill="#1E293B" text-anchor="middle">Fry in hot oil!</text>
-      </g>
-
-      <text x="340" y="115" font-size="10" font-weight="bold" fill="#3A0CA3" text-anchor="middle">CRITICAL LAW: Sequence matters! If you fry before peeling, dinner is completely ruined!</text>
+      <path d="M 160,150 L 90,150" stroke="#3A0CA3" stroke-width="1.5"/>
+      <text x="85" y="146" font-size="9" font-weight="bold" fill="#3A0CA3" text-anchor="end">The Document Canvas</text>
+      <text x="85" y="158" font-size="8" fill="#64748B" text-anchor="end">(Your digital sheet of paper)</text>
     </svg>
-    <div class="diagram-caption">Figure 16.0: An Algorithm is a step-by-step sequence. The computer executes steps from left to right, top to bottom.</div>
+    <div class="diagram-caption">Figure 16.0: The Word Processor layout. All styling controls sit inside the Ribbon at the top.</div>
   </div>
 
-  <h2>2. Why "Block-Based" Coding?</h2>
-  <div class="dual-grid">
-    <div class="dual-box">
-      <div class="dual-box-title">❌ TEXT-BASED CODE (Frustrating for Beginners)</div>
-      <p>Typing code by hand in languages like Python or C++. If you forget a single semicolon (<code>;</code>) or comma, the entire program crashes with a confusing error message.</p>
-    </div>
-    <div class="dual-box">
-      <div class="dual-box-title">✅ BLOCK-BASED CODE (Visual & Fun!)</div>
-      <p>In <strong>Scratch</strong>, instructions are shaped like colorful <strong>puzzle pieces</strong>. You drag and snap them together. If two blocks don't make logical sense, they physically refuse to snap together!</p>
-    </div>
-  </div>
-</div>
-
-<!-- ========================================== -->
-<!-- PAGE 2: ANATOMY OF THE SCRATCH STUDIO      -->
-<!-- ========================================== -->
-<div class="page">
-  <div class="header-bar">
-    <div class="header-title">Anatomy of the Scratch Studio</div>
-    <div class="badge">Session 16 • Page 2</div>
-  </div>
-
-  <h2>1. The Five Major Zones of Scratch</h2>
-  <p>When you launch <strong>Scratch</strong>, you are looking at a digital animation and game studio:</p>
-
-  <!-- DIAGRAM: SCRATCH STUDIO INTERFACE -->
-  <div class="diagram-container">
-    <svg width="720" height="235" viewBox="0 0 720 235" xmlns="http://www.w3.org/2000/svg">
-      <rect x="15" y="10" width="690" height="215" rx="6" fill="#FFFFFF" stroke="#334155" stroke-width="1.5"/>
-
-      <!-- Top Bar -->
-      <rect x="15" y="10" width="690" height="26" rx="5" fill="#3A0CA3"/>
-      <text x="30" y="27" font-size="11" font-weight="bold" fill="white">Scratch Studio - BIH Project 1</text>
-      <circle cx="640" cy="23" r="7" fill="#10B981"/> <!-- Green Flag -->
-      <polygon points="637,19 644,23 637,27" fill="white"/>
-      <circle cx="665" cy="23" r="7" fill="#EF4444"/> <!-- Red Stop -->
-      <rect x="661" y="19" width="8" height="8" fill="white"/>
-      <text x="628" y="27" font-size="8" font-weight="bold" fill="white" text-anchor="end">GREEN FLAG &amp; STOP</text>
-
-      <!-- ZONE 1: BLOCK PALETTE (Far Left) -->
-      <g transform="translate(25, 42)">
-        <rect x="0" y="0" width="130" height="175" fill="#F1F5F9" stroke="#CBD5E1"/>
-        <text x="65" y="16" font-size="9" font-weight="bold" fill="#64748B" text-anchor="middle">BLOCK PALETTE</text>
-        
-        <!-- Category Dots -->
-        <circle cx="18" cy="35" r="5" fill="#4C97FF"/><text x="30" y="38" font-size="9" fill="#1E293B">Motion</text>
-        <circle cx="18" cy="55" r="5" fill="#9966FF"/><text x="30" y="58" font-size="9" fill="#1E293B">Looks</text>
-        <circle cx="18" cy="75" r="5" fill="#D65CD6"/><text x="30" y="78" font-size="9" fill="#1E293B">Sound</text>
-        <circle cx="18" cy="95" r="5" fill="#FFBF00"/><text x="30" y="98" font-size="9" fill="#1E293B">Events</text>
-        <circle cx="18" cy="115" r="5" fill="#FFAB19"/><text x="30" y="118" font-size="9" fill="#1E293B">Control</text>
-        <circle cx="18" cy="135" r="5" fill="#5CB1D6"/><text x="30" y="138" font-size="9" fill="#1E293B">Sensing</text>
-        <circle cx="18" cy="155" r="5" fill="#59C059"/><text x="30" y="158" font-size="9" fill="#1E293B">Operators</text>
-      </g>
-
-      <!-- ZONE 2: SCRIPTING WORKSPACE (Center) -->
-      <g transform="translate(165, 42)">
-        <rect x="0" y="0" width="280" height="175" fill="#F8FAFC" stroke="#CBD5E1"/>
-        <text x="140" y="18" font-size="10" font-weight="bold" fill="#64748B" text-anchor="middle">CODING WORKSPACE (Drag Blocks Here)</text>
-        
-        <!-- Snapped Code Blocks Mockup -->
-        <g transform="translate(30, 35)">
-          <!-- When Green Flag Clicked -->
-          <path d="M 0,12 C 15,2 35,2 45,12 L 150,12 A 4 4 0 0 1 154,16 L 154,32 A 4 4 0 0 1 150,36 L 45,36 C 40,42 20,42 15,36 L 0,36 Z" fill="#FFBF00"/>
-          <circle cx="14" cy="24" r="4" fill="#10B981"/>
-          <text x="24" y="27" font-size="8.5" font-weight="bold" fill="white">when green flag clicked</text>
-
-          <!-- Move 50 Steps -->
-          <g transform="translate(0, 36)">
-            <path d="M 0,0 L 15,0 C 20,6 40,6 45,0 L 150,0 A 4 4 0 0 1 154,4 L 154,24 A 4 4 0 0 1 150,28 L 45,28 C 40,34 20,34 15,28 L 0,28 Z" fill="#4C97FF"/>
-            <text x="14" y="18" font-size="8.5" font-weight="bold" fill="white">move ( 50 ) steps</text>
-          </g>
-
-          <!-- Say Akwaaba! -->
-          <g transform="translate(0, 64)">
-            <path d="M 0,0 L 15,0 C 20,6 40,6 45,0 L 150,0 A 4 4 0 0 1 154,4 L 154,24 A 4 4 0 0 1 150,28 L 45,28 C 40,34 20,34 15,28 L 0,28 Z" fill="#9966FF"/>
-            <text x="14" y="18" font-size="8.5" font-weight="bold" fill="white">say [Akwaaba!] for 2s</text>
-          </g>
-        </g>
-      </g>
-
-      <!-- ZONE 3: THE STAGE (Top Right) -->
-      <g transform="translate(455, 42)">
-        <rect x="0" y="0" width="235" height="115" rx="3" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.5"/>
-        <text x="117" y="15" font-size="8.5" font-weight="bold" fill="#94A3B8" text-anchor="middle">THE STAGE (The Theater Screen)</text>
-        
-        <!-- Scratch Cat Mockup -->
-        <g transform="translate(100, 35)">
-          <circle cx="18" cy="18" r="14" fill="#FFAB19"/>
-          <polygon points="6,8 10,0 16,8" fill="#FFAB19"/>
-          <polygon points="20,8 26,0 30,8" fill="#FFAB19"/>
-          <circle cx="14" cy="16" r="2" fill="white"/><circle cx="14" cy="16" r="1" fill="black"/>
-          <circle cx="22" cy="16" r="2" fill="white"/><circle cx="22" cy="16" r="1" fill="black"/>
-          <!-- Speech Bubble -->
-          <rect x="25" y="-12" width="60" height="18" rx="4" fill="#FFFFFF" stroke="#334155" stroke-width="1"/>
-          <text x="55" y="0" font-size="8" font-weight="bold" fill="#3A0CA3" text-anchor="middle">Akwaaba!</text>
-        </g>
-      </g>
-
-      <!-- ZONE 4: SPRITE PANE (Bottom Right) -->
-      <g transform="translate(455, 162)">
-        <rect x="0" y="0" width="235" height="55" rx="2" fill="#F1F5F9" stroke="#CBD5E1"/>
-        <text x="10" y="14" font-size="8" font-weight="bold" fill="#64748B">Sprites: Sprite1 &bull; (x: 50, y: 0)</text>
-        <rect x="10" y="20" width="30" height="28" rx="3" fill="#FFFFFF" stroke="#4C97FF" stroke-width="1.5"/>
-        <circle cx="25" cy="34" r="8" fill="#FFAB19"/>
-      </g>
-    </svg>
-    <div class="diagram-caption">Figure 16.1: The five zones: Block Palette, Code Area (Workspace), Stage, Sprite Pane, and Green Flag &amp; Stop.</div>
-  </div>
-
-  <h2>2. Essential Scratch Vocabulary</h2>
+  <h2>2. Word Processor Vocabulary</h2>
   <ul>
-    <li><strong>Sprite:</strong> A character, person, animal, or object on the stage that you can control with code blocks.</li>
-    <li><strong>Backdrop:</strong> The background scenery picture behind your sprites on the stage (e.g. a classroom or football field).</li>
-    <li><strong>Script:</strong> A stack of two or more code blocks snapped together that run in order from top to bottom.</li>
-    <li><strong>Green Flag:</strong> The "GO" trigger button that starts your program.</li>
+    <li><strong>The Ribbon:</strong> The wide strip of tabs and buttons running across the top of the window.</li>
+    <li><strong>Canvas (Page):</strong> The white rectangular workspace representing an A4 sheet of paper.</li>
+    <li><strong>Margins:</strong> The blank protective border around the edges of the page where no text is typed.</li>
+    <li><strong>Cursor:</strong> The blinking vertical line (<span style="color:#E63946; font-weight:bold;">|</span>) showing exactly where the next typed letter will land.</li>
   </ul>
 </div>
 
 <!-- ========================================== -->
-<!-- PAGE 3: BLOCK ANATOMY & THE EVENT SPARK   -->
+<!-- PAGE 2: THE FONT STUDIO                   -->
 <!-- ========================================== -->
 <div class="page">
   <div class="header-bar">
-    <div class="header-title">Block Types & The Event Spark</div>
-    <div class="badge">Session 16 • Page 3</div>
+    <div class="header-title">The Font Studio: Styling Your Words</div>
+    <div class="badge">Session 16 • Page 2</div>
   </div>
 
-  <h2>1. Why Blocks Look Like Puzzle Pieces</h2>
-  <p>Look closely at how Scratch blocks are built. They have <strong>notches on the top</strong> and <strong>bumps on the bottom</strong>. This guarantees that blocks connect only in ways that make logical sense to the computer:</p>
+  <h2>1. What is a "Font"?</h2>
+  <p>A <strong>Font</strong> is the visual design, shape, and style of the letters you type. Just as people have different handwritings, computers have hundreds of digital typefaces designed for different purposes.</p>
 
-  <!-- DIAGRAM: BLOCK ANATOMY -->
+  <!-- DIAGRAM: FONT CONTROLS BREAKDOWN -->
   <div class="diagram-container">
     <svg width="680" height="140" viewBox="0 0 680 140" xmlns="http://www.w3.org/2000/svg">
-      <rect x="20" y="10" width="640" height="120" rx="6" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.5"/>
+      <rect x="20" y="15" width="640" height="110" rx="6" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.5"/>
+      
+      <!-- FONT CLUSTER ON RIBBON -->
+      <g transform="translate(40, 30)">
+        <!-- Font Family Selector -->
+        <rect x="0" y="0" width="130" height="28" rx="3" fill="white" stroke="#94A3B8" stroke-width="1.2"/>
+        <text x="12" y="18" font-size="11" font-weight="bold" fill="#1E293B">Calibri</text>
+        <text x="110" y="18" font-size="9" fill="#64748B">&or;</text>
+        <text x="65" y="44" font-size="9" font-weight="bold" fill="#3A0CA3" text-anchor="middle">&uarr; 1. Font Family</text>
 
-      <!-- 1. EVENT HAT BLOCK (Rounded Top) -->
-      <g transform="translate(50, 25)">
-        <path d="M 0,16 C 15,2 40,2 50,16 L 160,16 A 4 4 0 0 1 164,20 L 164,42 A 4 4 0 0 1 160,46 L 50,46 C 45,52 25,52 20,46 L 0,46 Z" fill="#FFBF00"/>
-        <circle cx="16" cy="31" r="5" fill="#10B981"/>
-        <text x="28" y="34" font-size="9" font-weight="bold" fill="white">when green flag clicked</text>
-        <text x="82" y="65" font-size="9" font-weight="bold" fill="#C2410C" text-anchor="middle">HAT BLOCK (The Trigger)</text>
-        <text x="82" y="78" font-size="8" fill="#64748B" text-anchor="middle">Rounded top: NOTHING snaps above it!</text>
+        <!-- Font Size Selector -->
+        <rect x="145" y="0" width="50" height="28" rx="3" fill="white" stroke="#94A3B8" stroke-width="1.2"/>
+        <text x="155" y="18" font-size="12" font-weight="bold" fill="#1E293B">12</text>
+        <text x="180" y="18" font-size="9" fill="#64748B">&or;</text>
+        <text x="170" y="44" font-size="9" font-weight="bold" fill="#F77F00" text-anchor="middle">&uarr; 2. Font Size</text>
+
+        <!-- Bold B -->
+        <rect x="215" y="0" width="30" height="28" rx="3" fill="#E2E8F0" stroke="#94A3B8" stroke-width="1"/>
+        <text x="224" y="20" font-size="14" font-weight="bold" fill="#1E293B">B</text>
+        <text x="230" y="44" font-size="9" font-weight="bold" fill="#2563EB" text-anchor="middle">Bold</text>
+
+        <!-- Italic I -->
+        <rect x="255" y="0" width="30" height="28" rx="3" fill="#E2E8F0" stroke="#94A3B8" stroke-width="1"/>
+        <text x="265" y="20" font-size="14" font-style="italic" font-weight="bold" fill="#1E293B">I</text>
+        <text x="270" y="44" font-size="9" font-weight="bold" fill="#2563EB" text-anchor="middle">Italic</text>
+
+        <!-- Underline U -->
+        <rect x="295" y="0" width="30" height="28" rx="3" fill="#E2E8F0" stroke="#94A3B8" stroke-width="1"/>
+        <text x="303" y="20" font-size="14" text-decoration="underline" font-weight="bold" fill="#1E293B">U</text>
+        <text x="310" y="44" font-size="9" font-weight="bold" fill="#2563EB" text-anchor="middle">Underline</text>
+
+        <!-- Font Color A -->
+        <rect x="345" y="0" width="32" height="28" rx="3" fill="#E2E8F0" stroke="#94A3B8" stroke-width="1"/>
+        <text x="353" y="18" font-size="13" font-weight="bold" fill="#1E293B">A</text>
+        <rect x="351" y="21" width="18" height="4" fill="#DC2626"/>
+        <text x="361" y="44" font-size="9" font-weight="bold" fill="#DC2626" text-anchor="middle">Color</text>
       </g>
 
-      <!-- 2. STACK BLOCK (Middle Notch) -->
-      <g transform="translate(250, 35)">
-        <path d="M 0,0 L 20,0 C 25,6 45,6 50,0 L 160,0 A 4 4 0 0 1 164,4 L 164,32 A 4 4 0 0 1 160,36 L 50,36 C 45,42 25,42 20,36 L 0,36 Z" fill="#4C97FF"/>
-        <text x="25" y="22" font-size="9" font-weight="bold" fill="white">move ( 10 ) steps</text>
-        <text x="82" y="55" font-size="9" font-weight="bold" fill="#0284C7" text-anchor="middle">STACK BLOCK (Action)</text>
-        <text x="82" y="68" font-size="8" fill="#64748B" text-anchor="middle">Has a top notch AND bottom bump</text>
-      </g>
-
-      <!-- 3. LOOKS BLOCK -->
-      <g transform="translate(450, 35)">
-        <path d="M 0,0 L 20,0 C 25,6 45,6 50,0 L 160,0 A 4 4 0 0 1 164,4 L 164,32 A 4 4 0 0 1 160,36 L 50,36 C 45,42 25,42 20,36 L 0,36 Z" fill="#9966FF"/>
-        <text x="25" y="22" font-size="9" font-weight="bold" fill="white">say [Hello!] for 2s</text>
-        <text x="82" y="55" font-size="9" font-weight="bold" fill="#6B21A8" text-anchor="middle">LOOKS BLOCK (Speech/Costume)</text>
-        <text x="82" y="68" font-size="8" fill="#64748B" text-anchor="middle">Controls what sprite shows</text>
-      </g>
+      <text x="340" y="112" font-size="10" font-weight="bold" fill="#4B5563" text-anchor="middle">RULE: You must HIGHLIGHT text first before clicking any of these formatting buttons!</text>
     </svg>
-    <div class="diagram-caption">Figure 16.2: Anatomy of Scratch blocks. Hat blocks start scripts; Stack blocks carry out the actions.</div>
+    <div class="diagram-caption">Figure 16.1: The Font Formatting Cluster on the Home Ribbon.</div>
   </div>
 
-  <h2>2. The Golden Rule of Events: The Spark Plug</h2>
-  <div class="callout" style="background:#FFFBEB; border-left: 5px solid var(--bih-gold);">
-    <div class="callout-title" style="color:#B45309; font-size:13.5px;">⚡ NO EVENT = NO ACTION!</div>
-    If you snap together 10 motion blocks but forget to put a yellow <strong>Event Hat Block</strong> (like <code>when green flag clicked</code>) at the very top, the computer will sit completely still. The Event block is the electrical spark plug that ignites the code engine!
-  </div>
-
-  <h2>3. Core Motion Commands</h2>
+  <h2>2. The Essential Formatting Styles</h2>
   <table>
     <thead>
       <tr>
-        <th style="width: 30%;">Block Name</th>
-        <th style="width: 35%;">What It Does</th>
-        <th style="width: 35%;">Real-World Result</th>
+        <th style="width: 20%;">Tool</th>
+        <th style="width: 25%;">Shortcut Key</th>
+        <th style="width: 30%;">Visual Appearance</th>
+        <th style="width: 25%;">When to Use in School</th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td><code>move (10) steps</code></td>
-        <td>Moves (jumps) the sprite forward in the direction it is facing.</td>
-        <td>Walking forward 10 tiny screen pixels.</td>
+        <td><strong>Bold</strong></td>
+        <td><span class="kbd-key">Ctrl</span> + <span class="kbd-key">B</span></td>
+        <td><strong>Thick, dark, heavy letters</strong></td>
+        <td>Main titles and section headings.</td>
       </tr>
       <tr>
-        <td><code>turn clockwise (15) deg</code></td>
-        <td>Rotates the sprite to its right like turning a steering wheel.</td>
-        <td>Pivots right by 15 degrees.</td>
+        <td><strong>Italic</strong></td>
+        <td><span class="kbd-key">Ctrl</span> + <span class="kbd-key">I</span></td>
+        <td><em>Slanted, gentle letters</em></td>
+        <td>Book titles, quotes, or subheadings.</td>
       </tr>
       <tr>
-        <td><code>say [Words] for (2) secs</code></td>
-        <td>Displays a cartoon speech bubble above the sprite's head.</td>
-        <td>Shows a speech bubble (no sound).</td>
+        <td><strong>Underline</strong></td>
+        <td><span class="kbd-key">Ctrl</span> + <span class="kbd-key">U</span></td>
+        <td><u>Line drawn underneath</u></td>
+        <td>Important warning phrases or terms.</td>
       </tr>
     </tbody>
   </table>
+
+  <h2>3. Professional Font Sizes for School Work</h2>
+  <div class="dual-grid">
+    <div class="dual-box">
+      <div class="dual-box-title">Document Titles & Headings</div>
+      <p>&bull; <strong>Main Document Title:</strong> 18 pt to 20 pt (Bold)</p>
+      <p>&bull; <strong>Section Subheading:</strong> 13 pt to 14 pt (Bold or Italic)</p>
+    </div>
+    <div class="dual-box">
+      <div class="dual-box-title">Body Text (The Essay Paragraphs)</div>
+      <p>&bull; <strong>Standard Body Paragraphs:</strong> 11 pt or 12 pt</p>
+      <p><em>Never type school essays in size 18 font just to make them look longer! Teachers spot this immediately!</em></p>
+    </div>
+  </div>
 </div>
 
 <!-- ========================================== -->
-<!-- PAGE 4: THE STAGE & THE X/Y COORDINATES    -->
+<!-- PAGE 3: TEXT ALIGNMENT & MARGINS           -->
 <!-- ========================================== -->
 <div class="page">
   <div class="header-bar">
-    <div class="header-title">The Stage & The X/Y Coordinate Secret</div>
+    <div class="header-title">Text Alignment & Page Layout</div>
+    <div class="badge">Session 16 • Page 3</div>
+  </div>
+
+  <h2>1. The Four Text Alignments</h2>
+  <p><strong>Alignment</strong> refers to how text lines up along the left and right edges of your page:</p>
+
+  <!-- DIAGRAM: THE FOUR ALIGNMENTS VISUALIZED -->
+  <div class="diagram-container">
+    <svg width="700" height="150" viewBox="0 0 700 150" xmlns="http://www.w3.org/2000/svg">
+      <!-- 1. ALIGN LEFT -->
+      <g transform="translate(20, 15)">
+        <rect x="0" y="0" width="145" height="95" rx="4" fill="#FFFFFF" stroke="#94A3B8" stroke-width="1.5"/>
+        <line x1="12" y1="20" x2="110" y2="20" stroke="#3A0CA3" stroke-width="2.5"/>
+        <line x1="12" y1="35" x2="130" y2="35" stroke="#3A0CA3" stroke-width="2.5"/>
+        <line x1="12" y1="50" x2="90" y2="50" stroke="#3A0CA3" stroke-width="2.5"/>
+        <line x1="12" y1="65" x2="120" y2="65" stroke="#3A0CA3" stroke-width="2.5"/>
+        <text x="72" y="112" font-size="10.5" font-weight="bold" fill="#3A0CA3" text-anchor="middle">Align Left (Ctrl+L)</text>
+        <text x="72" y="125" font-size="8.5" fill="#64748B" text-anchor="middle">Standard for all essays</text>
+      </g>
+
+      <!-- 2. CENTER -->
+      <g transform="translate(190, 15)">
+        <rect x="0" y="0" width="145" height="95" rx="4" fill="#FFFFFF" stroke="#94A3B8" stroke-width="1.5"/>
+        <line x1="32" y1="20" x2="112" y2="20" stroke="#F77F00" stroke-width="2.5"/>
+        <line x1="15" y1="35" x2="130" y2="35" stroke="#F77F00" stroke-width="2.5"/>
+        <line x1="40" y1="50" x2="105" y2="50" stroke="#F77F00" stroke-width="2.5"/>
+        <line x1="25" y1="65" x2="120" y2="65" stroke="#F77F00" stroke-width="2.5"/>
+        <text x="72" y="112" font-size="10.5" font-weight="bold" fill="#F77F00" text-anchor="middle">Center (Ctrl+E)</text>
+        <text x="72" y="125" font-size="8.5" fill="#64748B" text-anchor="middle">Titles & Cover Pages</text>
+      </g>
+
+      <!-- 3. ALIGN RIGHT -->
+      <g transform="translate(360, 15)">
+        <rect x="0" y="0" width="145" height="95" rx="4" fill="#FFFFFF" stroke="#94A3B8" stroke-width="1.5"/>
+        <line x1="35" y1="20" x2="133" y2="20" stroke="#0D9488" stroke-width="2.5"/>
+        <line x1="15" y1="35" x2="133" y2="35" stroke="#0D9488" stroke-width="2.5"/>
+        <line x1="55" y1="50" x2="133" y2="50" stroke="#0D9488" stroke-width="2.5"/>
+        <line x1="25" y1="65" x2="133" y2="65" stroke="#0D9488" stroke-width="2.5"/>
+        <text x="72" y="112" font-size="10.5" font-weight="bold" fill="#0D9488" text-anchor="middle">Align Right (Ctrl+R)</text>
+        <text x="72" y="125" font-size="8.5" fill="#64748B" text-anchor="middle">Dates & Signatures</text>
+      </g>
+
+      <!-- 4. JUSTIFY -->
+      <g transform="translate(530, 15)">
+        <rect x="0" y="0" width="145" height="95" rx="4" fill="#FFFFFF" stroke="#94A3B8" stroke-width="1.5"/>
+        <line x1="12" y1="20" x2="133" y2="20" stroke="#2563EB" stroke-width="2.5"/>
+        <line x1="12" y1="35" x2="133" y2="35" stroke="#2563EB" stroke-width="2.5"/>
+        <line x1="12" y1="50" x2="133" y2="50" stroke="#2563EB" stroke-width="2.5"/>
+        <line x1="12" y1="65" x2="85" y2="65" stroke="#2563EB" stroke-width="2.5"/>
+        <text x="72" y="112" font-size="10.5" font-weight="bold" fill="#2563EB" text-anchor="middle">Justify (Ctrl+J)</text>
+        <text x="72" y="125" font-size="8.5" fill="#64748B" text-anchor="middle">Newspapers & Books</text>
+      </g>
+    </svg>
+    <div class="diagram-caption">Figure 16.2: Visual comparison of the four alignment options.</div>
+  </div>
+
+  <h2>2. When to Use Each Alignment in School Work</h2>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 25%;">Alignment Name</th>
+        <th style="width: 45%;">How It Looks</th>
+        <th style="width: 30%;">Real-World School Example</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Align Left</strong></td>
+        <td>Straight line on the left; ragged edges on the right.</td>
+        <td>All normal school essays, stories, and answers.</td>
+      </tr>
+      <tr>
+        <td><strong>Center</strong></td>
+        <td>Equal empty space on left and right; text sits in the exact middle.</td>
+        <td>The main title of your essay, flyer, or poem.</td>
+      </tr>
+      <tr>
+        <td><strong>Align Right</strong></td>
+        <td>Straight line on the right; ragged on the left.</td>
+        <td>Writing the date (e.g. <em>24th October 2026</em>) at the top of a formal letter.</td>
+      </tr>
+      <tr>
+        <td><strong>Justify</strong></td>
+        <td>Spaces between words are gently stretched so both left and right edges are perfectly straight.</td>
+        <td>Printed textbooks, government gazettes, newspapers.</td>
+      </tr>
+    </tbody>
+  </table>
+  <p><em>Using Google Docs or LibreOffice? The buttons look a little different but do the same job. In Google Docs, add Shift to the alignment shortcuts: Ctrl + Shift + L, E, R or J.</em></p>
+
+  <h2>3. The Enter Key Rule (Starting New Paragraphs)</h2>
+  <div class="callout">
+    <div class="callout-title">⚠️ DO NOT PRESS ENTER AT THE END OF EVERY LINE!</div>
+    Word processors have a smart feature called <strong>Word Wrap</strong>. When your sentence reaches the right margin, the computer automatically drops your cursor down to the next line.
+    <br><strong>Only press <span class="kbd-key">Enter</span> when you want to start a brand-new paragraph!</strong>
+  </div>
+</div>
+
+<!-- ========================================== -->
+<!-- PAGE 4: THE MAGIC WAND (UNDO) & SELECTION -->
+<!-- ========================================== -->
+<div class="page">
+  <div class="header-bar">
+    <div class="header-title">Text Selection & The Magic Undo Wand</div>
     <div class="badge">Session 16 • Page 4</div>
   </div>
 
-  <h2>1. Where is My Sprite Standing?</h2>
-  <p>To tell your character where to jump, walk, or appear on the stage, the computer uses a mathematical grid called the <strong>X and Y Coordinate Plane</strong>. This is just like finding a cell coordinate in a spreadsheet!</p>
+  <h2>1. Fast Text Selection Techniques</h2>
+  <p>Before you can change the font, size, or color of any word, you must <strong>select (highlight) it</strong> so the computer knows which words to change:</p>
 
-  <!-- DIAGRAM: THE SCRATCH STAGE COORDINATE GRID -->
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 30%;">To Select Exactly...</th>
+        <th style="width: 40%;">Mouse / Touchpad Action</th>
+        <th style="width: 30%;">Pro Speed</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>A Single Word</strong></td>
+        <td>Move pointer over the word and <strong>Double-Click</strong> (tap twice fast).</td>
+        <td>1 second!</td>
+      </tr>
+      <tr>
+        <td><strong>An Entire Paragraph</strong></td>
+        <td>Move pointer inside the paragraph and <strong>Triple-Click</strong> (tap 3 times fast).</td>
+        <td>Instantly selects the whole block!</td>
+      </tr>
+      <tr>
+        <td><strong>Custom Selection</strong></td>
+        <td>Click and hold before the first letter, slide to the end, then let go.</td>
+        <td>Standard dragging.</td>
+      </tr>
+      <tr>
+        <td><strong>The Entire Document</strong></td>
+        <td>Hold down <span class="kbd-key">Ctrl</span> and press <span class="kbd-key">A</span> (Select <strong>A</strong>ll).</td>
+        <td>Highlights everything on every page.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>2. The Magic Wand: Undo (Ctrl + Z)</h2>
+  <p>The single most powerful shortcut on a computer is <strong>Undo</strong> (<span class="kbd-key">Ctrl</span> + <span class="kbd-key">Z</span>). It is an electronic time-machine that reverses your last mistake!</p>
+
+  <!-- DIAGRAM: UNDO TIME MACHINE -->
   <div class="diagram-container">
-    <svg width="680" height="205" viewBox="0 0 680 205" xmlns="http://www.w3.org/2000/svg">
-      <rect x="40" y="10" width="600" height="185" rx="6" fill="#FFFFFF" stroke="#334155" stroke-width="2"/>
+    <svg width="680" height="110" viewBox="0 0 680 110" xmlns="http://www.w3.org/2000/svg">
+      <rect x="30" y="15" width="620" height="80" rx="8" fill="#FFF7ED" stroke="#F97316" stroke-width="1.5"/>
 
-      <!-- CENTER AXES -->
-      <!-- X-Axis (Horizontal) -->
-      <line x1="60" y1="102" x2="620" y2="102" stroke="#4C97FF" stroke-width="2"/>
-      <polygon points="625,102 617,98 617,106" fill="#4C97FF"/>
-      <text x="615" y="92" font-size="10" font-weight="bold" fill="#0284C7">X (+240)</text>
-      <text x="70" y="92" font-size="10" font-weight="bold" fill="#0284C7">X (-240)</text>
+      <g transform="translate(60, 30)">
+        <text x="0" y="25" font-size="12" font-weight="bold" fill="#9A3412">Accidental Deletion &rarr;</text>
+        <text x="0" y="42" font-size="10" fill="#431407">You deleted a paragraph by mistake!</text>
+      </g>
 
-      <!-- Y-Axis (Vertical) -->
-      <line x1="340" y1="20" x2="340" y2="185" stroke="#0FBD8C" stroke-width="2"/>
-      <polygon points="340,15 336,23 344,23" fill="#0FBD8C"/>
-      <text x="355" y="28" font-size="10" font-weight="bold" fill="#047857">Y (+180)</text>
-      <text x="355" y="180" font-size="10" font-weight="bold" fill="#047857">Y (-180)</text>
+      <g transform="translate(320, 25)">
+        <rect x="0" y="5" width="130" height="40" rx="4" fill="#3A0CA3"/>
+        <text x="65" y="24" font-size="12" font-weight="bold" fill="white" text-anchor="middle">&#8630; Ctrl + Z</text>
+        <text x="65" y="38" font-size="9" fill="#E0E7FF" text-anchor="middle">Press Undo</text>
+      </g>
 
-      <!-- Center Origin (0,0) -->
-      <circle cx="340" cy="102" r="6" fill="#3A0CA3"/>
-      <rect x="355" y="95" width="85" height="18" rx="3" fill="#EEF2FF" stroke="#3A0CA3" stroke-width="1"/>
-      <text x="397" y="108" font-family="monospace" font-size="9" font-weight="bold" fill="#3A0CA3" text-anchor="middle">Center: (0, 0)</text>
-
-      <!-- Quadrant Labels -->
-      <text x="180" y="55" font-size="9.5" fill="#94A3B8">Top Left (-X, +Y)</text>
-      <text x="500" y="55" font-size="9.5" fill="#94A3B8">Top Right (+X, +Y)</text>
-      <text x="180" y="155" font-size="9.5" fill="#94A3B8">Bottom Left (-X, -Y)</text>
-      <text x="500" y="155" font-size="9.5" fill="#94A3B8">Bottom Right (+X, -Y)</text>
+      <g transform="translate(480, 30)">
+        <text x="0" y="25" font-size="12" font-weight="bold" fill="#047857">Restored Instantly! &#10004;</text>
+        <text x="0" y="42" font-size="10" fill="#065F46">Your words reappear untouched.</text>
+      </g>
     </svg>
-    <div class="diagram-caption">Figure 16.3: The Scratch Stage Grid. X controls horizontal movement (left/right); Y controls vertical height (up/down).</div>
+    <div class="diagram-caption">Figure 16.3: The Undo lifeline. Ctrl+Z undoes your last mistake; Ctrl+Y re-applies it if you change your mind!</div>
   </div>
 
-  <h2>2. Coordinate Rules in Plain Language</h2>
-  <div class="dual-grid">
-    <div class="dual-box">
-      <div class="dual-box-title">↔️ X IS HORIZONTAL (Side to Side)</div>
-      <p>&bull; Positive X numbers (<code>+10, +100</code>) move the sprite to the <strong>RIGHT</strong>.</p>
-      <p>&bull; Negative X numbers (<code>-10, -100</code>) move the sprite to the <strong>LEFT</strong>.</p>
-    </div>
-    <div class="dual-box">
-      <div class="dual-box-title">↕️ Y IS VERTICAL (Up and Down)</div>
-      <p>&bull; Positive Y numbers (<code>+10, +100</code>) push the sprite <strong>UP</strong> into the air.</p>
-      <p>&bull; Negative Y numbers (<code>-10, -100</code>) drop the sprite <strong>DOWN</strong> to the ground.</p>
-    </div>
-  </div>
-
-  <h2>3. Panic Button / Troubleshooting</h2>
+  <h2>3. Panic Button: The Selection Replacement Trap</h2>
   <div class="panic-box">
-    <div class="panic-title">🚨 MY SPRITE RAN OFF THE SCREEN!</div>
-    If you tell a sprite to move 1,000 steps, it runs to the edge until only a sliver is left!
+    <div class="panic-title">🚨 MY ENTIRE ESSAY DISAPPEARED WHEN I PRESSED SPACEBAR!</div>
+    <strong>Why this happened:</strong> You accidentally highlighted the whole paragraph and tapped a key. When text is highlighted blue, the computer thinks you want to replace it with whatever new key you tap!
     <br><br>
-    <strong>How to rescue it in 1 second:</strong>
-    <ol style="margin: 4px 0 0 15px; padding: 0;">
-      <li>In the Motion palette (blue), find <code>go to x: () y: ()</code>.</li>
-      <li>Type 0 into both white circles, then click the block once.</li>
-      <li>Your sprite instantly snaps straight back to the dead center of the stage!</li>
-    </ol>
+    <strong>How to fix it immediately:</strong> <strong>DO NOT PANIC!</strong> Take your hands off the keyboard. Press:
+    <div style="font-size: 16px; font-weight: bold; text-align: center; margin: 6px 0; color: #721C24;">
+      <span class="kbd-key">Ctrl</span> + <span class="kbd-key">Z</span>
+    </div>
+    Your entire essay will pop back onto the screen instantly!
   </div>
 </div>
 
 <!-- ========================================== -->
-<!-- PAGE 5: GUIDED LAB - THE "AKWAABA" CAT     -->
+<!-- PAGE 5: GUIDED LAB - A GREENER SCHOOL      -->
 <!-- ========================================== -->
 <div class="page">
   <div class="header-bar">
-    <div class="header-title">Guided Hands-On Lab: The "Akwaaba" Animation</div>
+    <div class="header-title">Guided Hands-On Lab: "A Greener School"</div>
     <div class="badge">Session 16 • Page 5</div>
   </div>
 
-  <h2>1. Lab Mission: Code an Animated Greeting Sprite</h2>
-  <p>Follow these 6 steps to build your very first working Scratch program:</p>
+  <h2>1. Lab Mission: Format an Official School Environmental Notice</h2>
+  <p>Follow these 5 steps to build a formatted clean-school campaign document:</p>
 
   <div class="step-card">
     <div class="step-num">1</div>
     <div class="step-content">
-      <strong>Launch Scratch:</strong>
-      <br>Double-click the <strong>Scratch Desktop</strong> icon (or visit <code>scratch.mit.edu</code> in your browser).
-      <br>You will see the famous Scratch Cat standing on the white stage.
+      <strong>Launch the Word Processor:</strong>
+      <br>Click Start &rarr; type <code>word</code> (or open <strong>LibreOffice Writer</strong> or <strong>Google Docs</strong>) &rarr; Open a blank document.
     </div>
   </div>
 
   <div class="step-card">
     <div class="step-num">2</div>
     <div class="step-content">
-      <strong>Place the Event Spark:</strong>
-      <br>Click on the yellow <strong>Events</strong> category dot on the left.
-      <br>Drag the <code>when green flag clicked</code> hat block into the center Coding Workspace.
+      <strong>Type the Raw Content (Do not format yet):</strong>
+      <br>Type these lines (press <span class="kbd-key">Enter</span> only where shown):
+      <br><code>A GREENER, CLEANER SCHOOL COMPOUND</code> &larr; <em>press Enter</em>
+      <br><code>By: BIH Tech Club Sanitation Team</code> &larr; <em>press Enter</em>
+      <br><code>A clean school environment keeps every student healthy and proud. When we clear standing water from our gutters and plant trees around our classrooms, we stop mosquitoes and create cool shade for learning. Let us join hands this Friday to beautify our school grounds.</code>
     </div>
   </div>
 
   <div class="step-card">
     <div class="step-num">3</div>
     <div class="step-content">
-      <strong>Make It Walk:</strong>
-      <br>Click the blue <strong>Motion</strong> category.
-      <br>Drag the <code>move (10) steps</code> block and snap it under the event block. Click inside the white circle and change <code>10</code> to <code>50</code>.
+      <strong>Format the Main Title:</strong>
+      <br>Triple-click line 1. Set Font to <strong>Calibri</strong> or <strong>Arial</strong>, Size to <strong>18 pt</strong>, make it <strong>Bold</strong> (<span class="kbd-key">Ctrl+B</span>), and <strong>Center</strong> it (<span class="kbd-key">Ctrl+E</span>).
     </div>
   </div>
 
   <div class="step-card">
     <div class="step-num">4</div>
     <div class="step-content">
-      <strong>Make It Speak:</strong>
-      <br>Click the purple <strong>Looks</strong> category.
-      <br>Drag the <code>say [Hello!] for (2) seconds</code> block and snap it directly below the motion block.
-      <br>Click inside the white box and change <em>"Hello!"</em> to: <code>Akwaaba! Welcome to BIH Tech Club!</code>
+      <strong>Format the Subtitle:</strong>
+      <br>Triple-click line 2. Set Size to <strong>12 pt</strong>, make it <em>Italic</em> (<span class="kbd-key">Ctrl+I</span>), and <strong>Center</strong> it (<span class="kbd-key">Ctrl+E</span>).
     </div>
   </div>
 
   <div class="step-card">
     <div class="step-num">5</div>
     <div class="step-content">
-      <strong>Make It Turn:</strong>
-      <br>Go back to blue <strong>Motion</strong> &rarr; snap <code>turn clockwise (15) degrees</code> at the bottom of the stack.
+      <strong>Format the Body Paragraph & Save:</strong>
+      <br>Triple-click the paragraph. Keep it <strong>12 pt</strong> and <strong>Align Left</strong> (<span class="kbd-key">Ctrl+L</span>).
+      <br>Save: <strong>File &rarr; Save As</strong> &rarr; <code>Documents &gt; BIH_Practice &gt; Notes</code> &rarr; Name it: <code>Greener_School_AmaMensah.docx</code>.
+      <br><em>In LibreOffice, choose Word (.docx) in Save As, not .odt. Using Google Docs? It saves online. Use File &rarr; Download &rarr; Microsoft Word (.docx), then move it from Downloads into BIH_Practice &gt; Notes.</em>
     </div>
   </div>
 
-  <div class="step-card">
-    <div class="step-num">6</div>
-    <div class="step-content">
-      <strong>TEST YOUR CODE! (The Big Moment):</strong>
-      <br>Look at the top right of the screen. Click the bright <strong>Green Flag</strong>.
-      <br><em>Watch:</em> The cat walks forward 50 steps, shows its greeting bubble for 2 seconds, and pivots 15 degrees!
-      <br>Save: <strong>File &rarr; Save to your computer</strong> &rarr; Name: <code>Akwaaba_Cat_Ama.sb3</code>.
+  <h2>2. Visual Target (What Your Finished Page Should Look Like)</h2>
+  <div style="border: 2px solid var(--bih-purple); border-radius: 6px; padding: 20px; background: white; margin: 15px 0;">
+    <div style="text-align: center; font-size: 18px; font-weight: bold; color: var(--bih-purple); margin-bottom: 4px;">
+      A GREENER, CLEANER SCHOOL COMPOUND
     </div>
-  </div>
-
-  <h2>2. Visual Target (Your Finished Code Stack)</h2>
-  <div style="border: 2px solid var(--bih-purple); border-radius: 8px; padding: 20px; background: #F8FAFC; max-width: 320px; margin: 15px auto;">
-    <div style="background: #FFBF00; color: white; padding: 8px 14px; border-radius: 12px 12px 4px 4px; font-weight: bold; font-size: 12px; margin-bottom: 2px;">
-      🚩 when green flag clicked
+    <div style="text-align: center; font-size: 12px; font-style: italic; color: #4B5563; margin-bottom: 16px;">
+      By: BIH Tech Club Sanitation Team
     </div>
-    <div style="background: #4C97FF; color: white; padding: 8px 14px; border-radius: 4px; font-weight: bold; font-size: 12px; margin-bottom: 2px;">
-      move ( 50 ) steps
-    </div>
-    <div style="background: #9966FF; color: white; padding: 8px 14px; border-radius: 4px; font-weight: bold; font-size: 12px; margin-bottom: 2px;">
-      say [Akwaaba! Welcome to BIH Tech Club!] for (2) secs
-    </div>
-    <div style="background: #4C97FF; color: white; padding: 8px 14px; border-radius: 4px 4px 12px 12px; font-weight: bold; font-size: 12px;">
-      turn ↻ ( 15 ) degrees
+    <div style="text-align: left; font-size: 12px; line-height: 1.6; color: #1E293B;">
+      A clean school environment keeps every student healthy and proud. When we clear standing water from our gutters and plant trees around our classrooms, we stop mosquitoes and create cool shade for learning. Let us join hands this Friday to beautify our school grounds.
     </div>
   </div>
 </div>
@@ -685,53 +751,41 @@
     <div class="badge">Session 16 • Page 6</div>
   </div>
 
-  <h2>1. Fix the Broken Algorithm Challenge</h2>
-  <p>Below are 4 steps to wash a dirty school uniform, but they are scrambled in the wrong order! Write numbers 1, 2, 3, 4 to put the algorithm into the correct sequence:</p>
+  <h2>1. Match the Formatting Tool</h2>
+  <p>Draw a line connecting each ribbon button to its correct action:</p>
 
-  <table>
-    <thead>
-      <tr>
-        <th style="width: 75%;">Scrambled Task</th>
-        <th style="width: 25%; text-align:center;">Correct Step (1 to 4)</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>Hang the clean uniform on the drying line in the sun.</td>
-        <td style="text-align:center;"><div class="answer-line" contenteditable="true" style="text-align:center; font-weight:bold;">Step: ___</div></td>
-      </tr>
-      <tr>
-        <td>Fill the washing basin with clean water and soap powder.</td>
-        <td style="text-align:center;"><div class="answer-line" contenteditable="true" style="text-align:center; font-weight:bold;">Step: ___</div></td>
-      </tr>
-      <tr>
-        <td>Rinse the uniform in clean water to wash out the soap suds.</td>
-        <td style="text-align:center;"><div class="answer-line" contenteditable="true" style="text-align:center; font-weight:bold;">Step: ___</div></td>
-      </tr>
-      <tr>
-        <td>Scrub the uniform gently to remove mud and dirt spots.</td>
-        <td style="text-align:center;"><div class="answer-line" contenteditable="true" style="text-align:center; font-weight:bold;">Step: ___</div></td>
-      </tr>
-    </tbody>
-  </table>
+  <div style="display: flex; justify-content: space-between; margin: 20px 30px; font-size: 13px;">
+    <div style="display: flex; flex-direction: column; gap: 20px; font-weight: bold; font-family: monospace; font-size: 15px; color: var(--bih-purple);">
+      <div>[ B ]</div>
+      <div>[ I ]</div>
+      <div>[ Ctrl + E ]</div>
+      <div>[ Ctrl + Z ]</div>
+      <div>[ 12 pt ]</div>
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 20px; color: var(--bih-dark);">
+      <div>&bull; &nbsp; Reverses your last accidental mistake (Undo).</div>
+      <div>&bull; &nbsp; Makes letters slanted for quotes or subtitles (Italic).</div>
+      <div>&bull; &nbsp; Centers text in the middle of the page.</div>
+      <div>&bull; &nbsp; Standard readable font size for school essay body text.</div>
+      <div>&bull; &nbsp; Makes letters heavy, thick, and dark (Bold).</div>
+    </div>
+  </div>
 
   <h2>2. Written Review Questions</h2>
-  <p><strong>Question 1:</strong> What is an <strong>Algorithm</strong> in computer science?</p>
-  <div class="answer-line" contenteditable="true">Write your answer here...</div>
-  <div class="answer-line" contenteditable="true"></div>
-
-  <p><strong>Question 2:</strong> What happens if you build a code stack in Scratch but forget to snap an <strong>Event Hat Block</strong> (like <code>when green flag clicked</code>) at the top?</p>
+  <p><strong>Question 1:</strong> Why should you NOT press the <span class="kbd-key">Enter</span> key at the end of every typed line in a word processor?</p>
   <div class="answer-line" contenteditable="true">Write your answer here...</div>
 
-  <p><strong>Question 3:</strong> If you want a sprite to jump UP into the sky, do you increase its <strong>X</strong> coordinate or its <strong>Y</strong> coordinate?</p>
-  <div class="answer-line" contenteditable="true">Answer: Coordinate _________________________</div>
+  <p><strong>Question 2:</strong> What mouse action allows you to highlight an entire word in less than a second?</p>
+  <div class="answer-line" contenteditable="true">Answer: ____________________________________</div>
+
+  <p><strong>Question 3:</strong> Which text alignment is used for the main title of an essay? Circle one: &nbsp; <code>[ Left ]</code> &nbsp; <code>[ Center ]</code> &nbsp; <code>[ Right ]</code></p>
 
   <h2>3. Self-Assessment & Mentor Sign-Off</h2>
   <p>Tick the column that reflects your confidence at the end of Session 16:</p>
   <table>
     <thead>
       <tr>
-        <th>Coding & Computational Thinking Competency</th>
+        <th>Word Processing Competency</th>
         <th style="width: 18%; text-align: center;">With Help</th>
         <th style="width: 18%; text-align: center;">Almost Alone</th>
         <th style="width: 18%; text-align: center;">All By Myself!</th>
@@ -739,28 +793,28 @@
     </thead>
     <tbody>
       <tr>
-        <td>1. I can explain what an algorithm is and why instruction sequence matters.</td>
-        <td style="text-align: center;"><input type="radio" name="s16_1"></td>
-        <td style="text-align: center;"><input type="radio" name="s16_1"></td>
-        <td style="text-align: center;"><input type="radio" name="s16_1"></td>
+        <td>1. I can identify the Ribbon, Document Canvas, and Margins in Word.</td>
+        <td style="text-align: center;"><input type="radio" name="s8_1"></td>
+        <td style="text-align: center;"><input type="radio" name="s8_1"></td>
+        <td style="text-align: center;"><input type="radio" name="s8_1"></td>
       </tr>
       <tr>
-        <td>2. I can identify the 5 zones of Scratch (Palette, Workspace, Stage, Sprite Pane, Flag &amp; Stop).</td>
-        <td style="text-align: center;"><input type="radio" name="s16_2"></td>
-        <td style="text-align: center;"><input type="radio" name="s16_2"></td>
-        <td style="text-align: center;"><input type="radio" name="s16_2"></td>
+        <td>2. I can select words and change Font Family, Size, and Styles (Bold, Italic).</td>
+        <td style="text-align: center;"><input type="radio" name="s8_2"></td>
+        <td style="text-align: center;"><input type="radio" name="s8_2"></td>
+        <td style="text-align: center;"><input type="radio" name="s8_2"></td>
       </tr>
       <tr>
-        <td>3. I understand how X (horizontal) and Y (vertical) coordinates position sprites.</td>
-        <td style="text-align: center;"><input type="radio" name="s16_3"></td>
-        <td style="text-align: center;"><input type="radio" name="s16_3"></td>
-        <td style="text-align: center;"><input type="radio" name="s16_3"></td>
+        <td>3. I can correctly apply Align Left, Center, and Right to titles and paragraphs.</td>
+        <td style="text-align: center;"><input type="radio" name="s8_3"></td>
+        <td style="text-align: center;"><input type="radio" name="s8_3"></td>
+        <td style="text-align: center;"><input type="radio" name="s8_3"></td>
       </tr>
       <tr>
-        <td>4. I can assemble an Event, Motion, and Looks script and run it using the Green Flag.</td>
-        <td style="text-align: center;"><input type="radio" name="s16_4"></td>
-        <td style="text-align: center;"><input type="radio" name="s16_4"></td>
-        <td style="text-align: center;"><input type="radio" name="s16_4"></td>
+        <td>4. I know how to use Ctrl + Z immediately to undo accidental deletions.</td>
+        <td style="text-align: center;"><input type="radio" name="s8_4"></td>
+        <td style="text-align: center;"><input type="radio" name="s8_4"></td>
+        <td style="text-align: center;"><input type="radio" name="s8_4"></td>
       </tr>
     </tbody>
   </table>

@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>BIH Tech Club - Session 40: Using AI Wisely &amp; Safely</title>
+  <style>
+    :root {
+      --bih-purple: #3A0CA3;
+      --bih-accent: #4361EE;
+      --bih-gold: #F77F00;
+      --bih-green: #2EC4B6;
+      --bih-red: #E63946;
+      --bih-dark: #1E1E24;
+      --bih-light: #F8F9FA;
+      --bih-border: #CED4DA;
+      --shield-blue: #0284C7;
+    }
+
+    * {
+      box-sizing: border-box;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    body {
+      background-color: #E9ECEF;
+      color: var(--bih-dark);
+      margin: 0;
+      padding: 20px;
+      line-height: 1.55;
+    }
+
+    .page {
+      background: #FFFFFF;
+      max-width: 860px;
+      margin: 20px auto;
+      padding: 42px 50px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+      border-radius: 8px;
+      page-break-after: always;
+    }
+
+    @media print {
+      body { background: white; padding: 0; }
+      .page { box-shadow: none; margin: 0; padding: 30px; max-width: 100%; border-radius: 0; }
+      .no-print { display: none; }
+    }
+
+    /* Header Bar */
+    .header-bar {
+      border-bottom: 3px solid var(--bih-purple);
+      padding-bottom: 10px;
+      margin-bottom: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .header-title {
+      font-size: 19px;
+      font-weight: 800;
+      color: var(--bih-purple);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .badge {
+      background: var(--bih-gold);
+      color: #FFFFFF;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+    }
+
+    /* Student Meta Box */
+    .student-meta {
+      border: 2px dashed var(--bih-border);
+      border-radius: 8px;
+      padding: 12px 18px;
+      background: var(--bih-light);
+      margin-bottom: 20px;
+    }
+
+    .meta-row {
+      display: flex;
+      gap: 15px;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+    .meta-row:last-child { margin-bottom: 0; }
+
+    .meta-label {
+      font-size: 12.5px;
+      font-weight: 700;
+      color: var(--bih-dark);
+      min-width: 125px;
+    }
+
+    .editable-line {
+      border-bottom: 1.5px solid var(--bih-purple);
+      flex-grow: 1;
+      padding: 2px 6px;
+      font-size: 13.5px;
+      font-weight: 600;
+      color: var(--bih-purple);
+      outline: none;
+      min-height: 20px;
+    }
+
+    /* Typography */
+    h1 { color: var(--bih-purple); font-size: 22px; margin-top: 0; margin-bottom: 8px; }
+    h2 { color: var(--bih-purple); font-size: 16px; margin-top: 20px; margin-bottom: 10px; border-left: 4px solid var(--bih-gold); padding-left: 8px; }
+    p { font-size: 13px; margin: 6px 0; }
+
+    /* Dual Grid Layout */
+    .dual-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin: 12px 0;
+    }
+
+    .dual-box {
+      border: 1px solid var(--bih-border);
+      border-radius: 8px;
+      padding: 12px 14px;
+      background: #FAFAFA;
+    }
+    .dual-box-title {
+      font-size: 13px;
+      font-weight: 800;
+      color: var(--bih-purple);
+      margin-bottom: 6px;
+      border-bottom: 1px solid var(--bih-border);
+      padding-bottom: 4px;
+    }
+
+    /* Callouts & Alert Boxes */
+    .callout {
+      background: #FFF3CD;
+      border-left: 4px solid var(--bih-gold);
+      padding: 10px 14px;
+      margin: 14px 0;
+      border-radius: 0 8px 8px 0;
+      font-size: 12.5px;
+    }
+    .callout-title {
+      font-weight: 800;
+      color: #856404;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 2px;
+    }
+
+    .panic-box {
+      background: #F8D7DA;
+      border-left: 4px solid var(--bih-red);
+      padding: 12px 14px;
+      margin: 14px 0;
+      border-radius: 0 8px 8px 0;
+      font-size: 12.5px;
+    }
+    .panic-title {
+      font-weight: 800;
+      color: #721C24;
+      margin-bottom: 4px;
+    }
+
+    /* Step Cards */
+    .step-card {
+      display: flex;
+      gap: 12px;
+      background: var(--bih-light);
+      border: 1px solid var(--bih-border);
+      border-radius: 6px;
+      padding: 10px 12px;
+      margin-bottom: 8px;
+      align-items: flex-start;
+    }
+
+    .step-num {
+      background: var(--bih-purple);
+      color: white;
+      font-size: 13px;
+      font-weight: 800;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .step-content { flex-grow: 1; font-size: 12.5px; }
+
+    /* Diagrams */
+    .diagram-container {
+      background: #FAFAFA;
+      border: 1px solid var(--bih-border);
+      border-radius: 8px;
+      padding: 12px;
+      margin: 14px 0;
+      text-align: center;
+    }
+    .diagram-caption {
+      font-size: 11px;
+      color: #6C757D;
+      margin-top: 6px;
+      font-style: italic;
+    }
+
+    /* Tables */
+    table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 12.5px; }
+    th { background: var(--bih-purple); color: white; text-align: left; padding: 7px 10px; }
+    td { border: 1px solid var(--bih-border); padding: 7px 10px; vertical-align: top; }
+    tr:nth-child(even) { background-color: var(--bih-light); }
+
+    /* Key Badge */
+    .kbd-key {
+      display: inline-block;
+      background: #F3F4F6;
+      border: 1.5px solid #9CA3AF;
+      border-bottom: 3px solid #6B7280;
+      border-radius: 4px;
+      padding: 1px 6px;
+      font-family: monospace;
+      font-size: 12px;
+      font-weight: 700;
+      color: #1F2937;
+      margin: 0 2px;
+    }
+
+    /* Interactive Inputs */
+    .answer-line {
+      min-height: 24px;
+      border-bottom: 1px dashed var(--bih-purple);
+      margin: 4px 0;
+      outline: none;
+      font-size: 13px;
+      color: var(--bih-dark);
+      padding: 2px 4px;
+    }
+
+    .checkbox-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 6px;
+      font-size: 12.5px;
+    }
+    .checkbox-item input { width: 15px; height: 15px; cursor: pointer; }
+  </style>
+</head>
+<body>
+
+<!-- ========================================== -->
+<!-- PAGE 1: WHAT IS A CHATBOT?                  -->
+<!-- ========================================== -->
+<div class="page">
+  <div class="header-bar">
+    <div class="header-title">Bozoma Innovation Hub • Tech Club</div>
+    <div class="badge">Session 40 • Page 1</div>
+  </div>
+
+  <div class="student-meta">
+    <div class="meta-row">
+      <span class="meta-label">Learner Full Name:</span>
+      <div class="editable-line" contenteditable="true">Ama Mensah</div>
+      <span class="meta-label" style="min-width: 90px;">School:</span>
+      <div class="editable-line" contenteditable="true">Bozoma Model JHS</div>
+    </div>
+    <div class="meta-row">
+      <span class="meta-label">Assigned Workstation:</span>
+      <div class="editable-line" contenteditable="true" style="max-width: 140px;">PC-01</div>
+      <span class="meta-label" style="min-width: 50px;">Class:</span>
+      <div class="editable-line" contenteditable="true" style="max-width: 90px;">JHS 1</div>
+    </div>
+  </div>
+
+  <h1>Session 40: Using AI Wisely &amp; Safely</h1>
+  <p>In Session 39 you learned that AI is a pattern-guessing machine that learns from examples. Today you meet the kind of AI everyone is talking about: <strong>chatbots</strong> that write answers to your questions. You will learn how to ask them good questions, how to catch their mistakes, and how to stay safe and honest when you use them.</p>
+
+  <h2>1. Plain Talk: What Is an AI Chatbot?</h2>
+  <p>An <strong>AI chatbot</strong> (for example ChatGPT, Gemini, Copilot or Meta AI in WhatsApp) is a program you can "chat" with by typing or speaking. It was trained on a huge amount of text from books and websites. From all that text it learned which words usually follow which other words.</p>
+  <p>When you ask a question, the chatbot <strong>predicts</strong> a good-sounding answer one word at a time, a bit like your phone keyboard suggesting the next word, but far more powerful.</p>
+
+  <!-- DIAGRAM: NEXT-WORD PREDICTION -->
+  <div class="diagram-container">
+    <svg width="680" height="150" viewBox="0 0 680 150" xmlns="http://www.w3.org/2000/svg">
+      <rect x="20" y="10" width="640" height="130" rx="8" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.5"/>
+      <rect x="45" y="50" width="250" height="40" rx="20" fill="#EEF2FF" stroke="#3A0CA3" stroke-width="1.5"/>
+      <text x="170" y="75" font-size="13" fill="#1E1B4B" text-anchor="middle">"On Saturday I will go to the …"</text>
+      <defs><marker id="ar19" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#F77F00"/></marker></defs>
+      <path d="M 302,70 L 345,70" stroke="#F77F00" stroke-width="3" marker-end="url(#ar19)"/>
+      <text x="410" y="36" font-size="11" font-weight="bold" fill="#3A0CA3">The chatbot weighs up the next word:</text>
+      <rect x="360" y="48" width="180" height="16" rx="3" fill="#3A0CA3"/><text x="368" y="60" font-size="10" fill="#FFFFFF">market</text><text x="560" y="60" font-size="10" fill="#334155">very likely</text>
+      <rect x="360" y="70" width="140" height="16" rx="3" fill="#4361EE"/><text x="368" y="82" font-size="10" fill="#FFFFFF">beach</text><text x="520" y="82" font-size="10" fill="#334155">likely</text>
+      <rect x="360" y="92" width="90" height="16" rx="3" fill="#2EC4B6"/><text x="368" y="104" font-size="10" fill="#FFFFFF">church</text><text x="470" y="104" font-size="10" fill="#334155">possible</text>
+      <rect x="360" y="114" width="22" height="16" rx="3" fill="#CBD5E1"/><text x="390" y="126" font-size="10" fill="#334155">moon … very unlikely</text>
+    </svg>
+    <div class="diagram-caption">Figure 40.0: A chatbot predicts likely words. It picks words that sound right, which is not always the same as true.</div>
+  </div>
+
+  <div class="callout">
+    <div class="callout-title">⚠️ AGE RULES AND SUPERVISION</div>
+    Most AI chatbots say users must be at least <strong>13 years old</strong>, and under-18s need a parent's or guardian's permission. In the BIH Tech Club, you only use a real AI tool <strong>with your mentor, at the Hub, or with a parent or guardian beside you</strong>.
+  </div>
+</div>
+
+<!-- ========================================== -->
+<!-- PAGE 2: THE C.L.E.A.R. PROMPT               -->
+<!-- ========================================== -->
+<div class="page">
+  <div class="header-bar">
+    <div class="header-title">Talking to AI: The C.L.E.A.R. Prompt</div>
+    <div class="badge">Session 40 • Page 2</div>
+  </div>
+
+  <h2>1. What Is a Prompt?</h2>
+  <p>A <strong>prompt</strong> is the instruction or question you type to an AI. A vague prompt gets a vague answer. A clear prompt gets a useful one. It is like sending a younger cousin to the market: <em>"Buy food"</em> brings back anything, but <em>"Buy 6 eggs and a tin of tomatoes, under 50 cedis"</em> brings back what you need.</p>
+
+  <h2>2. The C.L.E.A.R. Prompt Formula</h2>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 10%; text-align:center;">Letter</th>
+        <th style="width: 30%;">What it means</th>
+        <th style="width: 60%;">Example</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="text-align:center; font-weight:bold; font-size:16px; color:var(--bih-purple);">C</td>
+        <td><strong>CONTEXT:</strong> who you are and who it is for</td>
+        <td>"I am a JHS 1 pupil in Ghana…"</td>
+      </tr>
+      <tr>
+        <td style="text-align:center; font-weight:bold; font-size:16px; color:var(--bih-purple);">L</td>
+        <td><strong>LIMITS:</strong> how long and in what shape</td>
+        <td>"…in 5 short bullet points…"</td>
+      </tr>
+      <tr>
+        <td style="text-align:center; font-weight:bold; font-size:16px; color:var(--bih-purple);">E</td>
+        <td><strong>EXAMPLES &amp; DETAILS:</strong> the facts it needs</td>
+        <td>"…with examples from farming and electricity…"</td>
+      </tr>
+      <tr>
+        <td style="text-align:center; font-weight:bold; font-size:16px; color:var(--bih-purple);">A</td>
+        <td><strong>ASK:</strong> one clear task</td>
+        <td>"Explain how the Volta River helps Ghana."</td>
+      </tr>
+      <tr>
+        <td style="text-align:center; font-weight:bold; font-size:16px; color:var(--bih-purple);">R</td>
+        <td><strong>REVIEW:</strong> read the answer and check it</td>
+        <td>Is it true? Is it what I asked? Ask a follow-up if not.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="dual-grid">
+    <div class="dual-box" style="background:#FEF2F2; border-color:#FCA5A5;">
+      <div class="dual-box-title" style="color:#B91C1C;">❌ Vague prompt</div>
+      <p style="font-family: monospace;">Tell me about rivers.</p>
+      <p style="font-size: 12px;">Which rivers? For whom? How long? The AI has to guess.</p>
+    </div>
+    <div class="dual-box" style="background:#ECFDF5; border-color:#6EE7B7;">
+      <div class="dual-box-title" style="color:#047857;">✅ C.L.E.A.R. prompt</div>
+      <p style="font-family: monospace;">I am a JHS 1 pupil in Ghana. Explain how the Volta River helps Ghana, with examples from farming and electricity, in 5 short bullet points.</p>
+    </div>
+  </div>
+
+  <h2>3. Your Turn: Fix These Prompts</h2>
+  <p>Rewrite each vague prompt as a C.L.E.A.R. one.</p>
+  <p><strong>Vague:</strong> <em>"Help with science."</em></p>
+  <div class="answer-line" contenteditable="true">My C.L.E.A.R. prompt...</div>
+  <div class="answer-line" contenteditable="true"></div>
+  <p><strong>Vague:</strong> <em>"Write about my town."</em></p>
+  <div class="answer-line" contenteditable="true">My C.L.E.A.R. prompt...</div>
+  <div class="answer-line" contenteditable="true"></div>
+</div>
+
+<!-- ========================================== -->
+<!-- PAGE 3: CHECK BEFORE YOU TRUST              -->
+<!-- ========================================== -->
+<div class="page">
+  <div class="header-bar">
+    <div class="header-title">AI Can Be Wrong: Check Before You Trust</div>
+    <div class="badge">Session 40 • Page 3</div>
+  </div>
+
+  <h2>1. Confident but Wrong: "Hallucinations"</h2>
+  <p>Because a chatbot predicts words that <em>sound</em> right, it sometimes makes things up: wrong dates, invented quotes, books that do not exist, even fake website links. People call this a <strong>hallucination</strong>. The answer often looks neat, polite and very sure of itself, so mistakes are easy to miss.</p>
+
+  <h2>2. The 3 Checks</h2>
+  <div class="step-card">
+    <div class="step-num">1</div>
+    <div class="step-content"><strong>Compare with a trusted source:</strong> your textbook, your teacher or mentor, or an official website (for example one ending in <code>.gov.gh</code> or <code>.edu.gh</code>).</div>
+  </div>
+  <div class="step-card">
+    <div class="step-num">2</div>
+    <div class="step-content"><strong>Does it make sense?</strong> If something sounds strange, too perfect or surprising, slow down and check it twice.</div>
+  </div>
+  <div class="step-card">
+    <div class="step-num">3</div>
+    <div class="step-content"><strong>Find a second source:</strong> one website or one chatbot is not enough. Two trusted sources that agree are much safer.</div>
+  </div>
+
+  <h2>3. Fact-Check Challenge</h2>
+  <p>A pupil asked a chatbot about Ghana's history and got this answer. <strong>Underline the mistakes</strong>, then write the corrections. (Use your Social Studies knowledge or ask your mentor.)</p>
+  <div style="border: 2px dashed #4361EE; border-radius: 6px; padding: 14px 16px; background: #EEF2FF; font-size: 13px; line-height: 1.8; margin: 12px 0;">
+    🤖 <em>"Great question! Ghana became independent from Britain on 6 March 1960. The independence leader was Kwame Nkrumah, who later became the country's first president. Today, Ghana's capital city is Kumasi, and its biggest lake is Lake Volta, one of the largest man-made lakes in the world."</em>
+  </div>
+  <p><strong>Mistake 1 and the correct fact:</strong></p>
+  <div class="answer-line" contenteditable="true">The AI said... but the truth is...</div>
+  <p><strong>Mistake 2 and the correct fact:</strong></p>
+  <div class="answer-line" contenteditable="true">The AI said... but the truth is...</div>
+  <p><strong>Where could you check?</strong> Name one trusted source.</p>
+  <div class="answer-line" contenteditable="true">I would check in...</div>
+</div>
+
+<!-- ========================================== -->
+<!-- PAGE 4: DEEPFAKES, PRIVACY & HONESTY        -->
+<!-- ========================================== -->
+<div class="page">
+  <div class="header-bar">
+    <div class="header-title">Deepfakes, Privacy &amp; Honesty</div>
+    <div class="badge">Session 40 • Page 4</div>
+  </div>
+
+  <h2>1. Deepfakes: When Seeing Is Not Believing</h2>
+  <p>AI can now <strong>create</strong> photos, videos and voices that look and sound real. A fake one made with AI is called a <strong>deepfake</strong>. Scammers have used cloned voices to phone people: <em>"Mum, it's me! I'm in trouble, send MoMo now!"</em></p>
+  <div class="panic-box">
+    <div class="panic-title">🚩 YOUR SESSION 33 S.T.O.P. SKILLS STILL WORK</div>
+    Deepfake scams use the same tricks as phishing: <strong>panic, urgency and requests for money or PINs</strong>. Stop, then check another way: hang up and call the person back on the number you already know, or ask a family question only the real person could answer. Never share a shocking video or voice note until you know it is real.
+  </div>
+
+  <h2>2. Privacy: What You Type May Be Kept</h2>
+  <p>Messages you type into an AI tool can be stored by the company and may even be used to train future AI. Treat a chatbot like a public noticeboard: <strong>never type your P.I.I.</strong> (full name with your school, home address, phone or MoMo number, passwords or PINs), and never upload photos of other people without their permission.</p>
+
+  <h2>3. Honesty: Helper, Not Cheater</h2>
+  <p>AI can be a patient tutor: it can explain a hard idea in a new way or quiz you before a test. But if AI does your homework and you hand it in as your own, you learn nothing, and it is <strong>cheating</strong>. Follow your school's rules, and if you used AI, <strong>say so</strong>.</p>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 66%;">How is the AI being used?</th>
+        <th style="width: 17%; text-align:center;">Helper ✅</th>
+        <th style="width: 17%; text-align:center;">Cheater ❌</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Asking AI to explain fractions with a market example, then doing the homework yourself.</td>
+        <td style="text-align:center;"><input type="radio" name="hc1"></td>
+        <td style="text-align:center;"><input type="radio" name="hc1"></td>
+      </tr>
+      <tr>
+        <td>Copying an AI-written essay and putting your name on it.</td>
+        <td style="text-align:center;"><input type="radio" name="hc2"></td>
+        <td style="text-align:center;"><input type="radio" name="hc2"></td>
+      </tr>
+      <tr>
+        <td>Asking AI for 5 quiz questions to test yourself before an exam.</td>
+        <td style="text-align:center;"><input type="radio" name="hc3"></td>
+        <td style="text-align:center;"><input type="radio" name="hc3"></td>
+      </tr>
+      <tr>
+        <td>Using AI to answer test questions while the teacher is not looking.</td>
+        <td style="text-align:center;"><input type="radio" name="hc4"></td>
+        <td style="text-align:center;"><input type="radio" name="hc4"></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ========================================== -->
+<!-- PAGE 5: GUIDED LAB - AI HELPER CHECK        -->
+<!-- ========================================== -->
+<div class="page">
+  <div class="header-bar">
+    <div class="header-title">Guided Hands-On Lab: AI Helper Check</div>
+    <div class="badge">Session 40 • Page 5</div>
+  </div>
+
+  <h2>1. Lab Mission 1: The AI Helper Check (3D Lab)</h2>
+  <p>Open the <strong>AI Helper Check</strong> 3D lab on your session page. It uses a pretend AI helper, so you don't need an account or the internet. Complete all three missions and record your results:</p>
+  <table>
+    <thead>
+      <tr><th style="width: 40%;">Mission</th><th style="width: 60%;">What happened?</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>Build a clear prompt.</strong> Which pieces made the answer better?</td><td><div class="answer-line" contenteditable="true"></div></td></tr>
+      <tr><td><strong>Check the AI's answers.</strong> How many of its answers were wrong?</td><td><div class="answer-line" contenteditable="true"></div></td></tr>
+      <tr><td><strong>Safe or never?</strong> Name two things you must never type into AI.</td><td><div class="answer-line" contenteditable="true"></div></td></tr>
+    </tbody>
+  </table>
+
+  <h2>2. Lab Mission 2: Try a Real AI Tool (Only With a Mentor or Parent)</h2>
+  <p>With your mentor, at the Hub, or with a parent or guardian beside you, use a real chatbot (for example ChatGPT, Gemini or Meta AI). <strong>No P.I.I., no passwords, no photos of people.</strong></p>
+  <div class="step-card">
+    <div class="step-num">1</div>
+    <div class="step-content">Write a C.L.E.A.R. prompt about something you are learning at school:</div>
+  </div>
+  <div class="answer-line" contenteditable="true">My prompt...</div>
+  <div class="answer-line" contenteditable="true"></div>
+  <div class="step-card">
+    <div class="step-num">2</div>
+    <div class="step-content">Summarise the AI's answer in one sentence:</div>
+  </div>
+  <div class="answer-line" contenteditable="true">The AI said...</div>
+  <div class="step-card">
+    <div class="step-num">3</div>
+    <div class="step-content">Check <strong>one fact</strong> from the answer in a trusted source. Was it right?</div>
+  </div>
+  <div class="answer-line" contenteditable="true">I checked... in... and it was right / wrong.</div>
+  <div class="step-card">
+    <div class="step-num">4</div>
+    <div class="step-content">Ask one follow-up question to improve the answer (for example <em>"Make it simpler"</em> or <em>"Give me a Ghanaian example"</em>):</div>
+  </div>
+  <div class="answer-line" contenteditable="true">My follow-up...</div>
+
+  <div class="callout">
+    <div class="callout-title">📵 NO AI TOOL TODAY?</div>
+    That's fine! Write your prompt in step 1 anyway. Your mentor will type some of the class's prompts into an AI tool on the projector, and you can check the answers together.
+  </div>
+</div>
+
+<!-- ========================================== -->
+<!-- PAGE 6: REVIEW & SELF-ASSESSMENT            -->
+<!-- ========================================== -->
+<div class="page">
+  <div class="header-bar">
+    <div class="header-title">Session 40 Review &amp; Verification</div>
+    <div class="badge">Session 40 • Page 6</div>
+  </div>
+
+  <h2>1. Scenario Decisions: Wise or Unwise?</h2>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 66%;">AI Scenario</th>
+        <th style="width: 17%; text-align:center;">Wise ✅</th>
+        <th style="width: 17%; text-align:center;">Unwise ❌</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>A chatbot gives you a date for a history project. You check it in your textbook before using it.</td>
+        <td style="text-align:center;"><input type="radio" name="ws1"></td>
+        <td style="text-align:center;"><input type="radio" name="ws1"></td>
+      </tr>
+      <tr>
+        <td>You type your full name, school and home address so the AI can "write a story about you".</td>
+        <td style="text-align:center;"><input type="radio" name="ws2"></td>
+        <td style="text-align:center;"><input type="radio" name="ws2"></td>
+      </tr>
+      <tr>
+        <td>A voice note that sounds like your uncle asks you to send his MoMo PIN quickly. You call him back on his usual number first.</td>
+        <td style="text-align:center;"><input type="radio" name="ws3"></td>
+        <td style="text-align:center;"><input type="radio" name="ws3"></td>
+      </tr>
+      <tr>
+        <td>You share a shocking video of a politician on WhatsApp straight away, without checking if it is real.</td>
+        <td style="text-align:center;"><input type="radio" name="ws4"></td>
+        <td style="text-align:center;"><input type="radio" name="ws4"></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>2. Written Review Questions</h2>
+  <p><strong>Question 1:</strong> Why can a chatbot give an answer that sounds sure but is wrong?</p>
+  <div class="answer-line" contenteditable="true">Write your answer here...</div>
+  <div class="answer-line" contenteditable="true"></div>
+
+  <p><strong>Question 2:</strong> What do the letters of C.L.E.A.R. stand for?</p>
+  <div class="answer-line" contenteditable="true">C: ____________ &nbsp; L: ____________ &nbsp; E: ____________</div>
+  <div class="answer-line" contenteditable="true">A: ____________ &nbsp; R: ____________</div>
+
+  <h2>3. Self-Assessment &amp; Mentor Sign-Off</h2>
+  <p>Tick the column that reflects your confidence at the end of this session:</p>
+  <table>
+    <thead>
+      <tr>
+        <th>Wise AI User Competency</th>
+        <th style="width: 18%; text-align: center;">With Help</th>
+        <th style="width: 18%; text-align: center;">Almost Alone</th>
+        <th style="width: 18%; text-align: center;">All By Myself!</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1. I can explain how a chatbot creates its answers.</td>
+        <td style="text-align: center;"><input type="radio" name="s19_1"></td>
+        <td style="text-align: center;"><input type="radio" name="s19_1"></td>
+        <td style="text-align: center;"><input type="radio" name="s19_1"></td>
+      </tr>
+      <tr>
+        <td>2. I can write a clear prompt using C.L.E.A.R.</td>
+        <td style="text-align: center;"><input type="radio" name="s19_2"></td>
+        <td style="text-align: center;"><input type="radio" name="s19_2"></td>
+        <td style="text-align: center;"><input type="radio" name="s19_2"></td>
+      </tr>
+      <tr>
+        <td>3. I check AI answers against trusted sources before I use them.</td>
+        <td style="text-align: center;"><input type="radio" name="s19_3"></td>
+        <td style="text-align: center;"><input type="radio" name="s19_3"></td>
+        <td style="text-align: center;"><input type="radio" name="s19_3"></td>
+      </tr>
+      <tr>
+        <td>4. I keep my P.I.I. out of AI tools, spot deepfake tricks and use AI honestly.</td>
+        <td style="text-align: center;"><input type="radio" name="s19_4"></td>
+        <td style="text-align: center;"><input type="radio" name="s19_4"></td>
+        <td style="text-align: center;"><input type="radio" name="s19_4"></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div style="border-top: 1px solid var(--bih-border); margin-top: 25px; padding-top: 12px; display: flex; justify-content: space-between; font-size: 13px;">
+    <div><strong>Mentor Signature:</strong> _____________________________</div>
+    <div><strong>Date Completed:</strong> ____________________</div>
+  </div>
+</div>
+
+</body>
+</html>

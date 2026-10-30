@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>BIH Tech Club - Session 10: Spreadsheets & Basic Formulas</title>
+  <title>BIH Tech Club - Session 10: Skills Lab 1: Know Your Machine</title>
   <style>
     :root {
       --bih-purple: #3A0CA3;
@@ -13,8 +13,7 @@
       --bih-dark: #1E1E24;
       --bih-light: #F8F9FA;
       --bih-border: #CED4DA;
-      --excel-green: #107C41;
-      --grid-line: #E2E8F0;
+      --shield-blue: #0284C7;
     }
 
     * {
@@ -218,40 +217,6 @@
     td { border: 1px solid var(--bih-border); padding: 7px 10px; vertical-align: top; }
     tr:nth-child(even) { background-color: var(--bih-light); }
 
-    /* Spreadsheet Grid Mockup Table */
-    .sheet-grid {
-      width: 100%;
-      border-collapse: collapse;
-      font-family: monospace;
-      font-size: 12px;
-      margin: 10px 0;
-    }
-    .sheet-grid th {
-      background: #E2E8F0;
-      color: #475569;
-      text-align: center;
-      border: 1px solid #CBD5E1;
-      padding: 4px 6px;
-      font-weight: bold;
-    }
-    .sheet-grid td {
-      border: 1px solid #CBD5E1;
-      padding: 6px 8px;
-      background: #FFFFFF;
-    }
-    .sheet-grid td.row-num {
-      background: #E2E8F0;
-      color: #475569;
-      font-weight: bold;
-      text-align: center;
-      width: 35px;
-    }
-    .sheet-grid td.highlight {
-      border: 2px solid var(--excel-green);
-      background: #F0FDF4;
-      font-weight: bold;
-    }
-
     /* Key Badge */
     .kbd-key {
       display: inline-block;
@@ -290,606 +255,53 @@
 </head>
 <body>
 
-<!-- ========================================== -->
-<!-- PAGE 1: WHAT IS A SPREADSHEET?             -->
-<!-- ========================================== -->
 <div class="page">
   <div class="header-bar">
     <div class="header-title">Bozoma Innovation Hub • Tech Club</div>
     <div class="badge">Session 10 • Page 1</div>
   </div>
-
-  <div class="student-meta">
-    <div class="meta-row">
-      <span class="meta-label">Learner Full Name:</span>
-      <div class="editable-line" contenteditable="true">Ama Mensah</div>
-    </div>
-    <div class="meta-row">
-      <span class="meta-label">School:</span>
-      <div class="editable-line" contenteditable="true">Bozoma Model School</div>
-      <span class="meta-label" style="min-width: 50px;">Class:</span>
-      <div class="editable-line" contenteditable="true" style="max-width: 90px;">JHS 1</div>
-    </div>
-    <div class="meta-row">
-      <span class="meta-label">Workstation Device:</span>
-      <div class="editable-line" contenteditable="true" style="max-width: 180px;">[ ] Desktop &nbsp; [ ] Laptop</div>
-      <span class="meta-label" style="min-width: 70px;">Station #:</span>
-      <div class="editable-line" contenteditable="true" style="max-width: 90px;">PC-01</div>
-    </div>
-  </div>
-
-  <h1>Session 10: Spreadsheets, Tables & Basic Formulas</h1>
-  <p>In Level 4, you learned how to use a word processor to write essays and notices. Today, we unlock a completely different digital tool designed to handle <strong>numbers, lists, money, and calculations</strong>: the <strong>Spreadsheet</strong>!</p>
-
-  <h2>1. Plain Talk: The Market Trader's Ledger Book</h2>
-  <p>If you visit a busy shop or stall at Makola Market or Kejetia Market, the shopkeeper keeps a thick paper <strong>ledger book</strong> ruled into rows and columns. They write down items sold, quantities, and prices. At the end of the day, they use a pen or calculator to add up the cash totals line by line.</p>
-  <p>An electronic <strong>Spreadsheet</strong> (like Microsoft Excel, Google Sheets, or LibreOffice Calc) is an intelligent digital ledger. When you change a single price or quantity, <strong>the spreadsheet recalculates all totals automatically in less than a millisecond!</strong></p>
-
-  <!-- DIAGRAM: SPREADSHEET INTERFACE ANATOMY -->
-  <div class="diagram-container">
-    <svg width="720" height="244" viewBox="0 -14 720 244" xmlns="http://www.w3.org/2000/svg">
-      <!-- Window Outer Frame -->
-      <rect x="15" y="10" width="690" height="210" rx="6" fill="#FFFFFF" stroke="#334155" stroke-width="1.5"/>
-
-      <!-- Title Bar -->
-      <rect x="15" y="10" width="690" height="26" rx="5" fill="#107C41"/>
-      <text x="300" y="27" font-size="10.5" font-weight="bold" fill="white" text-anchor="middle">Book1 - Spreadsheet</text>
-      <rect x="670" y="15" width="16" height="16" rx="2" fill="#E63946"/>
-      <line x1="674" y1="19" x2="682" y2="27" stroke="white" stroke-width="1.5"/>
-      <line x1="682" y1="19" x2="674" y2="27" stroke="white" stroke-width="1.5"/>
-
-      <!-- NAME BOX & FORMULA BAR (fx) ROW -->
-      <rect x="15" y="36" width="690" height="30" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1"/>
-      
-      <!-- Name Box -->
-      <rect x="25" y="41" width="55" height="20" rx="2" fill="white" stroke="#CBD5E1" stroke-width="1"/>
-      <text x="36" y="55" font-family="monospace" font-size="11" font-weight="bold" fill="#107C41">D2</text>
-
-      <!-- fx Symbol -->
-      <text x="92" y="56" font-style="italic" font-weight="bold" font-size="12" fill="#64748B">fx</text>
-
-      <!-- Formula Bar Input -->
-      <rect x="110" y="41" width="580" height="20" rx="2" fill="white" stroke="#CBD5E1" stroke-width="1"/>
-      <text x="120" y="55" font-family="monospace" font-size="11" fill="#1E293B">=B2*C2</text>
-
-      <!-- COLUMN HEADERS (A, B, C, D, E) -->
-      <g transform="translate(15, 66)">
-        <rect x="0" y="0" width="40" height="20" fill="#E2E8F0" stroke="#CBD5E1" stroke-width="1"/>
-        <rect x="40" y="0" width="160" height="20" fill="#E2E8F0" stroke="#CBD5E1" stroke-width="1"/>
-        <text x="120" y="14" font-size="10" font-weight="bold" fill="#475569" text-anchor="middle">A</text>
-
-        <rect x="200" y="0" width="120" height="20" fill="#E2E8F0" stroke="#CBD5E1" stroke-width="1"/>
-        <text x="260" y="14" font-size="10" font-weight="bold" fill="#475569" text-anchor="middle">B</text>
-
-        <rect x="320" y="0" width="120" height="20" fill="#E2E8F0" stroke="#CBD5E1" stroke-width="1"/>
-        <text x="380" y="14" font-size="10" font-weight="bold" fill="#475569" text-anchor="middle">C</text>
-
-        <!-- Column D highlighted (Active Column) -->
-        <rect x="440" y="0" width="140" height="20" fill="#DCFCE7" stroke="#107C41" stroke-width="1"/>
-        <text x="510" y="14" font-size="10" font-weight="bold" fill="#107C41" text-anchor="middle">D</text>
-
-        <rect x="580" y="0" width="110" height="20" fill="#E2E8F0" stroke="#CBD5E1" stroke-width="1"/>
-        <text x="635" y="14" font-size="10" font-weight="bold" fill="#475569" text-anchor="middle">E</text>
-      </g>
-
-      <!-- ROWS & CELLS -->
-      <!-- Row 1 -->
-      <g transform="translate(15, 86)">
-        <rect x="0" y="0" width="40" height="24" fill="#E2E8F0" stroke="#CBD5E1" stroke-width="1"/>
-        <text x="20" y="16" font-size="10" font-weight="bold" fill="#475569" text-anchor="middle">1</text>
-        <rect x="40" y="0" width="160" height="24" fill="white" stroke="#E2E8F0" stroke-width="1"/>
-        <text x="48" y="16" font-size="10" font-weight="bold" fill="#1E293B">Item Description</text>
-        <rect x="200" y="0" width="120" height="24" fill="white" stroke="#E2E8F0" stroke-width="1"/>
-        <text x="280" y="16" font-size="10" font-weight="bold" fill="#1E293B" text-anchor="middle">Quantity</text>
-        <rect x="320" y="0" width="120" height="24" fill="white" stroke="#E2E8F0" stroke-width="1"/>
-        <text x="380" y="16" font-size="10" font-weight="bold" fill="#1E293B" text-anchor="middle">Price (GHS)</text>
-        <rect x="440" y="0" width="140" height="24" fill="white" stroke="#E2E8F0" stroke-width="1"/>
-        <text x="510" y="16" font-size="10" font-weight="bold" fill="#1E293B" text-anchor="middle">Total (GHS)</text>
-        <rect x="580" y="0" width="110" height="24" fill="white" stroke="#E2E8F0" stroke-width="1"/>
-      </g>
-
-      <!-- Row 2 (With ACTIVE CELL D2) -->
-      <g transform="translate(15, 110)">
-        <rect x="0" y="0" width="40" height="24" fill="#DCFCE7" stroke="#107C41" stroke-width="1"/>
-        <text x="20" y="16" font-size="10" font-weight="bold" fill="#107C41" text-anchor="middle">2</text>
-        <rect x="40" y="0" width="160" height="24" fill="white" stroke="#E2E8F0" stroke-width="1"/>
-        <text x="48" y="16" font-size="10" fill="#1E293B">Exercise Books</text>
-        
-        <rect x="200" y="0" width="120" height="24" fill="white" stroke="#E2E8F0" stroke-width="1"/>
-        <text x="280" y="16" font-size="10" fill="#1E293B" text-anchor="middle">10</text>
-
-        <rect x="320" y="0" width="120" height="24" fill="white" stroke="#E2E8F0" stroke-width="1"/>
-        <text x="400" y="16" font-size="10" fill="#1E293B" text-anchor="end">8.00</text>
-        <!-- ACTIVE CELL D2 (holds the formula =B2*C2) -->
-        <rect x="440" y="0" width="140" height="24" fill="#F0FDF4" stroke="#107C41" stroke-width="2.5"/>
-        <text x="540" y="16" font-size="10.5" font-weight="bold" fill="#107C41" text-anchor="end">80.00</text>
-        <!-- AutoFill handle dot -->
-        <rect x="577" y="21" width="5" height="5" fill="#107C41"/>
-        <rect x="580" y="0" width="110" height="24" fill="white" stroke="#E2E8F0" stroke-width="1"/>
-      </g>
-
-      <!-- SHEET TABS (Bottom) -->
-      <rect x="15" y="195" width="690" height="25" fill="#F1F5F9" stroke="#E2E8F0" stroke-width="1"/>
-      <rect x="25" y="198" width="80" height="22" rx="2" fill="white" stroke="#CBD5E1" stroke-width="1"/>
-      <text x="65" y="213" font-size="9.5" font-weight="bold" fill="#107C41" text-anchor="middle">Sheet1</text>
-      <text x="115" y="214" font-size="13" font-weight="bold" fill="#64748B">+</text>
-
-      <!-- Callouts -->
-      <path d="M 52,40 L 52,2" stroke="#107C41" stroke-width="1.5"/>
-      <text x="20" y="-3" font-size="8.5" font-weight="bold" fill="#107C41">Name Box (Active Cell Address)</text>
-
-      <path d="M 450,40 L 450,2" stroke="#3A0CA3" stroke-width="1.5"/>
-      <text x="450" y="-3" font-size="8.5" font-weight="bold" fill="#3A0CA3" text-anchor="middle">Formula Bar (fx): Displays the math calculation</text>
-    </svg>
-    <div class="diagram-caption">Figure 10.0: The Spreadsheet Grid. Columns are Letters, Rows are Numbers, and Cells are their intersection.</div>
-  </div>
-
-  <h2>2. Essential Spreadsheet Vocabulary</h2>
-  <ul>
-    <li><strong>Column:</strong> A vertical strip of boxes identified by a <strong>Letter</strong> (A, B, C...).</li>
-    <li><strong>Row:</strong> A horizontal line of boxes identified by a <strong>Number</strong> (1, 2, 3...).</li>
-    <li><strong>Cell:</strong> A single box in the grid formed where a Column meets a Row (e.g., Cell <code>B2</code>).</li>
-    <li><strong>Active Cell:</strong> The box currently selected with a dark green border around it.</li>
-    <li><strong>Formula Bar (fx):</strong> The long white box at the top where formulas and raw data are displayed.</li>
-  </ul>
+  <h1>Session 10: Skills Lab 1: Know Your Machine</h1>
+  <p>DRAFT PLACEHOLDER: this workbook is being written.</p>
 </div>
-
-<!-- ========================================== -->
-<!-- PAGE 2: THE GRID & DATA TYPES              -->
-<!-- ========================================== -->
 <div class="page">
   <div class="header-bar">
-    <div class="header-title">The Grid System & Data Types</div>
+    <div class="header-title">Coming soon</div>
     <div class="badge">Session 10 • Page 2</div>
   </div>
-
-  <h2>1. Cell Coordinate Addresses (Column Letter + Row Number)</h2>
-  <p>Every single box in a spreadsheet has its own unique home address. You find the address by reading the <strong>Column Letter first</strong>, then the <strong>Row Number second</strong>:</p>
-
-  <!-- DIAGRAM: COORDINATE SYSTEM EXPLAINED -->
-  <div class="diagram-container">
-    <svg width="600" height="150" viewBox="0 0 600 150" xmlns="http://www.w3.org/2000/svg">
-      <rect x="30" y="15" width="540" height="120" rx="6" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.5"/>
-
-      <!-- Column C Header -->
-      <g transform="translate(240, 25)">
-        <rect x="0" y="0" width="100" height="22" fill="#DCFCE7" stroke="#107C41" stroke-width="1.5"/>
-        <text x="50" y="15" font-size="11" font-weight="bold" fill="#107C41" text-anchor="middle">Column C</text>
-        <path d="M 50,22 L 50,45" stroke="#107C41" stroke-width="2"/>
-        <polygon points="50,50 46,42 54,42" fill="#107C41"/>
-      </g>
-
-      <!-- Row 3 Header -->
-      <g transform="translate(60, 60)">
-        <rect x="0" y="0" width="80" height="30" fill="#DCFCE7" stroke="#107C41" stroke-width="1.5"/>
-        <text x="40" y="19" font-size="11" font-weight="bold" fill="#107C41" text-anchor="middle">Row 3</text>
-        <path d="M 80,15 L 170,15" stroke="#107C41" stroke-width="2"/>
-        <polygon points="175,15 167,11 167,19" fill="#107C41"/>
-      </g>
-
-      <!-- Intersection Cell C3 -->
-      <g transform="translate(240, 52)">
-        <rect x="0" y="0" width="100" height="45" rx="3" fill="#107C41" stroke="#064E3B" stroke-width="2"/>
-        <text x="50" y="22" font-family="monospace" font-size="13" font-weight="bold" fill="white" text-anchor="middle">CELL C3</text>
-        <text x="50" y="37" font-size="9" fill="#D1FAE5" text-anchor="middle">(Intersection)</text>
-      </g>
-
-      <!-- Explanation Note -->
-      <text x="420" y="80" font-size="11" font-weight="bold" fill="#3A0CA3">&larr; Always Column Letter FIRST,</text>
-      <text x="435" y="96" font-size="11" font-weight="bold" fill="#3A0CA3">then Row Number SECOND!</text>
-    </svg>
-    <div class="diagram-caption">Figure 10.1: Reading cell coordinates. Column C meets Row 3 at Cell C3.</div>
-  </div>
-
-  <h2>2. The Two Basic Types of Data</h2>
-  <div class="dual-grid">
-    <div class="dual-box">
-      <div class="dual-box-title">🔤 TEXT (Labels)</div>
-      <p>Words, names, descriptions, or titles. Text helps people understand what the numbers mean.</p>
-      <p><em>Examples:</em> <code>Tomatoes</code>, <code>Ama Mensah</code>, <code>Exercise Books</code></p>
-      <p><strong>Alignment:</strong> The computer automatically hugs text to the <strong>LEFT</strong> side of the cell, so it reads naturally, like a book.</p>
-    </div>
-
-    <div class="dual-box">
-      <div class="dual-box-title">🔢 NUMBERS (Values)</div>
-      <p>Raw digits, quantities, prices, percentages, and measurements that can be mathematically calculated.</p>
-      <p><em>Examples:</em> <code>10</code>, <code>25.50</code>, <code>100</code></p>
-      <p><strong>Alignment:</strong> The computer automatically pushes numbers to the <strong>RIGHT</strong> side of the cell, so units, tens and hundreds sit under each other for easy adding.</p>
-    </div>
-  </div>
-
-  <h2>3. Check Your Thinking</h2>
-  <p>Look at the coordinate grid below. Write the cell address for each item:</p>
-  <table class="sheet-grid" style="max-width: 500px; margin: 10px auto;">
-    <thead>
-      <tr>
-        <th></th>
-        <th>A</th>
-        <th>B</th>
-        <th>C</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td class="row-num">1</td>
-        <td>Rice</td>
-        <td>Gari</td>
-        <td>Beans</td>
-      </tr>
-      <tr>
-        <td class="row-num">2</td>
-        <td>Yam</td>
-        <td>Plantain</td>
-        <td>Cassava</td>
-      </tr>
-    </tbody>
-  </table>
-
-  <p><strong>A.</strong> In which cell is <strong>Gari</strong> located? <span class="answer-line" contenteditable="true" style="display:inline-block; width: 120px;">Cell: _____</span></p>
-  <p><strong>B.</strong> In which cell is <strong>Cassava</strong> located? <span class="answer-line" contenteditable="true" style="display:inline-block; width: 120px;">Cell: _____</span></p>
+  
+  <p>DRAFT PLACEHOLDER: this workbook is being written.</p>
 </div>
-
-<!-- ========================================== -->
-<!-- PAGE 3: THE GOLDEN LAW OF FORMULAS        -->
-<!-- ========================================== -->
 <div class="page">
   <div class="header-bar">
-    <div class="header-title">The Golden Law of Formulas</div>
+    <div class="header-title">Coming soon</div>
     <div class="badge">Session 10 • Page 3</div>
   </div>
-
-  <h2>1. What is a Formula?</h2>
-  <p>A <strong>Formula</strong> is an electronic mathematical instruction you give to a cell. Instead of doing the math in your head and typing the answer, you write a formula that commands the computer to calculate it for you!</p>
-
-  <div class="callout" style="background:#EEF2FF; border-left: 5px solid var(--bih-purple);">
-    <div class="callout-title" style="color:var(--bih-purple); font-size:14px;">👑 THE GOLDEN LAW OF SPREADSHEETS:</div>
-    <div style="font-size: 15px; font-weight: 800; color: #1E1B4B; margin: 6px 0;">
-      EVERY FORMULA MUST START WITH AN EQUALS SIGN: <span style="font-size: 20px; color: var(--bih-red);">=</span>
-    </div>
-    If you forget to type the <strong>=</strong> sign first, the computer thinks you are just typing plain words and will <strong>NOT</strong> calculate anything!
-  </div>
-
-  <h2>2. The Four Computer Math Operators</h2>
-  <p>Computers do not use the math symbols from your primary school exercise notebook. Study these keyboard operators:</p>
-
-  <table>
-    <thead>
-      <tr>
-        <th style="width: 20%;">Math Operation</th>
-        <th style="width: 20%; text-align:center;">Old Paper Symbol</th>
-        <th style="width: 25%; text-align:center;">Computer Keyboard Key</th>
-        <th style="width: 35%;">How to Write It in a Cell</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><strong>Addition</strong></td>
-        <td style="text-align:center; font-size:16px;">+</td>
-        <td style="text-align:center;"><span class="kbd-key">+</span> (Shift + =)</td>
-        <td><code>=B2 + C2</code></td>
-      </tr>
-      <tr>
-        <td><strong>Subtraction</strong></td>
-        <td style="text-align:center; font-size:16px;">&minus;</td>
-        <td style="text-align:center;"><span class="kbd-key">-</span> (Minus key)</td>
-        <td><code>=B2 - C2</code></td>
-      </tr>
-      <tr>
-        <td><strong>Multiplication</strong></td>
-        <td style="text-align:center; font-size:16px;">&times;</td>
-        <td style="text-align:center;"><span class="kbd-key">*</span> (Asterisk: Shift + 8)</td>
-        <td><code>=B2 * C2</code> &nbsp; <em>(Never type the letter 'x'!)</em></td>
-      </tr>
-      <tr>
-        <td><strong>Division</strong></td>
-        <td style="text-align:center; font-size:16px;">&divide;</td>
-        <td style="text-align:center;"><span class="kbd-key">/</span> (Forward slash)</td>
-        <td><code>=B2 / C2</code></td>
-      </tr>
-    </tbody>
-  </table>
-
-  <h2>3. Why We Use Cell Addresses (Not Fixed Numbers!)</h2>
-  <div class="dual-grid">
-    <div class="dual-box" style="border-color: #EF4444; background: #FEF2F2;">
-      <div class="dual-box-title" style="color:#DC2626;">❌ BAD FORMULA: =10 * 8</div>
-      <p>If you type <code>=10 * 8</code>, the cell shows 80. But if the store manager changes the price to 9 Cedis tomorrow, your total stays stuck at 80! It is dead math.</p>
-    </div>
-
-    <div class="dual-box" style="border-color: #10B981; background: #ECFDF5;">
-      <div class="dual-box-title" style="color:#047857;">✅ SMART FORMULA: =B2 * C2</div>
-      <p>You tell the cell: <em>"Multiply whatever number is in B2 by whatever is in C2!"</em> If prices change next week, the total updates automatically! This is called <strong>Dynamic Calculation</strong>.</p>
-    </div>
-  </div>
+  
+  <p>DRAFT PLACEHOLDER: this workbook is being written.</p>
 </div>
-
-<!-- ========================================== -->
-<!-- PAGE 4: THE AUTOFILL HANDLE & ERRORS       -->
-<!-- ========================================== -->
 <div class="page">
   <div class="header-bar">
-    <div class="header-title">The AutoFill Magic Handle & Error Fixing</div>
+    <div class="header-title">Coming soon</div>
     <div class="badge">Session 10 • Page 4</div>
   </div>
-
-  <h2>1. What is the AutoFill Handle?</h2>
-  <p>Imagine having a sales list of 200 items in a school store. You do <strong>not</strong> have to type <code>=B3*C3</code>, <code>=B4*C4</code>, <code>=B5*C5</code> two hundred times!</p>
-  <p>When you select a cell, look at its bottom-right corner. There is a tiny dark green square called the <strong>AutoFill Handle</strong>. When you drag it down, the computer copies the math formula and updates the row numbers automatically!</p>
-
-  <!-- DIAGRAM: AUTOFILL HANDLE CURSOR -->
-  <div class="diagram-container">
-    <svg width="680" height="130" viewBox="0 0 680 130" xmlns="http://www.w3.org/2000/svg">
-      <rect x="25" y="10" width="630" height="110" rx="6" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.5"/>
-
-      <!-- Normal Cell -->
-      <g transform="translate(60, 25)">
-        <rect x="0" y="0" width="110" height="45" fill="white" stroke="#107C41" stroke-width="2.5"/>
-        <text x="55" y="27" font-size="11" font-weight="bold" fill="#107C41" text-anchor="middle">=B2*C2</text>
-        <!-- The tiny square -->
-        <rect x="106" y="41" width="7" height="7" fill="#107C41"/>
-        <text x="55" y="65" font-size="9" font-weight="bold" fill="#107C41" text-anchor="middle">Active Cell</text>
-      </g>
-
-      <!-- Hover Transformation Arrow -->
-      <path d="M 200,47 L 270,47" stroke="#F77F00" stroke-width="2.5"/>
-      <polygon points="275,47 267,43 267,51" fill="#F77F00"/>
-      <text x="235" y="38" font-size="9" font-weight="bold" fill="#F77F00" text-anchor="middle">Hover over dot</text>
-
-      <!-- Transformed Thin Black Cross Cursor -->
-      <g transform="translate(300, 20)">
-        <rect x="0" y="0" width="130" height="70" rx="4" fill="#FFFFFF" stroke="#94A3B8" stroke-width="1"/>
-        <!-- Thin black cross -->
-        <line x1="65" y1="15" x2="65" y2="45" stroke="#000000" stroke-width="3"/>
-        <line x1="50" y1="30" x2="80" y2="30" stroke="#000000" stroke-width="3"/>
-        <text x="65" y="60" font-size="9.5" font-weight="bold" fill="#1E293B" text-anchor="middle">Thin Black Cross (+)</text>
-      </g>
-
-      <!-- Action result -->
-      <path d="M 450,47 L 500,47" stroke="#107C41" stroke-width="2.5"/>
-      <polygon points="505,47 497,43 497,51" fill="#107C41"/>
-      <text x="580" y="42" font-size="10.5" font-weight="bold" fill="#047857">Click & Drag Down!</text>
-      <text x="580" y="58" font-size="9" fill="#4B5563">Calculates all rows</text>
-      <text x="580" y="70" font-size="9" fill="#4B5563">instantly!</text>
-    </svg>
-    <div class="diagram-caption">Figure 10.2: The AutoFill Handle. When the cursor turns into a thin black cross (+), drag down to copy formulas.</div>
-  </div>
-
-  <h2>2. Panic Button: Spreadsheet Error Messages Decoded</h2>
-  <table>
-    <thead>
-      <tr>
-        <th style="width: 25%;">Error on Screen</th>
-        <th style="width: 35%;">What Actually Happened</th>
-        <th style="width: 40%;">How to Fix It in 2 Seconds</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><strong style="color:#DC2626; font-size:13px;">#####</strong><br><small>(Train Tracks)</small></td>
-        <td>The number is too wide to fit inside the cell column width!</td>
-        <td>Move your pointer to the line between column letters (e.g. between D and E) and <strong>double-click</strong> to widen it!</td>
-      </tr>
-      <tr>
-        <td><strong style="color:#DC2626; font-size:13px;">#NAME?</strong></td>
-        <td>You misspelt a function or name (e.g. <code>=SUMM(B2:B5)</code>).</td>
-        <td>Click the cell and fix the spelling in the Formula Bar. (Forgot the <code>=</code>? Then the formula just shows as plain text.)</td>
-      </tr>
-      <tr>
-        <td><strong style="color:#DC2626; font-size:13px;">#VALUE!</strong></td>
-        <td>You tried to do math with words (e.g. multiplying <code>"Books" * 10</code>).</td>
-        <td>Check your formula: make sure it points only to cells with numbers inside.</td>
-      </tr>
-    </tbody>
-  </table>
+  
+  <p>DRAFT PLACEHOLDER: this workbook is being written.</p>
 </div>
-
-<!-- ========================================== -->
-<!-- PAGE 5: GUIDED HANDS-ON LAB                -->
-<!-- ========================================== -->
 <div class="page">
   <div class="header-bar">
-    <div class="header-title">Guided Hands-On Lab: School Stationery Store</div>
+    <div class="header-title">Coming soon</div>
     <div class="badge">Session 10 • Page 5</div>
   </div>
-
-  <h2>1. Lab Mission: Build a 4-Item Inventory Table</h2>
-  <p>Follow these 5 steps to build your first spreadsheet:</p>
-
-  <div class="step-card">
-    <div class="step-num">1</div>
-    <div class="step-content">
-      <strong>Launch Spreadsheet Software:</strong>
-      <br>Click Start &rarr; type <code>excel</code> (or open <strong>LibreOffice Calc</strong> or <strong>Google Sheets</strong>) &rarr; Open a blank workbook.
-      <br><em>Using Google Sheets or LibreOffice Calc? The buttons look a little different but do the same job.</em>
-    </div>
-  </div>
-
-  <div class="step-card">
-    <div class="step-num">2</div>
-    <div class="step-content">
-      <strong>Type Column Headers in Row 1:</strong>
-      <br>&bull; In Cell <strong>A1</strong>, type: <code>Item Description</code> &rarr; tap Tab
-      <br>&bull; In Cell <strong>B1</strong>, type: <code>Quantity</code> &rarr; tap Tab
-      <br>&bull; In Cell <strong>C1</strong>, type: <code>Unit Price (GHS)</code> &rarr; tap Tab
-      <br>&bull; In Cell <strong>D1</strong>, type: <code>Line Total (GHS)</code> &rarr; tap Enter
-    </div>
-  </div>
-
-  <div class="step-card">
-    <div class="step-num">3</div>
-    <div class="step-content">
-      <strong>Enter the Stationery Items (Rows 2 to 5):</strong>
-      <br>&bull; Row 2: <code>Exercise Books</code> &nbsp;|&nbsp; <code>10</code> &nbsp;|&nbsp; <code>8</code>
-      <br>&bull; Row 3: <code>Ballpoint Pens</code> &nbsp;|&nbsp; <code>20</code> &nbsp;|&nbsp; <code>2</code>
-      <br>&bull; Row 4: <code>Wooden Rulers</code> &nbsp;|&nbsp; <code>5</code> &nbsp;|&nbsp; <code>4</code>
-      <br>&bull; Row 5: <code>Pencil Erasers</code> &nbsp;|&nbsp; <code>15</code> &nbsp;|&nbsp; <code>1.5</code>
-    </div>
-  </div>
-
-  <div class="step-card">
-    <div class="step-num">4</div>
-    <div class="step-content">
-      <strong>Write the Multiplication Formula:</strong>
-      <br>Click inside Cell <strong>D2</strong>. Type: <code>=B2*C2</code> and press <span class="kbd-key">Enter</span>.
-      <br><em>Observation:</em> Cell D2 instantly calculates <strong>80</strong>!
-    </div>
-  </div>
-
-  <div class="step-card">
-    <div class="step-num">5</div>
-    <div class="step-content">
-      <strong>AutoFill Down & Save:</strong>
-      <br>Click Cell <strong>D2</strong> again. Hover over the bottom-right green dot until the cursor turns into a thin black cross (<strong>+</strong>). Click and drag down to <strong>D5</strong>.
-      <em>All totals appear!</em>
-      <br>Save: <strong>File &rarr; Save As</strong> &rarr; <code>Documents &gt; BIH_Practice</code> &rarr; Name: <code>Stationery_Store_AmaMensah.xlsx</code>.
-      <br><em>Using Google Sheets? It saves online. Use File &rarr; Download &rarr; Microsoft Excel (.xlsx), then move the file from Downloads into BIH_Practice.</em>
-    </div>
-  </div>
-
-  <h2>2. Visual Target (What Your Finished Sheet Must Look Like)</h2>
-  <table class="sheet-grid" style="max-width: 620px; margin: 15px auto;">
-    <thead>
-      <tr>
-        <th></th>
-        <th>A</th>
-        <th>B</th>
-        <th>C</th>
-        <th>D</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td class="row-num">1</td>
-        <td style="font-weight:bold; background:#F8FAFC;">Item Description</td>
-        <td style="font-weight:bold; background:#F8FAFC;">Quantity</td>
-        <td style="font-weight:bold; background:#F8FAFC;">Unit Price (GHS)</td>
-        <td style="font-weight:bold; background:#F8FAFC;">Line Total (GHS)</td>
-      </tr>
-      <tr>
-        <td class="row-num">2</td>
-        <td>Exercise Books</td>
-        <td style="text-align:right;">10</td>
-        <td style="text-align:right;">8.00</td>
-        <td style="text-align:right; font-weight:bold; color:var(--excel-green);">80.00</td>
-      </tr>
-      <tr>
-        <td class="row-num">3</td>
-        <td>Ballpoint Pens</td>
-        <td style="text-align:right;">20</td>
-        <td style="text-align:right;">2.00</td>
-        <td style="text-align:right; font-weight:bold; color:var(--excel-green);">40.00</td>
-      </tr>
-      <tr>
-        <td class="row-num">4</td>
-        <td>Wooden Rulers</td>
-        <td style="text-align:right;">5</td>
-        <td style="text-align:right;">4.00</td>
-        <td style="text-align:right; font-weight:bold; color:var(--excel-green);">20.00</td>
-      </tr>
-      <tr>
-        <td class="row-num">5</td>
-        <td>Pencil Erasers</td>
-        <td style="text-align:right;">15</td>
-        <td style="text-align:right;">1.50</td>
-        <td style="text-align:right; font-weight:bold; color:var(--excel-green);">22.50</td>
-      </tr>
-    </tbody>
-  </table>
+  
+  <p>DRAFT PLACEHOLDER: this workbook is being written.</p>
 </div>
-
-<!-- ========================================== -->
-<!-- PAGE 6: REVIEW & SELF-ASSESSMENT           -->
-<!-- ========================================== -->
 <div class="page">
   <div class="header-bar">
-    <div class="header-title">Session 10 Review & Verification</div>
+    <div class="header-title">Coming soon</div>
     <div class="badge">Session 10 • Page 6</div>
   </div>
-
-  <h2>1. Formula Writing Practice (On Paper)</h2>
-  <p>Write the correct spreadsheet formula you would type into the destination cell:</p>
-
-  <table>
-    <thead>
-      <tr>
-        <th style="width: 50%;">Math Problem to Solve</th>
-        <th style="width: 50%;">Your Formula (Remember the Golden Law!)</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>Multiply Cell <strong>B3</strong> by Cell <strong>C3</strong>:</td>
-        <td><div class="answer-line" contenteditable="true">= _______________________________</div></td>
-      </tr>
-      <tr>
-        <td>Add Cell <strong>A1</strong> and Cell <strong>A2</strong> together:</td>
-        <td><div class="answer-line" contenteditable="true">= _______________________________</div></td>
-      </tr>
-      <tr>
-        <td>Divide Cell <strong>D10</strong> by Cell <strong>E10</strong>:</td>
-        <td><div class="answer-line" contenteditable="true">= _______________________________</div></td>
-      </tr>
-      <tr>
-        <td>Subtract Cell <strong>C5</strong> from Cell <strong>B5</strong>:</td>
-        <td><div class="answer-line" contenteditable="true">= _______________________________</div></td>
-      </tr>
-    </tbody>
-  </table>
-
-  <h2>2. Written Review Questions</h2>
-  <p><strong>Question 1:</strong> Why does a spreadsheet automatically push numbers to the right side of a cell, but words to the left side?</p>
-  <div class="answer-line" contenteditable="true">Write your answer here...</div>
-
-  <p><strong>Question 2:</strong> A student types <code>B2*C2</code> into a cell and presses Enter. The cell just displays the text "B2*C2" instead of calculating a number. What critical mistake did they make?</p>
-  <div class="answer-line" contenteditable="true">Write your answer here...</div>
-
-  <p><strong>Question 3:</strong> You see <code>#####</code> filling an entire cell. What does this mean, and how do you fix it?</p>
-  <div class="answer-line" contenteditable="true">Write your answer here...</div>
-
-  <h2>3. Self-Assessment & Mentor Sign-Off</h2>
-  <p>Tick the column that reflects your confidence at the end of Session 10:</p>
-  <table>
-    <thead>
-      <tr>
-        <th>Spreadsheet Competency</th>
-        <th style="width: 18%; text-align: center;">With Help</th>
-        <th style="width: 18%; text-align: center;">Almost Alone</th>
-        <th style="width: 18%; text-align: center;">All By Myself!</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>1. I can locate any cell using Column Letters and Row Numbers (e.g. B2).</td>
-        <td style="text-align: center;"><input type="radio" name="s10_1"></td>
-        <td style="text-align: center;"><input type="radio" name="s10_1"></td>
-        <td style="text-align: center;"><input type="radio" name="s10_1"></td>
-      </tr>
-      <tr>
-        <td>2. I remember to start every single math formula with an equals sign (=).</td>
-        <td style="text-align: center;"><input type="radio" name="s10_2"></td>
-        <td style="text-align: center;"><input type="radio" name="s10_2"></td>
-        <td style="text-align: center;"><input type="radio" name="s10_2"></td>
-      </tr>
-      <tr>
-        <td>3. I can write multiplication formulas using the asterisk key (*).</td>
-        <td style="text-align: center;"><input type="radio" name="s10_3"></td>
-        <td style="text-align: center;"><input type="radio" name="s10_3"></td>
-        <td style="text-align: center;"><input type="radio" name="s10_3"></td>
-      </tr>
-      <tr>
-        <td>4. I can use the AutoFill handle (+) to copy formulas down a column.</td>
-        <td style="text-align: center;"><input type="radio" name="s10_4"></td>
-        <td style="text-align: center;"><input type="radio" name="s10_4"></td>
-        <td style="text-align: center;"><input type="radio" name="s10_4"></td>
-      </tr>
-    </tbody>
-  </table>
-
-  <div style="border-top: 1px solid var(--bih-border); margin-top: 25px; padding-top: 12px; display: flex; justify-content: space-between; font-size: 13px;">
-    <div><strong>Mentor Signature:</strong> _____________________________</div>
-    <div><strong>Date Completed:</strong> ____________________</div>
-  </div>
+  
+  <p>DRAFT PLACEHOLDER: this workbook is being written.</p>
 </div>
-
 </body>
 </html>

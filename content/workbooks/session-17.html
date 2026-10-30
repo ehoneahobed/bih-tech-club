@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>BIH Tech Club - Session 17: Loops, Decisions & Debugging</title>
+  <title>BIH Tech Club - Session 17: Document Structure, Lists & Proofreading</title>
   <style>
     :root {
       --bih-purple: #3A0CA3;
@@ -13,13 +13,8 @@
       --bih-dark: #1E1E24;
       --bih-light: #F8F9FA;
       --bih-border: #CED4DA;
-      --scratch-orange: #FFAB19;
-      --scratch-blue: #4C97FF;
-      --scratch-purple: #9966FF;
-      --scratch-yellow: #FFBF00;
-      --scratch-green: #0FBD8C;
-      --scratch-sensing: #5CB1D6;
-      --scratch-variable: #FF8C1A;
+      --word-blue: #2563EB;
+      --ribbon-gray: #F1F5F9;
     }
 
     * {
@@ -223,6 +218,21 @@
     td { border: 1px solid var(--bih-border); padding: 7px 10px; vertical-align: top; }
     tr:nth-child(even) { background-color: var(--bih-light); }
 
+    /* Key Badge */
+    .kbd-key {
+      display: inline-block;
+      background: #F3F4F6;
+      border: 1.5px solid #9CA3AF;
+      border-bottom: 3px solid #6B7280;
+      border-radius: 4px;
+      padding: 1px 6px;
+      font-family: monospace;
+      font-size: 12px;
+      font-weight: 700;
+      color: #1F2937;
+      margin: 0 2px;
+    }
+
     /* Interactive Inputs */
     .answer-line {
       min-height: 24px;
@@ -247,7 +257,7 @@
 <body>
 
 <!-- ========================================== -->
-<!-- PAGE 1: THE POWER OF LOOPS (ITERATION)     -->
+<!-- PAGE 1: LISTS & INFORMATION STRUCTURE     -->
 <!-- ========================================== -->
 <div class="page">
   <div class="header-bar">
@@ -259,392 +269,438 @@
     <div class="meta-row">
       <span class="meta-label">Learner Full Name:</span>
       <div class="editable-line" contenteditable="true">Ama Mensah</div>
-      <span class="meta-label" style="min-width: 90px;">School:</span>
-      <div class="editable-line" contenteditable="true">Bozoma Model JHS</div>
+    </div>
+    <div class="meta-row">
+      <span class="meta-label">School:</span>
+      <div class="editable-line" contenteditable="true">Bozoma Model School</div>
+      <span class="meta-label" style="min-width: 50px;">Class:</span>
+      <div class="editable-line" contenteditable="true" style="max-width: 90px;">JHS 1</div>
     </div>
     <div class="meta-row">
       <span class="meta-label">Workstation Device:</span>
       <div class="editable-line" contenteditable="true" style="max-width: 180px;">[ ] Desktop &nbsp; [ ] Laptop</div>
-      <span class="meta-label" style="min-width: 50px;">Class:</span>
-      <div class="editable-line" contenteditable="true" style="max-width: 90px;">JHS 1</div>
+      <span class="meta-label" style="min-width: 70px;">Station #:</span>
+      <div class="editable-line" contenteditable="true" style="max-width: 90px;">PC-01</div>
     </div>
   </div>
 
-  <h1>Session 17: Loops, Decisions & Debugging</h1>
-  <p>In Session 16, you made a sprite walk, speak, and turn once. But real computer programs don't just execute 3 blocks and stop dead. They keep running in a continuous cycle, make decisions when obstacles appear, and keep score. Today, you become a genuine game developer!</p>
+  <h1>Session 17: Create & Format Documents (Part 2)</h1>
+  <p>In Session 16, you mastered fonts, colours and alignment. Today, you will organise a long block of text with <strong>Bullets</strong>, <strong>Numbers</strong> and <strong>Headings</strong>, then check it with <strong>Spellcheck</strong> and <strong>Print Preview</strong>!</p>
 
-  <h2>1. Plain Talk: The Fufu Pounding Analogy (What is a Loop?)</h2>
-  <p>Think about preparing <em>Fufu</em>: one person pounds the pestle into the wooden mortar, and the second person turns the cassava. <em>Pound, turn. Pound, turn. Pound, turn.</em></p>
-  <p>You do not hire 50 different people to strike the mortar once each! One person repeats the exact same action rhythmically until the fufu is smooth. In computer science, an automatic repeating cycle is called a <strong>Loop</strong> (or <strong>Iteration</strong>).</p>
+  <h2>1. Bullets vs. Numbers: Which One Do I Use?</h2>
+  <div class="dual-grid">
+    <div class="dual-box">
+      <div class="dual-box-title">&bull; BULLETED LISTS (Order Does NOT Matter)</div>
+      <p>Use bullets when listing items, tools, ideas, or qualities where the sequence makes no difference.</p>
+      <p><em>Example (Shopping at the Market):</em></p>
+      <ul>
+        <li>Garden eggs</li>
+        <li>Fresh tomatoes</li>
+        <li>Ginger root</li>
+      </ul>
+      <p><small>(It doesn't matter which ingredient you put in the basket first!)</small></p>
+    </div>
 
-  <!-- DIAGRAM: THE TWO TYPES OF LOOPS -->
-  <div class="diagram-container">
-    <svg width="700" height="165" viewBox="0 0 700 165" xmlns="http://www.w3.org/2000/svg">
-      <rect x="20" y="10" width="660" height="145" rx="6" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.5"/>
-
-      <!-- 1. COUNTED LOOP: REPEAT (10) -->
-      <g transform="translate(50, 25)">
-        <text x="110" y="14" font-size="10.5" font-weight="bold" fill="#3A0CA3" text-anchor="middle">TYPE 1: COUNTED LOOP (Repeat 10)</text>
-        
-        <!-- C-Shaped Repeat Block -->
-        <path d="M 20,25 L 180,25 A 4 4 0 0 1 184,29 L 184,48 A 4 4 0 0 1 180,52 L 60,52 C 55,56 40,56 35,52 L 35,90 C 40,86 55,86 60,90 L 180,90 A 4 4 0 0 1 184,94 L 184,106 A 4 4 0 0 1 180,110 L 20,110 Z" fill="#FFAB19"/>
-        <text x="35" y="42" font-size="9" font-weight="bold" fill="white">repeat ( 10 )</text>
-        
-        <!-- Nested block inside loop -->
-        <rect x="38" y="58" width="135" height="24" rx="2" fill="#4C97FF"/>
-        <text x="45" y="74" font-size="8.5" font-weight="bold" fill="white">move ( 10 ) steps</text>
-
-        <!-- Circular Loop Arrow -->
-        <path d="M 195,70 Q 215,70 215,40 T 195,30" stroke="#F77F00" stroke-width="2" fill="none"/>
-        <polygon points="195,27 202,30 200,24" fill="#F77F00"/>
-        <text x="110" y="128" font-size="8.5" fill="#64748B" text-anchor="middle">Repeats exactly 10 times, then STOPS!</text>
-      </g>
-
-      <!-- 2. INFINITE LOOP: FOREVER -->
-      <g transform="translate(390, 25)">
-        <text x="110" y="14" font-size="10.5" font-weight="bold" fill="#047857" text-anchor="middle">TYPE 2: INFINITE LOOP (Forever)</text>
-
-        <!-- C-Shaped Forever Block -->
-        <path d="M 20,25 L 180,25 A 4 4 0 0 1 184,29 L 184,48 A 4 4 0 0 1 180,52 L 60,52 C 55,56 40,56 35,52 L 35,90 C 40,86 55,86 60,90 L 180,90 A 4 4 0 0 1 184,94 L 184,106 A 4 4 0 0 1 180,110 L 20,110 Z" fill="#FFAB19"/>
-        <text x="35" y="42" font-size="9" font-weight="bold" fill="white">forever</text>
-        
-        <!-- Nested blocks inside forever -->
-        <rect x="38" y="58" width="135" height="24" rx="2" fill="#4C97FF"/>
-        <text x="45" y="74" font-size="8.5" font-weight="bold" fill="white">move ( 5 ) steps</text>
-
-        <!-- Perpetual Cycle Icon -->
-        <circle cx="205" cy="70" r="10" fill="none" stroke="#10B981" stroke-width="2" stroke-dasharray="3,2"/>
-        <text x="110" y="128" font-size="8.5" fill="#64748B" text-anchor="middle">Runs continuously until red STOP clicked!</text>
-      </g>
-    </svg>
-    <div class="diagram-caption">Figure 17.0: Loops in Scratch. Blocks placed inside the "C-mouth" repeat automatically!</div>
+    <div class="dual-box">
+      <div class="dual-box-title">1, 2, 3 NUMBERED LISTS (Order DOES Matter)</div>
+      <p>Use numbers when items follow a strict step-by-step sequence or chronological timeline.</p>
+      <p><em>Example (How to Boil Rice):</em></p>
+      <ol>
+        <li>Wash rice with clean water.</li>
+        <li>Boil water in a saucepan.</li>
+        <li>Add washed rice and salt.</li>
+      </ol>
+      <p><small>(You cannot add rice before boiling the water!)</small></p>
+    </div>
   </div>
 
-  <h2>2. Why Loops Save You Hours of Work</h2>
+  <h2>2. Visual Comparison: List Formatting on the Ribbon</h2>
+  <!-- DIAGRAM: LISTS AND RIBBON CONTROLS -->
+  <div class="diagram-container">
+    <svg width="700" height="150" viewBox="0 0 700 150" xmlns="http://www.w3.org/2000/svg">
+      <rect x="20" y="10" width="660" height="125" rx="6" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.5"/>
+
+      <!-- Ribbon Paragraph Box -->
+      <g transform="translate(45, 25)">
+        <rect x="0" y="0" width="160" height="42" rx="4" fill="#FFFFFF" stroke="#94A3B8" stroke-width="1.2"/>
+        
+        <!-- Bullets Button Mockup -->
+        <rect x="15" y="8" width="55" height="26" rx="3" fill="#EEF2FF" stroke="#4361EE" stroke-width="1.2"/>
+        <circle cx="28" cy="16" r="2" fill="#3A0CA3"/>
+        <line x1="34" y1="16" x2="60" y2="16" stroke="#3A0CA3" stroke-width="1.5"/>
+        <circle cx="28" cy="24" r="2" fill="#3A0CA3"/>
+        <line x1="34" y1="24" x2="55" y2="24" stroke="#3A0CA3" stroke-width="1.5"/>
+
+        <!-- Numbering Button Mockup -->
+        <rect x="85" y="8" width="60" height="26" rx="3" fill="#FFF7ED" stroke="#F77F00" stroke-width="1.2"/>
+        <text x="96" y="18" font-size="8" font-weight="bold" fill="#C2410C">1.</text>
+        <line x1="106" y1="16" x2="135" y2="16" stroke="#C2410C" stroke-width="1.5"/>
+        <text x="96" y="27" font-size="8" font-weight="bold" fill="#C2410C">2.</text>
+        <line x1="106" y1="25" x2="130" y2="25" stroke="#C2410C" stroke-width="1.5"/>
+
+        <text x="42" y="58" font-size="9" font-weight="bold" fill="#4361EE" text-anchor="middle">Bullets Tool</text>
+        <text x="115" y="58" font-size="9" font-weight="bold" fill="#C2410C" text-anchor="middle">Numbering Tool</text>
+      </g>
+
+      <!-- Arrow to sample outputs -->
+      <path d="M 230,46 L 275,46" stroke="#64748B" stroke-width="2"/>
+      <polygon points="280,46 272,42 272,50" fill="#64748B"/>
+
+      <!-- Sample Bullet Output Sheet -->
+      <g transform="translate(295, 20)">
+        <rect x="0" y="0" width="180" height="85" rx="3" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1"/>
+        <text x="12" y="18" font-size="9.5" font-weight="bold" fill="#3A0CA3">Lab Equipment Needed:</text>
+        <circle cx="16" cy="32" r="2" fill="#1E293B"/>
+        <text x="24" y="35" font-size="8.5" fill="#334155">Plastic sample cups</text>
+        <circle cx="16" cy="47" r="2" fill="#1E293B"/>
+        <text x="24" y="50" font-size="8.5" fill="#334155">Clean ceramic filter</text>
+        <circle cx="16" cy="62" r="2" fill="#1E293B"/>
+        <text x="24" y="65" font-size="8.5" fill="#334155">Measuring cylinder</text>
+        <text x="90" y="100" font-size="9" font-weight="bold" fill="#3A0CA3" text-anchor="middle">Bulleted Output</text>
+      </g>
+
+      <!-- Sample Numbered Output Sheet -->
+      <g transform="translate(490, 20)">
+        <rect x="0" y="0" width="180" height="85" rx="3" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1"/>
+        <text x="12" y="18" font-size="9.5" font-weight="bold" fill="#C2410C">Testing Instructions:</text>
+        <text x="14" y="35" font-size="8.5" font-weight="bold" fill="#C2410C">1.</text>
+        <text x="26" y="35" font-size="8.5" fill="#334155">Collect 1L pond water</text>
+        <text x="14" y="50" font-size="8.5" font-weight="bold" fill="#C2410C">2.</text>
+        <text x="26" y="50" font-size="8.5" fill="#334155">Pour through filter</text>
+        <text x="14" y="65" font-size="8.5" font-weight="bold" fill="#C2410C">3.</text>
+        <text x="26" y="65" font-size="8.5" fill="#334155">Record clarity in table</text>
+        <text x="90" y="100" font-size="9" font-weight="bold" fill="#C2410C" text-anchor="middle">Numbered Output</text>
+      </g>
+    </svg>
+    <div class="diagram-caption">Figure 17.0: The Bullets and Numbering tools on the Home Ribbon create clean, organized lists automatically.</div>
+  </div>
+
+  <h2>3. The Magic of List Creation</h2>
   <div class="callout">
-    <div class="callout-title">💡 LAZY PROGRAMMERS ARE SMART PROGRAMMERS!</div>
-    If you want your sprite to walk 100 paces, you <em>could</em> drag out 100 separate blue <code>move 1 step</code> blocks and stack them until your screen is cluttered and laggy.
-    <br>Or... you can simply drag <strong>ONE</strong> <code>repeat 100</code> block and drop a single <code>move 1 step</code> inside it. You just saved 99 blocks of effort!
+    <div class="callout-title">💡 AUTO-LIST TRICK</div>
+    When typing in Word or Docs, you don't even have to click the ribbon!
+    <br>&bull; Type <code>*</code> followed by a <strong>Space</strong> &rarr; the computer automatically starts a bulleted list!
+    <br>&bull; Type <code>1.</code> followed by a <strong>Space</strong> &rarr; the computer automatically starts a numbered list!
+    <br>&bull; When you tap <span class="kbd-key">Enter</span>, the next bullet or number appears automatically. To exit the list, tap <span class="kbd-key">Enter</span> twice!
   </div>
 </div>
 
 <!-- ========================================== -->
-<!-- PAGE 2: CONDITIONS & DECISIONS             -->
+<!-- PAGE 2: VISUAL HIERARCHY & HEADINGS        -->
 <!-- ========================================== -->
 <div class="page">
   <div class="header-bar">
-    <div class="header-title">Conditions: The IF-THEN Law</div>
+    <div class="header-title">Document Structure: Heading Hierarchy</div>
     <div class="badge">Session 17 • Page 2</div>
   </div>
 
-  <h2>1. What is a "Condition"?</h2>
-  <p>In life, you make decisions based on real-world conditions every day:
-  <br>&bull; <em>"<strong>IF</strong> it rains at 2:00 PM, <strong>THEN</strong> open my umbrella."</em>
-  <br>&bull; <em>"<strong>IF</strong> my stomach rumbles, <strong>THEN</strong> buy roasted plantain."</em>
-  <br>A <strong>Condition</strong> is a true/false question. If the answer is <strong>YES (True)</strong>, the computer runs the special code tucked inside the block. If the answer is <strong>NO (False)</strong>, the computer ignores it completely!</p>
+  <h2>1. What is Visual Hierarchy?</h2>
+  <p>Think about a Ghanaian newspaper like the <em>Daily Graphic</em>: you never see all the text written in the exact same size. The main news has a giant headline so your eyes land on it first; smaller section headers tell you what each column covers; and normal body text holds the detailed report.</p>
+  <p>In a word processor, this is called <strong>Heading Hierarchy</strong>:</p>
 
-  <!-- DIAGRAM: CONDITIONAL ANATOMY -->
+  <!-- DIAGRAM: HEADING HIERARCHY PYRAMID -->
   <div class="diagram-container">
-    <svg width="680" height="155" viewBox="0 0 680 155" xmlns="http://www.w3.org/2000/svg">
-      <rect x="25" y="10" width="630" height="135" rx="6" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.5"/>
+    <svg width="680" height="195" viewBox="0 0 680 195" xmlns="http://www.w3.org/2000/svg">
+      <rect x="20" y="10" width="640" height="175" rx="6" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.5"/>
 
-      <!-- IF-THEN BLOCK WITH SENSING DIAMOND -->
-      <g transform="translate(60, 25)">
-        <!-- Orange If Block Body -->
-        <path d="M 0,0 L 220,0 A 4 4 0 0 1 224,4 L 224,32 A 4 4 0 0 1 220,36 L 50,36 C 45,40 30,40 25,36 L 25,70 C 30,66 45,66 50,70 L 220,70 A 4 4 0 0 1 224,74 L 224,86 A 4 4 0 0 1 220,90 L 0,90 Z" fill="#FFAB19"/>
-        <text x="12" y="24" font-size="10" font-weight="bold" fill="white">if</text>
+      <!-- Document Sheet Mockup -->
+      <g transform="translate(60, 20)">
+        <rect x="0" y="0" width="300" height="150" rx="4" fill="#FFFFFF" stroke="#94A3B8" stroke-width="1"/>
         
-        <!-- Hexagonal Sensing Diamond Socket -->
-        <polygon points="32,20 40,10 160,10 168,20 160,30 40,30" fill="#5CB1D6" stroke="#288DC1" stroke-width="1"/>
-        <text x="100" y="23" font-size="8.5" font-weight="bold" fill="white" text-anchor="middle">touching [Trash] ?</text>
-        
-        <text x="175" y="24" font-size="10" font-weight="bold" fill="white">then</text>
+        <!-- Document Title -->
+        <text x="25" y="28" font-size="14" font-weight="900" fill="#3A0CA3">A GREENER SCHOOL</text>
+        <line x1="25" y1="33" x2="275" y2="33" stroke="#E2E8F0" stroke-width="1"/>
 
-        <!-- Nested Action Inside C-Mouth -->
-        <rect x="28" y="40" width="160" height="24" rx="2" fill="#9966FF"/>
-        <text x="35" y="56" font-size="8.5" font-weight="bold" fill="white">say [Cleaned!] for 1s</text>
+        <!-- Heading 1 -->
+        <text x="25" y="52" font-size="11" font-weight="bold" fill="#F77F00">1. Introduction</text>
+        <line x1="25" y1="62" x2="260" y2="62" stroke="#94A3B8" stroke-width="1.2"/>
+        <line x1="25" y1="72" x2="230" y2="72" stroke="#94A3B8" stroke-width="1.2"/>
+
+        <!-- Heading 2 -->
+        <text x="25" y="92" font-size="9.5" font-weight="bold" fill="#0D9488">1.1 Waste Sorting Actions</text>
+        <line x1="25" y1="102" x2="250" y2="102" stroke="#94A3B8" stroke-width="1.2"/>
+        <line x1="25" y1="112" x2="270" y2="112" stroke="#94A3B8" stroke-width="1.2"/>
+        <line x1="25" y1="122" x2="180" y2="122" stroke="#94A3B8" stroke-width="1.2"/>
       </g>
 
-      <!-- Explanatory Callouts on Right -->
-      <g transform="translate(320, 25)">
-        <!-- Hexagon Callout -->
-        <path d="M 0,20 L 50,20" stroke="#5CB1D6" stroke-width="2"/>
-        <text x="55" y="16" font-size="10" font-weight="bold" fill="#0284C7">Hexagonal Diamond (The Condition):</text>
-        <text x="55" y="28" font-size="8.5" fill="#64748B">Asks a True/False question (Sensing).</text>
+      <!-- Explanatory Stack on Right -->
+      <g transform="translate(390, 25)">
+        <!-- Level 1: Title -->
+        <rect x="0" y="0" width="240" height="34" rx="4" fill="#EEF2FF" stroke="#3A0CA3" stroke-width="1.5"/>
+        <text x="15" y="16" font-size="10.5" font-weight="bold" fill="#3A0CA3">DOCUMENT TITLE (biggest)</text>
+        <text x="15" y="28" font-size="8.5" fill="#64748B">The main topic of the entire project</text>
 
-        <!-- Action Callout -->
-        <path d="M 0,55 L 50,55" stroke="#9966FF" stroke-width="2"/>
-        <text x="55" y="52" font-size="10" font-weight="bold" fill="#6B21A8">The Action (Inside the C-Mouth):</text>
-        <text x="55" y="64" font-size="8.5" fill="#64748B">Runs ONLY when the question is TRUE!</text>
+        <!-- Level 2: Heading 1 -->
+        <rect x="0" y="42" width="240" height="34" rx="4" fill="#FFF7ED" stroke="#F77F00" stroke-width="1.5"/>
+        <text x="15" y="58" font-size="10.5" font-weight="bold" fill="#9A3412">HEADING 1 (next size, Bold)</text>
+        <text x="15" y="70" font-size="8.5" fill="#64748B">Divides document into major chapters/sections</text>
+
+        <!-- Level 3: Heading 2 -->
+        <rect x="0" y="84" width="240" height="34" rx="4" fill="#ECFDF5" stroke="#2EC4B6" stroke-width="1.5"/>
+        <text x="15" y="100" font-size="10" font-weight="bold" fill="#065F46">HEADING 2 (smaller, Bold)</text>
+        <text x="15" y="112" font-size="8.5" fill="#64748B">Subtopics within a major section</text>
+
+        <!-- Level 4: Body -->
+        <text x="15" y="138" font-size="9.5" font-weight="bold" fill="#475569">BODY TEXT: 11 - 12 pt Regular (Essay paragraphs)</text>
       </g>
-
-      <text x="340" y="130" font-size="9.5" font-weight="bold" fill="#3A0CA3" text-anchor="middle">Notice the shape! Diamond-shaped sensing blocks snap ONLY into diamond-shaped holes.</text>
     </svg>
-    <div class="diagram-caption">Figure 17.1: Anatomy of an IF-THEN block. The condition evaluates whether the action inside runs.</div>
+    <div class="diagram-caption">Figure 17.1: The visual hierarchy of a school document. Exact sizes depend on your programme.</div>
   </div>
 
-  <h2>2. Popular Sensing Blocks (The Senses of Your Sprite)</h2>
-  <table>
-    <thead>
-      <tr>
-        <th style="width: 30%;">Sensing Block</th>
-        <th style="width: 35%;">What It Checks For</th>
-        <th style="width: 35%;">Game Example</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><code>&lt;touching [mouse-pointer]?&gt;</code></td>
-        <td>Did the player hover over the sprite?</td>
-        <td>Button changes color when hovered.</td>
-      </tr>
-      <tr>
-        <td><code>&lt;touching [edge]?&gt;</code></td>
-        <td>Did the character hit the wall of the stage?</td>
-        <td>Bounces back or resets position.</td>
-      </tr>
-      <tr>
-        <td><code>&lt;key [space] pressed?&gt;</code></td>
-        <td>Is the player tapping the spacebar right now?</td>
-        <td>Character jumps over a puddle!</td>
-      </tr>
-    </tbody>
-  </table>
+  <h2>2. Built-in Styles (The Professional Secret)</h2>
+  <div class="callout">
+    <div class="callout-title">⚡ WHY USE "STYLES" ON THE RIBBON?</div>
+    Instead of highlighting text and manually changing the font size and bold button every time, look at the <strong>Styles Pane</strong> on the Home ribbon! Clicking <strong>Heading 1</strong> or <strong>Heading 2</strong> formats the text in one single click and tells the computer how your report is structured.
+  </div>
+  <p><em>Using Google Docs or LibreOffice? The buttons look a little different but do the same job. Look for the styles in the "Normal text" box (Google Docs) or the Paragraph Style box (LibreOffice).</em></p>
+
+  <h2>3. Check Your Knowledge</h2>
+  <p><strong>Scenario:</strong> You are writing a 3-page science report on <em>"Sources of Clean Water in the Central Region"</em>. What font size and styling should you give to the main title at the top of page 1?</p>
+  <div class="answer-line" contenteditable="true">Write your answer here (Font size, Style, and Alignment):</div>
 </div>
 
 <!-- ========================================== -->
-<!-- PAGE 3: VARIABLES (THE SCORE CALABASH)     -->
+<!-- PAGE 3: SPELLCHECK & LOCAL WORDS           -->
 <!-- ========================================== -->
 <div class="page">
   <div class="header-bar">
-    <div class="header-title">Variables: The Storage Calabash</div>
+    <div class="header-title">Proofreading & The Red Squiggly Line</div>
     <div class="badge">Session 17 • Page 3</div>
   </div>
 
-  <h2>1. What is a "Variable"?</h2>
-  <p>Think about a traditional clay pot or wooden calabash kept in a village kitchen. You can put 5 cowrie shells inside it. If you earn 2 more, you drop them in and it now holds 7. If you spend 3, you pull them out and it holds 4.</p>
-  <p>In computer programming, a <strong>Variable</strong> is a named digital container that holds a value that can <strong>change (vary)</strong> while the game is running!</p>
+  <h2>1. Decoding the Squiggly Underlines</h2>
+  <p>As you type, the word processor continuously checks your spelling and grammar against its internal dictionary. When it spots an issue, it draws a colorful wavy line underneath:</p>
 
-  <!-- DIAGRAM: VARIABLE CALABASH / SCORE BOX -->
+  <!-- DIAGRAM: SQUIGGLY LINE ANATOMY -->
   <div class="diagram-container">
     <svg width="680" height="150" viewBox="0 0 680 150" xmlns="http://www.w3.org/2000/svg">
-      <rect x="25" y="10" width="630" height="130" rx="6" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.5"/>
+      <rect x="25" y="15" width="630" height="120" rx="6" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.5"/>
 
-      <!-- Variable Calabash Graphic -->
-      <g transform="translate(60, 20)">
-        <!-- Pot Shape -->
-        <path d="M 40,25 C 10,40 10,85 45,95 C 80,95 80,40 50,25 Z" fill="#D97706" stroke="#92400E" stroke-width="2"/>
-        <ellipse cx="45" cy="25" rx="16" ry="6" fill="#FCD34D" stroke="#92400E" stroke-width="1.5"/>
-        <text x="45" y="65" font-family="monospace" font-size="18" font-weight="bold" fill="white" text-anchor="middle">5</text>
-        <text x="45" y="112" font-size="10" font-weight="bold" fill="#78350F" text-anchor="middle">Variable: [Score]</text>
+      <!-- RED SQUIGGLY (Spelling) -->
+      <g transform="translate(50, 35)">
+        <text x="0" y="20" font-family="monospace" font-size="20" font-weight="bold" fill="#1E293B">computter</text>
+        <!-- Red wavy line -->
+        <path d="M 0,26 Q 5,23 10,26 T 20,26 T 30,26 T 40,26 T 50,26 T 60,26 T 70,26 T 80,26 T 90,26 T 100,26 T 110,26" stroke="#EF4444" stroke-width="2" fill="none"/>
+        <text x="55" y="48" font-size="10.5" font-weight="bold" fill="#DC2626" text-anchor="middle">RED Squiggly Line</text>
+        <text x="55" y="62" font-size="9" fill="#64748B" text-anchor="middle">Spelling Mistake!</text>
+        <text x="55" y="74" font-size="8.5" fill="#64748B" text-anchor="middle">(Word not in dictionary)</text>
       </g>
 
-      <!-- Action 1: Set Variable -->
-      <g transform="translate(200, 25)">
-        <rect x="0" y="0" width="180" height="35" rx="3" fill="#FF8C1A"/>
-        <text x="15" y="22" font-size="9" font-weight="bold" fill="white">set [ Score v ] to ( 0 )</text>
-        <text x="90" y="50" font-size="8.5" fill="#64748B" text-anchor="middle">Resets game to ZERO at start</text>
+      <!-- BLUE / GREEN SQUIGGLY (Grammar) -->
+      <g transform="translate(230, 35)">
+        <text x="0" y="20" font-family="monospace" font-size="20" font-weight="bold" fill="#1E293B">They is here</text>
+        <!-- Blue wavy line under "is" -->
+        <path d="M 60,26 Q 65,23 70,26 T 80,26 T 90,26" stroke="#3B82F6" stroke-width="2" fill="none"/>
+        <text x="75" y="48" font-size="10.5" font-weight="bold" fill="#2563EB" text-anchor="middle">BLUE Squiggly Line</text>
+        <text x="75" y="62" font-size="9" fill="#64748B" text-anchor="middle">Grammar / Spacing Issue</text>
+        <text x="75" y="74" font-size="8.5" fill="#64748B" text-anchor="middle">(Subject & verb do not match)</text>
       </g>
 
-      <!-- Action 2: Change Variable -->
-      <g transform="translate(200, 80)">
-        <rect x="0" y="0" width="180" height="35" rx="3" fill="#FF8C1A"/>
-        <text x="15" y="22" font-size="9" font-weight="bold" fill="white">change [ Score v ] by ( 1 )</text>
-        <text x="90" y="50" font-size="8.5" fill="#64748B" text-anchor="middle">Adds 1 point whenever trash collected</text>
-      </g>
-
-      <!-- Stage Score Display (Top Right) -->
-      <g transform="translate(450, 35)">
-        <rect x="0" y="0" width="160" height="55" rx="4" fill="#FFFFFF" stroke="#334155" stroke-width="1.5"/>
-        <text x="15" y="22" font-size="10" font-weight="bold" fill="#64748B">STAGE DISPLAY:</text>
-        <rect x="15" y="28" width="130" height="20" rx="3" fill="#FF8C1A"/>
-        <text x="25" y="42" font-size="9" font-weight="bold" fill="white">Score: 5</text>
+      <!-- RIGHT-CLICK CORRECTION MENU -->
+      <g transform="translate(430, 22)">
+        <rect x="0" y="0" width="180" height="95" rx="4" fill="#FFFFFF" stroke="#334155" stroke-width="1.5" filter="drop-shadow(0 4px 6px rgba(0,0,0,0.1))"/>
+        <!-- Suggestion 1 -->
+        <rect x="5" y="6" width="170" height="20" rx="2" fill="#EEF2FF"/>
+        <text x="14" y="20" font-size="11" font-weight="bold" fill="#3A0CA3">computer &larr; Click to fix!</text>
+        <!-- Ignore All -->
+        <text x="14" y="44" font-size="10" fill="#334155">Ignore All</text>
+        <!-- Add to Dictionary -->
+        <text x="14" y="66" font-size="10" fill="#334155">Add to Dictionary</text>
+        <line x1="5" y1="74" x2="175" y2="74" stroke="#E2E8F0" stroke-width="1"/>
+        <text x="14" y="87" font-size="9" fill="#64748B">Right-Click Pop-up Menu</text>
       </g>
     </svg>
-    <div class="diagram-caption">Figure 17.2: Variables store changing information like points, health, or countdown timers.</div>
+    <div class="diagram-caption">Figure 17.2: How the word processor warns you about typos and how the right-click menu offers instant corrections.</div>
   </div>
 
-  <h2>2. Common Variables in Games</h2>
-  <div class="dual-grid">
-    <div class="dual-box">
-      <div class="dual-box-title">🏆 Score / Points</div>
-      <p>Starts at 0. Increases by <code>+1</code> or <code>+10</code> each time the player achieves a goal or collects an item.</p>
-    </div>
-    <div class="dual-box">
-      <div class="dual-box-title">⏳ Timer / Countdown</div>
-      <p>Starts at 60 seconds. Decreases by <code>-1</code> every second until it reaches 0 (Game Over!).</p>
-    </div>
+  <h2>2. The Ghanaian Name Dilemma (Why is "Kwesi" Underlined?)</h2>
+  <div class="callout">
+    <div class="callout-title">🇬🇭 TEACHING YOUR COMPUTER GHANAIAN VOCABULARY</div>
+    Most computer operating systems were programmed with British or American dictionaries. When you type local Ghanaian names or foods like <strong>Kwesi</strong>, <strong>Akosua</strong>, <strong>Bolgatanga</strong>, <strong>Waakye</strong>, or <strong>Dumsor</strong>, the computer will draw a red squiggly line under them because it doesn't recognize the words yet!
+    <br><br>
+    <strong>How to handle local words:</strong>
+    <ol style="margin: 4px 0 0 15px; padding: 0;">
+      <li>Right-click the underlined Ghanaian word.</li>
+      <li>Click <strong>"Add to Dictionary"</strong> &rarr; The computer permanently learns the word and will never underline it again!</li>
+      <li>Or click <strong>"Ignore All"</strong> &rarr; Leaves the word alone for this document.</li>
+    </ol>
+  </div>
+
+  <h2>3. Panic Button / Accidental AutoCorrect</h2>
+  <div class="panic-box">
+    <div class="panic-title">🚨 THE COMPUTER CHANGED MY WORD INTO SOMETHING STRANGE!</div>
+    Word processors have a feature called <strong>AutoCorrect</strong>. Sometimes when typing a local Ghanaian word, the computer tries to "guess" an English word and replaces it automatically (e.g. changing <em>Waakye</em> into <em>Wake</em>).
+    <br><strong>How to fix it:</strong> Immediately press <span class="kbd-key">Ctrl</span> + <span class="kbd-key">Z</span>! Undo reverses the automatic correction while keeping your original typed letters.
   </div>
 </div>
 
 <!-- ========================================== -->
-<!-- PAGE 4: THE ART OF DEBUGGING               -->
+<!-- PAGE 4: PRINT PREVIEW & SAFE PRINTING      -->
 <!-- ========================================== -->
 <div class="page">
   <div class="header-bar">
-    <div class="header-title">The Art of Debugging</div>
+    <div class="header-title">Print Preview & Print Preparation</div>
     <div class="badge">Session 17 • Page 4</div>
   </div>
 
-  <h2>1. What is a "Bug"?</h2>
-  <p>In 1947, computer pioneer <strong>Grace Hopper</strong> was working on a massive room-sized computer when it suddenly malfunctioned. When her team opened the machine, they found a <strong>real moth</strong> trapped inside one of the electrical relays! They taped the moth into the logbook with the note: <em>"First actual case of bug being found."</em></p>
-  <p>Today, any mistake, logic flaw, or unexpected behavior in code is called a <strong>Bug</strong>. The detective process of finding and fixing that mistake is called <strong>Debugging</strong>.</p>
+  <h2>1. What is Print Preview?</h2>
+  <p>Paper and ink cartridges are expensive resources in our school computer lab. You must <strong>never click Print blindly!</strong></p>
+  <p><strong>Print Preview</strong> is an electronic simulation showing you <em>exactly</em> how your document will look when printed on real A4 paper. It lets you spot mistakes before wasting a single drop of ink or sheet of paper.</p>
 
-  <!-- DIAGRAM: THE 3-STEP DEBUGGING PROTOCOL -->
+  <!-- DIAGRAM: PRINT PREVIEW INSPECTION -->
   <div class="diagram-container">
-    <svg width="680" height="150" viewBox="0 0 680 150" xmlns="http://www.w3.org/2000/svg">
-      <rect x="25" y="10" width="630" height="130" rx="6" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.5"/>
+    <svg width="700" height="175" viewBox="0 0 700 175" xmlns="http://www.w3.org/2000/svg">
+      <rect x="20" y="10" width="660" height="155" rx="6" fill="#1E293B"/>
 
-      <!-- STEP 1: SPOT -->
-      <g transform="translate(50, 25)">
-        <circle cx="45" cy="40" r="30" fill="#FEF2F2" stroke="#EF4444" stroke-width="2"/>
-        <text x="45" y="46" font-size="20" text-anchor="middle">🔍</text>
-        <text x="45" y="85" font-size="10" font-weight="bold" fill="#DC2626" text-anchor="middle">1. SPOT IT</text>
-        <text x="45" y="98" font-size="8" fill="#64748B" text-anchor="middle">What is happening</text>
-        <text x="45" y="108" font-size="8" fill="#64748B" text-anchor="middle">vs what I planned?</text>
+      <!-- Print Dialog Sidebar (Left) -->
+      <g transform="translate(35, 20)">
+        <rect x="0" y="0" width="160" height="135" rx="4" fill="#334155"/>
+        <text x="15" y="20" font-size="12" font-weight="bold" fill="white">Print</text>
+        
+        <!-- Print Button -->
+        <rect x="15" y="30" width="60" height="24" rx="3" fill="#2563EB"/>
+        <text x="45" y="46" font-size="10.5" font-weight="bold" fill="white" text-anchor="middle">Print</text>
+
+        <!-- Copies -->
+        <text x="90" y="44" font-size="9" fill="#CBD5E1">Copies: 1</text>
+
+        <!-- Settings -->
+        <text x="15" y="72" font-size="9" font-weight="bold" fill="#94A3B8">Printer:</text>
+        <rect x="15" y="78" width="130" height="16" rx="2" fill="#1E293B"/>
+        <text x="22" y="90" font-size="8" fill="#E2E8F0">HP LaserJet Lab-PC01</text>
+
+        <text x="15" y="110" font-size="9" font-weight="bold" fill="#94A3B8">Pages: 1 of 1</text>
+        <text x="15" y="124" font-size="8.5" fill="#10B981">&#10004; Perfect Fit!</text>
       </g>
 
-      <path d="M 135,65 L 185,65" stroke="#F77F00" stroke-width="2.5"/>
-      <polygon points="190,65 182,61 182,69" fill="#F77F00"/>
-
-      <!-- STEP 2: TRACE -->
-      <g transform="translate(205, 25)">
-        <circle cx="45" cy="40" r="30" fill="#FFF7ED" stroke="#F77F00" stroke-width="2"/>
-        <text x="45" y="46" font-size="20" text-anchor="middle">📜</text>
-        <text x="45" y="85" font-size="10" font-weight="bold" fill="#9A3412" text-anchor="middle">2. TRACE IT</text>
-        <text x="45" y="98" font-size="8" fill="#64748B" text-anchor="middle">Read your stack</text>
-        <text x="45" y="108" font-size="8" fill="#64748B" text-anchor="middle">block-by-block</text>
+      <!-- Preview Sheet on Right -->
+      <g transform="translate(260, 20)">
+        <!-- Clean Sheet (Preview Canvas) -->
+        <rect x="0" y="0" width="180" height="135" fill="#FFFFFF" filter="drop-shadow(0 4px 6px rgba(0,0,0,0.3))"/>
+        <!-- Page content lines -->
+        <line x1="25" y1="20" x2="155" y2="20" stroke="#3A0CA3" stroke-width="2.5"/>
+        <line x1="45" y1="28" x2="135" y2="28" stroke="#F77F00" stroke-width="1.5"/>
+        <line x1="25" y1="42" x2="155" y2="42" stroke="#94A3B8" stroke-width="1.2"/>
+        <line x1="25" y1="52" x2="155" y2="52" stroke="#94A3B8" stroke-width="1.2"/>
+        <line x1="25" y1="62" x2="120" y2="62" stroke="#94A3B8" stroke-width="1.2"/>
+        
+        <!-- Bullets -->
+        <circle cx="30" cy="78" r="1.5" fill="#3A0CA3"/>
+        <line x1="36" y1="78" x2="140" y2="78" stroke="#3A0CA3" stroke-width="1.2"/>
+        <circle cx="30" cy="90" r="1.5" fill="#3A0CA3"/>
+        <line x1="36" y1="90" x2="130" y2="90" stroke="#3A0CA3" stroke-width="1.2"/>
       </g>
 
-      <path d="M 290,65 L 340,65" stroke="#F77F00" stroke-width="2.5"/>
-      <polygon points="345,65 337,61 337,69" fill="#F77F00"/>
-
-      <!-- STEP 3: CHANGE ONE THING -->
-      <g transform="translate(360, 25)">
-        <circle cx="45" cy="40" r="30" fill="#ECFDF5" stroke="#10B981" stroke-width="2"/>
-        <text x="45" y="46" font-size="20" text-anchor="middle">🔧</text>
-        <text x="45" y="85" font-size="10" font-weight="bold" fill="#047857" text-anchor="middle">3. FIX ONE THING</text>
-        <text x="45" y="98" font-size="8" fill="#64748B" text-anchor="middle">Change 1 number</text>
-        <text x="45" y="108" font-size="8" fill="#64748B" text-anchor="middle">or 1 block & re-test</text>
-      </g>
-
-      <!-- SUCCESS -->
-      <g transform="translate(515, 25)">
-        <rect x="0" y="20" width="115" height="45" rx="4" fill="#3A0CA3"/>
-        <text x="57" y="40" font-size="11" font-weight="bold" fill="white" text-anchor="middle">&#10004; WORKING!</text>
-        <text x="57" y="54" font-size="8" fill="#E0E7FF" text-anchor="middle">Program solved!</text>
+      <!-- Danger Callout: The Blank Second Page -->
+      <g transform="translate(470, 25)">
+        <rect x="0" y="0" width="190" height="120" rx="4" fill="#7F1D1D" stroke="#EF4444" stroke-width="1"/>
+        <text x="12" y="20" font-size="10.5" font-weight="bold" fill="#FCA5A5">⚠️ THE ACCIDENTAL PAGE 2:</text>
+        <text x="12" y="38" font-size="9" fill="#FEE2E2">Always check if the status says</text>
+        <text x="12" y="52" font-size="9" font-weight="bold" fill="white">"Page 1 of 2"!</text>
+        <text x="12" y="70" font-size="8.5" fill="#FEE2E2">Often an extra empty line creates</text>
+        <text x="12" y="84" font-size="8.5" fill="#FEE2E2">a blank second page. Tap Backspace</text>
+        <text x="12" y="98" font-size="8.5" fill="#FEE2E2">at document end to remove it!</text>
       </g>
     </svg>
-    <div class="diagram-caption">Figure 17.3: The 3-Step Debugging Protocol. Never change 5 things at once; change one block and test again!</div>
+    <div class="diagram-caption">Figure 17.3: The Print Preview screen (Ctrl + P). Always inspect before printing.</div>
   </div>
 
-  <h2>2. The Cardinal Debugging Law</h2>
-  <div class="callout" style="background:#EEF2FF; border-left: 5px solid var(--bih-purple);">
-    <div class="callout-title" style="color:var(--bih-purple);">🧠 BUGS ARE NOT FAILURES; THEY ARE CLUES!</div>
-    Every great software engineer in the world writes bugs every single day. Having an error in your code does not mean you are bad at math or computers. It just means you gave the computer an incomplete instruction. Be a calm detective!
+  <h2>2. Portrait vs. Landscape Orientation</h2>
+  <div class="dual-grid">
+    <div class="dual-box">
+      <div class="dual-box-title">📄 PORTRAIT (Tall & Vertical)</div>
+      <p>The standard orientation for school essays, formal letters, terminal reports, and book chapters. The page is taller than it is wide.</p>
+    </div>
+    <div class="dual-box">
+      <div class="dual-box-title">📑 LANDSCAPE (Wide & Horizontal)</div>
+      <p>The page is wider than it is tall. Best for wide tables, computer club notices, class timetables, and posters.</p>
+    </div>
   </div>
 </div>
 
 <!-- ========================================== -->
-<!-- PAGE 5: GUIDED LAB - TRASH COLLECTOR GAME  -->
+<!-- PAGE 5: GUIDED LAB - EXPANDING THE NOTICE  -->
 <!-- ========================================== -->
 <div class="page">
   <div class="header-bar">
-    <div class="header-title">Guided Hands-On Lab: Sachet Cleanup Game</div>
+    <div class="header-title">Guided Hands-On Lab: The Complete Notice</div>
     <div class="badge">Session 17 • Page 5</div>
   </div>
 
-  <h2>1. Lab Mission: Code a Clean-Up Mini-Game</h2>
-  <p>Follow these 6 steps in Scratch to build a functional educational game teaching community sanitation:</p>
+  <h2>1. Lab Mission: Expand "A Greener School" with Lists & Structure</h2>
+  <p>Today we turn your Session 16 document into a structured campaign flyer:</p>
 
   <div class="step-card">
     <div class="step-num">1</div>
     <div class="step-content">
-      <strong>Make the Sachet &amp; the Variable [Score]:</strong>
-      <br><strong>Choose a Sprite &rarr; Paint</strong> a sachet (or pick one). In the sprite pane, set <strong>Direction &rarr; Left/Right</strong> so it never flips upside down.
-      <br>Click the orange <strong>Variables</strong> dot &rarr; <strong>"Make a Variable"</strong> &rarr; Name it: <code>Score</code> &rarr; OK.
+      <strong>Open Your Existing Document:</strong>
+      <br>Press <span class="kbd-key">&#8862; Win + E</span> &rarr; Go to <code>Documents &gt; BIH_Practice &gt; Notes</code> &rarr; Double-click <code>Greener_School_AmaMensah.docx</code>.
     </div>
   </div>
 
   <div class="step-card">
     <div class="step-num">2</div>
     <div class="step-content">
-      <strong>Initialize the Game:</strong>
-      <br>Drag <code>when green flag clicked</code> into the workspace.
-      <br>Snap <code>set [Score v] to (0)</code> underneath it so points reset every new game.
+      <strong>Add a Subheading (Heading 1):</strong>
+      <br>Click at the very end of your paragraph, press <span class="kbd-key">Enter</span> twice, and type:
+      <br><code>Three Priority Actions for Our School</code>
+      <br>Highlight this line and click <strong>Heading 1</strong> in the <strong>Styles Pane</strong>.
     </div>
   </div>
 
   <div class="step-card">
     <div class="step-num">3</div>
     <div class="step-content">
-      <strong>Add the Movement Loop:</strong>
-      <br>From <strong>Control</strong>, snap a <code>forever</code> loop under your reset block.
-      <br>Inside the loop, snap: <code>move (10) steps</code> &rarr; then <code>if on edge, bounce</code>. <em>Your sachet now patrols back and forth!</em>
+      <strong>Create a Bulleted List:</strong>
+      <br>Press <span class="kbd-key">Enter</span>. Click the <strong>Bullets tool</strong> (<span class="kbd-key">&bull;</span>) on the ribbon.
+      <br>Type these three actions (pressing Enter after each):
+      <br>&bull; <em>Place labeled dustbins near every classroom block for plastic sachets.</em>
+      <br>&bull; <em>Desilt and sweep the drainage gutters surrounding the compound every Friday.</em>
+      <br>&bull; <em>Plant neem and shade trees along the school field to stop soil erosion.</em>
     </div>
   </div>
 
   <div class="step-card">
     <div class="step-num">4</div>
     <div class="step-content">
-      <strong>Add the Decision Condition:</strong>
-      <br>Inside the <code>forever</code> loop (below the bounce block), drop an <code>if &lt;&gt; then</code> block.
-      <br>From <strong>Sensing</strong>, snap <code>&lt;touching [mouse-pointer]?&gt;</code> into the diamond hole.
+      <strong>Perform Spellcheck:</strong>
+      <br>Scan your document for any red or blue squiggly lines.
+      <br>Right-click any misspelled English words and select the correct spelling.
+      <br>If a Ghanaian name is underlined, right-click and click <strong>"Add to Dictionary"</strong>.
     </div>
   </div>
 
   <div class="step-card">
     <div class="step-num">5</div>
     <div class="step-content">
-      <strong>Award Points & Speak:</strong>
-      <br>Inside the C-mouth of the <code>if</code> block, snap:
-      <br>&bull; <code>change [Score v] by (1)</code>
-      <br>&bull; <code>go to [random position v]</code> (from <strong>Motion</strong>: the sachet jumps away, so one touch = one point)
-      <br>&bull; <code>say [Cleaned!] for (0.5) secs</code>
+      <strong>Inspect in Print Preview:</strong>
+      <br>Press <span class="kbd-key">Ctrl</span> + <span class="kbd-key">P</span>. Check the preview sheet.
+      <br>&bull; Does everything fit cleanly on <strong>Page 1 of 1</strong>?
+      <br>&bull; Tap the Escape key <span class="kbd-key">Esc</span> to return to the editor.
+      <br>&bull; Save: press <span class="kbd-key">Ctrl</span> + <span class="kbd-key">S</span>!
+      <br><em>Using Google Docs? It saves online. Use File &rarr; Download &rarr; Microsoft Word (.docx), then move the file from Downloads into BIH_Practice.</em>
     </div>
   </div>
 
-  <div class="step-card">
-    <div class="step-num">6</div>
-    <div class="step-content">
-      <strong>Play, Debug & Save:</strong>
-      <br>Click the <strong>Green Flag</strong>. Hover your mouse over the moving sprite!
-      <br><em>Watch:</em> Each touch adds 1 to Score; the sachet jumps and says "Cleaned!"
-      <br>Save: <strong>File &rarr; Save to your computer</strong> &rarr; Name: <code>Cleanup_Game_Ama.sb3</code>.
+  <h2>2. Visual Target (What Your Finished Document Should Look Like)</h2>
+  <div style="border: 2px solid var(--bih-purple); border-radius: 6px; padding: 20px; background: white; margin: 12px 0;">
+    <div style="text-align: center; font-size: 16px; font-weight: bold; color: var(--bih-purple); margin-bottom: 2px;">
+      A GREENER, CLEANER SCHOOL COMPOUND
     </div>
-  </div>
-
-  <h2>2. Visual Target (The Complete Game Script)</h2>
-  <div style="border: 2px solid var(--bih-purple); border-radius: 8px; padding: 20px; background: #F8FAFC; max-width: 320px; margin: 12px auto;">
-    <div style="background: #FFBF00; color: white; padding: 6px 12px; border-radius: 8px 8px 2px 2px; font-weight: bold; font-size: 11px;">
-      🚩 when green flag clicked
+    <div style="text-align: center; font-size: 11.5px; font-style: italic; color: #4B5563; margin-bottom: 12px;">
+      By: BIH Tech Club Sanitation Team
     </div>
-    <div style="background: #FF8C1A; color: white; padding: 6px 12px; font-weight: bold; font-size: 11px; margin-top: 2px;">
-      set [ Score v ] to ( 0 )
+    <div style="text-align: left; font-size: 11.5px; line-height: 1.5; color: #1E293B; margin-bottom: 12px;">
+      A clean school environment keeps every student healthy and proud. When we clear standing water from our gutters and plant trees around our classrooms, we stop mosquitoes and create cool shade for learning. Let us join hands this Friday to beautify our school grounds.
     </div>
-    <!-- Forever Loop Outer -->
-    <div style="background: #FFAB19; padding: 6px 6px 6px 12px; border-radius: 2px; margin-top: 2px;">
-      <span style="color: white; font-weight: bold; font-size: 11px;">forever</span>
-      <div style="background: #4C97FF; color: white; padding: 4px 8px; font-weight: bold; font-size: 10px; margin: 4px 0;">
-        move ( 10 ) steps
-      </div>
-      <div style="background: #4C97FF; color: white; padding: 4px 8px; font-weight: bold; font-size: 10px; margin-bottom: 4px;">
-        if on edge, bounce
-      </div>
-      <!-- Nested If Block -->
-      <div style="background: #FFAB19; padding: 4px 4px 4px 8px; border-left: 3px solid #E69500;">
-        <span style="color: white; font-weight: bold; font-size: 10px;">if &lt; touching [mouse-pointer]? &gt; then</span>
-        <div style="background: #FF8C1A; color: white; padding: 4px 8px; font-weight: bold; font-size: 9.5px; margin: 3px 0;">
-          change [ Score v ] by ( 1 )
-        </div>
-        <div style="background: #4C97FF; color: white; padding: 4px 8px; font-weight: bold; font-size: 9.5px; margin: 3px 0;">
-          go to [ random position v ]
-        </div>
-        <div style="background: #9966FF; color: white; padding: 4px 8px; font-weight: bold; font-size: 9.5px;">
-          say [ Cleaned! ] for ( 0.5 ) secs
-        </div>
-      </div>
+    <div style="text-align: left; font-size: 13px; font-weight: bold; color: var(--bih-gold); margin-bottom: 6px;">
+      Three Priority Actions for Our School
     </div>
+    <ul style="font-size: 11.5px; line-height: 1.6; color: #1E293B; margin: 0 0 0 18px; padding: 0;">
+      <li>Place labeled dustbins near every classroom block for plastic sachets.</li>
+      <li>Desilt and sweep the drainage gutters surrounding the compound every Friday.</li>
+      <li>Plant neem and shade trees along the school field to stop soil erosion.</li>
+    </ul>
   </div>
 </div>
 
@@ -657,30 +713,52 @@
     <div class="badge">Session 17 • Page 6</div>
   </div>
 
-  <h2>1. "Be the Computer" Logic Tracing Challenge</h2>
-  <p>Read the code snippet below carefully and predict what happens:</p>
+  <h2>1. Bullets or Numbers? (Decision Challenge)</h2>
+  <p>For each school situation below, indicate whether you should use a <strong>Bulleted List</strong> or a <strong>Numbered List</strong>:</p>
 
-  <div style="background: #F1F5F9; border-left: 4px solid var(--bih-purple); padding: 12px; font-family: monospace; font-size: 12px; margin: 12px 0;">
-    set [ Score ] to 10<br>
-    repeat ( 3 ) {<br>
-    &nbsp;&nbsp;change [ Score ] by 5<br>
-    }
-  </div>
-
-  <p><strong>What is the final number inside [Score] after the loop finishes?</strong></p>
-  <div class="answer-line" contenteditable="true">Final Score value: _________ (Show your calculation: 10 + 5 + 5 + 5 = ?)</div>
-
-  <h2>2. Spot the Bug Challenge</h2>
-  <p>Kwesi built a game where the player gets points by clicking a balloon. But when he clicks the green flag to start a second game, his Score starts at <strong>45</strong> instead of <strong>0</strong>!</p>
-  <p><strong>What block did Kwesi forget to put at the top of his script?</strong></p>
-  <div class="answer-line" contenteditable="true">Write the missing block name: _____________________________________________</div>
-
-  <h2>3. Self-Assessment & Mentor Sign-Off</h2>
-  <p>Tick the column that reflects your confidence at the end of the Programming Module:</p>
   <table>
     <thead>
       <tr>
-        <th>Programming & Logic Competency</th>
+        <th style="width: 60%;">Information to Format</th>
+        <th style="width: 40%; text-align: center;">Your Choice (Tick One)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>A step-by-step recipe explaining how to make Jollof rice.</td>
+        <td style="text-align: center;">[ &nbsp; ] Bullets &nbsp;&nbsp;&nbsp;&nbsp; [ &nbsp; ] Numbers</td>
+      </tr>
+      <tr>
+        <td>A list of supplies needed for Tech Club (pen, notebook, USB drive).</td>
+        <td style="text-align: center;">[ &nbsp; ] Bullets &nbsp;&nbsp;&nbsp;&nbsp; [ &nbsp; ] Numbers</td>
+      </tr>
+      <tr>
+        <td>The school morning assembly procedure (Step 1 to Step 4).</td>
+        <td style="text-align: center;">[ &nbsp; ] Bullets &nbsp;&nbsp;&nbsp;&nbsp; [ &nbsp; ] Numbers</td>
+      </tr>
+      <tr>
+        <td>Qualities of a good digital citizen (respectful, honest, kind).</td>
+        <td style="text-align: center;">[ &nbsp; ] Bullets &nbsp;&nbsp;&nbsp;&nbsp; [ &nbsp; ] Numbers</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>2. Written Review Questions</h2>
+  <p><strong>Question 1:</strong> Why does a red squiggly line appear under the name of Ghanaian towns like <em>Koforidua</em> or <em>Bolgatanga</em>, and what should you do?</p>
+  <div class="answer-line" contenteditable="true">Write your answer here...</div>
+  <div class="answer-line" contenteditable="true"></div>
+
+  <p><strong>Question 2:</strong> Why is it important to check <strong>Print Preview</strong> before sending an essay to the printer?</p>
+  <div class="answer-line" contenteditable="true">Write your answer here...</div>
+
+  <p><strong>Question 3:</strong> What keyboard shortcut opens the Print Preview window? Answer: <span class="kbd-key">Ctrl</span> + _________</p>
+
+  <h2>3. Self-Assessment & Mentor Sign-Off</h2>
+  <p>Tick the column that reflects your confidence at the end of this session:</p>
+  <table>
+    <thead>
+      <tr>
+        <th>Document Formatting Competency</th>
         <th style="width: 18%; text-align: center;">With Help</th>
         <th style="width: 18%; text-align: center;">Almost Alone</th>
         <th style="width: 18%; text-align: center;">All By Myself!</th>
@@ -688,28 +766,28 @@
     </thead>
     <tbody>
       <tr>
-        <td>1. I can explain the difference between a `repeat` loop and a `forever` loop.</td>
-        <td style="text-align: center;"><input type="radio" name="s17_1"></td>
-        <td style="text-align: center;"><input type="radio" name="s17_1"></td>
-        <td style="text-align: center;"><input type="radio" name="s17_1"></td>
+        <td>1. I know when to use a Bulleted List vs. a Numbered List.</td>
+        <td style="text-align: center;"><input type="radio" name="s9_1"></td>
+        <td style="text-align: center;"><input type="radio" name="s9_1"></td>
+        <td style="text-align: center;"><input type="radio" name="s9_1"></td>
       </tr>
       <tr>
-        <td>2. I can use an `if-then` condition with a diamond sensing block.</td>
-        <td style="text-align: center;"><input type="radio" name="s17_2"></td>
-        <td style="text-align: center;"><input type="radio" name="s17_2"></td>
-        <td style="text-align: center;"><input type="radio" name="s17_2"></td>
+        <td>2. I can create visual hierarchy using Titles, Headings, and Body Text.</td>
+        <td style="text-align: center;"><input type="radio" name="s9_2"></td>
+        <td style="text-align: center;"><input type="radio" name="s9_2"></td>
+        <td style="text-align: center;"><input type="radio" name="s9_2"></td>
       </tr>
       <tr>
-        <td>3. I can create a Variable (Score) and update it dynamically in code.</td>
-        <td style="text-align: center;"><input type="radio" name="s17_3"></td>
-        <td style="text-align: center;"><input type="radio" name="s17_3"></td>
-        <td style="text-align: center;"><input type="radio" name="s17_3"></td>
+        <td>3. I can use right-click to fix typos and add Ghanaian words to the dictionary.</td>
+        <td style="text-align: center;"><input type="radio" name="s9_3"></td>
+        <td style="text-align: center;"><input type="radio" name="s9_3"></td>
+        <td style="text-align: center;"><input type="radio" name="s9_3"></td>
       </tr>
       <tr>
-        <td>4. I know the 3-step debugging protocol to trace and fix errors calmly.</td>
-        <td style="text-align: center;"><input type="radio" name="s17_4"></td>
-        <td style="text-align: center;"><input type="radio" name="s17_4"></td>
-        <td style="text-align: center;"><input type="radio" name="s17_4"></td>
+        <td>4. I can check Print Preview to ensure my document fits on a single page.</td>
+        <td style="text-align: center;"><input type="radio" name="s9_4"></td>
+        <td style="text-align: center;"><input type="radio" name="s9_4"></td>
+        <td style="text-align: center;"><input type="radio" name="s9_4"></td>
       </tr>
     </tbody>
   </table>

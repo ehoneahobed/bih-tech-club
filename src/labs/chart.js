@@ -1,4 +1,4 @@
-// Sessions 10–11 — Spreadsheets & Charts: type numbers into a mini spreadsheet,
+// Sessions 19–20 — Spreadsheets & Charts: type numbers into a mini spreadsheet,
 // watch 3D column or pie charts update, and see SUM / AVERAGE / MAX / MIN live.
 import { THREE, COLORS, box, mat, rbox, decal, label, setLabel } from './runtime.js';
 

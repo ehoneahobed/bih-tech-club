@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>BIH Tech Club - Session 21: Capstone Building, Testing & Iteration</title>
+  <title>BIH Tech Club - Session 21: Online Forms &amp; Surveys</title>
   <style>
     :root {
       --bih-purple: #3A0CA3;
@@ -13,7 +13,7 @@
       --bih-dark: #1E1E24;
       --bih-light: #F8F9FA;
       --bih-border: #CED4DA;
-      --capstone-gold: #D97706;
+      --shield-blue: #0284C7;
     }
 
     * {
@@ -94,7 +94,7 @@
       font-size: 12.5px;
       font-weight: 700;
       color: var(--bih-dark);
-      min-width: 135px;
+      min-width: 125px;
     }
 
     .editable-line {
@@ -217,6 +217,21 @@
     td { border: 1px solid var(--bih-border); padding: 7px 10px; vertical-align: top; }
     tr:nth-child(even) { background-color: var(--bih-light); }
 
+    /* Key Badge */
+    .kbd-key {
+      display: inline-block;
+      background: #F3F4F6;
+      border: 1.5px solid #9CA3AF;
+      border-bottom: 3px solid #6B7280;
+      border-radius: 4px;
+      padding: 1px 6px;
+      font-family: monospace;
+      font-size: 12px;
+      font-weight: 700;
+      color: #1F2937;
+      margin: 0 2px;
+    }
+
     /* Interactive Inputs */
     .answer-line {
       min-height: 24px;
@@ -240,465 +255,53 @@
 </head>
 <body>
 
-<!-- ========================================== -->
-<!-- PAGE 1: THE ITERATIVE DESIGN CYCLE         -->
-<!-- ========================================== -->
 <div class="page">
   <div class="header-bar">
     <div class="header-title">Bozoma Innovation Hub • Tech Club</div>
     <div class="badge">Session 21 • Page 1</div>
   </div>
-
-  <div class="student-meta">
-    <div class="meta-row">
-      <span class="meta-label">Capstone Team Name:</span>
-      <div class="editable-line" contenteditable="true">EcoTech Ghana Innovators</div>
-      <span class="meta-label" style="min-width: 90px;">School:</span>
-      <div class="editable-line" contenteditable="true">Bozoma Model JHS</div>
-    </div>
-    <div class="meta-row">
-      <span class="meta-label">Track & Project Title:</span>
-      <div class="editable-line" contenteditable="true">Track A: Safe Water for Our School</div>
-      <span class="meta-label" style="min-width: 50px;">Class:</span>
-      <div class="editable-line" contenteditable="true" style="max-width: 90px;">JHS 1</div>
-    </div>
-  </div>
-
-  <h1>Session 21: Capstone Building, Testing & Iteration</h1>
-  <p>In Session 20, you agreed on your team's project track, wrote your Project Charter, set up your folder tree, and saved your initial <strong>Version 0.1 Skeleton</strong>. Today is <strong>Build & Test Day</strong>! You will flesh out your prototype into a working tool, test it with real users, and refine it into an award-worthy project.</p>
-
-  <h2>1. Plain Talk: The Clay Potter at the Wheel</h2>
-  <p>Think about a traditional potter shaping an earthenware cooking pot (<em>Asanka</em>): they do not simply slap wet clay on the wheel once and put it in the fire. They spin the wheel, check the thickness with their fingers, smooth the cracks, test the balance, and trim the rim. If a wall is too thin, they reinforce it.</p>
-  <p>In software development, this process is called <strong>Iteration</strong>: building a draft, testing it with real people, discovering flaws, and making it better through repeated cycles!</p>
-
-  <!-- DIAGRAM: THE ITERATIVE DESIGN CYCLE -->
-  <div class="diagram-container">
-    <svg width="680" height="150" viewBox="0 0 680 150" xmlns="http://www.w3.org/2000/svg">
-      <rect x="25" y="10" width="630" height="130" rx="6" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.5"/>
-
-      <!-- STEP 1: BUILD (v1.0) -->
-      <g transform="translate(50, 25)">
-        <circle cx="45" cy="40" r="28" fill="#EEF2FF" stroke="#4361EE" stroke-width="2"/>
-        <text x="45" y="45" font-size="18" text-anchor="middle">🔨</text>
-        <text x="45" y="85" font-size="10" font-weight="bold" fill="#3A0CA3" text-anchor="middle">1. BUILD</text>
-        <text x="45" y="98" font-size="8" fill="#64748B" text-anchor="middle">Prototype v1.0</text>
-      </g>
-
-      <path d="M 135,65 L 185,65" stroke="#F77F00" stroke-width="2.5"/>
-      <polygon points="190,65 182,61 182,69" fill="#F77F00"/>
-
-      <!-- STEP 2: TEST -->
-      <g transform="translate(205, 25)">
-        <circle cx="45" cy="40" r="28" fill="#FFF7ED" stroke="#F77F00" stroke-width="2"/>
-        <text x="45" y="45" font-size="18" text-anchor="middle">🧪</text>
-        <text x="45" y="85" font-size="10" font-weight="bold" fill="#9A3412" text-anchor="middle">2. USER TEST</text>
-        <text x="45" y="98" font-size="8" fill="#64748B" text-anchor="middle">Let peers try it</text>
-      </g>
-
-      <path d="M 290,65 L 340,65" stroke="#F77F00" stroke-width="2.5"/>
-      <polygon points="345,65 337,61 337,69" fill="#F77F00"/>
-
-      <!-- STEP 3: FEEDBACK -->
-      <g transform="translate(360, 25)">
-        <circle cx="45" cy="40" r="28" fill="#ECFDF5" stroke="#10B981" stroke-width="2"/>
-        <text x="45" y="45" font-size="18" text-anchor="middle">💬</text>
-        <text x="45" y="85" font-size="10" font-weight="bold" fill="#047857" text-anchor="middle">3. FEEDBACK</text>
-        <text x="45" y="98" font-size="8" fill="#64748B" text-anchor="middle">Collect notes</text>
-      </g>
-
-      <path d="M 445,65 L 495,65" stroke="#F77F00" stroke-width="2.5"/>
-      <polygon points="500,65 492,61 492,69" fill="#F77F00"/>
-
-      <!-- STEP 4: REFINE (v1.1) -->
-      <g transform="translate(515, 25)">
-        <circle cx="45" cy="40" r="28" fill="#FEF2F2" stroke="#EF4444" stroke-width="2"/>
-        <text x="45" y="45" font-size="18" text-anchor="middle">✨</text>
-        <text x="45" y="85" font-size="10" font-weight="bold" fill="#B91C1C" text-anchor="middle">4. REFINE</text>
-        <text x="45" y="98" font-size="8" fill="#64748B" text-anchor="middle">Upgrade to v1.1</text>
-      </g>
-    </svg>
-    <div class="diagram-caption">Figure 21.0: The Iterative Design Cycle. You build, test with peers, gather feedback, and upgrade!</div>
-  </div>
-
-  <h2>2. Essential Capstone Vocabulary</h2>
-  <ul>
-    <li><strong>Working Prototype (v1.0):</strong> A draft version that has all its real words, formulas, or code blocks in place so someone can actually use it.</li>
-    <li><strong>User Testing:</strong> Watching someone else try to read your document, calculate with your sheet, or play your game without giving them hints.</li>
-    <li><strong>Iteration:</strong> Making changes and improvements based on what you discovered during testing.</li>
-    <li><strong>Change Log:</strong> A written record tracking what bugs you fixed and what features you upgraded.</li>
-  </ul>
+  <h1>Session 21: Online Forms &amp; Surveys</h1>
+  <p>DRAFT PLACEHOLDER: this workbook is being written.</p>
 </div>
-
-<!-- ========================================== -->
-<!-- PAGE 2: THE 5-MINUTE SILENT USER TEST      -->
-<!-- ========================================== -->
 <div class="page">
   <div class="header-bar">
-    <div class="header-title">The 5-Minute Silent User Test</div>
+    <div class="header-title">Coming soon</div>
     <div class="badge">Session 21 • Page 2</div>
   </div>
-
-  <h2>1. Why You Cannot Test Your Own Work</h2>
-  <p>When you build a project, you know where every button is, what every word means, and how the math works. You are biased! An outside classmate looks at your project with <strong>fresh eyes</strong>. If they get confused, that is not their fault—it is proof that your project needs clearer design!</p>
-
-  <!-- DIAGRAM: THE SILENT USER TEST IN ACTION -->
-  <div class="diagram-container">
-    <svg width="680" height="155" viewBox="0 0 680 150" xmlns="http://www.w3.org/2000/svg">
-      <rect x="25" y="10" width="630" height="135" rx="6" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.5"/>
-
-      <!-- USER (Testing at computer) -->
-      <g transform="translate(60, 25)">
-        <rect x="0" y="20" width="80" height="55" rx="3" fill="#1F2937"/>
-        <rect x="5" y="25" width="70" height="45" rx="2" fill="#60A5FA"/>
-        <circle cx="120" cy="45" r="14" fill="#F77F00"/>
-        <line x1="120" y1="59" x2="120" y2="105" stroke="#3A0CA3" stroke-width="4"/>
-        <text x="120" y="122" font-size="9" font-weight="bold" fill="#3A0CA3" text-anchor="middle">Peer Tester</text>
-        <text x="120" y="134" font-size="8" fill="#64748B" text-anchor="middle">(Clicks & Reads)</text>
-      </g>
-
-      <!-- CREATOR (Observing silently with clipboard) -->
-      <g transform="translate(420, 25)">
-        <circle cx="50" cy="45" r="14" fill="#10B981"/>
-        <line x1="50" y1="59" x2="50" y2="105" stroke="#1E293B" stroke-width="4"/>
-        <!-- Clipboard in hand -->
-        <rect x="70" y="60" width="28" height="38" rx="2" fill="#FEF08A" stroke="#CA8A04" stroke-width="1"/>
-        <line x1="75" y1="68" x2="92" y2="68" stroke="#CA8A04" stroke-width="1.5"/>
-        <line x1="75" y1="76" x2="90" y2="76" stroke="#CA8A04" stroke-width="1.5"/>
-        <line x1="75" y1="84" x2="88" y2="84" stroke="#CA8A04" stroke-width="1.5"/>
-        <text x="50" y="122" font-size="9" font-weight="bold" fill="#047857" text-anchor="middle">Project Creator</text>
-        <text x="50" y="134" font-size="8" fill="#64748B" text-anchor="middle">(Observes in SILENCE)</text>
-      </g>
-
-      <!-- The Golden Rule in Center -->
-      <g transform="translate(230, 35)">
-        <rect x="0" y="0" width="160" height="70" rx="4" fill="#FFF7ED" stroke="#F97316" stroke-width="1.5"/>
-        <text x="80" y="22" font-size="10" font-weight="bold" fill="#C2410C" text-anchor="middle">🤐 THE ZIP-LIP RULE:</text>
-        <text x="80" y="40" font-size="8.5" fill="#7C2D12" text-anchor="middle">Do NOT explain or defend!</text>
-        <text x="80" y="54" font-size="8.5" fill="#7C2D12" text-anchor="middle">Watch where they hesitate.</text>
-      </g>
-    </svg>
-    <div class="diagram-caption">Figure 21.1: The Silent User Test. Watch what your tester struggles with without whispering answers!</div>
-  </div>
-
-  <h2>2. What to Watch for Across the 4 Tracks</h2>
-  <table>
-    <thead>
-      <tr>
-        <th style="width: 25%;">Project Track</th>
-        <th style="width: 40%;">What the Tester Must Do</th>
-        <th style="width: 35%;">Red Flags to Watch For</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><strong>Track A: Notice + Pitch</strong></td>
-        <td>Read the notice, then click through the 3 slides.</td>
-        <td>Tiny text; confusing headings; typos; crowded slides.</td>
-      </tr>
-      <tr>
-        <td><strong>Track B: Excel Sheet</strong></td>
-        <td>Change one quantity and look at the chart.</td>
-        <td><code>#####</code> (column too narrow); chart doesn't update; totals wrong.</td>
-      </tr>
-      <tr>
-        <td><strong>Track C: Scratch Game</strong></td>
-        <td>Play the game using keyboard or mouse.</td>
-        <td>Sprite gets stuck on edge; score doesn't reset; lag.</td>
-      </tr>
-      <tr>
-        <td><strong>Track D: Report + Guide</strong></td>
-        <td>Read the report, then click through the photo/slide guide.</td>
-        <td>Missing citations; unchecked facts; squished photos.</td>
-      </tr>
-    </tbody>
-  </table>
+  
+  <p>DRAFT PLACEHOLDER: this workbook is being written.</p>
 </div>
-
-<!-- ========================================== -->
-<!-- PAGE 3: FILTERING & ACTING ON FEEDBACK    -->
-<!-- ========================================== -->
 <div class="page">
   <div class="header-bar">
-    <div class="header-title">The Feedback Filter & Triage</div>
+    <div class="header-title">Coming soon</div>
     <div class="badge">Session 21 • Page 3</div>
   </div>
-
-  <h2>1. Not All Feedback is Equal</h2>
-  <p>When someone tests your project, they will give you opinions. Some suggestions are pure gold that will save your project; others might be personal preferences that don't fit your goal. You must <strong>triage</strong> your feedback:</p>
-
-  <!-- DIAGRAM: FEEDBACK FILTER TRIAGE -->
-  <div class="diagram-container">
-    <svg width="680" height="150" viewBox="0 0 680 150" xmlns="http://www.w3.org/2000/svg">
-      <rect x="25" y="10" width="630" height="130" rx="6" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.5"/>
-
-      <!-- BUCKET 1: CRITICAL BUGS -->
-      <g transform="translate(45, 25)">
-        <rect x="0" y="0" width="170" height="95" rx="5" fill="#FEF2F2" stroke="#EF4444" stroke-width="1.5"/>
-        <text x="85" y="24" font-size="11" font-weight="bold" fill="#DC2626" text-anchor="middle">🚨 BUCKET 1: FIX NOW</text>
-        <line x1="15" y1="32" x2="155" y2="32" stroke="#FECACA" stroke-width="1"/>
-        <text x="85" y="50" font-size="8.5" fill="#7F1D1D" text-anchor="middle">Broken formulas (#VALUE!)</text>
-        <text x="85" y="64" font-size="8.5" fill="#7F1D1D" text-anchor="middle">Game crashes or freezes</text>
-        <text x="85" y="78" font-size="8.5" fill="#7F1D1D" text-anchor="middle">Unreadable tiny text</text>
-        <text x="85" y="112" font-size="8.5" font-weight="bold" fill="#DC2626" text-anchor="middle">MUST fix before Session 22</text>
-      </g>
-
-      <!-- BUCKET 2: CLEAR IMPROVEMENTS -->
-      <g transform="translate(255, 25)">
-        <rect x="0" y="0" width="170" height="95" rx="5" fill="#ECFDF5" stroke="#10B981" stroke-width="1.5"/>
-        <text x="85" y="24" font-size="11" font-weight="bold" fill="#047857" text-anchor="middle">✨ BUCKET 2: UPGRADE</text>
-        <line x1="15" y1="32" x2="155" y2="32" stroke="#A7F3D0" stroke-width="1"/>
-        <text x="85" y="50" font-size="8.5" fill="#064E3B" text-anchor="middle">Adding a chart title</text>
-        <text x="85" y="64" font-size="8.5" fill="#064E3B" text-anchor="middle">Better contrast colors</text>
-        <text x="85" y="78" font-size="8.5" fill="#064E3B" text-anchor="middle">Making bullets punchy</text>
-        <text x="85" y="112" font-size="8.5" font-weight="bold" fill="#047857" text-anchor="middle">High value; do today!</text>
-      </g>
-
-      <!-- BUCKET 3: DISTRACTIONS -->
-      <g transform="translate(465, 25)">
-        <rect x="0" y="0" width="170" height="95" rx="5" fill="#F1F5F9" stroke="#94A3B8" stroke-width="1.5"/>
-        <text x="85" y="24" font-size="11" font-weight="bold" fill="#64748B" text-anchor="middle">🛑 BUCKET 3: IGNORE</text>
-        <line x1="15" y1="32" x2="155" y2="32" stroke="#CBD5E1" stroke-width="1"/>
-        <text x="85" y="50" font-size="8.5" fill="#475569" text-anchor="middle">"Add 10 more levels"</text>
-        <text x="85" y="64" font-size="8.5" fill="#475569" text-anchor="middle">"Make it 3D"</text>
-        <text x="85" y="78" font-size="8.5" fill="#475569" text-anchor="middle">Personal color gripes</text>
-        <text x="85" y="112" font-size="8.5" font-weight="bold" fill="#64748B" text-anchor="middle">Too big or irrelevant</text>
-      </g>
-    </svg>
-    <div class="diagram-caption">Figure 21.2: Feedback Triage. Prioritize critical bugs and clear improvements; ignore distractions.</div>
-  </div>
-
-  <h2>2. Handling Emotional Reactions to Critique</h2>
-  <div class="panic-box">
-    <div class="panic-title">🧠 YOU ARE NOT YOUR PROJECT!</div>
-    When someone points out a flaw in your project, it is easy to feel hurt or angry.
-    <br><br>
-    <strong>Remember the Innovator's Mindset:</strong> Your peer is not criticizing <em>you</em>; they are helping you find the loose nails in the table so it doesn't collapse on stage during Session 22! Smile, say <em>"Thank you for spotting that,"</em> and get to work fixing it.
-  </div>
+  
+  <p>DRAFT PLACEHOLDER: this workbook is being written.</p>
 </div>
-
-<!-- ========================================== -->
-<!-- PAGE 4: THE PROJECT CHANGE LOG             -->
-<!-- ========================================== -->
 <div class="page">
   <div class="header-bar">
-    <div class="header-title">The Project Change Log</div>
+    <div class="header-title">Coming soon</div>
     <div class="badge">Session 21 • Page 4</div>
   </div>
-
-  <h2>1. Professional Version Tracking</h2>
-  <p>In technology companies, engineers never just say <em>"we fixed some stuff"</em>. They keep a formal <strong>Change Log</strong> showing what changed between versions:</p>
-
-  <!-- DIAGRAM: VERSION PROGRESSION -->
-  <div class="diagram-container">
-    <svg width="680" height="110" viewBox="0 0 680 110" xmlns="http://www.w3.org/2000/svg">
-      <rect x="25" y="15" width="630" height="80" rx="6" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.5"/>
-
-      <!-- v0.1 -->
-      <g transform="translate(60, 30)">
-        <rect x="0" y="0" width="120" height="45" rx="3" fill="#E2E8F0" stroke="#94A3B8" stroke-width="1"/>
-        <text x="60" y="20" font-size="10" font-weight="bold" fill="#475569" text-anchor="middle">Version 0.1</text>
-        <text x="60" y="34" font-size="8" fill="#64748B" text-anchor="middle">Rough Skeleton</text>
-      </g>
-
-      <path d="M 195,52 L 255,52" stroke="#F77F00" stroke-width="2.5"/>
-      <polygon points="260,52 252,48 252,56" fill="#F77F00"/>
-
-      <!-- v1.0 -->
-      <g transform="translate(275, 30)">
-        <rect x="0" y="0" width="130" height="45" rx="3" fill="#FFF7ED" stroke="#F77F00" stroke-width="1.5"/>
-        <text x="65" y="20" font-size="10" font-weight="bold" fill="#9A3412" text-anchor="middle">Version 1.0</text>
-        <text x="65" y="34" font-size="8" fill="#C2410C" text-anchor="middle">Tested by Peers</text>
-      </g>
-
-      <path d="M 420,52 L 480,52" stroke="#10B981" stroke-width="2.5"/>
-      <polygon points="485,52 477,48 477,56" fill="#10B981"/>
-
-      <!-- v1.1 -->
-      <g transform="translate(500, 30)">
-        <rect x="0" y="0" width="130" height="45" rx="3" fill="#ECFDF5" stroke="#10B981" stroke-width="2"/>
-        <text x="65" y="20" font-size="10" font-weight="bold" fill="#047857" text-anchor="middle">Version 1.1 ✨</text>
-        <text x="65" y="34" font-size="8" fill="#065F46" text-anchor="middle">Polished Champion</text>
-      </g>
-    </svg>
-    <div class="diagram-caption">Figure 21.3: Version progression. Feedback transforms raw prototypes into polished solutions.</div>
-  </div>
-
-  <h2>2. Your Team's Change Log (Fill in as you work today)</h2>
-  <table>
-    <thead>
-      <tr>
-        <th style="width: 25%;">Bug / Flaw Spotted</th>
-        <th style="width: 45%;">What Was Wrong</th>
-        <th style="width: 30%;">How We Fixed It in v1.1</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><strong>Example Fix:</strong></td>
-        <td>Total row was included in the bar chart, making items tiny.</td>
-        <td>Reselected only the item rows; total row excluded!</td>
-      </tr>
-      <tr>
-        <td><strong>Fix 1:</strong></td>
-        <td><div class="answer-line" contenteditable="true">Describe problem 1...</div></td>
-        <td><div class="answer-line" contenteditable="true">Describe your fix...</div></td>
-      </tr>
-      <tr>
-        <td><strong>Fix 2:</strong></td>
-        <td><div class="answer-line" contenteditable="true">Describe problem 2...</div></td>
-        <td><div class="answer-line" contenteditable="true">Describe your fix...</div></td>
-      </tr>
-    </tbody>
-  </table>
+  
+  <p>DRAFT PLACEHOLDER: this workbook is being written.</p>
 </div>
-
-<!-- ========================================== -->
-<!-- PAGE 5: GUIDED LAB - BUILD & TEST SPRINT   -->
-<!-- ========================================== -->
 <div class="page">
   <div class="header-bar">
-    <div class="header-title">Guided Hands-On Lab: Build & Test Sprint</div>
+    <div class="header-title">Coming soon</div>
     <div class="badge">Session 21 • Page 5</div>
   </div>
-
-  <h2>1. Lab Workout: From Skeleton to Champion</h2>
-  <p>Follow the 5 structured phases of today's Capstone sprint:</p>
-
-  <div class="step-card">
-    <div class="step-num">1</div>
-    <div class="step-content">
-      <strong>Phase 1: Build Working Prototype v1.0 (25 Minutes):</strong>
-      <br>Open your file from Session 20. Fleshing out the content:
-      <br>&bull; <em>Track A (Notice + Pitch):</em> Write the notice (headings, bullets), then all 3 slides (6x6 rule).
-      <br>&bull; <em>Track B (Sheet):</em> Enter your items (at least 4), calculate totals with <code>=B2*C2</code>, add <code>=SUM</code> and <code>=AVERAGE</code>, build a column (or pie) chart.
-      <br>&bull; <em>Track C (Game):</em> Complete the movement loop, score variable, and collision condition.
-      <br>&bull; <em>Track D (Report + Guide):</em> Write the report with citations, then add photos/slides to the guide.
-      <br>Save as: <code>Capstone_v1.0_[ProjectName]</code>.
-    </div>
-  </div>
-
-  <div class="step-card">
-    <div class="step-num">2</div>
-    <div class="step-content">
-      <strong>Phase 2: The Swap (5-Minute Silent User Test):</strong>
-      <br>Trade computers with your assigned testing partner team.
-      <br>The tester sits down and tries out the project without the creators saying a word!
-    </div>
-  </div>
-
-  <div class="step-card">
-    <div class="step-num">3</div>
-    <div class="step-content">
-      <strong>Phase 3: Complete Peer Evaluation Sheet:</strong>
-      <br>The tester completes the rubric on <strong>Page 6</strong> of this workbook honestly.
-    </div>
-  </div>
-
-  <div class="step-card">
-    <div class="step-num">4</div>
-    <div class="step-content">
-      <strong>Phase 4: Return & Refine to Version 1.1 (20 Minutes):</strong>
-      <br>Return to your workstation. Read your peer's notes.
-      <br>Make at least <strong>TWO concrete improvements</strong> to your files!
-    </div>
-  </div>
-
-  <div class="step-card">
-    <div class="step-num">5</div>
-    <div class="step-content">
-      <strong>Phase 5: Final Pre-Showcase Save:</strong>
-      <br>Save your improved project as: <code>Capstone_v1.1_[ProjectName]</code> in <code>Documents &gt; BIH_Practice &gt; Capstone_[TeamName] &gt; Final_Showcase</code>.
-    </div>
-  </div>
-
-  <h2>2. Pre-Showcase Readiness Checklist</h2>
-  <div class="checkbox-item"><input type="checkbox"> Spell check done on everything (no red squiggly lines).</div>
-  <div class="checkbox-item"><input type="checkbox"> Every team member's name is on the title.</div>
-  <div class="checkbox-item"><input type="checkbox"> Formulas start with <code>=</code> (spreadsheets).</div>
-  <div class="checkbox-item"><input type="checkbox"> Pictures resized from the corner handles (no squished pictures).</div>
-  <div class="checkbox-item"><input type="checkbox"> Sources cited (in a footer or on the last slide).</div>
-  <div class="checkbox-item"><input type="checkbox"> No real private data: only fictional names and numbers.</div>
-  <div class="checkbox-item"><input type="checkbox"> Final file saved as <code>&hellip;_v1.1</code> in <code>Final_Showcase</code>.</div>
+  
+  <p>DRAFT PLACEHOLDER: this workbook is being written.</p>
 </div>
-
-<!-- ========================================== -->
-<!-- PAGE 6: PEER REVIEW & MILESTONE SIGN-OFF   -->
-<!-- ========================================== -->
 <div class="page">
   <div class="header-bar">
-    <div class="header-title">Session 21 Peer Review & Milestone 2</div>
+    <div class="header-title">Coming soon</div>
     <div class="badge">Session 21 • Page 6</div>
   </div>
-
-  <h2>1. Official Peer Testing Evaluation Form</h2>
-  <p><em>(To be completed by your Peer Reviewer during the Silent User Test)</em></p>
-
-  <div class="student-meta" style="margin-bottom: 12px; padding: 10px 14px;">
-    <strong>Project Tested:</strong> <span class="editable-line" contenteditable="true" style="display:inline-block; width: 220px;"></span>
-    &nbsp;&nbsp;<strong>Tester Name:</strong> <span class="editable-line" contenteditable="true" style="display:inline-block; width: 200px;"></span>
-  </div>
-
-  <table>
-    <thead>
-      <tr>
-        <th style="width: 45%;">Quality Dimension Tested</th>
-        <th style="width: 18%; text-align:center;">Confusing / Buggy</th>
-        <th style="width: 18%; text-align:center;">Working Well!</th>
-        <th style="width: 19%; text-align:center;">Superstar! ⭐</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><strong>Clarity:</strong> Is the community problem and goal immediately clear?</td>
-        <td style="text-align:center;"><input type="radio" name="u1"></td>
-        <td style="text-align:center;"><input type="radio" name="u1"></td>
-        <td style="text-align:center;"><input type="radio" name="u1"></td>
-      </tr>
-      <tr>
-        <td><strong>Functionality:</strong> Did all buttons, formulas, code, or slides work without crashing?</td>
-        <td style="text-align:center;"><input type="radio" name="u2"></td>
-        <td style="text-align:center;"><input type="radio" name="u2"></td>
-        <td style="text-align:center;"><input type="radio" name="u2"></td>
-      </tr>
-      <tr>
-        <td><strong>Visual Layout:</strong> Are fonts readable, colors contrasted, and images un-squished?</td>
-        <td style="text-align:center;"><input type="radio" name="u3"></td>
-        <td style="text-align:center;"><input type="radio" name="u3"></td>
-        <td style="text-align:center;"><input type="radio" name="u3"></td>
-      </tr>
-      <tr>
-        <td><strong>Community Impact:</strong> Does this project genuinely help Ghana?</td>
-        <td style="text-align:center;"><input type="radio" name="u4"></td>
-        <td style="text-align:center;"><input type="radio" name="u4"></td>
-        <td style="text-align:center;"><input type="radio" name="u4"></td>
-      </tr>
-    </tbody>
-  </table>
-
-  <p><strong>The #1 Best Thing About This Project:</strong></p>
-  <div class="answer-line" contenteditable="true">Write praise here...</div>
-
-  <p><strong>The Most Confusing Thing / Bug I Encountered:</strong></p>
-  <div class="answer-line" contenteditable="true">Write specific constructive suggestion here...</div>
-
-  <h2>2. Milestone 2 Mentor Approval Sign-Off</h2>
-  <p><em>(Your mentor must inspect your working v1.1 file before Session 22 showcase rehearsal!)</em></p>
-
-  <div style="border: 2px solid var(--bih-green); border-radius: 6px; padding: 14px; background: #ECFDF5; margin-top: 15px;">
-    <div style="font-size: 13px; font-weight: bold; color: #065F46; margin-bottom: 4px;">
-      MENTOR SHOWCASE CLEARANCE:
-    </div>
-    <div style="font-size: 12px; color: #047857;">
-      [ &nbsp; ] Project Version 1.1 verified functional & bug-free.<br>
-      [ &nbsp; ] Peer feedback integrated into Change Log.<br>
-      [ &nbsp; ] Team is cleared to present on stage during Session 22 Demo Day!
-    </div>
-    <div style="display: flex; justify-content: space-between; margin-top: 12px; font-size: 13px;">
-      <div><strong>Mentor Signature:</strong> _____________________________</div>
-      <div><strong>Date Cleared:</strong> ____________________</div>
-    </div>
-  </div>
+  
+  <p>DRAFT PLACEHOLDER: this workbook is being written.</p>
 </div>
-
 </body>
 </html>

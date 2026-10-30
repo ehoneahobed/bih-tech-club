@@ -1,4 +1,4 @@
-// Session 19 — AI Helper Check: a pretend chatbot on a 3D phone.
+// Session 40 — AI Helper Check: a pretend chatbot on a 3D phone.
 // 1. Build a clear prompt and watch the answer get more focused.
 // 2. Catch the helper's confident mistakes by checking a trusted textbook.
 // 3. Decide what is fine to ask an AI and what must never be typed in.

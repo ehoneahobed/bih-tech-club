@@ -1,4 +1,4 @@
-// Sessions 12–13 — Presentations: fix a badly designed 3-slide deck (contrast,
+// Sessions 23–24 — Presentations: fix a badly designed 3-slide deck (contrast,
 // the 6-by-6 rule, a squished picture, carnival animations), then present it
 // in a 3D classroom using real slide-show keys (→, ←, B, Esc).
 import { THREE, COLORS, box, mat, rbox, cable, decal } from './runtime.js';

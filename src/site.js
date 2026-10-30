@@ -1,8 +1,8 @@
 // Runs on every page: progress for self-study (saved in this browser only),
 // and offline saving on the website.
 (function () {
-  // October 2026: two AI sessions became 18 and 19, so the capstone moved from
-  // 18–20 to 20–22. Move work saved under the old numbers, once per browser.
+  // Sessions were renumbered twice in October 2026 (20 → 22 → 44 sessions).
+  // Move work saved under the old numbers, once per browser.
   try {
     if (!localStorage.getItem('bih-renumbered-22')) {
       ['20', '19', '18'].forEach(function (from) {
@@ -21,6 +21,35 @@
         localStorage.setItem('bih-progress', JSON.stringify(p));
       }
       localStorage.setItem('bih-renumbered-22', '1');
+    }
+    // 44-session course: move work saved under the 22-session numbers.
+    if (!localStorage.getItem('bih-renumbered-44')) {
+      var MAP = { 6: 11, 7: 13, 8: 16, 9: 17, 10: 19, 11: 20, 12: 23, 13: 24, 14: 29, 15: 33, 16: 36, 17: 37, 18: 39, 19: 40, 20: 42, 21: 43, 22: 44 };
+      var pad = function (n) { return (n < 10 ? '0' : '') + n; };
+      var olds = Object.keys(MAP).sort(function (a, b) { return b - a; });
+      var moved44 = {};
+      olds.forEach(function (from) {
+        ['', '-old'].forEach(function (end) {
+          var k = 'bih-workbook-' + pad(+from) + end;
+          var v = localStorage.getItem(k);
+          if (v !== null) { moved44[k] = v; localStorage.removeItem(k); }
+        });
+      });
+      olds.forEach(function (from) {
+        ['', '-old'].forEach(function (end) {
+          var v = moved44['bih-workbook-' + pad(+from) + end];
+          if (v !== undefined) localStorage.setItem('bih-workbook-' + pad(MAP[from]) + end, v);
+        });
+      });
+      var p44 = JSON.parse(localStorage.getItem('bih-progress') || 'null');
+      if (p44 && p44.sessions) {
+        var s44 = {};
+        Object.keys(p44.sessions).forEach(function (id) { s44[MAP[+id] ? pad(MAP[+id]) : id] = p44.sessions[id]; });
+        p44.sessions = s44;
+        if (p44.last && MAP[+p44.last.id]) p44.last.id = pad(MAP[+p44.last.id]);
+        localStorage.setItem('bih-progress', JSON.stringify(p44));
+      }
+      localStorage.setItem('bih-renumbered-44', '1');
     }
   } catch (e) {}
   var KEY = 'bih-progress';

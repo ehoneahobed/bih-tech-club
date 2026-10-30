@@ -1,4 +1,4 @@
-# Session 21: Capstone Building, Testing & Iteration
+# Session 43: Capstone Building, Testing & Iteration
 
 > **At a glance:** teams turn their v0.1 skeleton into a working v1.0, run a silent user test with another team, record fixes in a Change Log and save an improved v1.1 ready for Demo Day. · **Time:** 90 minutes (adjust the timings if your period is shorter) · **Workbook pages:** 6
 
@@ -11,11 +11,11 @@ By the end of the session, pupils can:
 5. Save `Capstone_v1.1_[ProjectName]` in the `Final_Showcase` folder.
 
 ## Before the session
-- [ ] Check each team's v0.1 file is in `BIH_Practice > Capstone_[TeamName] > Drafts` on the same PC they used in Session 20.
+- [ ] Check each team's v0.1 file is in `BIH_Practice > Capstone_[TeamName] > Drafts` on the same PC they used in Session 42.
 - [ ] Pair up teams for testing in advance, ideally different tracks, and write the pairs on the board.
 - [ ] Have a visible clock or phone timer for the 25-minute build, 5-minute silent test and 20-minute refine.
 - [ ] Check internet if Track D teams need research, and have backup printed notes or fact sheets if it is down.
-- [ ] Open the Build the Whole House 3D lab on each team PC; it should remember their Session 20 charter on that computer.
+- [ ] Open the Build the Whole House 3D lab on each team PC; it should remember their Session 42 charter on that computer.
 
 ## Running order
 | Time | Activity | Workbook | What the mentor does |
@@ -33,12 +33,12 @@ By the end of the session, pupils can:
 - **Iteration:** the potter spins, checks the thickness, smooths the cracks and trims the rim. Software gets better the same way, cycle after cycle.
 - **You cannot test your own work:** creators are biased. A confused tester proves the design needs to be clearer.
 - **The Zip-Lip Rule:** do not explain or defend. Watch where the tester hesitates and write it down.
-- **The same four tracks as Session 20:** Track A is a Word notice plus a 3-slide pitch, Track B a spreadsheet with SUM/AVERAGE plus a column chart comparing items (or a pie chart showing each item's share of the total), Track C a Scratch game, and Track D a researched report with citations plus a photo/slide guide. Tracks A and D test both of their files.
+- **The same four tracks as Session 42:** Track A is a Word notice plus a 3-slide pitch, Track B a spreadsheet with SUM/AVERAGE plus a column chart comparing items (or a pie chart showing each item's share of the total), Track C a Scratch game, and Track D a researched report with citations plus a photo/slide guide. Tracks A and D test both of their files.
 - **Feedback triage:** Bucket 1 (Fix Now) is broken formulas (such as `#VALUE!`), crashes or tiny text; Bucket 2 (Upgrade) is a chart title, better contrast or punchier bullets; Bucket 3 (Ignore) is "add 10 more levels", "make it 3D" or personal colour gripes.
 - **Change Log:** never "we fixed some stuff". Write what was wrong and exactly how it was fixed, like reselecting the chart data so it covers only the item rows and leaves out the total row.
 
 ## The 3D lab
-Use **Build the Whole House**, continuing from Session 20:
+Use **Build the Whole House**, continuing from Session 42:
 1. "Step 3: record at least 2 fixes from user testing." Teams copy Fix 1 and Fix 2 from their Change Log. The roof appears when two fixes are recorded.
 2. "Step 4: tick every item on the polish checklist." The lab's seven items are: spell check done on everything; every team member's name is on the title; formulas start with = (spreadsheets); pictures resized from the corner handles; sources cited (in a footer or last slide); no real private data, only fictional names and numbers; final file saved as `…_v1.1`. The workbook's Pre-Showcase Readiness Checklist (Page 5) has the same seven items. Teams should tick only what is truly done.
 
@@ -71,7 +71,7 @@ This session has no questions with fixed answers. Use this guidance for the writ
 
 ## Support and stretch
 - **Needs more support:** cut v1.0 back to the minimum (for example, 3 sheet items, or just the loop and score). Sit with them for the triage.
-- **Finished early:** make a third Change Log fix, test with a second team, or start writing who says what in the 3-minute pitch for Session 22.
+- **Finished early:** make a third Change Log fix, test with a second team, or start writing who says what in the 3-minute pitch for Session 44.
 
 ## Evidence for sign-off
 - A v1.1 file in `Final_Showcase` that opens and works without crashing.

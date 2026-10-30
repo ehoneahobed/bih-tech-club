@@ -34,6 +34,23 @@ export const LABS = {
   phishing: { title: 'Spot the Phish', icon: '🎣', blurb: 'Emails land on your desk one by one. Check the sender, the subject and where the link really goes, then keep it or shred it.' },
   sorter: { title: 'Teach the Robot', icon: '🧠', blurb: 'Show a recycling robot examples of plastic, paper and cans, then watch it sort things it has never seen. Give it bad examples and see how AI gets things wrong.' },
   aihelper: { title: 'AI Helper Check', icon: '💬', blurb: 'Ask a pretend AI helper on a 3D phone. Build a clear prompt, catch its confident mistakes against a trusted source, and decide what you should never type into a chatbot.' },
+  inside: { title: 'Inside the Box', icon: '💾', blurb: 'Open a system unit and lift out the processor, memory and storage. Then run a busy kitchen and see why too little memory makes a computer slow.' },
+  plugin: { title: 'Plug It In', icon: '🔌', blurb: 'Connect a monitor, printer, headset, webcam and more to the right ports, pair a Bluetooth headset and set up a projector.' },
+  os: { title: "The Headteacher's Office", icon: '🗂️', blurb: 'See how the operating system sits between apps and hardware, switch a laptop between Windows, ChromeOS and Linux, and rescue a frozen app.' },
+  fixit: { title: 'Fix-It Workshop', icon: '🛠️', blurb: 'A computer with problems: no sound, no internet, a frozen app, a full drive. Follow the fix-it habit to find and fix each one.' },
+  search: { title: 'Search Detective', icon: '🔎', blurb: 'Narrow a mountain of results with smart keywords and operators, then pick the trustworthy sources from the fake ones.' },
+  formfill: { title: 'Form Filler', icon: '📋', blurb: 'Fill in a practice online application on a 3D laptop. Catch the mistakes before you press Submit, and save your confirmation.' },
+  publisher: { title: 'Page Layout Studio', icon: '📰', blurb: 'Lay out a real document: add a table and a picture, set margins and orientation, and add a header and footer.' },
+  formbuilder: { title: 'Survey Builder', icon: '🗳️', blurb: 'Build a survey with different question types, share it, watch answers arrive and see them turn into a chart.' },
+  datasort: { title: 'Data Sorter', icon: '🧮', blurb: 'Sort and filter a table of survey answers and use IF to label each row, while 3D columns rearrange themselves.' },
+  shortcuts: { title: 'Shortcut Race', icon: '⚡', blurb: 'Race the clock with the most useful keyboard shortcuts: copy, paste, undo, find, switch windows and take screenshots.' },
+  designer: { title: 'Poster Studio', icon: '🎨', blurb: 'Design a poster on a 3D easel: pick a template, fix the layout, choose fonts and colours that work, and use only pictures you may reuse.' },
+  media: { title: 'Media Studio', icon: '🎬', blurb: 'Crop and resize a photo, trim a voice note and cut a short video on a 3D editing desk, and see how file sizes change.' },
+  planner: { title: 'Club Planner', icon: '📅', blurb: 'Schedule a club meeting and invite members, run a mock video call, and move files into the cloud cupboard.' },
+  classroom: { title: 'Online Classroom', icon: '🏫', blurb: 'Join a class, hand in an assignment, read the feedback and pick a good tutorial from a shelf of videos.' },
+  phone: { title: 'Smartphone Explorer', icon: '📱', blurb: 'A 3D Android phone: change settings, install an app safely, free up storage, turn on a hotspot and spot a Mobile Money scam.' },
+  feed: { title: 'Feed Check', icon: '📰', blurb: 'Scroll a pretend social media feed. Spot fake news, report bullying, fix privacy settings and see how the feed learns what you like.' },
+  webpage: { title: 'Web Page Builder', icon: '🌐', blurb: 'Build a page about your community from blocks, then peek at the HTML behind it and change it.' },
   capstone: { title: 'Build the Whole House', icon: '🏠', blurb: 'Each capstone step builds part of a 3D house: charter, prototype, testing and polish. Then practise your timed 3-minute pitch on the Demo Day stage. Saved between sessions.' },
 };
 const labsOf = (s) => (Array.isArray(s.lab) ? s.lab : s.lab ? [s.lab] : []);
@@ -253,7 +270,7 @@ const guideSection = (id, heading) => {
 const outcomesOf = (id) => guideSection(id, 'Learning outcomes').split('\n').filter((l) => /^\d+\.\s/.test(l)).map((l) => l.replace(/^\d+\.\s+/, ''));
 
 // The steps through each session. Most workbooks teach on pages 1–4, have the
-// hands-on Lab Mission on page 5 and the review on page 6; 20 and 22 (capstone) differ.
+// hands-on Lab Mission on page 5 and the review on page 6. Skills Labs ("kind": "skills") and the capstone (42, 44) differ.
 function stepsFor(s) {
   const wb = (page) => `../../workbooks/session-${s.id}.html${page ? `#page-${page}` : ''}`;
   const open = (page, text) => `<a class="btn btn-primary btn-small" href="${wb(page)}">${text}</a>`;
@@ -270,7 +287,16 @@ function stepsFor(s) {
     after: answers ? `<details class="answers"><summary>Finished? Check your answers</summary><div class="answers-body">${renderMarkdown(answers)}</div></details>` : '',
   });
   const save = { title: 'Rate yourself and save your work', time: '5 min', text: 'Tick how confident you feel on the last page, then press <b>🖨 Print / Save as PDF</b> in the workbook to keep a copy. On a shared computer, press <b>Clear my answers</b> when you have saved it.', actions: open(6, '📖 Open the last page') };
-  if (s.n === 20) return [
+  // Skills Labs teach nothing new: a typing check, four timed stations, then fix and re-try.
+  if (s.kind === 'skills') return [
+    { title: 'Typing check', time: '10 min', text: 'Do the 3-minute typing check on page 1 and write down your speed and accuracy.', actions: open(1, '📖 Open page 1') },
+    { title: 'Stations 1 and 2', time: '30 min', text: 'Do the tasks on pages 2 and 3 on a real computer. Watch the time limit, then tick the checklist honestly.', actions: open(2, '📖 Open page 2') },
+    { title: 'Stations 3 and 4', time: '30 min', text: 'Do the tasks on pages 4 and 5 the same way.', actions: open(4, '📖 Open page 4') },
+    lab,
+    { title: 'Fix and re-try', time: '15 min', text: 'Go back to any station you did not finish or got wrong, and try it again. Then fill in your score sheet on page 6.', actions: open(6, '📖 Open page 6'), after: answers ? `<details class="answers"><summary>Finished? Check your answers</summary><div class="answers-body">${renderMarkdown(answers)}</div></details>` : '' },
+    save,
+  ].filter(Boolean);
+  if (s.n === 42) return [
     { title: 'Learn the plan', time: '25 min', text: 'Read pages 1–3 of the workbook: how a real project is planned, and the four project tracks.', actions: open(1, '📖 Open the workbook') },
     { title: 'Fill in your project canvas', time: '20 min', text: 'With your team, complete the project canvas on page 4, including a role for every member.', actions: open(4, '📖 Open page 4') },
     lab,
@@ -278,7 +304,7 @@ function stepsFor(s) {
     check(6, 'Work through the Milestone 1 checklist on page 6 with your team.'),
     save,
   ].filter(Boolean);
-  if (s.n === 22) return [
+  if (s.n === 44) return [
     { title: 'Get ready for Demo Day', time: '20 min', text: 'Read pages 1–3: the 3-act pitch, staying calm on stage, and what to do if something goes wrong.', actions: open(1, '📖 Open the workbook') },
     lab,
     { title: 'Give your pitch', time: '40 min', text: 'Follow the Lab Mission on page 4: present your project in 3 minutes, then answer questions for 1 minute.', actions: open(4, '📖 Open page 4') },

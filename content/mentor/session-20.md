@@ -1,81 +1,83 @@
-# Session 20: Capstone Planning & Blueprint
+# Session 20: Functions, Ranges & Visual Charts
 
-> **At a glance:** teams choose one capstone track, complete a Project Charter, set up their capstone folders and save a rough Prototype v0.1 for mentor approval. · **Time:** 90 minutes (adjust the timings if your period is shorter) · **Workbook pages:** 6
+> **At a glance:** pupils use ranges and the Core 4 functions to total a whole column, then turn their stationery data into a correctly selected column chart. · **Time:** 90 minutes (adjust the timings if your period is shorter) · **Workbook pages:** 6
 
 ## Learning outcomes
 By the end of the session, pupils can:
-1. Explain the capstone using the "building the whole house" analogy: separate tools (Word, Excel, slides, Scratch) combine into one solution.
-2. Choose one manageable track (A, B, C or D) and describe a real school or community problem in clear sentences.
-3. Explain what a prototype (v0.1) is, using the cardboard model house.
-4. Use only realistic, simulated data and no real phone numbers, addresses or financial records.
-5. Create `Capstone_[TeamName]` with `Drafts` and `Final_Showcase` subfolders and save a correctly named v0.1 file, such as `Capstone_v0.1_CleanWater.docx`.
+1. Write a range using colon notation (for example `D2:D5`) and say that the colon means "through to".
+2. Use `=SUM`, `=AVERAGE`, `=MAX` and `=MIN` and explain the difference between a formula and a function.
+3. Select the labels and numbers (leaving out the Total row) and insert a column chart with a title.
 
 ## Before the session
-- [ ] Plan teams of 3 to 4 pupils (the workbook asks for 3–4 members), mixing confident and less confident pupils. Every member needs a role (the lab requires at least 3 roles); fill all four roles, and in a team of 3 one person holds two.
-- [ ] Check every PC has `Documents > BIH_Practice` and that Word/Excel/PowerPoint (or LibreOffice) and Scratch open.
-- [ ] Test the Build the Whole House 3D lab on the projector. The lab saves progress in the browser on that one computer only, so each team should use the same PC in Sessions 21 and 22, and the paper charter stays the official record.
-- [ ] Print spare copies of the Page 4 canvas.
-- [ ] Prepare a sample canteen list (Jollof Rice, Meat Pie, Sobolo, made-up prices).
+- [ ] Check that each PC still has `Stationery_Store_Ama.xlsx` in the BIH_Practice folder from Session 19. Keep a spare copy on USB for pupils whose file is missing.
+- [ ] Note which spreadsheet each PC has (Excel, LibreOffice Calc or Google Sheets); the chart menus differ slightly.
+- [ ] Test the 3D Spreadsheet Charts lab on the projector PC, and have the offline pack on USB.
+- [ ] Set cell formatting to two decimal places on your demo file so the average shows as 3.88. Pupils do the same in Step 3 (Home → Number format → 2 decimal places); without it Excel and Calc show 3.875 and 8.
 
 ## Running order
 | Time | Activity | Workbook | What the mentor does |
 |---|---|---|---|
-| 0–10 min | Building the whole house and the 3-session schedule | Page 1 | Pupils list the tools they have learned. The mason needs a blueprint first. |
-| 10–25 min | Choosing a track and the "keep it manageable" rule | Page 2 | Teams read the four tracks and commit to one. Challenge oversized ideas. |
-| 25–35 min | Prototype v0.1 and safe data ethics | Page 3 | Cardboard model house. Show the sample canteen list: no real personal data. |
-| 35–55 min | Complete the Project Charter (Planning Canvas) | Page 4 | Push for a specific problem and audience. Teams fill in the Team Roles box (box 7). |
-| 55–60 min | 3D lab: the charter and file-naming steps | – | Demonstrate Steps 1 and 2 of the lab on the projector. |
-| 60–80 min | Guided lab: folders and Prototype v0.1 | Page 5 | Check folder names and the Save As location on every PC. |
-| 80–90 min | Milestone checklist, reflection and approval | Page 6 | Inspect each team's canvas and file; complete the approval table. |
+| 0–10 min | Hook: "100 items, 20 minutes of typing" | Page 1 | Recall `=B2*C2` from Session 19. Build `=SUM(D2:D5)` on the board piece by piece. |
+| 10–25 min | Formula vs function and the Core 4 | Pages 1–2 | Work through Figure 20.1 with the exam scores. Pupils do Check Your Thinking A–C. |
+| 25–35 min | Why charts, and the chart types | Page 3 | Compare column/bar, pie and line charts, then read the stationery stock chart. |
+| 35–45 min | 3D lab demo | – | Run the chart lab missions on the projector. |
+| 45–50 min | The Total row trap and troubleshooting | Page 4 | Show a wrong selection live so pupils see the giant bar. |
+| 50–75 min | Guided lab: totals, stats and chart | Page 5 | Circulate. Check `D6` shows 162.50 and the selection stops at row 5. |
+| 75–85 min | Review questions and matching | Page 6 | Pupils work alone, then compare with a partner. |
+| 85–90 min | Self-assessment and sign-off | Page 6 | Sign off pupils who meet the evidence below. |
 
 ## Key ideas and how to explain them
-- **Building the whole house:** sand, cement and timber are not a house until a mason follows a blueprint. Their skills are the materials; the capstone is the house.
-- **Keep it manageable:** "One finished, bug-free spreadsheet or 3-slide presentation beats a broken, half-finished giant dream." Ask: "Can we show this working in three sessions?"
-- **Prototype v0.1:** the architect's cardboard model has no glass or light switches, but shows the shape. Today is structure only, no colours or fancy graphics.
-- **Safe data ethics:** use realistic made-up data. A canteen sheet uses sample items and approximate prices, not a real vendor's takings.
-- **Choosing a track:** Track A is a Word notice plus a 3-slide PowerPoint pitch; Track B is a spreadsheet with SUM/AVERAGE plus a column chart comparing items (or a pie chart showing each item's share of the total); Track C is a Scratch game or quiz with a score and restart loop; Track D is a researched Word report with citations plus a photo/slide guide. Tracks A and D use two tools, so they start in Word today and add PowerPoint later.
-- **Team roles:** Project Manager, Designer / Builder, Researcher / Tester and Presenter. In a team of 3, one person holds two roles.
-- **File names:** underscores not spaces, no symbols, and a version number: folder `Capstone_EcoTech`, file `Capstone_v0.1_CleanWater.docx`.
+- **Range and the colon:** the colon means "through to". Say `D2:D5` aloud as "D2 through to D5" every time until pupils say it with you.
+- **Formula vs function:** a formula is manual maths you type with symbols; a function is a preset magic word that crunches a whole list.
+- **The Core 4:** SUM gives the grand total, AVERAGE the typical (mean) score, MAX the highest, MIN the lowest. Use the 90, 70, 80, 60 exam scores from Figure 20.1.
+- **Charts as pictures of numbers:** a headteacher's eyes tire on 500 rows; a chart shows the pattern in one second. Column/bar compares separate items; pie (slices of a cake) shows parts of a 100% whole; line shows change over time, such as rainfall or attendance by month.
+- **The Golden Rule of selection:** never include the Grand Total row, or it dwarfs everything else.
 
 ## The 3D lab
-Use **Build the Whole House**. Today covers the first two missions:
-1. "Step 1: complete your Project Charter." The lab checks for a team name, a track, who has the problem, a problem of 8 or more words and one role per team member (at least 3 roles); when done, the foundation appears. Let teams type in what they wrote on Page 4, including the names from the Team Roles box (box 7). The lab offers the same four roles: Project Manager, Designer / Builder, Researcher / Tester and Presenter.
-2. "Step 2: name your folder and first v0.1 file correctly." The lab checks for underscores not spaces, no symbols, and `v0.1` in the file name. Its example is folder `Capstone_EcoTech` and file `Capstone_v0.1_CleanWater.docx`, which follows the same formula as the workbook (`Capstone_v0.1_[ProjectName].docx`).
+Use **3D Spreadsheet Charts**. On the projector, demonstrate *Click a column to find out which cell it comes from* (links to cell addresses) and *Change one of the sales numbers in column B* (the SUM changes by itself, just like step 6 of the workbook lab). In pairs, pupils then do *Make a different day the best day* (the gold MAX column) and *Switch to a pie chart*. Ask pairs: "Which chart is better for comparing days? Which for showing the share of the whole week?"
 
 ## Common mistakes and quick fixes
 | Pupils often… | Try this |
 |---|---|
-| Pick a huge project ("a self-driving car in Scratch") | Ask what they can finish and demonstrate in 3 sessions. Shrink it to the track's listed deliverables. |
-| Leave the Team Roles box empty or give one person everything | Every member needs at least one role; only one person may hold two. |
-| Write a vague problem ("our school is dirty") | Ask who is affected, where and why it matters, as in the handwashing example. |
-| Plan to collect classmates' phone numbers or real sales | Replace with fictional names and approximate numbers. |
-| Put spaces in folder names (`Capstone EcoTech Ghana`) | Use underscores and keep it short: `Capstone_EcoTech`. |
-| Save into Documents or Downloads, not Drafts | Use Save As and click through `BIH_Practice > Capstone_[TeamName] > Drafts`. |
+| Forget the `=` and the cell shows the words `SUM(D2:D5)` | Remind them of the Golden Law: every calculation starts with `=`. |
+| Type a semicolon or full stop instead of a colon | Point to the colon key (Shift + the ; key) and say "through to". |
+| Include row 6 (Total) in the chart | Press Del on the chart, reselect A1 to B5, insert again. |
+| Get a blank chart | They highlighted empty cells. Delete it and select the real table. |
+| Get bars with no names | They selected only column B. Select from A1 across to B5. |
 
 ## When things go wrong
-- **No internet:** everything works offline. Track D teams plan research questions on paper.
-- **Not enough PCs:** one PC per team; one pupil types while the others fill in the canvas.
-- **A PC freezes or the power goes:** the paper charter is the priority; the folders and skeleton take minutes to redo. Save right after typing the first title.
-- **Mixed software:** Excel or Calc, PowerPoint or Impress all work. On LibreOffice, files may save as `.odt`, `.ods` or `.odp`; that's fine, as long as the name follows the formula.
+- **No internet:** Excel and LibreOffice Calc work offline. Pupils on Google Sheets can pair with a pupil on an offline PC. Run the 3D lab from the offline pack.
+- **Not enough PCs:** pair pupils, swapping the mouse at each step. The partner reads the step aloud and checks the result against the Visual Target.
+- **A PC freezes or the power goes:** remind pupils to press Ctrl + S after each step. If the file is lost, give them the spare copy and have them redo steps 2 to 6 quickly.
 
 ## Answer key
-There are no questions with a single correct answer this session.
+**Check Your Thinking (Page 2)**
+1. A: `=SUM(A1:A4)` = **100**
+2. B: `=MAX(A1:A4)` = **40**
+3. C: `=AVERAGE(A1:A4)` = **25**
 
-**Question 1 (why build a rough prototype first?):** Look for: it lets you test whether the idea makes sense quickly, before spending hours on colours and animations; you find problems early when they are easy to fix; others can see the size and shape of the idea, like the architect's cardboard model.
+**Match the Function to its Job (Page 6)**
+| Item | Correct job |
+|---|---|
+| `=SUM(B2:B10)` | Adds up all numbers to give a grand total |
+| `=AVERAGE(B2:B10)` | Calculates the typical mean score |
+| `=MAX(B2:B10)` | Finds the largest / highest value |
+| `=MIN(B2:B10)` | Finds the smallest / lowest value |
+| `D2:D20` | A range of cells from D2 through to D20 |
 
-**Question 2 (one challenge in Session 21 and how to solve it):** Look for: a realistic challenge (power cut, file lost, formula errors, a sprite that won't move, team disagreement, running out of time) with a concrete solution (save often, keep files in the Drafts folder, use the debugging steps, share roles, keep the project small).
+**Written Review Questions**
+1. The Total is much bigger than any single item, so its bar is huge and makes the other bars look like tiny flat slivers. Look for: "it is not an item" or "it squashes the other bars".
+2. "Through to" (every cell from A1 through to A50).
+3. A **pie chart**.
 
-**Milestone 1 checklist:** all four boxes should be honestly ticked before the mentor signs. The second box now means all 7 canvas boxes, including Team Roles.
+**Lab check (Page 5):** Grand Total 162.50; Average Price 3.88 (shows 3.875 if the 2-decimal format step was skipped); Highest 8.00; Lowest 1.50. After changing B2 to 35, the Books bar grows and the Grand Total rises (to 362.50 if D2 is the formula `=B2*C2` from Session 19).
 
 ## Support and stretch
-- **Needs more support:** steer the team to Track A or Track B and give them the workbook examples to adapt. Write the folder names on a sticky note for them.
-- **Finished early:** add more skeleton detail, or list what testers should try in Session 21.
+- **Needs more support:** have them do only SUM and the chart first. Let them say each range aloud before typing it. Pair them with a confident partner for steps 4 and 5.
+- **Finished early:** add a pie chart of the same data and say which chart suits the data better and why. Try `=SUM(B2:B5)` for total quantity, or change several numbers and predict the new MAX before pressing Enter.
 
 ## Evidence for sign-off
-- All 7 boxes of the Page 4 canvas completed, with one track ticked and every member named in the Team Roles box.
-- `Documents > BIH_Practice > Capstone_[TeamName]` with `Drafts` and `Final_Showcase` subfolders.
-- A v0.1 skeleton file saved in `Drafts` with the correct name.
-- The plan uses only simulated data. Mark each row of the approval table and write one piece of advice for Session 21.
+The pupil shows a saved sheet with working `=SUM`, `=AVERAGE`, `=MAX` and `=MIN` cells (formulas visible when you click the cell), a titled column chart built from A1:B5 without the Total row, and correct answers to Check Your Thinking A–C. They can say what the colon means in their own words.
 
 ## Safety and wellbeing
-Data protection is the main rule today: no real phone numbers, home addresses or financial records, and no photos of people without permission. Interviews need a teacher's permission and should record opinions, not personal details. Every member needs a role.
+The stationery data is fictional; keep it that way and don't put real names or prices from a real shop on shared PCs. Pupils should ask before deleting or overwriting any file in a shared folder, especially another class's work. Praise careful checking as much as speed: a calm pupil who spots the Total-row mistake is doing exactly the right thing.

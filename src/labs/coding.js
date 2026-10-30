@@ -1,4 +1,4 @@
-// Sessions 16–17 — Block Programming: snap together blocks, run them on a 3D
+// Sessions 36–37 — Block Programming: snap together blocks, run them on a 3D
 // coordinate stage, use loops to save work, collect litter for points and
 // step through code one block at a time to find bugs.
 import { THREE, COLORS, mat, rbox, decal, label, setLabel } from './runtime.js';

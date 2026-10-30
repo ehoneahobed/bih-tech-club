@@ -1,4 +1,4 @@
-// Sessions 6, 7 & 14 — The internet as a road network. Send web requests
+// Sessions 11, 13 & 29 — The internet as a road network. Send web requests
 // (HTTP vs HTTPS), follow an email through the digital post office, and watch
 // classmates edit a shared document in the cloud.
 import { THREE, COLORS, box, rbox, mat, decal, cable, label, setLabel } from './runtime.js';
@@ -566,7 +566,7 @@ export default function internetLab(stage, ui) {
   };
 
   // ---------- Website ----------
-  const webGroup = ui.group('1 · Visit a website (Session 6)');
+  const webGroup = ui.group('1 · Visit a website (Session 11)');
   SITES.forEach((site) =>
     ui.button(`${site.secure ? '🔒' : '⚠️'} ${site.url.replace(/^https?:\/\//, '')}`, once(() => visit(site)), { group: webGroup })
   );
@@ -591,7 +591,7 @@ export default function internetLab(stage, ui) {
   }
 
   // ---------- Email ----------
-  const mailGroup = ui.group('2 · Send an email (Session 7)');
+  const mailGroup = ui.group('2 · Send an email (Session 13)');
   ui.button('✉️ To: Kofi', once(() => email(false)), { group: mailGroup });
   ui.button('✉️ To: Kofi · Cc: Teacher', once(() => email(true)), { group: mailGroup });
   async function email(cc) {
@@ -623,7 +623,7 @@ export default function internetLab(stage, ui) {
   histTag.position.set(0, 0.4, 0.8);
   histGroup.add(histTag);
 
-  const docGroup = ui.group('3 · Edit a shared document (Session 14)');
+  const docGroup = ui.group('3 · Edit a shared document (Session 29)');
   ui.button('Ama (Editor) adds a paragraph', once(() => edit('ama', true, 'Ama added a paragraph')), { group: docGroup });
   ui.button('You (Editor) fix a typo', once(() => edit('you', true, 'You fixed a typo')), { group: docGroup });
   ui.button('Yaw (Commenter) tries to edit', once(() => edit('yaw', false, 'Yaw tried to edit')), { group: docGroup });

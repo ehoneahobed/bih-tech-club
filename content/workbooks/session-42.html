@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>BIH Tech Club - Session 42: Capstone Planning & Blueprint</title>
+  <style>
+    :root {
+      --bih-purple: #3A0CA3;
+      --bih-accent: #4361EE;
+      --bih-gold: #F77F00;
+      --bih-green: #2EC4B6;
+      --bih-red: #E63946;
+      --bih-dark: #1E1E24;
+      --bih-light: #F8F9FA;
+      --bih-border: #CED4DA;
+      --capstone-gold: #D97706;
+    }
+
+    * {
+      box-sizing: border-box;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    body {
+      background-color: #E9ECEF;
+      color: var(--bih-dark);
+      margin: 0;
+      padding: 20px;
+      line-height: 1.55;
+    }
+
+    .page {
+      background: #FFFFFF;
+      max-width: 860px;
+      margin: 20px auto;
+      padding: 42px 50px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+      border-radius: 8px;
+      page-break-after: always;
+    }
+
+    @media print {
+      body { background: white; padding: 0; }
+      .page { box-shadow: none; margin: 0; padding: 30px; max-width: 100%; border-radius: 0; }
+      .no-print { display: none; }
+    }
+
+    /* Header Bar */
+    .header-bar {
+      border-bottom: 3px solid var(--bih-purple);
+      padding-bottom: 10px;
+      margin-bottom: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .header-title {
+      font-size: 19px;
+      font-weight: 800;
+      color: var(--bih-purple);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .badge {
+      background: var(--bih-gold);
+      color: #FFFFFF;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+    }
+
+    /* Student Meta Box */
+    .student-meta {
+      border: 2px dashed var(--bih-border);
+      border-radius: 8px;
+      padding: 12px 18px;
+      background: var(--bih-light);
+      margin-bottom: 20px;
+    }
+
+    .meta-row {
+      display: flex;
+      gap: 15px;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+    .meta-row:last-child { margin-bottom: 0; }
+
+    .meta-label {
+      font-size: 12.5px;
+      font-weight: 700;
+      color: var(--bih-dark);
+      min-width: 135px;
+    }
+
+    .editable-line {
+      border-bottom: 1.5px solid var(--bih-purple);
+      flex-grow: 1;
+      padding: 2px 6px;
+      font-size: 13.5px;
+      font-weight: 600;
+      color: var(--bih-purple);
+      outline: none;
+      min-height: 20px;
+    }
+
+    /* Typography */
+    h1 { color: var(--bih-purple); font-size: 22px; margin-top: 0; margin-bottom: 8px; }
+    h2 { color: var(--bih-purple); font-size: 16px; margin-top: 20px; margin-bottom: 10px; border-left: 4px solid var(--bih-gold); padding-left: 8px; }
+    p { font-size: 13px; margin: 6px 0; }
+
+    /* Dual Grid Layout */
+    .dual-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin: 12px 0;
+    }
+
+    .dual-box {
+      border: 1px solid var(--bih-border);
+      border-radius: 8px;
+      padding: 12px 14px;
+      background: #FAFAFA;
+    }
+    .dual-box-title {
+      font-size: 13px;
+      font-weight: 800;
+      color: var(--bih-purple);
+      margin-bottom: 6px;
+      border-bottom: 1px solid var(--bih-border);
+      padding-bottom: 4px;
+    }
+
+    /* Callouts & Alert Boxes */
+    .callout {
+      background: #FFF3CD;
+      border-left: 4px solid var(--bih-gold);
+      padding: 10px 14px;
+      margin: 14px 0;
+      border-radius: 0 8px 8px 0;
+      font-size: 12.5px;
+    }
+    .callout-title {
+      font-weight: 800;
+      color: #856404;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 2px;
+    }
+
+    .panic-box {
+      background: #F8D7DA;
+      border-left: 4px solid var(--bih-red);
+      padding: 12px 14px;
+      margin: 14px 0;
+      border-radius: 0 8px 8px 0;
+      font-size: 12.5px;
+    }
+    .panic-title {
+      font-weight: 800;
+      color: #721C24;
+      margin-bottom: 4px;
+    }
+
+    /* Step Cards */
+    .step-card {
+      display: flex;
+      gap: 12px;
+      background: var(--bih-light);
+      border: 1px solid var(--bih-border);
+      border-radius: 6px;
+      padding: 10px 12px;
+      margin-bottom: 8px;
+      align-items: flex-start;
+    }
+
+    .step-num {
+      background: var(--bih-purple);
+      color: white;
+      font-size: 13px;
+      font-weight: 800;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .step-content { flex-grow: 1; font-size: 12.5px; }
+
+    /* Diagrams */
+    .diagram-container {
+      background: #FAFAFA;
+      border: 1px solid var(--bih-border);
+      border-radius: 8px;
+      padding: 12px;
+      margin: 14px 0;
+      text-align: center;
+    }
+    .diagram-caption {
+      font-size: 11px;
+      color: #6C757D;
+      margin-top: 6px;
+      font-style: italic;
+    }
+
+    /* Tables */
+    table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 12.5px; }
+    th { background: var(--bih-purple); color: white; text-align: left; padding: 7px 10px; }
+    td { border: 1px solid var(--bih-border); padding: 7px 10px; vertical-align: top; }
+    tr:nth-child(even) { background-color: var(--bih-light); }
+
+    /* Interactive Inputs */
+    .answer-line {
+      min-height: 24px;
+      border-bottom: 1px dashed var(--bih-purple);
+      margin: 4px 0;
+      outline: none;
+      font-size: 13px;
+      color: var(--bih-dark);
+      padding: 2px 4px;
+    }
+
+    .answer-box {
+      border: 1px solid var(--bih-border);
+      border-radius: 6px;
+      min-height: 60px;
+      padding: 8px 10px;
+      margin-top: 6px;
+      outline: none;
+      background: #FCFCFC;
+      font-size: 13px;
+    }
+
+    .checkbox-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 6px;
+      font-size: 12.5px;
+    }
+    .checkbox-item input { width: 15px; height: 15px; cursor: pointer; }
+  </style>
+</head>
+<body>
+
+<!-- ========================================== -->
+<!-- PAGE 1: THE CAPSTONE MISSION               -->
+<!-- ========================================== -->
+<div class="page">
+  <div class="header-bar">
+    <div class="header-title">Bozoma Innovation Hub • Tech Club</div>
+    <div class="badge">Session 42 • Page 1</div>
+  </div>
+
+  <div class="student-meta">
+    <div class="meta-row">
+      <span class="meta-label">Capstone Team Name:</span>
+      <div class="editable-line" contenteditable="true">EcoTech Ghana Innovators</div>
+      <span class="meta-label" style="min-width: 90px;">School:</span>
+      <div class="editable-line" contenteditable="true">Bozoma Model JHS</div>
+    </div>
+    <div class="meta-row">
+      <span class="meta-label">Team Members (3–4):</span>
+      <div class="editable-line" contenteditable="true">Ama Mensah, Kofi Boateng, Kwesi Appiah</div>
+      <span class="meta-label" style="min-width: 50px;">Class:</span>
+      <div class="editable-line" contenteditable="true" style="max-width: 90px;">JHS 1</div>
+    </div>
+  </div>
+
+  <h1>Session 42: Capstone Planning & Blueprint</h1>
+  <p>Congratulations! Over the past 17 sessions, you started from zero: touching a computer for the first time, mastering typing, managing files, researching safely online, writing formatted reports, building automated spreadsheets, presenting slides, and coding algorithms in Scratch. Now comes the ultimate test: <strong>The Capstone Final Project</strong>!</p>
+
+  <h2>1. Plain Talk: Building the Whole House</h2>
+  <p>Think about a master mason constructing a house: first, they gather sand, stones, cement, water, and timber. Those are the individual materials. But the materials alone are not a house! The mason must study a <strong>Blueprint</strong>, mix the cement, lay the foundation blocks, raise the walls, and put on the roof.</p>
+  <p>In this final module (Sessions 42, 43, and 44), you will unite your digital tools to build a genuine, working solution for an issue in your school or neighborhood in Ghana!</p>
+
+  <!-- DIAGRAM: THE CAPSTONE SOLUTION BRIDGE -->
+  <div class="diagram-container">
+    <svg width="700" height="155" viewBox="0 0 700 155" xmlns="http://www.w3.org/2000/svg">
+      <rect x="20" y="10" width="660" height="135" rx="6" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.5"/>
+
+      <!-- Left Pillar: Digital Skills Mastered -->
+      <g transform="translate(40, 25)">
+        <rect x="0" y="0" width="160" height="100" rx="5" fill="#3A0CA3"/>
+        <text x="80" y="24" font-size="10.5" font-weight="bold" fill="#FCD34D" text-anchor="middle">YOUR TOOLKIT</text>
+        <line x1="15" y1="32" x2="145" y2="32" stroke="#4361EE" stroke-width="1.5"/>
+        <text x="20" y="48" font-size="8.5" fill="white">&bull; Word Processing Docs</text>
+        <text x="20" y="62" font-size="8.5" fill="white">&bull; Spreadsheet Formulas</text>
+        <text x="20" y="76" font-size="8.5" fill="white">&bull; Slide Presentations</text>
+        <text x="20" y="90" font-size="8.5" fill="white">&bull; Scratch Coding Logic</text>
+      </g>
+
+      <!-- The Connecting Bridge -->
+      <path d="M 210,75 L 325,75" stroke="#F77F00" stroke-width="4"/>
+      <polygon points="330,75 320,70 320,80" fill="#F77F00"/>
+      <g transform="translate(230, 42)">
+        <rect x="0" y="0" width="80" height="24" rx="3" fill="#FFF7ED" stroke="#F77F00" stroke-width="1.2"/>
+        <text x="40" y="16" font-size="9" font-weight="bold" fill="#C2410C" text-anchor="middle">CAPSTONE</text>
+      </g>
+
+      <!-- Center Icon: Community Innovation -->
+      <g transform="translate(345, 30)">
+        <circle cx="45" cy="45" r="35" fill="#ECFDF5" stroke="#10B981" stroke-width="2.5"/>
+        <text x="45" y="42" font-size="20" text-anchor="middle">💡</text>
+        <text x="45" y="62" font-size="8.5" font-weight="bold" fill="#047857" text-anchor="middle">GHANA IMPACT</text>
+      </g>
+
+      <!-- The Connecting Bridge 2 -->
+      <path d="M 435,75 L 485,75" stroke="#F77F00" stroke-width="4"/>
+      <polygon points="490,75 480,70 480,80" fill="#F77F00"/>
+
+      <!-- Right Pillar: Real Community Challenges -->
+      <g transform="translate(500, 25)">
+        <rect x="0" y="0" width="160" height="100" rx="5" fill="#1E293B"/>
+        <text x="80" y="24" font-size="10.5" font-weight="bold" fill="#38BDF8" text-anchor="middle">REAL PROBLEMS</text>
+        <line x1="15" y1="32" x2="145" y2="32" stroke="#475569" stroke-width="1.5"/>
+        <text x="20" y="48" font-size="8.5" fill="white">&bull; Plastic sachet litter</text>
+        <text x="20" y="62" font-size="8.5" fill="white">&bull; Canteen bookkeeping</text>
+        <text x="20" y="76" font-size="8.5" fill="white">&bull; Drinking water health</text>
+        <text x="20" y="90" font-size="8.5" fill="white">&bull; Library book tracking</text>
+      </g>
+    </svg>
+    <div class="diagram-caption">Figure 42.0: The Capstone Bridge. You are using technology tools to create tangible solutions for your community.</div>
+  </div>
+
+  <h2>2. The Capstone Schedule (3 Sessions)</h2>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 25%;">Session</th>
+        <th style="width: 45%;">Core Deliverables</th>
+        <th style="width: 30%;">Status Goal</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Session 42 (Today)</strong></td>
+        <td>Choose track, write Project Charter, build directory tree, and create <strong>Prototype v0.1</strong>.</td>
+        <td><strong style="color:var(--bih-gold);">Blueprint Approved</strong></td>
+      </tr>
+      <tr>
+        <td><strong>Session 43</strong></td>
+        <td>Build working prototype, test with peer reviewers, record feedback, and debug.</td>
+        <td><strong style="color:var(--bih-accent);">Working Prototype</strong></td>
+      </tr>
+      <tr>
+        <td><strong>Session 44</strong></td>
+        <td>Final visual polish, 3-minute stage showcase, peer Q&A, and club graduation!</td>
+        <td><strong style="color:var(--bih-green);">Graduation & Showcase</strong></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ========================================== -->
+<!-- PAGE 2: THE FOUR PROJECT TRACKS            -->
+<!-- ========================================== -->
+<div class="page">
+  <div class="header-bar">
+    <div class="header-title">Choosing Your Project Track</div>
+    <div class="badge">Session 42 • Page 2</div>
+  </div>
+
+  <h2>1. The Four Approved Capstone Tracks</h2>
+  <p>Read through the four project options below with your team. Pick <strong>ONE</strong> track that excites you most:</p>
+
+  <div class="dual-grid">
+    <!-- TRACK A -->
+    <div class="dual-box">
+      <div class="dual-box-title">🌿 TRACK A: School Health & Environment</div>
+      <p><strong>The Challenge:</strong> Gutters clogged with plastic sachets or uncovered water drums causing mosquito breeding.</p>
+      <p><strong>What You Build:</strong></p>
+      <ul style="margin: 4px 0 0 15px; padding: 0; font-size: 12px;">
+        <li>A professional 1-page campaign notice (Word).</li>
+        <li>A 3-slide visual pitch presentation (PowerPoint).</li>
+      </ul>
+    </div>
+
+    <!-- TRACK B -->
+    <div class="dual-box">
+      <div class="dual-box-title">📊 TRACK B: Market & Canteen Bookkeeper</div>
+      <p><strong>The Challenge:</strong> Local food vendors or school canteen losing track of daily sales, costs, and profit.</p>
+      <p><strong>What You Build:</strong></p>
+      <ul style="margin: 4px 0 0 15px; padding: 0; font-size: 12px;">
+        <li>A table with SUM/AVERAGE formulas.</li>
+        <li>A column chart comparing items (or a pie chart showing each item's share of the total).</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="dual-grid">
+    <!-- TRACK C -->
+    <div class="dual-box">
+      <div class="dual-box-title">🎮 TRACK C: Interactive Educational Game</div>
+      <p><strong>The Challenge:</strong> Younger primary school students find hygiene or road safety rules boring to memorize.</p>
+      <p><strong>What You Build:</strong></p>
+      <ul style="margin: 4px 0 0 15px; padding: 0; font-size: 12px;">
+        <li>A playable Scratch animation or mini-quiz.</li>
+        <li>Includes a live Score variable and restart loop.</li>
+      </ul>
+    </div>
+
+    <!-- TRACK D -->
+    <div class="dual-box">
+      <div class="dual-box-title">🏛️ TRACK D: Culture & Community Tourism</div>
+      <p><strong>The Challenge:</strong> Promoting local historic landmarks, festivals, or eco-tourism sites in your region.</p>
+      <p><strong>What You Build:</strong></p>
+      <ul style="margin: 4px 0 0 15px; padding: 0; font-size: 12px;">
+        <li>A verified digital research report with citations.</li>
+        <li>A multimedia digital photo/slide guide.</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2>2. The "Keep It Manageable" Rule</h2>
+  <div class="callout">
+    <div class="callout-title">⚠️ DO NOT TRY TO BUILD FACEBOOK IN 3 DAYS!</div>
+    The most common mistake young innovators make is choosing an impossible project (e.g. <em>"We want to build a self-driving car in Scratch"</em>).
+    <br><br>
+    <strong>The Pro Rule:</strong> Choose a clear, simple problem that you can build, polish, and demonstrate beautifully in 3 sessions. One finished, bug-free spreadsheet or 3-slide presentation beats a broken, half-finished giant dream!
+  </div>
+</div>
+
+<!-- ========================================== -->
+<!-- PAGE 3: WHAT IS A PROTOTYPE?               -->
+<!-- ========================================== -->
+<div class="page">
+  <div class="header-bar">
+    <div class="header-title">What is a Prototype? (Version 0.1)</div>
+    <div class="badge">Session 42 • Page 3</div>
+  </div>
+
+  <h2>1. Plain Talk: The Cardboard Model House</h2>
+  <p>An architect never pours concrete on day one. First, they cut cardboard and tape together a small scale model of the building. It has no real glass windows or working light switches, but it shows everyone the size, shape, and door positions.</p>
+  <p>In tech, this early working draft is called a <strong>Prototype (Version 0.1)</strong>. It is built quickly so you can test if your concept makes sense before spending hours on final styling!</p>
+
+  <!-- DIAGRAM: THE 3-STAGE PROJECT EVOLUTION -->
+  <div class="diagram-container">
+    <svg width="680" height="150" viewBox="0 0 680 150" xmlns="http://www.w3.org/2000/svg">
+      <rect x="25" y="10" width="630" height="130" rx="6" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.5"/>
+
+      <!-- STAGE 1: BLUEPRINT (Today) -->
+      <g transform="translate(45, 25)">
+        <rect x="0" y="0" width="150" height="85" rx="4" fill="#FFFFFF" stroke="#3A0CA3" stroke-width="2"/>
+        <text x="75" y="22" font-size="10" font-weight="bold" fill="#3A0CA3" text-anchor="middle">STAGE 1: Blueprint</text>
+        <line x1="15" y1="28" x2="135" y2="28" stroke="#E2E8F0" stroke-width="1"/>
+        <text x="75" y="48" font-size="8.5" fill="#64748B" text-anchor="middle">&bull; Problem defined</text>
+        <text x="75" y="62" font-size="8.5" fill="#64748B" text-anchor="middle">&bull; Paper wireframe</text>
+        <text x="75" y="76" font-size="8.5" fill="#64748B" text-anchor="middle">&bull; Folders created</text>
+        <text x="75" y="102" font-size="9" font-weight="bold" fill="#3A0CA3" text-anchor="middle">Session 42 (Today)</text>
+      </g>
+
+      <path d="M 205,68 L 245,68" stroke="#F77F00" stroke-width="2.5"/>
+      <polygon points="250,68 242,64 242,72" fill="#F77F00"/>
+
+      <!-- STAGE 2: PROTOTYPE (Session 43) -->
+      <g transform="translate(260, 25)">
+        <rect x="0" y="0" width="150" height="85" rx="4" fill="#FFFFFF" stroke="#F77F00" stroke-width="2"/>
+        <text x="75" y="22" font-size="10" font-weight="bold" fill="#C2410C" text-anchor="middle">STAGE 2: Prototype</text>
+        <line x1="15" y1="28" x2="135" y2="28" stroke="#E2E8F0" stroke-width="1"/>
+        <text x="75" y="48" font-size="8.5" fill="#64748B" text-anchor="middle">&bull; Working formulas/code</text>
+        <text x="75" y="62" font-size="8.5" fill="#64748B" text-anchor="middle">&bull; Tested by peers</text>
+        <text x="75" y="76" font-size="8.5" fill="#64748B" text-anchor="middle">&bull; Bugs fixed</text>
+        <text x="75" y="102" font-size="9" font-weight="bold" fill="#C2410C" text-anchor="middle">Session 43</text>
+      </g>
+
+      <path d="M 420,68 L 460,68" stroke="#F77F00" stroke-width="2.5"/>
+      <polygon points="465,68 457,64 457,72" fill="#F77F00"/>
+
+      <!-- STAGE 3: SHOWCASE (Session 44) -->
+      <g transform="translate(475, 25)">
+        <rect x="0" y="0" width="150" height="85" rx="4" fill="#FFFFFF" stroke="#10B981" stroke-width="2"/>
+        <text x="75" y="22" font-size="10" font-weight="bold" fill="#047857" text-anchor="middle">STAGE 3: Showcase</text>
+        <line x1="15" y1="28" x2="135" y2="28" stroke="#E2E8F0" stroke-width="1"/>
+        <text x="75" y="48" font-size="8.5" fill="#64748B" text-anchor="middle">&bull; Final visual polish</text>
+        <text x="75" y="62" font-size="8.5" fill="#64748B" text-anchor="middle">&bull; Stage presentation</text>
+        <text x="75" y="76" font-size="8.5" fill="#64748B" text-anchor="middle">&bull; Graduation!</text>
+        <text x="75" y="102" font-size="9" font-weight="bold" fill="#047857" text-anchor="middle">Session 44</text>
+      </g>
+    </svg>
+    <div class="diagram-caption">Figure 42.1: The Capstone Evolution. Today we lock in the Blueprint and start the raw Prototype.</div>
+  </div>
+
+  <h2>2. Safe Data Ethics for Capstone</h2>
+  <div class="panic-box">
+    <div class="panic-title">🔒 CAPSTONE DATA PROTECTION LAW</div>
+    Do <strong>not</strong> collect real telephone numbers, personal home addresses, or secret financial records from real people in your neighborhood!
+    <br><br>
+    <strong>Use Realistic Simulated Data:</strong> If building a canteen spreadsheet, use sample items (<em>Jollof Rice, Meat Pie, Sobolo</em>) and approximate prices. Protect community privacy at all times!
+  </div>
+</div>
+
+<!-- ========================================== -->
+<!-- PAGE 4: MASTER PROJECT PLANNING CANVAS     -->
+<!-- ========================================== -->
+<div class="page">
+  <div class="header-bar">
+    <div class="header-title">The Master Project Planning Canvas</div>
+    <div class="badge">Session 42 • Page 4</div>
+  </div>
+
+  <h2>1. Complete Your Team's Project Charter</h2>
+  <p>Fill in every section of this canvas. This is your official agreement with your Tech Club mentor:</p>
+
+  <div style="border: 2px solid var(--bih-purple); border-radius: 8px; padding: 18px; background: #FFFFFF; margin: 10px 0;">
+    <!-- 1. Title -->
+    <div style="margin-bottom: 12px;">
+      <strong style="color: var(--bih-purple); font-size: 13px;">1. Project Title:</strong>
+      <div class="answer-line" contenteditable="true" style="font-weight:bold;">e.g. Clean Hands, Healthy School Campaign</div>
+    </div>
+
+    <!-- 2. Track -->
+    <div style="margin-bottom: 12px;">
+      <strong style="color: var(--bih-purple); font-size: 13px;">2. Chosen Track (Tick One):</strong>
+      <div style="margin-top: 4px; font-size: 12.5px;">
+        [ &nbsp; ] Track A: Health & Environment &nbsp;&nbsp;&nbsp;&nbsp; [ &nbsp; ] Track B: Canteen / Market Bookkeeper<br>
+        [ &nbsp; ] Track C: Scratch Educational Game &nbsp;&nbsp;&nbsp;&nbsp; [ &nbsp; ] Track D: Culture & Tourism Guide
+      </div>
+    </div>
+
+    <!-- 3. Problem Statement -->
+    <div style="margin-bottom: 12px;">
+      <strong style="color: var(--bih-purple); font-size: 13px;">3. The Real Problem We Are Addressing:</strong>
+      <div class="answer-box" contenteditable="true">
+        Describe the problem clearly in 2 sentences... (e.g., Many students at our school eat lunch without washing their hands with soap, leading to stomach illnesses and missed school days).
+      </div>
+    </div>
+
+    <!-- 4. Target Audience -->
+    <div style="margin-bottom: 12px;">
+      <strong style="color: var(--bih-purple); font-size: 13px;">4. Who Will Use / Read This Solution? (Target Audience):</strong>
+      <div class="answer-line" contenteditable="true">e.g. JHS 1 and Primary 6 students, school food vendors, teachers...</div>
+    </div>
+
+    <!-- 5. Solution Description -->
+    <div style="margin-bottom: 12px;">
+      <strong style="color: var(--bih-purple); font-size: 13px;">5. What Will Our Finished Solution Be?</strong>
+      <div class="answer-box" contenteditable="true">
+        Explain what digital files you will build... (e.g., A 1-page illustrated guide showing the 4 steps of handwashing, plus a 3-slide presentation pitched to morning assembly).
+      </div>
+    </div>
+
+    <!-- 6. Tools Needed -->
+    <div style="margin-bottom: 12px;">
+      <strong style="color: var(--bih-purple); font-size: 13px;">6. Software Tools We Will Use:</strong>
+      <div style="margin-top: 4px; font-size: 12.5px;">
+        <label><input type="checkbox"> Word Processor</label> &nbsp;&nbsp;
+        <label><input type="checkbox"> Spreadsheet</label> &nbsp;&nbsp;
+        <label><input type="checkbox"> Presentation Slides</label> &nbsp;&nbsp;
+        <label><input type="checkbox"> Scratch Coding</label> &nbsp;&nbsp;
+        <label><input type="checkbox"> Web Browser Research</label>
+      </div>
+    </div>
+
+    <!-- 7. Team Roles -->
+    <div>
+      <strong style="color: var(--bih-purple); font-size: 13px;">7. Team Roles</strong> <span style="font-size: 11.5px;">(every member needs a role; one person may hold two):</span>
+      <div style="margin-top: 4px; font-size: 12.5px; line-height: 2;">
+        Project Manager: ____________________ &nbsp;&nbsp; Designer / Builder: ____________________<br>
+        Researcher / Tester: ________________ &nbsp;&nbsp; Presenter: ____________________________
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ========================================== -->
+<!-- PAGE 5: GUIDED LAB - DIRECTORY & V0.1       -->
+<!-- ========================================== -->
+<div class="page">
+  <div class="header-bar">
+    <div class="header-title">Guided Hands-On Lab: Setting the Foundation</div>
+    <div class="badge">Session 42 • Page 5</div>
+  </div>
+
+  <h2>1. Lab Mission: Set Up Folders & Build Prototype v0.1</h2>
+  <p>Follow these 5 steps to organize your files and begin your project skeleton:</p>
+
+  <div class="step-card">
+    <div class="step-num">1</div>
+    <div class="step-content">
+      <strong>Build Your Capstone Directory Tree:</strong>
+      <br>Press <span class="kbd-key">&#8862; Win + E</span> &rarr; Navigate to <strong>Documents &gt; BIH_Practice</strong>.
+      <br>Create a main folder: <code>Capstone_[TeamName]</code>.
+      <br>Inside it, create two subfolders: <code>Drafts</code> and <code>Final_Showcase</code>.
+    </div>
+  </div>
+
+  <div class="step-card">
+    <div class="step-num">2</div>
+    <div class="step-content">
+      <strong>Launch Your Chosen Software Tool:</strong>
+      <br>&bull; <strong>Track A:</strong> Open Word (notice); PowerPoint later (3-slide pitch).
+      <br>&bull; <strong>Track B:</strong> Open Excel / Calc &rarr; Create blank workbook.
+      <br>&bull; <strong>Track C:</strong> Open Scratch &rarr; Start fresh project.
+      <br>&bull; <strong>Track D:</strong> Open Word (report); PowerPoint later (photo/slide guide).
+    </div>
+  </div>
+
+  <div class="step-card">
+    <div class="step-num">3</div>
+    <div class="step-content">
+      <strong>Build the "Skeleton" Structure (Version 0.1):</strong>
+      <br>Do not worry about colors or fancy graphics today! Build the structure:
+      <br>&bull; <em>Word users:</em> Type the main Title and 3 section headings.
+      <br>&bull; <em>Excel users:</em> Type Column Headers across Row 1 (Item, Qty, Price, Total).
+      <br>&bull; <em>PowerPoint users:</em> Create your 3 slides and type the titles on each.
+      <br>&bull; <em>Scratch users:</em> Choose your main Sprite and Backdrop.
+    </div>
+  </div>
+
+  <div class="step-card">
+    <div class="step-num">4</div>
+    <div class="step-content">
+      <strong>Initial Save (Save As...):</strong>
+      <br>Save your file into <code>Documents &gt; BIH_Practice &gt; Capstone_[TeamName] &gt; Drafts</code>.
+      <br>Use the naming formula: <code>Capstone_v0.1_[ProjectName].docx</code> (or <code>.xlsx</code> / <code>.pptx</code> / <code>.sb3</code>).
+    </div>
+  </div>
+
+  <div class="step-card">
+    <div class="step-num">5</div>
+    <div class="step-content">
+      <strong>Mentor Blueprint Inspection:</strong>
+      <br>Raise your hand and show your <strong>Canvas (Page 4)</strong> and your <strong>Version 0.1 Skeleton</strong> to your mentor for sign-off!
+    </div>
+  </div>
+
+  <h2>2. Visual Target (Sample Folder Directory Structure)</h2>
+  <div style="background: var(--bih-light); border: 2px dashed var(--bih-border); padding: 18px; border-radius: 8px; font-family: monospace; font-size: 13px; margin: 15px 0;">
+    📁 Documents<br>
+    &nbsp;&nbsp;&nbsp;└── 📁 BIH_Practice<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└── 📁 Capstone_EcoTech<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├── 📁 Drafts<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;└── 📄 Capstone_v0.1_CleanWater.docx<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└── 📁 Final_Showcase<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└── (Ready for Session 44!)
+  </div>
+</div>
+
+<!-- ========================================== -->
+<!-- PAGE 6: REVIEW & MENTOR APPROVAL           -->
+<!-- ========================================== -->
+<div class="page">
+  <div class="header-bar">
+    <div class="header-title">Session 42 Milestone & Approval</div>
+    <div class="badge">Session 42 • Page 6</div>
+  </div>
+
+  <h2>1. Milestone 1 Checklist (To Be Completed Today)</h2>
+  <p>Verify that your team has completed all four foundation milestones:</p>
+  <div class="checkbox-item"><input type="checkbox"> We formed our team and selected one approved Capstone Track (A, B, C, or D).</div>
+  <div class="checkbox-item"><input type="checkbox"> We completed all 7 boxes of the Project Planning Canvas on Page 4.</div>
+  <div class="checkbox-item"><input type="checkbox"> We built our folder directory tree inside <code>Documents &gt; BIH_Practice</code>.</div>
+  <div class="checkbox-item"><input type="checkbox"> We built and saved our initial <strong>Version 0.1 Skeleton file</strong>.</div>
+
+  <h2>2. Written Reflection</h2>
+  <p><strong>Question 1:</strong> Why is it smart to build a rough "Prototype" before spending hours perfecting colors and animations?</p>
+  <div class="answer-line" contenteditable="true">Write your answer here...</div>
+  <div class="answer-line" contenteditable="true"></div>
+
+  <p><strong>Question 2:</strong> What is one challenge your team might face during Session 43 (building and testing), and how will you solve it?</p>
+  <div class="answer-line" contenteditable="true">Write your answer here...</div>
+
+  <h2>3. Official Mentor Capstone Approval Sign-Off</h2>
+  <p><em>(Your mentor must review and sign below before your team can begin Session 43 building!)</em></p>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 45%;">Mentor Evaluation Criteria</th>
+        <th style="width: 18%; text-align:center;">Needs Revision</th>
+        <th style="width: 18%; text-align:center;">Approved &#10004;</th>
+        <th style="width: 19%; text-align:center;">Outstanding! ⭐</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Community Relevance:</strong> Does the project address a real issue?</td>
+        <td style="text-align:center;"><input type="radio" name="m1"></td>
+        <td style="text-align:center;"><input type="radio" name="m1"></td>
+        <td style="text-align:center;"><input type="radio" name="m1"></td>
+      </tr>
+      <tr>
+        <td><strong>Feasibility:</strong> Can the team realistically finish in 3 sessions?</td>
+        <td style="text-align:center;"><input type="radio" name="m2"></td>
+        <td style="text-align:center;"><input type="radio" name="m2"></td>
+        <td style="text-align:center;"><input type="radio" name="m2"></td>
+      </tr>
+      <tr>
+        <td><strong>Data Safety:</strong> Does the plan respect privacy and P.I.I. rules?</td>
+        <td style="text-align:center;"><input type="radio" name="m3"></td>
+        <td style="text-align:center;"><input type="radio" name="m3"></td>
+        <td style="text-align:center;"><input type="radio" name="m3"></td>
+      </tr>
+      <tr>
+        <td><strong>File Setup:</strong> Are directories and v0.1 files created properly?</td>
+        <td style="text-align:center;"><input type="radio" name="m4"></td>
+        <td style="text-align:center;"><input type="radio" name="m4"></td>
+        <td style="text-align:center;"><input type="radio" name="m4"></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div style="border: 2px solid var(--bih-green); border-radius: 6px; padding: 12px; background: #ECFDF5; margin-top: 15px;">
+    <strong>Mentor Notes / Advice for Session 43:</strong>
+    <div class="answer-line" contenteditable="true" style="border-bottom-color: #059669;">Write advice here...</div>
+    <div style="display: flex; justify-content: space-between; margin-top: 10px; font-size: 13px;">
+      <div><strong>Mentor Signature:</strong> _____________________________</div>
+      <div><strong>Date Approved:</strong> ____________________</div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

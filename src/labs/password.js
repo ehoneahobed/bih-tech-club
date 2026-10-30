@@ -1,4 +1,4 @@
-// Session 15 — Online Safety: build a password fortress. Longer passphrases
+// Session 33 — Online Safety: build a password fortress. Longer passphrases
 // stack more bricks; then send the "guessing robot" to attack the wall.
 import { THREE, COLORS, box, mat, rbox, decal } from './runtime.js';
 

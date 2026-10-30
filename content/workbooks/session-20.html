@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>BIH Tech Club - Session 20: Capstone Planning & Blueprint</title>
+  <title>BIH Tech Club - Session 20: Spreadsheet Functions & Charts</title>
   <style>
     :root {
       --bih-purple: #3A0CA3;
@@ -13,7 +13,8 @@
       --bih-dark: #1E1E24;
       --bih-light: #F8F9FA;
       --bih-border: #CED4DA;
-      --capstone-gold: #D97706;
+      --excel-green: #107C41;
+      --grid-line: #CBD5E1;
     }
 
     * {
@@ -94,7 +95,7 @@
       font-size: 12.5px;
       font-weight: 700;
       color: var(--bih-dark);
-      min-width: 135px;
+      min-width: 125px;
     }
 
     .editable-line {
@@ -217,6 +218,50 @@
     td { border: 1px solid var(--bih-border); padding: 7px 10px; vertical-align: top; }
     tr:nth-child(even) { background-color: var(--bih-light); }
 
+    /* Spreadsheet Grid Mockup Table */
+    .sheet-grid {
+      width: 100%;
+      border-collapse: collapse;
+      font-family: monospace;
+      font-size: 12px;
+      margin: 10px 0;
+    }
+    .sheet-grid th {
+      background: #E2E8F0;
+      color: #475569;
+      text-align: center;
+      border: 1px solid #CBD5E1;
+      padding: 4px 6px;
+      font-weight: bold;
+    }
+    .sheet-grid td {
+      border: 1px solid #CBD5E1;
+      padding: 6px 8px;
+      background: #FFFFFF;
+    }
+    .sheet-grid td.row-num {
+      background: #E2E8F0;
+      color: #475569;
+      font-weight: bold;
+      text-align: center;
+      width: 35px;
+    }
+
+    /* Key Badge */
+    .kbd-key {
+      display: inline-block;
+      background: #F3F4F6;
+      border: 1.5px solid #9CA3AF;
+      border-bottom: 3px solid #6B7280;
+      border-radius: 4px;
+      padding: 1px 6px;
+      font-family: monospace;
+      font-size: 12px;
+      font-weight: 700;
+      color: #1F2937;
+      margin: 0 2px;
+    }
+
     /* Interactive Inputs */
     .answer-line {
       min-height: 24px;
@@ -226,17 +271,6 @@
       font-size: 13px;
       color: var(--bih-dark);
       padding: 2px 4px;
-    }
-
-    .answer-box {
-      border: 1px solid var(--bih-border);
-      border-radius: 6px;
-      min-height: 60px;
-      padding: 8px 10px;
-      margin-top: 6px;
-      outline: none;
-      background: #FCFCFC;
-      font-size: 13px;
     }
 
     .checkbox-item {
@@ -252,7 +286,7 @@
 <body>
 
 <!-- ========================================== -->
-<!-- PAGE 1: THE CAPSTONE MISSION               -->
+<!-- PAGE 1: FUNCTIONS & CELL RANGES            -->
 <!-- ========================================== -->
 <div class="page">
   <div class="header-bar">
@@ -262,460 +296,553 @@
 
   <div class="student-meta">
     <div class="meta-row">
-      <span class="meta-label">Capstone Team Name:</span>
-      <div class="editable-line" contenteditable="true">EcoTech Ghana Innovators</div>
-      <span class="meta-label" style="min-width: 90px;">School:</span>
-      <div class="editable-line" contenteditable="true">Bozoma Model JHS</div>
+      <span class="meta-label">Learner Full Name:</span>
+      <div class="editable-line" contenteditable="true">Ama Mensah</div>
     </div>
     <div class="meta-row">
-      <span class="meta-label">Team Members (3–4):</span>
-      <div class="editable-line" contenteditable="true">Ama Mensah, Kofi Boateng, Kwesi Appiah</div>
+      <span class="meta-label">School:</span>
+      <div class="editable-line" contenteditable="true">Bozoma Model School</div>
       <span class="meta-label" style="min-width: 50px;">Class:</span>
       <div class="editable-line" contenteditable="true" style="max-width: 90px;">JHS 1</div>
     </div>
+    <div class="meta-row">
+      <span class="meta-label">Workstation Device:</span>
+      <div class="editable-line" contenteditable="true" style="max-width: 180px;">[ ] Desktop &nbsp; [ ] Laptop</div>
+      <span class="meta-label" style="min-width: 70px;">Station #:</span>
+      <div class="editable-line" contenteditable="true" style="max-width: 90px;">PC-01</div>
+    </div>
   </div>
 
-  <h1>Session 20: Capstone Planning & Blueprint</h1>
-  <p>Congratulations! Over the past 17 sessions, you started from zero: touching a computer for the first time, mastering typing, managing files, researching safely online, writing formatted reports, building automated spreadsheets, presenting slides, and coding algorithms in Scratch. Now comes the ultimate test: <strong>The Capstone Final Project</strong>!</p>
+  <h1>Session 20: Functions, Ranges & Visual Charts</h1>
+  <p>In Session 19, you multiplied single cells together using <code>=B2*C2</code>. But what if your school store sells 100 different items? Typing <code>=D2+D3+D4+D5...+D101</code> would take 20 minutes! Today, you will learn how to command the spreadsheet to calculate entire columns in a single breath using <strong>Functions</strong> and <strong>Ranges</strong>.</p>
 
-  <h2>1. Plain Talk: Building the Whole House</h2>
-  <p>Think about a master mason constructing a house: first, they gather sand, stones, cement, water, and timber. Those are the individual materials. But the materials alone are not a house! The mason must study a <strong>Blueprint</strong>, mix the cement, lay the foundation blocks, raise the walls, and put on the roof.</p>
-  <p>In this final module (Sessions 20, 21, and 22), you will unite your digital tools to build a genuine, working solution for an issue in your school or neighborhood in Ghana!</p>
+  <h2>1. What is a "Range"? (The Power of the Colon :)</h2>
+  <p>A <strong>Range</strong> is a block of connected cells. In spreadsheet language, we write a range using the first cell address, a <strong>colon (:)</strong>, and the last cell address.</p>
+  <p>The colon simply means <strong>"THROUGH TO"</strong>:</p>
 
-  <!-- DIAGRAM: THE CAPSTONE SOLUTION BRIDGE -->
+  <!-- DIAGRAM: RANGE NOTATION AND SUM ANATOMY -->
   <div class="diagram-container">
-    <svg width="700" height="155" viewBox="0 0 700 155" xmlns="http://www.w3.org/2000/svg">
-      <rect x="20" y="10" width="660" height="135" rx="6" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.5"/>
+    <svg width="700" height="150" viewBox="0 0 700 150" xmlns="http://www.w3.org/2000/svg">
+      <rect x="25" y="15" width="650" height="120" rx="6" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.5"/>
 
-      <!-- Left Pillar: Digital Skills Mastered -->
-      <g transform="translate(40, 25)">
-        <rect x="0" y="0" width="160" height="100" rx="5" fill="#3A0CA3"/>
-        <text x="80" y="24" font-size="10.5" font-weight="bold" fill="#FCD34D" text-anchor="middle">YOUR TOOLKIT</text>
-        <line x1="15" y1="32" x2="145" y2="32" stroke="#4361EE" stroke-width="1.5"/>
-        <text x="20" y="48" font-size="8.5" fill="white">&bull; Word Processing Docs</text>
-        <text x="20" y="62" font-size="8.5" fill="white">&bull; Spreadsheet Formulas</text>
-        <text x="20" y="76" font-size="8.5" fill="white">&bull; Slide Presentations</text>
-        <text x="20" y="90" font-size="8.5" fill="white">&bull; Scratch Coding Logic</text>
+      <!-- FORMULA STRING -->
+      <g transform="translate(60, 50)" font-family="monospace" font-size="24" font-weight="bold">
+        <text x="0" y="0" fill="#E63946">=</text>
+        <text x="25" y="0" fill="#107C41">SUM</text>
+        <text x="80" y="0" fill="#64748B">(</text>
+        <text x="100" y="0" fill="#3A0CA3">D2</text>
+        <text x="135" y="0" fill="#F77F00">:</text>
+        <text x="155" y="0" fill="#3A0CA3">D5</text>
+        <text x="190" y="0" fill="#64748B">)</text>
       </g>
 
-      <!-- The Connecting Bridge -->
-      <path d="M 210,75 L 325,75" stroke="#F77F00" stroke-width="4"/>
-      <polygon points="330,75 320,70 320,80" fill="#F77F00"/>
-      <g transform="translate(230, 42)">
-        <rect x="0" y="0" width="80" height="24" rx="3" fill="#FFF7ED" stroke="#F77F00" stroke-width="1.2"/>
-        <text x="40" y="16" font-size="9" font-weight="bold" fill="#C2410C" text-anchor="middle">CAPSTONE</text>
+      <!-- Explanatory Pointers -->
+      <!-- Equals -->
+      <path d="M 68,65 L 68,85" stroke="#E63946" stroke-width="1.5"/>
+      <text x="68" y="98" font-size="9.5" font-weight="bold" fill="#DC2626" text-anchor="middle">1. Starts Math</text>
+      <text x="68" y="110" font-size="8.5" fill="#64748B" text-anchor="middle">(Golden Law)</text>
+
+      <!-- Function Name -->
+      <path d="M 115,65 L 115,85" stroke="#107C41" stroke-width="1.5"/>
+      <text x="115" y="98" font-size="9.5" font-weight="bold" fill="#047857" text-anchor="middle">2. Function Word</text>
+      <text x="115" y="110" font-size="8.5" fill="#64748B" text-anchor="middle">"Add them up!"</text>
+
+      <!-- Range D2:D5 -->
+      <path d="M 205,65 L 205,85" stroke="#3A0CA3" stroke-width="1.5"/>
+      <text x="205" y="98" font-size="9.5" font-weight="bold" fill="#3A0CA3" text-anchor="middle">3. The Cell Range</text>
+      <text x="205" y="110" font-size="8.5" fill="#64748B" text-anchor="middle">"From D2 through to D5"</text>
+
+      <!-- Mini Visual Grid on Right -->
+      <g transform="translate(380, 25)">
+        <rect x="0" y="0" width="100" height="20" fill="#E2E8F0" stroke="#CBD5E1" stroke-width="1"/>
+        <text x="50" y="14" font-size="9" font-weight="bold" fill="#475569" text-anchor="middle">Column D</text>
+        
+        <!-- Cells D2 to D5 highlighted with green bracket -->
+        <rect x="0" y="20" width="100" height="18" fill="#F0FDF4" stroke="#107C41" stroke-width="1"/>
+        <text x="85" y="33" font-size="8.5" font-family="monospace" fill="#107C41" text-anchor="end">80.00 (D2)</text>
+        <rect x="0" y="38" width="100" height="18" fill="#F0FDF4" stroke="#107C41" stroke-width="1"/>
+        <text x="85" y="51" font-size="8.5" font-family="monospace" fill="#107C41" text-anchor="end">40.00 (D3)</text>
+        <rect x="0" y="56" width="100" height="18" fill="#F0FDF4" stroke="#107C41" stroke-width="1"/>
+        <text x="85" y="69" font-size="8.5" font-family="monospace" fill="#107C41" text-anchor="end">20.00 (D4)</text>
+        <rect x="0" y="74" width="100" height="18" fill="#F0FDF4" stroke="#107C41" stroke-width="1"/>
+        <text x="85" y="87" font-size="8.5" font-family="monospace" fill="#107C41" text-anchor="end">22.50 (D5)</text>
+
+        <!-- Result Cell D6 -->
+        <rect x="0" y="92" width="100" height="20" fill="#DCFCE7" stroke="#107C41" stroke-width="2"/>
+        <text x="85" y="106" font-size="9" font-weight="bold" font-family="monospace" fill="#047857" text-anchor="end">162.50 (D6)</text>
       </g>
 
-      <!-- Center Icon: Community Innovation -->
-      <g transform="translate(345, 30)">
-        <circle cx="45" cy="45" r="35" fill="#ECFDF5" stroke="#10B981" stroke-width="2.5"/>
-        <text x="45" y="42" font-size="20" text-anchor="middle">💡</text>
-        <text x="45" y="62" font-size="8.5" font-weight="bold" fill="#047857" text-anchor="middle">GHANA IMPACT</text>
-      </g>
-
-      <!-- The Connecting Bridge 2 -->
-      <path d="M 435,75 L 485,75" stroke="#F77F00" stroke-width="4"/>
-      <polygon points="490,75 480,70 480,80" fill="#F77F00"/>
-
-      <!-- Right Pillar: Real Community Challenges -->
-      <g transform="translate(500, 25)">
-        <rect x="0" y="0" width="160" height="100" rx="5" fill="#1E293B"/>
-        <text x="80" y="24" font-size="10.5" font-weight="bold" fill="#38BDF8" text-anchor="middle">REAL PROBLEMS</text>
-        <line x1="15" y1="32" x2="145" y2="32" stroke="#475569" stroke-width="1.5"/>
-        <text x="20" y="48" font-size="8.5" fill="white">&bull; Plastic sachet litter</text>
-        <text x="20" y="62" font-size="8.5" fill="white">&bull; Canteen bookkeeping</text>
-        <text x="20" y="76" font-size="8.5" fill="white">&bull; Drinking water health</text>
-        <text x="20" y="90" font-size="8.5" fill="white">&bull; Library book tracking</text>
-      </g>
+      <text x="500" y="80" font-size="10.5" font-weight="bold" fill="#047857">&larr; Grand Total</text>
     </svg>
-    <div class="diagram-caption">Figure 20.0: The Capstone Bridge. You are using technology tools to create tangible solutions for your community.</div>
+    <div class="diagram-caption">Figure 20.0: Anatomy of the SUM function. The colon (:) tells the computer to add every cell from D2 to D5.</div>
   </div>
 
-  <h2>2. The Capstone Schedule (3 Sessions)</h2>
+  <h2>2. Formula vs. Function: What is the Difference?</h2>
+  <div class="dual-grid">
+    <div class="dual-box">
+      <div class="dual-box-title">FORMULA (Manual Math)</div>
+      <p>A math equation you write by hand using basic symbols: <code>=B2*C2</code> or <code>=A1+A2+A3</code>.</p>
+      <p>Best for simple calculations between 2 or 3 cells.</p>
+    </div>
+    <div class="dual-box">
+      <div class="dual-box-title">FUNCTION (Preset Magic Word)</div>
+      <p>A built-in preset shortcut word provided by the spreadsheet to crunch massive lists of numbers: <code>=SUM(D2:D5)</code>.</p>
+      <p>Best for adding or averaging 5, 50, or 5,000 cells at once!</p>
+    </div>
+  </div>
+</div>
+
+<!-- ========================================== -->
+<!-- PAGE 2: THE CORE 4 FUNCTIONS               -->
+<!-- ========================================== -->
+<div class="page">
+  <div class="header-bar">
+    <div class="header-title">The "Core 4" Statistical Functions</div>
+    <div class="badge">Session 20 • Page 2</div>
+  </div>
+
+  <h2>1. Meet the Big Four Built-in Functions</h2>
+  <p>In school, business, and science, these four functions do most everyday data work:</p>
+
   <table>
     <thead>
       <tr>
-        <th style="width: 25%;">Session</th>
-        <th style="width: 45%;">Core Deliverables</th>
-        <th style="width: 30%;">Status Goal</th>
+        <th style="width: 22%;">Function Name</th>
+        <th style="width: 38%;">What It Does</th>
+        <th style="width: 40%;">How to Write It in a Cell</th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td><strong>Session 20 (Today)</strong></td>
-        <td>Choose track, write Project Charter, build directory tree, and create <strong>Prototype v0.1</strong>.</td>
-        <td><strong style="color:var(--bih-gold);">Blueprint Approved</strong></td>
+        <td><strong>=SUM(...)</strong></td>
+        <td><strong>Adds</strong> every single number in the range together to calculate a Grand Total.</td>
+        <td><code>=SUM(D2:D5)</code></td>
       </tr>
       <tr>
-        <td><strong>Session 21</strong></td>
-        <td>Build working prototype, test with peer reviewers, record feedback, and debug.</td>
-        <td><strong style="color:var(--bih-accent);">Working Prototype</strong></td>
+        <td><strong>=AVERAGE(...)</strong></td>
+        <td>Adds the numbers and divides by the count to find the <strong>mean (typical) score</strong>.</td>
+        <td><code>=AVERAGE(C2:C5)</code></td>
       </tr>
       <tr>
-        <td><strong>Session 22</strong></td>
-        <td>Final visual polish, 3-minute stage showcase, peer Q&A, and club graduation!</td>
-        <td><strong style="color:var(--bih-green);">Graduation & Showcase</strong></td>
+        <td><strong>=MAX(...)</strong></td>
+        <td>Scans the entire list and displays the <strong>highest (maximum)</strong> value.</td>
+        <td><code>=MAX(B2:B5)</code></td>
+      </tr>
+      <tr>
+        <td><strong>=MIN(...)</strong></td>
+        <td>Scans the entire list and displays the <strong>lowest (minimum)</strong> value.</td>
+        <td><code>=MIN(C2:C5)</code></td>
       </tr>
     </tbody>
   </table>
+
+  <!-- DIAGRAM: THE CORE 4 VISUALIZED -->
+  <div class="diagram-container">
+    <svg width="680" height="150" viewBox="0 0 680 150" xmlns="http://www.w3.org/2000/svg">
+      <rect x="20" y="10" width="640" height="130" rx="6" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.5"/>
+
+      <!-- Sample List: Student Exam Scores: 90, 70, 80, 60 -->
+      <g transform="translate(40, 25)">
+        <rect x="0" y="0" width="120" height="100" rx="4" fill="#FFFFFF" stroke="#94A3B8" stroke-width="1"/>
+        <text x="60" y="18" font-size="9" font-weight="bold" fill="#3A0CA3" text-anchor="middle">Math Scores (B2:B5)</text>
+        <line x1="0" y1="24" x2="120" y2="24" stroke="#CBD5E1" stroke-width="1"/>
+        <text x="60" y="40" font-family="monospace" font-size="11" fill="#1E293B" text-anchor="middle">90</text>
+        <text x="60" y="58" font-family="monospace" font-size="11" fill="#1E293B" text-anchor="middle">70</text>
+        <text x="60" y="76" font-family="monospace" font-size="11" fill="#1E293B" text-anchor="middle">80</text>
+        <text x="60" y="94" font-family="monospace" font-size="11" fill="#1E293B" text-anchor="middle">60</text>
+      </g>
+
+      <!-- Function 1: SUM -->
+      <g transform="translate(190, 25)">
+        <rect x="0" y="0" width="105" height="45" rx="3" fill="#EEF2FF" stroke="#4361EE" stroke-width="1.2"/>
+        <text x="52" y="18" font-size="9" font-weight="bold" fill="#3A0CA3" text-anchor="middle">=SUM(B2:B5)</text>
+        <text x="52" y="36" font-size="14" font-weight="bold" fill="#1E1B4B" text-anchor="middle">300</text>
+      </g>
+
+      <!-- Function 2: AVERAGE -->
+      <g transform="translate(310, 25)">
+        <rect x="0" y="0" width="105" height="45" rx="3" fill="#FFF7ED" stroke="#F77F00" stroke-width="1.2"/>
+        <text x="52" y="18" font-size="9" font-weight="bold" fill="#9A3412" text-anchor="middle">=AVERAGE(B2:B5)</text>
+        <text x="52" y="36" font-size="14" font-weight="bold" fill="#7C2D12" text-anchor="middle">75</text>
+      </g>
+
+      <!-- Function 3: MAX -->
+      <g transform="translate(430, 25)">
+        <rect x="0" y="0" width="105" height="45" rx="3" fill="#ECFDF5" stroke="#10B981" stroke-width="1.2"/>
+        <text x="52" y="18" font-size="9" font-weight="bold" fill="#047857" text-anchor="middle">=MAX(B2:B5)</text>
+        <text x="52" y="36" font-size="14" font-weight="bold" fill="#064E3B" text-anchor="middle">90</text>
+      </g>
+
+      <!-- Function 4: MIN -->
+      <g transform="translate(550, 25)">
+        <rect x="0" y="0" width="105" height="45" rx="3" fill="#FEF2F2" stroke="#EF4444" stroke-width="1.2"/>
+        <text x="52" y="18" font-size="9" font-weight="bold" fill="#B91C1C" text-anchor="middle">=MIN(B2:B5)</text>
+        <text x="52" y="36" font-size="14" font-weight="bold" fill="#7F1D1D" text-anchor="middle">60</text>
+      </g>
+
+      <!-- Summary caption below -->
+      <text x="425" y="115" font-size="10.5" font-weight="bold" fill="#475569" text-anchor="middle">The computer does the division, scanning, and addition instantly!</text>
+    </svg>
+    <div class="diagram-caption">Figure 20.1: The Core 4 functions operating on the exact same range of exam scores.</div>
+  </div>
+
+  <h2>2. Check Your Thinking</h2>
+  <p>Look at the numbers: <code>10, 20, 30, 40</code> located in cells <code>A1:A4</code>.</p>
+  <p><strong>A.</strong> What is the result of <code>=SUM(A1:A4)</code>? <span class="answer-line" contenteditable="true" style="display:inline-block; width: 100px;">Result: ____</span></p>
+  <p><strong>B.</strong> What is the result of <code>=MAX(A1:A4)</code>? <span class="answer-line" contenteditable="true" style="display:inline-block; width: 100px;">Result: ____</span></p>
+  <p><strong>C.</strong> What is the result of <code>=AVERAGE(A1:A4)</code>? <span class="answer-line" contenteditable="true" style="display:inline-block; width: 100px;">Result: ____</span></p>
 </div>
 
 <!-- ========================================== -->
-<!-- PAGE 2: THE FOUR PROJECT TRACKS            -->
+<!-- PAGE 3: TURNING NUMBERS INTO CHARTS        -->
 <!-- ========================================== -->
 <div class="page">
   <div class="header-bar">
-    <div class="header-title">Choosing Your Project Track</div>
-    <div class="badge">Session 20 • Page 2</div>
-  </div>
-
-  <h2>1. The Four Approved Capstone Tracks</h2>
-  <p>Read through the four project options below with your team. Pick <strong>ONE</strong> track that excites you most:</p>
-
-  <div class="dual-grid">
-    <!-- TRACK A -->
-    <div class="dual-box">
-      <div class="dual-box-title">🌿 TRACK A: School Health & Environment</div>
-      <p><strong>The Challenge:</strong> Gutters clogged with plastic sachets or uncovered water drums causing mosquito breeding.</p>
-      <p><strong>What You Build:</strong></p>
-      <ul style="margin: 4px 0 0 15px; padding: 0; font-size: 12px;">
-        <li>A professional 1-page campaign notice (Word).</li>
-        <li>A 3-slide visual pitch presentation (PowerPoint).</li>
-      </ul>
-    </div>
-
-    <!-- TRACK B -->
-    <div class="dual-box">
-      <div class="dual-box-title">📊 TRACK B: Market & Canteen Bookkeeper</div>
-      <p><strong>The Challenge:</strong> Local food vendors or school canteen losing track of daily sales, costs, and profit.</p>
-      <p><strong>What You Build:</strong></p>
-      <ul style="margin: 4px 0 0 15px; padding: 0; font-size: 12px;">
-        <li>A table with SUM/AVERAGE formulas.</li>
-        <li>A column chart comparing items (or a pie chart showing each item's share of the total).</li>
-      </ul>
-    </div>
-  </div>
-
-  <div class="dual-grid">
-    <!-- TRACK C -->
-    <div class="dual-box">
-      <div class="dual-box-title">🎮 TRACK C: Interactive Educational Game</div>
-      <p><strong>The Challenge:</strong> Younger primary school students find hygiene or road safety rules boring to memorize.</p>
-      <p><strong>What You Build:</strong></p>
-      <ul style="margin: 4px 0 0 15px; padding: 0; font-size: 12px;">
-        <li>A playable Scratch animation or mini-quiz.</li>
-        <li>Includes a live Score variable and restart loop.</li>
-      </ul>
-    </div>
-
-    <!-- TRACK D -->
-    <div class="dual-box">
-      <div class="dual-box-title">🏛️ TRACK D: Culture & Community Tourism</div>
-      <p><strong>The Challenge:</strong> Promoting local historic landmarks, festivals, or eco-tourism sites in your region.</p>
-      <p><strong>What You Build:</strong></p>
-      <ul style="margin: 4px 0 0 15px; padding: 0; font-size: 12px;">
-        <li>A verified digital research report with citations.</li>
-        <li>A multimedia digital photo/slide guide.</li>
-      </ul>
-    </div>
-  </div>
-
-  <h2>2. The "Keep It Manageable" Rule</h2>
-  <div class="callout">
-    <div class="callout-title">⚠️ DO NOT TRY TO BUILD FACEBOOK IN 3 DAYS!</div>
-    The most common mistake young innovators make is choosing an impossible project (e.g. <em>"We want to build a self-driving car in Scratch"</em>).
-    <br><br>
-    <strong>The Pro Rule:</strong> Choose a clear, simple problem that you can build, polish, and demonstrate beautifully in 3 sessions. One finished, bug-free spreadsheet or 3-slide presentation beats a broken, half-finished giant dream!
-  </div>
-</div>
-
-<!-- ========================================== -->
-<!-- PAGE 3: WHAT IS A PROTOTYPE?               -->
-<!-- ========================================== -->
-<div class="page">
-  <div class="header-bar">
-    <div class="header-title">What is a Prototype? (Version 0.1)</div>
+    <div class="header-title">Turning Numbers into Pictures (Charts)</div>
     <div class="badge">Session 20 • Page 3</div>
   </div>
 
-  <h2>1. Plain Talk: The Cardboard Model House</h2>
-  <p>An architect never pours concrete on day one. First, they cut cardboard and tape together a small scale model of the building. It has no real glass windows or working light switches, but it shows everyone the size, shape, and door positions.</p>
-  <p>In tech, this early working draft is called a <strong>Prototype (Version 0.1)</strong>. It is built quickly so you can test if your concept makes sense before spending hours on final styling!</p>
+  <h2>1. Why Do We Use Charts?</h2>
+  <p>Human beings are visual thinkers. When a chief, headteacher, or market board inspects a spreadsheet with 500 rows of raw numbers, their eyes get tired. But when you convert that data into a <strong>Chart</strong>, patterns, trends, and comparisons leap out in <strong>one second</strong>!</p>
 
-  <!-- DIAGRAM: THE 3-STAGE PROJECT EVOLUTION -->
-  <div class="diagram-container">
-    <svg width="680" height="150" viewBox="0 0 680 150" xmlns="http://www.w3.org/2000/svg">
-      <rect x="25" y="10" width="630" height="130" rx="6" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.5"/>
-
-      <!-- STAGE 1: BLUEPRINT (Today) -->
-      <g transform="translate(45, 25)">
-        <rect x="0" y="0" width="150" height="85" rx="4" fill="#FFFFFF" stroke="#3A0CA3" stroke-width="2"/>
-        <text x="75" y="22" font-size="10" font-weight="bold" fill="#3A0CA3" text-anchor="middle">STAGE 1: Blueprint</text>
-        <line x1="15" y1="28" x2="135" y2="28" stroke="#E2E8F0" stroke-width="1"/>
-        <text x="75" y="48" font-size="8.5" fill="#64748B" text-anchor="middle">&bull; Problem defined</text>
-        <text x="75" y="62" font-size="8.5" fill="#64748B" text-anchor="middle">&bull; Paper wireframe</text>
-        <text x="75" y="76" font-size="8.5" fill="#64748B" text-anchor="middle">&bull; Folders created</text>
-        <text x="75" y="102" font-size="9" font-weight="bold" fill="#3A0CA3" text-anchor="middle">Session 20 (Today)</text>
-      </g>
-
-      <path d="M 205,68 L 245,68" stroke="#F77F00" stroke-width="2.5"/>
-      <polygon points="250,68 242,64 242,72" fill="#F77F00"/>
-
-      <!-- STAGE 2: PROTOTYPE (Session 21) -->
-      <g transform="translate(260, 25)">
-        <rect x="0" y="0" width="150" height="85" rx="4" fill="#FFFFFF" stroke="#F77F00" stroke-width="2"/>
-        <text x="75" y="22" font-size="10" font-weight="bold" fill="#C2410C" text-anchor="middle">STAGE 2: Prototype</text>
-        <line x1="15" y1="28" x2="135" y2="28" stroke="#E2E8F0" stroke-width="1"/>
-        <text x="75" y="48" font-size="8.5" fill="#64748B" text-anchor="middle">&bull; Working formulas/code</text>
-        <text x="75" y="62" font-size="8.5" fill="#64748B" text-anchor="middle">&bull; Tested by peers</text>
-        <text x="75" y="76" font-size="8.5" fill="#64748B" text-anchor="middle">&bull; Bugs fixed</text>
-        <text x="75" y="102" font-size="9" font-weight="bold" fill="#C2410C" text-anchor="middle">Session 21</text>
-      </g>
-
-      <path d="M 420,68 L 460,68" stroke="#F77F00" stroke-width="2.5"/>
-      <polygon points="465,68 457,64 457,72" fill="#F77F00"/>
-
-      <!-- STAGE 3: SHOWCASE (Session 22) -->
-      <g transform="translate(475, 25)">
-        <rect x="0" y="0" width="150" height="85" rx="4" fill="#FFFFFF" stroke="#10B981" stroke-width="2"/>
-        <text x="75" y="22" font-size="10" font-weight="bold" fill="#047857" text-anchor="middle">STAGE 3: Showcase</text>
-        <line x1="15" y1="28" x2="135" y2="28" stroke="#E2E8F0" stroke-width="1"/>
-        <text x="75" y="48" font-size="8.5" fill="#64748B" text-anchor="middle">&bull; Final visual polish</text>
-        <text x="75" y="62" font-size="8.5" fill="#64748B" text-anchor="middle">&bull; Stage presentation</text>
-        <text x="75" y="76" font-size="8.5" fill="#64748B" text-anchor="middle">&bull; Graduation!</text>
-        <text x="75" y="102" font-size="9" font-weight="bold" fill="#047857" text-anchor="middle">Session 22</text>
-      </g>
-    </svg>
-    <div class="diagram-caption">Figure 20.1: The Capstone Evolution. Today we lock in the Blueprint and start the raw Prototype.</div>
+  <h2>2. The Three Classic School Chart Types</h2>
+  <div class="dual-grid">
+    <div class="dual-box">
+      <div class="dual-box-title">📊 COLUMN / BAR CHART</div>
+      <p>Uses vertical or horizontal bars to <strong>compare separate categories</strong> side by side.</p>
+      <p><em>Best for:</em> Comparing sales of different items, attendance across classrooms, or harvest yields per village.</p>
+    </div>
+    <div class="dual-box">
+      <div class="dual-box-title">🥧 PIE CHART (Slices of a Cake)</div>
+      <p>A circle sliced into wedges showing <strong>parts of a 100% whole</strong>.</p>
+      <p><em>Best for:</em> School budget spending (food, books, sports) or waste composition (plastics vs. organic food scraps).</p>
+    </div>
+    <div class="dual-box" style="grid-column: 1 / -1;">
+      <div class="dual-box-title">📈 LINE CHART</div>
+      <p>Joins points with a line to show <strong>change over time</strong>. <em>Best for:</em> Rainfall or school attendance month by month.</p>
+    </div>
   </div>
 
-  <h2>2. Safe Data Ethics for Capstone</h2>
-  <div class="panic-box">
-    <div class="panic-title">🔒 CAPSTONE DATA PROTECTION LAW</div>
-    Do <strong>not</strong> collect real telephone numbers, personal home addresses, or secret financial records from real people in your neighborhood!
-    <br><br>
-    <strong>Use Realistic Simulated Data:</strong> If building a canteen spreadsheet, use sample items (<em>Jollof Rice, Meat Pie, Sobolo</em>) and approximate prices. Protect community privacy at all times!
+  <!-- DIAGRAM: ANATOMY OF A COLUMN CHART -->
+  <div class="diagram-container">
+    <svg width="680" height="210" viewBox="0 0 680 210" xmlns="http://www.w3.org/2000/svg">
+      <rect x="30" y="10" width="620" height="190" rx="6" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.5"/>
+
+      <!-- CHART TITLE -->
+      <text x="340" y="32" font-size="13" font-weight="bold" fill="#3A0CA3" text-anchor="middle">Tech Club Stationery Stock (Quantity)</text>
+
+      <!-- Y-AXIS (Values) -->
+      <g transform="translate(80, 45)">
+        <line x1="30" y1="10" x2="30" y2="120" stroke="#94A3B8" stroke-width="1.5"/>
+        <text x="22" y="14" font-size="8.5" fill="#64748B" text-anchor="end">20</text>
+        <line x1="28" y1="10" x2="520" y2="10" stroke="#F1F5F9" stroke-width="1"/>
+        <text x="22" y="42" font-size="8.5" fill="#64748B" text-anchor="end">15</text>
+        <line x1="28" y1="38" x2="520" y2="38" stroke="#F1F5F9" stroke-width="1"/>
+        <text x="22" y="70" font-size="8.5" fill="#64748B" text-anchor="end">10</text>
+        <line x1="28" y1="66" x2="520" y2="66" stroke="#F1F5F9" stroke-width="1"/>
+        <text x="22" y="98" font-size="8.5" fill="#64748B" text-anchor="end">5</text>
+        <line x1="28" y1="94" x2="520" y2="94" stroke="#F1F5F9" stroke-width="1"/>
+        <text x="22" y="122" font-size="8.5" fill="#64748B" text-anchor="end">0</text>
+
+        <!-- X-AXIS (Categories) -->
+        <line x1="30" y1="120" x2="520" y2="120" stroke="#94A3B8" stroke-width="1.5"/>
+
+        <!-- BAR 1: Exercise Books (10) -->
+        <rect x="60" y="66" width="60" height="54" rx="2" fill="#4361EE"/>
+        <text x="90" y="60" font-size="9" font-weight="bold" fill="#1E293B" text-anchor="middle">10</text>
+        <text x="90" y="134" font-size="8.5" fill="#334155" text-anchor="middle">Books</text>
+
+        <!-- BAR 2: Ballpoint Pens (20) -->
+        <rect x="170" y="10" width="60" height="110" rx="2" fill="#10B981"/>
+        <text x="200" y="6" font-size="9" font-weight="bold" fill="#1E293B" text-anchor="middle">20</text>
+        <text x="200" y="134" font-size="8.5" fill="#334155" text-anchor="middle">Pens</text>
+
+        <!-- BAR 3: Rulers (5) -->
+        <rect x="280" y="94" width="60" height="26" rx="2" fill="#F77F00"/>
+        <text x="310" y="88" font-size="9" font-weight="bold" fill="#1E293B" text-anchor="middle">5</text>
+        <text x="310" y="134" font-size="8.5" fill="#334155" text-anchor="middle">Rulers</text>
+
+        <!-- BAR 4: Erasers (15) -->
+        <rect x="390" y="38" width="60" height="82" rx="2" fill="#E63946"/>
+        <text x="420" y="32" font-size="9" font-weight="bold" fill="#1E293B" text-anchor="middle">15</text>
+        <text x="420" y="134" font-size="8.5" fill="#334155" text-anchor="middle">Erasers</text>
+      </g>
+
+      <!-- Callout Labels -->
+      <text x="40" y="95" font-size="8.5" font-weight="bold" fill="#64748B" transform="rotate(-90 40,95)" text-anchor="middle">Y-Axis (Values)</text>
+      <text x="340" y="195" font-size="9" font-weight="bold" fill="#64748B" text-anchor="middle">X-Axis (Categories / Item Names)</text>
+    </svg>
+    <div class="diagram-caption">Figure 20.2: Anatomy of a Column Chart. Data Labels on top of each bar display exact quantities.</div>
   </div>
 </div>
 
 <!-- ========================================== -->
-<!-- PAGE 4: MASTER PROJECT PLANNING CANVAS     -->
+<!-- PAGE 4: THE ART OF DATA SELECTION          -->
 <!-- ========================================== -->
 <div class="page">
   <div class="header-bar">
-    <div class="header-title">The Master Project Planning Canvas</div>
+    <div class="header-title">The Golden Rule of Chart Selection</div>
     <div class="badge">Session 20 • Page 4</div>
   </div>
 
-  <h2>1. Complete Your Team's Project Charter</h2>
-  <p>Fill in every section of this canvas. This is your official agreement with your Tech Club mentor:</p>
+  <h2>1. What Cells Do I Highlight Before Making a Chart?</h2>
+  <p>A chart is only as smart as the cells you feed into it. The computer does not guess: you must highlight the exact labels and numbers you want to visualize.</p>
 
-  <div style="border: 2px solid var(--bih-purple); border-radius: 8px; padding: 18px; background: #FFFFFF; margin: 10px 0;">
-    <!-- 1. Title -->
-    <div style="margin-bottom: 12px;">
-      <strong style="color: var(--bih-purple); font-size: 13px;">1. Project Title:</strong>
-      <div class="answer-line" contenteditable="true" style="font-weight:bold;">e.g. Clean Hands, Healthy School Campaign</div>
+  <div class="callout" style="background:#FEF2F2; border-left: 5px solid var(--bih-red);">
+    <div class="callout-title" style="color:var(--bih-red); font-size:13px;">🚨 THE #1 BEGINNER CHART MISTAKE:</div>
+    <div style="font-size: 13.5px; font-weight: bold; color: #7F1D1D; margin: 4px 0;">
+      NEVER INCLUDE THE "GRAND TOTAL" ROW IN YOUR CHART!
     </div>
-
-    <!-- 2. Track -->
-    <div style="margin-bottom: 12px;">
-      <strong style="color: var(--bih-purple); font-size: 13px;">2. Chosen Track (Tick One):</strong>
-      <div style="margin-top: 4px; font-size: 12.5px;">
-        [ &nbsp; ] Track A: Health & Environment &nbsp;&nbsp;&nbsp;&nbsp; [ &nbsp; ] Track B: Canteen / Market Bookkeeper<br>
-        [ &nbsp; ] Track C: Scratch Educational Game &nbsp;&nbsp;&nbsp;&nbsp; [ &nbsp; ] Track D: Culture & Tourism Guide
-      </div>
-    </div>
-
-    <!-- 3. Problem Statement -->
-    <div style="margin-bottom: 12px;">
-      <strong style="color: var(--bih-purple); font-size: 13px;">3. The Real Problem We Are Addressing:</strong>
-      <div class="answer-box" contenteditable="true">
-        Describe the problem clearly in 2 sentences... (e.g., Many students at our school eat lunch without washing their hands with soap, leading to stomach illnesses and missed school days).
-      </div>
-    </div>
-
-    <!-- 4. Target Audience -->
-    <div style="margin-bottom: 12px;">
-      <strong style="color: var(--bih-purple); font-size: 13px;">4. Who Will Use / Read This Solution? (Target Audience):</strong>
-      <div class="answer-line" contenteditable="true">e.g. JHS 1 and Primary 6 students, school food vendors, teachers...</div>
-    </div>
-
-    <!-- 5. Solution Description -->
-    <div style="margin-bottom: 12px;">
-      <strong style="color: var(--bih-purple); font-size: 13px;">5. What Will Our Finished Solution Be?</strong>
-      <div class="answer-box" contenteditable="true">
-        Explain what digital files you will build... (e.g., A 1-page illustrated guide showing the 4 steps of handwashing, plus a 3-slide presentation pitched to morning assembly).
-      </div>
-    </div>
-
-    <!-- 6. Tools Needed -->
-    <div style="margin-bottom: 12px;">
-      <strong style="color: var(--bih-purple); font-size: 13px;">6. Software Tools We Will Use:</strong>
-      <div style="margin-top: 4px; font-size: 12.5px;">
-        <label><input type="checkbox"> Word Processor</label> &nbsp;&nbsp;
-        <label><input type="checkbox"> Spreadsheet</label> &nbsp;&nbsp;
-        <label><input type="checkbox"> Presentation Slides</label> &nbsp;&nbsp;
-        <label><input type="checkbox"> Scratch Coding</label> &nbsp;&nbsp;
-        <label><input type="checkbox"> Web Browser Research</label>
-      </div>
-    </div>
-
-    <!-- 7. Team Roles -->
-    <div>
-      <strong style="color: var(--bih-purple); font-size: 13px;">7. Team Roles</strong> <span style="font-size: 11.5px;">(every member needs a role; one person may hold two):</span>
-      <div style="margin-top: 4px; font-size: 12.5px; line-height: 2;">
-        Project Manager: ____________________ &nbsp;&nbsp; Designer / Builder: ____________________<br>
-        Researcher / Tester: ________________ &nbsp;&nbsp; Presenter: ____________________________
-      </div>
-    </div>
+    If you include the Total row, the Total bar will be huge (e.g. 50 items) and will dwarf all your individual products, making them look like tiny flat slivers!
   </div>
+
+  <!-- DIAGRAM: CORRECT VS WRONG HIGHLIGHT FOR CHARTS -->
+  <div class="diagram-container">
+    <svg width="700" height="175" viewBox="0 0 700 175" xmlns="http://www.w3.org/2000/svg">
+      <rect x="20" y="10" width="660" height="155" rx="6" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.5"/>
+
+      <!-- CORRECT SELECTION (Left) -->
+      <g transform="translate(40, 20)">
+        <text x="130" y="18" font-size="11" font-weight="bold" fill="#047857" text-anchor="middle">&#10004; CORRECT SELECTION (A1:B5)</text>
+        <rect x="20" y="28" width="220" height="96" rx="3" fill="#ECFDF5" stroke="#10B981" stroke-width="2"/>
+        
+        <!-- Table Mock -->
+        <text x="30" y="44" font-size="9" font-weight="bold" fill="#047857">Item (A1)</text>
+        <text x="180" y="44" font-size="9" font-weight="bold" fill="#047857">Qty (B1)</text>
+        <line x1="20" y1="48" x2="240" y2="48" stroke="#A7F3D0" stroke-width="1"/>
+        <text x="30" y="62" font-size="8.5" fill="#064E3B">Books</text><text x="180" y="62" font-size="8.5" fill="#064E3B">10</text>
+        <text x="30" y="76" font-size="8.5" fill="#064E3B">Pens</text><text x="180" y="76" font-size="8.5" fill="#064E3B">20</text>
+        <text x="30" y="90" font-size="8.5" fill="#064E3B">Rulers</text><text x="180" y="90" font-size="8.5" fill="#064E3B">5</text>
+        <text x="30" y="104" font-size="8.5" fill="#064E3B">Erasers</text><text x="180" y="104" font-size="8.5" fill="#064E3B">15</text>
+        
+        <!-- Total row left unselected below -->
+        <rect x="20" y="126" width="220" height="18" fill="#F1F5F9" stroke="#CBD5E1" stroke-width="1"/>
+        <text x="30" y="139" font-size="8.5" fill="#64748B">Total</text><text x="180" y="139" font-size="8.5" fill="#64748B">50</text>
+        <text x="130" y="152" font-size="7.5" fill="#047857" font-weight="bold" text-anchor="middle">&uarr; Total is safely left OUT!</text>
+      </g>
+
+      <!-- WRONG SELECTION (Right) -->
+      <g transform="translate(380, 20)">
+        <text x="130" y="18" font-size="11" font-weight="bold" fill="#DC2626" text-anchor="middle">&#10008; WRONG SELECTION (Includes Total)</text>
+        <rect x="20" y="28" width="220" height="116" rx="3" fill="#FEF2F2" stroke="#EF4444" stroke-width="2"/>
+        
+        <text x="30" y="44" font-size="9" font-weight="bold" fill="#7F1D1D">Item</text>
+        <text x="180" y="44" font-size="9" font-weight="bold" fill="#7F1D1D">Qty</text>
+        <line x1="20" y1="48" x2="240" y2="48" stroke="#FECACA" stroke-width="1"/>
+        <text x="30" y="62" font-size="8.5" fill="#7F1D1D">Books</text><text x="180" y="62" font-size="8.5" fill="#7F1D1D">10</text>
+        <text x="30" y="76" font-size="8.5" fill="#7F1D1D">Pens</text><text x="180" y="76" font-size="8.5" fill="#7F1D1D">20</text>
+        <text x="30" y="90" font-size="8.5" fill="#7F1D1D">Rulers</text><text x="180" y="90" font-size="8.5" fill="#7F1D1D">5</text>
+        <text x="30" y="104" font-size="8.5" fill="#7F1D1D">Erasers</text><text x="180" y="104" font-size="8.5" fill="#7F1D1D">15</text>
+        <text x="30" y="118" font-size="8.5" font-weight="bold" fill="#DC2626">Total</text><text x="180" y="118" font-size="8.5" font-weight="bold" fill="#DC2626">50</text>
+        <text x="130" y="152" font-size="7.5" fill="#DC2626" font-weight="bold" text-anchor="middle">&uarr; RUINS CHART: Total creates a giant bar!</text>
+      </g>
+    </svg>
+    <div class="diagram-caption">Figure 20.3: Data selection rule for charts. Always select the headers and items, but stop before the Total row!</div>
+  </div>
+
+  <h2>2. Troubleshooting Chart Issues</h2>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 30%;">Problem Observed</th>
+        <th style="width: 35%;">Why It Happened</th>
+        <th style="width: 35%;">Immediate Fix</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>My chart is completely blank!</strong></td>
+        <td>You highlighted empty white cells before clicking Insert Chart.</td>
+        <td>Delete chart (<span class="kbd-key">Del</span>), highlight your actual data table, and re-insert.</td>
+      </tr>
+      <tr>
+        <td><strong>The bars have no labels under them.</strong></td>
+        <td>You only selected Column B (numbers) and forgot to select Column A (item names).</td>
+        <td>Select <strong>both</strong> columns: from A1 across to B5!</td>
+      </tr>
+    </tbody>
+  </table>
+  <p><em>Using Google Sheets or LibreOffice Calc? The buttons look a little different but do the same job.</em></p>
 </div>
 
 <!-- ========================================== -->
-<!-- PAGE 5: GUIDED LAB - DIRECTORY & V0.1       -->
+<!-- PAGE 5: GUIDED HANDS-ON LAB                -->
 <!-- ========================================== -->
 <div class="page">
   <div class="header-bar">
-    <div class="header-title">Guided Hands-On Lab: Setting the Foundation</div>
+    <div class="header-title">Guided Hands-On Lab: Totals & Charts</div>
     <div class="badge">Session 20 • Page 5</div>
   </div>
 
-  <h2>1. Lab Mission: Set Up Folders & Build Prototype v0.1</h2>
-  <p>Follow these 5 steps to organize your files and begin your project skeleton:</p>
+  <h2>1. Lab Mission: Add Grand Totals, Stats & a Visual Chart</h2>
+  <p>Follow these 6 steps inside your existing spreadsheet file from Session 19:</p>
 
   <div class="step-card">
     <div class="step-num">1</div>
     <div class="step-content">
-      <strong>Build Your Capstone Directory Tree:</strong>
-      <br>Press <span class="kbd-key">&#8862; Win + E</span> &rarr; Navigate to <strong>Documents &gt; BIH_Practice</strong>.
-      <br>Create a main folder: <code>Capstone_[TeamName]</code>.
-      <br>Inside it, create two subfolders: <code>Drafts</code> and <code>Final_Showcase</code>.
+      <strong>Open Your File:</strong> Launch Excel, Calc, or Sheets &rarr; Open <code>Stationery_Store_Ama.xlsx</code> from your <code>BIH_Practice</code> folder.
     </div>
   </div>
 
   <div class="step-card">
     <div class="step-num">2</div>
     <div class="step-content">
-      <strong>Launch Your Chosen Software Tool:</strong>
-      <br>&bull; <strong>Track A:</strong> Open Word (notice); PowerPoint later (3-slide pitch).
-      <br>&bull; <strong>Track B:</strong> Open Excel / Calc &rarr; Create blank workbook.
-      <br>&bull; <strong>Track C:</strong> Open Scratch &rarr; Start fresh project.
-      <br>&bull; <strong>Track D:</strong> Open Word (report); PowerPoint later (photo/slide guide).
+      <strong>Calculate Grand Total using =SUM:</strong>
+      <br>&bull; Click inside Cell <strong>A6</strong>, type: <code>GRAND TOTAL</code>.
+      <br>&bull; Click inside Cell <strong>D6</strong>, type: <code>=SUM(D2:D5)</code> and tap <span class="kbd-key">Enter</span>.
+      <br><em>Observation:</em> D6 displays <strong>162.50</strong>!
     </div>
   </div>
 
   <div class="step-card">
     <div class="step-num">3</div>
     <div class="step-content">
-      <strong>Build the "Skeleton" Structure (Version 0.1):</strong>
-      <br>Do not worry about colors or fancy graphics today! Build the structure:
-      <br>&bull; <em>Word users:</em> Type the main Title and 3 section headings.
-      <br>&bull; <em>Excel users:</em> Type Column Headers across Row 1 (Item, Qty, Price, Total).
-      <br>&bull; <em>PowerPoint users:</em> Create your 3 slides and type the titles on each.
-      <br>&bull; <em>Scratch users:</em> Choose your main Sprite and Backdrop.
+      <strong>Calculate Statistics:</strong>
+      <br>&bull; In Cell <strong>A7</strong>, type: <code>Average Price</code> &rarr; in <strong>C7</strong>, type: <code>=AVERAGE(C2:C5)</code>
+      <br>&bull; In Cell <strong>A8</strong>, type: <code>Highest Price</code> &rarr; in <strong>C8</strong>, type: <code>=MAX(C2:C5)</code>
+      <br>&bull; In Cell <strong>A9</strong>, type: <code>Lowest Price</code> &rarr; in <strong>C9</strong>, type: <code>=MIN(C2:C5)</code>
+      <br>&bull; Select C2:D9 &rarr; Home &rarr; Number format &rarr; <strong>2 decimal places</strong> (so 3.875 shows as 3.88).
     </div>
   </div>
 
   <div class="step-card">
     <div class="step-num">4</div>
     <div class="step-content">
-      <strong>Initial Save (Save As...):</strong>
-      <br>Save your file into <code>Documents &gt; BIH_Practice &gt; Capstone_[TeamName] &gt; Drafts</code>.
-      <br>Use the naming formula: <code>Capstone_v0.1_[ProjectName].docx</code> (or <code>.xlsx</code> / <code>.pptx</code> / <code>.sb3</code>).
+      <strong>Select Data for the Chart:</strong>
+      <br>Click in Cell <strong>A1</strong>, hold down the left mouse button, and drag across and down to Cell <strong>B5</strong>.
+      <br><em>Check:</em> Cells A1 through B5 are highlighted blue/green. (Notice you left Row 6 OUT!).
     </div>
   </div>
 
   <div class="step-card">
     <div class="step-num">5</div>
     <div class="step-content">
-      <strong>Mentor Blueprint Inspection:</strong>
-      <br>Raise your hand and show your <strong>Canvas (Page 4)</strong> and your <strong>Version 0.1 Skeleton</strong> to your mentor for sign-off!
+      <strong>Insert the Chart:</strong>
+      <br>Click the <strong>Insert</strong> tab on the Ribbon &rarr; click <strong>Column / Bar Chart</strong> &rarr; select <strong>2D Clustered Column</strong>.
+      <br>A bar chart appears on your sheet!
     </div>
   </div>
 
-  <h2>2. Visual Target (Sample Folder Directory Structure)</h2>
-  <div style="background: var(--bih-light); border: 2px dashed var(--bih-border); padding: 18px; border-radius: 8px; font-family: monospace; font-size: 13px; margin: 15px 0;">
-    📁 Documents<br>
-    &nbsp;&nbsp;&nbsp;└── 📁 BIH_Practice<br>
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└── 📁 Capstone_EcoTech<br>
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├── 📁 Drafts<br>
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;└── 📄 Capstone_v0.1_CleanWater.docx<br>
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└── 📁 Final_Showcase<br>
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└── (Ready for Session 22!)
+  <div class="step-card">
+    <div class="step-num">6</div>
+    <div class="step-content">
+      <strong>Add Title & Test Dynamic Magic:</strong>
+      <br>Double-click the default chart title and rename it: <code>Stationery Stock Quantities</code>.
+      <br>Now change Cell <strong>B2 (Books)</strong> from 10 to <strong>35</strong>.
+      <br><em>Watch:</em> The Grand Total updates AND the blue chart bar grows taller instantly! Save: <span class="kbd-key">Ctrl + S</span>.
+    </div>
   </div>
+
+  <h2>2. Visual Target (What Your Finished Sheet Should Look Like)</h2>
+  <table class="sheet-grid" style="max-width: 600px; margin: 10px auto;">
+    <tbody>
+      <tr>
+        <td class="row-num">1</td>
+        <td style="font-weight:bold; background:#F8FAFC;">Item Description</td>
+        <td style="font-weight:bold; background:#F8FAFC;">Quantity</td>
+        <td style="font-weight:bold; background:#F8FAFC;">Price (GHS)</td>
+        <td style="font-weight:bold; background:#F8FAFC;">Line Total</td>
+      </tr>
+      <tr><td class="row-num">2</td><td>Exercise Books</td><td style="text-align:right;">10</td><td style="text-align:right;">8.00</td><td style="text-align:right;">80.00</td></tr>
+      <tr><td class="row-num">3</td><td>Ballpoint Pens</td><td style="text-align:right;">20</td><td style="text-align:right;">2.00</td><td style="text-align:right;">40.00</td></tr>
+      <tr><td class="row-num">4</td><td>Wooden Rulers</td><td style="text-align:right;">5</td><td style="text-align:right;">4.00</td><td style="text-align:right;">20.00</td></tr>
+      <tr><td class="row-num">5</td><td>Pencil Erasers</td><td style="text-align:right;">15</td><td style="text-align:right;">1.50</td><td style="text-align:right;">22.50</td></tr>
+      <tr>
+        <td class="row-num">6</td>
+        <td style="font-weight:bold; background:#DCFCE7;">GRAND TOTAL</td>
+        <td style="background:#DCFCE7;"></td>
+        <td style="background:#DCFCE7;"></td>
+        <td style="text-align:right; font-weight:bold; color:var(--excel-green); background:#DCFCE7;">162.50</td>
+      </tr>
+      <tr><td class="row-num">7</td><td colspan="2">Average Price</td><td style="text-align:right; font-weight:bold;">3.88</td><td></td></tr>
+      <tr><td class="row-num">8</td><td colspan="2">Highest Price</td><td style="text-align:right; font-weight:bold;">8.00</td><td></td></tr>
+      <tr><td class="row-num">9</td><td colspan="2">Lowest Price</td><td style="text-align:right; font-weight:bold;">1.50</td><td></td></tr>
+    </tbody>
+  </table>
 </div>
 
 <!-- ========================================== -->
-<!-- PAGE 6: REVIEW & MENTOR APPROVAL           -->
+<!-- PAGE 6: REVIEW & SELF-ASSESSMENT           -->
 <!-- ========================================== -->
 <div class="page">
   <div class="header-bar">
-    <div class="header-title">Session 20 Milestone & Approval</div>
+    <div class="header-title">Session 20 Review & Verification</div>
     <div class="badge">Session 20 • Page 6</div>
   </div>
 
-  <h2>1. Milestone 1 Checklist (To Be Completed Today)</h2>
-  <p>Verify that your team has completed all four foundation milestones:</p>
-  <div class="checkbox-item"><input type="checkbox"> We formed our team and selected one approved Capstone Track (A, B, C, or D).</div>
-  <div class="checkbox-item"><input type="checkbox"> We completed all 7 boxes of the Project Planning Canvas on Page 4.</div>
-  <div class="checkbox-item"><input type="checkbox"> We built our folder directory tree inside <code>Documents &gt; BIH_Practice</code>.</div>
-  <div class="checkbox-item"><input type="checkbox"> We built and saved our initial <strong>Version 0.1 Skeleton file</strong>.</div>
+  <h2>1. Match the Function to its Job</h2>
+  <p>Draw a line connecting each spreadsheet function to its correct mathematical job:</p>
 
-  <h2>2. Written Reflection</h2>
-  <p><strong>Question 1:</strong> Why is it smart to build a rough "Prototype" before spending hours perfecting colors and animations?</p>
+  <div style="display: flex; justify-content: space-between; margin: 20px 30px; font-size: 13px;">
+    <div style="display: flex; flex-direction: column; gap: 20px; font-weight: bold; font-family: monospace; font-size: 14px; color: var(--bih-purple);">
+      <div>=SUM(B2:B10)</div>
+      <div>=AVERAGE(B2:B10)</div>
+      <div>=MAX(B2:B10)</div>
+      <div>=MIN(B2:B10)</div>
+      <div>D2:D20</div>
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 20px; color: var(--bih-dark);">
+      <div>&bull; &nbsp; Finds the smallest / lowest value in the range.</div>
+      <div>&bull; &nbsp; Adds up all numbers in the range to give a grand total.</div>
+      <div>&bull; &nbsp; Represents a range of cells from D2 through to D20.</div>
+      <div>&bull; &nbsp; Finds the largest / highest value in the range.</div>
+      <div>&bull; &nbsp; Calculates the typical mean score of the range.</div>
+    </div>
+  </div>
+
+  <h2>2. Written Review Questions</h2>
+  <p><strong>Question 1:</strong> Why should you NEVER include the "Grand Total" row when highlighting data to build a Column chart?</p>
   <div class="answer-line" contenteditable="true">Write your answer here...</div>
   <div class="answer-line" contenteditable="true"></div>
 
-  <p><strong>Question 2:</strong> What is one challenge your team might face during Session 21 (building and testing), and how will you solve it?</p>
-  <div class="answer-line" contenteditable="true">Write your answer here...</div>
+  <p><strong>Question 2:</strong> What does the colon symbol (<strong>:</strong>) in the formula <code>=SUM(A1:A50)</code> stand for?</p>
+  <div class="answer-line" contenteditable="true">Answer: ____________________________________</div>
 
-  <h2>3. Official Mentor Capstone Approval Sign-Off</h2>
-  <p><em>(Your mentor must review and sign below before your team can begin Session 21 building!)</em></p>
+  <p><strong>Question 3:</strong> Which type of chart is shaped like a circular cake and is best for showing parts of a 100% whole budget?</p>
+  <div class="answer-line" contenteditable="true">Answer: ____________________________________</div>
 
+  <h2>3. Self-Assessment & Mentor Sign-Off</h2>
+  <p>Tick the column that reflects your confidence at the end of this session:</p>
   <table>
     <thead>
       <tr>
-        <th style="width: 45%;">Mentor Evaluation Criteria</th>
-        <th style="width: 18%; text-align:center;">Needs Revision</th>
-        <th style="width: 18%; text-align:center;">Approved &#10004;</th>
-        <th style="width: 19%; text-align:center;">Outstanding! ⭐</th>
+        <th>Spreadsheet Functions & Charting Competency</th>
+        <th style="width: 18%; text-align: center;">With Help</th>
+        <th style="width: 18%; text-align: center;">Almost Alone</th>
+        <th style="width: 18%; text-align: center;">All By Myself!</th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td><strong>Community Relevance:</strong> Does the project address a real issue?</td>
-        <td style="text-align:center;"><input type="radio" name="m1"></td>
-        <td style="text-align:center;"><input type="radio" name="m1"></td>
-        <td style="text-align:center;"><input type="radio" name="m1"></td>
+        <td>1. I can write a range of cells using colon notation (e.g. D2:D5).</td>
+        <td style="text-align: center;"><input type="radio" name="s11_1"></td>
+        <td style="text-align: center;"><input type="radio" name="s11_1"></td>
+        <td style="text-align: center;"><input type="radio" name="s11_1"></td>
       </tr>
       <tr>
-        <td><strong>Feasibility:</strong> Can the team realistically finish in 3 sessions?</td>
-        <td style="text-align:center;"><input type="radio" name="m2"></td>
-        <td style="text-align:center;"><input type="radio" name="m2"></td>
-        <td style="text-align:center;"><input type="radio" name="m2"></td>
+        <td>2. I can calculate grand totals using =SUM and averages using =AVERAGE.</td>
+        <td style="text-align: center;"><input type="radio" name="s11_2"></td>
+        <td style="text-align: center;"><input type="radio" name="s11_2"></td>
+        <td style="text-align: center;"><input type="radio" name="s11_2"></td>
       </tr>
       <tr>
-        <td><strong>Data Safety:</strong> Does the plan respect privacy and P.I.I. rules?</td>
-        <td style="text-align:center;"><input type="radio" name="m3"></td>
-        <td style="text-align:center;"><input type="radio" name="m3"></td>
-        <td style="text-align:center;"><input type="radio" name="m3"></td>
+        <td>3. I can find the highest and lowest numbers using =MAX and =MIN.</td>
+        <td style="text-align: center;"><input type="radio" name="s11_3"></td>
+        <td style="text-align: center;"><input type="radio" name="s11_3"></td>
+        <td style="text-align: center;"><input type="radio" name="s11_3"></td>
       </tr>
       <tr>
-        <td><strong>File Setup:</strong> Are directories and v0.1 files created properly?</td>
-        <td style="text-align:center;"><input type="radio" name="m4"></td>
-        <td style="text-align:center;"><input type="radio" name="m4"></td>
-        <td style="text-align:center;"><input type="radio" name="m4"></td>
+        <td>4. I can select items and quantities (leaving out Total) to create a Column Chart.</td>
+        <td style="text-align: center;"><input type="radio" name="s11_4"></td>
+        <td style="text-align: center;"><input type="radio" name="s11_4"></td>
+        <td style="text-align: center;"><input type="radio" name="s11_4"></td>
       </tr>
     </tbody>
   </table>
 
-  <div style="border: 2px solid var(--bih-green); border-radius: 6px; padding: 12px; background: #ECFDF5; margin-top: 15px;">
-    <strong>Mentor Notes / Advice for Session 21:</strong>
-    <div class="answer-line" contenteditable="true" style="border-bottom-color: #059669;">Write advice here...</div>
-    <div style="display: flex; justify-content: space-between; margin-top: 10px; font-size: 13px;">
-      <div><strong>Mentor Signature:</strong> _____________________________</div>
-      <div><strong>Date Approved:</strong> ____________________</div>
-    </div>
+  <div style="border-top: 1px solid var(--bih-border); margin-top: 25px; padding-top: 12px; display: flex; justify-content: space-between; font-size: 13px;">
+    <div><strong>Mentor Signature:</strong> _____________________________</div>
+    <div><strong>Date Completed:</strong> ____________________</div>
   </div>
 </div>
 

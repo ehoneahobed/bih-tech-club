@@ -1,4 +1,4 @@
-# Session 22: Showcase Demo Day & Graduation
+# Session 44: Showcase Demo Day & Graduation
 
 > **At a glance:** every team delivers a 3-minute live pitch of their capstone project, with every member speaking, then pupils reflect on their journey, take the Digital Leader's Pledge and graduate. · **Time:** 90 minutes (adjust the timings if your period is shorter) · **Workbook pages:** 6
 
@@ -71,7 +71,7 @@ There are no questions with fixed answers on Demo Day. Use this guidance.
 ## Evidence for sign-off
 - The team delivered its pitch with a live demo of the v1.1 file and every member had a speaking or driving role.
 - The pupil completed the three reflections on Page 3 and the pledge on Page 5.
-- The pupil's earlier milestones (Sessions 20 and 21) are signed. Only then sign and present the certificate.
+- The pupil's earlier milestones (Sessions 42 and 43) are signed. Only then sign and present the certificate.
 
 ## Safety and wellbeing
 Take photos or videos only of pupils whose parents or guardians have agreed, and don't post them online without the school's approval. Check projects on screen show only fictional data, with no real phone numbers, addresses or passwords. Ask guests for kind questions. Praise effort and calm, not just polish.

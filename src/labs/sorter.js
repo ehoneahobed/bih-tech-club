@@ -1,4 +1,4 @@
-// Session 18 — What Is AI? Teach the Robot: a recycling robot learns from
+// Session 39 — What Is AI? Teach the Robot: a recycling robot learns from
 // examples. Pupils label things on the conveyor belt (Plastic, Paper or Cans)
 // and each one goes onto the robot's memory shelf (its training data). Then
 // the robot sorts things it has never seen by finding the most similar example

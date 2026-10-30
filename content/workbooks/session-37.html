@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>BIH Tech Club - Session 37: Loops, Decisions & Debugging</title>
+  <style>
+    :root {
+      --bih-purple: #3A0CA3;
+      --bih-accent: #4361EE;
+      --bih-gold: #F77F00;
+      --bih-green: #2EC4B6;
+      --bih-red: #E63946;
+      --bih-dark: #1E1E24;
+      --bih-light: #F8F9FA;
+      --bih-border: #CED4DA;
+      --scratch-orange: #FFAB19;
+      --scratch-blue: #4C97FF;
+      --scratch-purple: #9966FF;
+      --scratch-yellow: #FFBF00;
+      --scratch-green: #0FBD8C;
+      --scratch-sensing: #5CB1D6;
+      --scratch-variable: #FF8C1A;
+    }
+
+    * {
+      box-sizing: border-box;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    body {
+      background-color: #E9ECEF;
+      color: var(--bih-dark);
+      margin: 0;
+      padding: 20px;
+      line-height: 1.55;
+    }
+
+    .page {
+      background: #FFFFFF;
+      max-width: 860px;
+      margin: 20px auto;
+      padding: 42px 50px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+      border-radius: 8px;
+      page-break-after: always;
+    }
+
+    @media print {
+      body { background: white; padding: 0; }
+      .page { box-shadow: none; margin: 0; padding: 30px; max-width: 100%; border-radius: 0; }
+      .no-print { display: none; }
+    }
+
+    /* Header Bar */
+    .header-bar {
+      border-bottom: 3px solid var(--bih-purple);
+      padding-bottom: 10px;
+      margin-bottom: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .header-title {
+      font-size: 19px;
+      font-weight: 800;
+      color: var(--bih-purple);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .badge {
+      background: var(--bih-gold);
+      color: #FFFFFF;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+    }
+
+    /* Student Meta Box */
+    .student-meta {
+      border: 2px dashed var(--bih-border);
+      border-radius: 8px;
+      padding: 12px 18px;
+      background: var(--bih-light);
+      margin-bottom: 20px;
+    }
+
+    .meta-row {
+      display: flex;
+      gap: 15px;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+    .meta-row:last-child { margin-bottom: 0; }
+
+    .meta-label {
+      font-size: 12.5px;
+      font-weight: 700;
+      color: var(--bih-dark);
+      min-width: 125px;
+    }
+
+    .editable-line {
+      border-bottom: 1.5px solid var(--bih-purple);
+      flex-grow: 1;
+      padding: 2px 6px;
+      font-size: 13.5px;
+      font-weight: 600;
+      color: var(--bih-purple);
+      outline: none;
+      min-height: 20px;
+    }
+
+    /* Typography */
+    h1 { color: var(--bih-purple); font-size: 22px; margin-top: 0; margin-bottom: 8px; }
+    h2 { color: var(--bih-purple); font-size: 16px; margin-top: 20px; margin-bottom: 10px; border-left: 4px solid var(--bih-gold); padding-left: 8px; }
+    p { font-size: 13px; margin: 6px 0; }
+
+    /* Dual Grid Layout */
+    .dual-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin: 12px 0;
+    }
+
+    .dual-box {
+      border: 1px solid var(--bih-border);
+      border-radius: 8px;
+      padding: 12px 14px;
+      background: #FAFAFA;
+    }
+    .dual-box-title {
+      font-size: 13px;
+      font-weight: 800;
+      color: var(--bih-purple);
+      margin-bottom: 6px;
+      border-bottom: 1px solid var(--bih-border);
+      padding-bottom: 4px;
+    }
+
+    /* Callouts & Alert Boxes */
+    .callout {
+      background: #FFF3CD;
+      border-left: 4px solid var(--bih-gold);
+      padding: 10px 14px;
+      margin: 14px 0;
+      border-radius: 0 8px 8px 0;
+      font-size: 12.5px;
+    }
+    .callout-title {
+      font-weight: 800;
+      color: #856404;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 2px;
+    }
+
+    .panic-box {
+      background: #F8D7DA;
+      border-left: 4px solid var(--bih-red);
+      padding: 12px 14px;
+      margin: 14px 0;
+      border-radius: 0 8px 8px 0;
+      font-size: 12.5px;
+    }
+    .panic-title {
+      font-weight: 800;
+      color: #721C24;
+      margin-bottom: 4px;
+    }
+
+    /* Step Cards */
+    .step-card {
+      display: flex;
+      gap: 12px;
+      background: var(--bih-light);
+      border: 1px solid var(--bih-border);
+      border-radius: 6px;
+      padding: 10px 12px;
+      margin-bottom: 8px;
+      align-items: flex-start;
+    }
+
+    .step-num {
+      background: var(--bih-purple);
+      color: white;
+      font-size: 13px;
+      font-weight: 800;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .step-content { flex-grow: 1; font-size: 12.5px; }
+
+    /* Diagrams */
+    .diagram-container {
+      background: #FAFAFA;
+      border: 1px solid var(--bih-border);
+      border-radius: 8px;
+      padding: 12px;
+      margin: 14px 0;
+      text-align: center;
+    }
+    .diagram-caption {
+      font-size: 11px;
+      color: #6C757D;
+      margin-top: 6px;
+      font-style: italic;
+    }
+
+    /* Tables */
+    table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 12.5px; }
+    th { background: var(--bih-purple); color: white; text-align: left; padding: 7px 10px; }
+    td { border: 1px solid var(--bih-border); padding: 7px 10px; vertical-align: top; }
+    tr:nth-child(even) { background-color: var(--bih-light); }
+
+    /* Interactive Inputs */
+    .answer-line {
+      min-height: 24px;
+      border-bottom: 1px dashed var(--bih-purple);
+      margin: 4px 0;
+      outline: none;
+      font-size: 13px;
+      color: var(--bih-dark);
+      padding: 2px 4px;
+    }
+
+    .checkbox-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 6px;
+      font-size: 12.5px;
+    }
+    .checkbox-item input { width: 15px; height: 15px; cursor: pointer; }
+  </style>
+</head>
+<body>
+
+<!-- ========================================== -->
+<!-- PAGE 1: THE POWER OF LOOPS (ITERATION)     -->
+<!-- ========================================== -->
+<div class="page">
+  <div class="header-bar">
+    <div class="header-title">Bozoma Innovation Hub • Tech Club</div>
+    <div class="badge">Session 37 • Page 1</div>
+  </div>
+
+  <div class="student-meta">
+    <div class="meta-row">
+      <span class="meta-label">Learner Full Name:</span>
+      <div class="editable-line" contenteditable="true">Ama Mensah</div>
+      <span class="meta-label" style="min-width: 90px;">School:</span>
+      <div class="editable-line" contenteditable="true">Bozoma Model JHS</div>
+    </div>
+    <div class="meta-row">
+      <span class="meta-label">Workstation Device:</span>
+      <div class="editable-line" contenteditable="true" style="max-width: 180px;">[ ] Desktop &nbsp; [ ] Laptop</div>
+      <span class="meta-label" style="min-width: 50px;">Class:</span>
+      <div class="editable-line" contenteditable="true" style="max-width: 90px;">JHS 1</div>
+    </div>
+  </div>
+
+  <h1>Session 37: Loops, Decisions & Debugging</h1>
+  <p>In Session 36, you made a sprite walk, speak, and turn once. But real computer programs don't just execute 3 blocks and stop dead. They keep running in a continuous cycle, make decisions when obstacles appear, and keep score. Today, you become a genuine game developer!</p>
+
+  <h2>1. Plain Talk: The Fufu Pounding Analogy (What is a Loop?)</h2>
+  <p>Think about preparing <em>Fufu</em>: one person pounds the pestle into the wooden mortar, and the second person turns the cassava. <em>Pound, turn. Pound, turn. Pound, turn.</em></p>
+  <p>You do not hire 50 different people to strike the mortar once each! One person repeats the exact same action rhythmically until the fufu is smooth. In computer science, an automatic repeating cycle is called a <strong>Loop</strong> (or <strong>Iteration</strong>).</p>
+
+  <!-- DIAGRAM: THE TWO TYPES OF LOOPS -->
+  <div class="diagram-container">
+    <svg width="700" height="165" viewBox="0 0 700 165" xmlns="http://www.w3.org/2000/svg">
+      <rect x="20" y="10" width="660" height="145" rx="6" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.5"/>
+
+      <!-- 1. COUNTED LOOP: REPEAT (10) -->
+      <g transform="translate(50, 25)">
+        <text x="110" y="14" font-size="10.5" font-weight="bold" fill="#3A0CA3" text-anchor="middle">TYPE 1: COUNTED LOOP (Repeat 10)</text>
+        
+        <!-- C-Shaped Repeat Block -->
+        <path d="M 20,25 L 180,25 A 4 4 0 0 1 184,29 L 184,48 A 4 4 0 0 1 180,52 L 60,52 C 55,56 40,56 35,52 L 35,90 C 40,86 55,86 60,90 L 180,90 A 4 4 0 0 1 184,94 L 184,106 A 4 4 0 0 1 180,110 L 20,110 Z" fill="#FFAB19"/>
+        <text x="35" y="42" font-size="9" font-weight="bold" fill="white">repeat ( 10 )</text>
+        
+        <!-- Nested block inside loop -->
+        <rect x="38" y="58" width="135" height="24" rx="2" fill="#4C97FF"/>
+        <text x="45" y="74" font-size="8.5" font-weight="bold" fill="white">move ( 10 ) steps</text>
+
+        <!-- Circular Loop Arrow -->
+        <path d="M 195,70 Q 215,70 215,40 T 195,30" stroke="#F77F00" stroke-width="2" fill="none"/>
+        <polygon points="195,27 202,30 200,24" fill="#F77F00"/>
+        <text x="110" y="128" font-size="8.5" fill="#64748B" text-anchor="middle">Repeats exactly 10 times, then STOPS!</text>
+      </g>
+
+      <!-- 2. INFINITE LOOP: FOREVER -->
+      <g transform="translate(390, 25)">
+        <text x="110" y="14" font-size="10.5" font-weight="bold" fill="#047857" text-anchor="middle">TYPE 2: INFINITE LOOP (Forever)</text>
+
+        <!-- C-Shaped Forever Block -->
+        <path d="M 20,25 L 180,25 A 4 4 0 0 1 184,29 L 184,48 A 4 4 0 0 1 180,52 L 60,52 C 55,56 40,56 35,52 L 35,90 C 40,86 55,86 60,90 L 180,90 A 4 4 0 0 1 184,94 L 184,106 A 4 4 0 0 1 180,110 L 20,110 Z" fill="#FFAB19"/>
+        <text x="35" y="42" font-size="9" font-weight="bold" fill="white">forever</text>
+        
+        <!-- Nested blocks inside forever -->
+        <rect x="38" y="58" width="135" height="24" rx="2" fill="#4C97FF"/>
+        <text x="45" y="74" font-size="8.5" font-weight="bold" fill="white">move ( 5 ) steps</text>
+
+        <!-- Perpetual Cycle Icon -->
+        <circle cx="205" cy="70" r="10" fill="none" stroke="#10B981" stroke-width="2" stroke-dasharray="3,2"/>
+        <text x="110" y="128" font-size="8.5" fill="#64748B" text-anchor="middle">Runs continuously until red STOP clicked!</text>
+      </g>
+    </svg>
+    <div class="diagram-caption">Figure 37.0: Loops in Scratch. Blocks placed inside the "C-mouth" repeat automatically!</div>
+  </div>
+
+  <h2>2. Why Loops Save You Hours of Work</h2>
+  <div class="callout">
+    <div class="callout-title">💡 LAZY PROGRAMMERS ARE SMART PROGRAMMERS!</div>
+    If you want your sprite to walk 100 paces, you <em>could</em> drag out 100 separate blue <code>move 1 step</code> blocks and stack them until your screen is cluttered and laggy.
+    <br>Or... you can simply drag <strong>ONE</strong> <code>repeat 100</code> block and drop a single <code>move 1 step</code> inside it. You just saved 99 blocks of effort!
+  </div>
+</div>
+
+<!-- ========================================== -->
+<!-- PAGE 2: CONDITIONS & DECISIONS             -->
+<!-- ========================================== -->
+<div class="page">
+  <div class="header-bar">
+    <div class="header-title">Conditions: The IF-THEN Law</div>
+    <div class="badge">Session 37 • Page 2</div>
+  </div>
+
+  <h2>1. What is a "Condition"?</h2>
+  <p>In life, you make decisions based on real-world conditions every day:
+  <br>&bull; <em>"<strong>IF</strong> it rains at 2:00 PM, <strong>THEN</strong> open my umbrella."</em>
+  <br>&bull; <em>"<strong>IF</strong> my stomach rumbles, <strong>THEN</strong> buy roasted plantain."</em>
+  <br>A <strong>Condition</strong> is a true/false question. If the answer is <strong>YES (True)</strong>, the computer runs the special code tucked inside the block. If the answer is <strong>NO (False)</strong>, the computer ignores it completely!</p>
+
+  <!-- DIAGRAM: CONDITIONAL ANATOMY -->
+  <div class="diagram-container">
+    <svg width="680" height="155" viewBox="0 0 680 155" xmlns="http://www.w3.org/2000/svg">
+      <rect x="25" y="10" width="630" height="135" rx="6" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.5"/>
+
+      <!-- IF-THEN BLOCK WITH SENSING DIAMOND -->
+      <g transform="translate(60, 25)">
+        <!-- Orange If Block Body -->
+        <path d="M 0,0 L 220,0 A 4 4 0 0 1 224,4 L 224,32 A 4 4 0 0 1 220,36 L 50,36 C 45,40 30,40 25,36 L 25,70 C 30,66 45,66 50,70 L 220,70 A 4 4 0 0 1 224,74 L 224,86 A 4 4 0 0 1 220,90 L 0,90 Z" fill="#FFAB19"/>
+        <text x="12" y="24" font-size="10" font-weight="bold" fill="white">if</text>
+        
+        <!-- Hexagonal Sensing Diamond Socket -->
+        <polygon points="32,20 40,10 160,10 168,20 160,30 40,30" fill="#5CB1D6" stroke="#288DC1" stroke-width="1"/>
+        <text x="100" y="23" font-size="8.5" font-weight="bold" fill="white" text-anchor="middle">touching [Trash] ?</text>
+        
+        <text x="175" y="24" font-size="10" font-weight="bold" fill="white">then</text>
+
+        <!-- Nested Action Inside C-Mouth -->
+        <rect x="28" y="40" width="160" height="24" rx="2" fill="#9966FF"/>
+        <text x="35" y="56" font-size="8.5" font-weight="bold" fill="white">say [Cleaned!] for 1s</text>
+      </g>
+
+      <!-- Explanatory Callouts on Right -->
+      <g transform="translate(320, 25)">
+        <!-- Hexagon Callout -->
+        <path d="M 0,20 L 50,20" stroke="#5CB1D6" stroke-width="2"/>
+        <text x="55" y="16" font-size="10" font-weight="bold" fill="#0284C7">Hexagonal Diamond (The Condition):</text>
+        <text x="55" y="28" font-size="8.5" fill="#64748B">Asks a True/False question (Sensing).</text>
+
+        <!-- Action Callout -->
+        <path d="M 0,55 L 50,55" stroke="#9966FF" stroke-width="2"/>
+        <text x="55" y="52" font-size="10" font-weight="bold" fill="#6B21A8">The Action (Inside the C-Mouth):</text>
+        <text x="55" y="64" font-size="8.5" fill="#64748B">Runs ONLY when the question is TRUE!</text>
+      </g>
+
+      <text x="340" y="130" font-size="9.5" font-weight="bold" fill="#3A0CA3" text-anchor="middle">Notice the shape! Diamond-shaped sensing blocks snap ONLY into diamond-shaped holes.</text>
+    </svg>
+    <div class="diagram-caption">Figure 37.1: Anatomy of an IF-THEN block. The condition evaluates whether the action inside runs.</div>
+  </div>
+
+  <h2>2. Popular Sensing Blocks (The Senses of Your Sprite)</h2>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 30%;">Sensing Block</th>
+        <th style="width: 35%;">What It Checks For</th>
+        <th style="width: 35%;">Game Example</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>&lt;touching [mouse-pointer]?&gt;</code></td>
+        <td>Did the player hover over the sprite?</td>
+        <td>Button changes color when hovered.</td>
+      </tr>
+      <tr>
+        <td><code>&lt;touching [edge]?&gt;</code></td>
+        <td>Did the character hit the wall of the stage?</td>
+        <td>Bounces back or resets position.</td>
+      </tr>
+      <tr>
+        <td><code>&lt;key [space] pressed?&gt;</code></td>
+        <td>Is the player tapping the spacebar right now?</td>
+        <td>Character jumps over a puddle!</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ========================================== -->
+<!-- PAGE 3: VARIABLES (THE SCORE CALABASH)     -->
+<!-- ========================================== -->
+<div class="page">
+  <div class="header-bar">
+    <div class="header-title">Variables: The Storage Calabash</div>
+    <div class="badge">Session 37 • Page 3</div>
+  </div>
+
+  <h2>1. What is a "Variable"?</h2>
+  <p>Think about a traditional clay pot or wooden calabash kept in a village kitchen. You can put 5 cowrie shells inside it. If you earn 2 more, you drop them in and it now holds 7. If you spend 3, you pull them out and it holds 4.</p>
+  <p>In computer programming, a <strong>Variable</strong> is a named digital container that holds a value that can <strong>change (vary)</strong> while the game is running!</p>
+
+  <!-- DIAGRAM: VARIABLE CALABASH / SCORE BOX -->
+  <div class="diagram-container">
+    <svg width="680" height="150" viewBox="0 0 680 150" xmlns="http://www.w3.org/2000/svg">
+      <rect x="25" y="10" width="630" height="130" rx="6" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.5"/>
+
+      <!-- Variable Calabash Graphic -->
+      <g transform="translate(60, 20)">
+        <!-- Pot Shape -->
+        <path d="M 40,25 C 10,40 10,85 45,95 C 80,95 80,40 50,25 Z" fill="#D97706" stroke="#92400E" stroke-width="2"/>
+        <ellipse cx="45" cy="25" rx="16" ry="6" fill="#FCD34D" stroke="#92400E" stroke-width="1.5"/>
+        <text x="45" y="65" font-family="monospace" font-size="18" font-weight="bold" fill="white" text-anchor="middle">5</text>
+        <text x="45" y="112" font-size="10" font-weight="bold" fill="#78350F" text-anchor="middle">Variable: [Score]</text>
+      </g>
+
+      <!-- Action 1: Set Variable -->
+      <g transform="translate(200, 25)">
+        <rect x="0" y="0" width="180" height="35" rx="3" fill="#FF8C1A"/>
+        <text x="15" y="22" font-size="9" font-weight="bold" fill="white">set [ Score v ] to ( 0 )</text>
+        <text x="90" y="50" font-size="8.5" fill="#64748B" text-anchor="middle">Resets game to ZERO at start</text>
+      </g>
+
+      <!-- Action 2: Change Variable -->
+      <g transform="translate(200, 80)">
+        <rect x="0" y="0" width="180" height="35" rx="3" fill="#FF8C1A"/>
+        <text x="15" y="22" font-size="9" font-weight="bold" fill="white">change [ Score v ] by ( 1 )</text>
+        <text x="90" y="50" font-size="8.5" fill="#64748B" text-anchor="middle">Adds 1 point whenever trash collected</text>
+      </g>
+
+      <!-- Stage Score Display (Top Right) -->
+      <g transform="translate(450, 35)">
+        <rect x="0" y="0" width="160" height="55" rx="4" fill="#FFFFFF" stroke="#334155" stroke-width="1.5"/>
+        <text x="15" y="22" font-size="10" font-weight="bold" fill="#64748B">STAGE DISPLAY:</text>
+        <rect x="15" y="28" width="130" height="20" rx="3" fill="#FF8C1A"/>
+        <text x="25" y="42" font-size="9" font-weight="bold" fill="white">Score: 5</text>
+      </g>
+    </svg>
+    <div class="diagram-caption">Figure 37.2: Variables store changing information like points, health, or countdown timers.</div>
+  </div>
+
+  <h2>2. Common Variables in Games</h2>
+  <div class="dual-grid">
+    <div class="dual-box">
+      <div class="dual-box-title">🏆 Score / Points</div>
+      <p>Starts at 0. Increases by <code>+1</code> or <code>+10</code> each time the player achieves a goal or collects an item.</p>
+    </div>
+    <div class="dual-box">
+      <div class="dual-box-title">⏳ Timer / Countdown</div>
+      <p>Starts at 60 seconds. Decreases by <code>-1</code> every second until it reaches 0 (Game Over!).</p>
+    </div>
+  </div>
+</div>
+
+<!-- ========================================== -->
+<!-- PAGE 4: THE ART OF DEBUGGING               -->
+<!-- ========================================== -->
+<div class="page">
+  <div class="header-bar">
+    <div class="header-title">The Art of Debugging</div>
+    <div class="badge">Session 37 • Page 4</div>
+  </div>
+
+  <h2>1. What is a "Bug"?</h2>
+  <p>In 1947, computer pioneer <strong>Grace Hopper</strong> was working on a massive room-sized computer when it suddenly malfunctioned. When her team opened the machine, they found a <strong>real moth</strong> trapped inside one of the electrical relays! They taped the moth into the logbook with the note: <em>"First actual case of bug being found."</em></p>
+  <p>Today, any mistake, logic flaw, or unexpected behavior in code is called a <strong>Bug</strong>. The detective process of finding and fixing that mistake is called <strong>Debugging</strong>.</p>
+
+  <!-- DIAGRAM: THE 3-STEP DEBUGGING PROTOCOL -->
+  <div class="diagram-container">
+    <svg width="680" height="150" viewBox="0 0 680 150" xmlns="http://www.w3.org/2000/svg">
+      <rect x="25" y="10" width="630" height="130" rx="6" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.5"/>
+
+      <!-- STEP 1: SPOT -->
+      <g transform="translate(50, 25)">
+        <circle cx="45" cy="40" r="30" fill="#FEF2F2" stroke="#EF4444" stroke-width="2"/>
+        <text x="45" y="46" font-size="20" text-anchor="middle">🔍</text>
+        <text x="45" y="85" font-size="10" font-weight="bold" fill="#DC2626" text-anchor="middle">1. SPOT IT</text>
+        <text x="45" y="98" font-size="8" fill="#64748B" text-anchor="middle">What is happening</text>
+        <text x="45" y="108" font-size="8" fill="#64748B" text-anchor="middle">vs what I planned?</text>
+      </g>
+
+      <path d="M 135,65 L 185,65" stroke="#F77F00" stroke-width="2.5"/>
+      <polygon points="190,65 182,61 182,69" fill="#F77F00"/>
+
+      <!-- STEP 2: TRACE -->
+      <g transform="translate(205, 25)">
+        <circle cx="45" cy="40" r="30" fill="#FFF7ED" stroke="#F77F00" stroke-width="2"/>
+        <text x="45" y="46" font-size="20" text-anchor="middle">📜</text>
+        <text x="45" y="85" font-size="10" font-weight="bold" fill="#9A3412" text-anchor="middle">2. TRACE IT</text>
+        <text x="45" y="98" font-size="8" fill="#64748B" text-anchor="middle">Read your stack</text>
+        <text x="45" y="108" font-size="8" fill="#64748B" text-anchor="middle">block-by-block</text>
+      </g>
+
+      <path d="M 290,65 L 340,65" stroke="#F77F00" stroke-width="2.5"/>
+      <polygon points="345,65 337,61 337,69" fill="#F77F00"/>
+
+      <!-- STEP 3: CHANGE ONE THING -->
+      <g transform="translate(360, 25)">
+        <circle cx="45" cy="40" r="30" fill="#ECFDF5" stroke="#10B981" stroke-width="2"/>
+        <text x="45" y="46" font-size="20" text-anchor="middle">🔧</text>
+        <text x="45" y="85" font-size="10" font-weight="bold" fill="#047857" text-anchor="middle">3. FIX ONE THING</text>
+        <text x="45" y="98" font-size="8" fill="#64748B" text-anchor="middle">Change 1 number</text>
+        <text x="45" y="108" font-size="8" fill="#64748B" text-anchor="middle">or 1 block & re-test</text>
+      </g>
+
+      <!-- SUCCESS -->
+      <g transform="translate(515, 25)">
+        <rect x="0" y="20" width="115" height="45" rx="4" fill="#3A0CA3"/>
+        <text x="57" y="40" font-size="11" font-weight="bold" fill="white" text-anchor="middle">&#10004; WORKING!</text>
+        <text x="57" y="54" font-size="8" fill="#E0E7FF" text-anchor="middle">Program solved!</text>
+      </g>
+    </svg>
+    <div class="diagram-caption">Figure 37.3: The 3-Step Debugging Protocol. Never change 5 things at once; change one block and test again!</div>
+  </div>
+
+  <h2>2. The Cardinal Debugging Law</h2>
+  <div class="callout" style="background:#EEF2FF; border-left: 5px solid var(--bih-purple);">
+    <div class="callout-title" style="color:var(--bih-purple);">🧠 BUGS ARE NOT FAILURES; THEY ARE CLUES!</div>
+    Every great software engineer in the world writes bugs every single day. Having an error in your code does not mean you are bad at math or computers. It just means you gave the computer an incomplete instruction. Be a calm detective!
+  </div>
+</div>
+
+<!-- ========================================== -->
+<!-- PAGE 5: GUIDED LAB - TRASH COLLECTOR GAME  -->
+<!-- ========================================== -->
+<div class="page">
+  <div class="header-bar">
+    <div class="header-title">Guided Hands-On Lab: Sachet Cleanup Game</div>
+    <div class="badge">Session 37 • Page 5</div>
+  </div>
+
+  <h2>1. Lab Mission: Code a Clean-Up Mini-Game</h2>
+  <p>Follow these 6 steps in Scratch to build a functional educational game teaching community sanitation:</p>
+
+  <div class="step-card">
+    <div class="step-num">1</div>
+    <div class="step-content">
+      <strong>Make the Sachet &amp; the Variable [Score]:</strong>
+      <br><strong>Choose a Sprite &rarr; Paint</strong> a sachet (or pick one). In the sprite pane, set <strong>Direction &rarr; Left/Right</strong> so it never flips upside down.
+      <br>Click the orange <strong>Variables</strong> dot &rarr; <strong>"Make a Variable"</strong> &rarr; Name it: <code>Score</code> &rarr; OK.
+    </div>
+  </div>
+
+  <div class="step-card">
+    <div class="step-num">2</div>
+    <div class="step-content">
+      <strong>Initialize the Game:</strong>
+      <br>Drag <code>when green flag clicked</code> into the workspace.
+      <br>Snap <code>set [Score v] to (0)</code> underneath it so points reset every new game.
+    </div>
+  </div>
+
+  <div class="step-card">
+    <div class="step-num">3</div>
+    <div class="step-content">
+      <strong>Add the Movement Loop:</strong>
+      <br>From <strong>Control</strong>, snap a <code>forever</code> loop under your reset block.
+      <br>Inside the loop, snap: <code>move (10) steps</code> &rarr; then <code>if on edge, bounce</code>. <em>Your sachet now patrols back and forth!</em>
+    </div>
+  </div>
+
+  <div class="step-card">
+    <div class="step-num">4</div>
+    <div class="step-content">
+      <strong>Add the Decision Condition:</strong>
+      <br>Inside the <code>forever</code> loop (below the bounce block), drop an <code>if &lt;&gt; then</code> block.
+      <br>From <strong>Sensing</strong>, snap <code>&lt;touching [mouse-pointer]?&gt;</code> into the diamond hole.
+    </div>
+  </div>
+
+  <div class="step-card">
+    <div class="step-num">5</div>
+    <div class="step-content">
+      <strong>Award Points & Speak:</strong>
+      <br>Inside the C-mouth of the <code>if</code> block, snap:
+      <br>&bull; <code>change [Score v] by (1)</code>
+      <br>&bull; <code>go to [random position v]</code> (from <strong>Motion</strong>: the sachet jumps away, so one touch = one point)
+      <br>&bull; <code>say [Cleaned!] for (0.5) secs</code>
+    </div>
+  </div>
+
+  <div class="step-card">
+    <div class="step-num">6</div>
+    <div class="step-content">
+      <strong>Play, Debug & Save:</strong>
+      <br>Click the <strong>Green Flag</strong>. Hover your mouse over the moving sprite!
+      <br><em>Watch:</em> Each touch adds 1 to Score; the sachet jumps and says "Cleaned!"
+      <br>Save: <strong>File &rarr; Save to your computer</strong> &rarr; Name: <code>Cleanup_Game_Ama.sb3</code>.
+    </div>
+  </div>
+
+  <h2>2. Visual Target (The Complete Game Script)</h2>
+  <div style="border: 2px solid var(--bih-purple); border-radius: 8px; padding: 20px; background: #F8FAFC; max-width: 320px; margin: 12px auto;">
+    <div style="background: #FFBF00; color: white; padding: 6px 12px; border-radius: 8px 8px 2px 2px; font-weight: bold; font-size: 11px;">
+      🚩 when green flag clicked
+    </div>
+    <div style="background: #FF8C1A; color: white; padding: 6px 12px; font-weight: bold; font-size: 11px; margin-top: 2px;">
+      set [ Score v ] to ( 0 )
+    </div>
+    <!-- Forever Loop Outer -->
+    <div style="background: #FFAB19; padding: 6px 6px 6px 12px; border-radius: 2px; margin-top: 2px;">
+      <span style="color: white; font-weight: bold; font-size: 11px;">forever</span>
+      <div style="background: #4C97FF; color: white; padding: 4px 8px; font-weight: bold; font-size: 10px; margin: 4px 0;">
+        move ( 10 ) steps
+      </div>
+      <div style="background: #4C97FF; color: white; padding: 4px 8px; font-weight: bold; font-size: 10px; margin-bottom: 4px;">
+        if on edge, bounce
+      </div>
+      <!-- Nested If Block -->
+      <div style="background: #FFAB19; padding: 4px 4px 4px 8px; border-left: 3px solid #E69500;">
+        <span style="color: white; font-weight: bold; font-size: 10px;">if &lt; touching [mouse-pointer]? &gt; then</span>
+        <div style="background: #FF8C1A; color: white; padding: 4px 8px; font-weight: bold; font-size: 9.5px; margin: 3px 0;">
+          change [ Score v ] by ( 1 )
+        </div>
+        <div style="background: #4C97FF; color: white; padding: 4px 8px; font-weight: bold; font-size: 9.5px; margin: 3px 0;">
+          go to [ random position v ]
+        </div>
+        <div style="background: #9966FF; color: white; padding: 4px 8px; font-weight: bold; font-size: 9.5px;">
+          say [ Cleaned! ] for ( 0.5 ) secs
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ========================================== -->
+<!-- PAGE 6: REVIEW & SELF-ASSESSMENT           -->
+<!-- ========================================== -->
+<div class="page">
+  <div class="header-bar">
+    <div class="header-title">Session 37 Review & Verification</div>
+    <div class="badge">Session 37 • Page 6</div>
+  </div>
+
+  <h2>1. "Be the Computer" Logic Tracing Challenge</h2>
+  <p>Read the code snippet below carefully and predict what happens:</p>
+
+  <div style="background: #F1F5F9; border-left: 4px solid var(--bih-purple); padding: 12px; font-family: monospace; font-size: 12px; margin: 12px 0;">
+    set [ Score ] to 10<br>
+    repeat ( 3 ) {<br>
+    &nbsp;&nbsp;change [ Score ] by 5<br>
+    }
+  </div>
+
+  <p><strong>What is the final number inside [Score] after the loop finishes?</strong></p>
+  <div class="answer-line" contenteditable="true">Final Score value: _________ (Show your calculation: 10 + 5 + 5 + 5 = ?)</div>
+
+  <h2>2. Spot the Bug Challenge</h2>
+  <p>Kwesi built a game where the player gets points by clicking a balloon. But when he clicks the green flag to start a second game, his Score starts at <strong>45</strong> instead of <strong>0</strong>!</p>
+  <p><strong>What block did Kwesi forget to put at the top of his script?</strong></p>
+  <div class="answer-line" contenteditable="true">Write the missing block name: _____________________________________________</div>
+
+  <h2>3. Self-Assessment & Mentor Sign-Off</h2>
+  <p>Tick the column that reflects your confidence at the end of the Programming Module:</p>
+  <table>
+    <thead>
+      <tr>
+        <th>Programming & Logic Competency</th>
+        <th style="width: 18%; text-align: center;">With Help</th>
+        <th style="width: 18%; text-align: center;">Almost Alone</th>
+        <th style="width: 18%; text-align: center;">All By Myself!</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1. I can explain the difference between a `repeat` loop and a `forever` loop.</td>
+        <td style="text-align: center;"><input type="radio" name="s17_1"></td>
+        <td style="text-align: center;"><input type="radio" name="s17_1"></td>
+        <td style="text-align: center;"><input type="radio" name="s17_1"></td>
+      </tr>
+      <tr>
+        <td>2. I can use an `if-then` condition with a diamond sensing block.</td>
+        <td style="text-align: center;"><input type="radio" name="s17_2"></td>
+        <td style="text-align: center;"><input type="radio" name="s17_2"></td>
+        <td style="text-align: center;"><input type="radio" name="s17_2"></td>
+      </tr>
+      <tr>
+        <td>3. I can create a Variable (Score) and update it dynamically in code.</td>
+        <td style="text-align: center;"><input type="radio" name="s17_3"></td>
+        <td style="text-align: center;"><input type="radio" name="s17_3"></td>
+        <td style="text-align: center;"><input type="radio" name="s17_3"></td>
+      </tr>
+      <tr>
+        <td>4. I know the 3-step debugging protocol to trace and fix errors calmly.</td>
+        <td style="text-align: center;"><input type="radio" name="s17_4"></td>
+        <td style="text-align: center;"><input type="radio" name="s17_4"></td>
+        <td style="text-align: center;"><input type="radio" name="s17_4"></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div style="border-top: 1px solid var(--bih-border); margin-top: 25px; padding-top: 12px; display: flex; justify-content: space-between; font-size: 13px;">
+    <div><strong>Mentor Signature:</strong> _____________________________</div>
+    <div><strong>Date Completed:</strong> ____________________</div>
+  </div>
+</div>
+
+</body>
+</html>

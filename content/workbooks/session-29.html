@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>BIH Tech Club - Session 29: Digital Collaboration & Teamwork</title>
+  <style>
+    :root {
+      --bih-purple: #3A0CA3;
+      --bih-accent: #4361EE;
+      --bih-gold: #F77F00;
+      --bih-green: #2EC4B6;
+      --bih-red: #E63946;
+      --bih-dark: #1E1E24;
+      --bih-light: #F8F9FA;
+      --bih-border: #CED4DA;
+      --cloud-blue: #0284C7;
+    }
+
+    * {
+      box-sizing: border-box;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    body {
+      background-color: #E9ECEF;
+      color: var(--bih-dark);
+      margin: 0;
+      padding: 20px;
+      line-height: 1.55;
+    }
+
+    .page {
+      background: #FFFFFF;
+      max-width: 860px;
+      margin: 20px auto;
+      padding: 42px 50px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+      border-radius: 8px;
+      page-break-after: always;
+    }
+
+    @media print {
+      body { background: white; padding: 0; }
+      .page { box-shadow: none; margin: 0; padding: 30px; max-width: 100%; border-radius: 0; }
+      .no-print { display: none; }
+    }
+
+    /* Header Bar */
+    .header-bar {
+      border-bottom: 3px solid var(--bih-purple);
+      padding-bottom: 10px;
+      margin-bottom: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .header-title {
+      font-size: 19px;
+      font-weight: 800;
+      color: var(--bih-purple);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .badge {
+      background: var(--bih-gold);
+      color: #FFFFFF;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+    }
+
+    /* Student Meta Box */
+    .student-meta {
+      border: 2px dashed var(--bih-border);
+      border-radius: 8px;
+      padding: 12px 18px;
+      background: var(--bih-light);
+      margin-bottom: 20px;
+    }
+
+    .meta-row {
+      display: flex;
+      gap: 15px;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+    .meta-row:last-child { margin-bottom: 0; }
+
+    .meta-label {
+      font-size: 12.5px;
+      font-weight: 700;
+      color: var(--bih-dark);
+      min-width: 125px;
+    }
+
+    .editable-line {
+      border-bottom: 1.5px solid var(--bih-purple);
+      flex-grow: 1;
+      padding: 2px 6px;
+      font-size: 13.5px;
+      font-weight: 600;
+      color: var(--bih-purple);
+      outline: none;
+      min-height: 20px;
+    }
+
+    /* Typography */
+    h1 { color: var(--bih-purple); font-size: 22px; margin-top: 0; margin-bottom: 8px; }
+    h2 { color: var(--bih-purple); font-size: 16px; margin-top: 20px; margin-bottom: 10px; border-left: 4px solid var(--bih-gold); padding-left: 8px; }
+    p { font-size: 13px; margin: 6px 0; }
+
+    /* Dual Grid Layout */
+    .dual-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin: 12px 0;
+    }
+
+    .dual-box {
+      border: 1px solid var(--bih-border);
+      border-radius: 8px;
+      padding: 12px 14px;
+      background: #FAFAFA;
+    }
+    .dual-box-title {
+      font-size: 13px;
+      font-weight: 800;
+      color: var(--bih-purple);
+      margin-bottom: 6px;
+      border-bottom: 1px solid var(--bih-border);
+      padding-bottom: 4px;
+    }
+
+    /* Callouts & Alert Boxes */
+    .callout {
+      background: #FFF3CD;
+      border-left: 4px solid var(--bih-gold);
+      padding: 10px 14px;
+      margin: 14px 0;
+      border-radius: 0 8px 8px 0;
+      font-size: 12.5px;
+    }
+    .callout-title {
+      font-weight: 800;
+      color: #856404;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 2px;
+    }
+
+    .panic-box {
+      background: #F8D7DA;
+      border-left: 4px solid var(--bih-red);
+      padding: 12px 14px;
+      margin: 14px 0;
+      border-radius: 0 8px 8px 0;
+      font-size: 12.5px;
+    }
+    .panic-title {
+      font-weight: 800;
+      color: #721C24;
+      margin-bottom: 4px;
+    }
+
+    /* Step Cards */
+    .step-card {
+      display: flex;
+      gap: 12px;
+      background: var(--bih-light);
+      border: 1px solid var(--bih-border);
+      border-radius: 6px;
+      padding: 10px 12px;
+      margin-bottom: 8px;
+      align-items: flex-start;
+    }
+
+    .step-num {
+      background: var(--bih-purple);
+      color: white;
+      font-size: 13px;
+      font-weight: 800;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .step-content { flex-grow: 1; font-size: 12.5px; }
+
+    /* Diagrams */
+    .diagram-container {
+      background: #FAFAFA;
+      border: 1px solid var(--bih-border);
+      border-radius: 8px;
+      padding: 12px;
+      margin: 14px 0;
+      text-align: center;
+    }
+    .diagram-caption {
+      font-size: 11px;
+      color: #6C757D;
+      margin-top: 6px;
+      font-style: italic;
+    }
+
+    /* Tables */
+    table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 12.5px; }
+    th { background: var(--bih-purple); color: white; text-align: left; padding: 7px 10px; }
+    td { border: 1px solid var(--bih-border); padding: 7px 10px; vertical-align: top; }
+    tr:nth-child(even) { background-color: var(--bih-light); }
+
+    /* Key Badge */
+    .kbd-key {
+      display: inline-block;
+      background: #F3F4F6;
+      border: 1.5px solid #9CA3AF;
+      border-bottom: 3px solid #6B7280;
+      border-radius: 4px;
+      padding: 1px 6px;
+      font-family: monospace;
+      font-size: 12px;
+      font-weight: 700;
+      color: #1F2937;
+      margin: 0 2px;
+    }
+
+    /* Interactive Inputs */
+    .answer-line {
+      min-height: 24px;
+      border-bottom: 1px dashed var(--bih-purple);
+      margin: 4px 0;
+      outline: none;
+      font-size: 13px;
+      color: var(--bih-dark);
+      padding: 2px 4px;
+    }
+
+    .checkbox-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 6px;
+      font-size: 12.5px;
+    }
+    .checkbox-item input { width: 15px; height: 15px; cursor: pointer; }
+  </style>
+</head>
+<body>
+
+<!-- ========================================== -->
+<!-- PAGE 1: WHAT IS DIGITAL COLLABORATION?    -->
+<!-- ========================================== -->
+<div class="page">
+  <div class="header-bar">
+    <div class="header-title">Bozoma Innovation Hub • Tech Club</div>
+    <div class="badge">Session 29 • Page 1</div>
+  </div>
+
+  <div class="student-meta">
+    <div class="meta-row">
+      <span class="meta-label">Collaborative Team Name:</span>
+      <div class="editable-line" contenteditable="true">The Green Innovators</div>
+      <span class="meta-label" style="min-width: 90px;">School:</span>
+      <div class="editable-line" contenteditable="true">Bozoma Model JHS</div>
+    </div>
+    <div class="meta-row">
+      <span class="meta-label">Team Members (3–4):</span>
+      <div class="editable-line" contenteditable="true">Ama Mensah, Kofi Boateng, Kwesi Appiah</div>
+      <span class="meta-label" style="min-width: 50px;">Class:</span>
+      <div class="editable-line" contenteditable="true" style="max-width: 90px;">JHS 1</div>
+    </div>
+  </div>
+
+  <h1>Session 29: Digital Collaboration & Teamwork</h1>
+  <p>Until today, when you worked on a document, you sat alone at one computer. But in real technology companies and modern universities, projects are built by <strong>teams</strong> working simultaneously across different computers, classrooms, and even different countries!</p>
+
+  <h2>1. Plain Talk: The African Tradition of "Nnoboa"</h2>
+  <p>In Ghanaian farming communities, there is an ancient tradition called <strong>Nnoboa</strong> (communal labor). When it is time to clear a field or harvest cocoa, neighbors gather to work together. One person clears weeds, another carries water, another harvests pods. Together, they finish in one afternoon what would take one person a month!</p>
+  <p><strong>Digital Collaboration</strong> is <em>Nnoboa</em> using technology. Instead of passing a single USB flash drive back and forth, teammates connect to a single document stored securely online in <strong>Cloud Storage</strong> (like Google Drive or Microsoft OneDrive) and edit together in real time!</p>
+
+  <!-- DIAGRAM: LOCAL VS CLOUD COLLABORATION -->
+  <div class="diagram-container">
+    <svg width="700" height="155" viewBox="0 0 700 155" xmlns="http://www.w3.org/2000/svg">
+      <rect x="20" y="10" width="660" height="135" rx="6" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.5"/>
+
+      <!-- STUDENT A (Left) -->
+      <g transform="translate(45, 25)">
+        <rect x="0" y="20" width="85" height="55" rx="3" fill="#1F2937"/>
+        <rect x="5" y="25" width="75" height="45" rx="2" fill="#60A5FA"/>
+        <text x="42" y="52" font-size="8.5" font-weight="bold" fill="white" text-anchor="middle">Student A</text>
+        <rect x="35" y="75" width="15" height="12" fill="#4B5563"/>
+        <rect x="25" y="87" width="35" height="4" fill="#374151"/>
+        <text x="42" y="105" font-size="9" font-weight="bold" fill="#3A0CA3" text-anchor="middle">Writer (Typing)</text>
+      </g>
+
+      <!-- Connecting Arrow A to Cloud -->
+      <path d="M 140,65 L 230,65" stroke="#4361EE" stroke-width="2.5" stroke-dasharray="3,3"/>
+      <polygon points="235,65 227,61 227,69" fill="#4361EE"/>
+
+      <!-- CLOUD STORAGE DOCUMENT (Center) -->
+      <g transform="translate(250, 20)">
+        <!-- Cloud outline -->
+        <path d="M 40,35 C 30,35 20,45 20,55 C 20,68 30,75 40,75 L 150,75 C 165,75 175,65 175,52 C 175,40 162,32 150,34 C 145,20 130,12 115,15 C 105,8 90,10 82,20 C 76,16 68,16 62,22 C 50,22 42,28 40,35 Z" fill="#E0F2FE" stroke="#0284C7" stroke-width="2"/>
+        
+        <!-- Live Shared Document Sheet inside Cloud -->
+        <rect x="65" y="30" width="65" height="42" rx="2" fill="#FFFFFF" stroke="#0284C7" stroke-width="1.2"/>
+        <line x1="72" y1="38" x2="120" y2="38" stroke="#3A0CA3" stroke-width="2"/>
+        <line x1="72" y1="46" x2="110" y2="46" stroke="#10B981" stroke-width="1.5"/>
+        <line x1="72" y1="54" x2="115" y2="54" stroke="#F77F00" stroke-width="1.5"/>
+        
+        <text x="97" y="98" font-size="10.5" font-weight="bold" fill="#0284C7" text-anchor="middle">ONE LIVE CLOUD FILE</text>
+        <text x="97" y="110" font-size="8.5" fill="#64748B" text-anchor="middle">(Stored securely on web servers)</text>
+      </g>
+
+      <!-- Connecting Arrow B to Cloud -->
+      <path d="M 550,65 L 460,65" stroke="#10B981" stroke-width="2.5" stroke-dasharray="3,3"/>
+      <polygon points="455,65 463,61 463,69" fill="#10B981"/>
+
+      <!-- STUDENT B (Right) -->
+      <g transform="translate(560, 25)">
+        <rect x="0" y="20" width="85" height="55" rx="3" fill="#1F2937"/>
+        <rect x="5" y="25" width="75" height="45" rx="2" fill="#34D399"/>
+        <text x="42" y="52" font-size="8.5" font-weight="bold" fill="white" text-anchor="middle">Student B</text>
+        <rect x="35" y="75" width="15" height="12" fill="#4B5563"/>
+        <rect x="25" y="87" width="35" height="4" fill="#374151"/>
+        <text x="42" y="105" font-size="9" font-weight="bold" fill="#047857" text-anchor="middle">Designer (Styling)</text>
+      </g>
+    </svg>
+    <div class="diagram-caption">Figure 29.0: Cloud Collaboration. Both students edit the exact same document simultaneously without USB pen drives!</div>
+  </div>
+
+  <h2>2. Essential Collaboration Vocabulary</h2>
+  <ul>
+    <li><strong>Cloud Storage:</strong> Safe digital space on remote internet servers (Google Drive, OneDrive) used to store and open files from any computer.</li>
+    <li><strong>Shared File:</strong> A file set up so more than one approved person can open and work on it.</li>
+    <li><strong>Version History:</strong> An automatic time-stamped digital memory log showing every single change made and who made it.</li>
+    <li><strong>Comment:</strong> A sticky-note note pinned to the margin of a document to suggest an improvement without deleting text.</li>
+  </ul>
+</div>
+
+<!-- ========================================== -->
+<!-- PAGE 2: PERMISSION TIERS                  -->
+<!-- ========================================== -->
+<div class="page">
+  <div class="header-bar">
+    <div class="header-title">Managing Sharing Permissions</div>
+    <div class="badge">Session 29 • Page 2</div>
+  </div>
+
+  <h2>1. The Three Levels of File Access</h2>
+  <p>When you share a file online with classmates or teachers, you must choose their exact <strong>Permission Tier</strong>. Giving the wrong permission can let someone accidentally erase your whole project!</p>
+
+  <!-- DIAGRAM: THE THREE ACCESS TIERS -->
+  <div class="diagram-container">
+    <svg width="680" height="160" viewBox="0 0 680 160" xmlns="http://www.w3.org/2000/svg">
+      <rect x="20" y="10" width="640" height="140" rx="6" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.5"/>
+
+      <!-- TIER 1: VIEWER -->
+      <g transform="translate(45, 25)">
+        <rect x="0" y="0" width="170" height="95" rx="5" fill="#FFFFFF" stroke="#64748B" stroke-width="1.5"/>
+        <circle cx="85" cy="24" r="12" fill="#F1F5F9"/>
+        <text x="85" y="28" font-size="12" fill="#64748B" text-anchor="middle">👁️</text>
+        <text x="85" y="48" font-size="11" font-weight="bold" fill="#334155" text-anchor="middle">VIEWER</text>
+        <line x1="20" y1="55" x2="150" y2="55" stroke="#E2E8F0" stroke-width="1"/>
+        <text x="85" y="70" font-size="8.5" fill="#64748B" text-anchor="middle">Can only READ the file.</text>
+        <text x="85" y="82" font-size="8.5" fill="#64748B" text-anchor="middle">Cannot change a single letter!</text>
+        <text x="85" y="112" font-size="8.5" font-weight="bold" fill="#334155" text-anchor="middle">Best for: Submitting final homework</text>
+      </g>
+
+      <!-- TIER 2: COMMENTER -->
+      <g transform="translate(255, 25)">
+        <rect x="0" y="0" width="170" height="95" rx="5" fill="#FFFFFF" stroke="#F77F00" stroke-width="2"/>
+        <circle cx="85" cy="24" r="12" fill="#FFF7ED"/>
+        <text x="85" y="28" font-size="12" fill="#F77F00" text-anchor="middle">💬</text>
+        <text x="85" y="48" font-size="11" font-weight="bold" fill="#9A3412" text-anchor="middle">COMMENTER</text>
+        <line x1="20" y1="55" x2="150" y2="55" stroke="#FED7AA" stroke-width="1"/>
+        <text x="85" y="70" font-size="8.5" fill="#431407" text-anchor="middle">Can read and leave notes.</text>
+        <text x="85" y="82" font-size="8.5" fill="#431407" text-anchor="middle">Cannot alter the main text.</text>
+        <text x="85" y="112" font-size="8.5" font-weight="bold" fill="#C2410C" text-anchor="middle">Best for: Peer review & feedback</text>
+      </g>
+
+      <!-- TIER 3: EDITOR -->
+      <g transform="translate(465, 25)">
+        <rect x="0" y="0" width="170" height="95" rx="5" fill="#FFFFFF" stroke="#10B981" stroke-width="2"/>
+        <circle cx="85" cy="24" r="12" fill="#ECFDF5"/>
+        <text x="85" y="28" font-size="12" fill="#10B981" text-anchor="middle">✏️</text>
+        <text x="85" y="48" font-size="11" font-weight="bold" fill="#065F46" text-anchor="middle">EDITOR</text>
+        <line x1="20" y1="55" x2="150" y2="55" stroke="#A7F3D0" stroke-width="1"/>
+        <text x="85" y="70" font-size="8.5" fill="#064E3B" text-anchor="middle">Full control to type, delete,</text>
+        <text x="85" y="82" font-size="8.5" fill="#064E3B" text-anchor="middle">reformat, and invite others.</text>
+        <text x="85" y="112" font-size="8.5" font-weight="bold" fill="#047857" text-anchor="middle">Best for: Trusted team partners</text>
+      </g>
+    </svg>
+    <div class="diagram-caption">Figure 29.1: The Three Permission Tiers. Always give the lowest permission the person needs.</div>
+  </div>
+
+  <h2>2. The Cardinal Sharing Law</h2>
+  <div class="callout" style="background:#FEF2F2; border-left: 5px solid var(--bih-red);">
+    <div class="callout-title" style="color:var(--bih-red);">🚫 NEVER SHARE AS "EDITOR" TO THE PUBLIC!</div>
+    If you create a public link with <strong>Editor</strong> permission, anyone on the internet who finds the link can delete all your paragraphs, insert inappropriate pictures, or ruin your hard work.
+    <br><br>
+    <strong>Safety Rule:</strong> Give <strong>Editor</strong> permission ONLY to your specific, named team members. Everyone else gets <strong>Viewer</strong> or <strong>Commenter</strong>!
+  </div>
+
+  <h2>3. Check Your Knowledge</h2>
+  <p><strong>Scenario:</strong> Your team has finished its Demo Day plan. The Headteacher only needs to <strong>read</strong> the finished plan: no changes and no notes. Which permission tier should you pick?</p>
+  <div class="answer-line" contenteditable="true">I would choose [ Viewer / Commenter / Editor ] because:</div>
+</div>
+
+<!-- ========================================== -->
+<!-- PAGE 3: TEAM ROLES & VERSION HISTORY       -->
+<!-- ========================================== -->
+<div class="page">
+  <div class="header-bar">
+    <div class="header-title">Team Roles & Version History</div>
+    <div class="badge">Session 29 • Page 3</div>
+  </div>
+
+  <h2>1. The Four Essential Collaborative Roles</h2>
+  <p>A team where everyone tries to type at the exact same second will end up fighting over the keyboard. Successful Tech Club teams divide responsibilities clearly:</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 25%;">Team Role</th>
+        <th style="width: 40%;">Primary Responsibility</th>
+        <th style="width: 35%;">Assigned Teammate Today</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>1. Researcher / Fact-Checker</strong></td>
+        <td>Finds verified statistics, facts, and sources online; checks that facts are accurate.</td>
+        <td><div class="answer-line" contenteditable="true">Student Name:</div></td>
+      </tr>
+      <tr>
+        <td><strong>2. Writer / Scribe</strong></td>
+        <td>Drafts the sentences, paragraphs, and list items into the document.</td>
+        <td><div class="answer-line" contenteditable="true">Student Name:</div></td>
+      </tr>
+      <tr>
+        <td><strong>3. Designer / Formatter</strong></td>
+        <td>Applies font sizes, headings, colors, bullet points, and adds images.</td>
+        <td><div class="answer-line" contenteditable="true">Student Name:</div></td>
+      </tr>
+      <tr>
+        <td><strong>4. Quality Controller</strong></td>
+        <td>Reviews spelling, tests links, verifies permissions, and presents to the club.</td>
+        <td><div class="answer-line" contenteditable="true">Student Name:</div></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>2. Version History: The Ultimate Safety Net</h2>
+  <p>What happens if a teammate accidentally deletes three paragraphs while typing? <strong>Don't panic!</strong> Cloud documents have an automatic memory called <strong>Version History</strong>:</p>
+
+  <!-- DIAGRAM: VERSION HISTORY TIMELINE -->
+  <div class="diagram-container">
+    <svg width="680" height="135" viewBox="0 0 680 135" xmlns="http://www.w3.org/2000/svg">
+      <rect x="25" y="15" width="630" height="105" rx="6" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.5"/>
+
+      <!-- Version 1 (10:15 AM) -->
+      <g transform="translate(60, 30)">
+        <circle cx="20" cy="20" r="10" fill="#4361EE"/>
+        <text x="20" y="24" font-size="10" font-weight="bold" fill="white" text-anchor="middle">1</text>
+        <text x="20" y="45" font-size="9" font-weight="bold" fill="#1E293B" text-anchor="middle">10:15 AM</text>
+        <text x="20" y="58" font-size="8" fill="#4361EE" text-anchor="middle">Ama (Drafted)</text>
+      </g>
+
+      <line x1="105" y1="50" x2="195" y2="50" stroke="#CBD5E1" stroke-width="3"/>
+
+      <!-- Version 2 (10:30 AM) -->
+      <g transform="translate(210, 30)">
+        <circle cx="20" cy="20" r="10" fill="#10B981"/>
+        <text x="20" y="24" font-size="10" font-weight="bold" fill="white" text-anchor="middle">2</text>
+        <text x="20" y="45" font-size="9" font-weight="bold" fill="#1E293B" text-anchor="middle">10:30 AM</text>
+        <text x="20" y="58" font-size="8" fill="#10B981" text-anchor="middle">Kofi (Formatted)</text>
+      </g>
+
+      <line x1="255" y1="50" x2="345" y2="50" stroke="#CBD5E1" stroke-width="3"/>
+
+      <!-- Version 3 (Accidental deletion) -->
+      <g transform="translate(360, 30)">
+        <circle cx="20" cy="20" r="10" fill="#EF4444"/>
+        <text x="20" y="24" font-size="10" font-weight="bold" fill="white" text-anchor="middle">3</text>
+        <text x="20" y="45" font-size="9" font-weight="bold" fill="#DC2626" text-anchor="middle">10:45 AM</text>
+        <text x="20" y="58" font-size="8" fill="#DC2626" text-anchor="middle">Text erased!</text>
+      </g>
+
+      <!-- RESTORE ACTION -->
+      <path d="M 405,40 Q 450,15 490,35" stroke="#3A0CA3" stroke-width="2.5" fill="none"/>
+      <polygon points="495,37 486,32 489,41" fill="#3A0CA3"/>
+      
+      <g transform="translate(510, 30)">
+        <rect x="0" y="5" width="120" height="42" rx="4" fill="#3A0CA3"/>
+        <text x="60" y="24" font-size="9.5" font-weight="bold" fill="white" text-anchor="middle">&#8634; Restore Version 2</text>
+        <text x="60" y="38" font-size="8" fill="#E0E7FF" text-anchor="middle">Recovered in 1 click!</text>
+      </g>
+    </svg>
+    <div class="diagram-caption">Figure 29.2: Version History is an electronic time-machine. You can restore an earlier version at any moment!</div>
+  </div>
+</div>
+
+<!-- ========================================== -->
+<!-- PAGE 4: CONSTRUCTIVE PEER FEEDBACK         -->
+<!-- ========================================== -->
+<div class="page">
+  <div class="header-bar">
+    <div class="header-title">The Art of Constructive Feedback</div>
+    <div class="badge">Session 29 • Page 4</div>
+  </div>
+
+  <h2>1. Comments: Digital Sticky Notes</h2>
+  <p>When you spot a problem in a teammate's paragraph, you should <strong>not</strong> just erase it without warning. That causes anger and confusion. Instead, highlight the word and click <strong>Add Comment</strong> (💬). A comment sits in the right-hand margin like a polite sticky note!</p>
+
+  <h2>2. The 3 Sentence Frames for High-Quality Feedback</h2>
+  <p>When giving digital feedback, never leave rude, unhelpful notes like <em>"This is bad"</em> or <em>"Wrong"</em>. Use these three professional sentence starters:</p>
+
+  <div class="step-card">
+    <div class="step-num">1</div>
+    <div class="step-content">
+      <strong>"I understood..." (Praise & Clarity)</strong>
+      <br>Show your partner that their message was clear:
+      <br><em>"I understood that dirty water causes cholera, which is a great point."</em>
+    </div>
+  </div>
+
+  <div class="step-card">
+    <div class="step-num">2</div>
+    <div class="step-content">
+      <strong>"One question I have is..." (Curiosity & Depth)</strong>
+      <br>Ask for missing details politely:
+      <br><em>"One question I have is: how much will the drum lids cost for our school?"</em>
+    </div>
+  </div>
+
+  <div class="step-card">
+    <div class="step-num">3</div>
+    <div class="step-content">
+      <strong>"One helpful suggestion is..." (Actionable Improvement)</strong>
+      <br>Give a specific, realistic fix:
+      <br><em>"One helpful suggestion is to make the 3 action steps into a bulleted list so it is easier to read."</em>
+    </div>
+  </div>
+
+  <h2>3. Resolving Comments (Checking Off Tasks)</h2>
+  <div class="callout" style="background:#ECFDF5; border-left: 5px solid var(--bih-green);">
+    <div class="callout-title" style="color:#047857;">✔️ THE RESOLVE BUTTON</div>
+    When a teammate leaves a suggestion in the margin and you make the recommended correction in the document, click the tiny <strong>checkmark icon (&check;)</strong> at the top of the comment box. This <strong>resolves</strong> the comment and tucks it away cleanly!
+  </div>
+
+  <h2>4. Panic Button / Conflict Resolution</h2>
+  <div class="panic-box">
+    <div class="panic-title">🚨 A TEAMMATE KEEPS DELETING MY WORK OVER AND OVER!</div>
+    <strong>Stop typing immediately.</strong> Take your hands off the keyboard.
+    <br>Do not start an "edit war" where you delete their work in revenge. Turn your chair, look your teammate in the eye, and discuss calmly: <em>"Kwesi, why did you remove line 3? Let us agree on what belongs here."</em> If you cannot agree, raise your hand and ask your Tech Club mentor to arbitrate!
+  </div>
+</div>
+
+<!-- ========================================== -->
+<!-- PAGE 5: GUIDED LAB - TEAM CLUB NOTICE      -->
+<!-- ========================================== -->
+<div class="page">
+  <div class="header-bar">
+    <div class="header-title">Guided Hands-On Lab: The Team Notice</div>
+    <div class="badge">Session 29 • Page 5</div>
+  </div>
+
+  <h2>1. Lab Mission: Create a 1-Page Shared School Notice</h2>
+  <p>Work in your team of 3 or 4 (in a team of 3, one person takes two roles) to produce an event flyer titled <strong>"BIH Tech Club Community Demo Day"</strong>:</p>
+
+  <div class="step-card">
+    <div class="step-num">1</div>
+    <div class="step-content">
+      <strong>Create & Share Document:</strong>
+      <br>Sign in with the school or club account your mentor gives you (or one shared demo account per team). One student creates a new document in Google Docs or OneDrive Word &rarr; Clicks <strong>Share</strong> &rarr; Adds teammates' accounts as <strong>Editor</strong> &rarr; Adds the mentor as <strong>Commenter</strong>.
+    </div>
+  </div>
+
+  <div class="step-card">
+    <div class="step-num">2</div>
+    <div class="step-content">
+      <strong>Writer's Task (Drafting):</strong>
+      <br>The Writer types the raw information:
+      <br>&bull; Title: <code>BIH TECH CLUB COMMUNITY DEMO DAY</code>
+      <br>&bull; Date & Time: <code>Friday, 30th October 2026 at 2:00 PM</code>
+      <br>&bull; Venue: <code>School Assembly Hall</code>
+      <br>&bull; 3 Activities: Scratch games, clean water data tables, digital presentations.
+    </div>
+  </div>
+
+  <div class="step-card">
+    <div class="step-num">3</div>
+    <div class="step-content">
+      <strong>Quality Controller's Task (Leave Comments):</strong>
+      <br>The Quality Controller highlights the title and leaves a comment: <em>"One helpful suggestion is to make the title Bold and Size 18 pt."</em>
+      <br>Leaves a second comment on the activities suggesting a bulleted list.
+    </div>
+  </div>
+
+  <div class="step-card">
+    <div class="step-num">4</div>
+    <div class="step-content">
+      <strong>Designer's Task (Format & Resolve):</strong>
+      <br>The Designer reads the comments, makes the title 18 pt Bold, converts the activities into a bulleted list, and clicks <strong>Resolve (&check;)</strong> on both comments!
+    </div>
+  </div>
+
+  <div class="step-card">
+    <div class="step-num">5</div>
+    <div class="step-content">
+      <strong>Inspect Version History:</strong>
+      <br>Click <strong>File &rarr; Version History</strong>. Each teammate's name shows in a different color beside their edits (only if each teammate signed in with their own club account).
+    </div>
+  </div>
+
+  <h2>2. Visual Target (What Your Finished Notice Should Look Like)</h2>
+  <div style="border: 2px solid var(--bih-purple); border-radius: 6px; padding: 20px; background: white; margin: 12px 0;">
+    <div style="text-align: center; font-size: 16px; font-weight: bold; color: var(--bih-purple); margin-bottom: 4px;">
+      BIH TECH CLUB COMMUNITY DEMO DAY
+    </div>
+    <div style="text-align: center; font-size: 11px; font-weight: bold; color: var(--bih-gold); margin-bottom: 12px;">
+      Friday, 30th October 2026 &bull; 2:00 PM &bull; School Assembly Hall
+    </div>
+    <p style="font-size: 12px; margin-bottom: 8px;">All parents, teachers, and students are warmly invited to see what our JHS tech leaders have built this term:</p>
+    <ul style="font-size: 11.5px; line-height: 1.6; margin: 0 0 0 18px;">
+      <li><strong>Interactive Scratch Games:</strong> Play student-coded educational games.</li>
+      <li><strong>Clean Water Data Tables:</strong> View our spreadsheet water sanitation reports.</li>
+      <li><strong>Live Digital Presentations:</strong> Community solutions pitched by students.</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ========================================== -->
+<!-- PAGE 6: REVIEW & TEAM ASSESSMENT           -->
+<!-- ========================================== -->
+<div class="page">
+  <div class="header-bar">
+    <div class="header-title">Session 29 Review & Team Assessment</div>
+    <div class="badge">Session 29 • Page 6</div>
+  </div>
+
+  <h2>1. Constructive Feedback Rewrite Challenge</h2>
+  <p>Rewrite these rude, unhelpful comments into respectful, professional feedback using the sentence starters:</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 40%;">Rude / Unhelpful Comment</th>
+        <th style="width: 60%;">Your Professional Rewrite</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>"This looks terrible and messy."</code></td>
+        <td><div class="answer-line" contenteditable="true">One helpful suggestion is to add bullets to make it clean...</div></td>
+      </tr>
+      <tr>
+        <td><code>"You didn't explain the date properly."</code></td>
+        <td><div class="answer-line" contenteditable="true">Write your rewrite here...</div></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>2. Written Review Questions</h2>
+  <p><strong>Question 1:</strong> What is the difference between giving someone <strong>Commenter</strong> permission versus <strong>Editor</strong> permission?</p>
+  <div class="answer-line" contenteditable="true">Write your answer here...</div>
+  <div class="answer-line" contenteditable="true"></div>
+
+  <p><strong>Question 2:</strong> How does <strong>Version History</strong> protect your team if someone accidentally deletes an important paragraph?</p>
+  <div class="answer-line" contenteditable="true">Write your answer here...</div>
+
+  <h2>3. Team Collaboration Self-Assessment & Mentor Sign-Off</h2>
+  <p>Evaluate your team's collaboration dynamics today:</p>
+  <table>
+    <thead>
+      <tr>
+        <th>Collaboration Competency</th>
+        <th style="width: 18%; text-align: center;">With Help</th>
+        <th style="width: 18%; text-align: center;">Almost Alone</th>
+        <th style="width: 18%; text-align: center;">All By Myself!</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1. I can explain the difference between Viewer, Commenter, and Editor access.</td>
+        <td style="text-align: center;"><input type="radio" name="s14_1"></td>
+        <td style="text-align: center;"><input type="radio" name="s14_1"></td>
+        <td style="text-align: center;"><input type="radio" name="s14_1"></td>
+      </tr>
+      <tr>
+        <td>2. I can work collaboratively in a shared file without overwriting my partner's text.</td>
+        <td style="text-align: center;"><input type="radio" name="s14_2"></td>
+        <td style="text-align: center;"><input type="radio" name="s14_2"></td>
+        <td style="text-align: center;"><input type="radio" name="s14_2"></td>
+      </tr>
+      <tr>
+        <td>3. I know how to check Version History to restore an earlier state of a document.</td>
+        <td style="text-align: center;"><input type="radio" name="s14_3"></td>
+        <td style="text-align: center;"><input type="radio" name="s14_3"></td>
+        <td style="text-align: center;"><input type="radio" name="s14_3"></td>
+      </tr>
+      <tr>
+        <td>4. I can give constructive, respectful feedback using professional sentence frames.</td>
+        <td style="text-align: center;"><input type="radio" name="s14_4"></td>
+        <td style="text-align: center;"><input type="radio" name="s14_4"></td>
+        <td style="text-align: center;"><input type="radio" name="s14_4"></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div style="border-top: 1px solid var(--bih-border); margin-top: 25px; padding-top: 12px; display: flex; justify-content: space-between; font-size: 13px;">
+    <div><strong>Mentor Signature:</strong> _____________________________</div>
+    <div><strong>Date Completed:</strong> ____________________</div>
+  </div>
+</div>
+
+</body>
+</html>

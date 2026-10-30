@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>BIH Tech Club - Session 7: Email & Digital Communication</title>
+  <title>BIH Tech Club - Session 7: Peripherals &amp; Connections</title>
   <style>
     :root {
       --bih-purple: #3A0CA3;
@@ -13,7 +13,7 @@
       --bih-dark: #1E1E24;
       --bih-light: #F8F9FA;
       --bih-border: #CED4DA;
-      --email-bg: #FFFFFF;
+      --shield-blue: #0284C7;
     }
 
     * {
@@ -243,17 +243,6 @@
       padding: 2px 4px;
     }
 
-    .answer-box {
-      border: 1px solid var(--bih-border);
-      border-radius: 6px;
-      min-height: 60px;
-      padding: 8px 10px;
-      margin-top: 6px;
-      outline: none;
-      background: #FCFCFC;
-      font-size: 13px;
-    }
-
     .checkbox-item {
       display: flex;
       align-items: center;
@@ -266,560 +255,53 @@
 </head>
 <body>
 
-<!-- ========================================== -->
-<!-- PAGE 1: WHAT IS EMAIL? ADDRESS DECODED     -->
-<!-- ========================================== -->
 <div class="page">
   <div class="header-bar">
     <div class="header-title">Bozoma Innovation Hub • Tech Club</div>
     <div class="badge">Session 7 • Page 1</div>
   </div>
-
-  <div class="student-meta">
-    <div class="meta-row">
-      <span class="meta-label">Learner Full Name:</span>
-      <div class="editable-line" contenteditable="true">Ama Mensah</div>
-    </div>
-    <div class="meta-row">
-      <span class="meta-label">School:</span>
-      <div class="editable-line" contenteditable="true">Bozoma Model School</div>
-      <span class="meta-label" style="min-width: 50px;">Class:</span>
-      <div class="editable-line" contenteditable="true" style="max-width: 90px;">JHS 1</div>
-    </div>
-    <div class="meta-row">
-      <span class="meta-label">Workstation Device:</span>
-      <div class="editable-line" contenteditable="true" style="max-width: 180px;">[ ] Desktop &nbsp; [ ] Laptop</div>
-      <span class="meta-label" style="min-width: 70px;">Station #:</span>
-      <div class="editable-line" contenteditable="true" style="max-width: 90px;">PC-01</div>
-    </div>
-  </div>
-
-  <h1>Session 7: Email & Digital Communication</h1>
-  <p>In Session 6, you learned how to browse websites and research facts across the World Wide Web. Today, we discover how to write and send messages directly to individuals, teachers, and organizations using <strong>Electronic Mail (Email)</strong>.</p>
-
-  <h2>1. Plain Talk: The Digital Post Office</h2>
-  <p>Think about sending a physical letter through <strong>Ghana Post</strong>:</p>
-  <ul>
-    <li>1. You write your message on a sheet of paper.</li>
-    <li>2. You place it inside an envelope and seal it.</li>
-    <li>3. You write the recipient's exact <strong>P.O. Box address</strong> on the front.</li>
-    <li>4. A postal van drives the envelope to their town over several days.</li>
-  </ul>
-  <p><strong>Email</strong> works the exact same way, but instead of paper and vans, the letter is converted into digital electronic signals that fly through cables across the world in <strong>less than three seconds</strong>!</p>
-
-  <h2>2. Anatomy of an Email Address</h2>
-  <p>Just like a phone number or P.O. Box, every person on email has a unique address. It is always divided into three clear parts by the "at" symbol (<span class="kbd-key">@</span>):</p>
-
-  <!-- DIAGRAM: EMAIL ADDRESS DECONSTRUCTION -->
-  <div class="diagram-container">
-    <svg width="700" height="135" viewBox="0 0 700 135" xmlns="http://www.w3.org/2000/svg">
-      <rect x="25" y="15" width="650" height="50" rx="8" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.5"/>
-
-      <!-- EMAIL STRING -->
-      <g transform="translate(60, 47)" font-family="monospace" font-size="20" font-weight="bold">
-        <text x="0" y="0" fill="#3A0CA3">ama.mensah</text>
-        <text x="145" y="0" fill="#F77F00">@</text>
-        <text x="180" y="0" fill="#2EC4B6">example</text>
-        <text x="280" y="0" fill="#4361EE">.org</text>
-      </g>
-
-      <!-- Pointers & Callouts -->
-      <!-- Username -->
-      <path d="M 130,72 L 130,85" stroke="#3A0CA3" stroke-width="1.5"/>
-      <text x="130" y="98" font-size="10" font-weight="bold" fill="#3A0CA3" text-anchor="middle">1. Username</text>
-      <text x="130" y="110" font-size="8.5" fill="#64748B" text-anchor="middle">(The person's unique name/ID)</text>
-
-      <!-- @ Symbol -->
-      <path d="M 215,72 L 215,85" stroke="#F77F00" stroke-width="1.5"/>
-      <text x="215" y="98" font-size="10" font-weight="bold" fill="#9A3412" text-anchor="middle">2. The "At" Sign (@)</text>
-      <text x="215" y="110" font-size="8.5" fill="#64748B" text-anchor="middle">Hold Shift + press '2'</text>
-
-      <!-- Mail Provider / Host -->
-      <path d="M 365,72 L 365,85" stroke="#0D9488" stroke-width="1.5"/>
-      <text x="365" y="98" font-size="10" font-weight="bold" fill="#0D9488" text-anchor="middle">3. Mail Provider / Host Domain</text>
-      <text x="365" y="110" font-size="8.5" fill="#64748B" text-anchor="middle">(The school or company running the server)</text>
-    </svg>
-    <div class="diagram-caption">Figure 7.0: Deconstructing an email address. Notice there are NEVER spaces anywhere in an email address!</div>
-  </div>
-
-  <h2>3. The Golden Rule of Email Addresses</h2>
-  <div class="callout">
-    <div class="callout-title">⚠️ ZERO SPACES ALLOWED!</div>
-    An email address can <strong>never</strong> contain an empty space. If you type <code>ama mensah@gmail.com</code>, the computer will reject it or the message will bounce back as undelivered. Always use full stops or underscores to separate names: <code>ama.mensah@gmail.com</code>.
-  </div>
+  <h1>Session 7: Peripherals &amp; Connections</h1>
+  <p>DRAFT PLACEHOLDER: this workbook is being written.</p>
 </div>
-
-<!-- ========================================== -->
-<!-- PAGE 2: ANATOMY OF THE COMPOSE WINDOW      -->
-<!-- ========================================== -->
 <div class="page">
   <div class="header-bar">
-    <div class="header-title">The Email Compose Window</div>
+    <div class="header-title">Coming soon</div>
     <div class="badge">Session 7 • Page 2</div>
   </div>
-
-  <h2>1. What You See When You Write an Email</h2>
-  <p>When you click <strong>"Compose"</strong> or <strong>"New Message"</strong> in any email application, an envelope-like window opens up:</p>
-
-  <!-- DIAGRAM: COMPOSE WINDOW ANATOMY -->
-  <div class="diagram-container">
-    <svg width="720" height="235" viewBox="0 0 720 235" xmlns="http://www.w3.org/2000/svg">
-      <!-- Outer Window Frame -->
-      <rect x="20" y="10" width="680" height="215" rx="6" fill="#FFFFFF" stroke="#334155" stroke-width="2"/>
-      
-      <!-- Window Title Bar -->
-      <rect x="20" y="10" width="680" height="28" rx="5" fill="#3A0CA3"/>
-      <text x="35" y="28" font-size="11" font-weight="bold" fill="white">New Message</text>
-      <rect x="670" y="17" width="14" height="14" rx="2" fill="#E63946"/>
-      <text x="677" y="28" font-size="10" fill="white" font-weight="bold" text-anchor="middle">&times;</text>
-
-      <!-- TO: Field -->
-      <line x1="20" y1="65" x2="700" y2="65" stroke="#E2E8F0" stroke-width="1"/>
-      <text x="35" y="53" font-size="11" font-weight="bold" fill="#64748B">To:</text>
-      <rect x="65" y="42" width="220" height="18" rx="9" fill="#EEF2FF"/>
-      <text x="75" y="55" font-size="10" fill="#3A0CA3">mr.mensah@school.edu.gh</text>
-      <text x="650" y="53" font-size="9" fill="#4361EE">Cc &nbsp; Bcc</text>
-
-      <!-- SUBJECT: Field -->
-      <line x1="20" y1="95" x2="700" y2="95" stroke="#E2E8F0" stroke-width="1"/>
-      <text x="35" y="83" font-size="11" font-weight="bold" fill="#64748B">Subject:</text>
-      <text x="95" y="83" font-size="11" font-weight="bold" fill="#1E293B">JHS 1 Tech Club - Request for Science Room Key</text>
-
-      <!-- MESSAGE BODY AREA -->
-      <g transform="translate(35, 115)" font-size="10" fill="#334155">
-        <text x="0" y="0">Dear Mr. Mensah,</text>
-        <text x="0" y="18">I hope you are having a pleasant week.</text>
-        <text x="0" y="34">Our Tech Club team has completed our water filter prototype. May we borrow</text>
-        <text x="0" y="48">the Science Laboratory key on Friday at 3:00 PM to test our project?</text>
-        <text x="0" y="66">Thank you for your guidance.</text>
-        <text x="0" y="82">Respectfully yours,</text>
-        <text x="0" y="96" font-weight="bold" fill="#3A0CA3">Ama Mensah (JHS 1A Leader)</text>
-      </g>
-
-      <!-- BOTTOM ACTION TOOLBAR -->
-      <rect x="20" y="195" width="680" height="30" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1"/>
-      <!-- Send Button -->
-      <rect x="30" y="200" width="65" height="20" rx="3" fill="#3A0CA3"/>
-      <text x="62" y="214" font-size="10.5" font-weight="bold" fill="white" text-anchor="middle">Send</text>
-
-      <!-- Paperclip (Attachment) -->
-      <g transform="translate(110, 203)">
-        <path d="M 5,14 L 14,5 C 17,2 21,6 18,9 L 9,18 C 7,20 4,17 6,15 L 14,7" stroke="#475569" stroke-width="1.5" fill="none"/>
-      </g>
-      <text x="135" y="214" font-size="9" fill="#475569">Attach File (Paperclip)</text>
-
-      <!-- Trashcan (Discard) -->
-      <text x="670" y="214" font-size="11" fill="#94A3B8">&#128465;</text>
-
-      <!-- Callout Labels -->
-      <path d="M 290,52 L 350,52" stroke="#4361EE" stroke-width="1.5"/>
-      <text x="355" y="55" font-size="9" font-weight="bold" fill="#4361EE">TO: The recipient's exact email address</text>
-
-      <path d="M 440,82 L 490,82" stroke="#F77F00" stroke-width="1.5"/>
-      <text x="495" y="85" font-size="9" font-weight="bold" fill="#F77F00">SUBJECT: The title or summary of your message</text>
-    </svg>
-    <div class="diagram-caption">Figure 7.1: Anatomy of a professional email compose window.</div>
-  </div>
-
-  <h2>2. Master the Header Fields: To, Cc, Bcc, and Subject</h2>
-  <table>
-    <thead>
-      <tr>
-        <th style="width: 20%;">Field Name</th>
-        <th style="width: 40%;">What It Means</th>
-        <th style="width: 40%;">Example Use Case</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><strong>To:</strong></td>
-        <td>The primary person who <strong>must read and respond</strong> to your email.</td>
-        <td><code>headteacher@school.edu.gh</code></td>
-      </tr>
-      <tr>
-        <td><strong>Cc:</strong><br><small>(Carbon Copy)</small></td>
-        <td>People who should read the message for their information, but <strong>do not need to reply</strong>.</td>
-        <td>Cc your Tech Club mentor when emailing the headteacher.</td>
-      </tr>
-      <tr>
-        <td><strong>Bcc:</strong><br><small>(Blind Carbon Copy)</small></td>
-        <td>A <strong>hidden copy</strong>: other recipients cannot see who was Bcc'd.</td>
-        <td>Emailing many people who do not know each other.</td>
-      </tr>
-      <tr>
-        <td><strong>Subject:</strong></td>
-        <td>A short headline (4–7 words) telling the reader <strong>what the email is about</strong>.</td>
-        <td><code>Meeting Request - Tech Club Project</code></td>
-      </tr>
-    </tbody>
-  </table>
-
-  <h2>3. Golden Rule of Subject Lines</h2>
-  <div class="dual-grid">
-    <div class="dual-box">
-      <div class="dual-box-title">❌ TERRIBLE Subject Lines</div>
-      <p>&bull; <code>hi</code> (Lazy; might be mistaken for spam)</p>
-      <p>&bull; <code>URGENT HELP ME PLEASE!!!!</code> (Creates panic)</p>
-      <p>&bull; <em>[Blank / Empty]</em> (Looks like an accidental click)</p>
-    </div>
-    <div class="dual-box">
-      <div class="dual-box-title">✅ EXCELLENT Subject Lines</div>
-      <p>&bull; <code>Science Assignment - JHS 1B - Ama Mensah</code></p>
-      <p>&bull; <code>Absence Notice - Kwesi Boateng - Tuesday 12th</code></p>
-      <p>&bull; <code>Question Regarding Coding Challenge 3</code></p>
-    </div>
-  </div>
+  
+  <p>DRAFT PLACEHOLDER: this workbook is being written.</p>
 </div>
-
-<!-- ========================================== -->
-<!-- PAGE 3: EMAIL ETIQUETTE & THE 4-PART LETTER-->
-<!-- ========================================== -->
 <div class="page">
   <div class="header-bar">
-    <div class="header-title">Netiquette & The 4-Part Email Structure</div>
+    <div class="header-title">Coming soon</div>
     <div class="badge">Session 7 • Page 3</div>
   </div>
-
-  <h2>1. What is "Netiquette"?</h2>
-  <p>In Ghanaian culture, you would never walk up to an elder or teacher and blurt out a demand without first saying <em>"Good morning, sir"</em> or <em>"Good afternoon, madam"</em>. <strong>Netiquette</strong> (Network Etiquette) is simply bringing our home training and respect into digital communication!</p>
-
-  <h2>2. The Professional 4-Part Email Anatomy</h2>
-  <p>Every formal email you write to a teacher, mentor, or school official must contain these four blocks:</p>
-
-  <div class="step-card">
-    <div class="step-num">1</div>
-    <div class="step-content">
-      <strong>The Respectful Salutation (Greeting):</strong>
-      <br>Always address the person politely by their name and title:
-      <br><em>"Dear Mr. Mensah,"</em> &bull; <em>"Good morning Madam Grace,"</em> &bull; <em>"Dear Club Mentor,"</em>
-    </div>
-  </div>
-
-  <div class="step-card">
-    <div class="step-num">2</div>
-    <div class="step-content">
-      <strong>The Courteous Opening:</strong>
-      <br>A warm one-sentence greeting before diving into business:
-      <br><em>"I hope this message finds you well."</em> &bull; <em>"I hope you are having a productive week."</em>
-    </div>
-  </div>
-
-  <div class="step-card">
-    <div class="step-num">3</div>
-    <div class="step-content">
-      <strong>The Core Message (Body):</strong>
-      <br>State your point clearly and briefly in 2 to 4 sentences. Use proper capital letters, full stops, and paragraphs.
-    </div>
-  </div>
-
-  <div class="step-card">
-    <div class="step-num">4</div>
-    <div class="step-content">
-      <strong>The Respectful Sign-Off & Signature:</strong>
-      <br>Close politely and include your full name and class so the teacher knows exactly who wrote to them:
-      <br><em>"Respectfully yours,"</em> or <em>"Best regards,"</em> &rarr; followed by: <strong>Ama Mensah, JHS 1 Student</strong>.
-    </div>
-  </div>
-
-  <h2>3. The Cardinal Rules of Netiquette</h2>
-  <table>
-    <thead>
-      <tr>
-        <th style="width: 25%;">Rule</th>
-        <th style="width: 40%;">Why It Matters</th>
-        <th style="width: 35%;">What to Do</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><strong>NO ALL-CAPS</strong></td>
-        <td>TYPING ENTIRE SENTENCES IN CAPITAL LETTERS IS SEEN AS <strong>SHOUTING AND ANGER</strong>.</td>
-        <td>Use regular sentence capitalization.</td>
-      </tr>
-      <tr>
-        <td><strong>Proofread Twice</strong></td>
-        <td>Once you hit <strong>Send</strong>, the email is gone! You cannot run after it or snatch it back.</td>
-        <td>Check spelling and recipient address before clicking Send.</td>
-      </tr>
-      <tr>
-        <td><strong>No Slang or Shortcuts</strong></td>
-        <td>Words like <em>"u r gr8"</em> or <em>"wossop"</em> belong in informal phone chats, never in school or professional emails.</td>
-        <td>Write out full words: <em>"you are"</em>, <em>"please"</em>.</td>
-      </tr>
-    </tbody>
-  </table>
+  
+  <p>DRAFT PLACEHOLDER: this workbook is being written.</p>
 </div>
-
-<!-- ========================================== -->
-<!-- PAGE 4: ATTACHMENTS & INBOX SAFETY        -->
-<!-- ========================================== -->
 <div class="page">
   <div class="header-bar">
-    <div class="header-title">File Attachments & Inbox Safety</div>
+    <div class="header-title">Coming soon</div>
     <div class="badge">Session 7 • Page 4</div>
   </div>
-
-  <h2>1. What is an Attachment?</h2>
-  <p>An <strong>Attachment</strong> is a separate computer file (such as a typed document, a drawing from Paint, or a PDF report) that you clip onto your email message, just like using a physical metal <strong>paperclip</strong> to fasten two papers together!</p>
-
-  <!-- DIAGRAM: HOW ATTACHMENTS WORK -->
-  <div class="diagram-container">
-    <svg width="680" height="135" viewBox="0 0 680 135" xmlns="http://www.w3.org/2000/svg">
-      <!-- Message Sheet -->
-      <g transform="translate(40, 15)">
-        <rect x="0" y="0" width="120" height="95" rx="4" fill="#FFFFFF" stroke="#334155" stroke-width="1.5"/>
-        <line x1="15" y1="20" x2="105" y2="20" stroke="#3A0CA3" stroke-width="2"/>
-        <line x1="15" y1="35" x2="85" y2="35" stroke="#94A3B8" stroke-width="1.5"/>
-        <line x1="15" y1="48" x2="100" y2="48" stroke="#94A3B8" stroke-width="1.5"/>
-        <line x1="15" y1="61" x2="70" y2="61" stroke="#94A3B8" stroke-width="1.5"/>
-        <text x="60" y="112" font-size="9.5" font-weight="bold" fill="#3A0CA3" text-anchor="middle">Your Email Letter</text>
-      </g>
-
-      <!-- Paperclip Clasping Both -->
-      <g transform="translate(145, 10)">
-        <path d="M 10,65 L 10,20 C 10,8 30,8 30,20 L 30,70 C 30,85 0,85 0,70 L 0,30" stroke="#F77F00" stroke-width="3" fill="none"/>
-        <text x="15" y="105" font-size="9.5" font-weight="bold" fill="#F77F00" text-anchor="middle">Paperclip Icon</text>
-      </g>
-
-      <!-- Attached File Sheet -->
-      <g transform="translate(190, 25)">
-        <polygon points="0,0 60,0 80,20 80,85 0,85" fill="#EEF2FF" stroke="#4361EE" stroke-width="1.5"/>
-        <polygon points="60,0 60,20 80,20" fill="#CBD5E1"/>
-        <text x="40" y="45" font-size="9" font-weight="bold" fill="#4361EE" text-anchor="middle">Science_Project</text>
-        <text x="40" y="58" font-size="9" font-weight="bold" fill="#4361EE" text-anchor="middle">.docx</text>
-        <text x="40" y="102" font-size="9.5" font-weight="bold" fill="#4361EE" text-anchor="middle">Attached File</text>
-      </g>
-
-      <!-- Travel arrow -->
-      <path d="M 310,60 L 370,60" stroke="#2EC4B6" stroke-width="3"/>
-      <polygon points="375,60 367,56 367,64" fill="#2EC4B6"/>
-
-      <!-- Recipient Mailbox -->
-      <g transform="translate(410, 20)">
-        <rect x="0" y="0" width="220" height="85" rx="6" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.5"/>
-        <text x="110" y="25" font-size="10" font-weight="bold" fill="#047857" text-anchor="middle">Recipient Downloads File</text>
-        <rect x="25" y="40" width="170" height="28" rx="4" fill="#ECFDF5" stroke="#10B981" stroke-width="1"/>
-        <text x="110" y="58" font-size="9" font-weight="bold" fill="#065F46" text-anchor="middle">&#128206; Science_Project.docx (24 KB)</text>
-      </g>
-    </svg>
-    <div class="diagram-caption">Figure 7.2: How attachments travel. The recipient receives your text message AND the attached document together!</div>
-  </div>
-
-  <h2>2. Safe vs. Dangerous Attachments</h2>
-  <div class="dual-grid">
-    <div class="dual-box">
-      <div class="dual-box-title">✅ SAFE File Types (Normal school work)</div>
-      <p>&bull; <code>.docx</code> or <code>.txt</code> (Word documents / text)</p>
-      <p>&bull; <code>.pdf</code> (Readable electronic documents)</p>
-      <p>&bull; <code>.png</code> or <code>.jpg</code> (Images and photos)</p>
-    </div>
-    <div class="dual-box">
-      <div class="dual-box-title">🚫 DANGEROUS Files (Never open from strangers!)</div>
-      <p>&bull; <code>.exe</code> (Executable program - can be a virus!)</p>
-      <p>&bull; <code>.scr</code> or <code>.bat</code> (Hidden programs and scripts)</p>
-      <p>&bull; <code>.zip</code> from an unknown sender</p>
-    </div>
-  </div>
-
-  <h2>3. Panic Button / Inbox Defense</h2>
-  <div class="panic-box">
-    <div class="panic-title">🚨 RED ALERT: SUSPICIOUS EMAIL RECEIVED</div>
-    If you receive an email from someone you do not know:
-    <ul style="margin: 4px 0 0 15px; padding: 0;">
-      <li><strong>NEVER</strong> click on any links inside the message.</li>
-      <li><strong>NEVER</strong> download or open any attachments.</li>
-      <li><strong>NEVER</strong> reply with your password, phone number, or home address.</li>
-      <li>Raise your hand immediately and show your Tech Club mentor!</li>
-    </ul>
-  </div>
+  
+  <p>DRAFT PLACEHOLDER: this workbook is being written.</p>
 </div>
-
-<!-- ========================================== -->
-<!-- PAGE 5: GUIDED LAB - DRAFTING AN EMAIL     -->
-<!-- ========================================== -->
 <div class="page">
   <div class="header-bar">
-    <div class="header-title">Guided Hands-On Lab: Your First Email</div>
+    <div class="header-title">Coming soon</div>
     <div class="badge">Session 7 • Page 5</div>
   </div>
-
-  <h2>1. Lab Mission: Formal Request to Your Club Mentor</h2>
-  <p>Whether using a supervised school email account or the simulator form below, complete a formal email requesting feedback on your upcoming Capstone project:</p>
-
-  <div class="step-card">
-    <div class="step-num">1</div>
-    <div class="step-content">
-      <strong>Fill in the Recipient:</strong> Use the address your mentor writes on the board.
-    </div>
-  </div>
-
-  <div class="step-card">
-    <div class="step-num">2</div>
-    <div class="step-content">
-      <strong>Create a Clear Subject Line:</strong> Include your class, your name, and the topic.
-    </div>
-  </div>
-
-  <div class="step-card">
-    <div class="step-num">3</div>
-    <div class="step-content">
-      <strong>Draft the 4-Part Body:</strong> Use the template below to ensure proper netiquette.
-    </div>
-  </div>
-
-  <h2>2. Guided Email Compose Simulator</h2>
-  <div style="border: 2px solid var(--bih-purple); border-radius: 8px; padding: 15px; background: #FFFFFF; margin: 15px 0;">
-    <div style="display: flex; gap: 10px; align-items: center; border-bottom: 1px solid #E2E8F0; padding-bottom: 6px; margin-bottom: 6px;">
-      <strong style="font-size: 12px; color: #64748B; width: 60px;">To:</strong>
-      <div class="editable-line" contenteditable="true">(the address your mentor writes on the board)</div>
-    </div>
-
-    <div style="display: flex; gap: 10px; align-items: center; border-bottom: 1px solid #E2E8F0; padding-bottom: 6px; margin-bottom: 10px;">
-      <strong style="font-size: 12px; color: #64748B; width: 60px;">Subject:</strong>
-      <div class="editable-line" contenteditable="true">Capstone Project Idea - JHS 1A - Ama Mensah</div>
-    </div>
-
-    <div class="answer-box" contenteditable="true" style="min-height: 140px; font-family: inherit; font-size: 13px; line-height: 1.6;">
-Dear Mentor,
-
-I hope you are having a pleasant week.
-
-Our Tech Club group has chosen our Capstone project topic. We plan to create a digital spreadsheet to record clean drinking water supplies for our school. 
-
-Attached is our first draft outline. We would appreciate your feedback during our next session.
-
-Respectfully yours,
-Ama Mensah
-JHS 1 Student, BIH Tech Club Leader
-    </div>
-
-    <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 10px; padding-top: 8px; border-top: 1px solid #E2E8F0;">
-      <div style="display: flex; gap: 12px; align-items: center; font-size: 12px; color: var(--bih-purple); font-weight: bold;">
-        <span>&#128206; Attachment:</span>
-        <span style="background: #EEF2FF; padding: 2px 8px; border-radius: 4px; border: 1px solid #CBD5E1;">Water_Project_Draft.docx</span>
-      </div>
-      <div style="background: var(--bih-purple); color: white; padding: 4px 16px; border-radius: 4px; font-weight: bold; font-size: 12px;">
-        Simulated [SEND]
-      </div>
-    </div>
-  </div>
-
-  <h2>3. Pre-Flight Send Checklist</h2>
-  <div class="checkbox-item"><input type="checkbox"> Did you spell the recipient's email address correctly with no spaces?</div>
-  <div class="checkbox-item"><input type="checkbox"> Does your subject line clearly describe the message in 4–7 words?</div>
-  <div class="checkbox-item"><input type="checkbox"> Did you include a respectful greeting and sign off with your full name?</div>
-  <div class="checkbox-item"><input type="checkbox"> Did you verify that your attached file is a safe document type (.docx, .pdf)?</div>
+  
+  <p>DRAFT PLACEHOLDER: this workbook is being written.</p>
 </div>
-
-<!-- ========================================== -->
-<!-- PAGE 6: REVIEW & SELF-ASSESSMENT           -->
-<!-- ========================================== -->
 <div class="page">
   <div class="header-bar">
-    <div class="header-title">Session 7 Review & Verification</div>
+    <div class="header-title">Coming soon</div>
     <div class="badge">Session 7 • Page 6</div>
   </div>
-
-  <h2>1. Subject Line Makeover Challenge</h2>
-  <p>Rewrite each weak, unprofessional subject line below into an excellent, clear subject line:</p>
-
-  <table>
-    <thead>
-      <tr>
-        <th style="width: 40%;">Weak Subject Line</th>
-        <th style="width: 60%;">Your Professional Rewrite</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><code>hello sir</code></td>
-        <td><div class="answer-line" contenteditable="true">e.g. Science Project Inquiry - Kofi Mensah</div></td>
-      </tr>
-      <tr>
-        <td><code>URGENT OPEN THIS NOW</code></td>
-        <td><div class="answer-line" contenteditable="true">Type your rewrite here...</div></td>
-      </tr>
-      <tr>
-        <td><code>homework</code></td>
-        <td><div class="answer-line" contenteditable="true">Type your rewrite here...</div></td>
-      </tr>
-    </tbody>
-  </table>
-
-  <h2>2. Safe vs. Suspicious Inbox Scenarios</h2>
-  <p>Read each scenario and tick whether you should <strong>Open</strong> or <strong>Report to Mentor</strong>:</p>
-
-  <table>
-    <thead>
-      <tr>
-        <th style="width: 60%;">Email Scenario</th>
-        <th style="width: 20%; text-align: center;">Safe to Open</th>
-        <th style="width: 20%; text-align: center;">Report to Mentor!</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>An email from <code>headteacher@school.edu.gh</code> with the subject <em>"End of Term Examination Timetable.pdf"</em>.</td>
-        <td style="text-align: center;"><input type="radio" name="sc1"></td>
-        <td style="text-align: center;"><input type="radio" name="sc1"></td>
-      </tr>
-      <tr>
-        <td>An email from <code>winner-claim99@lottery-prize.xyz</code> saying you won 20,000 Cedis with an attachment called <code>claim_money.exe</code>.</td>
-        <td style="text-align: center;"><input type="radio" name="sc2"></td>
-        <td style="text-align: center;"><input type="radio" name="sc2"></td>
-      </tr>
-      <tr>
-        <td>A message claiming your email account will be deleted in 10 minutes unless you click a link and type your password.</td>
-        <td style="text-align: center;"><input type="radio" name="sc3"></td>
-        <td style="text-align: center;"><input type="radio" name="sc3"></td>
-      </tr>
-    </tbody>
-  </table>
-
-  <h2>3. Self-Assessment & Mentor Sign-Off</h2>
-  <p>Tick the column that reflects your confidence at the end of Session 7:</p>
-  <table>
-    <thead>
-      <tr>
-        <th>Email & Communication Competency</th>
-        <th style="width: 18%; text-align: center;">With Help</th>
-        <th style="width: 18%; text-align: center;">Almost Alone</th>
-        <th style="width: 18%; text-align: center;">All By Myself!</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>1. I can identify and explain the 3 parts of an email address (username, @, domain).</td>
-        <td style="text-align: center;"><input type="radio" name="s7_1"></td>
-        <td style="text-align: center;"><input type="radio" name="s7_1"></td>
-        <td style="text-align: center;"><input type="radio" name="s7_1"></td>
-      </tr>
-      <tr>
-        <td>2. I can write a clear, descriptive Subject line that avoids spam triggers.</td>
-        <td style="text-align: center;"><input type="radio" name="s7_2"></td>
-        <td style="text-align: center;"><input type="radio" name="s7_2"></td>
-        <td style="text-align: center;"><input type="radio" name="s7_2"></td>
-      </tr>
-      <tr>
-        <td>3. I can structure an email using the professional 4-part letter anatomy.</td>
-        <td style="text-align: center;"><input type="radio" name="s7_3"></td>
-        <td style="text-align: center;"><input type="radio" name="s7_3"></td>
-        <td style="text-align: center;"><input type="radio" name="s7_3"></td>
-      </tr>
-      <tr>
-        <td>4. I know how file attachments work and how to spot dangerous file extensions (.exe).</td>
-        <td style="text-align: center;"><input type="radio" name="s7_4"></td>
-        <td style="text-align: center;"><input type="radio" name="s7_4"></td>
-        <td style="text-align: center;"><input type="radio" name="s7_4"></td>
-      </tr>
-    </tbody>
-  </table>
-
-  <div style="border-top: 1px solid var(--bih-border); margin-top: 25px; padding-top: 12px; display: flex; justify-content: space-between; font-size: 13px;">
-    <div><strong>Mentor Signature:</strong> _____________________________</div>
-    <div><strong>Date Completed:</strong> ____________________</div>
-  </div>
+  
+  <p>DRAFT PLACEHOLDER: this workbook is being written.</p>
 </div>
-
 </body>
 </html>

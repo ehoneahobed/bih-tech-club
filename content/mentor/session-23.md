@@ -1,4 +1,4 @@
-# Session 12: Presentations & Slide Design
+# Session 23: Presentations & Slide Design
 
 > **At a glance:** pupils plan a 3-slide storyboard and build a clean, readable campaign deck that follows the 6-by-6 rule, uses high contrast and keeps pictures in proportion. · **Time:** 90 minutes (adjust the timings if your period is shorter) · **Workbook pages:** 6
 
@@ -37,7 +37,7 @@ By the end of the session, pupils can:
 - **Plan on paper first:** the storyboard stops pupils wasting the session on colours and animations.
 
 ## The 3D lab
-Use **Slide Design & Show Time**. Demonstrate *Slide 1: choose a theme with good contrast* on the projector. In pairs, pupils do *Slide 2: follow the 6-by-6 rule* and *Slide 3: fix the squished picture* (by ticking "Lock aspect ratio"). If time allows, let them try *Start the slide show*. Save the animation, B-key and finish missions for Session 13. Link it back: the lab's squished picture is the same problem as the Page 3 panic button.
+Use **Slide Design & Show Time**. Demonstrate *Slide 1: choose a theme with good contrast* on the projector. In pairs, pupils do *Slide 2: follow the 6-by-6 rule* and *Slide 3: fix the squished picture* (by ticking "Lock aspect ratio"). If time allows, let them try *Start the slide show*. Save the animation, B-key and finish missions for Session 24. Link it back: the lab's squished picture is the same problem as the Page 3 panic button.
 
 ## Common mistakes and quick fixes
 | Pupils often… | Try this |

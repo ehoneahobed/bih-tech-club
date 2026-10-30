@@ -1,4 +1,4 @@
-// Sessions 8–9 — Create & Format Documents: format a real-looking page on a 3D
+// Sessions 16–17 — Create & Format Documents: format a real-looking page on a 3D
 // desk. Bold, size, alignment, bullets, numbering, heading styles, spell check
 // (including the "Kwesi" dilemma) and print preview with a working printer.
 import { THREE, COLORS, box, mat, rbox, cable, decal } from './runtime.js';

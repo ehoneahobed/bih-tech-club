@@ -1,4 +1,4 @@
-# Session 15: Online Safety & Digital Citizenship
+# Session 33: Online Safety & Digital Citizenship
 
 > **At a glance:** pupils protect their personal information, think before they post, build a strong practice passphrase and use S.T.O.P. to spot phishing scams. · **Time:** 90 minutes (adjust the timings if your period is shorter) · **Workbook pages:** 6
 
@@ -10,7 +10,7 @@ By the end of the session, pupils can:
 
 ## Before the session
 - [ ] Test the Password Fortress and Spot the Phish labs on the projector PC and a pupil PC. Keep the offline pack on USB, as neither lab should need the internet.
-- [ ] Copy the fake MoMo message from Figure 15.3 onto the board or a slide.
+- [ ] Copy the fake MoMo message from Figure 33.3 onto the board or a slide.
 - [ ] Prepare pens or pencils for striking out P.I.I. on Page 5.
 - [ ] Have your school's procedure for reporting online worries to hand, in case a pupil discloses something.
 

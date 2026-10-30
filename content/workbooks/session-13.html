@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>BIH Tech Club - Session 13: Presentation Delivery & Public Speaking</title>
+  <title>BIH Tech Club - Session 13: Email & Digital Communication</title>
   <style>
     :root {
       --bih-purple: #3A0CA3;
@@ -13,7 +13,7 @@
       --bih-dark: #1E1E24;
       --bih-light: #F8F9FA;
       --bih-border: #CED4DA;
-      --ppt-orange: #C43E1C;
+      --email-bg: #FFFFFF;
     }
 
     * {
@@ -243,6 +243,17 @@
       padding: 2px 4px;
     }
 
+    .answer-box {
+      border: 1px solid var(--bih-border);
+      border-radius: 6px;
+      min-height: 60px;
+      padding: 8px 10px;
+      margin-top: 6px;
+      outline: none;
+      background: #FCFCFC;
+      font-size: 13px;
+    }
+
     .checkbox-item {
       display: flex;
       align-items: center;
@@ -256,7 +267,7 @@
 <body>
 
 <!-- ========================================== -->
-<!-- PAGE 1: TRANSITIONS VS ANIMATIONS          -->
+<!-- PAGE 1: WHAT IS EMAIL? ADDRESS DECODED     -->
 <!-- ========================================== -->
 <div class="page">
   <div class="header-bar">
@@ -283,469 +294,494 @@
     </div>
   </div>
 
-  <h1>Session 13: Presentation Delivery & Public Speaking</h1>
-  <p>In Session 12, you built your first 3-slide presentation on clean community water. Today, you will learn how to bring your slides to life using <strong>Transitions</strong> and <strong>Animations</strong>, how to drive your slide show using secret keyboard controls, and how to deliver your talk with <strong>confidence and strong stage presence</strong>!</p>
+  <h1>Session 13: Email & Digital Communication</h1>
+  <p>In Session 11, you learned how to browse websites and research facts across the World Wide Web. Today, we discover how to write and send messages directly to individuals, teachers, and organizations using <strong>Electronic Mail (Email)</strong>.</p>
 
-  <h2>1. Plain Talk: The Stage Curtain vs. The Actor</h2>
-  <div class="dual-grid">
-    <div class="dual-box">
-      <div class="dual-box-title">🎬 TRANSITION (The Stage Curtain)</div>
-      <p>A transition is the visual effect that happens when you move from <strong>one whole slide to the next slide</strong>.</p>
-      <p><em>Analogy:</em> Opening or closing the physical theater curtain between Scene 1 and Scene 2.</p>
-      <p><strong>Examples:</strong> <em>Fade</em>, <em>Push</em>, <em>Wipe</em>.</p>
-    </div>
+  <h2>1. Plain Talk: The Digital Post Office</h2>
+  <p>Think about sending a physical letter through <strong>Ghana Post</strong>:</p>
+  <ul>
+    <li>1. You write your message on a sheet of paper.</li>
+    <li>2. You place it inside an envelope and seal it.</li>
+    <li>3. You write the recipient's exact <strong>P.O. Box address</strong> on the front.</li>
+    <li>4. A postal van drives the envelope to their town over several days.</li>
+  </ul>
+  <p><strong>Email</strong> works the exact same way, but instead of paper and vans, the letter is converted into digital electronic signals that fly through cables across the world in <strong>less than three seconds</strong>!</p>
 
-    <div class="dual-box">
-      <div class="dual-box-title">🎭 ANIMATION (The Actor on Stage)</div>
-      <p>An animation is movement applied to a <strong>single item inside a slide</strong> (such as one line of bullet text or a photo).</p>
-      <p><em>Analogy:</em> An actor walking onto the stage while the curtain is already wide open!</p>
-      <p><strong>Examples:</strong> <em>Appear</em>, <em>Fade</em>, <em>Fly In</em>.</p>
-    </div>
-  </div>
+  <h2>2. Anatomy of an Email Address</h2>
+  <p>Just like a phone number or P.O. Box, every person on email has a unique address. It is always divided into three clear parts by the "at" symbol (<span class="kbd-key">@</span>):</p>
 
-  <!-- DIAGRAM: TRANSITION VS ANIMATION -->
+  <!-- DIAGRAM: EMAIL ADDRESS DECONSTRUCTION -->
   <div class="diagram-container">
-    <svg width="700" height="150" viewBox="0 0 700 150" xmlns="http://www.w3.org/2000/svg">
-      <rect x="20" y="10" width="660" height="125" rx="6" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.5"/>
+    <svg width="700" height="135" viewBox="0 0 700 135" xmlns="http://www.w3.org/2000/svg">
+      <rect x="25" y="15" width="650" height="50" rx="8" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.5"/>
 
-      <!-- TRANSITION TRACK (Top) -->
-      <g transform="translate(40, 20)">
-        <text x="0" y="18" font-size="10.5" font-weight="bold" fill="#3A0CA3">TRANSITION:</text>
-        
-        <!-- Slide 1 -->
-        <rect x="85" y="0" width="70" height="42" rx="2" fill="#FFFFFF" stroke="#334155" stroke-width="1.2"/>
-        <text x="120" y="25" font-size="8" font-weight="bold" fill="#3A0CA3" text-anchor="middle">Slide 1</text>
-
-        <!-- Motion Waves (Fade/Push) -->
-        <path d="M 165,21 Q 185,10 205,21" stroke="#F77F00" stroke-width="2.5" fill="none"/>
-        <polygon points="210,21 202,17 202,25" fill="#F77F00"/>
-        <text x="187" y="36" font-size="8" font-weight="bold" fill="#F77F00" text-anchor="middle">Smooth Fade</text>
-
-        <!-- Slide 2 -->
-        <rect x="220" y="0" width="70" height="42" rx="2" fill="#FFFFFF" stroke="#334155" stroke-width="1.2"/>
-        <text x="255" y="25" font-size="8" font-weight="bold" fill="#3A0CA3" text-anchor="middle">Slide 2</text>
-
-        <text x="310" y="25" font-size="10" font-weight="bold" fill="#0D9488">&larr; Moves the ENTIRE slide canvas!</text>
+      <!-- EMAIL STRING -->
+      <g transform="translate(60, 47)" font-family="monospace" font-size="20" font-weight="bold">
+        <text x="0" y="0" fill="#3A0CA3">ama.mensah</text>
+        <text x="145" y="0" fill="#F77F00">@</text>
+        <text x="180" y="0" fill="#2EC4B6">example</text>
+        <text x="280" y="0" fill="#4361EE">.org</text>
       </g>
 
-      <!-- DIVIDER -->
-      <line x1="40" y1="75" x2="660" y2="75" stroke="#E2E8F0" stroke-width="1.5" stroke-dasharray="4,4"/>
+      <!-- Pointers & Callouts -->
+      <!-- Username -->
+      <path d="M 130,72 L 130,85" stroke="#3A0CA3" stroke-width="1.5"/>
+      <text x="130" y="98" font-size="10" font-weight="bold" fill="#3A0CA3" text-anchor="middle">1. Username</text>
+      <text x="130" y="110" font-size="8.5" fill="#64748B" text-anchor="middle">(The person's unique name/ID)</text>
 
-      <!-- ANIMATION TRACK (Bottom) -->
-      <g transform="translate(40, 85)">
-        <text x="0" y="24" font-size="10.5" font-weight="bold" fill="#C43E1C">ANIMATION:</text>
+      <!-- @ Symbol -->
+      <path d="M 215,72 L 215,85" stroke="#F77F00" stroke-width="1.5"/>
+      <text x="215" y="98" font-size="10" font-weight="bold" fill="#9A3412" text-anchor="middle">2. The "At" Sign (@)</text>
+      <text x="215" y="110" font-size="8.5" fill="#64748B" text-anchor="middle">Hold Shift + press '2'</text>
 
-        <!-- Inside Single Slide -->
-        <rect x="85" y="2" width="160" height="42" rx="2" fill="#FFFFFF" stroke="#334155" stroke-width="1.2"/>
-        <text x="95" y="16" font-size="8" font-weight="bold" fill="#1E293B">Our Solutions:</text>
-        
-        <!-- Bullet appearing one by one -->
-        <rect x="95" y="22" width="70" height="8" rx="1" fill="#EEF2FF"/>
-        <text x="98" y="29" font-size="6.5" font-weight="bold" fill="#3A0CA3">&bull; Point 1 (Click 1)</text>
-
-        <rect x="95" y="32" width="80" height="8" rx="1" fill="#ECFDF5"/>
-        <text x="98" y="39" font-size="6.5" font-weight="bold" fill="#047857">&bull; Point 2 (Click 2)</text>
-
-        <text x="260" y="25" font-size="10" font-weight="bold" fill="#C43E1C">&larr; Brings elements in ONE BY ONE inside a slide!</text>
-      </g>
+      <!-- Mail Provider / Host -->
+      <path d="M 365,72 L 365,85" stroke="#0D9488" stroke-width="1.5"/>
+      <text x="365" y="98" font-size="10" font-weight="bold" fill="#0D9488" text-anchor="middle">3. Mail Provider / Host Domain</text>
+      <text x="365" y="110" font-size="8.5" fill="#64748B" text-anchor="middle">(The school or company running the server)</text>
     </svg>
-    <div class="diagram-caption">Figure 13.0: Transitions move between whole slides; Animations reveal individual points inside a single slide.</div>
+    <div class="diagram-caption">Figure 13.0: Deconstructing an email address. Notice there are NEVER spaces anywhere in an email address!</div>
   </div>
 
-  <h2>2. The "No-Carnival" Rule for Animations</h2>
-  <div class="callout" style="background:#FFF7ED; border-left: 5px solid var(--bih-gold);">
-    <div class="callout-title" style="color:#C2410C;">🎪 AVOID CIRCUS CLOWN ANIMATIONS!</div>
-    Beginners often make words spin in circles, bounce like rubber balls, or zoom in with screeching tire sound effects. This distracts the audience and makes your school presentation look childish.
-    <br><br>
-    <strong>The Professional Rule:</strong> Stick to simple, gentle effects like <strong>"Fade"</strong> or <strong>"Appear"</strong>. Use animation only when you want to hide points so the audience doesn't read ahead of you!
+  <h2>3. The Golden Rule of Email Addresses</h2>
+  <div class="callout">
+    <div class="callout-title">⚠️ ZERO SPACES ALLOWED!</div>
+    An email address can <strong>never</strong> contain an empty space. If you type <code>ama mensah@gmail.com</code>, the computer will reject it or the message will bounce back as undelivered. Always use full stops or underscores to separate names: <code>ama.mensah@gmail.com</code>.
   </div>
 </div>
 
 <!-- ========================================== -->
-<!-- PAGE 2: CONTROLLING THE SLIDE SHOW         -->
+<!-- PAGE 2: ANATOMY OF THE COMPOSE WINDOW      -->
 <!-- ========================================== -->
 <div class="page">
   <div class="header-bar">
-    <div class="header-title">Controlling the Live Slide Show</div>
+    <div class="header-title">The Email Compose Window</div>
     <div class="badge">Session 13 • Page 2</div>
   </div>
 
-  <h2>1. Keyboard Shortcuts to Drive Your Talk</h2>
-  <p>When you stand in front of your class, you do not want to hunt for tiny on-screen buttons with a mouse. Learn these essential keyboard steering keys:</p>
+  <h2>1. What You See When You Write an Email</h2>
+  <p>When you click <strong>"Compose"</strong> or <strong>"New Message"</strong> in any email application, an envelope-like window opens up:</p>
 
-  <!-- DIAGRAM: SLIDE SHOW NAVIGATION CONTROLS -->
+  <!-- DIAGRAM: COMPOSE WINDOW ANATOMY -->
   <div class="diagram-container">
-    <svg width="700" height="150" viewBox="0 0 700 150" xmlns="http://www.w3.org/2000/svg">
-      <rect x="20" y="10" width="660" height="130" rx="6" fill="#1F2937"/>
+    <svg width="720" height="235" viewBox="0 0 720 235" xmlns="http://www.w3.org/2000/svg">
+      <!-- Outer Window Frame -->
+      <rect x="20" y="10" width="680" height="215" rx="6" fill="#FFFFFF" stroke="#334155" stroke-width="2"/>
+      
+      <!-- Window Title Bar -->
+      <rect x="20" y="10" width="680" height="28" rx="5" fill="#3A0CA3"/>
+      <text x="35" y="28" font-size="11" font-weight="bold" fill="white">New Message</text>
+      <rect x="670" y="17" width="14" height="14" rx="2" fill="#E63946"/>
+      <text x="677" y="28" font-size="10" fill="white" font-weight="bold" text-anchor="middle">&times;</text>
 
-      <!-- F5 KEY (Start) -->
-      <g transform="translate(45, 30)">
-        <rect x="0" y="0" width="55" height="45" rx="5" fill="#10B981"/>
-        <text x="27" y="28" font-family="monospace" font-size="18" font-weight="bold" fill="white" text-anchor="middle">F5</text>
-        <text x="27" y="65" font-size="9" font-weight="bold" fill="#6EE7B7" text-anchor="middle">Launch Show</text>
-        <text x="27" y="77" font-size="8" fill="#9CA3AF" text-anchor="middle">(From Slide 1)</text>
+      <!-- TO: Field -->
+      <line x1="20" y1="65" x2="700" y2="65" stroke="#E2E8F0" stroke-width="1"/>
+      <text x="35" y="53" font-size="11" font-weight="bold" fill="#64748B">To:</text>
+      <rect x="65" y="42" width="220" height="18" rx="9" fill="#EEF2FF"/>
+      <text x="75" y="55" font-size="10" fill="#3A0CA3">mr.mensah@school.edu.gh</text>
+      <text x="650" y="53" font-size="9" fill="#4361EE">Cc &nbsp; Bcc</text>
+
+      <!-- SUBJECT: Field -->
+      <line x1="20" y1="95" x2="700" y2="95" stroke="#E2E8F0" stroke-width="1"/>
+      <text x="35" y="83" font-size="11" font-weight="bold" fill="#64748B">Subject:</text>
+      <text x="95" y="83" font-size="11" font-weight="bold" fill="#1E293B">JHS 1 Tech Club - Request for Science Room Key</text>
+
+      <!-- MESSAGE BODY AREA -->
+      <g transform="translate(35, 115)" font-size="10" fill="#334155">
+        <text x="0" y="0">Dear Mr. Mensah,</text>
+        <text x="0" y="18">I hope you are having a pleasant week.</text>
+        <text x="0" y="34">Our Tech Club team has completed our water filter prototype. May we borrow</text>
+        <text x="0" y="48">the Science Laboratory key on Friday at 3:00 PM to test our project?</text>
+        <text x="0" y="66">Thank you for your guidance.</text>
+        <text x="0" y="82">Respectfully yours,</text>
+        <text x="0" y="96" font-weight="bold" fill="#3A0CA3">Ama Mensah (JHS 1A Leader)</text>
       </g>
 
-      <!-- SPACEBAR / RIGHT ARROW (Advance) -->
-      <g transform="translate(145, 30)">
-        <rect x="0" y="0" width="130" height="45" rx="5" fill="#4361EE"/>
-        <text x="65" y="28" font-family="monospace" font-size="14" font-weight="bold" fill="white" text-anchor="middle">SPACEBAR / &rarr;</text>
-        <text x="65" y="65" font-size="9" font-weight="bold" fill="#93C5FD" text-anchor="middle">Next Point / Slide</text>
-        <text x="65" y="77" font-size="8" fill="#9CA3AF" text-anchor="middle">(Move Forward)</text>
-      </g>
+      <!-- BOTTOM ACTION TOOLBAR -->
+      <rect x="20" y="195" width="680" height="30" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1"/>
+      <!-- Send Button -->
+      <rect x="30" y="200" width="65" height="20" rx="3" fill="#3A0CA3"/>
+      <text x="62" y="214" font-size="10.5" font-weight="bold" fill="white" text-anchor="middle">Send</text>
 
-      <!-- LEFT ARROW (Back) -->
-      <g transform="translate(315, 30)">
-        <rect x="0" y="0" width="55" height="45" rx="5" fill="#374151"/>
-        <text x="27" y="28" font-family="monospace" font-size="18" font-weight="bold" fill="white" text-anchor="middle">&larr;</text>
-        <text x="27" y="65" font-size="9" font-weight="bold" fill="#D1D5DB" text-anchor="middle">Previous</text>
-        <text x="27" y="77" font-size="8" fill="#9CA3AF" text-anchor="middle">(Go Back)</text>
+      <!-- Paperclip (Attachment) -->
+      <g transform="translate(110, 203)">
+        <path d="M 5,14 L 14,5 C 17,2 21,6 18,9 L 9,18 C 7,20 4,17 6,15 L 14,7" stroke="#475569" stroke-width="1.5" fill="none"/>
       </g>
+      <text x="135" y="214" font-size="9" fill="#475569">Attach File (Paperclip)</text>
 
-      <!-- B KEY (Secret Magic Trick) -->
-      <g transform="translate(415, 30)">
-        <rect x="0" y="0" width="55" height="45" rx="5" fill="#F77F00"/>
-        <text x="27" y="28" font-family="monospace" font-size="18" font-weight="bold" fill="white" text-anchor="middle">B</text>
-        <text x="27" y="65" font-size="9" font-weight="bold" fill="#FCD34D" text-anchor="middle">BLACK SCREEN</text>
-        <text x="27" y="77" font-size="8" fill="#FCD34D" text-anchor="middle">(Eyes on Speaker!)</text>
-      </g>
+      <!-- Trashcan (Discard) -->
+      <text x="670" y="214" font-size="11" fill="#94A3B8">&#128465;</text>
 
-      <!-- ESC KEY (Exit) -->
-      <g transform="translate(565, 30)">
-        <rect x="0" y="0" width="55" height="45" rx="5" fill="#EF4444"/>
-        <text x="27" y="28" font-family="monospace" font-size="15" font-weight="bold" fill="white" text-anchor="middle">Esc</text>
-        <text x="27" y="65" font-size="9" font-weight="bold" fill="#FCA5A5" text-anchor="middle">Exit Show</text>
-        <text x="27" y="77" font-size="8" fill="#9CA3AF" text-anchor="middle">(Return to edit)</text>
-      </g>
+      <!-- Callout Labels -->
+      <path d="M 290,52 L 350,52" stroke="#4361EE" stroke-width="1.5"/>
+      <text x="355" y="55" font-size="9" font-weight="bold" fill="#4361EE">TO: The recipient's exact email address</text>
+
+      <path d="M 440,82 L 490,82" stroke="#F77F00" stroke-width="1.5"/>
+      <text x="495" y="85" font-size="9" font-weight="bold" fill="#F77F00">SUBJECT: The title or summary of your message</text>
     </svg>
-    <div class="diagram-caption">Figure 13.1: Master keyboard controls for running a live slide show seamlessly.</div>
+    <div class="diagram-caption">Figure 13.1: Anatomy of a professional email compose window.</div>
   </div>
 
-  <h2>2. The Secret "B" Key: All Eyes on You!</h2>
-  <div class="callout" style="background:#EEF2FF; border-left: 5px solid var(--bih-purple);">
-    <div class="callout-title" style="color:var(--bih-purple); font-size:13px;">💡 THE PROFESSIONAL SPEAKER'S SECRET WEAPON:</div>
-    Sometimes during your talk, you want to tell a personal story or make an important community plea, but the audience is distracted reading your slide.
-    <br><br>
-    <strong>Tap the letter <span class="kbd-key">B</span> on your keyboard once!</strong>
-    <br>The entire projector screen turns pitch black. The audience has nothing to look at except <strong>YOU</strong>! When you are ready to show your slides again, tap <span class="kbd-key">B</span> a second time and your slide returns instantly.
-  </div>
-
-  <h2>3. Check Your Knowledge</h2>
-  <p><strong>Scenario:</strong> You are presenting Slide 2 and a teacher asks you to re-read a point from Slide 1. Which key on your keyboard do you tap to jump backward?</p>
-  <div class="answer-line" contenteditable="true">Write the key name here:</div>
-</div>
-
-<!-- ========================================== -->
-<!-- PAGE 3: PUBLIC SPEAKING & STAGE PRESENCE   -->
-<!-- ========================================== -->
-<div class="page">
-  <div class="header-bar">
-    <div class="header-title">Public Speaking & Stage Presence</div>
-    <div class="badge">Session 13 • Page 3</div>
-  </div>
-
-  <h2>1. The Three Pillars of Great Delivery</h2>
-  <p>A brilliant slide deck with a terrified, silent speaker will fail. An average slide deck with an enthusiastic, clear speaker will succeed! Focus on these three pillars:</p>
-
-  <!-- DIAGRAM: PRESENTER BODY LANGUAGE & EYE CONTACT -->
-  <div class="diagram-container">
-    <svg width="700" height="195" viewBox="0 0 700 195" xmlns="http://www.w3.org/2000/svg">
-      <rect x="20" y="10" width="660" height="175" rx="6" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.5"/>
-
-      <!-- BAD PRESENTER (Left) -->
-      <g transform="translate(50, 20)">
-        <text x="110" y="16" font-size="11" font-weight="bold" fill="#DC2626" text-anchor="middle">&#10008; BACK TURNED TO AUDIENCE</text>
-        
-        <!-- Projection Screen on wall -->
-        <rect x="20" y="30" width="80" height="50" fill="#E2E8F0" stroke="#94A3B8" stroke-width="1"/>
-        <line x1="25" y1="45" x2="90" y2="45" stroke="#94A3B8" stroke-width="2"/>
-        <line x1="25" y1="58" x2="80" y2="58" stroke="#94A3B8" stroke-width="2"/>
-
-        <!-- Speaker staring directly at wall (Back turned) -->
-        <circle cx="140" cy="55" r="14" fill="#F77F00"/>
-        <line x1="140" y1="69" x2="140" y2="115" stroke="#374151" stroke-width="4"/>
-        <path d="M 132,55 L 105,55" stroke="#DC2626" stroke-width="2" stroke-dasharray="2,2"/> <!-- Gaze line to wall -->
-
-        <text x="110" y="140" font-size="8.5" fill="#7F1D1D" text-anchor="middle">Mumbling to the wall.</text>
-        <text x="110" y="152" font-size="8.5" fill="#7F1D1D" text-anchor="middle">Audience feels ignored!</text>
-      </g>
-
-      <!-- GOOD PRESENTER (Right) -->
-      <g transform="translate(380, 20)">
-        <text x="130" y="16" font-size="11" font-weight="bold" fill="#047857" text-anchor="middle">&#10004; FACING AUDIENCE WITH EYE CONTACT</text>
-
-        <!-- Speaker standing tall facing forward -->
-        <circle cx="60" cy="50" r="14" fill="#F77F00"/>
-        <line x1="60" y1="64" x2="60" y2="115" stroke="#3A0CA3" stroke-width="4"/>
-        <!-- Gesturing hands -->
-        <line x1="60" y1="75" x2="85" y2="85" stroke="#3A0CA3" stroke-width="3"/>
-        <line x1="60" y1="75" x2="35" y2="85" stroke="#3A0CA3" stroke-width="3"/>
-
-        <!-- Eye contact rays to audience -->
-        <path d="M 74,48 L 170,30" stroke="#10B981" stroke-width="1.5" stroke-dasharray="3,3"/>
-        <path d="M 74,52 L 180,60" stroke="#10B981" stroke-width="1.5" stroke-dasharray="3,3"/>
-        <path d="M 74,56 L 170,90" stroke="#10B981" stroke-width="1.5" stroke-dasharray="3,3"/>
-
-        <!-- Audience Mockup on right -->
-        <circle cx="190" cy="30" r="8" fill="#94A3B8"/>
-        <circle cx="205" cy="60" r="8" fill="#94A3B8"/>
-        <circle cx="190" cy="90" r="8" fill="#94A3B8"/>
-        <text x="215" y="65" font-size="8" fill="#64748B">Audience</text>
-
-        <text x="130" y="140" font-size="8.5" font-weight="bold" fill="#047857" text-anchor="middle">3-Zone Eye Contact (Left, Center, Right)</text>
-        <text x="130" y="152" font-size="8.5" fill="#4B5563" text-anchor="middle">Clear voice, upright posture, smiling.</text>
-      </g>
-    </svg>
-    <div class="diagram-caption">Figure 13.2: Stand tall and face the audience. Look at people, not the projection wall!</div>
-  </div>
-
-  <h2>2. Delivery Secrets: Pacing & Voice</h2>
+  <h2>2. Master the Header Fields: To, Cc, Bcc, and Subject</h2>
   <table>
     <thead>
       <tr>
-        <th style="width: 25%;">Pillar</th>
-        <th style="width: 35%;">The Trap to Avoid</th>
-        <th style="width: 40%;">What a BIH Tech Leader Does</th>
+        <th style="width: 20%;">Field Name</th>
+        <th style="width: 40%;">What It Means</th>
+        <th style="width: 40%;">Example Use Case</th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td><strong>1. Pace</strong></td>
-        <td>Rushing through words like an express tro-tro because you are nervous.</td>
-        <td><strong>Breathe.</strong> Pause for 2 seconds after each major bullet point to let ideas sink in.</td>
+        <td><strong>To:</strong></td>
+        <td>The primary person who <strong>must read and respond</strong> to your email.</td>
+        <td><code>headteacher@school.edu.gh</code></td>
       </tr>
       <tr>
-        <td><strong>2. Volume</strong></td>
-        <td>Whispering so only the front desk can hear you.</td>
-        <td>Speak from your chest so the student at the very back of the classroom hears every word.</td>
+        <td><strong>Cc:</strong><br><small>(Carbon Copy)</small></td>
+        <td>People who should read the message for their information, but <strong>do not need to reply</strong>.</td>
+        <td>Cc your Tech Club mentor when emailing the headteacher.</td>
       </tr>
       <tr>
-        <td><strong>3. Eye Contact</strong></td>
-        <td>Staring at your shoes or reading word-for-word from your laptop.</td>
-        <td>Sweep your eyes slowly: look at the left row, then center row, then right row.</td>
+        <td><strong>Bcc:</strong><br><small>(Blind Carbon Copy)</small></td>
+        <td>A <strong>hidden copy</strong>: other recipients cannot see who was Bcc'd.</td>
+        <td>Emailing many people who do not know each other.</td>
+      </tr>
+      <tr>
+        <td><strong>Subject:</strong></td>
+        <td>A short headline (4–7 words) telling the reader <strong>what the email is about</strong>.</td>
+        <td><code>Meeting Request - Tech Club Project</code></td>
       </tr>
     </tbody>
   </table>
+
+  <h2>3. Golden Rule of Subject Lines</h2>
+  <div class="dual-grid">
+    <div class="dual-box">
+      <div class="dual-box-title">❌ TERRIBLE Subject Lines</div>
+      <p>&bull; <code>hi</code> (Lazy; might be mistaken for spam)</p>
+      <p>&bull; <code>URGENT HELP ME PLEASE!!!!</code> (Creates panic)</p>
+      <p>&bull; <em>[Blank / Empty]</em> (Looks like an accidental click)</p>
+    </div>
+    <div class="dual-box">
+      <div class="dual-box-title">✅ EXCELLENT Subject Lines</div>
+      <p>&bull; <code>Science Assignment - JHS 1B - Ama Mensah</code></p>
+      <p>&bull; <code>Absence Notice - Kwesi Boateng - Tuesday 12th</code></p>
+      <p>&bull; <code>Question Regarding Coding Challenge 3</code></p>
+    </div>
+  </div>
 </div>
 
 <!-- ========================================== -->
-<!-- PAGE 4: CITATIONS & HANDLING QUESTIONS    -->
+<!-- PAGE 3: EMAIL ETIQUETTE & THE 4-PART LETTER-->
 <!-- ========================================== -->
 <div class="page">
   <div class="header-bar">
-    <div class="header-title">Citing Sources & Answering Questions</div>
-    <div class="badge">Session 13 • Page 4</div>
+    <div class="header-title">Netiquette & The 4-Part Email Structure</div>
+    <div class="badge">Session 13 • Page 3</div>
   </div>
 
-  <h2>1. Ethical Presenting: Citing Your Sources</h2>
-  <p>In tech and academia, using someone else's statistics or photos without giving them credit is wrong. Always add a small, subtle <strong>Source Citation</strong> at the bottom of your slide:</p>
+  <h2>1. What is "Netiquette"?</h2>
+  <p>In Ghanaian culture, you would never walk up to an elder or teacher and blurt out a demand without first saying <em>"Good morning, sir"</em> or <em>"Good afternoon, madam"</em>. <strong>Netiquette</strong> (Network Etiquette) is simply bringing our home training and respect into digital communication!</p>
 
-  <!-- DIAGRAM: SLIDE FOOTER CITATION -->
-  <div class="diagram-container">
-    <svg width="680" height="130" viewBox="0 0 680 130" xmlns="http://www.w3.org/2000/svg">
-      <rect x="40" y="10" width="600" height="110" rx="4" fill="#FFFFFF" stroke="#334155" stroke-width="1.5"/>
-      
-      <!-- Slide Heading -->
-      <text x="65" y="34" font-size="12" font-weight="bold" fill="#3A0CA3">Water in Our Schools (Practice Slide)</text>
-      
-      <!-- Content Bullets -->
-      <circle cx="70" cy="52" r="2" fill="#F77F00"/>
-      <text x="78" y="55" font-size="9" fill="#1E293B">6 out of 10 schools in our pretend survey have a working tap</text>
-      
-      <circle cx="70" cy="68" r="2" fill="#F77F00"/>
-      <text x="78" y="71" font-size="9" fill="#1E293B">Storage tanks need regular cleaning to keep water safe</text>
-
-      <!-- FOOTER CITATION BOX (Bottom) -->
-      <line x1="40" y1="92" x2="640" y2="92" stroke="#E2E8F0" stroke-width="1"/>
-      <text x="65" y="105" font-size="8" font-style="italic" fill="#64748B">Source: Practice data (made up for this exercise)</text>
-      
-      <!-- Pointer callout -->
-      <path d="M 460,105 L 510,105" stroke="#10B981" stroke-width="1.5"/>
-      <text x="515" y="107" font-size="8.5" font-weight="bold" fill="#047857">&larr; Small 8pt Source Footnote builds TRUST!</text>
-    </svg>
-    <div class="diagram-caption">Figure 13.3: A small footer tells the audience where each fact came from. These numbers are made up for practice, so the footer says so honestly.</div>
-  </div>
-
-  <h2>2. How to Handle Questions from the Audience</h2>
-  <p>When you finish your talk, teachers and classmates will raise their hands to ask questions. Follow the <strong>3-Step Question Method</strong>:</p>
+  <h2>2. The Professional 4-Part Email Anatomy</h2>
+  <p>Every formal email you write to a teacher, mentor, or school official must contain these four blocks:</p>
 
   <div class="step-card">
     <div class="step-num">1</div>
     <div class="step-content">
-      <strong>Listen Carefully:</strong> Do not interrupt the questioner. Wait until they finish speaking completely.
+      <strong>The Respectful Salutation (Greeting):</strong>
+      <br>Always address the person politely by their name and title:
+      <br><em>"Dear Mr. Mensah,"</em> &bull; <em>"Good morning Madam Grace,"</em> &bull; <em>"Dear Club Mentor,"</em>
     </div>
   </div>
 
   <div class="step-card">
     <div class="step-num">2</div>
     <div class="step-content">
-      <strong>Say "Thank You":</strong> Start with: <em>"Thank you, Mr. Mensah, that is a great question."</em> This gives your brain 3 seconds to think!
+      <strong>The Courteous Opening:</strong>
+      <br>A warm one-sentence greeting before diving into business:
+      <br><em>"I hope this message finds you well."</em> &bull; <em>"I hope you are having a productive week."</em>
     </div>
   </div>
 
   <div class="step-card">
     <div class="step-num">3</div>
     <div class="step-content">
-      <strong>Answer Simply (or Admit You Will Research):</strong>
-      <br>If you know the answer, state it clearly in 1 or 2 sentences.
-      <br><strong>If you don't know:</strong> Never make up lies! Say: <em>"That is an excellent point. Our team has not tested that yet, but we will research it for our next session."</em>
-    </div>
-  </div>
-</div>
-
-<!-- ========================================== -->
-<!-- PAGE 5: GUIDED LAB - LIVE REHEARSAL        -->
-<!-- ========================================== -->
-<div class="page">
-  <div class="header-bar">
-    <div class="header-title">Guided Hands-On Lab: The Live Rehearsal</div>
-    <div class="badge">Session 13 • Page 5</div>
-  </div>
-
-  <h2>1. Lab Workout: Polish, Animate & Deliver</h2>
-  <p>Work with your workstation partner to polish your 3-slide deck and rehearse live:</p>
-
-  <div class="step-card">
-    <div class="step-num">1</div>
-    <div class="step-content">
-      <strong>Open Existing Presentation:</strong>
-      <br>Launch your software &rarr; Open <code>Safe_Water_AmaMensah.pptx</code> from your <code>BIH_Practice</code> folder.
-    </div>
-  </div>
-
-  <div class="step-card">
-    <div class="step-num">2</div>
-    <div class="step-content">
-      <strong>Add a Subtle Transition:</strong>
-      <br>Click the <strong>Transitions</strong> tab on the Ribbon &rarr; Select <strong>Fade</strong> &rarr; Click <strong>"Apply to All"</strong>.
-      <br><em>Now every slide glides in smoothly!</em>
-    </div>
-  </div>
-
-  <div class="step-card">
-    <div class="step-num">3</div>
-    <div class="step-content">
-      <strong>Add Bullet Animations to Slide 3:</strong>
-      <br>Go to Slide 3 (Action Steps). Click inside the bulleted text box.
-      <br>Click the <strong>Animations</strong> tab &rarr; Select <strong>Appear</strong> or <strong>Fade</strong>.
-      <br><em>Test:</em> When you run the show, each action point appears only when you click!
+      <strong>The Core Message (Body):</strong>
+      <br>State your point clearly and briefly in 2 to 4 sentences. Use proper capital letters, full stops, and paragraphs.
     </div>
   </div>
 
   <div class="step-card">
     <div class="step-num">4</div>
     <div class="step-content">
-      <strong>Add a Source Citation:</strong>
-      <br>On Slide 2, insert a small text box at the very bottom rim.
-      <br>Type the real source you looked up with your mentor (name and year), or, if your numbers are examples, <code>Source: Sample data (made up for practice)</code>. Set font size to <strong>8 pt</strong> and colour to grey.
+      <strong>The Respectful Sign-Off & Signature:</strong>
+      <br>Close politely and include your full name and class so the teacher knows exactly who wrote to them:
+      <br><em>"Respectfully yours,"</em> or <em>"Best regards,"</em> &rarr; followed by: <strong>Ama Mensah, JHS 1 Student</strong>.
     </div>
   </div>
 
-  <div class="step-card">
-    <div class="step-num">5</div>
-    <div class="step-content">
-      <strong>Live Rehearsal (Swap Roles!):</strong>
-      <br>&bull; <strong>Round 1:</strong> Student A stands tall, presses <span class="kbd-key">F5</span>, and delivers the 3-slide presentation (90 seconds). Practice using the <span class="kbd-key">B</span> key on Slide 2!
-      <br>&bull; <strong>Round 2:</strong> Student B evaluates Student A using the rubric on Page 6.
-      <br>&bull; <strong>Round 3:</strong> Swap roles and repeat!
-    </div>
-  </div>
-
-  <h2>2. Quick-Fire Rehearsal Timer</h2>
+  <h2>3. The Cardinal Rules of Netiquette</h2>
   <table>
     <thead>
       <tr>
-        <th style="width: 25%;">Slide</th>
-        <th style="width: 45%;">What to Say Out Loud</th>
-        <th style="width: 30%;">Recommended Time</th>
+        <th style="width: 25%;">Rule</th>
+        <th style="width: 40%;">Why It Matters</th>
+        <th style="width: 35%;">What to Do</th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td><strong>Slide 1 (Title)</strong></td>
-        <td>Introduce yourself, your club, and your topic with a smile.</td>
-        <td><strong>20 seconds</strong></td>
+        <td><strong>NO ALL-CAPS</strong></td>
+        <td>TYPING ENTIRE SENTENCES IN CAPITAL LETTERS IS SEEN AS <strong>SHOUTING AND ANGER</strong>.</td>
+        <td>Use regular sentence capitalization.</td>
       </tr>
       <tr>
-        <td><strong>Slide 2 (Problem)</strong></td>
-        <td>Explain why dirty water hurts students and missed classes.</td>
-        <td><strong>40 seconds</strong></td>
+        <td><strong>Proofread Twice</strong></td>
+        <td>Once you hit <strong>Send</strong>, the email is gone! You cannot run after it or snatch it back.</td>
+        <td>Check spelling and recipient address before clicking Send.</td>
       </tr>
       <tr>
-        <td><strong>Slide 3 (Solution)</strong></td>
-        <td>Present the 3 actions. Make a call to action!</td>
-        <td><strong>30 seconds</strong></td>
+        <td><strong>No Slang or Shortcuts</strong></td>
+        <td>Words like <em>"u r gr8"</em> or <em>"wossop"</em> belong in informal phone chats, never in school or professional emails.</td>
+        <td>Write out full words: <em>"you are"</em>, <em>"please"</em>.</td>
       </tr>
     </tbody>
   </table>
 </div>
 
 <!-- ========================================== -->
-<!-- PAGE 6: PEER REVIEW & SELF-ASSESSMENT      -->
+<!-- PAGE 4: ATTACHMENTS & INBOX SAFETY        -->
 <!-- ========================================== -->
 <div class="page">
   <div class="header-bar">
-    <div class="header-title">Session 13 Review & Peer Assessment</div>
+    <div class="header-title">File Attachments & Inbox Safety</div>
+    <div class="badge">Session 13 • Page 4</div>
+  </div>
+
+  <h2>1. What is an Attachment?</h2>
+  <p>An <strong>Attachment</strong> is a separate computer file (such as a typed document, a drawing from Paint, or a PDF report) that you clip onto your email message, just like using a physical metal <strong>paperclip</strong> to fasten two papers together!</p>
+
+  <!-- DIAGRAM: HOW ATTACHMENTS WORK -->
+  <div class="diagram-container">
+    <svg width="680" height="135" viewBox="0 0 680 135" xmlns="http://www.w3.org/2000/svg">
+      <!-- Message Sheet -->
+      <g transform="translate(40, 15)">
+        <rect x="0" y="0" width="120" height="95" rx="4" fill="#FFFFFF" stroke="#334155" stroke-width="1.5"/>
+        <line x1="15" y1="20" x2="105" y2="20" stroke="#3A0CA3" stroke-width="2"/>
+        <line x1="15" y1="35" x2="85" y2="35" stroke="#94A3B8" stroke-width="1.5"/>
+        <line x1="15" y1="48" x2="100" y2="48" stroke="#94A3B8" stroke-width="1.5"/>
+        <line x1="15" y1="61" x2="70" y2="61" stroke="#94A3B8" stroke-width="1.5"/>
+        <text x="60" y="112" font-size="9.5" font-weight="bold" fill="#3A0CA3" text-anchor="middle">Your Email Letter</text>
+      </g>
+
+      <!-- Paperclip Clasping Both -->
+      <g transform="translate(145, 10)">
+        <path d="M 10,65 L 10,20 C 10,8 30,8 30,20 L 30,70 C 30,85 0,85 0,70 L 0,30" stroke="#F77F00" stroke-width="3" fill="none"/>
+        <text x="15" y="105" font-size="9.5" font-weight="bold" fill="#F77F00" text-anchor="middle">Paperclip Icon</text>
+      </g>
+
+      <!-- Attached File Sheet -->
+      <g transform="translate(190, 25)">
+        <polygon points="0,0 60,0 80,20 80,85 0,85" fill="#EEF2FF" stroke="#4361EE" stroke-width="1.5"/>
+        <polygon points="60,0 60,20 80,20" fill="#CBD5E1"/>
+        <text x="40" y="45" font-size="9" font-weight="bold" fill="#4361EE" text-anchor="middle">Science_Project</text>
+        <text x="40" y="58" font-size="9" font-weight="bold" fill="#4361EE" text-anchor="middle">.docx</text>
+        <text x="40" y="102" font-size="9.5" font-weight="bold" fill="#4361EE" text-anchor="middle">Attached File</text>
+      </g>
+
+      <!-- Travel arrow -->
+      <path d="M 310,60 L 370,60" stroke="#2EC4B6" stroke-width="3"/>
+      <polygon points="375,60 367,56 367,64" fill="#2EC4B6"/>
+
+      <!-- Recipient Mailbox -->
+      <g transform="translate(410, 20)">
+        <rect x="0" y="0" width="220" height="85" rx="6" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.5"/>
+        <text x="110" y="25" font-size="10" font-weight="bold" fill="#047857" text-anchor="middle">Recipient Downloads File</text>
+        <rect x="25" y="40" width="170" height="28" rx="4" fill="#ECFDF5" stroke="#10B981" stroke-width="1"/>
+        <text x="110" y="58" font-size="9" font-weight="bold" fill="#065F46" text-anchor="middle">&#128206; Science_Project.docx (24 KB)</text>
+      </g>
+    </svg>
+    <div class="diagram-caption">Figure 13.2: How attachments travel. The recipient receives your text message AND the attached document together!</div>
+  </div>
+
+  <h2>2. Safe vs. Dangerous Attachments</h2>
+  <div class="dual-grid">
+    <div class="dual-box">
+      <div class="dual-box-title">✅ SAFE File Types (Normal school work)</div>
+      <p>&bull; <code>.docx</code> or <code>.txt</code> (Word documents / text)</p>
+      <p>&bull; <code>.pdf</code> (Readable electronic documents)</p>
+      <p>&bull; <code>.png</code> or <code>.jpg</code> (Images and photos)</p>
+    </div>
+    <div class="dual-box">
+      <div class="dual-box-title">🚫 DANGEROUS Files (Never open from strangers!)</div>
+      <p>&bull; <code>.exe</code> (Executable program - can be a virus!)</p>
+      <p>&bull; <code>.scr</code> or <code>.bat</code> (Hidden programs and scripts)</p>
+      <p>&bull; <code>.zip</code> from an unknown sender</p>
+    </div>
+  </div>
+
+  <h2>3. Panic Button / Inbox Defense</h2>
+  <div class="panic-box">
+    <div class="panic-title">🚨 RED ALERT: SUSPICIOUS EMAIL RECEIVED</div>
+    If you receive an email from someone you do not know:
+    <ul style="margin: 4px 0 0 15px; padding: 0;">
+      <li><strong>NEVER</strong> click on any links inside the message.</li>
+      <li><strong>NEVER</strong> download or open any attachments.</li>
+      <li><strong>NEVER</strong> reply with your password, phone number, or home address.</li>
+      <li>Raise your hand immediately and show your Tech Club mentor!</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ========================================== -->
+<!-- PAGE 5: GUIDED LAB - DRAFTING AN EMAIL     -->
+<!-- ========================================== -->
+<div class="page">
+  <div class="header-bar">
+    <div class="header-title">Guided Hands-On Lab: Your First Email</div>
+    <div class="badge">Session 13 • Page 5</div>
+  </div>
+
+  <h2>1. Lab Mission: Formal Request to Your Club Mentor</h2>
+  <p>Whether using a supervised school email account or the simulator form below, complete a formal email requesting feedback on your upcoming Capstone project:</p>
+
+  <div class="step-card">
+    <div class="step-num">1</div>
+    <div class="step-content">
+      <strong>Fill in the Recipient:</strong> Use the address your mentor writes on the board.
+    </div>
+  </div>
+
+  <div class="step-card">
+    <div class="step-num">2</div>
+    <div class="step-content">
+      <strong>Create a Clear Subject Line:</strong> Include your class, your name, and the topic.
+    </div>
+  </div>
+
+  <div class="step-card">
+    <div class="step-num">3</div>
+    <div class="step-content">
+      <strong>Draft the 4-Part Body:</strong> Use the template below to ensure proper netiquette.
+    </div>
+  </div>
+
+  <h2>2. Guided Email Compose Simulator</h2>
+  <div style="border: 2px solid var(--bih-purple); border-radius: 8px; padding: 15px; background: #FFFFFF; margin: 15px 0;">
+    <div style="display: flex; gap: 10px; align-items: center; border-bottom: 1px solid #E2E8F0; padding-bottom: 6px; margin-bottom: 6px;">
+      <strong style="font-size: 12px; color: #64748B; width: 60px;">To:</strong>
+      <div class="editable-line" contenteditable="true">(the address your mentor writes on the board)</div>
+    </div>
+
+    <div style="display: flex; gap: 10px; align-items: center; border-bottom: 1px solid #E2E8F0; padding-bottom: 6px; margin-bottom: 10px;">
+      <strong style="font-size: 12px; color: #64748B; width: 60px;">Subject:</strong>
+      <div class="editable-line" contenteditable="true">Capstone Project Idea - JHS 1A - Ama Mensah</div>
+    </div>
+
+    <div class="answer-box" contenteditable="true" style="min-height: 140px; font-family: inherit; font-size: 13px; line-height: 1.6;">
+Dear Mentor,
+
+I hope you are having a pleasant week.
+
+Our Tech Club group has chosen our Capstone project topic. We plan to create a digital spreadsheet to record clean drinking water supplies for our school. 
+
+Attached is our first draft outline. We would appreciate your feedback during our next session.
+
+Respectfully yours,
+Ama Mensah
+JHS 1 Student, BIH Tech Club Leader
+    </div>
+
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 10px; padding-top: 8px; border-top: 1px solid #E2E8F0;">
+      <div style="display: flex; gap: 12px; align-items: center; font-size: 12px; color: var(--bih-purple); font-weight: bold;">
+        <span>&#128206; Attachment:</span>
+        <span style="background: #EEF2FF; padding: 2px 8px; border-radius: 4px; border: 1px solid #CBD5E1;">Water_Project_Draft.docx</span>
+      </div>
+      <div style="background: var(--bih-purple); color: white; padding: 4px 16px; border-radius: 4px; font-weight: bold; font-size: 12px;">
+        Simulated [SEND]
+      </div>
+    </div>
+  </div>
+
+  <h2>3. Pre-Flight Send Checklist</h2>
+  <div class="checkbox-item"><input type="checkbox"> Did you spell the recipient's email address correctly with no spaces?</div>
+  <div class="checkbox-item"><input type="checkbox"> Does your subject line clearly describe the message in 4–7 words?</div>
+  <div class="checkbox-item"><input type="checkbox"> Did you include a respectful greeting and sign off with your full name?</div>
+  <div class="checkbox-item"><input type="checkbox"> Did you verify that your attached file is a safe document type (.docx, .pdf)?</div>
+</div>
+
+<!-- ========================================== -->
+<!-- PAGE 6: REVIEW & SELF-ASSESSMENT           -->
+<!-- ========================================== -->
+<div class="page">
+  <div class="header-bar">
+    <div class="header-title">Session 13 Review & Verification</div>
     <div class="badge">Session 13 • Page 6</div>
   </div>
 
-  <h2>1. Peer Evaluation Rubric (To Be Filled by Your Partner)</h2>
-  <p><em>Evaluate your partner's live presentation honestly and constructively:</em></p>
-
-  <div class="student-meta" style="margin-bottom: 12px; padding: 10px 14px;">
-    <strong>Presenter Name:</strong> <span class="editable-line" contenteditable="true" style="display:inline-block; width: 220px;"></span>
-    &nbsp;&nbsp;<strong>Evaluator:</strong> <span class="editable-line" contenteditable="true" style="display:inline-block; width: 200px;"></span>
-  </div>
+  <h2>1. Subject Line Makeover Challenge</h2>
+  <p>Rewrite each weak, unprofessional subject line below into an excellent, clear subject line:</p>
 
   <table>
     <thead>
       <tr>
-        <th style="width: 45%;">Presentation Skill Observed</th>
-        <th style="width: 18%; text-align:center;">Needs Work</th>
-        <th style="width: 18%; text-align:center;">Good Job!</th>
-        <th style="width: 19%; text-align:center;">Superstar! ⭐</th>
+        <th style="width: 40%;">Weak Subject Line</th>
+        <th style="width: 60%;">Your Professional Rewrite</th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td><strong>Eye Contact:</strong> Did they look at the audience instead of staring at the wall?</td>
-        <td style="text-align:center;"><input type="radio" name="p1"></td>
-        <td style="text-align:center;"><input type="radio" name="p1"></td>
-        <td style="text-align:center;"><input type="radio" name="p1"></td>
+        <td><code>hello sir</code></td>
+        <td><div class="answer-line" contenteditable="true">e.g. Science Project Inquiry - Kofi Mensah</div></td>
       </tr>
       <tr>
-        <td><strong>Voice & Pacing:</strong> Was their voice loud, clear, and calm (not rushed)?</td>
-        <td style="text-align:center;"><input type="radio" name="p2"></td>
-        <td style="text-align:center;"><input type="radio" name="p2"></td>
-        <td style="text-align:center;"><input type="radio" name="p2"></td>
+        <td><code>URGENT OPEN THIS NOW</code></td>
+        <td><div class="answer-line" contenteditable="true">Type your rewrite here...</div></td>
       </tr>
       <tr>
-        <td><strong>Slide Design:</strong> Were the slides clean and readable using the 6x6 rule?</td>
-        <td style="text-align:center;"><input type="radio" name="p3"></td>
-        <td style="text-align:center;"><input type="radio" name="p3"></td>
-        <td style="text-align:center;"><input type="radio" name="p3"></td>
-      </tr>
-      <tr>
-        <td><strong>Control:</strong> Did they steer the show smoothly using keyboard shortcuts?</td>
-        <td style="text-align:center;"><input type="radio" name="p4"></td>
-        <td style="text-align:center;"><input type="radio" name="p4"></td>
-        <td style="text-align:center;"><input type="radio" name="p4"></td>
+        <td><code>homework</code></td>
+        <td><div class="answer-line" contenteditable="true">Type your rewrite here...</div></td>
       </tr>
     </tbody>
   </table>
 
-  <p><strong>One thing my partner did brilliantly:</strong></p>
-  <div class="answer-line" contenteditable="true">Write praise here...</div>
+  <h2>2. Safe vs. Suspicious Inbox Scenarios</h2>
+  <p>Read each scenario and tick whether you should <strong>Open</strong> or <strong>Report to Mentor</strong>:</p>
 
-  <p><strong>One tip to help my partner improve next time:</strong></p>
-  <div class="answer-line" contenteditable="true">Write suggestion here...</div>
-
-  <h2>2. Self-Assessment & Mentor Sign-Off</h2>
-  <p>Tick the column that reflects your confidence at the end of Level 6 (Presentations):</p>
   <table>
     <thead>
       <tr>
-        <th>Presentation Delivery Competency</th>
+        <th style="width: 60%;">Email Scenario</th>
+        <th style="width: 20%; text-align: center;">Safe to Open</th>
+        <th style="width: 20%; text-align: center;">Report to Mentor!</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>An email from <code>headteacher@school.edu.gh</code> with the subject <em>"End of Term Examination Timetable.pdf"</em>.</td>
+        <td style="text-align: center;"><input type="radio" name="sc1"></td>
+        <td style="text-align: center;"><input type="radio" name="sc1"></td>
+      </tr>
+      <tr>
+        <td>An email from <code>winner-claim99@lottery-prize.xyz</code> saying you won 20,000 Cedis with an attachment called <code>claim_money.exe</code>.</td>
+        <td style="text-align: center;"><input type="radio" name="sc2"></td>
+        <td style="text-align: center;"><input type="radio" name="sc2"></td>
+      </tr>
+      <tr>
+        <td>A message claiming your email account will be deleted in 10 minutes unless you click a link and type your password.</td>
+        <td style="text-align: center;"><input type="radio" name="sc3"></td>
+        <td style="text-align: center;"><input type="radio" name="sc3"></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>3. Self-Assessment & Mentor Sign-Off</h2>
+  <p>Tick the column that reflects your confidence at the end of Session 13:</p>
+  <table>
+    <thead>
+      <tr>
+        <th>Email & Communication Competency</th>
         <th style="width: 18%; text-align: center;">With Help</th>
         <th style="width: 18%; text-align: center;">Almost Alone</th>
         <th style="width: 18%; text-align: center;">All By Myself!</th>
@@ -753,28 +789,28 @@
     </thead>
     <tbody>
       <tr>
-        <td>1. I can explain the difference between a Transition and an Animation.</td>
-        <td style="text-align: center;"><input type="radio" name="s13_1"></td>
-        <td style="text-align: center;"><input type="radio" name="s13_1"></td>
-        <td style="text-align: center;"><input type="radio" name="s13_1"></td>
+        <td>1. I can identify and explain the 3 parts of an email address (username, @, domain).</td>
+        <td style="text-align: center;"><input type="radio" name="s7_1"></td>
+        <td style="text-align: center;"><input type="radio" name="s7_1"></td>
+        <td style="text-align: center;"><input type="radio" name="s7_1"></td>
       </tr>
       <tr>
-        <td>2. I can control a live slide show using F5, Spacebar, Arrow keys, and B.</td>
-        <td style="text-align: center;"><input type="radio" name="s13_2"></td>
-        <td style="text-align: center;"><input type="radio" name="s13_2"></td>
-        <td style="text-align: center;"><input type="radio" name="s13_2"></td>
+        <td>2. I can write a clear, descriptive Subject line that avoids spam triggers.</td>
+        <td style="text-align: center;"><input type="radio" name="s7_2"></td>
+        <td style="text-align: center;"><input type="radio" name="s7_2"></td>
+        <td style="text-align: center;"><input type="radio" name="s7_2"></td>
       </tr>
       <tr>
-        <td>3. I know how to maintain 3-zone eye contact and avoid turning my back.</td>
-        <td style="text-align: center;"><input type="radio" name="s13_3"></td>
-        <td style="text-align: center;"><input type="radio" name="s13_3"></td>
-        <td style="text-align: center;"><input type="radio" name="s13_3"></td>
+        <td>3. I can structure an email using the professional 4-part letter anatomy.</td>
+        <td style="text-align: center;"><input type="radio" name="s7_3"></td>
+        <td style="text-align: center;"><input type="radio" name="s7_3"></td>
+        <td style="text-align: center;"><input type="radio" name="s7_3"></td>
       </tr>
       <tr>
-        <td>4. I can add source citation footnotes to give credit for facts and images.</td>
-        <td style="text-align: center;"><input type="radio" name="s13_4"></td>
-        <td style="text-align: center;"><input type="radio" name="s13_4"></td>
-        <td style="text-align: center;"><input type="radio" name="s13_4"></td>
+        <td>4. I know how file attachments work and how to spot dangerous file extensions (.exe).</td>
+        <td style="text-align: center;"><input type="radio" name="s7_4"></td>
+        <td style="text-align: center;"><input type="radio" name="s7_4"></td>
+        <td style="text-align: center;"><input type="radio" name="s7_4"></td>
       </tr>
     </tbody>
   </table>

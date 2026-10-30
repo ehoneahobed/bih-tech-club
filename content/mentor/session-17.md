@@ -1,77 +1,80 @@
-# Session 17: Loops, Decisions & Debugging
+# Session 17: Create & Format Documents (Part 2)
 
-> **At a glance:** pupils build a sachet clean-up mini-game in Scratch that uses a loop, an IF-THEN condition and a Score variable, and they fix bugs calmly one change at a time. · **Time:** 90 minutes (adjust the timings if your period is shorter) · **Workbook pages:** 6
+> **At a glance:** pupils choose bullets or numbers correctly, build a clear heading hierarchy, fix the red and blue squiggles (including Ghanaian names), and check Print Preview before printing their finished "A Greener School" notice. · **Time:** 90 minutes (adjust the timings if your period is shorter) · **Workbook pages:** 6
 
 ## Learning outcomes
 By the end of the session, pupils can:
-1. Explain the difference between a counted loop (`repeat (10)`) and an infinite loop (`forever`), using the fufu pounding analogy.
-2. Use an `if <> then` block with a diamond-shaped sensing block such as `touching [mouse-pointer]?`.
-3. Create a Score variable, reset it with `set [Score] to (0)` and change it with `change [Score] by (1)`.
-4. Follow the 3-step debugging protocol: Spot it, Trace it, Fix one thing.
-5. Save a working game as `Cleanup_Game_[Name].sb3`.
+1. Decide when to use a bulleted list (order does not matter) or a numbered list (order matters), and create both.
+2. Explain visual hierarchy (title, Heading 1, Heading 2, body) and apply a heading using the Styles pane.
+3. Use right-click to fix spelling, and use Add to Dictionary or Ignore All for Ghanaian names and words.
+4. Open Print Preview with Ctrl + P, spot an accidental page 2, and choose portrait or landscape.
 
 ## Before the session
-- [ ] Check Scratch Desktop (offline) on each PC, or internet for `scratch.mit.edu`. Keep the offline installer on USB.
-- [ ] Test the Code the Sprite 3D lab on the projector, including the Debug and Next step buttons.
-- [ ] Bring a pot and some bottle tops or cowries for the calabash demonstration.
-- [ ] Write the Page 6 "Be the Computer" code on the board for the review.
+- [ ] Check every pupil's Greener_School file from Session 16 is still in Documents > BIH_Practice > Notes on their PC. Keep a spare copy on USB for anyone whose file is missing or on a different PC.
+- [ ] Confirm which word processor each PC uses (Word, LibreOffice Writer or Google Docs).
+- [ ] Google Docs needs a Google account. Pupils under 13 must use a school-managed account (Google Workspace for Education); otherwise use the desktop app. Google Docs users download the finished file as .docx into BIH_Practice (page 5, step 5).
+- [ ] Decide whether you will actually print. If yes, check paper and the printer; if not, pupils stop at Print Preview.
+- [ ] Load the Format a Real Document 3D lab on the projector PC and test it.
+- [ ] Bring a newspaper, ideally the Daily Graphic.
 
 ## Running order
 | Time | Activity | Workbook | What the mentor does |
 |---|---|---|---|
-| 0–10 min | Fufu pounding: what is a loop? | Page 1 | Clap "pound, turn". Compare `repeat (10)` and `forever`. |
-| 10–20 min | Conditions: the IF-THEN law | Page 2 | "IF it rains, THEN open my umbrella." Show diamond blocks and the sensing table. |
-| 20–28 min | Variables: the storage calabash | Page 3 | 5 cowries, add 2, take 3. Link to `set` and `change`. |
-| 28–38 min | Debugging and Grace Hopper's moth | Page 4 | Tell the moth story (her team found it in 1947). Bugs are clues; change one thing, then test. |
-| 38–53 min | 3D lab: loops and debugging | – | Demonstrate, then pairs do the missions. |
-| 53–80 min | Guided lab: Sachet Clean-up Game | Page 5 | Pupils follow the 6 steps. Check stacks against the Visual Target. |
-| 80–90 min | "Be the Computer", Spot the Bug, self-assessment | Page 6 | Answer alone, then discuss. Sign off. |
+| 0–10 min | Recap Session 16; bullets vs numbers | Page 1 | Market basket vs boiling rice. Show the auto-list trick. |
+| 10–20 min | Visual hierarchy and built-in Styles | Page 2 | Hold up the newspaper; click Heading 1 in the Styles pane. Pupils do Check Your Knowledge. |
+| 20–30 min | Squiggly lines, Ghanaian names, AutoCorrect | Page 3 | Type "computter", "They is here" and "Kwesi" live and fix each. |
+| 30–35 min | Print Preview, portrait vs landscape | Page 4 | Show Ctrl + P and the "Page 1 of 2" trap. |
+| 35–50 min | Format a Real Document 3D lab | — | Demonstrate, then pairs continue. |
+| 50–75 min | Hands-on lab: the complete notice | Page 5 | Check heading, bullets, squiggles and Page 1 of 1 before saving. |
+| 75–85 min | Review and verification | Page 6 | Pupils work alone, then mark together. |
+| 85–90 min | Self-assessment and word-processing sign-off | Page 6 | Sign off pupils who meet the evidence below. |
 
 ## Key ideas and how to explain them
-- **Loop (iteration):** one person repeats the pounding until the fufu is smooth; you don't hire 50 people to strike once each. "Lazy programmers are smart programmers": one `repeat (100)` with `move (1) steps` inside saves 99 blocks.
-- **Counted vs forever:** `repeat` runs a set number of times and stops. `forever` keeps going until someone clicks the red Stop.
-- **Condition:** a true/false question. If true, the blocks inside the C-mouth run; if false, they are skipped. Diamond blocks fit only diamond holes.
-- **Variable:** a named calabash that holds a value that can change. `set` empties it to a starting value; `change` adds or takes away.
-- **Bug and debugging:** any mistake is a bug; debugging is calm detective work, one change at a time.
+- **Bullets vs numbers:** bullets when order does not matter (garden eggs, tomatoes, ginger in the basket); numbers when it does (you cannot add rice before the water boils).
+- **Visual hierarchy:** like the Daily Graphic: big headline first, smaller section headers, then body text. Title biggest, Heading 1 next, Heading 2 smaller, body 11–12 pt. Built-in style sizes vary by programme and version, so teach the order, not exact numbers.
+- **Built-in Styles:** one click on Heading 1 formats the line and tells the computer how the report is organised. Faster and more consistent than changing size and bold by hand.
+- **Squiggles:** red means not in the dictionary; blue means grammar or spacing. Right-click for suggestions.
+- **The Ghanaian name dilemma:** the dictionary was made in Britain or America, so Kwesi, Akosua, Bolgatanga, Waakye and Dumsor look "wrong". They are not wrong; teach the computer with Add to Dictionary, or use Ignore All for this document only.
+- **AutoCorrect:** if Waakye turns into "Wake", press Ctrl + Z at once.
+- **Print Preview:** paper and ink are expensive. Check Page 1 of 1 and remove the extra empty line that creates a blank page 2.
 
 ## The 3D lab
-Use **Code the Sprite**. On the projector, demonstrate:
-1. "Load 'Square — the long way', then 'Square — with a loop'. Which is shorter?" Count the blocks with the class; the loop version does the same job with just 4 Scratch blocks, because `repeat` is one C-shaped block that holds the others.
-2. "Load 'Buggy star' and run it in Debug mode, step by step." Press Debug, then Next step repeatedly, and ask pupils to watch the numbers. This is the "Trace it" step.
-
-In pairs, pupils then:
-1. "Fix the bug so the sprite draws a 5-pointed star." Let them try to spot it first. The fix is to change the turn from 72 to 144 degrees. Point out that they changed only one number: the debugging law in action.
-2. "Change the clean-up route so the sprite collects ALL 7 pieces of litter." They read the x and y of each piece and can add `go to x: y:` blocks. This revisits Session 16 coordinates and links to the clean-up theme of the Page 5 game.
+Continue **Format a Real Document** from Session 16. Demonstrate **Turn the three actions into a bulleted list** (Shift-click the three lines, then Bullets) and **Turn the three sorting steps into a numbered list**, asking "Does the order matter?" each time. Pairs then do **Give "Three actions" and "How to sort litter" the Heading style**, **Run the spell check and fix every red squiggle** (one is a real mistake, one is a Ghanaian name, so the answers differ) and **Open Print preview and print your page**. This is the only place pupils practise a numbered list today.
 
 ## Common mistakes and quick fixes
 | Pupils often… | Try this |
 |---|---|
-| Put `set [Score] to (0)` inside the forever loop | Score never rises above 1. Move `set` above the loop, straight under the hat block. |
-| Sachet flips upside down when it bounces | In the sprite pane, click Direction → Left/Right (step 1). |
-| Put the `if` block outside the forever loop | It checks only once at the start. Drag it inside the C-mouth, below `if on edge, bounce`. |
-| Can't fit `touching [mouse-pointer]?` into the `if` | Drag it by its left edge into the diamond hole until it highlights. |
-| Score shoots up while the pointer rests on the sprite | The `go to [random position v]` block is missing. Add it inside the `if`, straight after `change [Score v] by (1)`, so the sprite jumps away and one touch scores one point. |
-| Change lots of blocks when something breaks | Stop them. Spot it, trace it, change one thing, test. |
+| Cannot stop the bullets | Press Enter twice on the empty bullet, or click the Bullets button again. |
+| Make the heading by hand with Bold and a size | Lab step 2 uses the Heading 1 style. Show them the Styles pane and click Heading 1 once. |
+| Accept a wrong suggestion for a Ghanaian name | Undo, then choose Add to Dictionary or Ignore All instead. |
+| Print without looking | Ctrl + P first and check "Page 1 of 2"; Backspace at the end removes the blank page. |
+| Cannot find the Styles pane | Word: Home ribbon. LibreOffice: the "Paragraph Style" box on the left of the toolbar. Google Docs: the "Normal text" drop-down (the note on page 2 says this too). |
 
 ## When things go wrong
-- **No internet:** use Scratch Desktop. The calabash, fufu clapping and Page 6 need no connection; load the 3D lab in advance or use the offline pack.
-- **Not enough PCs:** pairs, with a driver and a navigator reading Page 5 aloud; swap roles after step 3.
-- **A PC freezes or the power goes:** remind pupils to save after step 3 and again at the end. Browser projects that were not saved are lost; rebuild quickly from the Visual Target on Page 5.
-- **Mixed Scratch versions:** colours may differ; look for palette names (Variables, Control, Sensing).
+- **No internet:** Word and LibreOffice Writer work offline. Google Docs pupils move to a PC with an offline word processor and use the USB copy of their file.
+- **Not enough PCs:** pairs: one reads each step aloud, the other does it; swap at the spell-check step.
+- **A PC freezes or the power goes:** press Ctrl + S after each step. If the Session 16 file is lost, give the USB copy so pupils start at step 2.
 
 ## Answer key
-**1. "Be the Computer" Logic Tracing Challenge:** Final Score value = **25** (10 + 5 + 5 + 5 = 25).
+**Page 2, Check Your Knowledge (title of the Central Region water report):** 18–20 pt, Bold, Centred (the same title range as Session 16).
 
-**2. Spot the Bug Challenge:** Kwesi forgot **`set [Score] to (0)`**, placed under `when green flag clicked` at the top of his script, so the score resets every new game. Accept "set Score to 0" or "the reset block".
+**1. Bullets or Numbers?**
+1. Step-by-step Jollof rice recipe: **Numbers**.
+2. Tech Club supplies (pen, notebook, USB drive): **Bullets**.
+3. Morning assembly procedure (Step 1 to Step 4): **Numbers**.
+4. Qualities of a good digital citizen: **Bullets**.
+
+**2. Written Review Questions**
+1. The computer's dictionary was made with British or American words, so it does not recognise Koforidua or Bolgatanga; they are not misspelt. Right-click and choose Add to Dictionary (or Ignore All for this document).
+2. Look for: it shows exactly how the document will look on real A4 paper, so you can spot mistakes or an accidental blank page 2 before wasting paper and ink.
+3. Ctrl + P.
 
 ## Support and stretch
-- **Needs more support:** build and test steps 1 to 3 before adding the `if` block.
-- **Finished early:** add a Timer variable that starts at 60 and goes down by 1 each second, or try `change [Score v] by (10)` for a bigger reward. Always test after each single change.
+- **Needs more support:** give them the USB copy of the Session 16 file and focus on just two steps: the bulleted list and spell-check.
+- **Finished early:** add a numbered list "How to sort litter" under a second heading, apply Heading 1 and Heading 2 from the Styles pane, or switch the notice to landscape in Print Preview and decide which looks better as a poster.
 
 ## Evidence for sign-off
-- A saved `Cleanup_Game_[Name].sb3` that resets Score to 0 on the Green Flag, moves and bounces continuously, and, when the pointer touches the sprite, adds 1 to Score, jumps to a random position and says "Cleaned!".
-- Correct answers to the two Page 6 challenges.
-- The pupil can explain `repeat` vs `forever` and name the 3 debugging steps.
+This is the word-processing sign-off. The pupil shows their saved notice with: the Session 16 formatting intact, a "Three Priority Actions" heading in the Heading 1 style, a three-item bulleted list, no red or blue squiggles left (Ghanaian words added or ignored), and Print Preview showing Page 1 of 1.
 
 ## Safety and wellbeing
-No Scratch accounts or online sharing; save to the computer only. Bugs are normal: praise calm detective work and never allow mocking. Ask before deleting files on shared PCs. Keep names and speech bubbles kind and fictional.
+Add to Dictionary changes the dictionary for everyone using that PC; that is fine for Ghanaian names, but ask pupils not to add misspelt English words. Only print with your permission, one copy each, to save paper and ink. Pupils should open and save only their own file and ask before deleting or replacing anything.

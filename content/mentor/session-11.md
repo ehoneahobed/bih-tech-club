@@ -1,83 +1,78 @@
-# Session 11: Functions, Ranges & Visual Charts
+# Session 11: Searching the Web & Internet Foundations
 
-> **At a glance:** pupils use ranges and the Core 4 functions to total a whole column, then turn their stationery data into a correctly selected column chart. · **Time:** 90 minutes (adjust the timings if your period is shorter) · **Workbook pages:** 6
+> **At a glance:** pupils tell the Internet from the Web and a browser from a search engine, read a URL, check for the padlock, and run a smart keyword search they fact-check. · **Time:** 90 minutes (adjust the timings if your period is shorter) · **Workbook pages:** 6
 
 ## Learning outcomes
 By the end of the session, pupils can:
-1. Write a range using colon notation (for example `D2:D5`) and say that the colon means "through to".
-2. Use `=SUM`, `=AVERAGE`, `=MAX` and `=MIN` and explain the difference between a formula and a function.
-3. Select the labels and numbers (leaving out the Total row) and insert a column chart with a title.
+1. Explain the Internet vs the World Wide Web, and a browser vs a search engine.
+2. Type a URL straight into the address bar, name its parts and domain extension, and use Back, Forward, Refresh and New Tab.
+3. Spot the padlock and https:// and say what it means.
+4. Turn a chatty question into specific keywords and check a fact with the 4-Way Fact-Check Shield (Who? When? Why? Agree?).
 
 ## Before the session
-- [ ] Check that each PC still has `Stationery_Store_Ama.xlsx` in the BIH_Practice folder from Session 10. Keep a spare copy on USB for pupils whose file is missing.
-- [ ] Note which spreadsheet each PC has (Excel, LibreOffice Calc or Google Sheets); the chart menus differ slightly.
-- [ ] Test the 3D Spreadsheet Charts lab on the projector PC, and have the offline pack on USB.
-- [ ] Set cell formatting to two decimal places on your demo file so the average shows as 3.88. Pupils do the same in Step 3 (Home → Number format → 2 decimal places); without it Excel and Calc show 3.875 and 8.
+- [ ] Check early that en.wikipedia.org and a search engine load on the PCs.
+- [ ] Note which browser each PC has (Chrome, Edge or Firefox) so you can tell pupils which icon to look for.
+- [ ] Load the Internet Town 3D lab on the projector PC and check it runs.
+- [ ] Copy the offline pack to USB, with a few saved web pages or printed screenshots of a search results page, in case the internet fails.
 
 ## Running order
 | Time | Activity | Workbook | What the mentor does |
 |---|---|---|---|
-| 0–10 min | Hook: "100 items, 20 minutes of typing" | Page 1 | Recall `=B2*C2` from Session 10. Build `=SUM(D2:D5)` on the board piece by piece. |
-| 10–25 min | Formula vs function and the Core 4 | Pages 1–2 | Work through Figure 11.1 with the exam scores. Pupils do Check Your Thinking A–C. |
-| 25–35 min | Why charts, and the chart types | Page 3 | Compare column/bar, pie and line charts, then read the stationery stock chart. |
-| 35–45 min | 3D lab demo | – | Run the chart lab missions on the projector. |
-| 45–50 min | The Total row trap and troubleshooting | Page 4 | Show a wrong selection live so pupils see the giant bar. |
-| 50–75 min | Guided lab: totals, stats and chart | Page 5 | Circulate. Check `D6` shows 162.50 and the selection stops at row 5. |
-| 75–85 min | Review questions and matching | Page 6 | Pupils work alone, then compare with a partner. |
-| 85–90 min | Self-assessment and sign-off | Page 6 | Sign off pupils who meet the evidence below. |
+| 0–10 min | Welcome and the road network of computers | Page 1 | Trace Figure 11.0 from the school PC to the undersea cables at Accra and Tema. |
+| 10–20 min | Internet vs Web; the browser and its buttons | Pages 1–2 | Show the real browser and its controls on the projector. |
+| 20–30 min | Reading a URL, domain extensions, the padlock | Page 3 | Break down an address on the board. Ask "who runs this site?" |
+| 30–40 min | Browser vs search engine, keywords, fact-check, pop-ups | Page 4 | Pairs improve the weak searches. Cover the 4-Way Shield and the "free iPhone" panic button. |
+| 40–55 min | Internet Town 3D lab | — | Demonstrate, then pairs try the missions. |
+| 55–75 min | Hands-on lab: The Web Researcher (Kakum) | Page 5 | Check pupils read summaries before clicking. |
+| 75–85 min | Review and verification | Page 6 | Pupils work alone, then mark together. |
+| 85–90 min | Self-assessment, sign-off | Page 6 | Sign off; everyone closes the browser. |
 
 ## Key ideas and how to explain them
-- **Range and the colon:** the colon means "through to". Say `D2:D5` aloud as "D2 through to D5" every time until pupils say it with you.
-- **Formula vs function:** a formula is manual maths you type with symbols; a function is a preset magic word that crunches a whole list.
-- **The Core 4:** SUM gives the grand total, AVERAGE the typical (mean) score, MAX the highest, MIN the lowest. Use the 90, 70, 80, 60 exam scores from Figure 11.1.
-- **Charts as pictures of numbers:** a headteacher's eyes tire on 500 rows; a chart shows the pattern in one second. Column/bar compares separate items; pie (slices of a cake) shows parts of a 100% whole; line shows change over time, such as rainfall or attendance by month.
-- **The Golden Rule of selection:** never include the Grand Total row, or it dwarfs everything else.
+- **Internet vs World Wide Web:** the Internet is the physical road (cables, masts, routers); the Web is the cars: the pages and videos that travel on it.
+- **Browser vs search engine:** the browser is your window on the web (Chrome, Edge); the search engine is the head librarian you ask, a website you open inside that window (Google, Bing).
+- **URL:** like a GhanaPost GPS address, every page has its own. Read https://www.example.org/science/water part by part (example.org is a made-up teaching address, not the club's site).
+- **Domain extensions:** .gov.gh and .edu.gh are high reliability; .org is often a non-profit but anyone can register one, so still check who wrote it; .com needs caution because it may be selling.
+- **Padlock / https:** look for a closed padlock (grey or black, not green, in modern browsers; newer Chrome shows a small "tune" settings icon in the same place). The "s" means Secure: what you send is scrambled so snoopers cannot read it. Stress that it protects the journey, not the truth of the page; a padlocked site can still be wrong.
+- **4-Way Fact-Check Shield:** Who? When? Why? Agree? Two independent reliable sources agreeing makes a fact trustworthy.
 
 ## The 3D lab
-Use **3D Spreadsheet Charts**. On the projector, demonstrate *Click a column to find out which cell it comes from* (links to cell addresses) and *Change one of the sales numbers in column B* (the SUM changes by itself, just like step 6 of the workbook lab). In pairs, pupils then do *Make a different day the best day* (the gold MAX column) and *Switch to a pie chart*. Ask pairs: "Which chart is better for comparing days? Which for showing the share of the whole week?"
+Use **Internet Town**. On the projector, demonstrate **Click the blue globe called "The Internet"** to anchor the road-network idea. Then pairs do **Visit a website that has a padlock**, followed by **Visit the website with the warning sign**, and compare what the snooper sees each time (scrambled letters vs readable text). Leave the email and shared-document missions for Session 13 and later.
 
 ## Common mistakes and quick fixes
 | Pupils often… | Try this |
 |---|---|
-| Forget the `=` and the cell shows the words `SUM(D2:D5)` | Remind them of the Golden Law: every calculation starts with `=`. |
-| Type a semicolon or full stop instead of a colon | Point to the colon key (Shift + the ; key) and say "through to". |
-| Include row 6 (Total) in the chart | Press Del on the chart, reselect A1 to B5, insert again. |
-| Get a blank chart | They highlighted empty cells. Delete it and select the real table. |
-| Get bars with no names | They selected only column B. Select from A1 across to B5. |
+| Type the web address into the search box on the page | Point to the long bar at the very top; click inside it first, then type. |
+| Type whole questions ("how can our school get clean water?") | Ask "Which words would the librarian need?" and cross out the filler. |
+| Click the very first result | Make them read the short summary and the web address under each title first. |
+| Think Google is the internet | Ask: "Is Google the window or the librarian?" |
+| Copy a fact straight from one site | Ask "Who? When? Why? Does another source agree?" before it goes on the record sheet. |
 
 ## When things go wrong
-- **No internet:** Excel and LibreOffice Calc work offline. Pupils on Google Sheets can pair with a pupil on an offline PC. Run the 3D lab from the offline pack.
-- **Not enough PCs:** pair pupils, swapping the mouse at each step. The partner reads the step aloud and checks the result against the Visual Target.
-- **A PC freezes or the power goes:** remind pupils to press Ctrl + S after each step. If the file is lost, give them the spare copy and have them redo steps 2 to 6 quickly.
+- **No internet:** run Internet Town and do the URL and keyword work on paper. Use the saved pages or screenshots from the offline pack for the record sheet.
+- **Not enough PCs:** pairs or threes with a driver and a navigator who reads the steps aloud; swap at step 3 of the lab.
+- **A PC freezes or the power goes:** press Refresh first; if the whole PC hangs, move the pair to a neighbour. Nothing is saved in this session, so no work is lost; the record sheet is on paper.
 
 ## Answer key
-**Check Your Thinking (Page 2)**
-1. A: `=SUM(A1:A4)` = **100**
-2. B: `=MAX(A1:A4)` = **40**
-3. C: `=AVERAGE(A1:A4)` = **25**
+**1. Match the Web Term to its Meaning**
+- Web Browser: the program on your computer (Chrome, Edge) used to visit websites.
+- Search Engine: a website (like Google) that helps you search the web using keywords.
+- URL: the unique address of a webpage (e.g. https://...).
+- Undersea Cable: physical glass fibres on the Atlantic seabed carrying internet data.
+- .gov.gh: official domain extension for Ghanaian government institutions.
 
-**Match the Function to its Job (Page 6)**
-| Item | Correct job |
-|---|---|
-| `=SUM(B2:B10)` | Adds up all numbers to give a grand total |
-| `=AVERAGE(B2:B10)` | Calculates the typical mean score |
-| `=MAX(B2:B10)` | Finds the largest / highest value |
-| `=MIN(B2:B10)` | Finds the smallest / lowest value |
-| `D2:D20` | A range of cells from D2 through to D20 |
+**2. Written Review Questions**
+1. Look for: three specific target words with no filler, for example "moringa seed water purification", "moringa river water treatment Ghana". 
+2. The connection is secure (https): information passing between the computer and the website is scrambled into secret code so eavesdroppers cannot steal it. Bonus if a pupil adds that it does not prove the information is true.
+3. Look for: .edu.gh sites are run by Ghanaian schools, colleges and universities; a .com is commercial and may be selling or showing ads, and a personal blog is not checked by experts.
 
-**Written Review Questions**
-1. The Total is much bigger than any single item, so its bar is huge and makes the other bars look like tiny flat slivers. Look for: "it is not an item" or "it squashes the other bars".
-2. "Through to" (every cell from A1 through to A50).
-3. A **pie chart**.
-
-**Lab check (Page 5):** Grand Total 162.50; Average Price 3.88 (shows 3.875 if the 2-decimal format step was skipped); Highest 8.00; Lowest 1.50. After changing B2 to 35, the Books bar grows and the Grand Total rises (to 362.50 if D2 is the formula `=B2*C2` from Session 10).
+**Lab record sheet:** answers vary. Check the URL is complete, the organisation is named, and the two facts come from a .org, .edu or official tourism page.
 
 ## Support and stretch
-- **Needs more support:** have them do only SUM and the chart first. Let them say each range aloud before typing it. Pair them with a confident partner for steps 4 and 5.
-- **Finished early:** add a pie chart of the same data and say which chart suits the data better and why. Try `=SUM(B2:B5)` for total quantity, or change several numbers and predict the new MAX before pressing Enter.
+- **Needs more support:** give them the URL card with the five parts already labelled and let them match a second address to it.
+- **Finished early:** find the same Kakum fact on a second, independent site and note both URLs.
 
 ## Evidence for sign-off
-The pupil shows a saved sheet with working `=SUM`, `=AVERAGE`, `=MAX` and `=MIN` cells (formulas visible when you click the cell), a titled column chart built from A1:B5 without the Total row, and correct answers to Check Your Thinking A–C. They can say what the colon means in their own words.
+The pupil can, without prompting: type a URL into the address bar and open a new tab; point to the padlock and say what it means; explain browser vs search engine in one sentence; and show a completed record sheet with a full URL, an organisation and two facts.
 
 ## Safety and wellbeing
-The stationery data is fictional; keep it that way and don't put real names or prices from a real shop on shared PCs. Pupils should ask before deleting or overwriting any file in a shared folder, especially another class's work. Praise careful checking as much as speed: a calm pupil who spots the Total-row mistake is doing exactly the right thing.
+Remind pupils of the panic button: if you did not buy a ticket, you did not win. Never click prize pop-ups and never type a name, school or phone number into one; close the tab and tell you. Pupils should not sign in to anything today. Watch screens during searching and steer back gently from unsuitable results. At the end, everyone closes the browser so the next class does not inherit open tabs.
