@@ -1,16 +1,24 @@
 // Session 2 — Keyboard Mastery: a 3D keyboard that reacts to the learner's real
-// key presses, shows the five zones, finger map and a home-row typing drill.
+// key presses, shows the four zones (as in workbook Figure 2.0), finger map and a home-row typing drill.
 import { THREE, COLORS, box, mat, textCanvas } from './runtime.js';
 
+// The four zones from workbook Figure 2.0. This keyboard is laptop-sized, so it has no numeric keypad.
 const ZONES = {
-  fn: { name: 'Function keys', color: 0x7209b7, text: 'F1–F12 and Esc. Shortcut buttons — F1 often opens Help, F2 renames a file, F5 refreshes.' },
-  num: { name: 'Number keys', color: 0xf77f00, text: 'The row of numbers. Hold Shift to type the symbols above them, like ! @ #.' },
-  alpha: { name: 'Alphabet (typing) keys', color: 0x4361ee, text: 'The letters. Your fingers rest on the home row: A S D F and J K L ;' },
-  ctrl: { name: 'Control keys', color: 0xe63946, text: 'Shift, Ctrl, Alt, Tab, Caps Lock, Enter, Backspace and Space. They change what other keys do or control your writing.' },
-  nav: { name: 'Navigation (arrow) keys', color: 0x2ec4b6, text: 'Move the cursor without the mouse: ← ↑ ↓ →.' },
+  fn: { name: 'Function zone', color: 0x7209b7 },
+  main: { name: 'Main alphanumeric zone', color: 0x4361ee },
+  nav: { name: 'Navigation zone', color: 0x2ec4b6 },
+  pad: { name: 'Numeric keypad (desktop keyboards only, not on this one)', color: 0xadb5bd },
+};
+// Each key's kind: which zone it is in and what to say about it.
+const KINDS = {
+  fn: { zone: 'fn', text: 'F1–F12 and Esc. Shortcut buttons: F1 often opens Help, F2 renames a file, F5 refreshes.' },
+  num: { zone: 'main', text: 'A top-row number key, part of the main zone. Hold Shift to type the symbol above it, like ! @ #.' },
+  alpha: { zone: 'main', text: 'A letter or punctuation key in the main zone. Your fingers rest on the home row: A S D F and J K L ;' },
+  ctrl: { zone: 'main', text: 'A command key in the main zone (Shift, Ctrl, Alt, Tab, Caps Lock, Enter, Backspace, Space). It changes what other keys do or controls your writing.' },
+  nav: { zone: 'nav', text: 'Move the cursor without the mouse: ← ↑ ↓ →.' },
 };
 
-// [label, code, width, zone]
+// [label, code, width, kind]
 const ROWS = [
   [['Esc', 'Escape', 1, 'fn'], ...Array.from({ length: 12 }, (_, i) => [`F${i + 1}`, `F${i + 1}`, 1, 'fn'])],
   [['`', 'Backquote', 1, 'num'], ...'1234567890'.split('').map((d) => [d, `Digit${d}`, 1, 'num']), ['-', 'Minus', 1, 'num'], ['=', 'Equal', 1, 'num'], ['⌫ Back', 'Backspace', 2, 'ctrl']],
@@ -71,7 +79,7 @@ export default function keyboardLab(stage, ui, host) {
   function paint() {
     for (const [code, k] of keys) {
       let c = 0xdee2e6;
-      if (colouring === 'zones') c = ZONES[k.zone].color;
+      if (colouring === 'zones') c = ZONES[KINDS[k.zone].zone].color;
       if (colouring === 'fingers') {
         const f = FINGERS.find((f) => f.keys.includes(k.text.length === 1 ? k.text : '§'));
         c = f ? f.color : 0xadb5bd;
@@ -98,9 +106,9 @@ export default function keyboardLab(stage, ui, host) {
       k.top.emissive.setHex(drill && isTarget(code) ? 0x996600 : 0x000000);
     }, 140);
     if (drill) return drillKey(code);
-    const z = ZONES[k.zone];
+    const kind = KINDS[k.zone];
     const f = FINGERS.find((f) => f.keys.includes(k.text));
-    ui.info(`${k.text} — ${z.name}`, `<p>${z.text}</p>${f ? `<p>👆 Type it with your <b>${f.name.toLowerCase()}</b> finger.</p>` : ''}`);
+    ui.info(`${k.text} — ${ZONES[kind.zone].name}`, `<p>${kind.text}</p>${f ? `<p>👆 Type it with your <b>${f.name.toLowerCase()}</b> finger.</p>` : ''}`);
   }
 
   // Listen only while the lab has focus so the rest of the page still types normally.
@@ -160,7 +168,7 @@ export default function keyboardLab(stage, ui, host) {
     colouring = c;
     paint();
     ui.toggle([bz, bf, bp], b);
-    if (c === 'zones') ui.info('The five keyboard zones', Object.values(ZONES).map((z) => `<p><span class="swatch" style="background:#${z.color.toString(16).padStart(6, '0')}"></span><b>${z.name}</b></p>`).join(''));
+    if (c === 'zones') ui.info('The four keyboard zones', Object.values(ZONES).map((z) => `<p><span class="swatch" style="background:#${z.color.toString(16).padStart(6, '0')}"></span><b>${z.name}</b></p>`).join(''));
     if (c === 'fingers') ui.complete('fingers');
     if (c === 'fingers') ui.info('Which finger presses which key?', FINGERS.map((f) => `<span class="chip"><span class="swatch" style="background:#${f.color.toString(16).padStart(6, '0')}"></span>${f.name}</span>`).join(' ') + '<p>Thumbs share the Space bar.</p>');
   }

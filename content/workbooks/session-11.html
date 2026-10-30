@@ -402,7 +402,7 @@
   </div>
 
   <h2>1. Meet the Big Four Built-in Functions</h2>
-  <p>In school, business, and science, these four functions do 90% of all data work:</p>
+  <p>In school, business, and science, these four functions do most everyday data work:</p>
 
   <table>
     <thead>
@@ -517,6 +517,10 @@
       <p>A circle sliced into wedges showing <strong>parts of a 100% whole</strong>.</p>
       <p><em>Best for:</em> School budget spending (food, books, sports) or waste composition (plastics vs. organic food scraps).</p>
     </div>
+    <div class="dual-box" style="grid-column: 1 / -1;">
+      <div class="dual-box-title">📈 LINE CHART</div>
+      <p>Joins points with a line to show <strong>change over time</strong>. <em>Best for:</em> Rainfall or school attendance month by month.</p>
+    </div>
   </div>
 
   <!-- DIAGRAM: ANATOMY OF A COLUMN CHART -->
@@ -530,13 +534,13 @@
       <!-- Y-AXIS (Values) -->
       <g transform="translate(80, 45)">
         <line x1="30" y1="10" x2="30" y2="120" stroke="#94A3B8" stroke-width="1.5"/>
-        <text x="22" y="14" font-size="8.5" fill="#64748B" text-anchor="end">25</text>
+        <text x="22" y="14" font-size="8.5" fill="#64748B" text-anchor="end">20</text>
         <line x1="28" y1="10" x2="520" y2="10" stroke="#F1F5F9" stroke-width="1"/>
-        <text x="22" y="42" font-size="8.5" fill="#64748B" text-anchor="end">20</text>
+        <text x="22" y="42" font-size="8.5" fill="#64748B" text-anchor="end">15</text>
         <line x1="28" y1="38" x2="520" y2="38" stroke="#F1F5F9" stroke-width="1"/>
-        <text x="22" y="70" font-size="8.5" fill="#64748B" text-anchor="end">15</text>
+        <text x="22" y="70" font-size="8.5" fill="#64748B" text-anchor="end">10</text>
         <line x1="28" y1="66" x2="520" y2="66" stroke="#F1F5F9" stroke-width="1"/>
-        <text x="22" y="98" font-size="8.5" fill="#64748B" text-anchor="end">10</text>
+        <text x="22" y="98" font-size="8.5" fill="#64748B" text-anchor="end">5</text>
         <line x1="28" y1="94" x2="520" y2="94" stroke="#F1F5F9" stroke-width="1"/>
         <text x="22" y="122" font-size="8.5" fill="#64748B" text-anchor="end">0</text>
 
@@ -630,7 +634,7 @@
         <text x="30" y="90" font-size="8.5" fill="#7F1D1D">Rulers</text><text x="180" y="90" font-size="8.5" fill="#7F1D1D">5</text>
         <text x="30" y="104" font-size="8.5" fill="#7F1D1D">Erasers</text><text x="180" y="104" font-size="8.5" fill="#7F1D1D">15</text>
         <text x="30" y="118" font-size="8.5" font-weight="bold" fill="#DC2626">Total</text><text x="180" y="118" font-size="8.5" font-weight="bold" fill="#DC2626">50</text>
-        <text x="130" y="152" font-size="7.5" fill="#DC2626" font-weight="bold" text-anchor="middle">&uarr; RUINS CHART: Total creates a giant giant bar!</text>
+        <text x="130" y="152" font-size="7.5" fill="#DC2626" font-weight="bold" text-anchor="middle">&uarr; RUINS CHART: Total creates a giant bar!</text>
       </g>
     </svg>
     <div class="diagram-caption">Figure 11.3: Data selection rule for charts. Always select the headers and items, but stop before the Total row!</div>
@@ -658,6 +662,7 @@
       </tr>
     </tbody>
   </table>
+  <p><em>Using Google Sheets or LibreOffice Calc? The buttons look a little different but do the same job.</em></p>
 </div>
 
 <!-- ========================================== -->
@@ -696,6 +701,7 @@
       <br>&bull; In Cell <strong>A7</strong>, type: <code>Average Price</code> &rarr; in <strong>C7</strong>, type: <code>=AVERAGE(C2:C5)</code>
       <br>&bull; In Cell <strong>A8</strong>, type: <code>Highest Price</code> &rarr; in <strong>C8</strong>, type: <code>=MAX(C2:C5)</code>
       <br>&bull; In Cell <strong>A9</strong>, type: <code>Lowest Price</code> &rarr; in <strong>C9</strong>, type: <code>=MIN(C2:C5)</code>
+      <br>&bull; Select C2:D9 &rarr; Home &rarr; Number format &rarr; <strong>2 decimal places</strong> (so 3.875 shows as 3.88).
     </div>
   </div>
 
@@ -713,7 +719,7 @@
     <div class="step-content">
       <strong>Insert the Chart:</strong>
       <br>Click the <strong>Insert</strong> tab on the Ribbon &rarr; click <strong>Column / Bar Chart</strong> &rarr; select <strong>2D Clustered Column</strong>.
-      <br>A colorful bar chart appears right on your sheet!
+      <br>A bar chart appears on your sheet!
     </div>
   </div>
 
@@ -733,9 +739,9 @@
       <tr>
         <td class="row-num">1</td>
         <td style="font-weight:bold; background:#F8FAFC;">Item Description</td>
-        <td style="font-weight:bold; background:#F8FAFC; text-align:right;">Quantity</td>
-        <td style="font-weight:bold; background:#F8FAFC; text-align:right;">Price (GHS)</td>
-        <td style="font-weight:bold; background:#F8FAFC; text-align:right;">Line Total</td>
+        <td style="font-weight:bold; background:#F8FAFC;">Quantity</td>
+        <td style="font-weight:bold; background:#F8FAFC;">Price (GHS)</td>
+        <td style="font-weight:bold; background:#F8FAFC;">Line Total</td>
       </tr>
       <tr><td class="row-num">2</td><td>Exercise Books</td><td style="text-align:right;">10</td><td style="text-align:right;">8.00</td><td style="text-align:right;">80.00</td></tr>
       <tr><td class="row-num">3</td><td>Ballpoint Pens</td><td style="text-align:right;">20</td><td style="text-align:right;">2.00</td><td style="text-align:right;">40.00</td></tr>

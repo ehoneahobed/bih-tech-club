@@ -327,8 +327,9 @@ export function createUI(host) {
   }
 
   return {
+    // The title is plain text (it may hold names pupils typed); the body is HTML.
     info(title, html) {
-      info.innerHTML = `<h4>${title}${canSpeak ? ' <button type="button" class="speak" title="Read this to me" aria-label="Read this to me">🔊</button>' : ''}</h4>${html}`;
+      info.innerHTML = `<h4>${String(title).replace(/&/g, '&amp;').replace(/</g, '&lt;')}${canSpeak ? ' <button type="button" class="speak" title="Read this to me" aria-label="Read this to me">🔊</button>' : ''}</h4>${html}`;
     },
     // Guided, step-by-step challenges shown above the info panel.
     missions(labId, list, finish) {

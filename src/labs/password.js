@@ -22,7 +22,8 @@ export function strength(pw) {
   let bits = pw.length * Math.log2(pool);
 
   // Passphrases: estimate by words drawn from a ~7,000-word vocabulary.
-  const words = pw.trim().split(/[\s\-_.]+/).filter((w) => w.length >= 3);
+  // Words split by spaces, - _ . or CamelCase (ChalkMangoBicycle) all count.
+  const words = pw.trim().split(/[\s\-_.]+|(?<=[a-z])(?=[A-Z])/).filter((w) => w.length >= 3);
   if (words.length >= 3) {
     bits = Math.min(bits, words.length * 12.8 + (/[0-9]/.test(pw) ? 3 : 0) + (/[^a-zA-Z0-9\s\-_.]/.test(pw) ? 4 : 0));
     notes.push(`Passphrase spotted: ${words.length} words. Length beats complexity!`);

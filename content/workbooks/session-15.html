@@ -286,7 +286,7 @@
   <p>You are a citizen of Ghana: you follow laws, respect your elders, protect public property, and treat neighbors kindly. A <strong>Digital Citizen</strong> is simply someone who uses technology safely, responsibly, and respectfully. You represent yourself, your school, and your family whenever you are online!</p>
 
   <h2>2. The P.I.I. Shield (Personally Identifiable Information)</h2>
-  <p><strong>Personally Identifiable Information (P.I.I.)</strong> is any private piece of data that can be used to track down where you live, where you study, or who you are. Keep your P.I.I. locked behind a protective shield at all times:</p>
+  <p><strong>Personally Identifiable Information (P.I.I.)</strong> is any private piece of data that can be used to track down where you live, where you study, or who you are (including your full name). Keep your P.I.I. locked behind a protective shield at all times:</p>
 
   <!-- DIAGRAM: THE PII PRIVACY SHIELD -->
   <div class="diagram-container">
@@ -440,9 +440,9 @@
   <p>Hackers do not sit and guess passwords by hand; they use automated computer programs that can test <strong>10 billion guesses every single second</strong>. Common passwords like <code>123456</code>, <code>ghana2026</code>, or <code>ama123</code> are cracked instantly!</p>
 
   <h2>2. The Passphrase Secret: Length Beats Complexity</h2>
-  <p>Instead of trying to remember a painful, ugly password like <code>k$9!wP#2</code>, computer security experts recommend a <strong>Passphrase</strong>: three or four random, memorable words linked together into a long chain!</p>
+  <p>Instead of trying to remember a painful, ugly password like <code>k$9!wP#2</code>, computer security experts recommend a <strong>Passphrase</strong>: <strong>five</strong> random, memorable words linked together into a long chain! (Three words are cracked quickly.)</p>
 
-  <!-- DIAGRAM: WEAK PASSWORD VS UNBREAKABLE PASSPHRASE -->
+  <!-- DIAGRAM: WEAK PASSWORD VS STRONG PASSPHRASE -->
   <div class="diagram-container">
     <svg width="680" height="155" viewBox="0 0 680 155" xmlns="http://www.w3.org/2000/svg">
       <rect x="20" y="10" width="640" height="135" rx="6" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.5"/>
@@ -454,23 +454,23 @@
         <text x="145" y="24" font-size="11" fill="#DC2626">❌ Weak</text>
         
         <path d="M 235,20 L 320,20" stroke="#DC2626" stroke-width="2"/>
-        <text x="330" y="24" font-size="10" font-weight="bold" fill="#DC2626">Cracked by computers in 0.2 seconds!</text>
+        <text x="330" y="24" font-size="10" font-weight="bold" fill="#DC2626">Cracked by computers in minutes or less!</text>
       </g>
 
       <!-- STRONG PASSPHRASE (Bottom) -->
       <g transform="translate(40, 75)">
         <rect x="0" y="0" width="380" height="45" rx="4" fill="#ECFDF5" stroke="#10B981" stroke-width="2"/>
-        <text x="15" y="27" font-family="monospace" font-size="13" font-weight="bold" fill="#064E3B">BlueSkyPlantainWalk#4</text>
-        <text x="290" y="27" font-size="11" font-weight="bold" fill="#047857">&#10004; Unbreakable</text>
+        <text x="15" y="27" font-family="monospace" font-size="13" font-weight="bold" fill="#064E3B">MangoBicycleRiverDrumLadder#4</text>
+        <text x="290" y="27" font-size="11" font-weight="bold" fill="#047857">&#10004; Very strong</text>
 
         <path d="M 395,22 L 460,22" stroke="#10B981" stroke-width="2"/>
-        <text x="470" y="20" font-size="9.5" font-weight="bold" fill="#047857">Takes a supercomputer</text>
-        <text x="470" y="34" font-size="9.5" font-weight="bold" fill="#047857">10,000 YEARS to crack!</text>
+        <text x="470" y="20" font-size="9.5" font-weight="bold" fill="#047857">Takes a cracking robot</text>
+        <text x="470" y="34" font-size="9.5" font-weight="bold" fill="#047857">MANY, MANY YEARS!</text>
       </g>
 
-      <text x="340" y="136" font-size="9.5" font-weight="bold" fill="#3A0CA3" text-anchor="middle">Easy for your human brain to remember; impossible for a computer to guess!</text>
+      <text x="340" y="136" font-size="9.5" font-weight="bold" fill="#3A0CA3" text-anchor="middle">Easy for your human brain to remember; very hard for a computer to guess!</text>
     </svg>
-    <div class="diagram-caption">Figure 15.2: The Passphrase Revolution. 4 random words strung together provide impenetrable security.</div>
+    <div class="diagram-caption">Figure 15.2: The Passphrase Revolution. 5 random words strung together are long, easy to remember and very hard to crack.</div>
   </div>
 
   <h2>3. The Golden Password Pledge</h2>
@@ -547,7 +547,7 @@
       <tr>
         <td style="text-align:center; font-weight:bold; color:var(--bih-purple);">T</td>
         <td><strong>TOO GOOD TO BE TRUE</strong></td>
-        <td>Did you win 50,000 Cedis in a contest you never entered? If it sounds too good to be true, it is 100% a scam!</td>
+        <td>Did you win 50,000 Cedis in a contest you never entered? If it sounds too good to be true, it is almost certainly a scam!</td>
       </tr>
       <tr>
         <td style="text-align:center; font-weight:bold; color:var(--bih-purple);">O</td>
@@ -573,33 +573,38 @@
   </div>
 
   <h2>1. Lab Mission 1: The Profile Sanitizer</h2>
-  <p>Below is a fictional student profile posted on a public website. Read it carefully. <strong>Draw a line through every piece of dangerous Personally Identifiable Information (P.I.I.)</strong> that should be erased immediately:</p>
+  <p>Below is a fictional student profile posted on a public website. Read it carefully. <strong>Draw a line through every piece of dangerous Personally Identifiable Information (P.I.I.)</strong> that should be erased immediately. Remember: a full name and an age are P.I.I. too!</p>
 
   <div style="border: 2px dashed #DC2626; border-radius: 6px; padding: 16px; background: #FEF2F2; font-size: 13px; line-height: 1.8; margin: 15px 0;">
-    "Hello everyone! My name is <u>Kofi Boateng</u> and I am 13 years old. I live in <u>House Number B42, Dansoman, near the round-about</u>. I am a Form 1 student at <u>Bozoma Model JHS</u> and my mother's MTN number is <u>024-555-1234</u>. Every morning at 6:30 AM I walk alone along High Street to school. I love science, playing football, and my dream is to become a software engineer in Ghana!"
+    "Hello everyone! My name is <u>Kofi Boateng</u> and I am 13 years old. I live in <u>House Number B42, Dansoman, near the round-about</u>. I am a JHS 1 student at <u>Bozoma Model JHS</u> and my mother's MTN number is <u>024-555-1234</u>. Every morning at 6:30 AM I walk alone along High Street to school. I love science, playing football, and my dream is to become a software engineer in Ghana!"
   </div>
 
-  <p><strong>Safe Information Left Over:</strong> Age (13), loves science, plays football, dreams of software engineering. (Safe because nobody can locate or kidnap him with these!).</p>
+  <p><strong>Safe Information Left Over:</strong> List the details a stranger could <em>not</em> use to find or identify Kofi:</p>
+  <div class="answer-line" contenteditable="true">Write the safe details here...</div>
 
   <h2>2. Lab Mission 2: Design a Safe Passphrase (PRACTICE ONLY)</h2>
-  <p>Invent a safe 4-word passphrase using random objects you see around your classroom. <em>(Remember: this is just a classroom exercise; never use this exact phrase for your real accounts!)</em>:</p>
+  <p>Invent a practice passphrase of <strong>five</strong> random objects you can see in your classroom, then add a symbol and number. <strong>Never write a real password here</strong>, and never use this practice phrase for a real account!</p>
 
   <div style="display: flex; gap: 8px; margin: 15px 0;">
     <div style="flex: 1; border: 1.5px solid var(--bih-purple); border-radius: 6px; padding: 10px; background: var(--bih-light); text-align: center;">
-      <small style="color: #64748B;">Word 1 (Color)</small>
-      <div class="answer-line" contenteditable="true" style="text-align:center; font-weight:bold;">Green</div>
+      <small style="color: #64748B;">Object 1</small>
+      <div class="answer-line" contenteditable="true" style="text-align:center; font-weight:bold;">Chalk</div>
     </div>
     <div style="flex: 1; border: 1.5px solid var(--bih-gold); border-radius: 6px; padding: 10px; background: var(--bih-light); text-align: center;">
-      <small style="color: #64748B;">Word 2 (Food)</small>
-      <div class="answer-line" contenteditable="true" style="text-align:center; font-weight:bold;">Waakye</div>
+      <small style="color: #64748B;">Object 2</small>
+      <div class="answer-line" contenteditable="true" style="text-align:center; font-weight:bold;">Window</div>
     </div>
     <div style="flex: 1; border: 1.5px solid var(--bih-green); border-radius: 6px; padding: 10px; background: var(--bih-light); text-align: center;">
-      <small style="color: #64748B;">Word 3 (Action)</small>
-      <div class="answer-line" contenteditable="true" style="text-align:center; font-weight:bold;">Jumping</div>
+      <small style="color: #64748B;">Object 3</small>
+      <div class="answer-line" contenteditable="true" style="text-align:center; font-weight:bold;">Bucket</div>
+    </div>
+    <div style="flex: 1; border: 1.5px solid var(--bih-accent); border-radius: 6px; padding: 10px; background: var(--bih-light); text-align: center;">
+      <small style="color: #64748B;">Object 4</small>
+      <div class="answer-line" contenteditable="true" style="text-align:center; font-weight:bold;">Fan</div>
     </div>
     <div style="flex: 1; border: 1.5px solid #0284C7; border-radius: 6px; padding: 10px; background: var(--bih-light); text-align: center;">
-      <small style="color: #64748B;">Word 4 + Symbol</small>
-      <div class="answer-line" contenteditable="true" style="text-align:center; font-weight:bold;">Stars#7</div>
+      <small style="color: #64748B;">Object 5 + Symbol</small>
+      <div class="answer-line" contenteditable="true" style="text-align:center; font-weight:bold;">Broom#7</div>
     </div>
   </div>
 
@@ -688,7 +693,7 @@
         <td style="text-align: center;"><input type="radio" name="s15_2"></td>
       </tr>
       <tr>
-        <td>3. I know why 4-word passphrases beat weak passwords and keep them secret.</td>
+        <td>3. I know why 5-word passphrases beat weak passwords and keep them secret.</td>
         <td style="text-align: center;"><input type="radio" name="s15_3"></td>
         <td style="text-align: center;"><input type="radio" name="s15_3"></td>
         <td style="text-align: center;"><input type="radio" name="s15_3"></td>

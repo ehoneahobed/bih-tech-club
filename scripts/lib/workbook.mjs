@@ -18,6 +18,8 @@ const STYLE = `
   .wb-status { color: #fff; font-size: 12.5px; opacity: 0.85; min-width: 1px; }
   @media print { .wb-bar { display: none !important; } [contenteditable="true"][data-placeholder]:empty::before { content: ""; } [contenteditable="true"]:focus { background: none; } }
   @media (max-width: 900px) { .page { padding: 24px 18px !important; } .dual-grid { grid-template-columns: 1fr !important; } table { display: block; overflow-x: auto; } }
+  /* Phones only (printing also counts as a narrow page, and the PDFs are fitted without these). */
+  @media screen and (max-width: 900px) { svg, img { max-width: 100%; height: auto; } .meta-row { flex-wrap: wrap; gap: 6px 10px !important; } .meta-row .editable-line { min-width: 120px; flex: 1 1 120px; max-width: none !important; } * { min-width: 0; } }
 </style>`;
 
 const escAttr = (s) => s.replace(/"/g, '&quot;').replace(/\s+/g, ' ').trim();

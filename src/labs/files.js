@@ -226,7 +226,7 @@ export default function filesLab(stage, ui) {
     const name = prompt('New file name (BIH standard: Topic_Detail_Name, no spaces):', selected.name);
     if (!name) return;
     const bad = name.match(/[\\/:*?"<>|]/g);
-    if (bad) return ui.info('🚫 Illegal characters', `<p>File names cannot contain <code>${[...new Set(bad)].join(' ')}</code>. The forbidden set is <code>\\ / : * ? " &lt; &gt; |</code>.</p>`);
+    if (bad) return ui.info('🚫 Illegal characters', `<p>File names cannot contain <code>${[...new Set(bad)].join(' ').replace(/&/g, '&amp;').replace(/</g, '&lt;')}</code>. The forbidden set is <code>\\ / : * ? " &lt; &gt; |</code>.</p>`);
     const old = selected.name;
     selected.name = name;
     const g = objects.get(selected);

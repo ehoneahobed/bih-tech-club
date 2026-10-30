@@ -391,14 +391,14 @@
     </thead>
     <tbody>
       <tr>
-        <td><strong>Track A: Word Flyer</strong></td>
-        <td>Read the flyer from top to bottom.</td>
-        <td>Squinting at tiny text; confusing headings; typos.</td>
+        <td><strong>Track A: Notice + Pitch</strong></td>
+        <td>Read the notice, then click through the 3 slides.</td>
+        <td>Tiny text; confusing headings; typos; crowded slides.</td>
       </tr>
       <tr>
         <td><strong>Track B: Excel Sheet</strong></td>
         <td>Change one quantity and look at the chart.</td>
-        <td><code>#####</code> errors; chart doesn't update; totals wrong.</td>
+        <td><code>#####</code> (column too narrow); chart doesn't update; totals wrong.</td>
       </tr>
       <tr>
         <td><strong>Track C: Scratch Game</strong></td>
@@ -406,9 +406,9 @@
         <td>Sprite gets stuck on edge; score doesn't reset; lag.</td>
       </tr>
       <tr>
-        <td><strong>Track D: Slides Pitch</strong></td>
-        <td>Click through the 3 slides in Slide Show.</td>
-        <td>More than 6 bullets; unreadable colors; missing citations.</td>
+        <td><strong>Track D: Report + Guide</strong></td>
+        <td>Read the report, then click through the photo/slide guide.</td>
+        <td>Missing citations; unchecked facts; squished photos.</td>
       </tr>
     </tbody>
   </table>
@@ -436,7 +436,7 @@
         <rect x="0" y="0" width="170" height="95" rx="5" fill="#FEF2F2" stroke="#EF4444" stroke-width="1.5"/>
         <text x="85" y="24" font-size="11" font-weight="bold" fill="#DC2626" text-anchor="middle">🚨 BUCKET 1: FIX NOW</text>
         <line x1="15" y1="32" x2="155" y2="32" stroke="#FECACA" stroke-width="1"/>
-        <text x="85" y="50" font-size="8.5" fill="#7F1D1D" text-anchor="middle">Broken formulas (=VALUE!)</text>
+        <text x="85" y="50" font-size="8.5" fill="#7F1D1D" text-anchor="middle">Broken formulas (#VALUE!)</text>
         <text x="85" y="64" font-size="8.5" fill="#7F1D1D" text-anchor="middle">Game crashes or freezes</text>
         <text x="85" y="78" font-size="8.5" fill="#7F1D1D" text-anchor="middle">Unreadable tiny text</text>
         <text x="85" y="112" font-size="8.5" font-weight="bold" fill="#DC2626" text-anchor="middle">MUST fix before Session 20</text>
@@ -536,7 +536,7 @@
       <tr>
         <td><strong>Example Fix:</strong></td>
         <td>Total row was included in the bar chart, making items tiny.</td>
-        <td>Reselected data to <code>A1:B5</code> only; total excluded!</td>
+        <td>Reselected only the item rows; total row excluded!</td>
       </tr>
       <tr>
         <td><strong>Fix 1:</strong></td>
@@ -569,10 +569,10 @@
     <div class="step-content">
       <strong>Phase 1: Build Working Prototype v1.0 (25 Minutes):</strong>
       <br>Open your file from Session 18. Fleshing out the content:
-      <br>&bull; <em>Track A (Flyer):</em> Write all 3 paragraphs, format headings, add bullets.
-      <br>&bull; <em>Track B (Sheet):</em> Enter all 5 items, calculate totals with <code>=B2*C2</code>, add <code>=SUM</code>, build chart.
+      <br>&bull; <em>Track A (Notice + Pitch):</em> Write the notice (headings, bullets), then all 3 slides (6x6 rule).
+      <br>&bull; <em>Track B (Sheet):</em> Enter your items (at least 4), calculate totals with <code>=B2*C2</code>, add <code>=SUM</code> and <code>=AVERAGE</code>, build a column (or pie) chart.
       <br>&bull; <em>Track C (Game):</em> Complete the movement loop, score variable, and collision condition.
-      <br>&bull; <em>Track D (Slides):</em> Complete all 3 slides with 6x6 rule and image.
+      <br>&bull; <em>Track D (Report + Guide):</em> Write the report with citations, then add photos/slides to the guide.
       <br>Save as: <code>Capstone_v1.0_[ProjectName]</code>.
     </div>
   </div>
@@ -612,10 +612,13 @@
   </div>
 
   <h2>2. Pre-Showcase Readiness Checklist</h2>
-  <div class="checkbox-item"><input type="checkbox"> All text has been spellchecked (no unintended red squiggly lines).</div>
-  <div class="checkbox-item"><input type="checkbox"> All math formulas start with <code>=</code> and calculate dynamically without errors.</div>
-  <div class="checkbox-item"><input type="checkbox"> All images are resized using corner handles (no squished pictures).</div>
-  <div class="checkbox-item"><input type="checkbox"> Sources and organization citations are credited in a footer.</div>
+  <div class="checkbox-item"><input type="checkbox"> Spell check done on everything (no red squiggly lines).</div>
+  <div class="checkbox-item"><input type="checkbox"> Every team member's name is on the title.</div>
+  <div class="checkbox-item"><input type="checkbox"> Formulas start with <code>=</code> (spreadsheets).</div>
+  <div class="checkbox-item"><input type="checkbox"> Pictures resized from the corner handles (no squished pictures).</div>
+  <div class="checkbox-item"><input type="checkbox"> Sources cited (in a footer or on the last slide).</div>
+  <div class="checkbox-item"><input type="checkbox"> No real private data: only fictional names and numbers.</div>
+  <div class="checkbox-item"><input type="checkbox"> Final file saved as <code>&hellip;_v1.1</code> in <code>Final_Showcase</code>.</div>
 </div>
 
 <!-- ========================================== -->

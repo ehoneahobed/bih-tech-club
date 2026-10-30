@@ -1,31 +1,15 @@
 // Renders each workbook to an A4 PDF in packs/pdf/ using headless Chromium.
 // Run locally after editing a workbook:  npm run pdf  (or: npm run pdf -- 3 7)
 // The PDFs are committed, so Vercel only copies them and never needs a browser.
-import { readFileSync, readdirSync, existsSync, mkdirSync } from 'node:fs';
-import { homedir } from 'node:os';
+import { readFileSync, mkdirSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { chromium } from 'playwright-core';
 import { transformWorkbook } from './lib/workbook.mjs';
+import { findBrowser } from './lib/browser.mjs';
 
 const ROOT = fileURLToPath(new URL('../', import.meta.url));
 const course = JSON.parse(readFileSync(ROOT + 'content/sessions.json', 'utf8'));
 const only = process.argv.slice(2).map(Number).filter(Boolean);
-
-function findBrowser() {
-  if (process.env.CHROME_PATH) return process.env.CHROME_PATH;
-  const candidates = [
-    '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',
-    'C:/Program Files/Google/Chrome/Application/chrome.exe',
-    '/usr/bin/google-chrome',
-    '/usr/bin/chromium',
-  ];
-  for (const dir of [`${homedir()}/Library/Caches/ms-playwright`, `${homedir()}/.cache/ms-playwright`]) {
-    if (!existsSync(dir)) continue;
-    for (const d of readdirSync(dir).filter((d) => d.startsWith('chromium_headless_shell-')).sort().reverse())
-      for (const sub of readdirSync(`${dir}/${d}`)) candidates.unshift(`${dir}/${d}/${sub}/chrome-headless-shell`);
-  }
-  return candidates.find(existsSync);
-}
 
 const executablePath = findBrowser();
 if (!executablePath) {

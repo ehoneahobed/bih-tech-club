@@ -1,6 +1,7 @@
 {
   "programme": "BIH JHS Tech Club",
   "organisation": "Bozoma Innovation Hub",
+  "site": "https://bih-tech-club.vercel.app",
   "levels": [
     { "id": "L0", "name": "Absolute Beginner", "theme": "Meet the Computer", "color": "#3A0CA3" },
     { "id": "L1", "name": "Level 1 · Getting Comfortable", "theme": "The Desktop and Programmes", "color": "#4361EE" },
@@ -16,7 +17,7 @@
   ],
   "sessions": [
     { "n": 1, "level": "L0", "title": "Meet Your Computer", "summary": "Input, process and output; desktop vs laptop hardware; safe startup and shutdown; mouse and touchpad control.", "lab": "computer" },
-    { "n": 2, "level": "L0", "title": "Keyboard Mastery & First Typing", "summary": "The five keyboard zones, home row, Backspace vs Delete, posture and first typing drills.", "lab": "keyboard" },
+    { "n": 2, "level": "L0", "title": "Keyboard Mastery & First Typing", "summary": "The four keyboard zones, home row, Backspace vs Delete, posture and first typing drills.", "lab": "keyboard" },
     { "n": 3, "level": "L1", "title": "The Desktop & Programmes", "summary": "Desktop anatomy, opening programmes, the three window buttons, moving, resizing and multitasking.", "lab": "desktop" },
     { "n": 4, "level": "L2", "title": "Files, Folders & File Explorer", "summary": "Files vs folders, the filing hierarchy, File Explorer, the BIH file-naming standard and illegal characters.", "lab": "files" },
     { "n": 5, "level": "L2", "title": "File Operations & Typing Fluency", "summary": "Copy vs cut, renaming with F2, the Recycle Bin, USB drives and safe ejection, typing fluency.", "lab": "files" },

@@ -7,20 +7,19 @@ import { THREE, COLORS, box, mat, label, setLabel } from './runtime.js';
 const KEY = 'bih-capstone-project';
 const TRACKS = {
   A: { name: 'School Health & Environment', icon: '🌿', builds: 'A 1-page campaign notice (Word) + a 3-slide pitch (PowerPoint)' },
-  B: { name: 'Market & Canteen Bookkeeper', icon: '📊', builds: 'An inventory table with formulas (Excel) + a column or pie chart' },
+  B: { name: 'Market & Canteen Bookkeeper', icon: '📊', builds: 'An inventory table with SUM/AVERAGE formulas + a column chart comparing items (or a pie chart of each item\'s share of the total)' },
   C: { name: 'Interactive Educational Game', icon: '🎮', builds: 'A playable Scratch game or quiz with a score variable and restart loop' },
   D: { name: 'Culture & Community Tourism', icon: '🏛️', builds: 'A researched report with citations + a photo/slide guide' },
 };
 const ROLES = ['Project Manager', 'Designer / Builder', 'Researcher / Tester', 'Presenter'];
+// The same three acts as the Session 20 workbook (180 seconds in all).
 const PITCH = [
-  { part: 'Hook', secs: 20, tip: 'Grab attention: a question, a surprising fact or a short story.' },
-  { part: 'Problem', secs: 30, tip: 'Who has the problem? Why does it matter in our community?' },
-  { part: 'Solution', secs: 40, tip: 'What did you build, and how does it solve the problem?' },
-  { part: 'Live demo', secs: 60, tip: 'Show it working. Point at the screen and explain each step.' },
-  { part: 'Impact & thank you', secs: 30, tip: 'What changes if people use it? What did you learn? Thank the audience.' },
+  { part: 'Act 1: The Hook & Problem', secs: 30, tip: 'Introduce the team, grab attention with a question or a surprising fact, and name the real Ghanaian challenge.' },
+  { part: 'Act 2: Live Digital Demonstration', secs: 90, tip: 'Show it working. Point at the screen and explain each step. The demo always takes longer than you think.' },
+  { part: 'Act 3: Bug Fix & Call to Action', secs: 60, tip: 'Explain one real bug from your Change Log that you fixed after testing, then finish with a clear call to action.' },
 ];
-const POLISH = ['Spell check done on everything', 'Every team member\'s name is on the title', 'Sources are cited (where we used information)', 'No real private data: only fictional names and numbers', 'Final file saved as …_v1.1'];
-const blank = () => ({ team: '', track: '', problem: '', who: '', roles: ['', '', '', ''], folder: '', file: '', tests: [], polish: [], speakers: ['', '', '', '', ''], pitched: false });
+const POLISH = ['Spell check done on everything', 'Every team member\'s name is on the title', 'Formulas start with = (spreadsheets)', 'Pictures resized from the corner handles', 'Sources cited (in a footer or last slide)', 'No real private data: only fictional names and numbers', 'Final file saved as …_v1.1'];
+const blank = () => ({ team: '', track: '', problem: '', who: '', roles: ['', '', '', ''], folder: '', file: '', tests: [], polish: [], speakers: PITCH.map(() => ''), pitched: false });
 
 export default function capstoneLab(stage, ui) {
   const { scene } = stage;
@@ -105,7 +104,7 @@ export default function capstoneLab(stage, ui) {
   }
 
   // ---------- Stage checks ----------
-  const charterDone = () => p.team.trim() && p.track && words(p.problem) >= 8 && p.who.trim() && p.roles.filter((r) => r.trim()).length >= 2;
+  const charterDone = () => p.team.trim() && p.track && words(p.problem) >= 8 && p.who.trim() && p.roles.filter((r) => r.trim()).length >= 3;
   const fileOk = (n) => /^[A-Za-z0-9]+(_[A-Za-z0-9.]+)+$/.test(n) && /v0\.1/i.test(n) && !/[\\/:*?"<>|\s]/.test(n);
   const protoDone = () => p.folder.trim() && !/\s/.test(p.folder) && fileOk(p.file);
   const testDone = () => p.tests.filter((t) => t.bug.trim() && t.fix.trim()).length >= 2;
@@ -158,8 +157,8 @@ export default function capstoneLab(stage, ui) {
     }
     if (i === 1) {
       pane.innerHTML = `
-        <label class="lab-field">Project folder name <input data-k="folder" value="${esc(p.folder)}" placeholder="e.g. Capstone_CleanWater"></label>
-        <label class="lab-field">First saved file name <input data-k="file" value="${esc(p.file)}" placeholder="e.g. CleanWater_Notice_v0.1.docx"></label>
+        <label class="lab-field">Project folder name <input data-k="folder" value="${esc(p.folder)}" placeholder="e.g. Capstone_EcoTech"></label>
+        <label class="lab-field">First saved file name <input data-k="file" value="${esc(p.file)}" placeholder="e.g. Capstone_v0.1_CleanWater.docx"></label>
         <p class="check ${protoDone() ? 'good' : 'bad'}">${protoDone() ? '✅ Folder and file follow the BIH naming standard' : '⚠️ Use underscores (no spaces), no symbols like / : * ?, and include v0.1 in the file name'}</p>`;
       info('Prototype v0.1 = the walls', '<p>A <b>prototype</b> is a rough first version, like a cardboard model of a house. Make your project folder, then save a first "skeleton" file. It does not need to be pretty yet!</p>');
     }
@@ -182,7 +181,7 @@ export default function capstoneLab(stage, ui) {
         <p class="field-label">Who speaks in each part? Everyone should have a voice.</p>
         ${PITCH.map((s, j) => `<label class="lab-field inline-field">${s.part} <small>(${s.secs}s)</small> <select data-spk="${j}"><option value="">Choose…</option>${names.map((n) => `<option${p.speakers[j] === n ? ' selected' : ''}>${esc(n)}</option>`).join('')}</select></label>`).join('')}
         <div class="btns-inline"><button type="button" class="lab-btn primary" data-pitch>▶ Practise the 3-minute pitch</button><button type="button" class="lab-btn" data-card>🖨 Print our project card</button></div>`;
-      info('Demo Day pitch', `<p>Your 3-minute pitch has 5 parts:</p><ol>${PITCH.map((s) => `<li><b>${s.part}</b> (${s.secs}s): ${s.tip}</li>`).join('')}</ol>${names.length ? '' : '<p>⚠️ Add team names in the Charter step first.</p>'}`);
+      info('Demo Day pitch', `<p>Your 3-minute pitch has ${PITCH.length} acts, with a different speaker for each if you can:</p><ol>${PITCH.map((s) => `<li><b>${s.part}</b> (${s.secs}s): ${s.tip}</li>`).join('')}</ol>${names.length ? '' : '<p>⚠️ Add team names in the Charter step first.</p>'}`);
     }
   }
 
@@ -238,7 +237,8 @@ export default function capstoneLab(stage, ui) {
       presenters.forEach((g, k) => (g.position.z = k === idx ? 1.6 : 1));
       info(`🎤 ${s.part}: ${who}`, `<p><b>${s.tip}</b></p><p>Time for this part: ${s.secs} seconds. (Practice mode: each second goes 4× faster.)</p>`);
       for (let k = 0; k < s.secs && pitching; k++) {
-        await stage.wait(0.25);
+        // A real timer, not animation frames: those pause when the 3D view is scrolled off-screen.
+        await new Promise((r) => setTimeout(r, 250));
         t--;
         setLabel(timerTag, `${Math.floor(t / 60)}:${String(t % 60).padStart(2, '0')}`, { width: 256, color: t < 30 ? '#E63946' : '#3A0CA3' });
       }
@@ -248,7 +248,7 @@ export default function capstoneLab(stage, ui) {
     if (pitching) {
       p.pitched = true;
       ui.complete('pitch');
-      const allSpeak = new Set(p.speakers.filter(Boolean)).size >= Math.min(2, p.roles.filter((r) => r.trim()).length);
+      const allSpeak = new Set(p.speakers.slice(0, PITCH.length).filter(Boolean)).size >= Math.min(2, p.roles.filter((r) => r.trim()).length);
       info('👏 Time! That was 3:00 exactly.', `<p>${allSpeak ? 'Great, more than one person spoke.' : '⚠️ Try to give more team members a speaking part.'}</p><p>Now practise it for real with a stopwatch. Tip: the live demo always takes longer than you think, so rehearse it twice.</p>`);
       stage.confetti();
       refresh();
@@ -306,8 +306,8 @@ export default function capstoneLab(stage, ui) {
 }
 
 export const missions = [
-  { id: 'charter', text: 'Step 1: complete your Project Charter.', hint: 'Team name, a track, who has the problem, the problem (8+ words) and at least 2 roles. Watch the foundation appear!' },
-  { id: 'proto', text: 'Step 2: name your folder and first v0.1 file correctly.', hint: 'Example: Capstone_CleanWater and CleanWater_Notice_v0.1.docx' },
+  { id: 'charter', text: 'Step 1: complete your Project Charter.', hint: 'Team name, a track, who has the problem, the problem (8+ words) and a role for every member (at least 3). Watch the foundation appear!' },
+  { id: 'proto', text: 'Step 2: name your folder and first v0.1 file correctly.', hint: 'Example: folder Capstone_EcoTech, file Capstone_v0.1_CleanWater.docx' },
   { id: 'test', text: 'Step 3: record at least 2 fixes from user testing.', hint: 'Ask another team to try your project. Write what went wrong and how you fixed it.' },
   { id: 'polish', text: 'Step 4: tick every item on the polish checklist.', hint: 'When everything is done, your house gets its door, windows and flag.' },
   { id: 'pitch', text: 'Step 5: give each part a speaker and practise the 3-minute pitch.', hint: 'Everyone should have a voice on Demo Day.' },

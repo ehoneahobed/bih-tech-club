@@ -10,7 +10,8 @@ const BLOCKS = {
   left: { text: 'turn ↺ (n) degrees', cat: 'motion', args: [90] },
   goto: { text: 'go to x: (n) y: (n)', cat: 'motion', args: [0, 0] },
   repeat: { text: 'repeat (n)', cat: 'control', args: [4] },
-  end: { text: 'end repeat', cat: 'control', args: [] },
+  // Scratch's repeat is one C-shaped block; 'end' is its bottom edge, shown as a row here.
+  end: { text: '└ end of repeat (bottom of the C)', cat: 'control c-end', args: [] },
   penDown: { text: 'pen down', cat: 'pen', args: [] },
   penUp: { text: 'pen up', cat: 'pen', args: [] },
   say: { text: 'say (t)', cat: 'looks', args: ['Hello!'] },
@@ -129,7 +130,7 @@ export default function codingLab(stage, ui) {
       program.push([id, ...def.args]);
       renderProgram();
     }, { group: palette });
-    b.classList.add('blk', def.cat);
+    b.classList.add('blk', ...def.cat.split(' '));
   }
 
   // ---------- Interpreter ----------
@@ -139,13 +140,13 @@ export default function codingLab(stage, ui) {
     program.forEach((b, i) => {
       if (b[0] === 'repeat') stack.push(i);
       if (b[0] === 'end') {
-        if (!stack.length) throw new Error(`Block ${i + 1} is an "end repeat" with no repeat above it.`);
+        if (!stack.length) throw new Error(`Block ${i + 1} is the bottom of a repeat, but there is no repeat above it.`);
         const open = stack.pop();
         jumps[open] = i;
         jumps[i] = open;
       }
     });
-    if (stack.length) throw new Error(`The "repeat" at block ${stack[0] + 1} has no "end repeat". Every loop needs a closing block.`);
+    if (stack.length) throw new Error(`The "repeat" at block ${stack[0] + 1} has no bottom. Add "end of repeat" after the blocks it should repeat.`);
     return jumps;
   }
 
@@ -259,7 +260,8 @@ export default function codingLab(stage, ui) {
     renderProgram();
     const finished = running;
     running = false;
-    const blocks = program.length;
+    // In Scratch the bottom of a repeat is part of the repeat block, so don't count it.
+    const blocks = program.filter((b) => b[0] !== 'end').length;
     if (finished) {
       ui.complete('run');
       if (program.some((b) => b[0] === 'repeat')) ui.complete('loop');
@@ -294,7 +296,7 @@ export default function codingLab(stage, ui) {
       ui.info(name, name.startsWith('Buggy')
         ? '<p>This is meant to draw a 5-pointed star, but it draws a pentagon! Use <b>Debug</b> to step through it. Hint: for a star, each turn must be <b>144°</b>, not 72°.</p>'
         : name.includes('loop')
-          ? '<p>Same square, but only <b>5 blocks</b> instead of 9. Loops save you hours of work — like pounding fufu: repeat the same action until done.</p>'
+          ? '<p>Same square, but only <b>4 Scratch blocks</b> instead of 9 (the repeat is one C-shaped block that wraps around the blocks inside it). Loops save you hours of work — like pounding fufu: repeat the same action until done.</p>'
           : name.includes('Clean')
             ? '<p>Can you change the route so the sprite picks up <b>all 7</b> pieces of litter? Edit the numbers and run again.</p>'
             : '<p>Nine blocks, lots of repetition. Can you spot the pattern that repeats?</p>');

@@ -327,13 +327,13 @@
 
   <!-- DIAGRAM: SPREADSHEET INTERFACE ANATOMY -->
   <div class="diagram-container">
-    <svg width="720" height="230" viewBox="0 0 720 230" xmlns="http://www.w3.org/2000/svg">
+    <svg width="720" height="244" viewBox="0 -14 720 244" xmlns="http://www.w3.org/2000/svg">
       <!-- Window Outer Frame -->
       <rect x="15" y="10" width="690" height="210" rx="6" fill="#FFFFFF" stroke="#334155" stroke-width="1.5"/>
 
       <!-- Title Bar -->
       <rect x="15" y="10" width="690" height="26" rx="5" fill="#107C41"/>
-      <text x="30" y="27" font-size="10.5" font-weight="bold" fill="white">Book1 - Spreadsheet</text>
+      <text x="300" y="27" font-size="10.5" font-weight="bold" fill="white" text-anchor="middle">Book1 - Spreadsheet</text>
       <rect x="670" y="15" width="16" height="16" rx="2" fill="#E63946"/>
       <line x1="674" y1="19" x2="682" y2="27" stroke="white" stroke-width="1.5"/>
       <line x1="682" y1="19" x2="674" y2="27" stroke="white" stroke-width="1.5"/>
@@ -343,7 +343,7 @@
       
       <!-- Name Box -->
       <rect x="25" y="41" width="55" height="20" rx="2" fill="white" stroke="#CBD5E1" stroke-width="1"/>
-      <text x="36" y="55" font-family="monospace" font-size="11" font-weight="bold" fill="#107C41">B2</text>
+      <text x="36" y="55" font-family="monospace" font-size="11" font-weight="bold" fill="#107C41">D2</text>
 
       <!-- fx Symbol -->
       <text x="92" y="56" font-style="italic" font-weight="bold" font-size="12" fill="#64748B">fx</text>
@@ -358,15 +358,15 @@
         <rect x="40" y="0" width="160" height="20" fill="#E2E8F0" stroke="#CBD5E1" stroke-width="1"/>
         <text x="120" y="14" font-size="10" font-weight="bold" fill="#475569" text-anchor="middle">A</text>
 
-        <!-- Column B highlighted (Active Column) -->
-        <rect x="200" y="0" width="120" height="20" fill="#DCFCE7" stroke="#107C41" stroke-width="1"/>
-        <text x="260" y="14" font-size="10" font-weight="bold" fill="#107C41" text-anchor="middle">B</text>
+        <rect x="200" y="0" width="120" height="20" fill="#E2E8F0" stroke="#CBD5E1" stroke-width="1"/>
+        <text x="260" y="14" font-size="10" font-weight="bold" fill="#475569" text-anchor="middle">B</text>
 
         <rect x="320" y="0" width="120" height="20" fill="#E2E8F0" stroke="#CBD5E1" stroke-width="1"/>
         <text x="380" y="14" font-size="10" font-weight="bold" fill="#475569" text-anchor="middle">C</text>
 
-        <rect x="440" y="0" width="140" height="20" fill="#E2E8F0" stroke="#CBD5E1" stroke-width="1"/>
-        <text x="510" y="14" font-size="10" font-weight="bold" fill="#475569" text-anchor="middle">D</text>
+        <!-- Column D highlighted (Active Column) -->
+        <rect x="440" y="0" width="140" height="20" fill="#DCFCE7" stroke="#107C41" stroke-width="1"/>
+        <text x="510" y="14" font-size="10" font-weight="bold" fill="#107C41" text-anchor="middle">D</text>
 
         <rect x="580" y="0" width="110" height="20" fill="#E2E8F0" stroke="#CBD5E1" stroke-width="1"/>
         <text x="635" y="14" font-size="10" font-weight="bold" fill="#475569" text-anchor="middle">E</text>
@@ -388,23 +388,23 @@
         <rect x="580" y="0" width="110" height="24" fill="white" stroke="#E2E8F0" stroke-width="1"/>
       </g>
 
-      <!-- Row 2 (With ACTIVE CELL B2) -->
+      <!-- Row 2 (With ACTIVE CELL D2) -->
       <g transform="translate(15, 110)">
         <rect x="0" y="0" width="40" height="24" fill="#DCFCE7" stroke="#107C41" stroke-width="1"/>
         <text x="20" y="16" font-size="10" font-weight="bold" fill="#107C41" text-anchor="middle">2</text>
         <rect x="40" y="0" width="160" height="24" fill="white" stroke="#E2E8F0" stroke-width="1"/>
         <text x="48" y="16" font-size="10" fill="#1E293B">Exercise Books</text>
         
-        <!-- ACTIVE CELL B2 -->
-        <rect x="200" y="0" width="120" height="24" fill="#F0FDF4" stroke="#107C41" stroke-width="2.5"/>
-        <text x="280" y="16" font-size="10.5" font-weight="bold" fill="#107C41" text-anchor="middle">10</text>
-        <!-- AutoFill handle dot -->
-        <rect x="317" y="21" width="5" height="5" fill="#107C41"/>
+        <rect x="200" y="0" width="120" height="24" fill="white" stroke="#E2E8F0" stroke-width="1"/>
+        <text x="280" y="16" font-size="10" fill="#1E293B" text-anchor="middle">10</text>
 
         <rect x="320" y="0" width="120" height="24" fill="white" stroke="#E2E8F0" stroke-width="1"/>
         <text x="400" y="16" font-size="10" fill="#1E293B" text-anchor="end">8.00</text>
-        <rect x="440" y="0" width="140" height="24" fill="white" stroke="#E2E8F0" stroke-width="1"/>
-        <text x="540" y="16" font-size="10" font-weight="bold" fill="#1E293B" text-anchor="end">80.00</text>
+        <!-- ACTIVE CELL D2 (holds the formula =B2*C2) -->
+        <rect x="440" y="0" width="140" height="24" fill="#F0FDF4" stroke="#107C41" stroke-width="2.5"/>
+        <text x="540" y="16" font-size="10.5" font-weight="bold" fill="#107C41" text-anchor="end">80.00</text>
+        <!-- AutoFill handle dot -->
+        <rect x="577" y="21" width="5" height="5" fill="#107C41"/>
         <rect x="580" y="0" width="110" height="24" fill="white" stroke="#E2E8F0" stroke-width="1"/>
       </g>
 
@@ -415,11 +415,11 @@
       <text x="115" y="214" font-size="13" font-weight="bold" fill="#64748B">+</text>
 
       <!-- Callouts -->
-      <path d="M 52,38 L 52,25" stroke="#107C41" stroke-width="1.5"/>
-      <text x="52" y="20" font-size="8.5" font-weight="bold" fill="#107C41" text-anchor="middle">Name Box (Active Cell Address)</text>
+      <path d="M 52,40 L 52,2" stroke="#107C41" stroke-width="1.5"/>
+      <text x="20" y="-3" font-size="8.5" font-weight="bold" fill="#107C41">Name Box (Active Cell Address)</text>
 
-      <path d="M 230,38 L 230,25" stroke="#3A0CA3" stroke-width="1.5"/>
-      <text x="230" y="20" font-size="8.5" font-weight="bold" fill="#3A0CA3" text-anchor="middle">Formula Bar (fx): Displays the math calculation</text>
+      <path d="M 450,40 L 450,2" stroke="#3A0CA3" stroke-width="1.5"/>
+      <text x="450" y="-3" font-size="8.5" font-weight="bold" fill="#3A0CA3" text-anchor="middle">Formula Bar (fx): Displays the math calculation</text>
     </svg>
     <div class="diagram-caption">Figure 10.0: The Spreadsheet Grid. Columns are Letters, Rows are Numbers, and Cells are their intersection.</div>
   </div>
@@ -487,14 +487,14 @@
       <div class="dual-box-title">🔤 TEXT (Labels)</div>
       <p>Words, names, descriptions, or titles. Text helps people understand what the numbers mean.</p>
       <p><em>Examples:</em> <code>Tomatoes</code>, <code>Ama Mensah</code>, <code>Exercise Books</code></p>
-      <p><strong>Alignment:</strong> The computer automatically hugs text to the <strong>LEFT</strong> side of the cell.</p>
+      <p><strong>Alignment:</strong> The computer automatically hugs text to the <strong>LEFT</strong> side of the cell, so it reads naturally, like a book.</p>
     </div>
 
     <div class="dual-box">
       <div class="dual-box-title">🔢 NUMBERS (Values)</div>
       <p>Raw digits, quantities, prices, percentages, and measurements that can be mathematically calculated.</p>
       <p><em>Examples:</em> <code>10</code>, <code>25.50</code>, <code>100</code></p>
-      <p><strong>Alignment:</strong> The computer automatically pushes numbers to the <strong>RIGHT</strong> side of the cell!</p>
+      <p><strong>Alignment:</strong> The computer automatically pushes numbers to the <strong>RIGHT</strong> side of the cell, so units, tens and hundreds sit under each other for easy adding.</p>
     </div>
   </div>
 
@@ -671,8 +671,8 @@
       </tr>
       <tr>
         <td><strong style="color:#DC2626; font-size:13px;">#NAME?</strong></td>
-        <td>You misspelled a formula name or forgot the equals sign.</td>
-        <td>Click the cell and check the Formula Bar. Make sure it starts with <code>=</code>.</td>
+        <td>You misspelt a function or name (e.g. <code>=SUMM(B2:B5)</code>).</td>
+        <td>Click the cell and fix the spelling in the Formula Bar. (Forgot the <code>=</code>? Then the formula just shows as plain text.)</td>
       </tr>
       <tr>
         <td><strong style="color:#DC2626; font-size:13px;">#VALUE!</strong></td>
@@ -693,13 +693,14 @@
   </div>
 
   <h2>1. Lab Mission: Build a 4-Item Inventory Table</h2>
-  <p>Follow these 5 steps to create your first working spreadsheet in Excel, Calc, or Google Sheets:</p>
+  <p>Follow these 5 steps to build your first spreadsheet:</p>
 
   <div class="step-card">
     <div class="step-num">1</div>
     <div class="step-content">
       <strong>Launch Spreadsheet Software:</strong>
       <br>Click Start &rarr; type <code>excel</code> (or open <strong>LibreOffice Calc</strong> or <strong>Google Sheets</strong>) &rarr; Open a blank workbook.
+      <br><em>Using Google Sheets or LibreOffice Calc? The buttons look a little different but do the same job.</em>
     </div>
   </div>
 
@@ -739,8 +740,9 @@
     <div class="step-content">
       <strong>AutoFill Down & Save:</strong>
       <br>Click Cell <strong>D2</strong> again. Hover over the bottom-right green dot until the cursor turns into a thin black cross (<strong>+</strong>). Click and drag down to <strong>D5</strong>.
-      <br><em>All line totals appear automatically!</em>
-      <br>Save: <strong>File &rarr; Save As</strong> &rarr; <code>Documents &gt; BIH_Practice</code> &rarr; Name: <code>Stationery_Store_Ama.xlsx</code>.
+      <em>All totals appear!</em>
+      <br>Save: <strong>File &rarr; Save As</strong> &rarr; <code>Documents &gt; BIH_Practice</code> &rarr; Name: <code>Stationery_Store_AmaMensah.xlsx</code>.
+      <br><em>Using Google Sheets? It saves online. Use File &rarr; Download &rarr; Microsoft Excel (.xlsx), then move the file from Downloads into BIH_Practice.</em>
     </div>
   </div>
 
@@ -759,9 +761,9 @@
       <tr>
         <td class="row-num">1</td>
         <td style="font-weight:bold; background:#F8FAFC;">Item Description</td>
-        <td style="font-weight:bold; background:#F8FAFC; text-align:right;">Quantity</td>
-        <td style="font-weight:bold; background:#F8FAFC; text-align:right;">Unit Price (GHS)</td>
-        <td style="font-weight:bold; background:#F8FAFC; text-align:right;">Line Total (GHS)</td>
+        <td style="font-weight:bold; background:#F8FAFC;">Quantity</td>
+        <td style="font-weight:bold; background:#F8FAFC;">Unit Price (GHS)</td>
+        <td style="font-weight:bold; background:#F8FAFC;">Line Total (GHS)</td>
       </tr>
       <tr>
         <td class="row-num">2</td>

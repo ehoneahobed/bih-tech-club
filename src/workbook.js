@@ -2,17 +2,53 @@
 // this browser, and powers the toolbar (print / save as PDF, clear answers).
 (function () {
   var key = 'bih-workbook-' + (document.documentElement.dataset.session || location.pathname);
-  var fields = function () {
-    return document.querySelectorAll('[contenteditable="true"], input[type="checkbox"], input[type="radio"], input[type="text"], textarea');
-  };
+  var FIELD = '[contenteditable="true"], input[type="checkbox"], input[type="radio"], input[type="text"], textarea';
 
-  function save() {
-    var data = [];
-    fields().forEach(function (el) {
-      data.push(el.isContentEditable ? el.innerHTML : el.type === 'checkbox' || el.type === 'radio' ? el.checked : el.value);
+  // Each answer is saved under a name made from the heading it sits under and
+  // its position in that section, so editing one part of a workbook doesn't
+  // move answers into the wrong boxes everywhere else.
+  function fields() {
+    var out = [];
+    var section = 'top';
+    var count = {};
+    document.querySelectorAll('h1, h2, h3, ' + FIELD).forEach(function (el) {
+      if (/^H[123]$/.test(el.tagName) && !el.closest('[contenteditable="true"]')) {
+        section = el.textContent.replace(/\s+/g, ' ').trim().slice(0, 80);
+        return;
+      }
+      var k = section + '|' + (el.type === 'radio' ? 'radio:' + el.name + ':' + el.value : el.isContentEditable ? 'text' : el.type || el.tagName);
+      count[k] = (count[k] || 0) + 1;
+      out.push({ el: el, id: k + '|' + count[k] });
     });
+    return out;
+  }
+  var valueOf = function (el) {
+    return el.isContentEditable ? el.innerHTML : el.type === 'checkbox' || el.type === 'radio' ? el.checked : el.value;
+  };
+  // Only simple formatting comes back from storage, never scripts or attributes.
+  function clean(html) {
+    var t = document.createElement('template');
+    t.innerHTML = String(html);
+    t.content.querySelectorAll('*').forEach(function (n) {
+      if (!/^(B|I|U|BR|DIV|P|SPAN|STRONG|EM)$/.test(n.tagName)) n.replaceWith(document.createTextNode(n.textContent));
+      else while (n.attributes.length) n.removeAttribute(n.attributes[0].name);
+    });
+    return t.innerHTML;
+  }
+  function put(el, v) {
+    if (el.isContentEditable) el.innerHTML = clean(v);
+    else if (el.type === 'checkbox' || el.type === 'radio') el.checked = !!v;
+    else el.value = v;
+  }
+
+  var dirty = false;
+  function save() {
+    if (!dirty) return;
+    dirty = false;
+    var answers = {};
+    fields().forEach(function (f) { answers[f.id] = valueOf(f.el); });
     try {
-      localStorage.setItem(key, JSON.stringify({ at: Date.now(), data: data }));
+      localStorage.setItem(key, JSON.stringify({ v: 2, at: Date.now(), answers: answers }));
       flash('Saved on this computer');
     } catch (e) {
       flash('Could not save in this browser — print or save as PDF instead');
@@ -24,14 +60,22 @@
     try {
       saved = JSON.parse(localStorage.getItem(key) || 'null');
     } catch (e) {}
-    if (!saved || !saved.data) return;
-    fields().forEach(function (el, i) {
-      var v = saved.data[i];
-      if (v === undefined) return;
-      if (el.isContentEditable) el.innerHTML = v;
-      else if (el.type === 'checkbox' || el.type === 'radio') el.checked = !!v;
-      else el.value = v;
-    });
+    if (!saved) return;
+    var list = fields();
+    if (saved.answers) {
+      list.forEach(function (f) { if (f.id in saved.answers) put(f.el, saved.answers[f.id]); });
+    } else if (saved.data) {
+      // Answers saved before October 2026 were stored by position. Only trust
+      // them if the workbook still has the same number of boxes.
+      if (saved.data.length !== list.length) {
+        try { localStorage.setItem(key + '-old', JSON.stringify(saved)); localStorage.removeItem(key); } catch (e) {}
+        flash('This workbook was updated, so your older answers could not be put back. Ask your mentor if you need them.');
+        return;
+      }
+      list.forEach(function (f, i) { if (saved.data[i] !== undefined) put(f.el, saved.data[i]); });
+      dirty = true;
+      save();
+    }
     flash('Your answers from ' + new Date(saved.at).toLocaleDateString() + ' were restored');
   }
 
@@ -41,15 +85,20 @@
     if (!s) return;
     s.textContent = text;
     clearTimeout(timer);
-    timer = setTimeout(function () { s.textContent = ''; }, 3000);
+    timer = setTimeout(function () { s.textContent = ''; }, text.length > 60 ? 8000 : 3000);
   }
 
   var pending;
   document.addEventListener('input', function () {
+    dirty = true;
     clearTimeout(pending);
     pending = setTimeout(save, 600);
   });
-  document.addEventListener('change', save);
+  document.addEventListener('change', function () { dirty = true; save(); });
+  // Save straight away when the pupil clicks away, leaves or closes the page.
+  document.addEventListener('focusout', save);
+  window.addEventListener('pagehide', save);
+  document.addEventListener('visibilitychange', function () { if (document.visibilityState === 'hidden') save(); });
 
   // Contenteditable boxes that are emptied must stay truly empty so the hint shows again.
   document.addEventListener('blur', function (e) {
@@ -62,12 +111,9 @@
     if (!b) return;
     if (b.dataset.wb === 'print') window.print();
     if (b.dataset.wb === 'clear' && confirm('Clear all your answers in this workbook? This cannot be undone.')) {
-      try { localStorage.removeItem(key); } catch (err) {}
-      fields().forEach(function (el) {
-        if (el.isContentEditable) el.innerHTML = '';
-        else if (el.type === 'checkbox' || el.type === 'radio') el.checked = false;
-        else el.value = '';
-      });
+      try { localStorage.removeItem(key); localStorage.removeItem(key + '-old'); } catch (err) {}
+      fields().forEach(function (f) { put(f.el, f.el.type === 'checkbox' || f.el.type === 'radio' ? false : ''); });
+      dirty = false;
       flash('Answers cleared');
     }
   });
