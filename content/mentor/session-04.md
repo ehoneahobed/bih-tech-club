@@ -20,13 +20,14 @@ By the end of the session, pupils can:
 ## Running order
 | Time | Activity | Workbook | What the mentor does |
 |---|---|---|---|
-| 0–10 min | Files vs folders and the filing hierarchy | Page 1 | Use the staff-room pile story and a real folder. Trace the path in Figure 4.0. |
-| 10–20 min | Meeting File Explorer | Page 2 | Everyone presses Win + E. Point out the Address Bar, Navigation Pane and the four personal folders. |
-| 20–35 min | Creating folders, the naming standard, forbidden characters | Page 3 | Demonstrate right-click, New, Folder. Pupils do Spot the Bad Names. |
-| 35–47 min | Save vs Save As and the Ctrl + S habit | Page 4 | Walk through Figure 4.2 step by step. Link Ctrl + S to dumsor. |
-| 47–60 min | 3D lab: The Filing Tree | None | Demonstrate on the projector, then pairs try the missions. |
-| 60–78 min | Guided lab: your first saved file | Page 5 | Pupils do all five steps. Check every pupil's Proof Test. |
-| 78–90 min | Review and sign-off | Page 6 | Pupils build their paper folder tree. Go through the answers, then sign off. |
+| 0–10 min | Typing warm-up | – | Pupils open the typing trainer (Typing in the menu, or the warm-up banner on the session page) and do the 10-minute warm-up. Walk round checking posture and home-row fingers. |
+| 10–20 min | Files vs folders and the filing hierarchy | Page 1 | Use the staff-room pile story and a real folder. Trace the path in Figure 4.0. |
+| 20–29 min | Meeting File Explorer | Page 2 | Everyone presses Win + E. Point out the Address Bar, Navigation Pane and the four personal folders. |
+| 29–42 min | Creating folders, the naming standard, forbidden characters | Page 3 | Demonstrate right-click, New, Folder. Pupils do Spot the Bad Names. |
+| 42–53 min | Save vs Save As and the Ctrl + S habit | Page 4 | Walk through Figure 4.2 step by step. Link Ctrl + S to dumsor. |
+| 53–64 min | 3D lab: The Filing Tree | None | Demonstrate on the projector, then pairs try the missions. |
+| 64–79 min | Guided lab: your first saved file | Page 5 | Pupils do all five steps. Check every pupil's Proof Test. |
+| 79–90 min | Review and sign-off | Page 6 | Pupils build their paper folder tree. Go through the answers, then sign off. |
 
 ## Key ideas and how to explain them
 - **File vs folder:** a file is the content, like one sheet of homework. A folder is a labelled container, like a manila folder on a shelf. A folder holds no text of its own.

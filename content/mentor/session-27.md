@@ -57,7 +57,7 @@ The side panel's makeover checklist is the Page 3 checklist, and the picture tra
 | Copy a picture from Google Images | Back to the traffic light: search Canva's Photos or Elements instead, or take their own photo of a place or object. |
 | Choose crown (Pro) items and get a watermark | Swap them for free items, or use the free filter in the side panel. |
 | Can't find the downloaded file | Look in the Downloads folder; the file has the design name. Rename it with the BIH standard. |
-| Text runs off the edge when printed | Keep text inside the margins; in Canva use File → View settings → Show margins (it may look slightly different). |
+| Text runs off the edge when printed | Keep text inside the margins; in Canva use File → Rulers and guides → Show margins (it may look slightly different). |
 
 ## When things go wrong
 - **No internet:** do the planning on paper, run the Poster Studio lab from the offline pack, and build the poster in Word, LibreOffice Writer or PowerPoint instead (the same design rules apply). Pupils redo it in Canva next time.
@@ -73,7 +73,7 @@ The side panel's makeover checklist is the Page 3 checklist, and the picture tra
 3. A CC BY photo of Kakum Park with the photographer's name: **Allowed** (the credit follows the licence rule).
 4. His cousin's WhatsApp status photo, without asking: **Not allowed** (no permission).
 
-**Lab table (Page 5):** typical answers: poster A4 (21 × 29.7 cm), PDF Print, e.g. `TechClub_OpenDayPoster_AmaMensah`; flyer A5 (or the Canva flyer size), PDF Print; social media graphic 1080 × 1080 px, PNG. Any clear names that follow the BIH standard are fine.
+**Lab table (Page 5):** typical answers: poster A4 (21 × 29.7 cm), PDF Print, e.g. `TechClub_OpenDayPoster_AmaMensah`; flyer A5 (Custom size 14.8 × 21 cm), PDF Print; social media graphic 1080 × 1080 px, PNG. Any clear names that follow the BIH standard are fine.
 
 **True or False (Page 6)**
 1. A good poster uses as many different fonts as possible: **False** (two at most).

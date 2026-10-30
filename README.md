@@ -2,7 +2,7 @@
 
 The website for the Bozoma Innovation Hub JHS Tech Club. It has a page for each of the 44 sessions, with an interactive workbook, at least one 3D lab with guided 🎯 missions, a downloadable offline study pack (.zip), a print-ready PDF and a mentor guide.
 
-Live at https://bih-tech-club.vercel.app
+Live at https://tc.bozomainnovationhub.com
 
 ## Branding
 The site, workbooks, PDFs, 3D labs and link previews use the Bozoma Innovation Hub brand, taken from [bozomainnovationhub.com](https://bozomainnovationhub.com):

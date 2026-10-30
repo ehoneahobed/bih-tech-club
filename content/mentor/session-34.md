@@ -19,7 +19,7 @@ By the end of the session, pupils can:
 | Time | Activity | Workbook | What the mentor does |
 |---|---|---|---|
 | 0–10 min | Typing warm-up | – | Pupils open the typing trainer and do today's 10-minute warm-up. |
-| 10–20 min | The seller who watches you | Page 1 | Tell the kenkey seller story. Act out the feed loop: one pupil "watches" a pretend video for a long time; the class (the algorithm) shouts what to show next. Link to Session 39's "AI predicts". |
+| 10–20 min | The seller who watches you | Page 1 | Tell the kenkey seller story. Act out the feed loop: one pupil "watches" a pretend video for a long time; the class (the algorithm) shouts what to show next. Preview Session 39's "AI predicts". |
 | 20–30 min | Signals and echo chambers | Page 2 | Go through the signals table. Ask "Why is the app free?" (adverts). Pupils answer Yaw's question. |
 | 30–45 min | Fake news, W.A.I.T. and the **True or Fake? race** | Page 3 | Teach the five kinds of fake and W.A.I.T. Then teams race to sort the 6 printed posts; a point for every correct decision and a bonus point for naming the W.A.I.T. clue. |
 | 45–58 min | Cyberbullying, privacy, age limits, healthy use | Page 4 | Walk through the five steps. Role-play an upstander's kind private message. Discuss the 13+ rule and the highlight reel. |
@@ -29,14 +29,14 @@ By the end of the session, pupils can:
 | 86–90 min | Self-assessment and sign-off | Page 6 | Sign off using the evidence below. |
 
 ## Key ideas and how to explain them
-- **The feed and the algorithm:** the kenkey seller notices you slow down at the fried fish and puts it at the front. The algorithm watches signals and predicts what will keep you scrolling. It is the "predict" kind of AI from Session 39.
+- **The feed and the algorithm:** the kenkey seller notices you slow down at the fried fish and puts it at the front. The algorithm watches signals and predicts what will keep you scrolling. It is the "predict" kind of AI you will meet in Session 39.
 - **Signals:** watch time (often the strongest), likes, comments, shares, follows, scrolling past, searches.
 - **Why it wants you scrolling:** adverts pay for free apps. The algorithm's goal is attention, not truth or wellbeing.
 - **Echo chamber:** a room where you only hear your own voice. Seeing a rumour ten times makes it feel true. Pop the bubble: follow a mix, tap "Not interested", look for other sides, use trusted news.
 - **Misinformation vs disinformation:** shared by mistake vs spread on purpose. Both spread through **emotion** and **speed**.
 - **Five kinds of fake:** made up, old photo with a new story, edited, deepfake (Session 40), fake account.
 - **W.A.I.T.:** Who posted it? Anyone else reporting it? Image check (reverse image search from Session 12, deepfake signs)? Time and date? If unsure, don't share. This builds on T.H.I.N.K. (Session 33): the T for "True" is what W.A.I.T. helps you check.
-- **Cyberbullying:** repeated hurting, scaring or embarrassing someone online. Don't reply, screenshot, block, report, tell an adult. Upstanders don't like or share, send a kind message, report and tell.
+- **Cyberbullying:** repeated hurting, scaring or embarrassing someone online. Don't reply, screenshot, block, report, tell an adult. Never screenshot, save or forward a naked or sexual picture of anyone: report it and tell an adult straight away. Upstanders don't like or share, send a kind message, report and tell.
 - **Privacy settings:** private account, who can message me, location off, approve tags.
 - **Age limits:** most platforms require users to be at least 13. They protect children's data and safety.
 - **Healthy use:** time limits (Digital Wellbeing or Screen Time), screens off an hour before bed, remember the highlight reel, fewer notifications.
@@ -100,4 +100,4 @@ On the projector, demonstrate the first post and talk aloud through your W.A.I.T
 The pupil explains the feed loop using "signals" and "predict", completes the W.A.I.T. table for viral-flood.jpg with a correct decision and a real reverse image search, names the five cyberbullying steps in order, and gets at least 4 of the 5 scenarios right. They have completed the Feed Check missions.
 
 ## Safety and wellbeing
-No pupil should sign in to a social media account in the club. Most pupils are under 13 or only just over: don't shame those who already have accounts, but explain the protections and encourage them to set privacy settings with a parent. Talking about cyberbullying can prompt a disclosure. Listen calmly, don't promise secrecy, and follow your school's safeguarding procedure. Choose fake-news examples that are not political, religious or about real people in your community, and avoid frightening images. Some pupils may feel low about comparing themselves with others online; keep the highlight-reel message warm and positive.
+No pupil should sign in to a social media account in the club. Most pupils are under 13 or only just over: don't shame those who already have accounts, but explain the protections and encourage them to set privacy settings with a parent. Talking about cyberbullying can prompt a disclosure. Listen calmly, don't promise secrecy, and follow your school's safeguarding procedure. If a pupil mentions a naked or sexual picture of anyone, never ask them to show or send you the image; follow your safeguarding procedure. Threats, blackmail or scams can be reported, with an adult, to Ghana's Cyber Security Authority (call or text 292). Choose fake-news examples that are not political, religious or about real people in your community, and avoid frightening images. Some pupils may feel low about comparing themselves with others online; keep the highlight-reel message warm and positive.

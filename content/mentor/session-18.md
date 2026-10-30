@@ -46,8 +46,8 @@ By the end of the session, pupils can:
 ## Common mistakes and quick fixes
 | Pupils often… | Try this |
 |---|---|
-| Press the Spacebar many times to push the address right | Select the lines and press Ctrl + R. Show the dots with the ¶ (Show/Hide) button so they see the spaces. |
-| Squash the picture with a side handle | Ctrl + Z, then drag a corner. In Word, Picture Format → Reset Picture also helps. |
+| Press the Spacebar many times to push the address right | Select the lines and press Ctrl + R (Google Docs: Ctrl + Shift + R). Show the dots with the ¶ (Show/Hide) button so they see the spaces. |
+| Squash the picture with a side handle | Ctrl + Z, then drag a corner. In Word, Picture Format → Reset Picture (arrow) → Reset Picture & Size also helps. |
 | Cannot move the picture | It is In Line with Text. Picture Format → Wrap Text → Square, then drag it. |
 | Type page numbers into the text | Delete them and use Insert → Page Number → Bottom of Page. |
 | Get stuck in the header (the page looks pale) | Double-click the main text, or click Close Header and Footer. |
@@ -65,7 +65,7 @@ By the end of the session, pupils can:
 1. The writer's address is in the wrong place: it should be at the top right, before the salutation.
 2. There is no date.
 3. There is no recipient's address (The Headteacher, the school's address).
-4. The salutation is wrong: "Dear Headmaster Kofi" should be "Dear Sir/Madam," (or "Dear Mr Asante,").
+4. The salutation is wrong: "Dear Headmaster Kofi" should be "Dear Sir/Madam," (or "Dear Mr/Mrs [surname],").
 5. There is no subject line (for example USE OF THE COMPUTER LAB FOR A TYPING RACE).
 6. The language is too casual: "hey", "pls", "!!!", and missing capital letters (Saturday, the first word of a sentence).
 7. The closing is wrong: "Your friend, Esi" should be "Yours faithfully," with a signature, her full name and role.

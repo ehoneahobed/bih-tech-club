@@ -1,7 +1,7 @@
 {
   "programme": "BIH JHS Tech Club",
   "organisation": "Bozoma Innovation Hub",
-  "site": "https://bih-tech-club.vercel.app",
+  "site": "https://tc.bozomainnovationhub.com",
   "levels": [
     { "id": "B1", "name": "Block 1 · Getting Started", "theme": "The computer, the keyboard, the desktop and files", "color": "#24182E" },
     { "id": "B2", "name": "Block 2 · Know Your Machine", "theme": "Hardware, devices, the operating system and fixing problems", "color": "#24182E" },

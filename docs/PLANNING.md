@@ -9,7 +9,7 @@ _Prepared 29 October 2026. This is a working document: edit it as decisions are 
 | 44 session workbooks (`content/workbooks/`) | Complete. On 30 Oct 2026 the course grew from 22 to 44 sessions in seven blocks (the order is in `content/sessions.json`). Each workbook is 6 pages and follows the same design. |
 | Word study pack (`docs/source/…Study_Packs.docx`) | A condensed 11-unit version of the same journey (about 5,200 words). |
 | Logo | 1600 × 500 PNG. |
-| Website | Live at https://bih-tech-club.vercel.app: session pages, 31 interactive 3D labs, a typing trainer, offline ZIP packs, print-ready PDFs, an Offline Club Kit for USB and 44 mentor guides. |
+| Website | Live at https://tc.bozomainnovationhub.com: session pages, 31 interactive 3D labs, a typing trainer, offline ZIP packs, print-ready PDFs, an Offline Club Kit for USB and 44 mentor guides. |
 
 ## 2. Review of the session workbooks
 

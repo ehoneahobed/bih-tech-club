@@ -51,7 +51,7 @@ By the end of the session, pupils can:
 | End task on the wrong thing (Windows Explorer, the browser with other tabs) | Only end programmes you opened yourself. If the taskbar vanishes, restart the PC. |
 | Find Task Manager "empty" | Click More details. |
 | Click Get on a paid app or a look-alike app | Check the app's name and maker match what you wrote on the board, and that it says Free. |
-| Cannot find where the screenshot went | Windows + Shift + S only copies it. Paste into Paint and save, or click the pop-up and save in the Snipping Tool. |
+| Cannot find where the screenshot went | Look in Pictures → Screenshots (saved automatically on most Windows 11 PCs), or paste into Paint and save. |
 
 ## When things go wrong
 - **No internet:** skip the Store and Update parts of steps 2–3 and demonstrate them later or in Skills Lab 1. Settings, screenshots, Task Manager and the lab all work offline.

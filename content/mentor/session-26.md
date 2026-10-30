@@ -116,7 +116,7 @@ The total of GHS 388 is **within** the GHS 400 budget (GHS 12 left over). The ch
 - After freezing, row 1 stays at the top when scrolling (Excel: View → Freeze Panes → Freeze Top Row; Google Sheets: View → Freeze → 1 row; LibreOffice Calc: View → Freeze Cells → Freeze First Row).
 - Sorted by screen time, largest to smallest: **P07** (JHS 3, Walk, Kenkey, 6) is on top, then P04 and P13 (5 hours); P03 and P09 (1 hour) are at the bottom.
 - Filter Travel = Walk: **8 rows** (P01, P03, P05, P07, P09, P12, P14, P16).
-- `=COUNTIF(C2:C17,"Walk")` = **8**; `=COUNTIF(D2:D17,"Jollof")` = **6**; `=COUNTIF(E2:E17,">=4")` = **6** (P02, P04, P07, P10, P13, P15).
+- Labels in G2 to G4, COUNTIF in H2 to H4 (column F left empty, as in Session 22): `=COUNTIF(C2:C17,"Walk")` = **8**; `=COUNTIF(D2:D17,"Jollof")` = **6**; `=COUNTIF(E2:E17,">=4")` = **6** (P02, P04, P07, P10, P13, P15).
 - A good finding is true and specific, for example: "Half of the pupils (8 out of 16) walk to school." or "Jollof is the most popular food, chosen by 6 out of 16 pupils." or "6 out of 16 pupils have 4 or more hours of screen time a day."
 - Other useful facts if pupils go further: Trotro 4, Bicycle 2, Car 2; Waakye 4, and Banku and tilapia, Fufu and Kenkey 2 each; average screen time 3.125 hours.
 

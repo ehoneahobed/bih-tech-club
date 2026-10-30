@@ -9,7 +9,8 @@ By the end of the session, pupils can:
 3. Download a file, find it in the Downloads folder, and leave a shared computer safely: private windows, signing out and clearing browsing data.
 
 ## Before the session
-- [ ] Check early that en.wikipedia.org, ges.gov.gh and ug.edu.gh load on the PCs.
+- [ ] Check early that en.wikipedia.org, statsghana.gov.gh and ug.edu.gh load on the PCs.
+- [ ] Open the example site on a pupil PC first. If a certificate warning shows, do NOT click through: use it as a live 'stop' example.
 - [ ] Note which browser each PC has (Chrome, Edge or Firefox) and remove any old bookmarks pupils from other classes left on the bookmarks bar.
 - [ ] Check that pupils may save files to the Downloads folder and that File Explorer shows it.
 - [ ] Load the Internet Town 3D lab on the projector PC and check it runs.
@@ -71,7 +72,7 @@ On the projector, open a new tab so the class sees the request travel to the ser
 
 **Who runs each website? (Page 3)**
 - https://www.ug.edu.gh: a university in Ghana (the University of Ghana); .edu.gh means education.
-- https://ges.gov.gh: the government (the Ghana Education Service); .gov.gh means a government organisation.
+- https://statsghana.gov.gh: the government (the Ghana Statistical Service); .gov.gh means a government organisation.
 - http://free-phones-winner.example.com: a company or anyone at all, and it has no "s" (not secure) and promises free phones: do not trust it or type anything into it.
 
 **Circuit record sheet (Page 5):** times vary. Two or three tabs at once; the number of times "canopy" appears varies as Wikipedia is edited; the file is in the Downloads folder; yes, the bookmark is still on the bar in a private window (bookmarks are kept, history is not).

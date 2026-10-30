@@ -20,12 +20,13 @@ By the end of the session, pupils can:
 ## Running order
 | Time | Activity | Workbook | What the mentor does |
 |---|---|---|---|
-| 0–10 min | Building the whole house and the 3-session schedule | Page 1 | Pupils list the tools they have learned. The mason needs a blueprint first. |
-| 10–25 min | Choosing a track and the "keep it manageable" rule | Page 2 | Teams read the four tracks and commit to one. Challenge oversized ideas. |
-| 25–35 min | Prototype v0.1 and safe data ethics | Page 3 | Cardboard model house. Show the sample canteen list: no real personal data. |
-| 35–55 min | Complete the Project Charter (Planning Canvas) | Page 4 | Push for a specific problem and audience. Teams fill in the Team Roles box (box 7). |
-| 55–60 min | 3D lab: the charter and file-naming steps | – | Demonstrate Steps 1 and 2 of the lab on the projector. |
-| 60–80 min | Guided lab: folders and Prototype v0.1 | Page 5 | Check folder names and the Save As location on every PC. |
+| 0–10 min | Typing warm-up | – | Pupils open the typing trainer (Typing in the menu, or the warm-up banner on the session page) and do the 10-minute warm-up. Walk round checking posture and home-row fingers. |
+| 10–19 min | Building the whole house and the 3-session schedule | Page 1 | Pupils list the tools they have learned. The mason needs a blueprint first. |
+| 19–32 min | Choosing a track and the "keep it manageable" rule | Page 2 | Teams read the four tracks and commit to one. Challenge oversized ideas. |
+| 32–42 min | Prototype v0.1 and safe data ethics | Page 3 | Cardboard model house. Show the sample canteen list: no real personal data. |
+| 42–59 min | Complete the Project Charter (Planning Canvas) | Page 4 | Push for a specific problem and audience. Teams fill in the Team Roles box (box 7). |
+| 59–64 min | 3D lab: the charter and file-naming steps | – | Demonstrate Steps 1 and 2 of the lab on the projector. |
+| 64–80 min | Guided lab: folders and Prototype v0.1 | Page 5 | Check folder names and the Save As location on every PC. |
 | 80–90 min | Milestone checklist, reflection and approval | Page 6 | Inspect each team's canvas and file; complete the approval table. |
 
 ## Key ideas and how to explain them

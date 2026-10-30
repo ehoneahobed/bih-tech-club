@@ -19,13 +19,14 @@ By the end of the session, pupils can:
 ## Running order
 | Time | Activity | Workbook | What the mentor does |
 |---|---|---|---|
-| 0–10 min | Recap of Session 1, the proverb, and keyboard zones | Page 1 | Pupils start up safely. Ask them to point at each zone on their own keyboard. |
-| 10–22 min | Control keys, Backspace vs Delete, Check Your Knowledge | Page 2 | Demonstrate in Notepad on the projector using the GHANA example. |
-| 22–32 min | Home row and posture | Page 3 | Eyes-closed bump check. Walk round correcting flat wrists and fingers. |
-| 32–47 min | 3D lab: The Living Keyboard | None | Demonstrate on the projector, then pairs try the missions. |
-| 47–57 min | Shift vs Caps Lock, top symbols, panic buttons | Page 4 | Show the Caps Lock light. Explain Insert/overtype; demo it in LibreOffice or Word only if a PC has one (Notepad does not do it). |
-| 57–77 min | Notepad drills and selection practice | Page 5 | Pupils type all four drills, then double-click "Ghana" and drag across "Welcome". |
-| 77–90 min | Review and sign-off | Page 6 | Go through the answers together, then sign off. |
+| 0–10 min | Typing warm-up | – | Pupils open the typing trainer (Typing in the menu, or the warm-up banner on the session page) and do the 10-minute warm-up. Walk round checking posture and home-row fingers. |
+| 10–20 min | Recap of Session 1, the proverb, and keyboard zones | Page 1 | Pupils start up safely. Ask them to point at each zone on their own keyboard. |
+| 20–30 min | Control keys, Backspace vs Delete, Check Your Knowledge | Page 2 | Demonstrate in Notepad on the projector using the GHANA example. |
+| 30–40 min | Home row and posture | Page 3 | Eyes-closed bump check. Walk round correcting flat wrists and fingers. |
+| 40–52 min | 3D lab: The Living Keyboard | None | Demonstrate on the projector, then pairs try the missions. |
+| 52–62 min | Shift vs Caps Lock, top symbols, panic buttons | Page 4 | Show the Caps Lock light. Explain Insert/overtype; demo it in LibreOffice or Word only if a PC has one (Notepad does not do it). |
+| 62–78 min | Notepad drills and selection practice | Page 5 | Pupils type all four drills, then double-click "Ghana" and drag across "Welcome". |
+| 78–90 min | Review and sign-off | Page 6 | Go through the answers together, then sign off. |
 
 ## Key ideas and how to explain them
 - **Ten fingers, not chicken pecking:** use the workbook's proverb "Tikro nkɔ agyina" (one head does not hold council): we do better when we share the work. Typing with one finger is slow. Ten fingers share the work.

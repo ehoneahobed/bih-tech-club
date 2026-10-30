@@ -37,7 +37,7 @@ By the end of the session, pupils can:
 - **Sections:** split a long form into short pages that feel easier.
 - **Response validation:** a guard at the gate: a number between 1 and 100 means nobody can type "a lot" or 5000. That keeps the data clean for Session 22.
 - **Settings:** *Collect email addresses: Do not collect* keeps a class survey anonymous. *Limit to 1 response* stops double answers but forces every respondent to sign in; leave it off today because pupils share Hub accounts.
-- **Publish and share:** Publish, then copy the responder link; or make a QR code in Chrome. The Edit link (the address in your own browser bar) is NOT for sharing: anyone with edit access can change or delete your questions.
+- **Publish and share:** first Manage → Responders → Anyone with the link, then Publish, then Published → Copy responder link; or make a QR code in Chrome. The Edit link (the address in your own browser bar) is NOT for sharing: anyone with edit access can change or delete your questions.
 - **Summary and Sheets:** Summary draws a pie chart for multiple choice and a bar chart for checkboxes. Link to Sheets turns every response into one row, ready for Session 22.
 - **The survey maker's promise:** ask only what you need, say why, keep answers private, no trick questions. Google already records a timestamp, so even a date question is unnecessary for this survey (a good discussion point: the date type exists for things like "Which day can you help?").
 
@@ -47,12 +47,13 @@ By the end of the session, pupils can:
 ## Common mistakes and quick fixes
 | Pupils often… | Try this |
 |---|---|
-| Share the edit link from the address bar | Delete that message. Use Publish → Copy responder link (or Send → link icon). The responder link ends in `/viewform` or is a short `forms.gle` link. |
+| Share the edit link from the address bar | Delete that message. Use Published → Copy responder link (tick Shorten URL for a short forms.gle link; or Send → link icon on older screens). The responder link ends in `/viewform` or is a short `forms.gle` link. |
 | Use Short answer for favourite food | Change the type to Multiple choice and add the options plus "Other". |
 | Use Multiple choice where several answers are true | Switch to Checkboxes. |
 | Can't find Response validation | It is under the ⋮ at the bottom right of a short answer question, and only appears for some types. |
 | Classmates see "You need permission" or are asked to sign in | Settings → Responses: turn off "Limit to 1 response", and check the form is not restricted to one organisation's users if classmates use different accounts. |
-| Form "is no longer accepting responses" | Responses tab → switch Accepting responses on, or Publish the form. |
+| Form "is no longer accepting responses" | Click Published (top right) → turn Accepting responses on → Save (older screens: Responses tab), or Publish the form. |
+| Classmates see "You need permission" | Before publishing (or via Published → Manage), set Responders to Anyone with the link. |
 | Answer their own form 10 times to win points | Only responses from other pairs count. Delete test answers before the swap (Responses → ⋮ → Delete all responses). |
 
 ## When things go wrong

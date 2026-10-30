@@ -18,14 +18,15 @@ By the end of the session, pupils can:
 ## Running order
 | Time | Activity | Workbook | What the mentor does |
 |---|---|---|---|
-| 0–10 min | The speaker and the signboard | Page 1 | Tell the assembly prefect story. Point out the thumbnail pane, canvas and speaker notes. |
-| 10–20 min | Golden rule and 6-by-6 | Page 2 | Show your terrible slide from the back of the room. Pupils count bullets and words on the good one. |
-| 20–25 min | Contrast | Page 2 | Show yellow on white. Ask the back row to read it. |
-| 25–35 min | Layouts and aspect ratio | Page 3 | Squash a picture with a side handle, press Ctrl + Z, then use a corner handle. |
-| 35–45 min | 3D lab | – | Demonstrate, then pairs try the design missions. |
-| 45–50 min | Storyboard and F5 / Esc | Page 4 | Walk through the 3-slide action formula. |
-| 50–75 min | Guided lab: first deck | Page 5 | Circulate. Check layouts, bullet length and corner resizing. |
-| 75–85 min | Littering storyboard and review questions | Page 6 | Pupils sketch on paper; answers in the workbook. |
+| 0–10 min | Typing warm-up | – | Pupils open the typing trainer (Typing in the menu, or the warm-up banner on the session page) and do the 10-minute warm-up. Walk round checking posture and home-row fingers. |
+| 10–20 min | The speaker and the signboard | Page 1 | Tell the assembly prefect story. Point out the thumbnail pane, canvas and speaker notes. |
+| 20–29 min | Golden rule and 6-by-6 | Page 2 | Show your terrible slide from the back of the room. Pupils count bullets and words on the good one. |
+| 29–34 min | Contrast | Page 2 | Show yellow on white. Ask the back row to read it. |
+| 34–43 min | Layouts and aspect ratio | Page 3 | Squash a picture with a side handle, press Ctrl + Z, then use a corner handle. |
+| 43–51 min | 3D lab | – | Demonstrate, then pairs try the design missions. |
+| 51–56 min | Storyboard and F5 / Esc | Page 4 | Walk through the 3-slide action formula. |
+| 56–76 min | Guided lab: first deck | Page 5 | Circulate. Check layouts, bullet length and corner resizing. |
+| 76–85 min | Littering storyboard and review questions | Page 6 | Pupils sketch on paper; answers in the workbook. |
 | 85–90 min | Self-assessment and sign-off | Page 6 | Sign off using the evidence below. |
 
 ## Key ideas and how to explain them

@@ -19,13 +19,14 @@ By the end of the session, pupils can:
 ## Running order
 | Time | Activity | Workbook | What the mentor does |
 |---|---|---|---|
-| 0–10 min | Recap, Copy vs Cut analogy, F2 rename, Ctrl + Z undo | Page 1 | Act out the photocopier and moving a desk from JHS 1 to JHS 2. Show Ctrl + Z undoing a rename. |
-| 10–20 min | Deleting and the Recycle Bin, Check Your Knowledge | Page 2 | Demonstrate delete and restore on the projector. Ask Kwesi's question. |
-| 20–30 min | USB pen drives and safe ejection | Page 3 | Show the USB tongue rule and the eject routine with one club drive. |
-| 30–42 min | 3D lab: The Filing Tree | None | Demonstrate on the projector, then pairs try the missions. |
-| 42–65 min | Guided file operations lab | Page 5 | Pupils do challenges 1 to 5. Check each step on screen before they move on. |
-| 65–78 min | Top-row reach and the fluency drills | Pages 4–5 | Model reach-and-snap-back. Pupils type each drill three times in Notepad. |
-| 78–90 min | Review and sign-off | Page 6 | Go through the answers together, then sign off. Pass the club drives round for an eject check. |
+| 0–10 min | Typing warm-up | – | Pupils open the typing trainer (Typing in the menu, or the warm-up banner on the session page) and do the 10-minute warm-up. Walk round checking posture and home-row fingers. |
+| 10–20 min | Recap, Copy vs Cut analogy, F2 rename, Ctrl + Z undo | Page 1 | Act out the photocopier and moving a desk from JHS 1 to JHS 2. Show Ctrl + Z undoing a rename. |
+| 20–30 min | Deleting and the Recycle Bin, Check Your Knowledge | Page 2 | Demonstrate delete and restore on the projector. Ask Kwesi's question. |
+| 30–40 min | USB pen drives and safe ejection | Page 3 | Show the USB tongue rule and the eject routine with one club drive. |
+| 40–50 min | 3D lab: The Filing Tree | None | Demonstrate on the projector, then pairs try the missions. |
+| 50–69 min | Guided file operations lab | Page 5 | Pupils do challenges 1 to 5. Check each step on screen before they move on. |
+| 69–79 min | Top-row reach and the fluency drills | Pages 4–5 | Model reach-and-snap-back. Pupils type each drill three times in Notepad. |
+| 79–90 min | Review and sign-off | Page 6 | Go through the answers together, then sign off. Pass the club drives round for an eject check. |
 
 ## Key ideas and how to explain them
 - **Copy is a photocopier, Cut is moving a desk:** copy leaves the original and makes a twin. Cut moves the original, so the old spot is empty. The X in Ctrl + X looks like scissors.

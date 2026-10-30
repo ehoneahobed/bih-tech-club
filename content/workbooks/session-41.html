@@ -338,47 +338,48 @@
     <div class="badge">Session 41 • Page 2</div>
   </div>
 
-  <div class="dual-grid">
-    <div class="dual-box">
-      <div class="dual-box-title">⏱ Time limit</div>
-      <p><strong>25 minutes</strong></p>
-    </div>
-    <div class="dual-box">
-      <div class="dual-box-title">🧰 You need</div>
-      <p>Scratch (scratch.mit.edu or the Scratch app). Use any sprites from Scratch's library, for example the <em>Apple</em> (our mango) and the <em>Bowl</em>.</p>
-    </div>
-  </div>
+  <p><strong>⏱ Time limit: 25 minutes</strong> &nbsp;·&nbsp; <strong>🧰 You need:</strong> Scratch (scratch.mit.edu or the Scratch app). Use any sprites from Scratch's library, for example the <em>Apple</em> (our mango) and the <em>Bowl</em>.</p>
 
   <h2>1. Your Brief</h2>
   <div class="callout">
     <div class="callout-title">🎮 GAME BRIEF: MANGO CATCH</div>
-    A mango falls from the top of the tree. The player moves a basket left and right with the <strong>arrow keys</strong>. Every time the basket catches the mango, the <strong>Score</strong> goes up by 1 and a new mango falls from the top. When the green flag is clicked, the score must start at 0. Save it as <strong>MangoCatch_[YourName].sb3</strong>.
+    A mango falls from the top of the tree. The player moves a basket left and right with the <strong>arrow keys</strong>. Every time the basket catches the mango, the <strong>Score</strong> goes up by 1 and a new mango falls from the top. If the basket misses, the mango goes back to the top and falls again. When the green flag is clicked, the score must start at 0 and the basket goes to the bottom of the stage. Save it as <strong>Scratch_MangoCatch_[YourName].sb3</strong>.
+  </div>
+
+  <div class="callout" style="font-size: 12px;">
+    <div class="callout-title">🧩 New blocks you may need</div>
+    <strong>when [right arrow] key pressed</strong> (Events): runs the blocks under it each time that key is pressed. &nbsp;
+    <strong>change x by / change y by</strong> (Motion): moves the sprite a little sideways (x) or up and down (y); a minus number moves left or down. &nbsp;
+    <strong>pick random -200 to 200</strong> (Operators): gives a different number each time, so the mango falls from a new place. &nbsp;
+    <strong>touching [Bowl]?</strong> (Sensing): true when the sprite touches the Bowl. &nbsp;
+    <strong>y position</strong> (Motion): how high the sprite is now. &nbsp;
+    <strong>&lt;</strong> (Operators): "less than", e.g. (y position) &lt; (-170) means "lower than -170", the bottom of the stage.
   </div>
 
   <h2>2. Re-try Hints</h2>
   <div class="dual-grid">
     <div class="dual-box">
       <div class="dual-box-title">🥭 Mango sprite</div>
-      <p style="font-family: Consolas, monospace; font-size: 11.5px; line-height: 1.6;">when green flag clicked<br>set [Score] to (0)<br>go to x: (0) y: (170)<br>forever<br>&nbsp;&nbsp;change y by (-5)<br>&nbsp;&nbsp;if &lt;touching [Bowl]?&gt; then<br>&nbsp;&nbsp;&nbsp;&nbsp;change [Score] by (1)<br>&nbsp;&nbsp;&nbsp;&nbsp;go to x: (pick random -200 to 200) y: (170)<br>&nbsp;&nbsp;end<br>end</p>
+      <p style="font-family: Consolas, monospace; font-size: 11.5px; line-height: 1.4;">when green flag clicked<br>set [Score] to (0)<br>go to x: (0) y: (170)<br>forever<br>&nbsp;&nbsp;change y by (-5)<br>&nbsp;&nbsp;if &lt;touching [Bowl]?&gt; then<br>&nbsp;&nbsp;&nbsp;&nbsp;change [Score] by (1)<br>&nbsp;&nbsp;&nbsp;&nbsp;go to x: (pick random -200 to 200) y: (170)<br>&nbsp;&nbsp;end<br>&nbsp;&nbsp;if &lt;(y position) &lt; (-170)&gt; then<br>&nbsp;&nbsp;&nbsp;&nbsp;go to x: (pick random -200 to 200) y: (170)<br>&nbsp;&nbsp;end<br>end</p>
     </div>
     <div class="dual-box">
       <div class="dual-box-title">🧺 Basket (Bowl) sprite</div>
-      <p style="font-family: Consolas, monospace; font-size: 11.5px; line-height: 1.6;">when [right arrow] key pressed<br>change x by (15)<br><br>when [left arrow] key pressed<br>change x by (-15)</p>
-      <p>First make the variable: <strong>Variables → Make a Variable → Score</strong>. <em>pick random</em> is in <strong>Operators</strong> (green).</p>
+      <p style="font-family: Consolas, monospace; font-size: 11.5px; line-height: 1.4;">when green flag clicked<br>go to x: (0) y: (-140)<br><br>when [right arrow] key pressed<br>change x by (15)<br><br>when [left arrow] key pressed<br>change x by (-15)</p>
+      <p>First make the variable: <strong>Variables → Make a Variable → Score</strong>.</p>
     </div>
   </div>
-  <p><strong>Level up (optional):</strong> if the mango reaches the ground, send it back to the top: <code style="font-family: Consolas, monospace;">if &lt;(y position) &lt; (-170)&gt; then go to x: … y: (170)</code>.</p>
 
   <h2>3. Mentor Checklist</h2>
-  <table>
+  <table style="font-size: 12px;">
     <thead><tr><th>Check</th><th style="width: 14%; text-align:center;">✔</th></tr></thead>
     <tbody>
-      <tr><td>The game starts with the green flag; the Score resets to 0</td><td style="text-align:center;"><input type="checkbox"></td></tr>
-      <tr><td>A <strong>loop</strong> (forever or repeat) makes the mango fall</td><td style="text-align:center;"><input type="checkbox"></td></tr>
-      <tr><td>A <strong>condition</strong> (if … then) checks whether the basket caught it</td><td style="text-align:center;"><input type="checkbox"></td></tr>
-      <tr><td>A <strong>Score variable</strong> goes up by 1 for each catch</td><td style="text-align:center;"><input type="checkbox"></td></tr>
-      <tr><td>The arrow keys move the basket left and right</td><td style="text-align:center;"><input type="checkbox"></td></tr>
-      <tr><td>Saved as <strong>MangoCatch_[YourName].sb3</strong></td><td style="text-align:center;"><input type="checkbox"></td></tr>
+      <tr><td style="padding: 5px 10px;">The game starts with the green flag; the Score resets to 0</td><td style="text-align:center;"><input type="checkbox"></td></tr>
+      <tr><td style="padding: 5px 10px;">A <strong>loop</strong> (forever or repeat) makes the mango fall</td><td style="text-align:center;"><input type="checkbox"></td></tr>
+      <tr><td style="padding: 5px 10px;">A <strong>condition</strong> (if … then) checks whether the basket caught it</td><td style="text-align:center;"><input type="checkbox"></td></tr>
+      <tr><td style="padding: 5px 10px;">A <strong>Score variable</strong> goes up by 1 for each catch</td><td style="text-align:center;"><input type="checkbox"></td></tr>
+      <tr><td style="padding: 5px 10px;">The arrow keys move the basket left and right; it starts at the bottom (x: 0, y: -140)</td><td style="text-align:center;"><input type="checkbox"></td></tr>
+      <tr><td style="padding: 5px 10px;">A missed mango goes back to the top and falls again</td><td style="text-align:center;"><input type="checkbox"></td></tr>
+      <tr><td style="padding: 5px 10px;">Saved as <strong>Scratch_MangoCatch_[YourName].sb3</strong></td><td style="text-align:center;"><input type="checkbox"></td></tr>
     </tbody>
   </table>
   <p>A bug I found and how I fixed it:</p>

@@ -71,7 +71,7 @@ On the projector, demonstrate adding a block and opening the HTML view. Ask: "Wh
 
 **Spot the bug (Page 4):** the closing tag is missing its slash. It should be `<p>Kelewele is the best snack</p>`.
 
-**Builder's checklist (Page 5):** every row ticked and checked by the mentor; the web address written down (for example `sites.google.com/view/our-bozoma-ama`); the Notepad page opens in the browser and shows a heading, a paragraph, the market picture and a working link.
+**Builder's checklist (Page 5):** every row ticked and checked by the mentor; the web address written down (personal accounts: `sites.google.com/view/<name>`, for example `sites.google.com/view/our-bozoma-ama`; school/Workspace accounts: `sites.google.com/<domain>/<name>`); the Notepad page opens in the browser and shows a heading, a paragraph, the market picture and a working link.
 
 **True or False (Page 6)**
 1. A website is a group of web pages joined by a menu and links, at one address: **True**.
@@ -92,4 +92,4 @@ On the projector, demonstrate adding a block and opening the HTML view. Ask: "Wh
 The pupil shows a written plan, a Google Site with a home page and at least two more pages, an allowed image, a map, a working link and one theme, checked in phone preview and published to the Hub (or ready to publish), with no personal details. They show `my-page.html` opening in a browser with all four tags working, and get at least 4 of the 5 true-or-false statements right.
 
 ## Safety and wellbeing
-Websites can be seen by many people, so check every site before it is published: no full names, phone numbers, home addresses, school timetables, routes or faces. Publish only to the Hub, never to the public, unless the programme lead agrees. Pupils use the Hub's learning accounts only. Photos of people need their consent and, for children, a parent's consent too; it is simpler to use places and things. Remind pupils that pictures found online usually belong to someone else. If a pupil wants to keep their site, they can, but they must not share the link outside the Hub without a parent's agreement.
+Websites can be seen by many people, so check every site before it is published: no full names, phone numbers, home addresses, school timetables, routes or faces. Publish only to the Hub, never to the public, unless the programme lead agrees. If a site is ever Public, also tick "Request public search engines to not display my site" in the Publish settings. Pupils use the Hub's learning accounts only. Photos of people need their consent and, for children, a parent's consent too; it is simpler to use places and things. Remind pupils that pictures found online usually belong to someone else. If a pupil wants to keep their site, they can, but they must not share the link outside the Hub without a parent's agreement.

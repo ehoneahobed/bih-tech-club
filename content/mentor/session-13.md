@@ -19,13 +19,14 @@ By the end of the session, pupils can:
 ## Running order
 | Time | Activity | Workbook | What the mentor does |
 |---|---|---|---|
-| 0–10 min | The digital post office and email addresses | Page 1 | Compare a Ghana Post letter to an email. Break an address into its three parts. |
-| 10–20 min | The compose window: To, Cc, Bcc, Subject | Page 2 | Walk through Figure 13.1 and the subject line examples. |
-| 20–30 min | Netiquette and the 4-part email | Page 3 | Link to greeting an elder before making a request. |
-| 30–40 min | Attachments and the panic button | Page 4 | Use a real paperclip. Sort file types into safe and dangerous. |
-| 40–55 min | 3D labs: Internet Town email mission, then Spot the Phish | — | Demonstrate, then pairs play. |
-| 55–75 min | Hands-on lab: your first email | Page 5 | Check each email against the pre-flight checklist before Send. |
-| 75–85 min | Review: subject line makeover and inbox scenarios | Page 6 | Pupils work alone, then compare in pairs. |
+| 0–10 min | Typing warm-up | – | Pupils open the typing trainer (Typing in the menu, or the warm-up banner on the session page) and do the 10-minute warm-up. Walk round checking posture and home-row fingers. |
+| 10–20 min | The digital post office and email addresses | Page 1 | Compare a Ghana Post letter to an email. Break an address into its three parts. |
+| 20–30 min | The compose window: To, Cc, Bcc, Subject | Page 2 | Walk through Figure 13.1 and the subject line examples. |
+| 30–40 min | Netiquette and the 4-part email | Page 3 | Link to greeting an elder before making a request. |
+| 40–49 min | Attachments and the panic button | Page 4 | Use a real paperclip. Sort file types into safe and dangerous. |
+| 49–61 min | 3D labs: Internet Town email mission, then Spot the Phish | — | Demonstrate, then pairs play. |
+| 61–77 min | Hands-on lab: your first email | Page 5 | Check each email against the pre-flight checklist before Send. |
+| 77–85 min | Review: subject line makeover and inbox scenarios | Page 6 | Pupils work alone, then compare in pairs. |
 | 85–90 min | Self-assessment, sign-off, sign out | Page 6 | Sign off. If real accounts were used, every pupil signs out. |
 
 ## Key ideas and how to explain them

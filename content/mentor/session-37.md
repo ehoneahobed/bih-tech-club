@@ -19,12 +19,13 @@ By the end of the session, pupils can:
 ## Running order
 | Time | Activity | Workbook | What the mentor does |
 |---|---|---|---|
-| 0–10 min | Fufu pounding: what is a loop? | Page 1 | Clap "pound, turn". Compare `repeat (10)` and `forever`. |
-| 10–20 min | Conditions: the IF-THEN law | Page 2 | "IF it rains, THEN open my umbrella." Show diamond blocks and the sensing table. |
-| 20–28 min | Variables: the storage calabash | Page 3 | 5 cowries, add 2, take 3. Link to `set` and `change`. |
-| 28–38 min | Debugging and Grace Hopper's moth | Page 4 | Tell the moth story (her team found it in 1947). Bugs are clues; change one thing, then test. |
-| 38–53 min | 3D lab: loops and debugging | – | Demonstrate, then pairs do the missions. |
-| 53–80 min | Guided lab: Sachet Clean-up Game | Page 5 | Pupils follow the 6 steps. Check stacks against the Visual Target. |
+| 0–10 min | Typing warm-up | – | Pupils open the typing trainer (Typing in the menu, or the warm-up banner on the session page) and do the 10-minute warm-up. Walk round checking posture and home-row fingers. |
+| 10–19 min | Fufu pounding: what is a loop? | Page 1 | Clap "pound, turn". Compare `repeat (10)` and `forever`. |
+| 19–29 min | Conditions: the IF-THEN law | Page 2 | "IF it rains, THEN open my umbrella." Show diamond blocks and the sensing table. |
+| 29–37 min | Variables: the storage calabash | Page 3 | 5 cowries, add 2, take 3. Link to `set` and `change`. |
+| 37–46 min | Debugging and Grace Hopper's moth | Page 4 | Tell the moth story (her team found it in 1947). Bugs are clues; change one thing, then test. |
+| 46–58 min | 3D lab: loops and debugging | – | Demonstrate, then pairs do the missions. |
+| 58–80 min | Guided lab: Sachet Clean-up Game | Page 5 | Pupils follow the 6 steps. Check stacks against the Visual Target. |
 | 80–90 min | "Be the Computer", Spot the Bug, self-assessment | Page 6 | Answer alone, then discuss. Sign off. |
 
 ## Key ideas and how to explain them

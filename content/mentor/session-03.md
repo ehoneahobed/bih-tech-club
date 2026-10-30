@@ -20,12 +20,13 @@ By the end of the session, pupils can:
 ## Running order
 | Time | Activity | Workbook | What the mentor does |
 |---|---|---|---|
-| 0–10 min | Startup and desktop anatomy | Page 1 | Compare the screen to a school desk. Pupils point to the four zones on their own screen. |
-| 10–22 min | Programmes, two ways to open, icon types, Check Your Thinking | Page 2 | Open Calculator by icon and by search. Pupils sort icons into programme, file and folder. |
-| 22–35 min | Window anatomy, the three buttons, move and resize | Page 3 | Demonstrate each button slowly. Pupils copy you on Paint. |
-| 35–50 min | 3D lab: Window Wrangler | None | Demonstrate on the projector, then pairs try the missions. |
-| 50–60 min | Multitasking and switching methods | Page 4 | Show taskbar click, background tap and Alt + Tab. Act out the minimise panic button. |
-| 60–78 min | The Artist & Writer lab | Page 5 | Pupils draw in Paint, write in Notepad and switch three times. Circulate. |
+| 0–10 min | Typing warm-up | – | Pupils open the typing trainer (Typing in the menu, or the warm-up banner on the session page) and do the 10-minute warm-up. Walk round checking posture and home-row fingers. |
+| 10–20 min | Startup and desktop anatomy | Page 1 | Compare the screen to a school desk. Pupils point to the four zones on their own screen. |
+| 20–30 min | Programmes, two ways to open, icon types, Check Your Thinking | Page 2 | Open Calculator by icon and by search. Pupils sort icons into programme, file and folder. |
+| 30–41 min | Window anatomy, the three buttons, move and resize | Page 3 | Demonstrate each button slowly. Pupils copy you on Paint. |
+| 41–53 min | 3D lab: Window Wrangler | None | Demonstrate on the projector, then pairs try the missions. |
+| 53–63 min | Multitasking and switching methods | Page 4 | Show taskbar click, background tap and Alt + Tab. Act out the minimise panic button. |
+| 63–78 min | The Artist & Writer lab | Page 5 | Pupils draw in Paint, write in Notepad and switch three times. Circulate. |
 | 78–90 min | Closing properly, review and sign-off | Pages 5–6 | Walk through Save, Don't Save and Cancel. Go through answers, then sign off. |
 
 ## Key ideas and how to explain them

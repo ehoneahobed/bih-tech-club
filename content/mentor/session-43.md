@@ -20,12 +20,13 @@ By the end of the session, pupils can:
 ## Running order
 | Time | Activity | Workbook | What the mentor does |
 |---|---|---|---|
-| 0–10 min | The clay potter, the iteration cycle and vocabulary | Page 1 | Go through the four vocabulary words. |
-| 10–20 min | Silent user test, red flags, feedback triage | Pages 2–3 | Model the Zip-Lip Rule with a volunteer. Explain the three buckets. |
-| 20–45 min | Phase 1: build working prototype v1.0 | Page 5 | Check formulas, loops, citations and the 6x6 rule. Save as `Capstone_v1.0_[ProjectName]`. |
-| 45–55 min | Phases 2–3: the swap and peer evaluation | Pages 5–6 | Swap PCs; 5 minutes of silence. Testers fill in the Page 6 form. |
-| 55–60 min | Triage the feedback | Pages 3–4 | Teams sort the notes into the three buckets. |
-| 60–80 min | Phase 4: refine to v1.1 and fill the Change Log | Pages 4–5 | At least two concrete improvements, written in the Change Log. |
+| 0–10 min | Typing warm-up | – | Pupils open the typing trainer (Typing in the menu, or the warm-up banner on the session page) and do the 10-minute warm-up. Walk round checking posture and home-row fingers. |
+| 10–18 min | The clay potter, the iteration cycle and vocabulary | Page 1 | Go through the four vocabulary words. |
+| 18–28 min | Silent user test, red flags, feedback triage | Pages 2–3 | Model the Zip-Lip Rule with a volunteer. Explain the three buckets. |
+| 28–48 min | Phase 1: build working prototype v1.0 | Page 5 | Check formulas, loops, citations and the 6x6 rule. Save as `Capstone_v1.0_[ProjectName]`. |
+| 48–58 min | Phases 2–3: the swap and peer evaluation | Pages 5–6 | Swap PCs; 5 minutes of silence. Testers fill in the Page 6 form. |
+| 58–63 min | Triage the feedback | Pages 3–4 | Teams sort the notes into the three buckets. |
+| 63–80 min | Phase 4: refine to v1.1 and fill the Change Log | Pages 4–5 | At least two concrete improvements, written in the Change Log. |
 | 80–85 min | 3D lab: record fixes and tick the polish checklist | – | Teams enter fixes and tick the polish checklist. |
 | 85–90 min | Phase 5: final save, readiness checklist, clearance | Pages 5–6 | Check saves in `Final_Showcase`; complete the clearance. |
 

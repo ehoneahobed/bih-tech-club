@@ -13,14 +13,14 @@ const PROFILES = {
   14: {
     who: 'Akosua', helper: 'Yaw', title: 'BIH Hub Holiday Camp Registration (PRACTICE)', url: 'forms.example.org/bih-camp',
     surname: 'Boateng', first: 'Akosua', other: 'Serwaa', dob: '14/08/2012', dobLong: '14 August 2012', school: 'Bozoma Model JHS', cls: 'JHS 2', track: 'Coding', acts: ['Typing contest', 'Quiz'],
-    guardian: 'Mr Kwame Boateng', phone: '024 000 0000', email: 'akosua.boateng@example.org', photo: 'Practice_Photo_Akosua.jpg',
+    guardian: 'Mr Kwame Boateng', phone: '0240000000', email: 'akosua.boateng@example.org', photo: 'Practice_Photo_Akosua.jpg',
     ref: 'BIH-CAMP-14', folder: 'Documents › BIH_TechClub', save: 'Camp_Confirmation_Akosua.pdf',
     planted: { first: 'akosua', dob: '2012/14/08', phone: '024 000 000', email: 'akosua boateng@example.org' },
   },
   15: {
     who: 'Selasi', helper: 'Yaw', title: 'Skills Lab 2 Practice Form', url: 'forms.example.org/skills-lab-2',
     surname: 'Agbeko', first: 'Selasi', other: 'Kafui', dob: '03/11/2011', dobLong: '3 November 2011', school: 'Bozoma Model JHS', cls: 'JHS 3', track: 'Robotics', acts: ['Quiz', 'Football'],
-    guardian: 'Mrs Dzifa Agbeko', phone: '020 000 0000', email: 'selasi.agbeko@example.org', photo: 'Practice_Photo_Selasi.jpg',
+    guardian: 'Mrs Dzifa Agbeko', phone: '0200000000', email: 'selasi.agbeko@example.org', photo: 'Practice_Photo_Selasi.jpg',
     ref: 'BIH-SL2-15', folder: 'Documents › BIH_TechClub › Online_Basics', save: 'Form_Confirmation_Selasi.pdf',
     planted: { first: 'selasi', dob: '2011/03/11', phone: '020 000 000', email: 'selasi agbeko@example.org' },
   },
@@ -58,7 +58,7 @@ const TIPS = {
   track: '<b>Radio buttons</b> (round): you can choose only <b>one</b>.',
   acts: '<b>Checkboxes</b> (square): tick <b>all</b> that apply, and nothing extra.',
   guardian: 'The parent or guardian\'s name, with their title (Mr, Mrs), exactly as on the profile.',
-  phone: 'A Ghana mobile number has <b>10 digits</b> and starts with 0, e.g. 024 xxx xxxx. Count them in groups: 3 + 3 + 4.',
+  phone: 'A Ghana mobile number has <b>10 digits</b> and starts with 0, e.g. 024 xxx xxxx. Count them in groups: 3 + 3 + 4. Type it <b>without spaces</b>, like 0240000000.',
   email: 'An email address has <b>no spaces</b> and every letter right. A wrong email means no confirmation.',
 };
 const FILES = [
@@ -74,7 +74,7 @@ function formatError(id, v) {
     const m = /^(\d{2})\/(\d{2})\/(\d{4})$/.exec(v.trim());
     if (!m || +m[1] < 1 || +m[1] > 31 || +m[2] < 1 || +m[2] > 12) return 'Use the format DD/MM/YYYY';
   }
-  if (id === 'phone' && !/^0\d{9}$/.test(digits(v))) return 'Enter a 10-digit number starting with 0';
+  if (id === 'phone' && !/^0\d{9}$/.test(v.trim())) return 'Enter a 10-digit number starting with 0';
   if (id === 'email' && v.trim() && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim())) return 'Enter a valid email address';
   return '';
 }

@@ -53,7 +53,7 @@ By the end of the session, pupils can:
 | Press Win + L and panic at the lock screen | Their work is safe. Press a key or click, then sign in as usual. |
 | Snip, then cannot find the picture | It is on the clipboard: click in the document and press Ctrl + V. On Windows 11 it may also be in Pictures > Screenshots. |
 | Hold Ctrl and an arrow and nothing jumps | Their cursor is not in the text. Click into the sentence first (the only mouse click allowed!). |
-| Press the Fn key on a laptop for F5 | On many laptops F5 needs Fn + F5. Check the laptop's keys. |
+| Press F5 on a laptop and brightness/volume changes | On many laptops F5 needs Fn + F5. Check the laptop's keys. |
 
 ## When things go wrong
 - **No internet:** the Browser Race still works offline in a simple way: open new tabs, type in the address bar, close and reopen tabs, and use Ctrl + F on a page saved earlier or on the offline workbook itself. The Shortcut Race lab runs from the offline pack.
@@ -80,7 +80,7 @@ By the end of the session, pupils can:
 
 ## Support and stretch
 - **Needs more support:** start with just five shortcuts (Ctrl + C, V, Z, S and Alt + Tab). Let them use the printed card the whole session and tick each one as they manage it. Pair them with a patient partner for the races and let them race against their own time only.
-- **Finished early:** find three more shortcuts in Word or Chrome by hovering over ribbon buttons (the tooltip often shows the shortcut, such as Ctrl + E for centre or Ctrl + H for history), add them to the back of the card, and teach one to the class. Or try the whole of Race 1 and Race 2 with no mouse at all.
+- **Finished early:** find three more shortcuts in Word or Chrome by hovering over ribbon buttons (the tooltip often shows the shortcut, such as Ctrl + E for centre in Word, or Ctrl + H for History in Chrome; in Word, Ctrl + H is Replace), add them to the back of the card, and teach one to the class. Or try the whole of Race 1 and Race 2 with no mouse at all.
 
 ## Evidence for sign-off
 The pupil shows the saved `Shortcut_Race_YourName` file with the bold sentence, the pasted copies and a pasted snip; completes the No-Mouse Challenge with their partner confirming no mouse use (a single click into the text is allowed); and demonstrates Alt + Tab, Windows key + L and Ctrl + Shift + T when asked. They get at least 4 of the 5 Page 6 choices right.

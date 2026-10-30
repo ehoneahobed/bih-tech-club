@@ -35,7 +35,7 @@ By the end of the session, pupils can:
 - **Plan on paper first:** the weekly grid helps pupils see fixed things (school, chores) before planning club, study and fun. Weekly events use Repeat.
 - **Join by link or code:** link from the invitation, or a meeting code (Meet) or meeting ID and passcode (Zoom, Teams).
 - **Meeting manners:** on time, muted until you speak, quiet place with light on your face, a background with nothing private (no address, no uniform, no family members who didn't agree), raise your hand, never post a meeting link publicly.
-- **Data:** video calls use a lot of data on a phone; camera off saves most of it.
+- **Data:** video calls use a lot of data on a phone; turning your camera off saves some data; audio only or the low-quality/data-saver setting saves much more (audio only uses a few tens of MB an hour).
 - **The cloud is someone else's big computer:** sync keeps one up-to-date copy on every device. Free space is limited (Google 15 GB shared with Gmail and Photos, OneDrive 5 GB on free personal accounts). Sharing was taught in Session 29, so only remind pupils of it. Online forms belong to Session 21 and are not part of today.
 - **Team points:** the meeting race, all six checks done, and helper points.
 

@@ -19,13 +19,14 @@ By the end of the session, pupils can:
 ## Running order
 | Time | Activity | Workbook | What the mentor does |
 |---|---|---|---|
-| 0–10 min | Typewriter vs word processor; the layout | Page 1 | Tell the typewriter story. Point out Ribbon, canvas, margins and cursor on the projector. |
-| 10–20 min | Fonts, sizes and styles | Page 2 | Show the font cluster. Repeat the rule: highlight first, then click. |
-| 20–30 min | Alignment and the Enter key rule | Page 3 | Show word wrap and the four alignments on one paragraph. |
-| 30–40 min | Fast selection and Undo | Page 4 | Demonstrate the four selections. Stage the "essay disappeared" panic and fix it with Ctrl + Z. |
-| 40–55 min | Format a Real Document 3D lab | — | Demonstrate the first mission, then pairs continue. |
-| 55–75 min | Hands-on lab: "A Greener School" | Page 5 | Stop anyone formatting before typing is finished. Check the save location and name. |
-| 75–85 min | Review and verification | Page 6 | Pupils work alone, then mark together. |
+| 0–10 min | Typing warm-up | – | Pupils open the typing trainer (Typing in the menu, or the warm-up banner on the session page) and do the 10-minute warm-up. Walk round checking posture and home-row fingers. |
+| 10–20 min | Typewriter vs word processor; the layout | Page 1 | Tell the typewriter story. Point out Ribbon, canvas, margins and cursor on the projector. |
+| 20–30 min | Fonts, sizes and styles | Page 2 | Show the font cluster. Repeat the rule: highlight first, then click. |
+| 30–40 min | Alignment and the Enter key rule | Page 3 | Show word wrap and the four alignments on one paragraph. |
+| 40–49 min | Fast selection and Undo | Page 4 | Demonstrate the four selections. Stage the "essay disappeared" panic and fix it with Ctrl + Z. |
+| 49–61 min | Format a Real Document 3D lab | — | Demonstrate the first mission, then pairs continue. |
+| 61–77 min | Hands-on lab: "A Greener School" | Page 5 | Stop anyone formatting before typing is finished. Check the save location and name. |
+| 77–85 min | Review and verification | Page 6 | Pupils work alone, then mark together. |
 | 85–90 min | Self-assessment and sign-off | Page 6 | Sign off pupils who meet the evidence below. |
 
 ## Key ideas and how to explain them

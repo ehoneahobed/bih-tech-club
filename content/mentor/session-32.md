@@ -39,7 +39,7 @@ By the end of the session, pupils can:
 - **Data vs Wi-Fi:** video eats data, text sips it. Data Saver, Wi-Fi-only updates and backups, lower video quality.
 - **Hotspot:** the phone becomes a router for a laptop. Always a password, only people you know, watch the bundle, switch it off after.
 - **Mobile Money safety:** never share the PIN, the network never asks for it, check the balance yourself in the official menu or app (not from an SMS), and "wrong transfer" and "you have won, pay a fee" stories are scams. Tell a parent and report to the network's official customer service.
-- **iPhone differences:** Control Centre (swipe down from the top-right corner), the App Store, Settings → Personal Hotspot. Same ideas, different names.
+- **iPhone differences:** Control Centre (swipe down from the top-right corner; on iPhones with a Home button, swipe up from the bottom), the App Store, Settings → Personal Hotspot. Same ideas, different names.
 
 ## The 3D lab
 **Smartphone Explorer** is a pretend Android phone on a desk: swipe down for Quick Settings, open Settings, the Play Store, Messages and MoMo (buttons in the side panel, or tap the 3D screen). It has three missions:

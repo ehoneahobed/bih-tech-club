@@ -11,7 +11,7 @@ By the end of the session, pupils can:
 ## Before the session
 - [ ] Print or prepare one workbook per pupil and a class list for the Bronze Passport. Check each pupil's Skills Lab 1 (Session 10) result and Block 1–2 sign-offs so you know who still needs a Bronze row.
 - [ ] Station 1: make topic cards (Lake Bosomtwe, Wli Waterfalls, Akosombo Dam, Paga crocodile ponds, shea butter in Ghana). Turn on SafeSearch on the search engine.
-- [ ] Station 2: write on the board the page to bookmark and the file to download. Suggested: the club's Session 15 page (bih-tech-club.vercel.app, then Sessions > 15) and its workbook PDF (the PDF button). Test the download on a pupil PC. Remove any "Skills Lab 2" bookmarks and old TechClub_SkillsLab2 files left by earlier groups. Check every PC has Documents > BIH_TechClub.
+- [ ] Station 2: write on the board the page to bookmark and the file to download. Suggested: the club's Session 15 page (tc.bozomainnovationhub.com, then Sessions > 15) and its workbook PDF (the PDF button). Test the download on a pupil PC. Remove any "Skills Lab 2" bookmarks and old TechClub_SkillsLab2 files left by earlier groups. Check every PC has Documents > BIH_TechClub.
 - [ ] Station 3: write your own email address on the board (one you control and can check during the session). Prepare a Hub learning email account per pupil (or per PC) and test that it can send attachments. Keep a spare file (any small .pdf) on the Desktop for pupils who reach Station 3 before Station 2.
 - [ ] Station 4: duplicate the Session 14 practice form in Google Forms (File > Make a copy), retitle it "Skills Lab 2 Practice Form", change the confirmation message reference to BIH-SL2-15, link it to a fresh response sheet, and write its short link or QR code on the board. Remove the file upload question if pupils are not signed in to Google.
 - [ ] Load the Search Detective and Form Filler 3D labs on the projector PC for pupils waiting for a PC.
@@ -20,7 +20,7 @@ By the end of the session, pupils can:
 ## Running order
 | Time | Activity | Workbook | What the mentor does |
 |---|---|---|---|
-| 0–10 min | Typing warm-up and typing check | Page 1 | Pupils open the typing trainer, warm up for 3 minutes, then do two 1-minute tests and record speed, accuracy and stage. Initial the best result. |
+| 0–10 min | Typing warm-up and typing check | Page 1 | Pupils open the typing trainer, warm up for a few minutes, then do the 3-minute typing check and record speed, accuracy and stage. A pupil may re-try once (now or during Re-tries and catch-up); initial the better result. |
 | 10–15 min | How the Skills Lab works | Page 1 | Explain the circuit, the time limits, the one re-try per station, team points and the Bronze Passport. Assign starting stations. |
 | 15–30 min | Station 1: Search Race | Page 2 | Hand out topic cards. Walk round checking operators and citations; tick the checklist as pupils finish. |
 | 30–42 min | Station 2: Bookmark & Download | Page 3 | Watch for files left in Downloads and names with spaces. Ask each pupil to reopen the bookmark and search for the file in front of you. |
@@ -61,7 +61,7 @@ Two labs are listed for this session: **Search Detective** ("Narrow a mountain o
 - **A PC freezes or the power goes:** restart and let the pupil re-try that station with fresh time; it does not count as their re-try. Bookmarks and downloaded files usually survive a restart; an unsent email and an unsubmitted form do not.
 
 ## Answer key
-**Typing check (Page 1):** Bronze is met at 15 wpm or more with 90% accuracy or more in the same test.
+**Typing check (Page 1):** the 3-minute check in the typing trainer, with one re-try allowed (the better result counts). Bronze is met at 15 wpm or more with 90% accuracy or more in the same check.
 
 **Station 1 (Page 2):** facts vary by topic. Expect: 5 true facts in the pupil's own words; each with a title, website and date (or "no date"); searches showing at least two different operators, for example `"Lake Bosomtwe" formation`, `Akosombo Dam site:gov.gh`, `Wli Waterfalls -hotel`, `shea OR karite butter Ghana`; at least one .gov.gh, .edu.gh or national news source.
 

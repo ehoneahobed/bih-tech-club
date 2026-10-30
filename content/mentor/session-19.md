@@ -19,13 +19,14 @@ By the end of the session, pupils can:
 ## Running order
 | Time | Activity | Workbook | What the mentor does |
 |---|---|---|---|
-| 0–10 min | The market trader's ledger and the grid | Page 1 | The Makola trader adding up by hand. Point out the Name Box and Formula Bar. |
-| 10–20 min | Cell addresses and data types | Page 2 | Click cells; the class calls the address. Type a word and a number and see which side each goes. |
-| 20–30 min | The Golden Law and the four operators | Page 3 | Type B2*C2 without = and let it fail. Contrast =10*8 with =B2*C2. |
-| 30–40 min | AutoFill and error messages | Page 4 | Demonstrate the thin black cross. Create ##### on purpose and double-click to widen. |
-| 40–55 min | 3D Spreadsheet Charts lab | — | Demonstrate, then pairs continue. |
-| 55–75 min | Hands-on lab: school stationery store | Page 5 | Check the = in D2, the AutoFill to D5 and the save. |
-| 75–85 min | Review and verification | Page 6 | Pupils work alone on paper, then mark together. |
+| 0–10 min | Typing warm-up | – | Pupils open the typing trainer (Typing in the menu, or the warm-up banner on the session page) and do the 10-minute warm-up. Walk round checking posture and home-row fingers. |
+| 10–20 min | The market trader's ledger and the grid | Page 1 | The Makola trader adding up by hand. Point out the Name Box and Formula Bar. |
+| 20–30 min | Cell addresses and data types | Page 2 | Click cells; the class calls the address. Type a word and a number and see which side each goes. |
+| 30–40 min | The Golden Law and the four operators | Page 3 | Type B2*C2 without = and let it fail. Contrast =10*8 with =B2*C2. |
+| 40–49 min | AutoFill and error messages | Page 4 | Demonstrate the thin black cross. Create ##### on purpose and double-click to widen. |
+| 49–61 min | 3D Spreadsheet Charts lab | — | Demonstrate, then pairs continue. |
+| 61–77 min | Hands-on lab: school stationery store | Page 5 | Check the = in D2, the AutoFill to D5 and the save. |
+| 77–85 min | Review and verification | Page 6 | Pupils work alone on paper, then mark together. |
 | 85–90 min | Self-assessment and sign-off | Page 6 | Sign off pupils who meet the evidence below. |
 
 ## Key ideas and how to explain them

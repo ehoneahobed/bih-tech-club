@@ -20,12 +20,13 @@ By the end of the session, pupils can:
 ## Running order
 | Time | Activity | Workbook | What the mentor does |
 |---|---|---|---|
-| 0–10 min | The kelewele recipe: what is an algorithm? | Page 1 | Pupils fix the recipe cards held in the wrong order. Contrast typed code with snap-together blocks. |
-| 10–20 min | Tour of the Scratch Studio and vocabulary | Page 2 | Point to each of the five zones on the projector: Block Palette, Code Area (Workspace), Stage, Sprite Pane, Green Flag & Stop. Go through the four vocabulary words. |
-| 20–30 min | Block shapes and the Event spark plug | Page 3 | Build a stack with no hat block and press the Green Flag: nothing. Add the hat block: it runs. |
-| 30–40 min | The X/Y stage grid and the panic button | Page 4 | Call out "x: 100, y: 0" and pupils point on the board cross. Send a sprite off-screen, then rescue it. |
-| 40–50 min | 3D lab: Code the Sprite | – | Demonstrate the first mission on the projector, then pairs try it. |
-| 50–80 min | Guided lab: the "Akwaaba" animation | Page 5 | Pairs follow the 6 steps. Check stacks against the Visual Target and check saving. |
+| 0–10 min | Typing warm-up | – | Pupils open the typing trainer (Typing in the menu, or the warm-up banner on the session page) and do the 10-minute warm-up. Walk round checking posture and home-row fingers. |
+| 10–20 min | The kelewele recipe: what is an algorithm? | Page 1 | Pupils fix the recipe cards held in the wrong order. Contrast typed code with snap-together blocks. |
+| 20–29 min | Tour of the Scratch Studio and vocabulary | Page 2 | Point to each of the five zones on the projector: Block Palette, Code Area (Workspace), Stage, Sprite Pane, Green Flag & Stop. Go through the four vocabulary words. |
+| 29–38 min | Block shapes and the Event spark plug | Page 3 | Build a stack with no hat block and press the Green Flag: nothing. Add the hat block: it runs. |
+| 38–48 min | The X/Y stage grid and the panic button | Page 4 | Call out "x: 100, y: 0" and pupils point on the board cross. Send a sprite off-screen, then rescue it. |
+| 48–56 min | 3D lab: Code the Sprite | – | Demonstrate the first mission on the projector, then pairs try it. |
+| 56–80 min | Guided lab: the "Akwaaba" animation | Page 5 | Pairs follow the 6 steps. Check stacks against the Visual Target and check saving. |
 | 80–90 min | Review questions and self-assessment | Page 6 | Pupils answer alone, then check together. Sign off. |
 
 ## Key ideas and how to explain them

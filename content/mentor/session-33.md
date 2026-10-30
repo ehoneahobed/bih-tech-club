@@ -17,14 +17,15 @@ By the end of the session, pupils can:
 ## Running order
 | Time | Activity | Workbook | What the mentor does |
 |---|---|---|---|
-| 0–10 min | Digital citizens and the P.I.I. shield | Page 1 | Compare being a citizen of Ghana with being a digital citizen. Sort board examples into "shield" and "safe". |
-| 10–15 min | The school uniform rule | Page 1 | Ask what a badge tells a stranger: school, town, daily routine. |
-| 15–25 min | Wet cement and T.H.I.N.K. | Page 2 | Explain the screenshot factor. Test a sample WhatsApp rumour against each letter. |
-| 25–35 min | Passwords and passphrases | Page 3 | Compare `kofi2026` with `MangoBicycleRiverDrumLadder#4`. Pupils say the Golden Password Pledge together. |
-| 35–50 min | Password Fortress lab | – | Demonstrate, then pairs build passphrases. |
-| 50–58 min | Phishing and S.T.O.P. | Page 4 | Spot the 4 warning signs in the fake MoMo message together. |
-| 58–70 min | Spot the Phish lab | – | Pairs sort the emails. |
-| 70–80 min | Lab missions 1–3 | Page 5 | Pupils strike out P.I.I., invent a practice passphrase and read the pledge. |
+| 0–10 min | Typing warm-up | – | Pupils open the typing trainer (Typing in the menu, or the warm-up banner on the session page) and do the 10-minute warm-up. Walk round checking posture and home-row fingers. |
+| 10–18 min | Digital citizens and the P.I.I. shield | Page 1 | Compare being a citizen of Ghana with being a digital citizen. Sort board examples into "shield" and "safe". |
+| 18–23 min | The school uniform rule | Page 1 | Ask what a badge tells a stranger: school, town, daily routine. |
+| 23–33 min | Wet cement and T.H.I.N.K. | Page 2 | Explain the screenshot factor. Test a sample WhatsApp rumour against each letter. |
+| 33–42 min | Passwords and passphrases | Page 3 | Compare `kofi2026` with `MangoBicycleRiverDrumLadder#4`. Pupils say the Golden Password Pledge together. |
+| 42–54 min | Password Fortress lab | – | Demonstrate, then pairs build passphrases. |
+| 54–62 min | Phishing and S.T.O.P. | Page 4 | Spot the 4 warning signs in the fake MoMo message together. |
+| 62–72 min | Spot the Phish lab | – | Pairs sort the emails. |
+| 72–80 min | Lab missions 1–3 | Page 5 | Pupils strike out P.I.I., invent a practice passphrase and read the pledge. |
 | 80–86 min | Scenarios and review questions | Page 6 | Discuss each scenario aloud. |
 | 86–90 min | Self-assessment and sign-off | Page 6 | Sign off using the evidence below. |
 

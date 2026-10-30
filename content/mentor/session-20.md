@@ -17,13 +17,14 @@ By the end of the session, pupils can:
 ## Running order
 | Time | Activity | Workbook | What the mentor does |
 |---|---|---|---|
-| 0–10 min | Hook: "100 items, 20 minutes of typing" | Page 1 | Recall `=B2*C2` from Session 19. Build `=SUM(D2:D5)` on the board piece by piece. |
-| 10–25 min | Formula vs function and the Core 4 | Pages 1–2 | Work through Figure 20.1 with the exam scores. Pupils do Check Your Thinking A–C. |
-| 25–35 min | Why charts, and the chart types | Page 3 | Compare column/bar, pie and line charts, then read the stationery stock chart. |
-| 35–45 min | 3D lab demo | – | Run the chart lab missions on the projector. |
-| 45–50 min | The Total row trap and troubleshooting | Page 4 | Show a wrong selection live so pupils see the giant bar. |
-| 50–75 min | Guided lab: totals, stats and chart | Page 5 | Circulate. Check `D6` shows 162.50 and the selection stops at row 5. |
-| 75–85 min | Review questions and matching | Page 6 | Pupils work alone, then compare with a partner. |
+| 0–10 min | Typing warm-up | – | Pupils open the typing trainer (Typing in the menu, or the warm-up banner on the session page) and do the 10-minute warm-up. Walk round checking posture and home-row fingers. |
+| 10–20 min | Hook: "100 items, 20 minutes of typing" | Page 1 | Recall `=B2*C2` from Session 19. Build `=SUM(D2:D5)` on the board piece by piece. |
+| 20–33 min | Formula vs function and the Core 4 | Pages 1–2 | Work through Figure 20.1 with the exam scores. Pupils do Check Your Thinking A–C. |
+| 33–43 min | Why charts, and the chart types | Page 3 | Compare column/bar, pie and line charts, then read the stationery stock chart. |
+| 43–51 min | 3D lab demo | – | Run the chart lab missions on the projector. |
+| 51–56 min | The Total row trap and troubleshooting | Page 4 | Show a wrong selection live so pupils see the giant bar. |
+| 56–76 min | Guided lab: totals, stats and chart | Page 5 | Circulate. Check `D6` shows 162.50 and the selection stops at row 5. |
+| 76–85 min | Review questions and matching | Page 6 | Pupils work alone, then compare with a partner. |
 | 85–90 min | Self-assessment and sign-off | Page 6 | Sign off pupils who meet the evidence below. |
 
 ## Key ideas and how to explain them

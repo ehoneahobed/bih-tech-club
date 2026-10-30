@@ -11,7 +11,7 @@ By the end of the session, pupils can:
 ## Before the session
 - [ ] **Station 1:** print one *Open Day details* card per PC: "BIH Tech Club Open Day · Saturday 14 November · 10:00 am – 1:00 pm · Bozoma Innovation Hub, main hall · Come and see our robots, games and websites!" (change the date and place to suit you). Check every PC can sign in to Canva with the Hub's learning account.
 - [ ] **Station 2:** for each pair, make a Google Doc called **OpenDay_Programme_Team1**, **Team2** and so on. Give it a Heading 1 title (*BIH Tech Club Open Day Programme*), two finished sections with Heading 2 headings (*Welcome* and *Poster Gallery*), and an empty space for the pupils' sections. Share it with both partners as **Editor**. Create it a day or more before, so version history shows a clear first version.
-- [ ] **Station 3:** write your mentor (or club) email address on the board. Make sure pupils' learning accounts can use Google Drive, Google Calendar and Google Meet, and that you can check your inbox during the session.
+- [ ] **Station 3:** write your mentor (or club) email address on the board. Use a mentor address inside the Hub's organisation, or check external sharing is allowed. Make sure pupils' learning accounts can use Google Drive, Google Calendar and Google Meet, and that you can check your inbox during the session.
 - [ ] **Station 4:** nothing extra; it uses the workbook page and Drive.
 - [ ] Test the Feed Check and Club Planner labs on a spare PC for pupils who are waiting; keep the offline pack on USB.
 - [ ] Prepare a class score chart on the board (team names × stations) for team points.
@@ -24,9 +24,9 @@ By the end of the session, pupils can:
 | 15–35 min | Station 1: Open Day Poster | Page 2 | Pupils work alone. Tick checklists as hands go up. Remind them to download, not just save. |
 | 35–55 min | Station 2: Shared Programme (pairs) | Page 3 | Pairs on two PCs. Watch for pupils deleting their partner's text instead of commenting. |
 | 55–70 min | Station 3: Planning Meeting | Page 4 | Check your inbox for invitations and open each folder link to test the permission. |
-| 70–80 min | Station 4: Safety Triple | Page 5 | Pupils work alone on paper, then share the poster in Drive. |
-| 80–87 min | Fix and re-try, typing re-try | Pages 2–6 | Pupils return to any unfinished station with the hints, or re-take the typing check. |
-| 87–90 min | Score sheet, Silver Passport and reflection | Page 6 | Fill in the score sheet together; award Silver where earned. Announce the team points winner. |
+| 70–85 min | Station 4: Safety Triple | Page 5 | Pupils work alone on paper, then share the poster in Drive. |
+| 85–88 min | Fix and re-try, typing re-try | Pages 2–6 | Pupils return to any unfinished station with the hints, or re-take the typing check. |
+| 88–90 min | Score sheet, Silver Passport and reflection | Page 6 | Fill in the score sheet together; award Silver where earned. Announce the team points winner. |
 
 **Rotation for few PCs:** with fewer PCs than pupils, run Station 4 (mostly paper) as a "home base" table. Split the class in half: half do Stations 1 and 3 on PCs while the other half do Station 4 and then the 3D labs; swap after 30 minutes. Station 2 needs two PCs per pair; if that is impossible, one partner types while the other comments from a second PC or a phone, then they swap roles. Station 3 needs the poster from Station 1; a pupil who has not finished it can upload any file to the folder.
 
@@ -66,7 +66,7 @@ Two labs warm up the skills for pupils waiting for a PC or who finish early. **F
 ## Answer key
 **Typing check (Page 1):** Silver is met at **25 wpm or more with 92% accuracy or more**, both at once. A faster speed with lower accuracy does not meet it.
 
-**Station 1, Open Day Poster (Page 2):** a portrait poster with the event name as the biggest text, the date, time and place exactly as on the card, one inviting sentence, one picture from Canva's library, strong contrast, 2–3 fonts at most, named **Club_Poster_[YourName]** and downloaded as a PNG into Downloads.
+**Station 1, Open Day Poster (Page 2):** a portrait poster with the event name as the biggest text, the date, time and place exactly as on the card, one inviting sentence, one picture from Canva's library, strong contrast, 2–3 fonts at most, named **TechClub_OpenDayPoster_[YourName]** and downloaded as a PNG into Downloads.
 
 **Station 2, Shared Programme (Page 3):** both new sections (*Robot Corner* and *Typing Race*) use Heading 2 and have two sentences each. Each partner's comment starts with a frame, for example "One helpful suggestion is to say what time Robot Corner starts." Each comment is resolved after the fix. The first-created date and time is the oldest entry at the bottom of version history (the time you created the document).
 

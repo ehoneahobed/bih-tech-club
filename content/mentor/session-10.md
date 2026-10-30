@@ -10,10 +10,10 @@ By the end of the session, pupils can:
 
 ## Before the session
 - [ ] On **every** pupil PC, create `Documents > BIH_Practice > Skills_Lab_1` and put `Station3_Starter.zip` in it. Keep a spare copy of the folder on your USB.
-- [ ] **Make `Station3_Starter.zip`:** in a folder, put `doc1.txt` (a four-line poem you type in Notepad, for example a poem about the harmattan) and `IMG_0042.png` (a Ghana flag drawn in Paint and saved as PNG). Select both files, right-click → Send to → Compressed (zipped) folder (in Windows 11 you may find it under "Compress to ZIP file"), and rename the ZIP `Station3_Starter.zip`.
+- [ ] **Make `Station3_Starter.zip`:** in a folder, put `doc1.txt` (a four-line poem you type in Notepad, for example a poem about the harmattan) and `IMG_0042.png` (a Ghana flag drawn in Paint and saved as PNG). Select both files, then right-click → Compress to → ZIP File (older Windows 11: 'Compress to ZIP file'; Windows 10: Send to → Compressed (zipped) folder), and rename the ZIP `Station3_Starter.zip`.
 - [ ] **Station 1 (workstation):** at one or two desks, unplug the monitor cable, keyboard, mouse and headset from a desktop (or laptop + external monitor) and lay them on the desk. Leave the power cables plugged into a power strip that **you** switch on. If you have both HDMI and VGA cables, leave both, so pupils must choose.
 - [ ] **Station 3 (USB):** one clean, virus-scanned club pen drive per station PC, with nothing personal on it. Clear the portfolios off it between pupils (or let several portfolios sit side by side, since each has the pupil's name).
-- [ ] **Station 4 (faults):** plant **two** faults on each station PC from the Session 9 list, mixing an easy and a harder one. Good pairs: muted sound + Airplane mode; Caps Lock on + wrong Windows + P mode; mouse receiver unplugged + Num Lock off; output device set to a missing device + Wi-Fi off. Keep a secret list per PC. Check the PCs use English (United Kingdom) or (United States) layout so the Part A keyboard step works.
+- [ ] **Station 4 (faults):** plant **two** faults on each station PC from the Session 9 list, mixing an easy and a harder one. Good pairs: muted sound + Airplane mode; Caps Lock on + wrong Windows + P mode (only on a PC with a projector or second monitor; otherwise turn monitor brightness right down); mouse receiver unplugged + Num Lock off; output device set to a missing device + Wi-Fi off. Keep a secret list per PC. Check the PCs use English (United Kingdom) or (United States) layout so the Part A keyboard step works.
 - [ ] Test the Plug It In and Fix-It Workshop labs on a spare PC for the re-try time. Keep the offline pack on USB.
 - [ ] Have the typing trainer open on every PC for the typing check.
 
@@ -61,7 +61,7 @@ Two labs are open for this session: **Plug It In** ("Connect a monitor, printer,
 - **A PC freezes or the power goes:** stop the clock for that pupil, restart, and carry on. Use it as a free Station 4 question: "What was lost? Why?" If the power goes for everyone, do the port table, the spec sheet answers and the help description on paper, and finish the computer parts next session.
 
 ## Answer key
-**Station 1 (Page 2):** monitor: HDMI or VGA (whichever the PC and monitor share); keyboard and mouse: USB-A; headset: audio jack (green for sound out, pink for the microphone on desktops) or USB. Start-up order: power strip (adult), monitor, system unit. Tests: typing in Notepad, opening Start with the mouse, a sound in the headset. Shut down from Start → Power → Shut down.
+**Station 1 (Page 2):** monitor: HDMI or VGA (whichever the PC and monitor share); keyboard and mouse: USB-A; headset: audio jack (green for sound out, pink for the microphone on desktops) or USB. Start-up order: power strip (adult), system unit, monitor. Tests: typing in Notepad, opening Start with the mouse, a sound in the headset. Shut down from Start → Power → Shut down.
 
 **Station 2 (Page 3):** values depend on the PC; they must match Settings → System → About and This PC. Photos sum: free GB × 1,000 ÷ 4 (for example 80 GB free → about 20,000 photos). Memory or storage: more RAM helps most, because many open tabs fill the worktable; a bigger drive is a bigger storeroom, not a bigger table.
 
@@ -71,7 +71,7 @@ Two labs are open for this session: **Plug It In** ("Connect a monitor, printer,
 
 ## Support and stretch
 - **Needs more support:** let them start at Station 2 or 3 (the most step-by-step), allow their Session 4–9 workbooks open in the re-try time, and pair them as navigator first so they see the steps before driving. At Station 4, plant two easy faults (mute, Caps Lock).
-- **Finished early:** at Station 3, make a ZIP of their own Portfolio folder (right-click → Compress to ZIP file, or Send to → Compressed (zipped) folder) and check its size against the folder's size. At Station 4, they become fault planters for the next group (with you watching, from the Session 9 list). Or help another pupil by asking questions, not by taking the mouse (team points!).
+- **Finished early:** at Station 3, make a ZIP of their own Portfolio folder (right-click → Compress to → ZIP File (older Windows 11: 'Compress to ZIP file'; Windows 10: Send to → Compressed (zipped) folder)) and check its size against the folder's size. At Station 4, they become fault planters for the next group (with you watching, from the Session 9 list). Or help another pupil by asking questions, not by taking the mouse (team points!).
 
 ## Evidence for sign-off
 Sign the score sheet when the pupil has a recorded typing check, and you have initialled each station with the number of ticks. Tick a Passport skill only when you saw it working today: the workstation connected and starting in the right order; the spec sheet values matching the screen, with `Specs_YourName.txt` and the screenshot saved in Skills_Lab_1; the Portfolio tree correct on the PC and on the pen drive, ejected safely; three settings restored and both faults fixed with the log filled in. These ticks are evidence for the **Bronze Passport** at Skills Lab 2 (Session 15); nothing is awarded today.

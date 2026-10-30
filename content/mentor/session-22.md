@@ -9,7 +9,7 @@ By the end of the session, pupils can:
 3. Make a clear chart from a summary table and write a one-sentence finding that states a fact with a number.
 
 ## Before the session
-- [ ] Prepare `Class_Survey.xlsx` in `Documents > BIH_Practice` on every PC (and on USB). Use **your master form's answers from Session 21** if there are at least 10: open its linked sheet, then tidy it into the layout below (delete the Timestamp, after-school and ideas columns; shorten the headers to No., Class, Travel, Minutes, Food, Screen hours, Enjoy (1–5); type 1, 2, 3… in column A; fix any odd spellings in Travel and Food), then File → Download → Microsoft Excel (.xlsx). Otherwise type the **sample data set** below. Keeping the same columns means the workbook's cell addresses (C2:C21, D2…) work. If your class data has more or fewer than 20 rows, tell pupils the last row number (for example C2:C31).
+- [ ] Prepare `Class_Survey.xlsx` in `Documents > BIH_Practice` on every PC (and on USB). Use **your master form's answers from Session 21** if there are at least 10: open its linked sheet, then tidy it into the layout below (delete the Timestamp, after-school and ideas columns; then insert a new column A, type No. in A1 and 1, 2, 3… below; shorten the other headers to Class, Travel, Minutes, Food, Screen hours, Enjoy (1–5); fix any odd spellings in Travel and Food), then File → Download → Microsoft Excel (.xlsx). Otherwise type the **sample data set** below. Keeping the same columns means the workbook's cell addresses (C2:C21, D2…) work. If your class data has more or fewer than 20 rows, tell pupils the last row number (for example C2:C31).
 - [ ] Work through the Page 5 lab yourself on one PC in each programme you have (Excel, LibreOffice Calc, Google Sheets): the sort, filter and conditional formatting menus differ.
 - [ ] Test the Data Sorter 3D lab on the projector PC and keep the offline pack on USB.
 - [ ] Write the four assembly commands (sort, filter, COUNTIF, IF) on the board.
@@ -60,7 +60,7 @@ By the end of the session, pupils can:
 - **Morning assembly:** sort = line up in order; filter = only some step forward, the rest are still there; COUNTIF = hands up and count; IF = go left or right depending on a rule.
 - **Freeze the header row:** so you never lose track of which column is which while scrolling.
 - **The classic sort mistake:** sorting one column on its own breaks every row, and the data becomes wrong without any error message. Click one cell, then sort; if Excel shows a Sort Warning, choose Expand the selection. Ctrl + Z at once if it goes wrong.
-- **Filter hides, never deletes:** blue row numbers and missing row numbers are the clue. Data → Clear (Excel) brings them back.
+- **Filter hides, never deletes:** blue row numbers and missing row numbers are the clue. Data → Clear (Excel) or Data → Remove filter (Google Sheets) brings them back.
 - **COUNTIF(where, what):** the range (leave out the header) and the rule in quotation marks for words. Spelling must match the cells exactly; capital letters don't matter. Excel's COUNTIF also counts rows hidden by a filter.
 - **IF(test, if true, if false):** the teacher marking: 50 or more → Pass, otherwise Try again. `>=` means "greater than or equal to", so 50 passes.
 - **Conditional formatting:** a highlighter that reads the numbers and updates itself.
@@ -77,7 +77,7 @@ By the end of the session, pupils can:
 | Select the whole column and sort only that column | Ctrl + Z straight away. Click one cell, then sort; choose Expand the selection. If they saved the broken file, give them a fresh copy from USB. |
 | Sort the header row into the data (Google Sheets) | Ctrl + Z, freeze row 1 (View → Freeze → 1 row), then sort again. |
 | Think filtered rows are deleted | Point at the blue row numbers and the funnel icon on the arrow; Data → Clear. |
-| Type `=COUNTIF(C2:C21,Walk)` without quotation marks | Words need "quotation marks". Show the `#NAME?` (Excel) or `0` result and fix it. |
+| Type `=COUNTIF(C2:C21,Walk)` without quotation marks | Words need "quotation marks". Show the #NAME? error and fix it. |
 | Get 0 from COUNTIF | Check the spelling and spaces: "Trotro or bus" must match the cells exactly. |
 | Type `=IF(D2>=30,Long trip,Short trip)` | Both text answers need quotation marks. |
 | Put the summary right next to the data | Leave column I empty, so sorting and filtering don't grab the summary. |

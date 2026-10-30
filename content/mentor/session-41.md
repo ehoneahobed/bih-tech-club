@@ -33,7 +33,7 @@ By the end of the session, pupils can:
 
 ## Key ideas and how to explain them
 - **A Skills Lab proves, it doesn't teach:** nothing new today. Every task uses Sessions 36–40.
-- **Station 1 (Sessions 36–37):** reading a brief is part of coding. Find the loop (the mango keeps falling), the condition (did the basket catch it?) and the variable (the score). Debug with spot it, trace it, fix one thing.
+- **Station 1 (Sessions 36–37):** reading a brief is part of coding. Find the loop (the mango keeps falling), the condition (did the basket catch it?) and the variable (the score). Debug with spot it, trace it, fix one thing. A few blocks were not taught in Sessions 36–37 (`when [key] pressed`, `change x/y by`, `pick random`, `touching`, `y position` and `<`): the "New blocks you may need" box on Page 2 explains each in one line. Point to it before pupils start.
 - **Station 2 (Session 38):** a website follows the brief and the safety rules: no names, faces or contact details; only allowed pictures; published to the Hub only. In HTML, tags come in pairs except `<img>`; `href` is where a link goes and `src` is the picture file.
 - **Station 3 (Session 39):** AI learns patterns from training data. Varied, correct examples of every kind give good guesses; one-sided or wrong data gives bad ones (garbage in, garbage out).
 - **Station 4 (Session 40):** chatbots predict likely words and can be confidently wrong, so check in a trusted source. C.L.E.A.R.: Context, Limits, Examples and details, Ask one clear task, Review.
@@ -48,7 +48,7 @@ Two labs support today's stations. **Code the Sprite** (snap together motion, lo
 | Put the `set [Score] to (0)` block inside the forever loop | "Watch the score: why does it never go above 1?" Trace it, then move the block above `forever`. |
 | Make a Score variable but never change it | Find the `if` block: what should happen *inside* it when the basket catches the mango? |
 | Write `if` for "touching" the wrong sprite (for example "touching mouse-pointer") | Open the drop-down and choose the basket sprite's name. |
-| Mango stuck at the bottom | It missed the basket and Scratch keeps sprites on the stage. Point to the optional "Level up" hint. |
+| Mango stuck at the bottom | It missed the basket and Scratch keeps sprites on the stage. Point to the second `if` in the Mango hint: `if <(y position) < (-170)> then go to x: (pick random -200 to 200) y: (170)`. This rule is required. |
 | Save the Scratch file as "Untitled" or in the wrong place | File → Save to your computer, and rename with the BIH naming standard. |
 | Save the HTML file as `club-page.html.txt` | *Save as type: All files*, and show file name extensions in File Explorer. |
 | Teach the robot only one kind of item | Ask "What will it do when it sees a can?" One-sided data. |
@@ -64,7 +64,7 @@ Two labs support today's stations. **Code the Sprite** (snap together motion, lo
 ## Answer key
 **Typing check (Page 1):** record the result. Gold is **35 wpm or more with 95% accuracy or more**, both at once; it is awarded on Demo Day, so today pupils only note how far they have to go.
 
-**Station 1, Mango Catch (Page 2):** a working game in which the green flag sets Score to 0; a `forever` (or `repeat`) loop makes the mango fall with `change y by (-5)`; an `if <touching [Bowl]?> then` block adds 1 to Score and sends the mango back to the top (ideally at a random x); the right and left arrow keys move the basket with `change x by`. Saved as **MangoCatch_[YourName].sb3**. The bug and fix can be anything real, for example "the score never went up because I chose touching mouse-pointer; I changed it to Bowl".
+**Station 1, Mango Catch (Page 2):** a working game in which the green flag sets Score to 0; a `forever` (or `repeat`) loop makes the mango fall with `change y by (-5)`; an `if <touching [Bowl]?> then` block adds 1 to Score and sends the mango back to the top (ideally at a random x); a second `if <(y position) < (-170)> then` block inside the loop sends a missed mango back to the top; the basket starts at `go to x: (0) y: (-140)` when the green flag is clicked, and the right and left arrow keys move it with `change x by`. Saved as **Scratch_MangoCatch_[YourName].sb3**. The bug and fix can be anything real, for example "the score never went up because I chose touching mouse-pointer; I changed it to Bowl".
 
 **Station 2, Club Web Page (Page 3):** a heading *Our Tech Club*; a paragraph of 2–3 correct sentences about the club; robot.jpg (or another allowed picture) showing correctly; a link with the words *Try Scratch* to `https://scratch.mit.edu`; no names, faces or contact details. Route A: checked in phone preview and published to the Hub only. Route B: the four lines from the hint with the pupil's own sentences and alt text, saved as **club-page.html** and opening in a browser.
 
@@ -84,7 +84,7 @@ Two labs support today's stations. **Code the Sprite** (snap together motion, lo
 - **Finished early:** add a `Lives` variable to Mango Catch that goes down when a mango hits the ground, and a "Game over" message when it reaches 0. Add a second page to the website, or `<h2>` and a list (`<ul>`, `<li>`) to the HTML page. Or write their own "5 AI answers" quiz with 2 hidden mistakes for a partner to check.
 
 ## Evidence for sign-off
-Sign off the **Code & AI part of the Gold Passport** when the pupil has every checklist item ticked by a mentor for all four stations (first time or in the re-try): a working Mango Catch game with a loop, a condition and a Score variable; a web page that meets the brief with no personal details; the robot at 5 out of 5 with a correct explanation; and all five AI answers checked with sources plus a full C.L.E.A.R. prompt. Record today's typing result; the Gold typing target is checked on Demo Day.
+Sign off the **Code & AI part of the Gold Passport** when the pupil has every checklist item ticked by a mentor for all four stations (first time or in the re-try): a working Mango Catch game with a loop, a condition, a Score variable and missed mangoes going back to the top; a web page that meets the brief with no personal details; the robot at 5 out of 5 with a correct explanation; and all five AI answers checked with sources plus a full C.L.E.A.R. prompt. Record today's typing result; the Gold typing target is checked on Demo Day.
 
 ## Safety and wellbeing
 No real AI chatbot is used today; the "AI answers" are on paper. Pupils use the Hub's learning accounts only, and websites are published to the Hub only, with no names, faces or contact details. The C.L.E.A.R. prompt must contain no personal information. Some pupils find coding under time pressure stressful: praise calm debugging as much as finished games, and remind them that this is practice and the re-try is part of the plan.

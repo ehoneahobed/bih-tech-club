@@ -17,13 +17,14 @@ By the end of the session, pupils can:
 ## Running order
 | Time | Activity | Workbook | What the mentor does |
 |---|---|---|---|
-| 0–10 min | Nnoboa and cloud files | Page 1 | Ask who has seen communal farm work. Compare passing a USB drive with one live cloud file. |
-| 10–20 min | Permission tiers and the sharing law | Page 2 | Act out Viewer, Commenter and Editor with a paper notice. Pupils do Check Your Knowledge. |
-| 20–30 min | 3D lab | – | Demonstrate the shared-document missions. |
-| 30–40 min | Team roles and version history | Page 3 | Teams fill in names for each role. Walk through the 10:15–10:45 restore example. |
-| 40–48 min | Comments, frames and resolving | Page 4 | Model a rude comment, then rewrite it with a frame. Read the panic button aloud. |
-| 48–75 min | Guided lab: the Demo Day notice | Page 5 | Help one pupil per team create and share the file. Check permissions before anyone types. |
-| 75–85 min | Feedback rewrite and review questions | Page 6 | Pupils work alone, then share rewrites. |
+| 0–10 min | Typing warm-up | – | Pupils open the typing trainer (Typing in the menu, or the warm-up banner on the session page) and do the 10-minute warm-up. Walk round checking posture and home-row fingers. |
+| 10–20 min | Nnoboa and cloud files | Page 1 | Ask who has seen communal farm work. Compare passing a USB drive with one live cloud file. |
+| 20–30 min | Permission tiers and the sharing law | Page 2 | Act out Viewer, Commenter and Editor with a paper notice. Pupils do Check Your Knowledge. |
+| 30–38 min | 3D lab | – | Demonstrate the shared-document missions. |
+| 38–48 min | Team roles and version history | Page 3 | Teams fill in names for each role. Walk through the 10:15–10:45 restore example. |
+| 48–56 min | Comments, frames and resolving | Page 4 | Model a rude comment, then rewrite it with a frame. Read the panic button aloud. |
+| 56–77 min | Guided lab: the Demo Day notice | Page 5 | Help one pupil per team create and share the file. Check permissions before anyone types. |
+| 77–85 min | Feedback rewrite and review questions | Page 6 | Pupils work alone, then share rewrites. |
 | 85–90 min | Self-assessment and sign-off | Page 6 | Sign off using the evidence below. |
 
 ## Key ideas and how to explain them
@@ -69,4 +70,4 @@ Use **Internet Town**. On the projector, demonstrate *Make an edit to the shared
 The team shows a shared notice whose permissions are correct (named teammates as Editor, the mentor as Commenter, no public Editor link), with an 18 pt bold title, the three activities (Scratch games, clean water data tables, digital presentations) in a bulleted list and at least two resolved comments. Each pupil can open version history and point to their own edits (a team on one shared account points to the team's edits instead, as all edits show under one name), and can explain the difference between Viewer, Commenter and Editor.
 
 ## Safety and wellbeing
-Use only school or club accounts you control; don't ask pupils for personal email addresses or passwords. Never share any file publicly. Pupils must ask the team before deleting anything, and come to you if a disagreement turns into an edit war. Watch for unkind comments and deal with them quietly. Comments are permanent in version history, so the T.H.I.N.K. habit starts here.
+Use only school or club accounts you control; don't ask pupils for personal email addresses or passwords. Never share any file publicly. Pupils must ask the team before deleting anything, and come to you if a disagreement turns into an edit war. Watch for unkind comments and deal with them quietly. Comments are permanent in version history, so this is a preview of T.H.I.N.K., which you will meet in Session 33.

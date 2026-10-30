@@ -31,10 +31,10 @@ By the end of the session, pupils can:
 
 ## Key ideas and how to explain them
 - **The classroom in your pocket:** Stream = noticeboard; Classwork = tasks on the board with due dates; Hand in = the pile on the teacher's table; returned work = red-pen comments and a mark; private comment = a quiet word at the teacher's desk.
-- **Attaching is not handing in:** the work only reaches the teacher when you press Hand in (Turn in on American-English settings). Unsubmit lets you fix and re-submit before the due date. Late or missing work is shown as Missing or Done late.
+- **Attaching is not handing in:** the work only reaches the teacher when you press Hand in (Turn in on American-English settings). Unsubmit lets you fix and re-submit, ideally before the due date. Late or missing work is shown as Missing or Done late.
 - **Class comment vs private comment:** class comments are seen by everyone; private comments only by you and the teacher.
 - **Your job isn't finished until you read the feedback:** feedback is how you improve the next piece of work.
-- **The 4 checks:** Who made it? When? Does it match my syllabus and level? Can I confirm one fact with a second source? Views and likes are not proof.
+- **The 4 checks:** the 4-Way Shield from Session 12 with "Why?" swapped for "Match?". Who made it? When? Does it match my syllabus and level? Can I confirm one fact with a second source? Views and likes are not proof.
 - **AI for learning (brief, Session 40 goes deeper):** use AI to understand, not to do the work; check it; be honest about using it; only with a mentor or parent.
 - **Good notes:** heading, date, short key points in your own words, a one-sentence summary, links. Use Heading styles (Session 17).
 - **Study habits:** 25 minutes work, 5 minutes break (Windows 11 Clock app: Focus sessions); Do Not Disturb; one tab at a time; rest your eyes.

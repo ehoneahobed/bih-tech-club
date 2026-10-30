@@ -313,7 +313,7 @@ function stepsFor(s) {
     { title: 'Get ready for Demo Day', time: '20 min', text: 'Read pages 1–3: the 3-act pitch, staying calm on stage, and what to do if something goes wrong.', actions: open(1, '📖 Open the workbook') },
     lab,
     { title: 'Give your pitch', time: '40 min', text: 'Follow the Lab Mission on page 4: present your project in 3 minutes, then answer questions for 1 minute.', actions: open(4, '📖 Open page 4') },
-    { title: 'Reflect and graduate', time: '15 min', text: 'Read page 5, take the Digital Leader\'s Oath and fill in your certificate on page 6.', actions: open(5, '📖 Open page 5'), after: answers ? `<details class="answers"><summary>Mentor notes on the reflection questions</summary><div class="answers-body">${renderMarkdown(answers)}</div></details>` : '' },
+    { title: 'Reflect and graduate', time: '15 min', text: 'Read page 5, take the Digital Leader\'s Oath, fill in your certificate and record your Gold typing check on page 6.', actions: open(5, '📖 Open page 5'), after: answers ? `<details class="answers"><summary>Mentor notes on the reflection questions</summary><div class="answers-body">${renderMarkdown(answers)}</div></details>` : '' },
     save,
   ].filter(Boolean);
   return [

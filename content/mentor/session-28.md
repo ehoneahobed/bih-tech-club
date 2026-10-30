@@ -9,7 +9,7 @@ By the end of the session, pupils can:
 3. Record and trim a voice note, storyboard a short video, and edit clips with titles and music they are allowed to use, without showing faces without consent or school uniforms.
 
 ## Before the session
-- [ ] Check every pupil PC has **Photos**, **Sound Recorder** and **Clipchamp** (Windows 11 includes them; if one is missing, install it from the Microsoft Store). Sign Clipchamp in with the Hub's Microsoft learning account and start one test video, so the first-run screens are done.
+- [ ] Check every pupil PC has **Photos**, **Sound Recorder** and **Clipchamp** (Windows 11 includes them; if one is missing, install it from the Microsoft Store). Sign Clipchamp in and start one test video, so the first-run screens are done. The Clipchamp app needs a Microsoft account; otherwise use app.clipchamp.com in the browser with the Hub Google learning account.
 - [ ] Gather cameras: Hub phones or tablets, webcams, or a parent's phone used with permission. One per team is enough. Charge them. Plan how clips get onto the PC (USB cable, the Hub's cloud account, or Bluetooth).
 - [ ] Headsets with microphones for recording, if you have them.
 - [ ] Put two or three sample photos (a big phone photo of about 3–5 MB, no people) in a shared folder for pupils without a camera.
@@ -24,7 +24,7 @@ By the end of the session, pupils can:
 | 17–27 min | Four habits and photo formats | Page 2 | Demonstrate light behind you vs behind the subject using a pupil volunteer (with their agreement) and the projector camera, or with an object. Turn on the camera grid. |
 | 27–37 min | Crop, rotate, resize, compress | Page 3 | Live demo in Photos, including Save as copy and Resize image. Pupils do "Do the Maths". |
 | 37–42 min | Media Studio warm-up | Page 5 | Demonstrate one mission on the projector; pairs try the rest quickly. |
-| 42–50 min | Photo and voice note missions | Page 5 | Pupils take 3 photos (no faces), edit and resize one, fill the table; record and trim a 15-second introduction. |
+| 42–50 min | Photo and voice note missions | Page 5 | Pupils take 3 photos (no faces), edit and resize one, fill the table; record a 15-second introduction (trimmed in Clipchamp later). |
 | 50–55 min | Storyboard and the video rules | Page 4 | Read the consent box aloud together. Teams fill in the six storyboard boxes on Page 5. |
 | 55–78 min | Film and edit the 30-second video | Page 5 | Teams film for 8 minutes maximum, then edit in Clipchamp: import, order, trim, title, credits, music, export. |
 | 78–85 min | Premiere time | Page 5 | Play each video. Vote for best storyteller, best shot, best sound. Award team points. |
@@ -63,7 +63,7 @@ On the projector, show mission 1 and ask "Why did the size drop so much?" (link 
 | Can't find the recording | Look in Documents → Sound recordings, or use Sound Recorder's "Show in folder" option (it may look slightly different). |
 
 ## When things go wrong
-- **No internet:** Photos and Sound Recorder work offline. Clipchamp needs to sign in, so prepare it while online; if it will not open, edit on a phone editor or simply play the clips in storyboard order and present them live with the voice note. The Media Studio lab runs from the offline pack.
+- **No internet:** Photos and Sound Recorder work offline. Clipchamp needs the internet to open and edit, so prepare it while online; if it will not open, edit on a phone editor or simply play the clips in storyboard order and present them live with the voice note. The Media Studio lab runs from the offline pack.
 - **Not enough PCs or cameras:** one camera per team; roles: director (holds the storyboard), camera operator, sound person, editor. Rotate after each shot.
 - **A PC freezes or the power goes:** clips stay on the phone, so nothing is lost. Clipchamp saves projects automatically. With no power at all, teams finish the storyboard in detail and "perform" it as a live 30-second advert.
 

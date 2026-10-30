@@ -1,6 +1,6 @@
 # Session 44: Showcase Demo Day & Graduation
 
-> **At a glance:** every team delivers a 3-minute live pitch of their capstone project, with every member speaking, then pupils reflect on their journey, take the Digital Leader's Pledge and graduate. · **Time:** 90 minutes (adjust the timings if your period is shorter) · **Workbook pages:** 6
+> **At a glance:** every team delivers a 3-minute live pitch of their capstone project, with every member speaking, then pupils reflect on their journey, take the Digital Leader's Pledge, do the 3-minute typing check and graduate with the Gold Passport (Sessions 36–44). · **Time:** 90 minutes (adjust the timings if your period is shorter) · **Workbook pages:** 6
 
 ## Learning outcomes
 By the end of the session, pupils can:
@@ -17,17 +17,19 @@ By the end of the session, pupils can:
 - [ ] Get photo and video consent: check which pupils' parents or guardians have agreed. Pupils without consent must not appear in photos or videos.
 - [ ] Prepare the certificates in advance: type or write each pupil's real name on the name line (the sample name "Ama Mensah" is only a hint and does not print). Arrange for the headteacher or lead to sign.
 - [ ] Invite guests and appoint a timekeeper with a timer and a "1 minute left" card.
+- [ ] Check the typing trainer opens on every pupil PC, and bring the Session 41 score sheets so you know who already has the Code & AI part of the Gold Passport signed.
 
 ## Running order
 | Time | Activity | Workbook | What the mentor does |
 |---|---|---|---|
-| 0–15 min | Setup and pre-flight technical checklist | Page 2 | Teams work through the pre-flight checklist. |
-| 15–25 min | Final rehearsal and the 3D lab pitch step | Pages 1, 4 | Teams rehearse once against the timer. |
-| 25–30 min | Welcome guests and explain the format | Page 1 | Explain the format: 3 minutes per team, applause for all. |
-| 30–70 min | Team pitches and audience Q&A | Page 4 | Keep strict time. Note each team's strengths. |
-| 70–78 min | Personal growth reflection | Page 3 | Pupils write; two or three share. |
-| 78–83 min | The Digital Leader's Pledge | Page 5 | Read aloud and tick. |
-| 83–90 min | Certificates and graduation | Page 6 | Present certificates. Photos only with consent. |
+| 0–10 min | Typing warm-up and 3-minute Gold typing check | Page 6 | Pupils open the typing trainer (Typing in the menu, or the warm-up banner on the session page), warm up for a few minutes, then do the 3-minute typing check and record speed and accuracy in the Gold Passport box on Page 6. One re-try is allowed (during setup if time allows); the better result counts. |
+| 10–21 min | Setup and pre-flight technical checklist | Page 2 | Teams work through the pre-flight checklist. |
+| 21–29 min | Final rehearsal and the 3D lab pitch step | Pages 1, 4 | Teams rehearse once against the timer. |
+| 29–33 min | Welcome guests and explain the format | Page 1 | Explain the format: 3 minutes per team, applause for all. |
+| 33–73 min | Team pitches and audience Q&A | Page 4 | Keep strict time. Note each team's strengths. |
+| 73–79 min | Personal growth reflection | Page 3 | Pupils write; two or three share. |
+| 79–84 min | The Digital Leader's Pledge | Page 5 | Read aloud and tick. |
+| 84–90 min | Gold Passport, certificates and graduation | Page 6 | Tick and sign the Gold Passport box for each pupil who has earned it, then present certificates. Photos only with consent. |
 
 If you have more than 8 teams, run pitches in two rooms or extend the period; do not shorten the pitches.
 
@@ -36,6 +38,7 @@ If you have more than 8 teams, run pitches in two rooms or extend the period; do
 - **Live demonstration:** show the real file working: recalculate the sheet, play the game, flip the slides.
 - **Everyone has a voice:** one speaker (Ama) introduces the problem, one (Kofi) drives the laptop, one (Kwesi) explains the bug and fix. In a team of four, the fourth member can lead the Q&A or share Act 2.
 - **Call to action:** end with one clear request, for example "Wash your hands with soap before you eat."
+- **The Gold Passport (Sessions 36–44):** three parts: the Code & AI part signed in Skills Lab 5 (Session 41), the capstone project pitched today, and the 3-minute typing check at **35 wpm with 95% accuracy**, both at once. A pupil who misses the typing target is "Gold pending": they still graduate and get their certificate, and can re-take the check at a later club meeting.
 - **Stage resilience:** if the projector goes black, Speaker 1 keeps describing the project from memory; if needed, Speaker 2 keeps talking while you (the mentor) check the cable and power. Pupils never touch cables or plugs. The audience will respect your calm.
 
 ## The 3D lab
@@ -62,6 +65,8 @@ There are no questions with fixed answers on Demo Day. Use this guidance.
 
 **Live pitch (Page 4):** Look for the three acts in the right order and roughly on time: 0:00–0:30 hook and problem, 0:30–2:00 live demo, 2:00–3:00 a real bug from the Change Log and a call to action. Then two audience questions (3:00–4:00) answered with Listen, Thank, Answer simply.
 
+**Gold Passport typing check (Page 6):** the 3-minute check in the typing trainer, one re-try allowed (the better result counts). Gold is met at **35 wpm or more with 95% accuracy or more** in the same check. Anything less is "Not yet": record it and agree when the pupil will re-try.
+
 **Digital Leader's Pledge (Page 5):** each pupil reads the five commitments aloud and ticks them. There are no right or wrong answers.
 
 ## Support and stretch
@@ -72,6 +77,7 @@ There are no questions with fixed answers on Demo Day. Use this guidance.
 - The team delivered its pitch with a live demo of the v1.1 file and every member had a speaking or driving role.
 - The pupil completed the three reflections on Page 3 and the pledge on Page 5.
 - The pupil's earlier milestones (Sessions 42 and 43) are signed. Only then sign and present the certificate.
+- **Gold Passport sign-off (Page 6):** tick and sign all three rows when the Code & AI part was signed in Skills Lab 5 (Session 41), the capstone was pitched today, and the 3-minute typing check shows at least 35 wpm with 95% accuracy in the same check. Record "Gold pending" with the missing part for anyone not yet there, and agree when they will show it.
 
 ## Safety and wellbeing
 Take photos or videos only of pupils whose parents or guardians have agreed, and don't post them online without the school's approval. Check projects on screen show only fictional data, with no real phone numbers, addresses or passwords. Ask guests for kind questions. Praise effort and calm, not just polish.

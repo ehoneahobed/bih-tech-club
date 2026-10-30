@@ -18,13 +18,14 @@ By the end of the session, pupils can:
 ## Running order
 | Time | Activity | Workbook | What the mentor does |
 |---|---|---|---|
-| 0–8 min | From Session 39 to chatbots | Page 1 | Recall "AI is a pattern-guesser". Play next-word prediction: say "On Saturday I will go to the…" and let the class shout words. |
-| 8–15 min | Age rules and supervision | Page 1 | Explain the club rule: real AI only with a mentor, at the Hub or with a parent. |
-| 15–30 min | Prompts and C.L.E.A.R. | Page 2 | Do the "send a cousin to the market" role-play. Pupils rewrite the two vague prompts in pairs. |
-| 30–45 min | AI Helper Check lab | Page 5 | Demonstrate the prompt builder on the projector, then pairs do all three missions and fill in the table. |
-| 45–57 min | Hallucinations and the 3 checks | Page 3 | Do the fact-check challenge together with the textbook. |
-| 57–70 min | Deepfakes, privacy and honesty | Page 4 | Link deepfakes to S.T.O.P. from Session 33. Vote on the Helper-or-Cheater table. |
-| 70–80 min | Real AI demo (optional) | Page 5 | Type 2–3 pupils' C.L.E.A.R. prompts into a chatbot on the projector. Fact-check one answer as a class. |
+| 0–10 min | Typing warm-up | – | Pupils open the typing trainer (Typing in the menu, or the warm-up banner on the session page) and do the 10-minute warm-up. Walk round checking posture and home-row fingers. |
+| 10–18 min | From Session 39 to chatbots | Page 1 | Recall "AI is a pattern-guesser". Play next-word prediction: say "On Saturday I will go to the…" and let the class shout words. |
+| 18–25 min | Age rules and supervision | Page 1 | Explain the club rule: real AI only with a mentor, at the Hub or with a parent. |
+| 25–38 min | Prompts and C.L.E.A.R. | Page 2 | Do the "send a cousin to the market" role-play. Pupils rewrite the two vague prompts in pairs. |
+| 38–50 min | AI Helper Check lab | Page 5 | Demonstrate the prompt builder on the projector, then pairs do all three missions and fill in the table. |
+| 50–61 min | Hallucinations and the 3 checks | Page 3 | Do the fact-check challenge together with the textbook. |
+| 61–72 min | Deepfakes, privacy and honesty | Page 4 | Link deepfakes to S.T.O.P. from Session 33. Vote on the Helper-or-Cheater table. |
+| 72–80 min | Real AI demo (optional) | Page 5 | Type 2–3 pupils' C.L.E.A.R. prompts into a chatbot on the projector. Fact-check one answer as a class. |
 | 80–86 min | Scenarios and review questions | Page 6 | Discuss each scenario aloud. |
 | 86–90 min | Self-assessment and sign-off | Page 6 | Sign off using the evidence below. |
 

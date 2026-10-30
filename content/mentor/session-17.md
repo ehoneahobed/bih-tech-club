@@ -20,13 +20,14 @@ By the end of the session, pupils can:
 ## Running order
 | Time | Activity | Workbook | What the mentor does |
 |---|---|---|---|
-| 0–10 min | Recap Session 16; bullets vs numbers | Page 1 | Market basket vs boiling rice. Show the auto-list trick. |
-| 10–20 min | Visual hierarchy and built-in Styles | Page 2 | Hold up the newspaper; click Heading 1 in the Styles pane. Pupils do Check Your Knowledge. |
-| 20–30 min | Squiggly lines, Ghanaian names, AutoCorrect | Page 3 | Type "computter", "They is here" and "Kwesi" live and fix each. |
-| 30–35 min | Print Preview, portrait vs landscape | Page 4 | Show Ctrl + P and the "Page 1 of 2" trap. |
-| 35–50 min | Format a Real Document 3D lab | — | Demonstrate, then pairs continue. |
-| 50–75 min | Hands-on lab: the complete notice | Page 5 | Check heading, bullets, squiggles and Page 1 of 1 before saving. |
-| 75–85 min | Review and verification | Page 6 | Pupils work alone, then mark together. |
+| 0–10 min | Typing warm-up | – | Pupils open the typing trainer (Typing in the menu, or the warm-up banner on the session page) and do the 10-minute warm-up. Walk round checking posture and home-row fingers. |
+| 10–20 min | Recap Session 16; bullets vs numbers | Page 1 | Market basket vs boiling rice. Show the auto-list trick. |
+| 20–30 min | Visual hierarchy and built-in Styles | Page 2 | Hold up the newspaper; click Heading 1 in the Styles pane. Pupils do Check Your Knowledge. |
+| 30–40 min | Squiggly lines, Ghanaian names, AutoCorrect | Page 3 | Type "computter", "They is here" and "Kwesi" live and fix each. |
+| 40–45 min | Print Preview, portrait vs landscape | Page 4 | Show Ctrl + P and the "Page 1 of 2" trap. |
+| 45–57 min | Format a Real Document 3D lab | — | Demonstrate, then pairs continue. |
+| 57–77 min | Hands-on lab: the complete notice | Page 5 | Check heading, bullets, squiggles and Page 1 of 1 before saving. |
+| 77–85 min | Review and verification | Page 6 | Pupils work alone, then mark together. |
 | 85–90 min | Self-assessment and word-processing sign-off | Page 6 | Sign off pupils who meet the evidence below. |
 
 ## Key ideas and how to explain them

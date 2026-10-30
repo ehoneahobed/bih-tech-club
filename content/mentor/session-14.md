@@ -15,6 +15,7 @@ By the end of the session, pupils can:
 - [ ] Make a short link or QR code for the form and write it on the board. Test the form yourself on a pupil PC, including Ctrl + P > Save as PDF on the confirmation page.
 - [ ] Put a practice picture called Practice_Photo_Akosua.jpg on every Desktop (a cartoon avatar or a picture of an object, never a real child's photo), under 1 MB.
 - [ ] Check every PC has a Documents > BIH_TechClub folder (from Session 4); create it if not.
+- [ ] Test the Date question on a pupil PC. If it shows mm/dd/yyyy, set the account or browser language to English (UK), or point it out as the US-vs-Ghana date trap from Page 3.
 - [ ] Load the Form Filler 3D lab on the projector PC and test it.
 
 ## Running order
@@ -58,6 +59,7 @@ On the projector, do the first mission together, reading each field type aloud (
 | Put the surname in the first-name box | Point to the label: "Surname = family name." Use the table on Page 3. |
 | Pick the wrong year in the date picker | Type the date in the hinted format, or scroll the year first. |
 | Type a 9-digit phone number | Count the digits aloud in groups: 024 000 0000 = 3 + 3 + 4 = 10. |
+| Type the phone number with spaces and the form says it is wrong | The practice form checks for 10 digits with no spaces: type 0240000000. |
 | Press Submit several times when the page is slow | "Once, then wait." Show that duplicate rows appear in the response sheet. |
 | Close the confirmation page before saving it | Make saving the proof part of the challenge: no saved file, no point. |
 | Cannot find the photo in the upload window | In the window that opens, click Desktop in the left pane, then the file, then Open. |

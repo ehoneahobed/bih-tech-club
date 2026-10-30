@@ -18,13 +18,14 @@ By the end of the session, pupils can:
 ## Running order
 | Time | Activity | Workbook | What the mentor does |
 |---|---|---|---|
-| 0–10 min | Curtain vs actor | Page 1 | Act it out: open a "curtain" (transition), then walk on (animation). Show a carnival animation, then Fade. |
-| 10–20 min | Keyboard controls and the B key | Page 2 | Run a show on the projector. Press B mid-sentence. Pupils answer Check Your Knowledge. |
-| 20–30 min | 3D lab | – | Demonstrate the show missions; pairs try them. |
-| 30–40 min | Three pillars of delivery | Page 3 | Model a bad talk (back turned, mumbling), then a good one. Pupils spot the difference. |
-| 40–48 min | Citing sources and handling questions | Page 4 | Role-play the 3-step question method with a volunteer. |
-| 48–65 min | Guided lab: polish the deck | Page 5 | Circulate. Check Fade is applied to all, Slide 3 bullets appear on click, citation is small and grey. |
-| 65–82 min | Live rehearsal in pairs | Pages 5–6 | Time each talk. Partners fill in the rubric, then swap. |
+| 0–10 min | Typing warm-up | – | Pupils open the typing trainer (Typing in the menu, or the warm-up banner on the session page) and do the 10-minute warm-up. Walk round checking posture and home-row fingers. |
+| 10–20 min | Curtain vs actor | Page 1 | Act it out: open a "curtain" (transition), then walk on (animation). Show a carnival animation, then Fade. |
+| 20–29 min | Keyboard controls and the B key | Page 2 | Run a show on the projector. Press B mid-sentence. Pupils answer Check Your Knowledge. |
+| 29–37 min | 3D lab | – | Demonstrate the show missions; pairs try them. |
+| 37–46 min | Three pillars of delivery | Page 3 | Model a bad talk (back turned, mumbling), then a good one. Pupils spot the difference. |
+| 46–54 min | Citing sources and handling questions | Page 4 | Role-play the 3-step question method with a volunteer. |
+| 54–68 min | Guided lab: polish the deck | Page 5 | Circulate. Check Fade is applied to all, Slide 3 bullets appear on click, citation is small and grey. |
+| 68–82 min | Live rehearsal in pairs | Pages 5–6 | Time each talk. Partners fill in the rubric, then swap. |
 | 82–90 min | Feedback, self-assessment and sign-off | Page 6 | Read out a few kind and useful tips. Sign off. |
 
 ## Key ideas and how to explain them

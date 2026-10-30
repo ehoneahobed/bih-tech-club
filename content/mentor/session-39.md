@@ -17,12 +17,13 @@ By the end of the session, pupils can:
 ## Running order
 | Time | Activity | Workbook | What the mentor does |
 |---|---|---|---|
-| 0–10 min | What do you already think AI is? | Page 1 | Collect ideas on the board without correcting them yet ("robots", "ChatGPT", "it will take jobs"). Then read the plain-talk definition together. |
-| 10–20 min | Rules vs examples | Page 1 | Hold up the plantains. "Which rule would tell a computer this black one is ripe?" Link to the IF blocks from Sessions 36–37. |
-| 20–30 min | Three jobs and AI around you | Page 2 | Pupils tick the table in pairs and add R, P or C. Show predictive text on a phone. |
-| 30–40 min | Collect, train, test and the plantain puzzle | Page 3 | Pupils are "the machine": they solve the puzzle, then explain the pattern they used. |
-| 40–55 min | Teach the Robot lab | Page 5 | Demonstrate Mission 1 on the projector, then pairs do all three missions and fill in the table. |
-| 55–70 min | Garbage in, garbage out and bias | Page 4 | Use the pairs' Round 3 results as the hook. Tell Joy Buolamwini's story. Discuss the handwriting question. |
+| 0–10 min | Typing warm-up | – | Pupils open the typing trainer (Typing in the menu, or the warm-up banner on the session page) and do the 10-minute warm-up. Walk round checking posture and home-row fingers. |
+| 10–19 min | What do you already think AI is? | Page 1 | Collect ideas on the board without correcting them yet ("robots", "ChatGPT", "it will take jobs"). Then read the plain-talk definition together. |
+| 19–28 min | Rules vs examples | Page 1 | Hold up the plantains. "Which rule would tell a computer this black one is ripe?" Link to the IF blocks from Sessions 36–37. |
+| 28–37 min | Three jobs and AI around you | Page 2 | Pupils tick the table in pairs and add R, P or C. Show predictive text on a phone. |
+| 37–45 min | Collect, train, test and the plantain puzzle | Page 3 | Pupils are "the machine": they solve the puzzle, then explain the pattern they used. |
+| 45–57 min | Teach the Robot lab | Page 5 | Demonstrate Mission 1 on the projector, then pairs do all three missions and fill in the table. |
+| 57–70 min | Garbage in, garbage out and bias | Page 4 | Use the pairs' Round 3 results as the hook. Tell Joy Buolamwini's story. Discuss the handwriting question. |
 | 70–78 min | Spot AI at home | Page 5 | Explain the home task; do it now on your phone for anyone without one at home. |
 | 78–86 min | True or false and review questions | Page 6 | Take a show of hands for each statement. |
 | 86–90 min | Self-assessment and sign-off | Page 6 | Sign off using the evidence below. |
