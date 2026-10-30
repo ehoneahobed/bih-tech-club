@@ -48,8 +48,8 @@ const EMAILS = [
     clues: ['You cannot win a competition you never entered', 'Asks for money, home address and ID', 'Odd domain ending: .win'],
   },
   {
-    from: 'Mr. Asante (Head Teacher)', addr: 'k.asante@bozomamodeljhs.edu.gh', subject: 'Inter-schools tech championship: team list',
-    body: 'Congratulations to our capstone team! The full list of representatives is on the notice board. Well done everyone.',
+    from: 'Mr. Asante (Head Teacher)', addr: 'k.asante@bozomamodeljhs.edu.gh', subject: 'Science fair: our team list',
+    body: 'Congratulations to our science fair team! The full list is on the notice board. Well done everyone.',
     link: null, phish: false,
     clues: ['School address and a real school event', 'Sends you to the notice board, not to a link', 'No request for anything private'],
   },

@@ -19,7 +19,7 @@ The tokens live at the top of `src/site.css`. The workbooks are rebranded when p
 ## Self-study
 Every session page has a numbered path (learn → 3D lab → Lab Mission → check → save). Learners tick steps as they go, the lab step ticks itself when its missions are done, and *Finished? Check your answers* shows the answer key from the mentor guide. Progress is stored only in that browser (`bih-progress`). The home page shows *Continue* and a status on each session card. `/start/` explains how to study. The step wording is in `stepsFor()` in `scripts/build.mjs`; Sessions 20 and 22 (capstone) have their own paths. Each session's *What you need* line is `needs` in `content/sessions.json`.
 
-The review, recommendations and the Inter-Schools Tech Championship plan are in [`docs/PLANNING.md`](docs/PLANNING.md).
+The review and recommendations are in [`docs/PLANNING.md`](docs/PLANNING.md).
 
 ## Project layout
 

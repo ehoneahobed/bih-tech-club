@@ -1,4 +1,4 @@
-# BIH Tech Club & Inter-Schools Tech Championship: Review and Plan
+# BIH Tech Club: Review and Plan
 
 _Prepared 29 October 2026. This is a working document: edit it as decisions are made._
 
@@ -10,7 +10,6 @@ _Prepared 29 October 2026. This is a working document: edit it as decisions are 
 | Word study pack (`docs/source/…Study_Packs.docx`) | A condensed 11-unit version of the same journey (about 5,200 words). |
 | Logo | 1600 × 500 PNG. |
 | Website | Live at https://bih-tech-club.vercel.app: session pages, 14 interactive 3D labs, offline ZIP packs, print-ready PDFs, an Offline Club Kit for USB and 22 mentor guides. |
-| Inter-Schools Tech Championship | **No materials yet.** A draft structure is in section 4. |
 
 ## 2. Review of the session workbooks
 
@@ -77,57 +76,10 @@ About 60 problems were found in three rounds: while writing the mentor guides, t
 - **Sharing on WhatsApp:** every page has a preview card with the logo and session title.
 - **Mentor guides:** `/mentors/01/` … `/mentors/22/`, linked from the Mentors page.
 - **3D labs (every session has at least one):** Computer (S1), Keyboard (S2), Desktop windows (S3), Filing tree (S4–5), Internet town (S6, S7, S14), Spot the Phish (S7, S15), Document formatting (S8–9), Spreadsheet charts (S10–11), Slide design & slide show (S12–13), Password fortress (S15), Code the Sprite (S16–17), Teach the Robot (S18), AI Helper Check (S19) and Build the Whole House capstone planner (S20–22).
-- **Guided missions:** every lab has a 🎯 checklist that always shows the next step and a hint, saves progress on that computer and celebrates when finished. A 🔊 button reads the instructions aloud. The capstone lab saves the team's charter, change log and pitch plan between Sessions 20, 21 and 22, and prints a project card. That card could double as the Championship entry form. They need WebGL, which almost every browser since 2015 supports. If it is missing, the page says so and the workbook still works.
+- **Guided missions:** every lab has a 🎯 checklist that always shows the next step and a hint, saves progress on that computer and celebrates when finished. A 🔊 button reads the instructions aloud. The capstone lab saves the team's charter, change log and pitch plan between Sessions 20, 21 and 22, and prints a project card. They need WebGL, which almost every browser since 2015 supports. If it is missing, the page says so and the workbook still works.
 - **Keeping it up to date:** edit `content/workbooks/session-NN.html`, run `npm run pdf -- NN`, then commit and push. Vercel rebuilds automatically. The "Last updated" date comes from git, and the build warns when a PDF is older than its workbook. See `README.md`.
 
-## 4. Inter-Schools Tech Championship: draft structure
-
-> This is a proposal to react to. Nothing below exists in the current materials.
-
-**Purpose:** give every club a goal to work towards and a public stage for the capstone work, and bring the participating schools together.
-
-### Format: two stages
-1. **School round (Session 22 Demo Day).** Each club holds its Demo Day as normal and picks **one capstone team** plus **two individual skills competitors** to represent the school.
-2. **Championship Day (one day, one venue).** All schools come together.
-
-### Championship events
-| Event | Who | What it tests | Format |
-|---|---|---|---|
-| **Capstone Showcase** (main prize) | School team (3–4) | Sessions 20–22 | 3-minute pitch + 2-minute Q&A, using the existing pitch formula. Entered in one of the four capstone tracks: A Health & Environment, B Market & Canteen Bookkeeper, C Educational Game (Scratch), D Culture & Community Tourism. |
-| **Digital Skills Relay** | 2 per school | Sessions 1–11 | Timed stations: home-row typing accuracy, create the BIH folder structure and correctly named file, fix a broken spreadsheet formula and chart, format a one-page notice. Judges check accuracy first, then time. |
-| **Code Sprint** | 1–2 per school | Sessions 16–17 | 30 minutes to build a set Scratch mini-game from a brief (loop + condition + score variable). Brief is revealed on the day. |
-| **Digital Citizen Quiz** | Whole team | Sessions 6, 7, 14, 15 | Buzzer quiz: spot the phishing email, HTTPS or not, T.H.I.N.K., the right sharing permission. |
-
-### Judging the Capstone Showcase (suggested 100 points)
-| Criterion | Points |
-|---|---|
-| Problem is real and local, and the team shows evidence | 20 |
-| The digital product works and uses the taught tools correctly | 25 |
-| Testing and iteration (change log v0.1 → v1.1) | 20 |
-| Pitch: clarity, every member speaks, within 3 minutes | 20 |
-| Safe and ethical practice (fictional data, sources cited, permissions) | 15 |
-
-### Decisions needed from the BIH team
-1. **Date and venue.** Does it need a lab with enough PCs for the Relay and Code Sprint? About 2 PCs per school.
-2. **How many schools,** and whether the club has run all 22 sessions in each one by then.
-3. **Eligibility:** JHS 1 only, or JHS 1–3? Is there a team size limit?
-4. **Judges:** suggest 3 per panel (an industry volunteer, a teacher from a non-competing school, a BIH mentor).
-5. **Prizes and certificates.** Every participant should get a certificate, not only the winners.
-6. **Consent and media.** Collect caregiver photo and video consent before the day (this matches the workbooks' own safety rules).
-7. **Internet on the day.** Assume none. The offline ZIP packs and Scratch offline editor should be pre-installed.
-
-### Suggested timeline (counting back from Championship Day = **C**)
-| When | Milestone |
-|---|---|
-| C − 12 weeks | Confirm schools, date, venue, judges. Publish the rules and rubric on the site. |
-| C − 8 weeks | Clubs reach Session 20; teams choose a track. |
-| C − 4 weeks | School Demo Days (Session 22) select representatives. |
-| C − 2 weeks | Teams submit project title, track and a 1-paragraph summary. Mentors receive the judging pack. |
-| C − 1 week | Device check at the venue; offline software installed. |
-| C | Championship Day. |
-| C + 1 week | Results, certificates and winning projects published on the site (with consent). |
-
-## 5. Platform roadmap
+## 4. Platform roadmap
 
 | Priority | Item | Notes |
 |---|---|---|
@@ -136,7 +88,5 @@ About 60 problems were found in three rounds: while writing the mentor guides, t
 | Done | BIH branding and self-study path | 30 Oct 2026: BIH colours and fonts across the site, workbooks, PDFs and labs; step-by-step session path with progress, answer check and a Start here page. |
 | Done | AI literacy | 30 Oct 2026: Session 18 "What Is AI? Machines That Learn" (Teach the Robot lab) and Session 19 "Using AI Wisely & Safely" (AI Helper Check lab). Pupils learn the ideas without accounts; real AI tools only with a mentor, at the Hub or with a parent. Saved progress and answers for the old Sessions 18–20 move to 20–22 automatically. |
 | Next | Links to the GES JHS Computing curriculum | Needs a decision from BIH. |
-| Next | Short self-marking quiz per session | Reuses the workbook review questions; feeds the Championship quiz. |
-| Next | Championship page: rules, rubric, timeline and FAQ | Once section 4 is agreed. |
-| Later | Championship registration form and results board | Needs a small backend or a form service. |
+| Next | Short self-marking quiz per session | Reuses the workbook review questions. |
 | Later | Progress tracking per learner (R5) | Only with a clear consent and privacy plan for minors. |
