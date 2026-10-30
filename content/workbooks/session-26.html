@@ -255,53 +255,510 @@
 </head>
 <body>
 
+<!-- ========================================== -->
+<!-- PAGE 1: HOW THE OFFICE TRIATHLON WORKS      -->
+<!-- ========================================== -->
 <div class="page">
   <div class="header-bar">
     <div class="header-title">Bozoma Innovation Hub • Tech Club</div>
     <div class="badge">Session 26 • Page 1</div>
   </div>
+
+  <div class="student-meta">
+    <div class="meta-row">
+      <span class="meta-label">Learner Full Name:</span>
+      <div class="editable-line" contenteditable="true">Ama Mensah</div>
+      <span class="meta-label" style="min-width: 90px;">School:</span>
+      <div class="editable-line" contenteditable="true">Bozoma Model JHS</div>
+    </div>
+    <div class="meta-row">
+      <span class="meta-label">Assigned Workstation:</span>
+      <div class="editable-line" contenteditable="true" style="max-width: 140px;">PC-01</div>
+      <span class="meta-label" style="min-width: 50px;">Class:</span>
+      <div class="editable-line" contenteditable="true" style="max-width: 90px;">JHS 1</div>
+    </div>
+  </div>
+
   <h1>Session 26: Skills Lab 3: Office Triathlon</h1>
-  <p>DRAFT PLACEHOLDER: this workbook is being written.</p>
+  <p>A <strong>triathlon</strong> is a race with three sports one after another: swimming, cycling and running. Today you race through the three "sports" of office work: <strong>Words</strong> (a document), <strong>Numbers</strong> (two spreadsheet tasks) and <strong>Slides</strong> (a short presentation). There is nothing new to learn today. You show what you can already do from Sessions 16 to 25, on a real computer, against the clock.</p>
+
+  <h2>1. How a Skills Lab Works</h2>
+  <p><strong>1. Typing check first.</strong> Do the 3-minute typing check on the typing trainer and write your result in the table below.</p>
+  <p><strong>2. Four stations, 15 minutes each.</strong> Your mentor starts the clock. Read the task, open the starter file and go. When the time is up, stop.</p>
+  <p><strong>3. The mentor ticks the checklist</strong> at the bottom of each station page. Be honest: a tick you did not earn does not help you.</p>
+  <p><strong>4. Fix and re-try.</strong> At the end, go back to any station you did not finish and use its <strong>re-try hints</strong>.</p>
+
+  <!-- DIAGRAM: THE TRIATHLON ROUTE -->
+  <div class="diagram-container">
+    <svg width="680" height="140" viewBox="0 0 680 140" xmlns="http://www.w3.org/2000/svg">
+      <defs><marker id="ar26" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#3A0CA3"/></marker></defs>
+      <text x="340" y="18" font-size="11" font-weight="bold" fill="#3A0CA3" text-anchor="middle">START: TYPING CHECK  →  4 STATIONS × 15 MIN  →  FIX &amp; RE-TRY  →  FINISH</text>
+      <g transform="translate(14, 30)">
+        <rect x="0" y="0" width="150" height="100" rx="10" fill="#EEF2FF" stroke="#3A0CA3" stroke-width="2"/>
+        <text x="75" y="22" font-size="10" font-weight="bold" fill="#64748B" text-anchor="middle">WORDS</text>
+        <text x="75" y="44" font-size="12.5" font-weight="bold" fill="#3A0CA3" text-anchor="middle">Station 1</text>
+        <text x="75" y="64" font-size="10" fill="#1E293B" text-anchor="middle">A school notice</text>
+        <text x="75" y="80" font-size="10" fill="#1E293B" text-anchor="middle">in the word processor</text>
+      </g>
+      <path d="M 166,80 L 180,80" stroke="#3A0CA3" stroke-width="3" marker-end="url(#ar26)"/>
+      <g transform="translate(184, 30)">
+        <rect x="0" y="0" width="150" height="100" rx="10" fill="#ECFDF5" stroke="#10B981" stroke-width="2"/>
+        <text x="75" y="22" font-size="10" font-weight="bold" fill="#64748B" text-anchor="middle">NUMBERS</text>
+        <text x="75" y="44" font-size="12.5" font-weight="bold" fill="#047857" text-anchor="middle">Station 2</text>
+        <text x="75" y="64" font-size="10" fill="#1E293B" text-anchor="middle">A club budget with</text>
+        <text x="75" y="80" font-size="10" fill="#1E293B" text-anchor="middle">formulas and a chart</text>
+      </g>
+      <path d="M 336,80 L 350,80" stroke="#3A0CA3" stroke-width="3" marker-end="url(#ar26)"/>
+      <g transform="translate(354, 30)">
+        <rect x="0" y="0" width="150" height="100" rx="10" fill="#ECFDF5" stroke="#10B981" stroke-width="2"/>
+        <text x="75" y="22" font-size="10" font-weight="bold" fill="#64748B" text-anchor="middle">NUMBERS</text>
+        <text x="75" y="44" font-size="12.5" font-weight="bold" fill="#047857" text-anchor="middle">Station 3</text>
+        <text x="75" y="64" font-size="10" fill="#1E293B" text-anchor="middle">Survey data: sort,</text>
+        <text x="75" y="80" font-size="10" fill="#1E293B" text-anchor="middle">filter and COUNTIF</text>
+      </g>
+      <path d="M 506,80 L 520,80" stroke="#3A0CA3" stroke-width="3" marker-end="url(#ar26)"/>
+      <g transform="translate(524, 30)">
+        <rect x="0" y="0" width="150" height="100" rx="10" fill="#FFF7ED" stroke="#F77F00" stroke-width="2"/>
+        <text x="75" y="22" font-size="10" font-weight="bold" fill="#64748B" text-anchor="middle">SLIDES</text>
+        <text x="75" y="44" font-size="12.5" font-weight="bold" fill="#9A3412" text-anchor="middle">Station 4</text>
+        <text x="75" y="64" font-size="10" fill="#1E293B" text-anchor="middle">A 4-slide deck, then</text>
+        <text x="75" y="80" font-size="10" fill="#1E293B" text-anchor="middle">present one slide</text>
+      </g>
+    </svg>
+    <div class="diagram-caption">Figure 26.1: The Office Triathlon route. Three sports, four stations, 60 minutes of racing.</div>
+  </div>
+
+  <h2>2. Typing Check Record</h2>
+  <p>Your goal by Skills Lab 4 (Session 35) is the <strong>Silver</strong> typing level: <strong>25 words per minute at 92% accuracy</strong>. Today shows how close you are. Accuracy matters more than speed!</p>
+  <table>
+    <thead>
+      <tr><th style="width: 25%;">Speed (wpm)</th><th style="width: 25%;">Accuracy (%)</th><th style="width: 25%;">Stage reached</th><th style="width: 25%;">Silver target (25 at 92%)?</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><div class="answer-line" contenteditable="true">e.g. 21</div></td>
+        <td><div class="answer-line" contenteditable="true">e.g. 93</div></td>
+        <td><div class="answer-line" contenteditable="true">Stage...</div></td>
+        <td><div class="answer-line" contenteditable="true">Reached / ___ wpm to go</div></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>3. Block 4 Skills You Will Use Today</h2>
+  <table>
+    <tbody>
+      <tr><td style="width: 30%;"><strong>Documents</strong> (16–18)</td><td>Fonts, bold, alignment, bullets, heading styles, spell check, pictures, Print Preview</td></tr>
+      <tr><td><strong>Spreadsheets</strong> (19–22)</td><td>Formulas, SUM, AVERAGE, MAX, MIN, IF, COUNTIF, sort, filter, freeze, charts, and asking only what you need</td></tr>
+      <tr><td><strong>Slides</strong> (23–24)</td><td>Layouts, the 6-by-6 rule, contrast, pictures that are not squashed, presenting</td></tr>
+      <tr><td><strong>Shortcuts</strong> (25)</td><td>Ctrl + S, Ctrl + Z, Ctrl + C / V, Alt + Tab: they win you seconds at every station</td></tr>
+    </tbody>
+  </table>
 </div>
+
+<!-- ========================================== -->
+<!-- PAGE 2: STATION 1 - WORDS                   -->
+<!-- ========================================== -->
 <div class="page">
   <div class="header-bar">
-    <div class="header-title">Coming soon</div>
+    <div class="header-title">Station 1 (Words): The Open Day Notice</div>
     <div class="badge">Session 26 • Page 2</div>
   </div>
-  
-  <p>DRAFT PLACEHOLDER: this workbook is being written.</p>
+
+  <div class="dual-grid" style="grid-template-columns: 1fr 1fr 1fr;">
+    <div class="dual-box">
+      <div class="dual-box-title">⏱️ TIME LIMIT</div>
+      <p><strong>15 minutes</strong></p>
+    </div>
+    <div class="dual-box">
+      <div class="dual-box-title">📂 STARTER FILES</div>
+      <p><code>Notice_Starter.txt</code> and <code>Open_Day_Picture.png</code> in <code>BIH_Practice &gt; Skills_Lab_3</code></p>
+    </div>
+    <div class="dual-box">
+      <div class="dual-box-title">💾 SAVE AS</div>
+      <p><code>Notice_YourName</code> (.docx) in the same folder</p>
+    </div>
+  </div>
+
+  <h2>1. Your Task</h2>
+  <p>The club mentor typed the Open Day notice in Notepad, so it is just plain words with no formatting, and it has a few spelling mistakes. Turn it into a smart, one-page notice that you would be proud to pin on the school notice board.</p>
+  <div class="step-card">
+    <div class="step-num">1</div>
+    <div class="step-content">Open <code>Notice_Starter.txt</code>, press <span class="kbd-key">Ctrl + A</span> then <span class="kbd-key">Ctrl + C</span>. Open a new blank document in your word processor and press <span class="kbd-key">Ctrl + V</span>. Save it straight away as <code>Notice_YourName</code>.</div>
+  </div>
+  <div class="step-card">
+    <div class="step-num">2</div>
+    <div class="step-content">Make the first line <strong>TECH CLUB OPEN DAY</strong> the title: <strong>Title</strong> style, or 18–20 pt, bold and centred. Make the second line a centred, italic subtitle.</div>
+  </div>
+  <div class="step-card">
+    <div class="step-num">3</div>
+    <div class="step-content">Give the lines <strong>What to bring</strong> and <strong>Who to see</strong> the <strong>Heading 1</strong> style. Turn the three lines under "What to bring" into a <strong>bulleted list</strong>.</div>
+  </div>
+  <div class="step-card">
+    <div class="step-num">4</div>
+    <div class="step-content">Insert <code>Open_Day_Picture.png</code> under the subtitle. Make it smaller by dragging a <strong>corner</strong> handle (not a side handle, which squashes it) and centre it.</div>
+  </div>
+  <div class="step-card">
+    <div class="step-num">5</div>
+    <div class="step-content">Fix the <strong>red squiggles</strong>: three are real mistakes. Ghanaian names are not mistakes: choose <strong>Ignore All</strong> or <strong>Add to Dictionary</strong>. Then <span class="kbd-key">Ctrl + P</span>: it must say <strong>Page 1 of 1</strong>. Close the preview and press <span class="kbd-key">Ctrl + S</span>.</div>
+  </div>
+
+  <div class="callout">
+    <div class="callout-title">🔁 RE-TRY HINTS</div>
+    &bull; Cannot find the styles? Word: <strong>Home</strong> tab, Styles box. LibreOffice: the Paragraph Style box on the left. Google Docs: the "Normal text" drop-down.<br>
+    &bull; The bullets will not stop? Press <span class="kbd-key">Enter</span> twice, or click the Bullets button again.<br>
+    &bull; Picture squashed? Press <span class="kbd-key">Ctrl + Z</span> and drag a corner instead.<br>
+    &bull; "Page 1 of 2"? Delete the empty lines at the end, or make the picture smaller.
+  </div>
+
+  <h2>2. Mentor Checklist</h2>
+  <div class="dual-grid">
+    <div>
+      <div class="checkbox-item"><input type="checkbox"> Saved as Notice_YourName in Skills_Lab_3</div>
+      <div class="checkbox-item"><input type="checkbox"> Title big, bold, centred; subtitle italic</div>
+      <div class="checkbox-item"><input type="checkbox"> Two Heading 1 headings</div>
+    </div>
+    <div>
+      <div class="checkbox-item"><input type="checkbox"> Three-item bulleted list</div>
+      <div class="checkbox-item"><input type="checkbox"> Picture in, not squashed</div>
+      <div class="checkbox-item"><input type="checkbox"> No squiggles left; Page 1 of 1</div>
+    </div>
+  </div>
+  <p><strong>Time taken:</strong></p>
+  <div class="answer-line" contenteditable="true" style="max-width: 200px;">___ minutes</div>
 </div>
+
+<!-- ========================================== -->
+<!-- PAGE 3: STATION 2 - NUMBERS (BUDGET)        -->
+<!-- ========================================== -->
 <div class="page">
   <div class="header-bar">
-    <div class="header-title">Coming soon</div>
+    <div class="header-title">Station 2 (Numbers): The Club Budget</div>
     <div class="badge">Session 26 • Page 3</div>
   </div>
-  
-  <p>DRAFT PLACEHOLDER: this workbook is being written.</p>
+
+  <div class="dual-grid" style="grid-template-columns: 1fr 1fr 1fr;">
+    <div class="dual-box">
+      <div class="dual-box-title">⏱️ TIME LIMIT</div>
+      <p><strong>15 minutes</strong></p>
+    </div>
+    <div class="dual-box">
+      <div class="dual-box-title">📂 STARTER</div>
+      <p>A new blank spreadsheet. Type the table below yourself.</p>
+    </div>
+    <div class="dual-box">
+      <div class="dual-box-title">💾 SAVE AS</div>
+      <p><code>Club_Budget_YourName</code> (.xlsx) in <code>Skills_Lab_3</code></p>
+    </div>
+  </div>
+
+  <h2>1. Your Task</h2>
+  <p>The Tech Club has <strong>GHS 400</strong> to spend on the Open Day. Build the budget, let the formulas do the maths, and show the costs in a chart.</p>
+  <div class="dual-grid" style="grid-template-columns: 1.1fr 1fr; align-items: start;">
+    <div>
+  <table style="margin: 0; font-size: 12px;">
+    <thead><tr><th style="width: 8%;"></th><th>A</th><th>B</th><th>C</th></tr></thead>
+    <tbody>
+      <tr><td><strong>1</strong></td><td><strong>Item</strong></td><td><strong>Cost (GHS)</strong></td><td><strong>Check</strong></td></tr>
+      <tr><td><strong>2</strong></td><td>Exercise books</td><td style="text-align:right;">80</td><td style="color:#64748B;">IF formula</td></tr>
+      <tr><td><strong>3</strong></td><td>Markers</td><td style="text-align:right;">30</td><td></td></tr>
+      <tr><td><strong>4</strong></td><td>Flip chart paper</td><td style="text-align:right;">48</td><td></td></tr>
+      <tr><td><strong>5</strong></td><td>Extension cable</td><td style="text-align:right;">65</td><td></td></tr>
+      <tr><td><strong>6</strong></td><td>USB drives</td><td style="text-align:right;">90</td><td></td></tr>
+      <tr><td><strong>7</strong></td><td>Open Day snacks</td><td style="text-align:right;">75</td><td></td></tr>
+      <tr><td><strong>8</strong></td><td>Total</td><td style="color:#64748B;">SUM</td><td></td></tr>
+      <tr><td><strong>9</strong></td><td>Average</td><td style="color:#64748B;">AVERAGE</td><td></td></tr>
+      <tr><td><strong>10</strong></td><td>Highest</td><td style="color:#64748B;">MAX</td><td></td></tr>
+      <tr><td><strong>11</strong></td><td>Lowest</td><td style="color:#64748B;">MIN</td><td></td></tr>
+    </tbody>
+  </table>
+    </div>
+    <div>
+  <div class="step-card">
+    <div class="step-num">1</div>
+    <div class="step-content">Type rows 1 to 7 exactly as shown. Make row 1 bold. Save now with <span class="kbd-key">Ctrl + S</span>.</div>
+  </div>
+  <div class="step-card">
+    <div class="step-num">2</div>
+    <div class="step-content">In <strong>B8</strong> to <strong>B11</strong>, use functions with the range <code>B2:B7</code> to find the total, the average, the highest and the lowest cost.</div>
+  </div>
+  <div class="step-card">
+    <div class="step-num">3</div>
+    <div class="step-content">In <strong>C2</strong>, type <code>=IF(B2&gt;70,"Big spend","OK")</code>. Use the AutoFill handle to copy it down to <strong>C7</strong>.</div>
+  </div>
+  <div class="step-card">
+    <div class="step-num">4</div>
+    <div class="step-content">Select <strong>A1 to B7</strong> (not the Total row!) and insert a <strong>column chart</strong>. Give it the title <code>Open Day Budget</code>. Save again.</div>
+  </div>
+
+    </div>
+  </div>
+
+  <div class="callout">
+    <div class="callout-title">🔁 RE-TRY HINTS</div>
+    &bull; The cell shows words, not a number? Every formula starts with <code>=</code>, e.g. <code>=SUM(B2:B7)</code>.<br>
+    &bull; Say the colon as "through to": B2 through to B7.<br>
+    &bull; <code>#NAME?</code> means a typing error: check the spelling and that "Big spend" and "OK" are inside speech marks.<br>
+    &bull; One giant bar in the chart? You included row 8. Delete the chart and select A1 to B7 again.
+  </div>
+
+  <h2>2. Mentor Checklist</h2>
+  <div class="dual-grid">
+    <div>
+      <div class="checkbox-item"><input type="checkbox"> Saved as Club_Budget_YourName</div>
+      <div class="checkbox-item"><input type="checkbox"> Data typed correctly, header bold</div>
+      <div class="checkbox-item"><input type="checkbox"> SUM and AVERAGE correct</div>
+    </div>
+    <div>
+      <div class="checkbox-item"><input type="checkbox"> MAX and MIN correct</div>
+      <div class="checkbox-item"><input type="checkbox"> IF copied down C2 to C7</div>
+      <div class="checkbox-item"><input type="checkbox"> Titled chart, no Total bar</div>
+    </div>
+  </div>
+  <p><strong>My total is GHS</strong> <span class="answer-line" contenteditable="true" style="display:inline-block; min-width: 80px;"></span> <strong>. Is it within the GHS 400?</strong> <span class="answer-line" contenteditable="true" style="display:inline-block; min-width: 120px;"></span> &nbsp; <strong>Time taken:</strong> <span class="answer-line" contenteditable="true" style="display:inline-block; min-width: 80px;"></span></p>
 </div>
+
+<!-- ========================================== -->
+<!-- PAGE 4: STATION 3 - NUMBERS (SURVEY DATA)   -->
+<!-- ========================================== -->
 <div class="page">
   <div class="header-bar">
-    <div class="header-title">Coming soon</div>
+    <div class="header-title">Station 3 (Numbers): Survey Detective</div>
     <div class="badge">Session 26 • Page 4</div>
   </div>
-  
-  <p>DRAFT PLACEHOLDER: this workbook is being written.</p>
+
+  <div class="dual-grid" style="grid-template-columns: 1fr 1fr 1fr;">
+    <div class="dual-box">
+      <div class="dual-box-title">⏱️ TIME LIMIT</div>
+      <p><strong>15 minutes</strong></p>
+    </div>
+    <div class="dual-box">
+      <div class="dual-box-title">📂 STARTER FILE</div>
+      <p><code>Survey_Data.xlsx</code> in <code>BIH_Practice &gt; Skills_Lab_3</code></p>
+    </div>
+    <div class="dual-box">
+      <div class="dual-box-title">💾 SAVE AS</div>
+      <p><code>Survey_Results_YourName</code> (.xlsx)</p>
+    </div>
+  </div>
+
+  <h2>1. Your Task</h2>
+  <p>16 pupils answered a class survey like yours from Session 21. It uses pupil numbers, not names (ask only what you need!). Columns A to E: Pupil, Class, Travel, Favourite food, Screen time (hours).</p>
+  <div class="step-card">
+    <div class="step-num">1</div>
+    <div class="step-content">Open <code>Survey_Data.xlsx</code> and <strong>Save As</strong> <code>Survey_Results_YourName</code>. <strong>Freeze the top row</strong> (Excel: View → Freeze Panes → Freeze Top Row).</div>
+  </div>
+  <div class="step-card">
+    <div class="step-num">2</div>
+    <div class="step-content"><strong>Sort</strong> the whole table by <strong>Screen time</strong>, largest to smallest. Check: the top pupil is <strong>P07</strong>, and that row still says <strong>JHS 3, Walk, Kenkey, 6</strong>. If it does not, the rows broke apart: press <span class="kbd-key">Ctrl + Z</span>!</div>
+  </div>
+  <div class="step-card">
+    <div class="step-num">3</div>
+    <div class="step-content"><strong>Filter</strong> to show only pupils who <strong>Walk</strong>. Write how many rows show, then clear the filter.</div>
+  </div>
+  <div class="step-card">
+    <div class="step-num">4</div>
+    <div class="step-content">In <strong>G2</strong> to <strong>G4</strong>, use <code>COUNTIF</code> to count the pupils who walk (column C), who chose <strong>Jollof</strong> (column D) and who have <strong>4 or more</strong> hours of screen time (column E, use <code>"&gt;=4"</code>). Type a label for each in F2 to F4. Save.</div>
+  </div>
+
+  <table>
+    <thead><tr><th style="width: 40%;">Question</th><th style="width: 30%;">My formula</th><th style="width: 30%;">Answer</th></tr></thead>
+    <tbody>
+      <tr><td>Rows showing when filtered to Walk</td><td style="color:#64748B;">(no formula)</td><td><div class="answer-line" contenteditable="true"></div></td></tr>
+      <tr><td>Pupils who walk (G2)</td><td><div class="answer-line" contenteditable="true">=COUNTIF(...)</div></td><td><div class="answer-line" contenteditable="true"></div></td></tr>
+      <tr><td>Pupils who chose Jollof (G3)</td><td><div class="answer-line" contenteditable="true"></div></td><td><div class="answer-line" contenteditable="true"></div></td></tr>
+      <tr><td>Pupils with 4+ hours screen time (G4)</td><td><div class="answer-line" contenteditable="true"></div></td><td><div class="answer-line" contenteditable="true"></div></td></tr>
+    </tbody>
+  </table>
+  <p><strong>My one-sentence finding:</strong></p>
+  <div class="answer-line" contenteditable="true">e.g. Half of the pupils in the survey ...</div>
+
+  <div class="callout">
+    <div class="callout-title">🔁 RE-TRY HINTS</div>
+    &bull; Sort: click <strong>one cell</strong> in column E (never the whole column on its own), then Data → Sort Largest to Smallest. If Excel asks, choose <strong>Expand the selection</strong>. Google Sheets: Data → Sort range → tick "Data has header row".<br>
+    &bull; COUNTIF needs a range, a comma, then what to count in speech marks: <code>=COUNTIF(C2:C17,"Walk")</code>.
+  </div>
+
+  <h2>2. Mentor Checklist</h2>
+  <div class="dual-grid">
+    <div>
+      <div class="checkbox-item"><input type="checkbox"> Saved as Survey_Results_YourName</div>
+      <div class="checkbox-item"><input type="checkbox"> Top row frozen</div>
+      <div class="checkbox-item"><input type="checkbox"> Sorted, rows not broken (P07 on top)</div>
+    </div>
+    <div>
+      <div class="checkbox-item"><input type="checkbox"> Filter used, then cleared</div>
+      <div class="checkbox-item"><input type="checkbox"> Three correct COUNTIFs with labels</div>
+      <div class="checkbox-item"><input type="checkbox"> A true one-sentence finding</div>
+    </div>
+  </div>
 </div>
+
+<!-- ========================================== -->
+<!-- PAGE 5: STATION 4 - SLIDES                  -->
+<!-- ========================================== -->
 <div class="page">
   <div class="header-bar">
-    <div class="header-title">Coming soon</div>
+    <div class="header-title">Station 4 (Slides): The Open Day Deck</div>
     <div class="badge">Session 26 • Page 5</div>
   </div>
-  
-  <p>DRAFT PLACEHOLDER: this workbook is being written.</p>
+
+  <div class="dual-grid" style="grid-template-columns: 1fr 1fr 1fr;">
+    <div class="dual-box">
+      <div class="dual-box-title">⏱️ TIME LIMIT</div>
+      <p><strong>13 minutes</strong> to build + <strong>1 minute</strong> to present one slide</p>
+    </div>
+    <div class="dual-box">
+      <div class="dual-box-title">📂 STARTER FILES</div>
+      <p><code>Deck_Brief.txt</code> and <code>Open_Day_Picture.png</code> in <code>Skills_Lab_3</code></p>
+    </div>
+    <div class="dual-box">
+      <div class="dual-box-title">💾 SAVE AS</div>
+      <p><code>Open_Day_Deck_YourName</code> (.pptx)</p>
+    </div>
+  </div>
+
+  <h2>1. Your Task</h2>
+  <p>The brief is one long paragraph about the club. Nobody in the hall will read a paragraph on a screen! Turn it into a clear <strong>4-slide deck</strong>, then present one slide to your mentor or partner.</p>
+
+  <!-- DIAGRAM: THE 4-SLIDE PLAN -->
+  <div class="diagram-container">
+    <svg width="680" height="130" viewBox="0 0 680 130" xmlns="http://www.w3.org/2000/svg">
+      <g transform="translate(10, 8)">
+        <rect x="0" y="0" width="155" height="88" rx="4" fill="#FFFFFF" stroke="#3A0CA3" stroke-width="2"/>
+        <text x="77" y="36" font-size="12" font-weight="bold" fill="#1E1E24" text-anchor="middle">Tech Club</text>
+        <text x="77" y="51" font-size="12" font-weight="bold" fill="#1E1E24" text-anchor="middle">Open Day</text>
+        <text x="77" y="70" font-size="9" fill="#475569" text-anchor="middle">by Ama Mensah</text>
+        <text x="77" y="112" font-size="10" font-weight="bold" fill="#3A0CA3" text-anchor="middle">1. Title Slide</text>
+      </g>
+      <g transform="translate(180, 8)">
+        <rect x="0" y="0" width="155" height="88" rx="4" fill="#FFFFFF" stroke="#3A0CA3" stroke-width="2"/>
+        <text x="10" y="20" font-size="11" font-weight="bold" fill="#1E1E24">What We Learn</text>
+        <text x="14" y="38" font-size="9" fill="#1E1E24">• Fast, accurate typing</text>
+        <text x="14" y="52" font-size="9" fill="#1E1E24">• Letters and posters</text>
+        <text x="14" y="66" font-size="9" fill="#1E1E24">• Spreadsheets and charts</text>
+        <text x="14" y="80" font-size="9" fill="#1E1E24">• Surveys and slides</text>
+        <text x="77" y="112" font-size="10" font-weight="bold" fill="#3A0CA3" text-anchor="middle">2. Title and Content</text>
+      </g>
+      <g transform="translate(350, 8)">
+        <rect x="0" y="0" width="155" height="88" rx="4" fill="#FFFFFF" stroke="#3A0CA3" stroke-width="2"/>
+        <text x="10" y="20" font-size="11" font-weight="bold" fill="#1E1E24">Why Join?</text>
+        <text x="12" y="40" font-size="9" fill="#1E1E24">• Helps schoolwork</text>
+        <text x="12" y="54" font-size="9" fill="#1E1E24">• Ready for SHS</text>
+        <text x="12" y="68" font-size="9" fill="#1E1E24">• Skills for jobs</text>
+        <rect x="100" y="30" width="46" height="46" rx="3" fill="#DBEAFE" stroke="#4361EE"/>
+        <text x="123" y="57" font-size="8" fill="#1E40AF" text-anchor="middle">picture</text>
+        <text x="77" y="112" font-size="10" font-weight="bold" fill="#3A0CA3" text-anchor="middle">3. Text + picture</text>
+      </g>
+      <g transform="translate(520, 8)">
+        <rect x="0" y="0" width="155" height="88" rx="4" fill="#1E1E24" stroke="#3A0CA3" stroke-width="2"/>
+        <text x="10" y="20" font-size="11" font-weight="bold" fill="#FFFFFF">Come Along!</text>
+        <text x="14" y="40" font-size="9" fill="#FFFFFF">• Friday 27 November</text>
+        <text x="14" y="54" font-size="9" fill="#FFFFFF">• 2:00 pm, ICT lab</text>
+        <text x="14" y="68" font-size="9" fill="#FFFFFF">• Free for every pupil</text>
+        <text x="77" y="112" font-size="10" font-weight="bold" fill="#3A0CA3" text-anchor="middle">4. Where and when</text>
+      </g>
+    </svg>
+    <div class="diagram-caption">Figure 26.2: One possible plan. Dark text on a light background, or light text on a dark background: both have strong contrast.</div>
+  </div>
+
+  <div class="step-card">
+    <div class="step-num">1</div>
+    <div class="step-content">Open <code>Deck_Brief.txt</code> and read it. Start a new presentation and save it as <code>Open_Day_Deck_YourName</code>.</div>
+  </div>
+  <div class="step-card">
+    <div class="step-num">2</div>
+    <div class="step-content">Make 4 slides like Figure 26.2. Use the <strong>Title Slide</strong> layout for slide 1 and <strong>Title and Content</strong> for the others. Follow the <strong>6-by-6 rule</strong>: no more than 6 bullets, no more than 6 words each. Keep body text at 24 pt or bigger.</div>
+  </div>
+  <div class="step-card">
+    <div class="step-num">3</div>
+    <div class="step-content">Put <code>Open_Day_Picture.png</code> on slide 3. Resize it from a <strong>corner</strong> so it is not squashed. Choose a design with <strong>strong contrast</strong>. Save.</div>
+  </div>
+  <div class="step-card">
+    <div class="step-num">4</div>
+    <div class="step-content"><strong>Present one slide.</strong> Go to slide 2 or 3 and press <span class="kbd-key">Shift + F5</span> (Google Slides: the <strong>Slideshow</strong> button). Face your audience, speak for about one minute in your own words (do not read the bullets!), then press <span class="kbd-key">Esc</span>.</div>
+  </div>
+
+  <div class="callout">
+    <div class="callout-title">🔁 RE-TRY HINTS</div>
+    &bull; Too many words? Cut the little words: "We learn how to make spreadsheets with charts" becomes "Spreadsheets and charts".<br>
+    &bull; Text hard to read? Change the design or font colour: dark on light, or light on dark. Never red on green.
+  </div>
+
+  <h2>2. Mentor Checklist</h2>
+  <div class="dual-grid">
+    <div>
+      <div class="checkbox-item"><input type="checkbox"> Saved; exactly 4 slides, right layouts</div>
+      <div class="checkbox-item"><input type="checkbox"> 6-by-6 rule kept on every slide</div>
+      <div class="checkbox-item"><input type="checkbox"> Strong contrast, readable size</div>
+    </div>
+    <div>
+      <div class="checkbox-item"><input type="checkbox"> Picture on slide 3, not squashed</div>
+      <div class="checkbox-item"><input type="checkbox"> Facts match the brief (day, time, place)</div>
+      <div class="checkbox-item"><input type="checkbox"> Presented one slide, faced the audience</div>
+    </div>
+  </div>
 </div>
+
+<!-- ========================================== -->
+<!-- PAGE 6: SCORE SHEET & SIGN-OFF              -->
+<!-- ========================================== -->
 <div class="page">
   <div class="header-bar">
-    <div class="header-title">Coming soon</div>
+    <div class="header-title">Score Sheet, Passport Skills &amp; Reflection</div>
     <div class="badge">Session 26 • Page 6</div>
   </div>
-  
-  <p>DRAFT PLACEHOLDER: this workbook is being written.</p>
+
+  <h2>1. My Triathlon Score Sheet</h2>
+  <p>Each station has 6 checklist ticks. Add <strong>1 bonus point</strong> if you finished inside the time limit.</p>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 30%;">Station</th>
+        <th style="width: 12%; text-align:center;">Done?</th>
+        <th style="width: 16%; text-align:center;">Time taken</th>
+        <th style="width: 14%; text-align:center;">Ticks (/6)</th>
+        <th style="width: 12%; text-align:center;">Bonus</th>
+        <th style="width: 16%; text-align:center;">Mentor initials</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>1. Words: Open Day notice</td><td style="text-align:center;"><input type="checkbox"></td><td><div class="answer-line" contenteditable="true"></div></td><td><div class="answer-line" contenteditable="true"></div></td><td><div class="answer-line" contenteditable="true"></div></td><td><div class="answer-line" contenteditable="true"></div></td></tr>
+      <tr><td>2. Numbers: Club budget</td><td style="text-align:center;"><input type="checkbox"></td><td><div class="answer-line" contenteditable="true"></div></td><td><div class="answer-line" contenteditable="true"></div></td><td><div class="answer-line" contenteditable="true"></div></td><td><div class="answer-line" contenteditable="true"></div></td></tr>
+      <tr><td>3. Numbers: Survey detective</td><td style="text-align:center;"><input type="checkbox"></td><td><div class="answer-line" contenteditable="true"></div></td><td><div class="answer-line" contenteditable="true"></div></td><td><div class="answer-line" contenteditable="true"></div></td><td><div class="answer-line" contenteditable="true"></div></td></tr>
+      <tr><td>4. Slides: Open Day deck</td><td style="text-align:center;"><input type="checkbox"></td><td><div class="answer-line" contenteditable="true"></div></td><td><div class="answer-line" contenteditable="true"></div></td><td><div class="answer-line" contenteditable="true"></div></td><td><div class="answer-line" contenteditable="true"></div></td></tr>
+      <tr><td><strong>My total (out of 28)</strong></td><td colspan="5"><div class="answer-line" contenteditable="true"></div></td></tr>
+    </tbody>
+  </table>
+
+  <h2>2. Passport Skills: Block 4 (Office Skills)</h2>
+  <p>Your mentor ticks each skill you showed today. These ticks count towards your <strong>Silver Passport</strong>, which is awarded at Skills Lab 4 (Session 35).</p>
+  <table>
+    <thead>
+      <tr><th style="width: 70%;">I can…</th><th style="width: 15%; text-align:center;">Station</th><th style="width: 15%; text-align:center;">Mentor ✓</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Format a document with styles, a bulleted list and a picture, and spell-check it</td><td style="text-align:center;">1</td><td style="text-align:center;"><input type="checkbox"></td></tr>
+      <tr><td>Use formulas and the functions SUM, AVERAGE, MAX, MIN and IF</td><td style="text-align:center;">2</td><td style="text-align:center;"><input type="checkbox"></td></tr>
+      <tr><td>Make a correct chart with a title (no Total row)</td><td style="text-align:center;">2</td><td style="text-align:center;"><input type="checkbox"></td></tr>
+      <tr><td>Sort and filter data without breaking rows, and count with COUNTIF</td><td style="text-align:center;">3</td><td style="text-align:center;"><input type="checkbox"></td></tr>
+      <tr><td>Design clear slides (6-by-6, contrast) and present one to an audience</td><td style="text-align:center;">4</td><td style="text-align:center;"><input type="checkbox"></td></tr>
+      <tr><td>Save files with correct names in the right folder, using shortcuts</td><td style="text-align:center;">All</td><td style="text-align:center;"><input type="checkbox"></td></tr>
+    </tbody>
+  </table>
+
+  <h2>3. Reflection</h2>
+  <p><strong>What I'm proud of today:</strong></p>
+  <div class="answer-line" contenteditable="true">I am proud that I...</div>
+  <div class="answer-line" contenteditable="true"></div>
+  <p><strong>What I'll practise before Skills Lab 4:</strong></p>
+  <div class="answer-line" contenteditable="true">I will practise...</div>
+  <div class="answer-line" contenteditable="true"></div>
+
+  <div style="border-top: 1px solid var(--bih-border); margin-top: 25px; padding-top: 12px; display: flex; justify-content: space-between; font-size: 13px;">
+    <div><strong>Mentor Signature:</strong> _____________________________</div>
+    <div><strong>Date Completed:</strong> ____________________</div>
+  </div>
 </div>
+
 </body>
 </html>

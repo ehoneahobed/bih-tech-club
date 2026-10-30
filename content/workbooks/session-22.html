@@ -255,53 +255,437 @@
 </head>
 <body>
 
+<!-- ========================================== -->
+<!-- PAGE 1: ASKING QUESTIONS OF DATA            -->
+<!-- ========================================== -->
 <div class="page">
   <div class="header-bar">
     <div class="header-title">Bozoma Innovation Hub • Tech Club</div>
     <div class="badge">Session 22 • Page 1</div>
   </div>
+
+  <div class="student-meta">
+    <div class="meta-row">
+      <span class="meta-label">Learner Full Name:</span>
+      <div class="editable-line" contenteditable="true">Ama Mensah</div>
+      <span class="meta-label" style="min-width: 90px;">School:</span>
+      <div class="editable-line" contenteditable="true">Bozoma Model JHS</div>
+    </div>
+    <div class="meta-row">
+      <span class="meta-label">Assigned Workstation:</span>
+      <div class="editable-line" contenteditable="true" style="max-width: 140px;">PC-01</div>
+      <span class="meta-label" style="min-width: 50px;">Class:</span>
+      <div class="editable-line" contenteditable="true" style="max-width: 90px;">JHS 1</div>
+    </div>
+  </div>
+
   <h1>Session 22: Spreadsheets 3: Working with Data</h1>
-  <p>DRAFT PLACEHOLDER: this workbook is being written.</p>
+  <p>In Sessions 19 and 20 you typed numbers, wrote formulas, used SUM, AVERAGE, MAX and MIN, and drew a chart. In Session 21 your class answered a survey. Now you have a sheet full of real answers, called <strong>data</strong>. Today you learn to <strong>ask it questions</strong>: Who has the longest journey? How many of us walk? What food wins? Then you will tell the class what you found, in one clear sentence and one clear chart.</p>
+
+  <h2>1. Plain Talk: Morning Assembly</h2>
+  <p>Think of your whole school at morning assembly. The head teacher can do four clever things with all those pupils, and a spreadsheet can do exactly the same four things with rows of data:</p>
+
+  <!-- DIAGRAM: FOUR ASSEMBLY COMMANDS -->
+  <div class="diagram-container">
+    <svg width="680" height="215" viewBox="0 0 680 215" xmlns="http://www.w3.org/2000/svg">
+      <!-- SORT -->
+      <g transform="translate(8, 8)">
+        <rect x="0" y="0" width="160" height="198" rx="10" fill="#EEF2FF" stroke="#4361EE" stroke-width="2"/>
+        <text x="80" y="24" font-size="13" font-weight="bold" fill="#3730A3" text-anchor="middle">SORT</text>
+        <rect x="28" y="96" width="14" height="30" rx="4" fill="#4361EE"/>
+        <rect x="50" y="86" width="14" height="40" rx="4" fill="#4361EE"/>
+        <rect x="72" y="76" width="14" height="50" rx="4" fill="#4361EE"/>
+        <rect x="94" y="66" width="14" height="60" rx="4" fill="#4361EE"/>
+        <rect x="116" y="56" width="14" height="70" rx="4" fill="#4361EE"/>
+        <text x="80" y="150" font-size="9.5" fill="#1E293B" text-anchor="middle">"Line up from the</text>
+        <text x="80" y="163" font-size="9.5" fill="#1E293B" text-anchor="middle">shortest to the tallest."</text>
+        <text x="80" y="185" font-size="9.5" font-weight="bold" fill="#3730A3" text-anchor="middle">Puts rows in order</text>
+      </g>
+      <!-- FILTER -->
+      <g transform="translate(180, 8)">
+        <rect x="0" y="0" width="160" height="198" rx="10" fill="#FFF7ED" stroke="#EA580C" stroke-width="2"/>
+        <text x="80" y="24" font-size="13" font-weight="bold" fill="#9A3412" text-anchor="middle">FILTER</text>
+        <circle cx="35" cy="80" r="9" fill="#FDBA74"/><circle cx="58" cy="80" r="9" fill="#EA580C"/><circle cx="81" cy="80" r="9" fill="#FDBA74"/><circle cx="104" cy="80" r="9" fill="#EA580C"/><circle cx="127" cy="80" r="9" fill="#FDBA74"/>
+        <circle cx="58" cy="110" r="9" fill="#EA580C"/><circle cx="104" cy="110" r="9" fill="#EA580C"/>
+        <text x="80" y="150" font-size="9.5" fill="#1E293B" text-anchor="middle">"Only JHS 2, step</text>
+        <text x="80" y="163" font-size="9.5" fill="#1E293B" text-anchor="middle">forward." (The rest stay.)</text>
+        <text x="80" y="185" font-size="9.5" font-weight="bold" fill="#9A3412" text-anchor="middle">Shows only some rows</text>
+      </g>
+      <!-- COUNTIF -->
+      <g transform="translate(352, 8)">
+        <rect x="0" y="0" width="160" height="198" rx="10" fill="#ECFDF5" stroke="#10B981" stroke-width="2"/>
+        <text x="80" y="24" font-size="13" font-weight="bold" fill="#047857" text-anchor="middle">COUNTIF</text>
+        <text x="80" y="95" font-size="34" font-weight="bold" fill="#10B981" text-anchor="middle">✋ 12</text>
+        <text x="80" y="150" font-size="9.5" fill="#1E293B" text-anchor="middle">"Hands up if you</text>
+        <text x="80" y="163" font-size="9.5" fill="#1E293B" text-anchor="middle">walked to school today."</text>
+        <text x="80" y="185" font-size="9.5" font-weight="bold" fill="#047857" text-anchor="middle">Counts matching rows</text>
+      </g>
+      <!-- IF -->
+      <g transform="translate(524, 8)">
+        <rect x="0" y="0" width="148" height="198" rx="10" fill="#F3E8FF" stroke="#7C3AED" stroke-width="2"/>
+        <text x="74" y="24" font-size="13" font-weight="bold" fill="#5B21B6" text-anchor="middle">IF</text>
+        <path d="M 74,44 L 104,70 L 74,96 L 44,70 Z" fill="#7C3AED"/>
+        <text x="74" y="74" font-size="10" font-weight="bold" fill="#FFFFFF" text-anchor="middle">50+?</text>
+        <text x="30" y="118" font-size="9.5" font-weight="bold" fill="#047857" text-anchor="middle">← yes</text>
+        <text x="118" y="118" font-size="9.5" font-weight="bold" fill="#B91C1C" text-anchor="middle">no →</text>
+        <text x="74" y="150" font-size="9.5" fill="#1E293B" text-anchor="middle">"50 or more, go left.</text>
+        <text x="74" y="163" font-size="9.5" fill="#1E293B" text-anchor="middle">Others, go right."</text>
+        <text x="74" y="185" font-size="9.5" font-weight="bold" fill="#5B21B6" text-anchor="middle">Labels each row</text>
+      </g>
+    </svg>
+    <div class="diagram-caption">Figure 22.1: Sort, filter, count and decide: four assembly commands that work on spreadsheet rows too.</div>
+  </div>
+
+  <div class="callout">
+    <div class="callout-title">💡 ONE ROW = ONE PERSON</div>
+    In a survey sheet, every <strong>row</strong> is one person's answers and every <strong>column</strong> is one question. Row 1 holds the column names (the <strong>header row</strong>). Keep that picture in your head all lesson: it is the secret to not making the classic mistake on the next page.
+  </div>
 </div>
+
+<!-- ========================================== -->
+<!-- PAGE 2: FREEZE AND SORT                     -->
+<!-- ========================================== -->
 <div class="page">
   <div class="header-bar">
-    <div class="header-title">Coming soon</div>
+    <div class="header-title">Freeze the Header &amp; Sort Safely</div>
     <div class="badge">Session 22 • Page 2</div>
   </div>
-  
-  <p>DRAFT PLACEHOLDER: this workbook is being written.</p>
+
+  <h2>1. Our Data</h2>
+  <p>Here are the first rows of the class survey file (<code>Class_Survey</code>). It has 20 rows of answers, from row 2 down to row 21.</p>
+  <table style="font-size: 12px;">
+    <thead><tr><th style="width:5%; background:#E2E8F0; color:#334155;"></th><th style="background:#E2E8F0; color:#334155;">A</th><th style="background:#E2E8F0; color:#334155;">B</th><th style="background:#E2E8F0; color:#334155;">C</th><th style="background:#E2E8F0; color:#334155;">D</th><th style="background:#E2E8F0; color:#334155;">E</th><th style="background:#E2E8F0; color:#334155;">F</th><th style="background:#E2E8F0; color:#334155;">G</th></tr></thead>
+    <tbody>
+      <tr><td style="background:#E2E8F0;"><strong>1</strong></td><td><strong>No.</strong></td><td><strong>Class</strong></td><td><strong>Travel</strong></td><td><strong>Minutes</strong></td><td><strong>Food</strong></td><td><strong>Screen hours</strong></td><td><strong>Enjoy (1–5)</strong></td></tr>
+      <tr><td style="background:#E2E8F0;"><strong>2</strong></td><td>1</td><td>JHS 1</td><td>Walk</td><td style="text-align:right;">15</td><td>Jollof</td><td style="text-align:right;">2</td><td style="text-align:right;">5</td></tr>
+      <tr><td style="background:#E2E8F0;"><strong>3</strong></td><td>2</td><td>JHS 2</td><td>Trotro or bus</td><td style="text-align:right;">40</td><td>Waakye</td><td style="text-align:right;">4</td><td style="text-align:right;">4</td></tr>
+      <tr><td style="background:#E2E8F0;"><strong>4</strong></td><td>3</td><td>JHS 1</td><td>Walk</td><td style="text-align:right;">10</td><td>Banku</td><td style="text-align:right;">1</td><td style="text-align:right;">5</td></tr>
+      <tr><td style="background:#E2E8F0;"><strong>…</strong></td><td colspan="7" style="color:#64748B;"><em>…and 17 more rows, down to row 21.</em></td></tr>
+    </tbody>
+  </table>
+
+  <h2>2. Freeze the Header Row</h2>
+  <p>When you scroll down a long sheet, row 1 disappears and you forget which column is which. <strong>Freezing</strong> pins it to the top. In Excel: <strong>View</strong> &rarr; <strong>Freeze Panes</strong> &rarr; <strong>Freeze Top Row</strong>. Scroll down: the header stays!</p>
+  <p style="font-size: 12px; color:#3A0CA3;"><em>Google Sheets: View &rarr; Freeze &rarr; 1 row. LibreOffice Calc: View &rarr; Freeze Cells &rarr; Freeze First Row.</em></p>
+
+  <h2>3. Sort Without Breaking the Rows</h2>
+  <p><strong>Sorting</strong> puts the rows in order: A to Z (or Z to A) for words, smallest to largest (or largest to smallest) for numbers. But sorting has one famous trap:</p>
+
+  <!-- DIAGRAM: THE CLASSIC SORT MISTAKE -->
+  <div class="diagram-container">
+    <svg width="680" height="185" viewBox="0 0 680 185" xmlns="http://www.w3.org/2000/svg">
+      <!-- before -->
+      <text x="105" y="18" font-size="11" font-weight="bold" fill="#334155" text-anchor="middle">BEFORE</text>
+      <g transform="translate(20, 26)" font-size="10">
+        <rect x="0" y="0" width="170" height="22" fill="#E2E8F0"/>
+        <text x="8" y="15" font-weight="bold" fill="#1E293B">Name</text><text x="68" y="15" font-weight="bold" fill="#1E293B">Travel</text><text x="128" y="15" font-weight="bold" fill="#1E293B">Mins</text>
+        <rect x="0" y="22" width="170" height="66" fill="#FFFFFF" stroke="#94A3B8"/>
+        <text x="8" y="38" fill="#1E293B">Ama</text><text x="68" y="38" fill="#1E293B">Walk</text><text x="128" y="38" fill="#1E293B">15</text>
+        <text x="8" y="60" fill="#1E293B">Kofi</text><text x="68" y="60" fill="#1E293B">Trotro</text><text x="128" y="60" fill="#1E293B">55</text>
+        <text x="8" y="82" fill="#1E293B">Esi</text><text x="68" y="82" fill="#1E293B">Taxi</text><text x="128" y="82" fill="#1E293B">30</text>
+      </g>
+      <!-- wrong -->
+      <text x="340" y="18" font-size="11" font-weight="bold" fill="#B91C1C" text-anchor="middle">✘ SORTED ONLY "MINS"</text>
+      <g transform="translate(255, 26)" font-size="10">
+        <rect x="0" y="0" width="170" height="22" fill="#E2E8F0"/>
+        <text x="8" y="15" font-weight="bold" fill="#1E293B">Name</text><text x="68" y="15" font-weight="bold" fill="#1E293B">Travel</text><text x="128" y="15" font-weight="bold" fill="#1E293B">Mins</text>
+        <rect x="0" y="22" width="170" height="66" fill="#FEF2F2" stroke="#EF4444"/>
+        <rect x="120" y="22" width="50" height="66" fill="#FECACA"/>
+        <text x="8" y="38" fill="#1E293B">Ama</text><text x="68" y="38" fill="#1E293B">Walk</text><text x="128" y="38" font-weight="bold" fill="#B91C1C">55</text>
+        <text x="8" y="60" fill="#1E293B">Kofi</text><text x="68" y="60" fill="#1E293B">Trotro</text><text x="128" y="60" font-weight="bold" fill="#B91C1C">30</text>
+        <text x="8" y="82" fill="#1E293B">Esi</text><text x="68" y="82" fill="#1E293B">Taxi</text><text x="128" y="82" font-weight="bold" fill="#B91C1C">15</text>
+      </g>
+      <text x="340" y="134" font-size="9.5" fill="#7F1D1D" text-anchor="middle">Now Ama "walks for 55 minutes".</text>
+      <text x="340" y="148" font-size="9.5" fill="#7F1D1D" text-anchor="middle">The rows are broken: the data is wrong!</text>
+      <!-- right -->
+      <text x="575" y="18" font-size="11" font-weight="bold" fill="#047857" text-anchor="middle">✔ SORTED WHOLE ROWS</text>
+      <g transform="translate(490, 26)" font-size="10">
+        <rect x="0" y="0" width="170" height="22" fill="#E2E8F0"/>
+        <text x="8" y="15" font-weight="bold" fill="#1E293B">Name</text><text x="68" y="15" font-weight="bold" fill="#1E293B">Travel</text><text x="128" y="15" font-weight="bold" fill="#1E293B">Mins</text>
+        <rect x="0" y="22" width="170" height="66" fill="#ECFDF5" stroke="#10B981"/>
+        <text x="8" y="38" fill="#1E293B">Kofi</text><text x="68" y="38" fill="#1E293B">Trotro</text><text x="128" y="38" font-weight="bold" fill="#047857">55</text>
+        <text x="8" y="60" fill="#1E293B">Esi</text><text x="68" y="60" fill="#1E293B">Taxi</text><text x="128" y="60" font-weight="bold" fill="#047857">30</text>
+        <text x="8" y="82" fill="#1E293B">Ama</text><text x="68" y="82" fill="#1E293B">Walk</text><text x="128" y="82" font-weight="bold" fill="#047857">15</text>
+      </g>
+      <text x="575" y="134" font-size="9.5" fill="#065F46" text-anchor="middle">Each person moved with</text>
+      <text x="575" y="148" font-size="9.5" fill="#065F46" text-anchor="middle">all their answers.</text>
+      <text x="340" y="176" font-size="10.5" font-weight="bold" fill="#3A0CA3" text-anchor="middle">Never select just one column before you sort. Click ONE cell, and let the whole row travel.</text>
+    </svg>
+    <div class="diagram-caption">Figure 22.2: The classic sorting mistake. Sorting one column on its own mixes up everybody's answers.</div>
+  </div>
+
+  <div class="step-card">
+    <div class="step-num">1</div>
+    <div class="step-content"><strong>Click one cell</strong> in the column you want to sort by, for example <strong>D5</strong> (Minutes). Do <em>not</em> click the column letter.</div>
+  </div>
+  <div class="step-card">
+    <div class="step-num">2</div>
+    <div class="step-content"><strong>Data</strong> &rarr; <strong>Sort Largest to Smallest</strong> (for words: <strong>Sort A to Z</strong>). Excel sorts the whole table and keeps row 1 at the top. If a <strong>Sort Warning</strong> box appears, choose <strong>Expand the selection</strong>.</div>
+  </div>
+  <p style="font-size: 12px; color:#3A0CA3;"><em>Google Sheets: freeze row 1 first, then Data &rarr; Sort sheet &rarr; Z to A. LibreOffice: Data &rarr; Sort Descending. Made a mess? <span class="kbd-key">Ctrl + Z</span> straight away!</em></p>
 </div>
+
+<!-- ========================================== -->
+<!-- PAGE 3: FILTER AND COUNTIF                  -->
+<!-- ========================================== -->
 <div class="page">
   <div class="header-bar">
-    <div class="header-title">Coming soon</div>
+    <div class="header-title">Filter &amp; Count: COUNTIF</div>
     <div class="badge">Session 22 • Page 3</div>
   </div>
-  
-  <p>DRAFT PLACEHOLDER: this workbook is being written.</p>
+
+  <h2>1. Filter: Show Only the Rows You Want</h2>
+  <p>A <strong>filter</strong> hides the rows you don't want to see right now, like asking only JHS 2 to step forward. Nothing is deleted: clear the filter and every row comes back.</p>
+  <!-- DIAGRAM: FILTER DROP-DOWN -->
+  <div class="diagram-container">
+    <svg width="680" height="175" viewBox="0 0 680 175" xmlns="http://www.w3.org/2000/svg">
+      <g transform="translate(20, 12)" font-size="10">
+        <rect x="0" y="0" width="300" height="22" fill="#E2E8F0"/>
+        <text x="8" y="15" font-weight="bold" fill="#1E293B">No.</text>
+        <text x="50" y="15" font-weight="bold" fill="#1E293B">Class</text>
+        <text x="120" y="15" font-weight="bold" fill="#1E293B">Travel</text>
+        <rect x="190" y="5" width="12" height="12" fill="#FFFFFF" stroke="#475569"/><path d="M 193,9 L 199,9 L 196,14 Z" fill="#475569"/>
+        <text x="220" y="15" font-weight="bold" fill="#1E293B">Minutes</text>
+        <!-- dropdown -->
+        <rect x="120" y="26" width="160" height="128" rx="4" fill="#FFFFFF" stroke="#475569"/>
+        <text x="130" y="44" fill="#334155">Sort A to Z</text>
+        <line x1="126" y1="52" x2="274" y2="52" stroke="#E2E8F0"/>
+        <rect x="130" y="60" width="10" height="10" fill="none" stroke="#475569"/><text x="146" y="69" fill="#334155">(Select All)</text>
+        <rect x="130" y="78" width="10" height="10" fill="none" stroke="#475569"/><text x="146" y="87" fill="#334155">Bicycle</text>
+        <rect x="130" y="96" width="10" height="10" fill="none" stroke="#475569"/><text x="146" y="105" fill="#334155">Car</text>
+        <rect x="130" y="114" width="10" height="10" fill="none" stroke="#475569"/><text x="146" y="123" fill="#334155">Taxi</text>
+        <rect x="130" y="132" width="10" height="10" fill="#EA580C"/><text x="146" y="141" font-weight="bold" fill="#9A3412">Trotro or bus  ✔</text>
+      </g>
+      <text x="355" y="36" font-size="10.5" font-weight="bold" fill="#3A0CA3">1. Click inside the data &rarr; Data &rarr; Filter.</text>
+      <text x="355" y="52" font-size="9.5" fill="#334155">Little arrows appear in the header row.</text>
+      <text x="355" y="78" font-size="10.5" font-weight="bold" fill="#3A0CA3">2. Click the arrow on Travel.</text>
+      <text x="355" y="94" font-size="9.5" fill="#334155">Untick (Select All), tick only "Trotro or bus", OK.</text>
+      <text x="355" y="120" font-size="10.5" font-weight="bold" fill="#3A0CA3">3. Read the result.</text>
+      <text x="355" y="136" font-size="9.5" fill="#334155">The row numbers turn blue and some are missing:</text>
+      <text x="355" y="150" font-size="9.5" fill="#334155">those rows are hidden, not gone.</text>
+      <text x="355" y="166" font-size="10.5" font-weight="bold" fill="#3A0CA3">4. Data &rarr; Clear brings every row back.</text>
+    </svg>
+    <div class="diagram-caption">Figure 22.3: Filtering the Travel column in Excel (Google Sheets: Data &rarr; Create a filter. LibreOffice: Data &rarr; AutoFilter).</div>
+  </div>
+
+  <h2>2. COUNTIF: Count Only the Matching Cells</h2>
+  <p>You met <code>=SUM</code> and <code>=AVERAGE</code> in Session 20. <strong>COUNTIF</strong> counts how many cells in a range match a rule. It has two parts inside the brackets, separated by a comma:</p>
+  <div style="text-align:center; font-family: monospace; font-size: 17px; font-weight: bold; margin: 10px 0; color: #1E293B;">
+    =COUNTIF(<span style="color:#047857;">C2:C21</span>, <span style="color:#7C3AED;">"Walk"</span>)
+  </div>
+  <div class="dual-grid">
+    <div class="dual-box">
+      <div class="dual-box-title" style="color:#047857;">WHERE TO LOOK: the range</div>
+      <p><code>C2:C21</code> means "the Travel answers, C2 through to C21". Leave out row 1, the header.</p>
+    </div>
+    <div class="dual-box">
+      <div class="dual-box-title" style="color:#7C3AED;">WHAT TO COUNT: the rule</div>
+      <p><code>"Walk"</code> in quotation marks for words, spelt exactly like the cells. For numbers: <code>5</code>, or <code>"&gt;4"</code> for "more than 4".</p>
+    </div>
+  </div>
+
+  <h2>3. Your Turn: Be the Computer</h2>
+  <p>Cells E2 to E7 contain: <strong>Jollof, Waakye, Jollof, Fufu, Jollof, Waakye</strong>. What does each formula show?</p>
+  <table>
+    <thead><tr><th style="width: 60%;">Formula</th><th>Result</th></tr></thead>
+    <tbody>
+      <tr><td><code>=COUNTIF(E2:E7,"Jollof")</code></td><td><div class="answer-line" contenteditable="true"></div></td></tr>
+      <tr><td><code>=COUNTIF(E2:E7,"Waakye")</code></td><td><div class="answer-line" contenteditable="true"></div></td></tr>
+      <tr><td><code>=COUNTIF(E2:E7,"Kenkey")</code></td><td><div class="answer-line" contenteditable="true"></div></td></tr>
+    </tbody>
+  </table>
 </div>
+
+<!-- ========================================== -->
+<!-- PAGE 4: IF, HIGHLIGHTS, CHART, FINDINGS     -->
+<!-- ========================================== -->
 <div class="page">
   <div class="header-bar">
-    <div class="header-title">Coming soon</div>
+    <div class="header-title">IF, Highlights, Charts &amp; Findings</div>
     <div class="badge">Session 22 • Page 4</div>
   </div>
-  
-  <p>DRAFT PLACEHOLDER: this workbook is being written.</p>
+
+  <h2>1. The IF Function: Let the Sheet Decide</h2>
+  <p><strong>IF</strong> checks a test for every row and writes one answer when the test is true and a different answer when it is false. Imagine a teacher marking a test: "If the score is 50 or more, write Pass; if not, write Try again."</p>
+  <div style="text-align:center; font-family: monospace; font-size: 16px; font-weight: bold; margin: 8px 0; color: #1E293B;">
+    =IF(<span style="color:#7C3AED;">B2&gt;=50</span>, <span style="color:#047857;">"Pass"</span>, <span style="color:#B91C1C;">"Try again"</span>)
+  </div>
+  <!-- DIAGRAM: IF DECISION -->
+  <div class="diagram-container">
+    <svg width="680" height="130" viewBox="0 0 680 130" xmlns="http://www.w3.org/2000/svg">
+      <defs><marker id="ar22" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#334155"/></marker></defs>
+      <rect x="20" y="45" width="130" height="40" rx="8" fill="#F1F5F9" stroke="#334155"/>
+      <text x="85" y="62" font-size="10.5" font-weight="bold" fill="#1E293B" text-anchor="middle">Score in B2</text>
+      <text x="85" y="77" font-size="10" fill="#334155" text-anchor="middle">e.g. 72</text>
+      <path d="M 152,65 L 222,65" stroke="#334155" stroke-width="2" marker-end="url(#ar22)"/>
+      <path d="M 300,10 L 375,65 L 300,120 L 225,65 Z" fill="#F3E8FF" stroke="#7C3AED" stroke-width="2"/>
+      <text x="300" y="60" font-size="10.5" font-weight="bold" fill="#5B21B6" text-anchor="middle">1. TEST</text>
+      <text x="300" y="76" font-size="11" font-weight="bold" fill="#5B21B6" text-anchor="middle">B2&gt;=50 ?</text>
+      <path d="M 377,50 L 470,30" stroke="#047857" stroke-width="2" marker-end="url(#ar22)"/>
+      <text x="410" y="28" font-size="10" font-weight="bold" fill="#047857">TRUE</text>
+      <rect x="475" y="10" width="185" height="40" rx="8" fill="#ECFDF5" stroke="#10B981"/>
+      <text x="567" y="35" font-size="11" font-weight="bold" fill="#047857" text-anchor="middle">2. "Pass"</text>
+      <path d="M 377,80 L 470,100" stroke="#B91C1C" stroke-width="2" marker-end="url(#ar22)"/>
+      <text x="405" y="112" font-size="10" font-weight="bold" fill="#B91C1C">FALSE</text>
+      <rect x="475" y="80" width="185" height="40" rx="8" fill="#FEF2F2" stroke="#EF4444"/>
+      <text x="567" y="105" font-size="11" font-weight="bold" fill="#B91C1C" text-anchor="middle">3. "Try again"</text>
+    </svg>
+    <div class="diagram-caption">Figure 22.4: The three parts of IF: the test, the answer if true, the answer if false. Words go in "quotation marks".</div>
+  </div>
+  <p><strong>Your turn:</strong> what does <code>=IF(B2&gt;=50,"Pass","Try again")</code> show when B2 is&hellip;</p>
+  <div style="display: flex; gap: 8px; margin: 8px 0;">
+    <div style="flex: 1; border: 1.5px solid var(--bih-border); border-radius: 6px; padding: 6px; text-align: center;"><small>72</small><div class="answer-line" contenteditable="true" style="text-align:center;"></div></div>
+    <div style="flex: 1; border: 1.5px solid var(--bih-border); border-radius: 6px; padding: 6px; text-align: center;"><small>50</small><div class="answer-line" contenteditable="true" style="text-align:center;"></div></div>
+    <div style="flex: 1; border: 1.5px solid var(--bih-border); border-radius: 6px; padding: 6px; text-align: center;"><small>49</small><div class="answer-line" contenteditable="true" style="text-align:center;"></div></div>
+    <div style="flex: 1; border: 1.5px solid var(--bih-border); border-radius: 6px; padding: 6px; text-align: center;"><small>35</small><div class="answer-line" contenteditable="true" style="text-align:center;"></div></div>
+  </div>
+
+  <h2>2. Conditional Formatting: Make Important Cells Glow</h2>
+  <p><strong>Conditional formatting</strong> colours cells automatically when they match a rule, like a highlighter that reads. Select <strong>F2:F21</strong> (screen hours) &rarr; <strong>Home</strong> &rarr; <strong>Conditional Formatting</strong> &rarr; <strong>Highlight Cells Rules</strong> &rarr; <strong>Greater Than</strong> &rarr; type <code>4</code> &rarr; <strong>OK</strong>. Every value over 4 turns light red, and the colour updates if a number changes. <em style="color:#3A0CA3;">Google Sheets: Format &rarr; Conditional formatting. LibreOffice: Format &rarr; Conditional &rarr; Condition.</em></p>
+
+  <h2>3. From Numbers to a Clear Finding</h2>
+  <p>Make your chart from your small <strong>COUNTIF summary table</strong> (the labels and the counts), not from the 20 raw rows. Remember Session 20: select the labels and the numbers, give the chart a title that says what it shows, and leave out any total. Then write a <strong>finding</strong>: one sentence that states a fact from the data, with a number.</p>
+  <div class="dual-grid">
+    <div class="dual-box">
+      <div class="dual-box-title" style="color:#047857;">✔ GOOD FINDINGS</div>
+      <p>"Half of our class (10 of 20) walk to school."<br>"Every pupil who comes by trotro or bus takes 40 minutes or more."</p>
+    </div>
+    <div class="dual-box">
+      <div class="dual-box-title" style="color:#B91C1C;">✘ NOT FINDINGS</div>
+      <p>"Pupils love walking." <em>(The data didn't ask that.)</em><br>"Trotros are bad." <em>(An opinion, with no number.)</em></p>
+    </div>
+  </div>
 </div>
+
+<!-- ========================================== -->
+<!-- PAGE 5: GUIDED LAB                          -->
+<!-- ========================================== -->
 <div class="page">
   <div class="header-bar">
-    <div class="header-title">Coming soon</div>
+    <div class="header-title">Guided Hands-On Lab: Our Class in Numbers</div>
     <div class="badge">Session 22 • Page 5</div>
   </div>
-  
-  <p>DRAFT PLACEHOLDER: this workbook is being written.</p>
+
+  <h2>1. Lab Mission: Analyse the Class Survey</h2>
+  <p>Warm up in the <strong>Data Sorter</strong> 3D lab on your session page: sort and filter a table of survey answers and use IF to label each row, while the 3D columns rearrange themselves. Then open <code>Class_Survey</code> from <code>Documents &gt; BIH_Practice</code> (your class's Session 21 answers, or the sample your mentor gives you) and save a copy as <code>Class_Survey_YourName</code>.</p>
+
+  <div class="step-card">
+    <div class="step-num">1</div>
+    <div class="step-content"><strong>Freeze and sort:</strong> freeze the top row. Click a cell in <strong>D</strong> (Minutes) &rarr; <strong>Sort Largest to Smallest</strong>. Check that each row still makes sense, then record the top row below. Now sort by <strong>Class</strong>, A to Z.</div>
+  </div>
+  <div class="step-card">
+    <div class="step-num">2</div>
+    <div class="step-content"><strong>Filter:</strong> Data &rarr; Filter. On <strong>Travel</strong>, show only <em>Trotro or bus</em>. How many rows are left? Look at their minutes. Then clear the filter.</div>
+  </div>
+  <div class="step-card">
+    <div class="step-num">3</div>
+    <div class="step-content"><strong>IF:</strong> in <strong>H1</strong> type <code>Trip</code>. In <strong>H2</strong> type <code>=IF(D2&gt;=30,"Long trip","Short trip")</code>, press <span class="kbd-key">Enter</span>, then drag the AutoFill handle down to H21.</div>
+  </div>
+  <div class="step-card">
+    <div class="step-num">4</div>
+    <div class="step-content"><strong>COUNTIF summary:</strong> leave column I empty. In J1 type <code>Travel</code> and in K1 <code>Pupils</code>. In J2 to J6 type <code>Walk</code>, <code>Trotro or bus</code>, <code>Taxi</code>, <code>Bicycle</code>, <code>Car</code>. In K2 type <code>=COUNTIF(C2:C21,"Walk")</code>, and so on for each one. In J8 type <code>Long trips</code> and in K8 <code>=COUNTIF(H2:H21,"Long trip")</code>.</div>
+  </div>
+  <div class="step-card">
+    <div class="step-num">5</div>
+    <div class="step-content"><strong>Highlight, chart, save:</strong> highlight screen hours greater than 4 (page 4). Select <strong>J1:K6</strong> &rarr; Insert &rarr; Column chart. Title: <code>How Our Class Travels to School</code>. Save with <span class="kbd-key">Ctrl + S</span>.</div>
+  </div>
+
+  <table>
+    <thead><tr><th style="width: 56%;">Question</th><th>My result</th></tr></thead>
+    <tbody>
+      <tr><td>Longest journey: which row is on top? (Class, travel, minutes, food)</td><td><div class="answer-line" contenteditable="true"></div></td></tr>
+      <tr><td>How many rows show after filtering for Trotro or bus?</td><td><div class="answer-line" contenteditable="true"></div></td></tr>
+      <tr><td>COUNTIF results: Walk / Trotro or bus / Taxi / Bicycle / Car</td><td><div class="answer-line" contenteditable="true">__ / __ / __ / __ / __</div></td></tr>
+      <tr><td>How many long trips? How many cells glow for screen time?</td><td><div class="answer-line" contenteditable="true"></div></td></tr>
+    </tbody>
+  </table>
+
+  <p><strong>My three findings</strong> (one sentence each, with a number). Share your best one with the class!</p>
+  <div class="answer-line" contenteditable="true">1. </div>
+  <div class="answer-line" contenteditable="true">2. </div>
+  <div class="answer-line" contenteditable="true">3. </div>
 </div>
+
+<!-- ========================================== -->
+<!-- PAGE 6: REVIEW & SELF-ASSESSMENT            -->
+<!-- ========================================== -->
 <div class="page">
   <div class="header-bar">
-    <div class="header-title">Coming soon</div>
+    <div class="header-title">Session 22 Review &amp; Verification</div>
     <div class="badge">Session 22 • Page 6</div>
   </div>
-  
-  <p>DRAFT PLACEHOLDER: this workbook is being written.</p>
+
+  <h2>1. What Should You Do?</h2>
+  <p><strong>A.</strong> Yaw wants the survey rows in order of minutes. What should he do?</p>
+  <div class="checkbox-item"><input type="radio" name="r22a"> Click the letter D to select the whole column, then sort only that column.</div>
+  <div class="checkbox-item"><input type="radio" name="r22a"> Click one cell in column D, then Data &rarr; Sort, so whole rows move together.</div>
+  <div class="checkbox-item"><input type="radio" name="r22a"> Retype the table in the right order.</div>
+
+  <p><strong>B.</strong> Akosua filtered the sheet to show only JHS 3. Now she thinks the other rows were deleted. What is true?</p>
+  <div class="checkbox-item"><input type="radio" name="r22b"> They are gone for ever; she must undo.</div>
+  <div class="checkbox-item"><input type="radio" name="r22b"> They are only hidden; clearing the filter brings them back.</div>
+  <div class="checkbox-item"><input type="radio" name="r22b"> They moved to a new sheet.</div>
+
+  <p><strong>C.</strong> Which formula counts how many pupils chose Waakye in E2:E21?</p>
+  <div class="checkbox-item"><input type="radio" name="r22c"> <code>=SUM(E2:E21,"Waakye")</code></div>
+  <div class="checkbox-item"><input type="radio" name="r22c"> <code>=COUNTIF(E2:E21,"Waakye")</code></div>
+  <div class="checkbox-item"><input type="radio" name="r22c"> <code>=COUNTIF(Waakye)</code></div>
+
+  <p><strong>D.</strong> Which is a good finding?</p>
+  <div class="checkbox-item"><input type="radio" name="r22d"> "7 of the 20 pupils chose jollof, more than any other food."</div>
+  <div class="checkbox-item"><input type="radio" name="r22d"> "Jollof is the best food in Ghana."</div>
+  <div class="checkbox-item"><input type="radio" name="r22d"> "Some people like food."</div>
+
+  <h2>2. Written Review Questions</h2>
+  <p><strong>Question 1:</strong> Write an IF formula for cell H2 that shows "Too much" when the screen hours in F2 are more than 4, and "OK" when they are not.</p>
+  <div class="answer-line" contenteditable="true">=IF(</div>
+  <p><strong>Question 2:</strong> Why should you leave an empty column between your data and your COUNTIF summary table?</p>
+  <div class="answer-line" contenteditable="true">Write your answer here...</div>
+
+  <h2>3. Self-Assessment &amp; Mentor Sign-Off</h2>
+  <p>Tick the column that reflects your confidence at the end of Session 22:</p>
+  <table>
+    <thead>
+      <tr>
+        <th>Working with Data Competency</th>
+        <th style="width: 18%; text-align: center;">With Help</th>
+        <th style="width: 18%; text-align: center;">Almost Alone</th>
+        <th style="width: 18%; text-align: center;">All By Myself!</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1. I can freeze the header row and sort data without breaking the rows.</td>
+        <td style="text-align: center;"><input type="radio" name="s22c_1"></td>
+        <td style="text-align: center;"><input type="radio" name="s22c_1"></td>
+        <td style="text-align: center;"><input type="radio" name="s22c_1"></td>
+      </tr>
+      <tr>
+        <td>2. I can filter data and count answers with COUNTIF.</td>
+        <td style="text-align: center;"><input type="radio" name="s22c_2"></td>
+        <td style="text-align: center;"><input type="radio" name="s22c_2"></td>
+        <td style="text-align: center;"><input type="radio" name="s22c_2"></td>
+      </tr>
+      <tr>
+        <td>3. I can write an IF formula and use conditional formatting.</td>
+        <td style="text-align: center;"><input type="radio" name="s22c_3"></td>
+        <td style="text-align: center;"><input type="radio" name="s22c_3"></td>
+        <td style="text-align: center;"><input type="radio" name="s22c_3"></td>
+      </tr>
+      <tr>
+        <td>4. I can make a clear chart of survey results and write a one-sentence finding.</td>
+        <td style="text-align: center;"><input type="radio" name="s22c_4"></td>
+        <td style="text-align: center;"><input type="radio" name="s22c_4"></td>
+        <td style="text-align: center;"><input type="radio" name="s22c_4"></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div style="border-top: 1px solid var(--bih-border); margin-top: 25px; padding-top: 12px; display: flex; justify-content: space-between; font-size: 13px;">
+    <div><strong>Mentor Signature:</strong> _____________________________</div>
+    <div><strong>Date Completed:</strong> ____________________</div>
+  </div>
 </div>
+
 </body>
 </html>

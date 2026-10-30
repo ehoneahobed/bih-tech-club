@@ -255,53 +255,517 @@
 </head>
 <body>
 
+<!-- ========================================== -->
+<!-- PAGE 1: WHY ONLINE FORMS?                   -->
+<!-- ========================================== -->
 <div class="page">
   <div class="header-bar">
     <div class="header-title">Bozoma Innovation Hub • Tech Club</div>
     <div class="badge">Session 21 • Page 1</div>
   </div>
+
+  <div class="student-meta">
+    <div class="meta-row">
+      <span class="meta-label">Learner Full Name:</span>
+      <div class="editable-line" contenteditable="true">Ama Mensah</div>
+      <span class="meta-label" style="min-width: 90px;">School:</span>
+      <div class="editable-line" contenteditable="true">Bozoma Model JHS</div>
+    </div>
+    <div class="meta-row">
+      <span class="meta-label">Assigned Workstation:</span>
+      <div class="editable-line" contenteditable="true" style="max-width: 140px;">PC-01</div>
+      <span class="meta-label" style="min-width: 50px;">Class:</span>
+      <div class="editable-line" contenteditable="true" style="max-width: 90px;">JHS 1</div>
+    </div>
+  </div>
+
   <h1>Session 21: Online Forms &amp; Surveys</h1>
-  <p>DRAFT PLACEHOLDER: this workbook is being written.</p>
+  <p>In Session 14 you <em>filled in</em> an online form. Today you swap sides: you will <strong>build</strong> one. You will make a real <strong>survey</strong> (a set of questions you ask many people) about your class, share it with a link or a QR code, collect your classmates' answers and watch them turn into charts. Next session, in Spreadsheets 3, you will analyse those answers like a real data scientist.</p>
+
+  <h2>1. Plain Talk: The Class Prefect's Notebook</h2>
+  <p>Imagine your class prefect must find out every pupil's favourite local food for the end-of-term party. She walks round with a notebook: "Kofi, what do you like? Esi? Yaw?" It takes the whole of break time. Then she counts the ticks, loses her place, and counts again. Two pupils were absent, so she has to chase them tomorrow.</p>
+  <p>An <strong>online form</strong> does the same job in a smarter way. The prefect types the question once and sends one link to the class WhatsApp group. Everyone answers on their own phone or computer, whenever they are free, and the form <strong>counts the answers and draws the chart by itself</strong>. Nobody loses their place.</p>
+
+  <!-- DIAGRAM: THE JOURNEY OF A SURVEY -->
+  <div class="diagram-container">
+    <svg width="680" height="170" viewBox="0 0 680 170" xmlns="http://www.w3.org/2000/svg">
+      <defs><marker id="ar21" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#3A0CA3"/></marker></defs>
+      <!-- 1 build -->
+      <rect x="10" y="20" width="120" height="110" rx="10" fill="#F3E8FF" stroke="#7C3AED" stroke-width="2"/>
+      <circle cx="32" cy="42" r="12" fill="#7C3AED"/><text x="32" y="47" font-size="12" font-weight="bold" fill="#FFFFFF" text-anchor="middle">1</text>
+      <text x="80" y="47" font-size="12" font-weight="bold" fill="#5B21B6" text-anchor="middle">BUILD</text>
+      <rect x="25" y="62" width="90" height="10" rx="2" fill="#7C3AED"/>
+      <circle cx="31" cy="85" r="4" fill="none" stroke="#5B21B6"/><rect x="40" y="82" width="60" height="5" fill="#C4B5FD"/>
+      <circle cx="31" cy="98" r="4" fill="none" stroke="#5B21B6"/><rect x="40" y="95" width="50" height="5" fill="#C4B5FD"/>
+      <text x="70" y="120" font-size="9.5" fill="#334155" text-anchor="middle">Write the questions</text>
+      <path d="M 134,75 L 150,75" stroke="#3A0CA3" stroke-width="3" marker-end="url(#ar21)"/>
+      <!-- 2 share -->
+      <rect x="155" y="20" width="120" height="110" rx="10" fill="#EEF2FF" stroke="#4361EE" stroke-width="2"/>
+      <circle cx="177" cy="42" r="12" fill="#4361EE"/><text x="177" y="47" font-size="12" font-weight="bold" fill="#FFFFFF" text-anchor="middle">2</text>
+      <text x="225" y="47" font-size="12" font-weight="bold" fill="#3730A3" text-anchor="middle">SHARE</text>
+      <g transform="translate(193, 58)">
+        <rect x="0" y="0" width="44" height="44" fill="#FFFFFF" stroke="#1E293B"/>
+        <rect x="4" y="4" width="12" height="12" fill="#1E293B"/><rect x="28" y="4" width="12" height="12" fill="#1E293B"/><rect x="4" y="28" width="12" height="12" fill="#1E293B"/>
+        <rect x="21" y="20" width="5" height="5" fill="#1E293B"/><rect x="30" y="30" width="6" height="6" fill="#1E293B"/><rect x="21" y="34" width="5" height="5" fill="#1E293B"/>
+      </g>
+      <text x="215" y="120" font-size="9.5" fill="#334155" text-anchor="middle">Link or QR code</text>
+      <path d="M 279,75 L 295,75" stroke="#3A0CA3" stroke-width="3" marker-end="url(#ar21)"/>
+      <!-- 3 answer -->
+      <rect x="300" y="20" width="120" height="110" rx="10" fill="#ECFDF5" stroke="#10B981" stroke-width="2"/>
+      <circle cx="322" cy="42" r="12" fill="#10B981"/><text x="322" y="47" font-size="12" font-weight="bold" fill="#FFFFFF" text-anchor="middle">3</text>
+      <text x="370" y="47" font-size="12" font-weight="bold" fill="#047857" text-anchor="middle">ANSWER</text>
+      <rect x="320" y="60" width="22" height="38" rx="4" fill="#1E293B"/><rect x="323" y="64" width="16" height="28" fill="#A7F3D0"/>
+      <rect x="350" y="60" width="22" height="38" rx="4" fill="#1E293B"/><rect x="353" y="64" width="16" height="28" fill="#A7F3D0"/>
+      <rect x="380" y="60" width="22" height="38" rx="4" fill="#1E293B"/><rect x="383" y="64" width="16" height="28" fill="#A7F3D0"/>
+      <text x="360" y="120" font-size="9.5" fill="#334155" text-anchor="middle">Everyone answers</text>
+      <path d="M 424,75 L 440,75" stroke="#3A0CA3" stroke-width="3" marker-end="url(#ar21)"/>
+      <!-- 4 summary -->
+      <rect x="445" y="20" width="105" height="110" rx="10" fill="#FFF7ED" stroke="#EA580C" stroke-width="2"/>
+      <circle cx="467" cy="42" r="12" fill="#EA580C"/><text x="467" y="47" font-size="12" font-weight="bold" fill="#FFFFFF" text-anchor="middle">4</text>
+      <text x="510" y="47" font-size="11" font-weight="bold" fill="#9A3412" text-anchor="middle">CHARTS</text>
+      <circle cx="497" cy="80" r="20" fill="#FDBA74"/>
+      <path d="M 497,80 L 497,60 A 20,20 0 0,1 516,86 Z" fill="#EA580C"/>
+      <path d="M 497,80 L 516,86 A 20,20 0 0,1 485,96 Z" fill="#7C3AED"/>
+      <text x="497" y="120" font-size="9.5" fill="#334155" text-anchor="middle">Counted for you</text>
+      <path d="M 554,75 L 570,75" stroke="#3A0CA3" stroke-width="3" marker-end="url(#ar21)"/>
+      <!-- 5 sheets -->
+      <rect x="575" y="20" width="95" height="110" rx="10" fill="#F0FDF4" stroke="#16A34A" stroke-width="2"/>
+      <circle cx="597" cy="42" r="12" fill="#16A34A"/><text x="597" y="47" font-size="12" font-weight="bold" fill="#FFFFFF" text-anchor="middle">5</text>
+      <text x="635" y="47" font-size="11" font-weight="bold" fill="#15803D" text-anchor="middle">SHEET</text>
+      <g transform="translate(593, 60)">
+        <rect x="0" y="0" width="60" height="40" fill="#FFFFFF" stroke="#16A34A"/>
+        <line x1="0" y1="10" x2="60" y2="10" stroke="#16A34A"/><line x1="0" y1="20" x2="60" y2="20" stroke="#16A34A"/><line x1="0" y1="30" x2="60" y2="30" stroke="#16A34A"/>
+        <line x1="20" y1="0" x2="20" y2="40" stroke="#16A34A"/><line x1="40" y1="0" x2="40" y2="40" stroke="#16A34A"/>
+      </g>
+      <text x="622" y="120" font-size="9.5" fill="#334155" text-anchor="middle">Analyse later</text>
+      <text x="340" y="158" font-size="10.5" font-weight="bold" fill="#3A0CA3" text-anchor="middle">Today: steps 1 to 5. Session 22: you analyse the sheet.</text>
+    </svg>
+    <div class="diagram-caption">Figure 21.1: The journey of a survey, from your questions to a spreadsheet full of answers.</div>
+  </div>
+
+  <div class="callout">
+    <div class="callout-title">💡 THE TOOL WE USE: GOOGLE FORMS</div>
+    <strong>Google Forms</strong> is free and works in any web browser. Sign in with the <strong>Hub's learning account</strong> your mentor gives you, never your own or a parent's account. Go to <strong>forms.google.com</strong> and click <strong>Blank form</strong> (the big + box). Microsoft Forms works in a very similar way.
+  </div>
 </div>
+
+<!-- ========================================== -->
+<!-- PAGE 2: QUESTION TYPES                      -->
+<!-- ========================================== -->
 <div class="page">
   <div class="header-bar">
-    <div class="header-title">Coming soon</div>
+    <div class="header-title">Choosing the Right Question Type</div>
     <div class="badge">Session 21 • Page 2</div>
   </div>
-  
-  <p>DRAFT PLACEHOLDER: this workbook is being written.</p>
+
+  <h2>1. Seven Question Types</h2>
+  <p>Every question in Google Forms has a <strong>type</strong>. You choose it from the drop-down box at the top right of the question. The right type makes the form easy to answer <em>and</em> easy to count.</p>
+
+  <!-- DIAGRAM: QUESTION TYPE MOCKUPS -->
+  <div class="diagram-container">
+    <svg width="680" height="250" viewBox="0 0 680 250" xmlns="http://www.w3.org/2000/svg">
+      <!-- short answer -->
+      <g transform="translate(10, 8)">
+        <rect x="0" y="0" width="210" height="72" rx="6" fill="#FFFFFF" stroke="#CBD5E1"/>
+        <text x="10" y="18" font-size="10.5" font-weight="bold" fill="#5B21B6">Short answer</text>
+        <text x="10" y="34" font-size="9.5" fill="#334155">How many minutes to school?</text>
+        <line x1="10" y1="58" x2="150" y2="58" stroke="#94A3B8" stroke-dasharray="3,2"/>
+        <text x="12" y="54" font-size="9.5" fill="#64748B">25</text>
+      </g>
+      <!-- paragraph -->
+      <g transform="translate(235, 8)">
+        <rect x="0" y="0" width="210" height="72" rx="6" fill="#FFFFFF" stroke="#CBD5E1"/>
+        <text x="10" y="18" font-size="10.5" font-weight="bold" fill="#5B21B6">Paragraph</text>
+        <text x="10" y="34" font-size="9.5" fill="#334155">What would make our school better?</text>
+        <line x1="10" y1="48" x2="195" y2="48" stroke="#94A3B8" stroke-dasharray="3,2"/>
+        <line x1="10" y1="62" x2="195" y2="62" stroke="#94A3B8" stroke-dasharray="3,2"/>
+      </g>
+      <!-- date -->
+      <g transform="translate(460, 8)">
+        <rect x="0" y="0" width="210" height="72" rx="6" fill="#FFFFFF" stroke="#CBD5E1"/>
+        <text x="10" y="18" font-size="10.5" font-weight="bold" fill="#5B21B6">Date</text>
+        <text x="10" y="34" font-size="9.5" fill="#334155">Which day can you help?</text>
+        <rect x="10" y="44" width="100" height="18" rx="3" fill="#F8FAFC" stroke="#94A3B8"/>
+        <text x="16" y="57" font-size="9.5" fill="#64748B">dd/mm/yyyy</text>
+        <rect x="114" y="44" width="16" height="18" rx="3" fill="#E0E7FF" stroke="#94A3B8"/>
+      </g>
+      <!-- multiple choice -->
+      <g transform="translate(10, 92)">
+        <rect x="0" y="0" width="210" height="88" rx="6" fill="#FFFFFF" stroke="#CBD5E1"/>
+        <text x="10" y="18" font-size="10.5" font-weight="bold" fill="#5B21B6">Multiple choice (pick ONE)</text>
+        <text x="10" y="34" font-size="9.5" fill="#334155">How do you travel to school?</text>
+        <circle cx="18" cy="49" r="5" fill="none" stroke="#475569"/><text x="30" y="52" font-size="9.5" fill="#334155">Walk</text>
+        <circle cx="18" cy="64" r="5" fill="none" stroke="#475569"/><circle cx="18" cy="64" r="2.5" fill="#5B21B6"/><text x="30" y="67" font-size="9.5" fill="#334155">Trotro or bus</text>
+        <circle cx="18" cy="79" r="5" fill="none" stroke="#475569"/><text x="30" y="82" font-size="9.5" fill="#334155">Taxi</text>
+      </g>
+      <!-- checkboxes -->
+      <g transform="translate(235, 92)">
+        <rect x="0" y="0" width="210" height="88" rx="6" fill="#FFFFFF" stroke="#CBD5E1"/>
+        <text x="10" y="18" font-size="10.5" font-weight="bold" fill="#5B21B6">Checkboxes (pick MANY)</text>
+        <text x="10" y="34" font-size="9.5" fill="#334155">What do you do after school?</text>
+        <rect x="13" y="44" width="10" height="10" fill="#5B21B6"/><text x="30" y="52" font-size="9.5" fill="#334155">Homework</text>
+        <rect x="13" y="59" width="10" height="10" fill="none" stroke="#475569"/><text x="30" y="67" font-size="9.5" fill="#334155">Play sport</text>
+        <rect x="13" y="74" width="10" height="10" fill="#5B21B6"/><text x="30" y="82" font-size="9.5" fill="#334155">Help at home</text>
+      </g>
+      <!-- dropdown -->
+      <g transform="translate(460, 92)">
+        <rect x="0" y="0" width="210" height="88" rx="6" fill="#FFFFFF" stroke="#CBD5E1"/>
+        <text x="10" y="18" font-size="10.5" font-weight="bold" fill="#5B21B6">Drop-down (pick ONE from a list)</text>
+        <text x="10" y="34" font-size="9.5" fill="#334155">What class are you in?</text>
+        <rect x="10" y="44" width="120" height="20" rx="3" fill="#F8FAFC" stroke="#94A3B8"/>
+        <text x="16" y="58" font-size="9.5" fill="#334155">JHS 2</text>
+        <path d="M 116,51 L 124,51 L 120,57 Z" fill="#475569"/>
+        <text x="10" y="80" font-size="9" fill="#64748B">Saves space when the list is long</text>
+      </g>
+      <!-- linear scale -->
+      <g transform="translate(10, 192)">
+        <rect x="0" y="0" width="660" height="50" rx="6" fill="#FFFFFF" stroke="#CBD5E1"/>
+        <text x="10" y="18" font-size="10.5" font-weight="bold" fill="#5B21B6">Linear scale (a number on a scale)</text>
+        <text x="10" y="36" font-size="9.5" fill="#334155">How much do you enjoy Tech Club?</text>
+        <text x="270" y="36" font-size="9.5" fill="#64748B" text-anchor="end">Not at all</text>
+        <circle cx="290" cy="32" r="6" fill="none" stroke="#475569"/><text x="290" y="16" font-size="9" fill="#334155" text-anchor="middle">1</text>
+        <circle cx="330" cy="32" r="6" fill="none" stroke="#475569"/><text x="330" y="16" font-size="9" fill="#334155" text-anchor="middle">2</text>
+        <circle cx="370" cy="32" r="6" fill="none" stroke="#475569"/><text x="370" y="16" font-size="9" fill="#334155" text-anchor="middle">3</text>
+        <circle cx="410" cy="32" r="6" fill="none" stroke="#475569"/><text x="410" y="16" font-size="9" fill="#334155" text-anchor="middle">4</text>
+        <circle cx="450" cy="32" r="6" fill="none" stroke="#475569"/><circle cx="450" cy="32" r="3" fill="#5B21B6"/><text x="450" y="16" font-size="9" fill="#334155" text-anchor="middle">5</text>
+        <text x="470" y="36" font-size="9.5" fill="#64748B">Very much!</text>
+      </g>
+    </svg>
+    <div class="diagram-caption">Figure 21.2: What each question type looks like to the person answering.</div>
+  </div>
+
+  <div class="callout">
+    <div class="callout-title">💡 CHOICES ARE EASIER TO COUNT THAN TYPING</div>
+    If ten pupils type their favourite food, you may get "jollof", "Jollof rice", "JOLLOF" and "jolof": four spellings the computer counts as four different foods! A <strong>multiple choice</strong> question with an <strong>Other</strong> option keeps the answers tidy. Use short answer or paragraph only when you really need people's own words.
+  </div>
+
+  <h2>2. Your Turn: Pick the Best Type</h2>
+  <table>
+    <thead><tr><th style="width: 62%;">Question</th><th>Best question type</th></tr></thead>
+    <tbody>
+      <tr><td>a) Which of these subjects do you enjoy? (They may enjoy several.)</td><td><div class="answer-line" contenteditable="true"></div></td></tr>
+      <tr><td>b) Which region of Ghana were you born in? (A list of 16 regions.)</td><td><div class="answer-line" contenteditable="true"></div></td></tr>
+      <tr><td>c) On a scale of 1 to 5, how safe is the road outside our school?</td><td><div class="answer-line" contenteditable="true"></div></td></tr>
+      <tr><td>d) Do you have a computer at home? (Yes / No)</td><td><div class="answer-line" contenteditable="true"></div></td></tr>
+      <tr><td>e) Describe the best day you ever had at school.</td><td><div class="answer-line" contenteditable="true"></div></td></tr>
+    </tbody>
+  </table>
 </div>
+
+<!-- ========================================== -->
+<!-- PAGE 3: BUILDING THE FORM                   -->
+<!-- ========================================== -->
 <div class="page">
   <div class="header-bar">
-    <div class="header-title">Coming soon</div>
+    <div class="header-title">Building a Form Step by Step</div>
     <div class="badge">Session 21 • Page 3</div>
   </div>
-  
-  <p>DRAFT PLACEHOLDER: this workbook is being written.</p>
+
+  <h2>1. Find Your Way Around the Form Editor</h2>
+  <!-- DIAGRAM: FORM EDITOR -->
+  <div class="diagram-container">
+    <svg width="680" height="250" viewBox="0 0 680 250" xmlns="http://www.w3.org/2000/svg">
+      <!-- top bar -->
+      <rect x="120" y="8" width="440" height="30" fill="#FFFFFF" stroke="#CBD5E1"/>
+      <text x="132" y="27" font-size="10" fill="#334155">Untitled form</text>
+      <circle cx="450" cy="23" r="8" fill="none" stroke="#475569"/><circle cx="450" cy="23" r="3" fill="#475569"/>
+      <rect x="480" y="13" width="70" height="20" rx="4" fill="#7C3AED"/><text x="515" y="27" font-size="10" font-weight="bold" fill="#FFFFFF" text-anchor="middle">Publish</text>
+      <!-- tabs -->
+      <text x="270" y="56" font-size="10" font-weight="bold" fill="#7C3AED" text-anchor="middle">Questions</text>
+      <line x1="245" y1="61" x2="295" y2="61" stroke="#7C3AED" stroke-width="2"/>
+      <text x="340" y="56" font-size="10" fill="#475569" text-anchor="middle">Responses</text>
+      <text x="405" y="56" font-size="10" fill="#475569" text-anchor="middle">Settings</text>
+      <!-- title card -->
+      <rect x="160" y="70" width="320" height="54" rx="6" fill="#FFFFFF" stroke="#CBD5E1"/>
+      <rect x="160" y="70" width="320" height="6" rx="3" fill="#7C3AED"/>
+      <text x="172" y="96" font-size="13" font-weight="bold" fill="#1E293B">Our Class Survey</text>
+      <text x="172" y="114" font-size="9.5" fill="#64748B">Description: why we are asking...</text>
+      <!-- question card -->
+      <rect x="160" y="132" width="320" height="108" rx="6" fill="#FFFFFF" stroke="#CBD5E1"/>
+      <rect x="160" y="132" width="5" height="108" fill="#4361EE"/>
+      <text x="174" y="154" font-size="10.5" fill="#1E293B">How do you travel to school?</text>
+      <rect x="370" y="142" width="100" height="20" rx="3" fill="#F8FAFC" stroke="#94A3B8"/>
+      <text x="378" y="156" font-size="9" fill="#334155">Multiple choice</text>
+      <path d="M 458,149 L 464,149 L 461,154 Z" fill="#475569"/>
+      <circle cx="180" cy="176" r="5" fill="none" stroke="#475569"/><text x="192" y="179" font-size="9.5" fill="#334155">Walk</text>
+      <circle cx="180" cy="194" r="5" fill="none" stroke="#475569"/><text x="192" y="197" font-size="9.5" fill="#334155">Trotro or bus</text>
+      <line x1="170" y1="212" x2="470" y2="212" stroke="#E2E8F0"/>
+      <text x="380" y="230" font-size="9.5" fill="#334155">Required</text>
+      <rect x="425" y="221" width="24" height="12" rx="6" fill="#7C3AED"/><circle cx="443" cy="227" r="5" fill="#FFFFFF"/>
+      <circle cx="463" cy="222" r="1.5" fill="#475569"/><circle cx="463" cy="227" r="1.5" fill="#475569"/><circle cx="463" cy="232" r="1.5" fill="#475569"/>
+      <!-- side toolbar -->
+      <rect x="492" y="132" width="26" height="78" rx="5" fill="#FFFFFF" stroke="#CBD5E1"/>
+      <circle cx="505" cy="146" r="7" fill="none" stroke="#475569"/><text x="505" y="150" font-size="11" fill="#475569" text-anchor="middle">+</text>
+      <rect x="499" y="190" width="12" height="5" fill="#475569"/><rect x="499" y="198" width="12" height="5" fill="#475569"/>
+
+      <!-- labels left -->
+      <text x="10" y="27" font-size="10.5" font-weight="bold" fill="#3A0CA3">Form name</text>
+      <text x="10" y="56" font-size="10.5" font-weight="bold" fill="#3A0CA3">The three tabs</text>
+      <text x="10" y="96" font-size="10.5" font-weight="bold" fill="#3A0CA3">Title + description</text>
+      <text x="10" y="109" font-size="9.5" fill="#334155">say who and why</text>
+      <text x="10" y="158" font-size="10.5" font-weight="bold" fill="#3A0CA3">Question card</text>
+      <text x="10" y="171" font-size="9.5" fill="#334155">type the question,</text>
+      <text x="10" y="184" font-size="9.5" fill="#334155">then the choices</text>
+      <!-- labels right -->
+      <text x="575" y="20" font-size="10.5" font-weight="bold" fill="#3A0CA3">Preview (eye)</text>
+      <text x="575" y="33" font-size="10.5" font-weight="bold" fill="#3A0CA3">+ Publish</text>
+      <text x="575" y="156" font-size="10.5" font-weight="bold" fill="#3A0CA3">+ Add question</text>
+      <text x="530" y="202" font-size="10.5" font-weight="bold" fill="#3A0CA3">Add section</text>
+      <text x="530" y="226" font-size="10.5" font-weight="bold" fill="#3A0CA3">Required switch</text>
+      <text x="530" y="239" font-size="9.5" fill="#334155">⋮ = more (validation)</text>
+      <line x1="371" y1="152" x2="371" y2="152" stroke="#3A0CA3"/>
+      <text x="420" y="138" font-size="9" font-weight="bold" fill="#3A0CA3" text-anchor="middle">Question type ↓</text>
+    </svg>
+    <div class="diagram-caption">Figure 21.3: The Google Forms editor. Your screen may look slightly different (older versions have a Send button instead of Publish).</div>
+  </div>
+
+  <h2>2. Five Tools That Make a Form Work Well</h2>
+  <div class="step-card">
+    <div class="step-num">1</div>
+    <div class="step-content"><strong>Required:</strong> switch it on for questions everyone must answer. A red star (*) appears and the form will not send until it is answered. Leave "extra" questions optional.</div>
+  </div>
+  <div class="step-card">
+    <div class="step-num">2</div>
+    <div class="step-content"><strong>Sections:</strong> click <strong>Add section</strong> to split a long form into pages ("About you", "Food &amp; free time"). Shorter pages feel easier to finish.</div>
+  </div>
+  <div class="step-card">
+    <div class="step-num">3</div>
+    <div class="step-content"><strong>Response validation:</strong> on a short answer question, click <strong>⋮</strong> &rarr; <strong>Response validation</strong> &rarr; <strong>Number</strong> &rarr; <strong>Between</strong> &rarr; <code>1</code> and <code>100</code>. Now nobody can type "a lot" or 5000. Add a helpful error message, like <em>"Please type a number from 1 to 100."</em></div>
+  </div>
+  <div class="step-card">
+    <div class="step-num">4</div>
+    <div class="step-content"><strong>Settings tab &rarr; Responses:</strong> set <strong>Collect email addresses</strong> to <strong>Do not collect</strong> for a class survey. <strong>Limit to 1 response</strong> stops people answering twice, but everyone must then sign in with a Google account. Leave it <strong>off</strong> today, because classmates share Hub accounts.</div>
+  </div>
+  <div class="step-card">
+    <div class="step-num">5</div>
+    <div class="step-content"><strong>Preview:</strong> click the <strong>eye</strong> icon and answer your own form as a stranger would. Is every question clear? Does the validation work? Fix it before anyone else sees it.</div>
+  </div>
 </div>
+
+<!-- ========================================== -->
+<!-- PAGE 4: SHARE, COLLECT, READ - AND RESPECT  -->
+<!-- ========================================== -->
 <div class="page">
   <div class="header-bar">
-    <div class="header-title">Coming soon</div>
+    <div class="header-title">Share, Collect &amp; Read the Results</div>
     <div class="badge">Session 21 • Page 4</div>
   </div>
-  
-  <p>DRAFT PLACEHOLDER: this workbook is being written.</p>
+
+  <h2>1. Asking Fairly: The Survey Maker's Promise</h2>
+  <p>When people answer your survey, they trust you with information about themselves. A good survey maker keeps four promises:</p>
+  <div class="dual-grid">
+    <div class="dual-box">
+      <div class="dual-box-title">✂️ ASK ONLY WHAT YOU NEED</div>
+      <p>For a party food survey you do not need names, phone numbers, home towns or birthdays. Every extra question is extra personal data to protect. Google already records the time of each answer, so you don't even need a date question.</p>
+    </div>
+    <div class="dual-box">
+      <div class="dual-box-title">📢 SAY WHY YOU ARE ASKING</div>
+      <p>Use the form description: <em>"The Tech Club is asking about travel and food to practise data skills. Answers are anonymous and only our class will see the totals."</em></p>
+    </div>
+    <div class="dual-box">
+      <div class="dual-box-title">🔒 KEEP ANSWERS PRIVATE</div>
+      <p>Share the <strong>totals</strong> ("12 of us walk"), never one person's answers. Don't screenshot or forward someone's response.</p>
+    </div>
+    <div class="dual-box">
+      <div class="dual-box-title">🤝 NO TRICKS, NO PRESSURE</div>
+      <p>Answering is a choice. Write questions that don't push an answer: not <em>"Don't you agree jollof is the best?"</em> but <em>"What is your favourite local food?"</em></p>
+    </div>
+  </div>
+
+  <h2>2. Share by Link or QR Code</h2>
+  <p>Click <strong>Publish</strong>, then <strong>Copy responder link</strong> (in older versions: <strong>Send</strong> &rarr; the link icon &rarr; <strong>Shorten URL</strong> &rarr; <strong>Copy</strong>). Paste the link into the class chat or an email. For a <strong>QR code</strong>, open the link in Chrome, click the <strong>⋮</strong> menu &rarr; <strong>Cast, save and share</strong> &rarr; <strong>Create QR code</strong>, and download it. Print it on a poster and people answer by pointing a phone camera at it.</p>
+
+  <h2>3. Read the Results</h2>
+  <p>Open the <strong>Responses</strong> tab. <strong>Summary</strong> shows a chart for every question; <strong>Individual</strong> shows one person's answers at a time.</p>
+  <!-- DIAGRAM: SUMMARY TAB -->
+  <div class="diagram-container">
+    <svg width="680" height="170" viewBox="0 0 680 170" xmlns="http://www.w3.org/2000/svg">
+      <rect x="20" y="8" width="420" height="154" rx="6" fill="#FFFFFF" stroke="#CBD5E1"/>
+      <text x="34" y="30" font-size="11" font-weight="bold" fill="#1E293B">How do you usually travel to school?</text>
+      <text x="34" y="45" font-size="9.5" fill="#64748B">20 responses</text>
+      <!-- pie: walk 50%, trotro 25%, taxi 10%, bicycle 10%, car 5% -->
+      <g transform="translate(120, 105)">
+        <path d="M 0,0 L 0,-48 A 48,48 0 0,1 0,48 Z" fill="#4361EE"/>
+        <path d="M 0,0 L 0,48 A 48,48 0 0,1 -48,0 Z" fill="#E63946"/>
+        <path d="M 0,0 L -48,0 A 48,48 0 0,1 -38.8,-28.2 Z" fill="#F59E0B"/>
+        <path d="M 0,0 L -38.8,-28.2 A 48,48 0 0,1 -14.8,-45.6 Z" fill="#16A34A"/>
+        <path d="M 0,0 L -14.8,-45.6 A 48,48 0 0,1 0,-48 Z" fill="#9333EA"/>
+        <text x="22" y="4" font-size="10" font-weight="bold" fill="#FFFFFF">50%</text>
+        <text x="-30" y="26" font-size="10" font-weight="bold" fill="#FFFFFF">25%</text>
+      </g>
+      <g transform="translate(250, 62)" font-size="10" fill="#334155">
+        <rect x="0" y="0" width="10" height="10" fill="#4361EE"/><text x="16" y="9">Walk</text>
+        <rect x="0" y="18" width="10" height="10" fill="#E63946"/><text x="16" y="27">Trotro or bus</text>
+        <rect x="0" y="36" width="10" height="10" fill="#F59E0B"/><text x="16" y="45">Taxi</text>
+        <rect x="0" y="54" width="10" height="10" fill="#16A34A"/><text x="16" y="63">Bicycle</text>
+        <rect x="0" y="72" width="10" height="10" fill="#9333EA"/><text x="16" y="81">Car</text>
+      </g>
+      <!-- link to sheets button -->
+      <rect x="470" y="20" width="190" height="34" rx="6" fill="#F0FDF4" stroke="#16A34A"/>
+      <rect x="482" y="28" width="14" height="18" rx="2" fill="#16A34A"/>
+      <text x="504" y="41" font-size="10.5" font-weight="bold" fill="#15803D">Link to Sheets</text>
+      <text x="470" y="78" font-size="9.5" fill="#334155">Responses tab &rarr; Link to Sheets &rarr;</text>
+      <text x="470" y="92" font-size="9.5" fill="#334155">Create a new spreadsheet &rarr; Create.</text>
+      <text x="470" y="114" font-size="9.5" fill="#334155">Every answer becomes one row. New</text>
+      <text x="470" y="128" font-size="9.5" fill="#334155">answers appear in the sheet by</text>
+      <text x="470" y="142" font-size="9.5" fill="#334155">themselves.</text>
+    </svg>
+    <div class="diagram-caption">Figure 21.4: The Summary tab draws the chart for you. "Link to Sheets" sends every answer into a spreadsheet.</div>
+  </div>
+
+  <p><strong>Your turn:</strong> look at Figure 21.4. Write one sentence about what the chart tells you.</p>
+  <div class="answer-line" contenteditable="true">Half of the pupils...</div>
 </div>
+
+<!-- ========================================== -->
+<!-- PAGE 5: GUIDED LAB                          -->
+<!-- ========================================== -->
 <div class="page">
   <div class="header-bar">
-    <div class="header-title">Coming soon</div>
+    <div class="header-title">Guided Hands-On Lab: Our Class Survey</div>
     <div class="badge">Session 21 • Page 5</div>
   </div>
-  
-  <p>DRAFT PLACEHOLDER: this workbook is being written.</p>
+
+  <h2>1. Lab Mission: Build, Share and Collect a Real Survey</h2>
+  <p>First, try the <strong>Survey Builder</strong> 3D lab on your session page: build a survey with different question types, share it, watch answers arrive and see them turn into a chart. Then, with your partner, build the real thing in Google Forms. Your answers will be the data for Session 22.</p>
+
+  <div class="step-card">
+    <div class="step-num">1</div>
+    <div class="step-content"><strong>Start:</strong> sign in to the Hub learning account &rarr; <strong>forms.google.com</strong> &rarr; <strong>Blank form</strong>. Title: <code>Our Class Survey (Pair __)</code>. Description: say who you are, why you are asking, and that answers are anonymous.</div>
+  </div>
+  <div class="step-card">
+    <div class="step-num">2</div>
+    <div class="step-content"><strong>Section 1 "About you":</strong> (a) <em>What class are you in?</em> Drop-down: JHS 1, JHS 2, JHS 3. (b) <em>How do you usually travel to school?</em> Multiple choice: Walk, Trotro or bus, Taxi, Bicycle, Car, plus <strong>Add "Other"</strong>. (c) <em>How many minutes does it take you to get to school?</em> Short answer with <strong>validation: number between 1 and 100</strong>. Make all three <strong>Required</strong>.</div>
+  </div>
+  <div class="step-card">
+    <div class="step-num">3</div>
+    <div class="step-content"><strong>Add section 2 "Food &amp; free time":</strong> (d) <em>What is your favourite local food?</em> Multiple choice: Jollof, Waakye, Fufu, Banku, Kenkey, Red-red, Other. (e) <em>What do you do after school?</em> Checkboxes: Homework, Help at home, Play sport, Watch TV, Read. (f) <em>How many hours were you on a screen (phone, TV, computer) yesterday?</em> Short answer, number between 0 and 24. (g) <em>How much do you enjoy Tech Club?</em> Linear scale 1–5. (h) <em>One idea to make our school better</em>: Paragraph, not required.</div>
+  </div>
+  <div class="step-card">
+    <div class="step-num">4</div>
+    <div class="step-content"><strong>Settings and preview:</strong> Settings &rarr; Responses &rarr; email addresses: <strong>Do not collect</strong>. Preview (eye icon), answer it once yourself and test the validation by typing <code>500</code>.</div>
+  </div>
+  <div class="step-card">
+    <div class="step-num">5</div>
+    <div class="step-content"><strong>Survey swap:</strong> Publish, copy the link and give it to your mentor (or make a QR code). Answer at least <strong>4 other pairs'</strong> surveys honestly. Then open <strong>Responses &rarr; Summary</strong>, and click <strong>Link to Sheets</strong> &rarr; <strong>Create a new spreadsheet</strong>.</div>
+  </div>
+
+  <table>
+    <thead><tr><th style="width: 50%;">Check</th><th>My answer</th></tr></thead>
+    <tbody>
+      <tr><td>How many question types did we use?</td><td><div class="answer-line" contenteditable="true"></div></td></tr>
+      <tr><td>What happened when we typed 500 for the minutes?</td><td><div class="answer-line" contenteditable="true"></div></td></tr>
+      <tr><td>How many responses did we collect?</td><td><div class="answer-line" contenteditable="true"></div></td></tr>
+      <tr><td>Our prediction: the most popular food will be…</td><td><div class="answer-line" contenteditable="true"></div></td></tr>
+      <tr><td>The real most popular food (from the Summary tab)</td><td><div class="answer-line" contenteditable="true"></div></td></tr>
+      <tr><td>Name of our linked spreadsheet</td><td><div class="answer-line" contenteditable="true"></div></td></tr>
+    </tbody>
+  </table>
+
+  <div class="panic-box">
+    <div class="panic-title">⚠️ "MY FORM SAYS IT IS NOT ACCEPTING RESPONSES"</div>
+    You may not have published it yet, or <strong>Accepting responses</strong> is switched off on the Responses tab. Switch it on. If classmates are asked to sign in, check that <strong>Limit to 1 response</strong> is off.
+  </div>
 </div>
+
+<!-- ========================================== -->
+<!-- PAGE 6: REVIEW & SELF-ASSESSMENT            -->
+<!-- ========================================== -->
 <div class="page">
   <div class="header-bar">
-    <div class="header-title">Coming soon</div>
+    <div class="header-title">Session 21 Review &amp; Verification</div>
     <div class="badge">Session 21 • Page 6</div>
   </div>
-  
-  <p>DRAFT PLACEHOLDER: this workbook is being written.</p>
+
+  <h2>1. True or False?</h2>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 66%;">Statement</th>
+        <th style="width: 17%; text-align:center;">True</th>
+        <th style="width: 17%; text-align:center;">False</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Checkboxes let people choose more than one answer.</td>
+        <td style="text-align:center;"><input type="radio" name="tf21_1"></td>
+        <td style="text-align:center;"><input type="radio" name="tf21_1"></td>
+      </tr>
+      <tr>
+        <td>A survey about favourite foods should ask for everyone's full name and phone number.</td>
+        <td style="text-align:center;"><input type="radio" name="tf21_2"></td>
+        <td style="text-align:center;"><input type="radio" name="tf21_2"></td>
+      </tr>
+      <tr>
+        <td>Response validation can stop someone typing 5000 when you asked for a number from 1 to 100.</td>
+        <td style="text-align:center;"><input type="radio" name="tf21_3"></td>
+        <td style="text-align:center;"><input type="radio" name="tf21_3"></td>
+      </tr>
+      <tr>
+        <td>It is fine to post a screenshot of one classmate's answers in the group chat.</td>
+        <td style="text-align:center;"><input type="radio" name="tf21_4"></td>
+        <td style="text-align:center;"><input type="radio" name="tf21_4"></td>
+      </tr>
+      <tr>
+        <td>"Link to Sheets" puts every response into a spreadsheet, one row per person.</td>
+        <td style="text-align:center;"><input type="radio" name="tf21_5"></td>
+        <td style="text-align:center;"><input type="radio" name="tf21_5"></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>2. Written Review Questions</h2>
+  <p><strong>Question 1:</strong> Why is "What is your favourite local food?" better as a multiple choice question than a short answer question?</p>
+  <div class="answer-line" contenteditable="true">Write your answer here...</div>
+  <div class="answer-line" contenteditable="true"></div>
+  <p><strong>Question 2:</strong> Kwame wants to ask "Don't you think the canteen food is terrible?" Rewrite his question so it is fair.</p>
+  <div class="answer-line" contenteditable="true">A fairer question is...</div>
+
+  <h2>3. Self-Assessment &amp; Mentor Sign-Off</h2>
+  <p>Tick the column that reflects your confidence at the end of Session 21:</p>
+  <table>
+    <thead>
+      <tr>
+        <th>Online Forms Competency</th>
+        <th style="width: 18%; text-align: center;">With Help</th>
+        <th style="width: 18%; text-align: center;">Almost Alone</th>
+        <th style="width: 18%; text-align: center;">All By Myself!</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1. I can build a Google Form and choose the right question type for each question.</td>
+        <td style="text-align: center;"><input type="radio" name="s21c_1"></td>
+        <td style="text-align: center;"><input type="radio" name="s21c_1"></td>
+        <td style="text-align: center;"><input type="radio" name="s21c_1"></td>
+      </tr>
+      <tr>
+        <td>2. I can use required questions, sections, response validation and settings.</td>
+        <td style="text-align: center;"><input type="radio" name="s21c_2"></td>
+        <td style="text-align: center;"><input type="radio" name="s21c_2"></td>
+        <td style="text-align: center;"><input type="radio" name="s21c_2"></td>
+      </tr>
+      <tr>
+        <td>3. I can share a form by link or QR code, read the Summary charts and link it to Sheets.</td>
+        <td style="text-align: center;"><input type="radio" name="s21c_3"></td>
+        <td style="text-align: center;"><input type="radio" name="s21c_3"></td>
+        <td style="text-align: center;"><input type="radio" name="s21c_3"></td>
+      </tr>
+      <tr>
+        <td>4. I can explain how to ask fairly: only what you need, say why, keep answers private.</td>
+        <td style="text-align: center;"><input type="radio" name="s21c_4"></td>
+        <td style="text-align: center;"><input type="radio" name="s21c_4"></td>
+        <td style="text-align: center;"><input type="radio" name="s21c_4"></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div style="border-top: 1px solid var(--bih-border); margin-top: 25px; padding-top: 12px; display: flex; justify-content: space-between; font-size: 13px;">
+    <div><strong>Mentor Signature:</strong> _____________________________</div>
+    <div><strong>Date Completed:</strong> ____________________</div>
+  </div>
 </div>
+
 </body>
 </html>
