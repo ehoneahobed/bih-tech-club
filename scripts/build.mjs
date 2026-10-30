@@ -174,7 +174,8 @@ const FONTS = { outfit: 'node_modules/@fontsource-variable/outfit/files/outfit-l
 for (const [name, file] of Object.entries(FONTS)) cpSync(ROOT + file, DIST + `fonts/${name}.woff2`);
 const three = ROOT + 'node_modules/three/';
 for (const f of ['three.module.min.js', 'three.core.min.js']) cpSync(three + 'build/' + f, DIST + THREE_DIR + f);
-cpSync(three + 'examples/jsm/controls/OrbitControls.js', DIST + THREE_DIR + 'addons/controls/OrbitControls.js');
+// The three.js add-ons the labs import (runtime.js).
+for (const f of ['controls/OrbitControls.js', 'geometries/RoundedBoxGeometry.js']) cpSync(three + 'examples/jsm/' + f, DIST + THREE_DIR + 'addons/' + f);
 cpSync(three + 'LICENSE', DIST + THREE_DIR + 'LICENSE');
 
 const logo = readFileSync(ROOT + 'assets/logo.png');

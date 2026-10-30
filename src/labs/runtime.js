@@ -2,6 +2,7 @@
 // click/hover picking, text labels, tweening and a small UI helper.
 import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+import { RoundedBoxGeometry } from 'three/addons/geometries/RoundedBoxGeometry.js';
 
 export { THREE };
 
@@ -86,6 +87,9 @@ export function createStage(host, opts = {}) {
   }
 
   const tickers = new Set();
+  // Tweens (moves, timers, a running program) keep going while the lab is
+  // scrolled off-screen; only drawing and idle animations pause.
+  const tweens = new Set();
   const clickables = new Map();
   const raycaster = new THREE.Raycaster();
   const pointer = new THREE.Vector2();
@@ -145,7 +149,12 @@ export function createStage(host, opts = {}) {
       // Fit the same framing on a narrow (phone) canvas as on a wide one.
       const vh = viewH * Math.max(1, (1.35 * h) / w);
       Object.assign(camera, { left: (-vh * w) / h / 2, right: (vh * w) / h / 2, top: vh / 2, bottom: -vh / 2 });
-    } else camera.aspect = w / h;
+    } else {
+      // On a tall (phone) canvas widen the view, so the sides of the room stay in.
+      camera.aspect = w / h;
+      const base = opts.fov ?? 45;
+      camera.fov = THREE.MathUtils.radToDeg(2 * Math.atan(Math.tan(THREE.MathUtils.degToRad(base / 2)) * Math.max(1, (1.35 * h) / w)));
+    }
     camera.updateProjectionMatrix();
   }
   new ResizeObserver(resize).observe(wrap);
@@ -163,8 +172,9 @@ export function createStage(host, opts = {}) {
   const clock = new THREE.Clock();
   renderer.setAnimationLoop(() => {
     const dt = Math.min(clock.getDelta(), 0.05);
-    if (!visible) return;
     const t = clock.elapsedTime;
+    for (const f of tweens) f(dt, t);
+    if (!visible) return;
     for (const f of tickers) f(dt, t);
     controls.update();
     if (++frame % 20 === 0) inkScene(scene);
@@ -182,6 +192,10 @@ export function createStage(host, opts = {}) {
     callout: (obj, o) => callouts.add(obj, o),
     highlight: (obj, on) => setGlow(obj, on),
     view,
+    // Scroll the model into view (e.g. when a pupil presses Run below it on a phone).
+    reveal() {
+      if (!visible) wrap.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    },
     onTick(fn) {
       tickers.add(fn);
       return () => tickers.delete(fn);
@@ -195,15 +209,16 @@ export function createStage(host, opts = {}) {
     tween(fn, duration = 0.6, ease = easeInOut) {
       return new Promise((resolve) => {
         let e = 0;
-        const off = this.onTick((dt) => {
+        const step = (dt) => {
           e += dt;
           const k = Math.min(e / duration, 1);
           fn(ease(k));
           if (k >= 1) {
-            off();
+            tweens.delete(step);
             resolve();
           }
-        });
+        };
+        tweens.add(step);
       });
     },
     wait(seconds) {
@@ -269,8 +284,15 @@ const hullMat = new THREE.MeshBasicMaterial({ color: INK, side: THREE.BackSide }
 hullMat.onBeforeCompile = (sh) => {
   sh.vertexShader = sh.vertexShader.replace('#include <begin_vertex>', 'vec3 transformed = position + normal * 0.022;');
 };
-const ROUND = /Sphere|Cylinder|Capsule|Torus|Lathe|Cone|Tube|Icosahedron|Dodecahedron|Octahedron/;
+const ROUND = /Sphere|Cylinder|Capsule|Torus|Lathe|Cone|Tube|Icosahedron|Dodecahedron|Octahedron|RoundedBox/;
 const noPick = () => {};
+// Many copies of one part (bricks, desks) share one outline geometry.
+const edgeCache = new WeakMap();
+const edgesOf = (g, angle) => {
+  let byAngle = edgeCache.get(g);
+  if (!byAngle) edgeCache.set(g, (byAngle = {}));
+  return (byAngle[angle] ??= new THREE.EdgesGeometry(g, angle));
+};
 
 export function inkScene(root) {
   root.traverse((m) => {
@@ -280,7 +302,7 @@ export function inkScene(root) {
     const mt = Array.isArray(m.material) ? m.material[0] : m.material;
     if (!g || !mt || (mt.transparent && mt.opacity < 0.6) || mt.isShadowMaterial || g.attributes.position.count > 6000) return;
     const round = ROUND.test(g.type);
-    const lines = new THREE.LineSegments(new THREE.EdgesGeometry(g, round ? 50 : 25), inkLine);
+    const lines = new THREE.LineSegments(edgesOf(g, round ? 50 : 25), inkLine);
     lines.raycast = noPick;
     lines.userData.isInk = true;
     m.add(lines);
@@ -309,7 +331,7 @@ function createCallouts(wrap, camera, renderer, live, scene, pxPerUnit) {
   // Plain text tags made by label(): drawn wherever their anchor is, if it is in this scene.
   const tagEls = new Map();
   const inScene = (o) => { for (let p = o; p; p = p.parent) if (p === scene) return true; return false; };
-  function drawTags(W, H) {
+  function drawTags(W, H, placed) {
     const unit = pxPerUnit();
     for (const a of TAGS) {
       let el = tagEls.get(a);
@@ -336,10 +358,16 @@ function createCallouts(wrap, camera, renderer, live, scene, pxPerUnit) {
       if (v.z > 1) { el.hidden = true; continue; }
       // Same size as the old sprite at the default zoom, but never smaller than 11px.
       el.style.fontSize = Math.max(11, Math.min(22, t.scale * unit * 0.42)).toFixed(1) + 'px';
-      el.style.transform = `translate(${(((v.x + 1) / 2) * W).toFixed(1)}px, ${(((1 - v.y) / 2) * H).toFixed(1)}px) translate(-50%, -50%)`;
+      const tx = ((v.x + 1) / 2) * W;
+      const ty = ((1 - v.y) / 2) * H;
+      el.style.transform = `translate(${tx.toFixed(1)}px, ${ty.toFixed(1)}px) translate(-50%, -50%)`;
+      // A tag under a card is hidden rather than drawn on top of it.
+      const hw = el.offsetWidth / 2;
+      const hh = el.offsetHeight / 2;
+      if (placed.some((p) => tx - hw < p.r && tx + hw > p.l && ty - hh < p.b && ty + hh > p.t)) el.hidden = true;
     }
   }
-  return {
+  const api = {
     add(obj, { title, text = '', icon = '', at = [0, 0, 0], dx = 0, dy = -70, onClick } = {}) {
       const card = document.createElement(onClick ? 'button' : 'div');
       if (onClick) card.type = 'button';
@@ -361,7 +389,7 @@ function createCallouts(wrap, camera, renderer, live, scene, pxPerUnit) {
       return c;
     },
     clear() { [...list].forEach((c) => c.remove()); },
-    items: () => [...list].filter((c) => !c.card.hidden),
+    items: () => [...list].filter((c) => !c.obj || live(c.obj)),
     show(on) { shown = on; layer.classList.toggle('off', !on); },
     touring(on) { layer.classList.toggle('touring', on); },
     get shown() { return shown; },
@@ -369,47 +397,57 @@ function createCallouts(wrap, camera, renderer, live, scene, pxPerUnit) {
       const r = renderer.domElement;
       const W = r.clientWidth;
       const H = r.clientHeight;
-      drawTags(W, H);
-      if (!list.size || !shown) return;
-      svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
       const placed = [];
-      for (const c of list) {
-        const on = c.obj ? live(c.obj) : true;
-        c.card.hidden = c.dot.hidden = !on;
-        c.line.style.display = on ? '' : 'none';
-        if (!on) continue;
-        v.copy(c.at);
-        if (c.obj) c.obj.localToWorld(v);
-        v.project(camera);
-        const x = ((v.x + 1) / 2) * W;
-        const y = ((1 - v.y) / 2) * H;
-        const cw = c.card.offsetWidth;
-        const ch = c.card.offsetHeight;
-        // Keep the card inside the canvas.
-        // On narrow (phone) canvases keep cards closer to their dots.
-        const near = Math.min(1, W / 700);
-        const left = Math.max(6, Math.min(W - cw - 6, x + c.dx * near - cw / 2));
-        // Keep clear of the toolbar at the bottom; if the spot is taken, try just
-        // below or above the card in the way, whichever stays on the canvas.
-        const maxTop = H - ch - 62;
-        const clamp = (t) => Math.max(6, Math.min(maxTop, t));
-        const free = (t) => !placed.some((p) => left < p.r && left + cw > p.l && t < p.b && t + ch > p.t);
-        let top = clamp(y + c.dy * near - ch / 2);
-        for (let tries = 0; tries < 6 && !free(top); tries++) {
-          const hit = placed.find((p) => left < p.r && left + cw > p.l && top < p.b && top + ch > p.t);
-          const down = clamp(hit.b + 6);
-          const up = clamp(hit.t - ch - 6);
-          top = (c.dy >= 0 ? [down, up] : [up, down]).find(free) ?? (c.dy >= 0 ? down : up);
-        }
-        placed.push({ l: left, r: left + cw, t: top, b: top + ch });
-        c.card.style.transform = `translate(${left}px, ${top}px)`;
-        c.dot.style.transform = `translate(${x - 6}px, ${y - 6}px)`;
-        const ex = Math.max(left, Math.min(left + cw, x));
-        const ey = Math.max(top, Math.min(top + ch, y));
-        Object.entries({ x1: x, y1: y, x2: ex, y2: ey }).forEach(([k, val]) => c.line.setAttribute(k, val.toFixed(1)));
-      }
+      if (list.size && shown) placeCards(W, H, placed);
+      drawTags(W, H, placed);
     },
   };
+  // On a phone-sized canvas only the first four cards a lab adds (its most
+  // important) are shown; the rest still appear one at a time in the tour.
+  function placeCards(W, H, placed) {
+    svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
+    const small = W < 520;
+    const touring = layer.classList.contains('touring');
+    let count = 0;
+    for (const c of list) {
+      let on = c.obj ? live(c.obj) : true;
+      if (on) count++;
+      if (on && small && count > 4 && !(touring && c.card.classList.contains('tour'))) on = false;
+      c.card.hidden = c.dot.hidden = !on;
+      c.line.style.display = on ? '' : 'none';
+      if (!on) continue;
+      v.copy(c.at);
+      if (c.obj) c.obj.localToWorld(v);
+      v.project(camera);
+      const x = ((v.x + 1) / 2) * W;
+      const y = ((1 - v.y) / 2) * H;
+      const cw = c.card.offsetWidth;
+      const ch = c.card.offsetHeight;
+      // Keep the card inside the canvas.
+      // On narrow (phone) canvases keep cards closer to their dots.
+      const near = Math.min(1, W / 700);
+      const left = Math.max(6, Math.min(W - cw - 6, x + c.dx * near - cw / 2));
+      // Keep clear of the toolbar at the bottom; if the spot is taken, try just
+      // below or above the card in the way, whichever stays on the canvas.
+      const maxTop = H - ch - 62;
+      const clamp = (t) => Math.max(6, Math.min(maxTop, t));
+      const free = (t) => !placed.some((p) => left < p.r && left + cw > p.l && t < p.b && t + ch > p.t);
+      let top = clamp(y + c.dy * near - ch / 2);
+      for (let tries = 0; tries < 6 && !free(top); tries++) {
+        const hit = placed.find((p) => left < p.r && left + cw > p.l && top < p.b && top + ch > p.t);
+        const down = clamp(hit.b + 6);
+        const up = clamp(hit.t - ch - 6);
+        top = (c.dy >= 0 ? [down, up] : [up, down]).find(free) ?? (c.dy >= 0 ? down : up);
+      }
+      placed.push({ l: left, r: left + cw, t: top, b: top + ch });
+      c.card.style.transform = `translate(${left}px, ${top}px)`;
+      c.dot.style.transform = `translate(${x - 6}px, ${y - 6}px)`;
+      const ex = Math.max(left, Math.min(left + cw, x));
+      const ey = Math.max(top, Math.min(top + ch, y));
+      Object.entries({ x1: x, y1: y, x2: ex, y2: ey }).forEach(([k, val]) => c.line.setAttribute(k, val.toFixed(1)));
+    }
+  }
+  return api;
 }
 
 // ---------- View toolbar ----------
@@ -519,6 +557,39 @@ export function box(w, h, d, color, extra) {
   return m;
 }
 
+// ---------- Building blocks for detailed models ----------
+// A box with softly rounded edges (cases, keys, devices).
+export function rbox(w, h, d, color, radius = 0.06, extra) {
+  const r = Math.min(radius, w / 2, h / 2, d / 2);
+  const m = new THREE.Mesh(new RoundedBoxGeometry(w, h, d, 3, r), mat(color, extra));
+  m.castShadow = true;
+  m.receiveShadow = true;
+  return m;
+}
+
+// A cable or wire through a list of [x, y, z] points, as a smooth tube.
+export function cable(points, color = 0x24182e, radius = 0.04) {
+  const curve = new THREE.CatmullRomCurve3(points.map((p) => new THREE.Vector3(...p)));
+  const m = new THREE.Mesh(new THREE.TubeGeometry(curve, Math.max(24, points.length * 12), radius, 8, false), mat(color, { roughness: 0.7 }));
+  m.castShadow = true;
+  return m;
+}
+
+// A flat printed detail (legend, screen, sticker, label) drawn with a 2D canvas.
+// draw(g, W, H) paints on a canvas of W×H pixels; the plane is w×h world units.
+export function decal(w, h, draw, { px = 256, transparent = true } = {}) {
+  const c = document.createElement('canvas');
+  c.width = Math.round(px * Math.max(1, w / h));
+  c.height = Math.round(px * Math.max(1, h / w));
+  draw(c.getContext('2d'), c.width, c.height);
+  const tex = new THREE.CanvasTexture(c);
+  tex.colorSpace = THREE.SRGBColorSpace;
+  tex.anisotropy = 4;
+  const m = new THREE.Mesh(new THREE.PlaneGeometry(w, h), new THREE.MeshBasicMaterial({ map: tex, transparent, toneMapped: false }));
+  m.userData.noInk = true;
+  return m;
+}
+
 // Canvas-drawn text, used both for floating labels and for flat textures.
 export function textCanvas(lines, { width = 512, height = 128, bg = null, color = '#24182E', font = 'bold 54px Rubik, system-ui, sans-serif', align = 'center', radius = 24 } = {}) {
   const c = document.createElement('canvas');
@@ -565,7 +636,7 @@ export function label(text, { scale = 1, bg = 'rgba(255,255,255,0.92)', color = 
 export function setLabel(anchor, text, opts = {}) {
   const t = anchor.userData.tag;
   if (!t) return;
-  Object.assign(t, { text, color: opts.color ?? '#24182E', bg: opts.bg ?? t.bg, v: t.v + 1 });
+  Object.assign(t, { text, color: opts.color ?? t.color, bg: opts.bg ?? t.bg, v: t.v + 1 });
 }
 
 // The HTML side panel next to the canvas: info text plus control buttons.

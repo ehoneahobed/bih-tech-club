@@ -1,6 +1,7 @@
 // Session 2 — Keyboard Mastery: a 3D keyboard that reacts to the learner's real
 // key presses, shows the four zones (as in workbook Figure 2.0), finger map and a home-row typing drill.
-import { THREE, COLORS, box, mat, textCanvas } from './runtime.js';
+import { RoundedBoxGeometry } from 'three/addons/geometries/RoundedBoxGeometry.js';
+import { THREE, mat, rbox, cable, decal } from './runtime.js';
 
 // The four zones from workbook Figure 2.0. This keyboard is laptop-sized, so it has no numeric keypad.
 const ZONES = {
@@ -42,6 +43,56 @@ const FINGERS = [
 
 const DRILLS = ['asdf jkl;', 'fjfj dkdk', 'sad lad', 'a lad asks', 'add salad', 'flask', 'ask dad'];
 
+// The symbol printed above each top-row key (typed with Shift).
+const SHIFTED = { '`': '~', 1: '!', 2: '@', 3: '#', 4: '$', 5: '%', 6: '^', 7: '&', 8: '*', 9: '(', 0: ')', '-': '_', '=': '+', '[': '{', ']': '}', '\\': '|', ';': ':', "'": '"', ',': '<', '.': '>', '/': '?' };
+
+// Regroups a box geometry into two parts, sides (material 0) and top (material 1),
+// so each key costs two draw calls instead of six.
+function topAndSides(geo) {
+  const idx = geo.index ? Array.from(geo.index.array) : Array.from({ length: geo.attributes.position.count }, (_, i) => i);
+  const groups = geo.groups;
+  const sides = groups.filter((g, i) => i !== 2).flatMap((g) => idx.slice(g.start, g.start + g.count));
+  const top = idx.slice(groups[2].start, groups[2].start + groups[2].count);
+  geo.setIndex([...sides, ...top]);
+  geo.clearGroups();
+  geo.addGroup(0, sides.length, 0);
+  geo.addGroup(sides.length, top.length, 1);
+  return geo;
+}
+
+// The printed top of a keycap: a softly dished face with its legend (and Shift symbol).
+function keyTop(text, w) {
+  // Keep the texture in the key's shape (so wide keys are not stretched), at most 1024px.
+  const c = document.createElement('canvas');
+  c.width = Math.round(Math.min(1024, 256 * w));
+  c.height = Math.round(c.width / w);
+  const g = c.getContext('2d');
+  g.scale(c.height / 256, c.height / 256);
+  const W = 256 * w;
+  const grd = g.createRadialGradient(W / 2, 110, 20, W / 2, 128, W * 0.7);
+  grd.addColorStop(0, '#FFFFFF');
+  grd.addColorStop(1, '#E4E1E8');
+  g.fillStyle = grd;
+  g.fillRect(0, 0, W, 256);
+  g.fillStyle = '#24182E';
+  g.textAlign = 'center';
+  g.textBaseline = 'middle';
+  const up = SHIFTED[text];
+  let px = up ? 100 : text.length > 2 ? 64 : 110;
+  do g.font = `bold ${px}px Rubik, system-ui, sans-serif`;
+  while (g.measureText(text).width > W - 60 && (px -= 2) > 20);
+  if (up) {
+    g.fillText(text, W / 2, 176);
+    g.fillStyle = '#5A4470';
+    g.font = 'bold 88px Rubik, system-ui, sans-serif';
+    g.fillText(up, W / 2, 76);
+  } else g.fillText(text, W / 2, 132);
+  const t = new THREE.CanvasTexture(c);
+  t.colorSpace = THREE.SRGBColorSpace;
+  t.anisotropy = 4;
+  return t;
+}
+
 export default function keyboardLab(stage, ui, host) {
   const { scene } = stage;
   const U = 0.62; // one key unit
@@ -49,25 +100,53 @@ export default function keyboardLab(stage, ui, host) {
   const board = new THREE.Group();
   scene.add(board);
 
-  const caseMesh = box(15 * U + 0.5, 0.35, 6 * U + 0.6, 0x3a2b47);
+  // Case: a rounded shell with a darker key plate, a Caps Lock light, feet and a cable.
+  const CW = 15 * U + 0.5;
+  const CD = 6 * U + 0.6;
+  const caseMesh = rbox(CW, 0.35, CD, 0x3a2b47, 0.1);
   caseMesh.position.y = 0.17;
-  board.add(caseMesh);
+  const plate = rbox(15 * U + 0.12, 0.04, 6 * U + 0.2, 0x24182e, 0.03);
+  plate.position.set(0, 0.34, -0.06);
+  board.add(caseMesh, plate);
+  const capsLed = new THREE.Mesh(new THREE.CylinderGeometry(0.05, 0.05, 0.03, 16), mat(0x6b587c, { emissive: 0x000000 }));
+  capsLed.position.set(4.4, 0.36, -2.5 * U - 0.12);
+  const ledTag = decal(0.6, 0.16, (g, W, H) => {
+    g.fillStyle = '#D9D3DE';
+    g.font = `600 ${H * 0.62}px Rubik, system-ui, sans-serif`;
+    g.textBaseline = 'middle';
+    g.fillText('Caps Lock', 0, H / 2);
+  }, { px: 48 });
+  ledTag.rotation.x = -Math.PI / 2;
+  ledTag.position.set(3.82, 0.362, -2.5 * U - 0.12);
+  board.add(capsLed, ledTag);
+  for (const [x, z, h] of [[-CW / 2 + 0.5, -CD / 2 + 0.3, 0.26], [CW / 2 - 0.5, -CD / 2 + 0.3, 0.26], [-CW / 2 + 0.5, CD / 2 - 0.3, 0.04], [CW / 2 - 0.5, CD / 2 - 0.3, 0.04]]) {
+    const foot = rbox(0.5, h, 0.3, 0x1b1322, 0.03);
+    foot.position.set(x, -h / 2 + 0.01, z);
+    board.add(foot);
+  }
+  board.add(cable([[1.2, 0.2, -CD / 2 + 0.02], [1.25, 0.14, -CD / 2 - 0.2], [1.8, 0.04, -CD / 2 - 0.45], [3.5, 0.03, -CD / 2 - 0.55], [6, 0.03, -CD / 2 - 0.4]], 0x24182e, 0.045));
+  // Tilt it on its back feet, like a real keyboard on a desk.
+  board.rotation.x = 0.06;
+  board.position.y = 0.13;
 
   ROWS.forEach((row, r) => {
     let x = -7.5 * U;
     for (const [text, code, w, zone] of row) {
-      const geo = new THREE.BoxGeometry(w * U - 0.07, 0.28, U - 0.07);
-      const top = new THREE.MeshStandardMaterial({ map: textCanvas(text, { width: 256 * Math.min(w, 2.5), height: 256, bg: '#F8F9FA', font: `bold ${text.length > 2 ? 64 : 110}px Rubik, system-ui, sans-serif`, radius: 30 }), roughness: 0.6 });
+      // Rounded keycap; its top face (material 2) carries the legend, the sides show the colour.
+      // (Two edge segments, not three, to keep the triangle count low for software rendering.)
+      const shape = new RoundedBoxGeometry(w * U - 0.08, 0.28, U - 0.08, 2, 0.06);
+      const top = new THREE.MeshStandardMaterial({ map: keyTop(text, w), roughness: 0.6 });
       const side = mat(0xdee2e6);
-      const mesh = new THREE.Mesh(geo, [side, side, top, side, side, side]);
+      const mesh = new THREE.Mesh(topAndSides(shape), [side, top]);
       mesh.castShadow = true;
+      mesh.receiveShadow = true;
       mesh.position.set(x + (w * U) / 2, 0.48, (r - 2.5) * U + (r === 0 ? -0.12 : 0));
       board.add(mesh);
       keys.set(code, { mesh, zone, text, side, top, baseY: 0.48 });
       if (code === 'KeyF' || code === 'KeyJ') {
         const bump = new THREE.Mesh(new THREE.CapsuleGeometry(0.025, 0.12, 4, 8), mat(0x495057));
         bump.rotation.z = Math.PI / 2;
-        bump.position.set(0, 0.15, 0.16);
+        bump.position.set(0, 0.145, 0.15);
         mesh.add(bump);
       }
       stage.clickable(mesh, () => press(code));
@@ -92,6 +171,7 @@ export default function keyboardLab(stage, ui, host) {
   // ---------- Pressing ----------
   let drill = null;
   const homeBumps = new Set();
+  let capsOn = false;
   function press(code) {
     const k = keys.get(code);
     if (!k) return;
@@ -99,6 +179,10 @@ export default function keyboardLab(stage, ui, host) {
     if (code === 'KeyF' || code === 'KeyJ') homeBumps.add(code);
     if (homeBumps.size === 2) ui.complete('bumps');
     if (code === 'Backspace') ui.complete('backspace');
+    if (code === 'CapsLock') {
+      capsOn = !capsOn;
+      capsLed.material.emissive.setHex(capsOn ? 0x22cc55 : 0x000000);
+    }
     if (homeBumps.has(code) || code === 'Backspace') cards[code]?.card.classList.add('done');
     k.mesh.position.y = k.baseY - 0.12;
     k.top.emissive.setHex(0x553300);
@@ -116,6 +200,8 @@ export default function keyboardLab(stage, ui, host) {
   host.tabIndex = 0;
   host.addEventListener('keydown', (e) => {
     if (e.target.closest('input, textarea')) return;
+    // Space and Enter on a focused button (a card or a control) should press that button.
+    if (e.target.closest('button') && (e.code === 'Space' || e.code === 'Enter')) return;
     if (keys.has(e.code)) {
       if (e.code !== 'Tab') e.preventDefault(); // never trap keyboard users inside the lab
       press(e.code);

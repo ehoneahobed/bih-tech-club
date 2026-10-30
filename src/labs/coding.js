@@ -1,7 +1,7 @@
 // Sessions 16–17 — Block Programming: snap together blocks, run them on a 3D
 // coordinate stage, use loops to save work, collect litter for points and
 // step through code one block at a time to find bugs.
-import { THREE, COLORS, box, mat, label, setLabel } from './runtime.js';
+import { THREE, COLORS, mat, rbox, decal, label, setLabel } from './runtime.js';
 
 const SCALE = 1 / 50; // 50 stage steps = 1 world unit (stage is 480 × 360 like Scratch)
 const BLOCKS = {
@@ -23,40 +23,37 @@ const PRESETS = {
   'Buggy star (fix me!)': [['penDown'], ['repeat', 5], ['move', 150], ['right', 72], ['end']],
 };
 const LITTER = [[-120, 120], [60, 120], [180, 120], [-40, 0], [140, 0], [-160, -120], [100, -110]];
+const GROUND = -0.42; // the floor the board's feet stand on (the board top is y = 0)
+const trailMat = new THREE.MeshBasicMaterial({ color: COLORS.purple });
+const dotGeo = new THREE.CylinderGeometry(0.035, 0.035, 0.03, 12);
 
 export default function codingLab(stage, ui) {
   const { scene } = stage;
 
   // ---------- Stage ----------
+  // The x / y stage is a printed board in a plum frame, on stubby feet.
   const floor = new THREE.Mesh(new THREE.PlaneGeometry(480 * SCALE, 360 * SCALE), new THREE.MeshStandardMaterial({ map: gridTexture(), roughness: 1 }));
   floor.rotation.x = -Math.PI / 2;
   floor.position.y = 0.02;
   floor.receiveShadow = true;
-  scene.add(floor);
+  scene.add(floor, boardFrame());
   for (const [t, x, z] of [['x: -240', -5.3, 0], ['x: 240', 5.3, 0], ['y: 180', 0, -4.0], ['y: -180', 0, 4.0]]) {
     const l = label(t, { scale: 0.28, width: 256 });
     l.position.set(x, 0.4, z);
     scene.add(l);
   }
+  const bin = litterBin();
+  bin.position.set(-5.75, GROUND, 3.35);
+  scene.add(bin);
+  const binned = new THREE.Group(); // litter already dropped in the bin
+  bin.add(binned);
 
-  const sprite = new THREE.Group();
-  const bodyM = box(0.6, 0.6, 0.6, COLORS.gold);
-  bodyM.position.y = 0.4;
-  const nose = new THREE.Mesh(new THREE.ConeGeometry(0.18, 0.4, 16), mat(COLORS.purple));
-  nose.rotation.x = -Math.PI / 2;
-  nose.position.set(0, 0.45, -0.45);
-  for (const x of [-0.14, 0.14]) {
-    const eye = new THREE.Mesh(new THREE.SphereGeometry(0.07, 10, 8), mat(0x111111));
-    eye.position.set(x, 0.55, -0.31);
-    sprite.add(eye);
-  }
-  sprite.add(bodyM, nose);
+  const { sprite, pen } = makeSprite();
   scene.add(sprite);
   const bubble = label('', { scale: 0.4 });
-  bubble.position.y = 1.4;
+  bubble.position.y = 1.5;
   bubble.visible = false;
   sprite.add(bubble);
-
   const trail = new THREE.Group();
   scene.add(trail);
   const litterGroup = new THREE.Group();
@@ -101,7 +98,8 @@ export default function codingLab(stage, ui) {
   const s = { x: 0, y: 0, dir: 90, pen: false, score: 0 };
   function place() {
     sprite.position.set(s.x * SCALE, 0, -s.y * SCALE);
-    sprite.rotation.y = -(s.dir * Math.PI) / 180; // the nose points to -z ("up" the stage) at direction 0
+    sprite.rotation.y = -(s.dir * Math.PI) / 180; // the beak points to -z ("up" the stage) at direction 0
+    pen.position.y = s.pen ? 0 : 0.14; // the marker touches the board only when the pen is down
     readout.innerHTML = `x: <b>${Math.round(s.x)}</b> &nbsp; y: <b>${Math.round(s.y)}</b> &nbsp; direction: <b>${Math.round(s.dir)}°</b> &nbsp; score: <b>${s.score}</b>`;
     tagSprite();
   }
@@ -111,13 +109,14 @@ export default function codingLab(stage, ui) {
     penCard?.remove();
     penCard = null;
     litterGroup.clear();
-    for (const [x, y] of LITTER) {
-      const sachet = box(0.35, 0.08, 0.25, 0x4cc9f0);
-      sachet.position.set(x * SCALE, 0.08, -y * SCALE);
-      sachet.rotation.y = Math.random() * Math.PI;
-      sachet.userData.xy = [x, y];
-      litterGroup.add(sachet);
-    }
+    binned.clear();
+    LITTER.forEach(([x, y], i) => {
+      const item = litterItem(i);
+      item.position.set(x * SCALE, 0.02, -y * SCALE);
+      item.rotation.y = (i * 2.4) % Math.PI;
+      item.userData.xy = [x, y];
+      litterGroup.add(item);
+    });
     pinScore();
     bubble.visible = false;
     place();
@@ -127,6 +126,7 @@ export default function codingLab(stage, ui) {
       const [x, y] = l.userData.xy;
       if (Math.hypot(x - s.x, y - s.y) < 35) {
         litterGroup.remove(l);
+        toBin(l);
         s.score++;
         lastLitter = [x, y];
         pinScore();
@@ -244,6 +244,20 @@ export default function codingLab(stage, ui) {
     place();
   }
 
+  // Collected litter hops in an arc into the bin and stays there, poking out of the top.
+  function toBin(item) {
+    const from = item.position.clone().sub(bin.position);
+    const n = binned.children.length;
+    const to = new THREE.Vector3(Math.sin(n * 2.1) * 0.16, 1.02 + n * 0.03, Math.cos(n * 2.1) * 0.12);
+    binned.add(item);
+    item.position.copy(from);
+    stage.tween((k) => {
+      item.position.lerpVectors(from, to, k);
+      item.position.y += Math.sin(k * Math.PI) * 1.6;
+      item.scale.setScalar(1.3 - 0.4 * k);
+    }, 0.7);
+  }
+
   function say(text) {
     setLabel(bubble, `💬 ${text}`);
     bubble.visible = true;
@@ -254,9 +268,15 @@ export default function codingLab(stage, ui) {
     const b = new THREE.Vector3(x1 * SCALE, 0.05, -y1 * SCALE);
     const len = a.distanceTo(b);
     if (len < 0.01) return;
-    const seg = new THREE.Mesh(new THREE.BoxGeometry(0.07, 0.04, len), new THREE.MeshBasicMaterial({ color: COLORS.purple }));
+    const seg = new THREE.Mesh(new THREE.BoxGeometry(0.07, 0.03, len), trailMat);
     seg.position.copy(a).lerp(b, 0.5);
     seg.lookAt(b);
+    seg.userData.noInk = true;
+    // A round dot at the end, so corners look drawn with a marker.
+    const dot = new THREE.Mesh(dotGeo, trailMat);
+    dot.position.z = len / 2;
+    dot.userData.noInk = true;
+    seg.add(dot);
     trail.add(seg);
     // Pin the pen card to the first line drawn; reset() removes it with the trail.
     if (!penCard) {
@@ -265,6 +285,7 @@ export default function codingLab(stage, ui) {
   }
 
   async function run(step = false) {
+    stage.reveal();
     if (running) return;
     let jumps;
     try {
@@ -354,6 +375,193 @@ export default function codingLab(stage, ui) {
   ui.info('Code the sprite', '<p>An <b>algorithm</b> is a list of steps in the right order — like the kelewele recipe. Add blocks, press <b>Run</b>, and watch the sprite follow them on the x / y stage.</p>');
 }
 
+// ---------- Models ----------
+// The board under the printed stage: a base, a raised plum frame and four feet.
+function boardFrame() {
+  const g = new THREE.Group();
+  const W = 480 * SCALE;
+  const D = 360 * SCALE;
+  const base = rbox(W + 0.5, 0.3, D + 0.5, COLORS.blue, 0.08);
+  base.position.y = -0.15;
+  g.add(base);
+  for (const [w, d, x, z] of [[W + 0.5, 0.2, 0, -D / 2 - 0.15], [W + 0.5, 0.2, 0, D / 2 + 0.15], [0.2, D + 0.1, -W / 2 - 0.15, 0], [0.2, D + 0.1, W / 2 + 0.15, 0]]) {
+    const rail = rbox(w, 0.14, d, COLORS.purple, 0.05);
+    rail.position.set(x, 0.05, z);
+    g.add(rail);
+  }
+  for (const x of [-1, 1]) for (const z of [-1, 1]) {
+    const foot = new THREE.Mesh(new THREE.CylinderGeometry(0.16, 0.2, -GROUND - 0.3, 12), mat(COLORS.purple));
+    foot.position.set(x * (W / 2 - 0.1), (GROUND - 0.3) / 2, z * (D / 2 - 0.1));
+    foot.castShadow = true;
+    g.add(foot);
+  }
+  // A printed name plate on the front edge of the base.
+  const plate = decal(3.2, 0.2, (c, w, h) => {
+    c.fillStyle = '#FFBE00';
+    c.font = `bold ${h * 0.7}px Rubik, system-ui, sans-serif`;
+    c.textAlign = 'center';
+    c.textBaseline = 'middle';
+    c.fillText('SCRATCH STAGE  ·  480 × 360 STEPS', w / 2, h / 2 + 2);
+  }, { px: 64 });
+  plate.position.set(0, -0.15, D / 2 + 0.252);
+  g.add(plate);
+  return g;
+}
+
+// A little chick with big eyes, a beak that shows which way it faces, feet,
+// and a marker pen held under its belly (lowered for "pen down").
+function makeSprite() {
+  const sprite = new THREE.Group();
+  const gold = mat(COLORS.gold);
+  const body = new THREE.Mesh(new THREE.SphereGeometry(0.3, 20, 14), gold);
+  body.scale.set(1, 0.92, 1.05);
+  body.position.y = 0.66;
+  body.castShadow = true;
+  const head = new THREE.Mesh(new THREE.SphereGeometry(0.2, 18, 12), gold);
+  head.position.set(0, 1.0, -0.13);
+  head.castShadow = true;
+  const beak = new THREE.Mesh(new THREE.ConeGeometry(0.07, 0.2, 12), mat(COLORS.red));
+  beak.rotation.x = -Math.PI / 2;
+  beak.position.set(0, 0.97, -0.39);
+  const tuft = new THREE.Mesh(new THREE.ConeGeometry(0.05, 0.16, 8), mat(COLORS.red));
+  tuft.position.set(0, 1.25, -0.08);
+  tuft.rotation.x = -0.3;
+  sprite.add(body, head, beak, tuft);
+  for (const x of [-1, 1]) {
+    const eye = new THREE.Mesh(new THREE.SphereGeometry(0.065, 12, 10), mat(0xffffff));
+    eye.position.set(x * 0.08, 1.05, -0.29);
+    const pupil = new THREE.Mesh(new THREE.SphereGeometry(0.032, 10, 8), mat(COLORS.purple));
+    pupil.position.set(x * 0.08, 1.05, -0.35);
+    pupil.userData.noInk = true;
+    const wing = new THREE.Mesh(new THREE.SphereGeometry(0.14, 12, 10), mat(0xf0a500));
+    wing.scale.set(0.35, 0.8, 1);
+    wing.position.set(x * 0.29, 0.68, 0.02);
+    const leg = new THREE.Mesh(new THREE.CylinderGeometry(0.025, 0.025, 0.36, 6), mat(COLORS.red));
+    leg.position.set(x * 0.13, 0.22, 0);
+    const foot = rbox(0.12, 0.05, 0.2, COLORS.red, 0.02);
+    foot.position.set(x * 0.13, 0.045, -0.05);
+    sprite.add(eye, pupil, wing, leg, foot);
+  }
+  // A floor arrow: the sprite's "direction", printed on the board under it.
+  const arrow = decal(0.5, 0.8, (c, w, h) => {
+    c.fillStyle = 'rgba(202,31,63,0.85)';
+    c.beginPath();
+    c.moveTo(w / 2, 0);
+    c.lineTo(w, h * 0.42);
+    c.lineTo(w * 0.68, h * 0.42);
+    c.lineTo(w * 0.68, h);
+    c.lineTo(w * 0.32, h);
+    c.lineTo(w * 0.32, h * 0.42);
+    c.lineTo(0, h * 0.42);
+    c.closePath();
+    c.fill();
+  }, { px: 64 });
+  arrow.rotation.x = -Math.PI / 2;
+  arrow.position.set(0, 0.03, -0.45);
+  sprite.add(arrow);
+  // The marker: white barrel, plum cap and tip (the same colour as the trail).
+  const pen = new THREE.Group();
+  const barrel = new THREE.Mesh(new THREE.CylinderGeometry(0.05, 0.05, 0.34, 12), mat(0xffffff));
+  barrel.position.y = 0.26;
+  const cap = new THREE.Mesh(new THREE.CylinderGeometry(0.055, 0.055, 0.1, 12), mat(COLORS.purple));
+  cap.position.y = 0.44;
+  const tip = new THREE.Mesh(new THREE.ConeGeometry(0.05, 0.08, 12), mat(COLORS.purple));
+  tip.rotation.x = Math.PI;
+  tip.position.y = 0.06;
+  pen.add(barrel, cap, tip);
+  sprite.add(pen);
+  sprite.scale.setScalar(1.2);
+  return { sprite, pen };
+}
+
+// Seven pieces of litter, made from four kinds: water sachets, bottles, paper balls and a can.
+function litterItem(i) {
+  const g = new THREE.Group();
+  const kind = ['sachet', 'bottle', 'paper', 'sachet', 'can', 'paper', 'bottle'][i % 7];
+  if (kind === 'sachet') {
+    const bag = rbox(0.36, 0.07, 0.26, 0xcdeefc, 0.03);
+    bag.position.y = 0.035;
+    const print = decal(0.3, 0.2, (c, w, h) => {
+      c.fillStyle = '#2e86c1';
+      c.fillRect(0, h * 0.62, w, h * 0.2);
+      c.font = `bold ${h * 0.26}px Rubik, system-ui, sans-serif`;
+      c.textAlign = 'center';
+      c.fillText('PURE', w / 2, h * 0.3);
+      c.fillText('WATER', w / 2, h * 0.56);
+    }, { px: 64 });
+    print.rotation.x = -Math.PI / 2;
+    print.position.y = 0.072;
+    g.add(bag, print);
+  } else if (kind === 'bottle') {
+    const b = new THREE.Group();
+    const body = new THREE.Mesh(new THREE.CylinderGeometry(0.075, 0.075, 0.3, 14), mat(0xa9dcef, { transparent: true, opacity: 0.85, roughness: 0.2 }));
+    const band = new THREE.Mesh(new THREE.CylinderGeometry(0.078, 0.078, 0.11, 14), mat(COLORS.red));
+    const neck = new THREE.Mesh(new THREE.CylinderGeometry(0.03, 0.075, 0.08, 14), body.material);
+    neck.position.y = 0.19;
+    const cap = new THREE.Mesh(new THREE.CylinderGeometry(0.035, 0.035, 0.04, 10), mat(COLORS.blue));
+    cap.position.y = 0.25;
+    b.add(body, band, neck, cap);
+    b.rotation.z = Math.PI / 2; // lying on its side
+    b.position.y = 0.075;
+    g.add(b);
+  } else if (kind === 'paper') {
+    // A crumpled ball: an icosphere with its corners pushed in and out.
+    const geo = new THREE.IcosahedronGeometry(0.12, 1);
+    const pos = geo.attributes.position;
+    for (let k = 0; k < pos.count; k++) {
+      const v = new THREE.Vector3().fromBufferAttribute(pos, k);
+      v.multiplyScalar(0.8 + 0.4 * Math.abs(Math.sin(v.x * 91 + v.y * 57 + v.z * 23)));
+      pos.setXYZ(k, v.x, v.y, v.z);
+    }
+    geo.computeVertexNormals();
+    const ball = new THREE.Mesh(geo, mat(0xf4f1ea, { flatShading: true }));
+    ball.position.y = 0.11;
+    ball.rotation.set(0.4, 0.8, 0.2);
+    g.add(ball);
+  } else {
+    const can = new THREE.Mesh(new THREE.CylinderGeometry(0.065, 0.065, 0.22, 14), mat(COLORS.red, { metalness: 0.3 }));
+    can.rotation.z = Math.PI / 2;
+    can.position.y = 0.065;
+    const ring = new THREE.Mesh(new THREE.CylinderGeometry(0.066, 0.066, 0.04, 14), mat(0xd9d9d9, { metalness: 0.5 }));
+    ring.position.y = 0.09;
+    can.add(ring);
+    g.add(can);
+  }
+  g.scale.setScalar(1.3);
+  return g;
+}
+
+// A tapered green bin with a rim and a recycling sign, standing beside the board.
+function litterBin() {
+  const g = new THREE.Group();
+  const can = new THREE.Mesh(new THREE.CylinderGeometry(0.42, 0.34, 1.0, 20, 1, true), mat(0x2e8b57, { side: THREE.DoubleSide }));
+  can.position.y = 0.5;
+  can.castShadow = true;
+  const floorDisc = new THREE.Mesh(new THREE.CircleGeometry(0.34, 20), mat(0x1f5f3b));
+  floorDisc.rotation.x = -Math.PI / 2;
+  floorDisc.position.y = 0.02;
+  const rim = new THREE.Mesh(new THREE.TorusGeometry(0.42, 0.04, 8, 24), mat(0x1f5f3b));
+  rim.rotation.x = Math.PI / 2;
+  rim.position.y = 1.0;
+  const sign = decal(0.4, 0.4, (c, w, h) => {
+    c.fillStyle = '#ffffff';
+    c.beginPath();
+    c.arc(w / 2, h / 2, w * 0.46, 0, Math.PI * 2);
+    c.fill();
+    c.font = `${h * 0.62}px system-ui, sans-serif`;
+    c.textAlign = 'center';
+    c.textBaseline = 'middle';
+    c.fillStyle = '#2e8b57';
+    c.fillText('♻', w / 2, h * 0.53);
+  }, { px: 96 });
+  sign.position.set(0, 0.55, 0.392);
+  sign.rotation.x = -0.08;
+  g.add(can, floorDisc, rim, sign);
+  return g;
+}
+
+// The printed stage: a grid every 20 steps, darker lines every 100, red x and
+// y axes with arrows and numbers (2 canvas pixels = 1 stage step).
 function gridTexture() {
   const c = document.createElement('canvas');
   c.width = 960;
@@ -361,34 +569,53 @@ function gridTexture() {
   const g = c.getContext('2d');
   g.fillStyle = '#ffffff';
   g.fillRect(0, 0, 960, 720);
-  g.strokeStyle = '#e3e7ff';
-  g.lineWidth = 2;
-  for (let x = 0; x <= 960; x += 40) {
+  const lines = (step, color, width) => {
+    g.strokeStyle = color;
+    g.lineWidth = width;
     g.beginPath();
-    g.moveTo(x, 0);
-    g.lineTo(x, 720);
+    for (let x = 480 % step; x <= 960; x += step) g.moveTo(x, 0), g.lineTo(x, 720);
+    for (let y = 360 % step; y <= 720; y += step) g.moveTo(0, y), g.lineTo(960, y);
     g.stroke();
-  }
-  for (let y = 0; y <= 720; y += 40) {
-    g.beginPath();
-    g.moveTo(0, y);
-    g.lineTo(960, y);
-    g.stroke();
-  }
+  };
+  lines(40, '#ece6f2', 2);
+  lines(200, '#cfc3dc', 3);
   g.strokeStyle = '#CA1F3F';
+  g.fillStyle = '#CA1F3F';
   g.lineWidth = 4;
   g.beginPath();
-  g.moveTo(480, 0);
+  g.moveTo(480, 6);
   g.lineTo(480, 720);
   g.moveTo(0, 360);
-  g.lineTo(960, 360);
+  g.lineTo(954, 360);
   g.stroke();
+  for (const [x, y, a] of [[954, 360, 0], [480, 6, -Math.PI / 2]]) {
+    g.save();
+    g.translate(x, y);
+    g.rotate(a);
+    g.beginPath();
+    g.moveTo(6, 0);
+    g.lineTo(-18, -11);
+    g.lineTo(-18, 11);
+    g.fill();
+    g.restore();
+  }
+  g.font = 'bold 22px Rubik, system-ui, sans-serif';
+  g.textAlign = 'center';
+  g.textBaseline = 'top';
+  for (const v of [-200, -100, 100, 200]) g.fillText(v, 480 + v * 2, 368);
+  g.textAlign = 'left';
+  g.textBaseline = 'middle';
+  for (const v of [-100, 100]) g.fillText(v, 490, 360 - v * 2);
+  g.font = 'bold 30px Rubik, system-ui, sans-serif';
+  g.fillText('x', 924, 334);
+  g.fillText('y', 496, 22);
   const t = new THREE.CanvasTexture(c);
   t.colorSpace = THREE.SRGBColorSpace;
+  t.anisotropy = 4;
   return t;
 }
 
-export const config = { camera: [0, 8, 7.5], target: [0, 0, 0.3], shadowSize: 7, maxPolar: Math.PI * 0.45 };
+export const config = { camera: [0, 6.6, 9], target: [0, 0, 0.3], shadowSize: 8, maxPolar: Math.PI * 0.45, groundY: GROUND, frame: 1.06 };
 
 export const missions = [
   { id: 'run', text: 'Press ▶ Run and watch the sprite draw a square.', hint: 'The sprite follows the blocks in order, from top to bottom.' },
