@@ -40,7 +40,13 @@ By the end of the session, pupils can:
 - **Link to coding:** HTML describes rather than decides (no loops or IFs), but the computer still does exactly what you type. A missing `/` is a bug: spot it, trace it, fix one thing (Session 37).
 
 ## The 3D lab
-**Web Page Builder** lets pupils build a page about their community from blocks, then peek at the HTML behind it and change it. On the projector, demonstrate adding a heading block and a picture block, then open the HTML view and show which tag each block became. In pairs, pupils build a short page from blocks and then change a word, a heading or a link *in the HTML* and watch the page change. Ask: "Which tag made the big heading? What happens if you delete the closing tag?" This bridges Google Sites (blocks, no code) and Mission 2 (writing the tags yourself). If time is short, pupils can finish the HTML missions after Mission 2.
+**Web Page Builder** is a computer on a desk with a tray of four blocks: heading, paragraph, picture and link. It has three parts, one mission each:
+
+1. *Build a page about your community with all four blocks: heading, paragraph, picture and link.* Pupils type their own heading and paragraph (the lab refuses a phone number) and choose a picture and a link.
+2. *Open the HTML view and match each block to the tag it became: h1, p, img or a.* The screen splits into the HTML (left) and the page (right), with colour marks joining each line to its block.
+3. *Edit the HTML: change some words, delete a closing tag to see the bug, then fix it.* Deleting `</h1>` makes everything after it part of the heading; typing it back fixes it. A helper button can delete the tag for slow typists, but the fix must be typed.
+
+On the projector, demonstrate adding a block and opening the HTML view. Ask: "Which tag made the big heading? What happens if you delete the closing tag?" This bridges Google Sites (blocks, no code) and Mission 2 (writing the tags yourself in Notepad). The lab only understands h1, h2, p, img, a, b, i and br, and draws the page itself, so nothing a pupil types can run as code. If time is short, pupils can finish part 3 after Mission 2.
 
 ## Common mistakes and quick fixes
 | Pupils often… | Try this |

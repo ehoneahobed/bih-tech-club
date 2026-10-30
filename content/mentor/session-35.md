@@ -43,7 +43,7 @@ By the end of the session, pupils can:
 - **The Silver Passport:** Sessions 16–35. It needs the office skills from Skills Lab 3, today's four stations and 25 wpm at 92% accuracy.
 
 ## The 3D lab
-Two labs warm up the skills for pupils waiting for a PC or who finish early. **Feed Check** (scroll a pretend social media feed; spot fake news, report bullying, fix privacy settings and see how the feed learns what you like) rehearses Station 4. **Club Planner** (schedule a club meeting and invite members, run a mock video call, and move files into the cloud cupboard) rehearses Station 3. Pupils who are stuck on a station can do the matching lab missions first, then try the real station again. Don't demonstrate them to the whole class today; just point pupils to them.
+Two labs warm up the skills for pupils waiting for a PC or who finish early. **Feed Check** (scroll a pretend social media feed; spot fake news, report bullying, fix privacy settings and see how the feed learns what you like) rehearses Station 4 (its W.A.I.T. part is Station 4B; its privacy settings go with the P.I.I. clean-up in 4C). **Club Planner** (schedule a club meeting and invite members, run a mock video call, and move files into the cloud cupboard) rehearses Station 3. Pupils who are stuck on a station can do the matching lab missions first, then try the real station again. Don't demonstrate them to the whole class today; just point pupils to them.
 
 ## Common mistakes and quick fixes
 | Pupils often… | Try this |

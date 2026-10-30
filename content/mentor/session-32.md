@@ -42,7 +42,13 @@ By the end of the session, pupils can:
 - **iPhone differences:** Control Centre (swipe down from the top-right corner), the App Store, Settings → Personal Hotspot. Same ideas, different names.
 
 ## The 3D lab
-**Smartphone Explorer** is a 3D Android phone: change settings, install an app safely, free up storage, turn on a hotspot and spot a Mobile Money scam. On the projector, demonstrate the first settings mission so pupils see how swiping down opens Quick Settings. Pairs then work through the missions: choosing the genuine app (right developer, many downloads, sensible permissions) over a copy, freeing space without deleting precious photos, turning on a hotspot with a password, and deciding what to do with a "wrong transfer" message. Ask after each mission: "Would you do the same on a real phone?" The real-device steps on Page 5 repeat the same skills with real buttons. If you have no real devices, the lab and a projected phone cover the whole session.
+**Smartphone Explorer** is a pretend Android phone on a desk: swipe down for Quick Settings, open Settings, the Play Store, Messages and MoMo (buttons in the side panel, or tap the 3D screen). It has three missions:
+
+1. *Install the real torch app (not the copy), then answer its 3 permission questions wisely.* Two "Bright Torch" apps share a name and logo; the 4 checks (developer, downloads and rating, reviews, data safety) show which is real. Then the app asks for the camera (allow: the flash is the torch), contacts and location (don't allow).
+2. *Storage is full: free at least 7 GB without losing any photos that aren't backed up.* Pupils delete old videos, uninstall an unused game and empty the bin, but they only reach the goal by backing up Grandma's birthday photos first, and that needs Wi-Fi (Quick Settings). Deleting them without a backup loses them, and the pupil must start again.
+3. *A “wrong transfer, please send it back” message arrives: check the balance yourself and send nothing.* The text comes from an ordinary number, then the same number rings. The official MoMo app shows no GHS 500 ever arrived; the lab ends with the Golden MoMo Rules.
+
+On the projector, demonstrate swiping down for Quick Settings and turning on Wi-Fi, then let pairs do the missions. The hotspot (with a password), aeroplane mode, Bluetooth, battery saver, brightness and screen timeout are there for free exploration. Ask after each mission: "Would you do the same on a real phone?" The real-device steps on Page 5 repeat the same skills with real buttons. If you have no real devices, the lab and a projected phone cover the whole session.
 
 ## Common mistakes and quick fixes
 | Pupils often… | Try this |

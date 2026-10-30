@@ -42,7 +42,13 @@ By the end of the session, pupils can:
 - **Healthy use:** time limits (Digital Wellbeing or Screen Time), screens off an hour before bed, remember the highlight reel, fewer notifications.
 
 ## The 3D lab
-**Feed Check** lets pupils scroll a pretend social media feed: spot fake news, report bullying, fix privacy settings and see how the feed learns what you like. On the projector, demonstrate the first mission and talk aloud through your W.A.I.T. check of one post. In pairs, pupils then catch the fake posts, report a bullying comment instead of replying, fix the privacy settings, and watch how the feed fills up with one topic after they linger on it. Ask: "What did the feed think you liked, and how did it know?" The table in Mission 1 on Page 5 records one example of each.
+**Feed Check** is a pretend social media app ("Chatter") on a 3D phone, with the feed shown as a wall of posts behind it. Every account and post is made up. It has three parts, one mission each:
+
+1. *Use W.A.I.T. to judge all 6 posts correctly: share the true ones, stop the fakes.* Each post has a Who, Anyone else, Image and Time clue (a page created last week, a 2015 flood photo, a deepfake video, "share before they delete it!").
+2. *Help Esi without replying to the bully (screenshot, block, report, support her, tell an adult), then make all 4 privacy settings safe.* Replying or liking the cruel comment makes it worse and means starting again; blocking before the screenshot is stopped. The privacy settings are the workbook's four: private account, messages from friends only, location off, approve tags.
+3. *Linger on one kind of post until the feed fills up with it, then pop the bubble.* After about three "watch to the end"s the wall fills with one topic (an echo chamber); "Not interested" and "Follow a mix" let the other topics back in.
+
+On the projector, demonstrate the first post and talk aloud through your W.A.I.T. check. Pairs then work through the three parts. Ask: "What did the feed think you liked, and how did it know?" The table in Mission 1 on Page 5 records one example of each.
 
 ## Common mistakes and quick fixes
 | Pupils often… | Try this |
