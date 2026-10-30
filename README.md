@@ -1,6 +1,6 @@
 # BIH JHS Tech Club: Study Packs
 
-The website for the Bozoma Innovation Hub JHS Tech Club. It has a page for each of the 22 sessions, with an interactive workbook, at least one 3D lab with guided 🎯 missions, a downloadable offline study pack (.zip), a print-ready PDF and a mentor guide.
+The website for the Bozoma Innovation Hub JHS Tech Club. It has a page for each of the 44 sessions, with an interactive workbook, at least one 3D lab with guided 🎯 missions, a downloadable offline study pack (.zip), a print-ready PDF and a mentor guide.
 
 Live at https://bih-tech-club.vercel.app
 
