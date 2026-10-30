@@ -42,7 +42,12 @@ By the end of the session, pupils can:
 - **Team points:** 1 per fact that passes the shield with a full citation, 1 per different operator used, 2 for the first team to finish, 1 for a correct photo detective answer.
 
 ## The 3D lab
-**Search Detective** ("Narrow a mountain of results with smart keywords and operators, then pick the trustworthy sources from the fake ones"). On the projector, do the first mission together: start from a vague search and add keywords and operators until the pile of results shrinks, saying each operator aloud as you add it. Pairs then do the source-sorting mission, choosing trustworthy sources and explaining which shield question gave the fake ones away. It links directly to Figure 12.1 and the sources table on Page 4, and warms pupils up for the Search Race.
+**Search Detective** ("Narrow a mountain of results with smart keywords and operators, then pick the trustworthy sources from the fake ones"). A detective's desk in a library: a vague search buries the desk under a mountain of result cards, and the pile shrinks with every good keyword and operator. Three missions:
+1. **Solve both cases: shrink the pile to the right pages with "quotes", -minus, site: and OR.** Case 1 starts from `parks ghana` and ends at `"Mole National Park" elephants -hotel site:edu.gh` (one university page left); Case 2 starts from a chatty question and ends at `kenkey OR banku recipe`. Pupils can type or press word buttons; trap buttons (`- hotel`, `site: edu.gh`, small `or`) show what goes wrong with a space or a small "or".
+2. **Sort all 7 sources right first time, naming the shield question that exposes each fake.** Each fake is caught by one question: no author (WHO?), posted in 2015 (WHEN?), selling a "miracle" tea (WHY?), a claim nobody else agrees with (AGREE?).
+3. **Spot the Sponsored result, then choose the best real page to open.** (Figure 12.2's search: the advert first, then the Wikipedia page.)
+
+On the projector, do Case 1 together, saying each operator aloud as you add it and pointing to the pile and the result count. Pairs then do Case 2 and the source sorting, explaining which shield question gave each fake away. It links directly to Figure 12.1, the sources table on Page 4 and Figure 12.2, and warms pupils up for the Search Race.
 
 ## Common mistakes and quick fixes
 | Pupils often… | Try this |

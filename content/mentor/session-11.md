@@ -24,7 +24,7 @@ By the end of the session, pupils can:
 | 20–30 min | The browser and its buttons | Page 2 | Show the real browser on the projector and point to the eight numbered parts. Pupils answer the "Your turn". |
 | 30–40 min | URLs, domain extensions, the padlock | Page 3 | Break down an address on the board. Ask "Who runs this site?" for each "Your turn" row. |
 | 40–50 min | Browser toolkit, downloads, shared computers | Page 4 | Demonstrate each shortcut once on the projector; the class shouts the keys back. Show where a download lands. |
-| 50–58 min | Internet Town 3D lab | Page 5 | Demonstrate the padlock mission, then pairs try the web missions. |
+| 50–58 min | Internet Town 3D lab | Page 5 | Open a new tab and a padlock site on the projector, then pairs do the three browser missions (tabs, bookmark, download). |
 | 58–78 min | Browser Skills Circuit (team race) | Page 5 | Teams race through the eight skills. Check each pupil's bookmark and downloaded picture before awarding the point. |
 | 78–86 min | True or false and written review | Page 6 | Show of hands for each statement; pupils write the two answers alone. |
 | 86–90 min | Self-assessment, sign-off, leave no trace | Page 6 | Sign off. Everyone signs out, closes private windows and closes the browser. Announce the winning team. |
@@ -43,7 +43,12 @@ By the end of the session, pupils can:
 - **Team points:** one point per circuit skill done correctly, a bonus point when every team member finishes, and a point for helping another team without touching their mouse.
 
 ## The 3D lab
-Use **Internet Town** ("Send a web request (and see why HTTPS matters), follow an email through the digital post office, and co-edit a cloud document"). On the projector, send a web request so the class sees it travel from the PC to the server and back, matching Figure 11.0. Then pairs visit a website with a padlock and one with a warning sign and compare what the snooper sees each time (scrambled letters vs readable text). A browser mission is being added to the lab (tabs, bookmarks and downloads); if it is there, pairs do it as the warm-up for the circuit. Leave the email and shared-document missions for Sessions 13 and 29.
+Use **Internet Town** ("Send a web request (and see why HTTPS matters), follow an email through the digital post office, and co-edit a cloud document"). On the Session 11 page it opens in **browser mode**: a big, zoomed-in browser window beside "Your computer", with its own three missions (Sessions 13 and 29 keep the email and shared-document missions):
+1. **Open two new tabs, switch between them, close one and bring it back.** (New tab Ctrl + T, Switch Ctrl + Tab, Close Ctrl + W, Reopen Ctrl + Shift + T; each new tab sends a request across the town to the web server.)
+2. **Bookmark the Kakum page with the star ☆: name it "Kakum - Club" and put it on the bookmarks bar.** (Pupils first switch to the Wikipedia tab and open the Kakum page, then change the name and the folder before pressing Done.)
+3. **Save the park picture, then find it with Ctrl + J and in the Downloads folder.** (The picture travels from the web server into the yellow Downloads folder next to the computer.)
+
+On the projector, open a new tab so the class sees the request travel to the server and back, matching Figure 11.0. The padlock buttons are still there ("Visit a website: padlock or warning?"): visit one site with a padlock and the warning-sign site and compare what the snooper sees (scrambled letters vs readable text). Pairs then do the three missions as the warm-up for the circuit; they mirror circuit steps 2, 3 and 5.
 
 ## Common mistakes and quick fixes
 | Pupils often… | Try this |

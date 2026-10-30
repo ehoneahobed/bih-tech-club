@@ -1,7 +1,26 @@
 // Sessions 11, 13 & 29 — The internet as a road network. Send web requests
 // (HTTP vs HTTPS), follow an email through the digital post office, and watch
 // classmates edit a shared document in the cloud.
+//
+// Session 11 also gets a "browser" mode: a big zoomed-in browser window with
+// tabs, the bookmark star and a download that lands in the Downloads folder,
+// with its own three missions. The mode is chosen from the page: a
+// data-mode="browser" (or "town") attribute on the lab wins; otherwise the
+// session number on the page (the path list's data-path, or the URL) decides.
+// Sessions 13 and 29 keep the original town and its six missions.
 import { THREE, COLORS, box, rbox, mat, decal, cable, label, setLabel } from './runtime.js';
+
+function pageSession() {
+  if (typeof document === 'undefined') return 0;
+  const v = document.querySelector('.lab[data-lab="internet"]')?.dataset.session ?? document.querySelector('[data-path]')?.dataset.path ?? (location.pathname.match(/sessions\/(\d+)/) || [])[1];
+  return Number(v) || 0;
+}
+function pageMode() {
+  const m = typeof document !== 'undefined' ? document.querySelector('.lab[data-lab="internet"]')?.dataset.mode : undefined;
+  if (m === 'browser' || m === 'town') return m;
+  return pageSession() === 11 ? 'browser' : 'town';
+}
+const BROWSER_MODE = pageMode() === 'browser';
 
 const NODES = {
   you: { name: 'Your computer', pos: [-7, 0, 3], kind: 'pc', color: COLORS.purple, info: 'Your device, in the computer lab. Every request starts here.' },
@@ -26,6 +45,12 @@ const CALLOUTS = {
   mailA: ['📮', 'Mail server', 'Your school\'s digital post office', [0, 1.4, 0], -70, -95],
   cloud: ['☁️', 'Cloud drive', 'One shared file, saved online', [0, 1.9, 0], 0, -95],
 };
+// In browser mode the browser's own parts come first, so only three places keep a card.
+const CALLOUTS_BROWSER = {
+  you: ['💻', 'Your computer', 'Every request starts here', [0, 1.3, 0], 60, 110],
+  hub: ['🌍', 'The Internet', 'Pages travel to you across it', [0.6, 2.4, 0], 150, -60],
+};
+const NODE_CARDS = BROWSER_MODE ? CALLOUTS_BROWSER : CALLOUTS;
 const LINKS = [['you', 'router'], ['router', 'isp'], ['isp', 'hub'], ['hub', 'web'], ['router', 'mailA'], ['mailA', 'hub'], ['hub', 'mailB'], ['mailB', 'friend'], ['mailB', 'teacher'], ['hub', 'cloud'], ['ama', 'cloud'], ['yaw', 'cloud']];
 
 const SITES = [
@@ -397,11 +422,643 @@ function cloudModel(g) {
   g.add(docIcon);
 }
 
+// ---------- Session 11: the browser, zoomed in ----------
+// The pages the browser can open in this lab (the same sites as the workbook's circuit).
+const PAGES = {
+  wiki: { key: 'wiki', url: 'en.wikipedia.org', title: 'Wikipedia', short: 'Wikipedia', secure: true, kind: 'wiki', fav: '#24182e' },
+  kakum: { key: 'kakum', url: 'en.wikipedia.org/wiki/Kakum_National_Park', title: 'Kakum National Park', short: 'Kakum', secure: true, kind: 'kakum', fav: '#24182e' },
+  ges: { key: 'ges', url: 'ges.gov.gh', title: 'Ghana Education Service', short: 'GES', secure: true, kind: 'site', fav: '#2a7d4f', band: '#2a7d4f' },
+  ug: { key: 'ug', url: 'www.ug.edu.gh', title: 'University of Ghana', short: 'UG', secure: true, kind: 'site', fav: '#1d3d8f', band: '#1d3d8f' },
+};
+const PHOTO = 'Kakum_Photo_Ama.jpg';
+const BIG_POS = [-5.2, 0, -0.9];
+const DL_POS = [-9.3, 0, 3.4];
+
+function star(g, x, y, r, filled) {
+  g.beginPath();
+  for (let k = 0; k < 10; k++) {
+    const a = -Math.PI / 2 + (k * Math.PI) / 5;
+    const rr = k % 2 ? r * 0.45 : r;
+    g.lineTo(x + Math.cos(a) * rr, y + Math.sin(a) * rr);
+  }
+  g.closePath();
+  g.lineWidth = 3;
+  g.strokeStyle = filled ? '#8a5c00' : '#24182e';
+  if (filled) { g.fillStyle = '#ffbe00'; g.fill(); }
+  g.stroke();
+}
+function kakumPicture(g, x, y, w, h) {
+  const sky = g.createLinearGradient(0, y, 0, y + h);
+  sky.addColorStop(0, '#bfe3f2');
+  sky.addColorStop(1, '#eaf6fb');
+  g.fillStyle = sky;
+  g.fillRect(x, y, w, h);
+  // The forest canopy, with the rope walkway strung between the tree tops.
+  for (let k = 0; k < 9; k++) {
+    g.fillStyle = ['#2a7d4f', '#3b9a5f', '#21653f'][k % 3];
+    g.beginPath(); g.arc(x + w * (0.05 + k * 0.115), y + h * (0.72 + (k % 2) * 0.06), w * 0.09, 0, 7); g.fill();
+  }
+  g.fillStyle = '#1b4d31';
+  g.fillRect(x, y + h * 0.86, w, h * 0.14);
+  g.strokeStyle = '#8a5c00';
+  g.lineWidth = 4;
+  for (const dy of [0, 0.07]) {
+    g.beginPath();
+    g.moveTo(x + w * 0.04, y + h * (0.44 + dy));
+    g.quadraticCurveTo(x + w * 0.27, y + h * (0.58 + dy), x + w * 0.5, y + h * (0.42 + dy));
+    g.quadraticCurveTo(x + w * 0.73, y + h * (0.56 + dy), x + w * 0.96, y + h * (0.4 + dy));
+    g.stroke();
+  }
+  g.fillStyle = '#5a3d1e';
+  for (const fx of [0.04, 0.5, 0.96]) g.fillRect(x + w * fx - 5, y + h * 0.36, 10, h * 0.36);
+}
+// Cut text to fit a width, with "…" (canvas maxWidth would squash it instead).
+function fit(g, s, w) {
+  if (g.measureText(s).width <= w) return s;
+  while (s.length > 1 && g.measureText(s + '…').width > w) s = s.slice(0, -1);
+  return s + '…';
+}
+// The browser is drawn on a 600 × 360 grid, scaled to the canvas, with big
+// type so it can be read on a projector and a phone.
+function drawBrowser(g, W, H, st) {
+  const F = (px, w = 600) => `${w} ${px}px Rubik, system-ui, sans-serif`;
+  const t = st.tabs[st.active];
+  g.save();
+  g.scale(W / 600, H / 360);
+  W = 600;
+  H = 360;
+  g.textBaseline = 'middle';
+  g.textAlign = 'left';
+  g.lineCap = 'round';
+  g.fillStyle = '#ffffff';
+  g.fillRect(0, 0, W, H);
+  // Tab strip.
+  g.fillStyle = '#24182e';
+  g.fillRect(0, 0, W, 44);
+  const n = st.tabs.length;
+  const tw = Math.min(150, (W - 110) / Math.max(n, 1));
+  st.tabs.forEach((tab, i) => {
+    const x = 6 + i * tw;
+    const on = i === st.active;
+    g.fillStyle = on ? '#ffffff' : '#4a3a5e';
+    g.beginPath(); g.roundRect(x, 7, tw - 4, 37, [9, 9, 0, 0]); g.fill();
+    g.fillStyle = tab.fav;
+    g.beginPath(); g.arc(x + 14, 26, 6, 0, 7); g.fill();
+    g.fillStyle = on ? '#24182e' : '#f1ecf4';
+    g.font = F(15, on ? 700 : 500);
+    g.fillText(fit(g, tab.loading ? 'Loading…' : tab.title, tw - 46), x + 25, 27);
+    g.font = F(17, 500);
+    g.fillText('×', x + tw - 19, 26);
+  });
+  g.fillStyle = '#f1ecf4';
+  g.font = F(26, 500);
+  g.fillText('+', 12 + n * tw, 25);
+  g.font = F(15, 500);
+  ['—', '□', '×'].forEach((c, k) => g.fillText(c, W - 66 + k * 22, 22));
+  // Toolbar: Back, Forward, Refresh, address bar with the star, downloads, menu.
+  g.fillStyle = '#24182e';
+  g.font = F(20, 700);
+  ['←', '→', '↻'].forEach((c, k) => g.fillText(c, 9 + k * 26, 66));
+  const ax = 86;
+  const aw = W - ax - 72;
+  g.fillStyle = '#efeaf2';
+  g.beginPath(); g.roundRect(ax, 51, aw, 30, 15); g.fill();
+  if (t.url) padlock(g, ax + 16, 67, 18, t.secure);
+  g.fillStyle = t.secure === false ? '#ca1f3f' : '#24182e';
+  g.font = F(15, 600);
+  g.fillText(fit(g, t.url ? `${t.secure === false ? 'Not secure · ' : ''}${t.url}` : 'Search or type a web address', aw - 70), ax + 32, 67);
+  star(g, ax + aw - 17, 66, 10.5, st.starred);
+  const dx = W - 52;
+  g.strokeStyle = st.dl ? '#2a9d8f' : '#24182e';
+  g.lineWidth = 3;
+  g.beginPath(); g.moveTo(dx, 55); g.lineTo(dx, 72); g.moveTo(dx - 7, 65); g.lineTo(dx, 72); g.lineTo(dx + 7, 65); g.moveTo(dx - 9, 78); g.lineTo(dx + 9, 78); g.stroke();
+  if (st.dl === 'done') { g.fillStyle = '#2ec4b6'; g.beginPath(); g.arc(dx + 9, 55, 5, 0, 7); g.fill(); }
+  g.fillStyle = '#24182e';
+  g.font = F(20, 700);
+  g.fillText('⋮', W - 22, 66);
+  // Bookmarks bar.
+  g.fillStyle = '#f4f0f6';
+  g.fillRect(0, 88, W, 28);
+  if (st.bar.length) {
+    let x = 8;
+    g.font = F(14, 700);
+    for (const name of st.bar) {
+      const w = g.measureText(name).width + 34;
+      g.fillStyle = '#ffffff';
+      g.beginPath(); g.roundRect(x, 92, w, 20, 10); g.fill();
+      star(g, x + 12, 102, 6, true);
+      g.fillStyle = '#24182e';
+      g.fillText(name, x + 23, 103);
+      x += w + 6;
+    }
+  } else {
+    g.fillStyle = '#857a90';
+    g.font = F(13, 500);
+    g.fillText('Bookmarks bar: empty. Press ☆ (Ctrl + D) to keep a page here.', 10, 103);
+  }
+  g.fillStyle = '#d9d3de';
+  g.fillRect(0, 116, W, 1.5);
+  // The page itself.
+  const top = 118;
+  const line = (x, y, w) => g.fillRect(x, y, w, 7);
+  if (t.loading) {
+    g.textAlign = 'center';
+    g.fillStyle = '#857a90';
+    g.font = F(19, 600);
+    g.fillText('Fetching the page from its web server…', W / 2, 220);
+    g.textAlign = 'left';
+  } else if (t.kind === 'wiki') {
+    g.textAlign = 'center';
+    g.fillStyle = '#e6e1ea';
+    g.beginPath(); g.arc(W / 2, top + 58, 36, 0, 7); g.fill();
+    g.strokeStyle = '#9b91a4';
+    g.lineWidth = 1.5;
+    for (let k = 0; k <= 2; k++) { g.beginPath(); g.ellipse(W / 2, top + 58, k * 13 + 2, 36, 0, 0, 7); g.stroke(); }
+    g.fillStyle = '#24182e';
+    g.font = F(26, 500);
+    g.fillText('WIKIPEDIA', W / 2, top + 120);
+    g.font = F(14, 400);
+    g.fillText('The Free Encyclopedia', W / 2, top + 144);
+    g.strokeStyle = '#9b91a4';
+    g.lineWidth = 2;
+    g.beginPath(); g.roundRect(W / 2 - 160, top + 168, 320, 34, 6); g.stroke();
+    g.fillStyle = '#857a90';
+    g.font = F(15, 500);
+    g.fillText('Search Wikipedia', W / 2, top + 186);
+    g.textAlign = 'left';
+  } else if (t.kind === 'kakum') {
+    g.fillStyle = '#24182e';
+    g.font = F(25, 500);
+    g.fillText('Kakum National Park', 16, top + 26);
+    g.fillStyle = '#5a4470';
+    g.font = F(12, 400);
+    g.fillText('From Wikipedia, the free encyclopedia', 16, top + 50);
+    g.fillStyle = '#b7adc0';
+    for (let k = 0; k < 7; k++) line(16, top + 70 + k * 22, k % 3 === 2 ? 180 : 300);
+    const px = 340;
+    const pw = 244;
+    kakumPicture(g, px, top + 12, pw, 168);
+    g.fillStyle = '#24182e';
+    g.font = F(13, 600);
+    g.fillText('The canopy walkway', px, top + 196);
+    if (st.menu) {
+      const mx = px + 40;
+      const my = top + 50;
+      g.fillStyle = '#ffffff';
+      g.strokeStyle = '#5a4470';
+      g.lineWidth = 1.5;
+      g.beginPath(); g.roundRect(mx, my, 190, 96, 6); g.fill(); g.stroke();
+      ['Open image in new tab', 'Save image as…', 'Copy image'].forEach((s, k) => {
+        if (k === 1) { g.fillStyle = '#ffe9a6'; g.fillRect(mx + 3, my + 34, 184, 28); }
+        g.fillStyle = '#24182e';
+        g.font = F(14, k === 1 ? 700 : 500);
+        g.fillText(s, mx + 12, my + 18 + k * 30);
+      });
+    }
+  } else if (t.kind === 'blank') {
+    g.textAlign = 'center';
+    g.fillStyle = '#857a90';
+    g.font = F(17, 500);
+    g.fillText('New tab: type an address at the top', W / 2, 220);
+    g.textAlign = 'left';
+  } else {
+    g.fillStyle = t.band ?? '#2a9d8f';
+    g.fillRect(0, top, W, 56);
+    g.fillStyle = '#ffffff';
+    g.font = F(23, 700);
+    g.fillText(fit(g, t.title, W - 32), 16, top + 29);
+    g.fillStyle = '#e6e1ea';
+    g.fillRect(16, top + 76, 170, 140);
+    g.fillStyle = '#b7adc0';
+    for (let k = 0; k < 6; k++) line(204, top + 80 + k * 24, k === 5 ? 200 : 370);
+  }
+  // Pop-ups: the bookmark box, the download bubble, the downloads list.
+  if (st.dialog) {
+    const bx = 300;
+    const by = 84;
+    g.fillStyle = '#ffffff';
+    g.strokeStyle = '#5a4470';
+    g.lineWidth = 2;
+    g.beginPath(); g.roundRect(bx, by, 290, 196, 10); g.fill(); g.stroke();
+    g.fillStyle = '#24182e';
+    g.font = F(18, 700);
+    g.fillText('Bookmark added', bx + 14, by + 22);
+    g.font = F(12, 700);
+    g.fillStyle = '#5a4470';
+    g.fillText('Name', bx + 14, by + 48);
+    g.fillText('Folder', bx + 14, by + 102);
+    for (const [y, v] of [[by + 58, st.dialog.name], [by + 112, st.dialog.bar ? 'Bookmarks bar' : 'Other bookmarks']]) {
+      g.strokeStyle = '#9b91a4';
+      g.lineWidth = 1.5;
+      g.beginPath(); g.roundRect(bx + 14, y, 262, 30, 5); g.stroke();
+      g.fillStyle = '#24182e';
+      g.font = F(15, 600);
+      g.fillText(fit(g, v, 230), bx + 24, y + 16);
+    }
+    g.fillText('▾', bx + 258, by + 128);
+    g.fillStyle = '#5a4470';
+    g.beginPath(); g.roundRect(bx + 196, by + 156, 80, 28, 14); g.fill();
+    g.fillStyle = '#ffffff';
+    g.font = F(14, 700);
+    g.textAlign = 'center';
+    g.fillText('Done', bx + 236, by + 171);
+    g.textAlign = 'left';
+  }
+  if (st.bubble && st.dl) {
+    const bx = 300;
+    const by = 84;
+    g.fillStyle = '#ffffff';
+    g.strokeStyle = '#5a4470';
+    g.lineWidth = 2;
+    g.beginPath(); g.roundRect(bx, by, 290, 84, 10); g.fill(); g.stroke();
+    kakumPicture(g, bx + 12, by + 14, 64, 48);
+    g.fillStyle = '#24182e';
+    g.font = F(14, 700);
+    g.fillText(fit(g, PHOTO, 196), bx + 86, by + 22);
+    g.font = F(13, 500);
+    g.fillStyle = '#5a4470';
+    g.fillText(st.dl === 'done' ? '240 KB · Done' : 'Saving…', bx + 86, by + 44);
+    g.fillStyle = '#1d4ed8';
+    g.fillText('Show in folder', bx + 86, by + 66);
+  }
+  if (st.list) {
+    g.fillStyle = 'rgba(36,24,46,0.35)';
+    g.fillRect(0, 117, W, H - 117);
+    const bx = 70;
+    const by = 134;
+    g.fillStyle = '#ffffff';
+    g.beginPath(); g.roundRect(bx, by, 460, 206, 10); g.fill();
+    g.fillStyle = '#24182e';
+    g.font = F(20, 700);
+    g.fillText('Downloads (Ctrl + J)', bx + 18, by + 26);
+    g.fillStyle = '#efeaf2';
+    g.beginPath(); g.roundRect(bx + 16, by + 50, 428, 92, 8); g.fill();
+    kakumPicture(g, bx + 28, by + 62, 88, 68);
+    g.fillStyle = '#24182e';
+    g.font = F(16, 700);
+    g.fillText(PHOTO, bx + 130, by + 74);
+    g.font = F(13, 500);
+    g.fillStyle = '#5a4470';
+    g.fillText('240 KB · in This PC › Downloads', bx + 130, by + 98);
+    g.fillStyle = '#1d4ed8';
+    g.fillText('Show in folder', bx + 130, by + 122);
+    g.fillStyle = '#5a4470';
+    g.font = F(13, 500);
+    g.fillText('Next: rename it and move it into BIH_TechClub.', bx + 18, by + 176);
+  }
+  g.restore();
+}
+
+function buildBrowser(stage, ui, scene) {
+  const st = { tabs: [{ ...PAGES.wiki }], active: 0, bar: [], starred: false, dialog: null, dl: null, bubble: false, list: false, menu: false };
+  const bookmarks = new Map(); // url -> { name, bar }
+  const closed = []; // closed tabs, newest last: { tab, index }
+  const did = { opened: 0, switched: false, closed: false, reopened: false };
+  const found = { list: false, folder: false };
+
+  // The big screen: your computer's browser, zoomed in.
+  const big = new THREE.Group();
+  big.position.set(...BIG_POS);
+  big.rotation.y = 0.12;
+  const foot = rbox(2.2, 0.1, 1.2, 0x5a4470, 0.04);
+  foot.position.y = 0.05;
+  const neck = rbox(0.3, 1.5, 0.16, 0x5a4470, 0.05);
+  neck.position.set(0, 0.8, -0.2);
+  const tilt = new THREE.Group();
+  tilt.position.set(0, 1.45, 0);
+  tilt.rotation.x = -0.72;
+  const bezel = rbox(6.5, 4.0, 0.18, 0x24182e, 0.08);
+  bezel.position.y = 2.0;
+  const screen = decal(6.25, 3.75, (g, W, H) => drawBrowser(g, W, H, st), { px: 720, transparent: false });
+  screen.position.set(0, 2.0, 0.092);
+  tilt.add(bezel, screen);
+  big.add(foot, neck, tilt);
+  scene.add(big);
+  const bigTag = label('🔍 Your browser, zoomed in', { scale: 0.6 });
+  bigTag.position.set(0, 0.3, 1.2);
+  big.add(bigTag);
+
+  // The Downloads folder next to your computer.
+  const folder = new THREE.Group();
+  folder.position.set(...DL_POS);
+  folder.rotation.y = 0.35;
+  const back = rbox(1.5, 1.05, 0.06, 0xe0a93a, 0.03);
+  back.position.set(0, 0.6, -0.12);
+  back.rotation.x = -0.12;
+  const tab = rbox(0.55, 0.18, 0.06, 0xe0a93a, 0.03);
+  tab.position.set(-0.42, 1.16, -0.19);
+  tab.rotation.x = -0.12;
+  const front = rbox(1.5, 0.78, 0.06, 0xf2c75c, 0.03);
+  front.position.set(0, 0.42, 0.06);
+  front.rotation.x = 0.1;
+  const sign = decal(1.3, 0.5, (g, W, H) => {
+    g.fillStyle = '#24182e';
+    g.textAlign = 'center';
+    g.textBaseline = 'middle';
+    g.font = font(H * 0.36);
+    g.fillText('Downloads', W / 2, H * 0.42);
+    g.font = font(H * 0.18, 500);
+    g.fillText('This PC › Downloads', W / 2, H * 0.78);
+  }, { px: 128 });
+  sign.position.set(0, 0.44, 0.095);
+  sign.rotation.x = 0.1;
+  // The saved picture, hidden until it is downloaded.
+  const file = new THREE.Group();
+  const card = rbox(0.62, 0.46, 0.03, 0xffffff, 0.015);
+  const photo = decal(0.54, 0.38, (g, W, H) => kakumPicture(g, 0, 0, W, H), { px: 96, transparent: false });
+  photo.position.z = 0.017;
+  file.add(card, photo);
+  file.visible = false;
+  file.position.set(0.1, 0.72, -0.03);
+  folder.add(back, tab, file, front, sign);
+  scene.add(folder);
+  const fileTag = label('', { scale: 0.5 });
+  fileTag.position.set(0, 1.75, 0);
+  fileTag.visible = false;
+  folder.add(fileTag);
+
+  // Cards first: these are the browser parts the session is about.
+  const cards = {
+    tabs: stage.callout(screen, { icon: '🗂️', title: 'Tabs', text: 'One web page in each tab', at: [-2.5, 1.62, 0], dx: -60, dy: -80, onClick: () => explain('tabs') }),
+    star: stage.callout(screen, { icon: '⭐', title: 'Bookmark star', text: 'Keeps a page to come back to', at: [2.05, 1.13, 0], dx: 120, dy: -90, onClick: () => explain('star') }),
+    folder: stage.callout(folder, { icon: '📁', title: 'Downloads', text: 'Saved files land in this folder', at: [0, 1.1, 0], dx: -20, dy: 110, onClick: () => explain('folder') }),
+  };
+  const ABOUT = {
+    tabs: ['🗂️ Tabs', '<p>A <b>tab</b> holds one web page. Open several to keep pages side by side in one window, and click a tab (or press <b>Ctrl + Tab</b>) to switch.</p><p><b>Ctrl + T</b> new tab · <b>Ctrl + W</b> close · <b>Ctrl + Shift + T</b> bring back the last tab you closed.</p>'],
+    star: ['⭐ The bookmark star', '<p>Press the <b>star ☆</b> at the end of the address bar (or <b>Ctrl + D</b>) to keep a page you want to come back to. Edge calls bookmarks <b>Favourites</b>.</p><p>Put it on the <b>bookmarks bar</b> (<b>Ctrl + Shift + B</b> shows the bar) and it is one click away.</p>'],
+    folder: ['📁 The Downloads folder', '<p>Unless you choose another place, files you save from the web land in <b>This PC › Downloads</b>.</p><p>Find them with <b>Ctrl + J</b> in the browser, or in <b>File Explorer</b> (<b>Win + E</b>) › Downloads. Then rename and move them into a proper folder.</p>'],
+  };
+  function explain(k) { ui.info(...ABOUT[k]); }
+  stage.clickable(big, () => explain('tabs'));
+  stage.clickable(folder, () => (st.dl === 'done' ? openFolder() : explain('folder')));
+
+  let api = null;
+  function redraw() {
+    const c = screen.material.map.image;
+    const t = st.tabs[st.active];
+    st.starred = bookmarks.has(t.url);
+    drawBrowser(c.getContext('2d'), c.width, c.height, st);
+    screen.material.map.needsUpdate = true;
+    if (api && !t.loading) api.setScreen('you', 'browser', t.url || 'New tab', t.url ? t.secure : null);
+  }
+  const page = () => st.tabs[st.active];
+  const tick = (on) => (on ? '✅' : '⬜');
+  // Fetch the active tab's page from the web server (a quick trip there and back).
+  async function fetchPage() {
+    const t = page();
+    t.loading = true;
+    redraw();
+    const req = api.packet('data', COLORS.green, 'lock');
+    await api.send(req, ['you', 'router', 'isp', 'hub', 'web'], 0.22);
+    api.drop(req);
+    const back = api.packet('data', COLORS.blue);
+    await api.send(back, ['web', 'hub', 'isp', 'router', 'you'], 0.22);
+    api.drop(back);
+    t.loading = false;
+    redraw();
+  }
+  function tabsReport(head, html) {
+    const all = did.opened >= 2 && did.switched && did.closed && did.reopened;
+    if (all) ui.complete('tabs');
+    ui.info(head, `${html}<p>${tick(did.opened >= 2)} Open two new tabs (${Math.min(did.opened, 2)}/2)<br>${tick(did.switched)} Switch tabs<br>${tick(did.closed)} Close a tab<br>${tick(did.reopened)} Bring it back</p>${all ? '<p>🏆 <b>Tab juggling done!</b> Next: open the Kakum page in the Wikipedia tab and bookmark it.</p>' : ''}`);
+  }
+  function closePopups() {
+    st.dialog = null;
+    st.list = false;
+    st.bubble = false;
+    st.menu = false;
+    dialogGroup.hidden = true;
+  }
+
+  async function newTab() {
+    if (st.tabs.length >= 4) return tabsReport('🗂️ Plenty of tabs', '<p>Four tabs is plenty for now. Too many tabs make a slow computer slower: close the ones you are not using (<b>Ctrl + W</b>).</p>');
+    closePopups();
+    const next = ['ges', 'ug'].find((k) => !st.tabs.some((x) => x.key === k));
+    st.tabs.push(next ? { ...PAGES[next] } : { key: 'blank', url: '', title: 'New tab', kind: 'blank', fav: '#9b91a4', secure: null });
+    st.active = st.tabs.length - 1;
+    did.opened++;
+    redraw();
+    const t = page();
+    if (t.url) {
+      ui.info('➕ New tab (Ctrl + T)', `<p>A new tab opened and you typed <b>${t.url}</b> in the address bar. Watch the request travel to the web server and the page come back.</p>`);
+      await fetchPage();
+    }
+    tabsReport('➕ New tab (Ctrl + T)', `<p>${t.url ? `<b>${t.title}</b> opened in its own tab. Your other pages are still open in the other tabs.` : 'An empty new tab. In a real browser you would type an address at the top.'}</p>`);
+  }
+  function switchTab() {
+    if (st.tabs.length < 2) return tabsReport('⇥ Only one tab', '<p>There is only one tab open. Open another with <b>Ctrl + T</b> first, then switch.</p>');
+    closePopups();
+    st.active = (st.active + 1) % st.tabs.length;
+    did.switched = true;
+    redraw();
+    tabsReport('⇥ Switch tab (Ctrl + Tab)', `<p>Now showing <b>${page().title}</b>. <b>Ctrl + Tab</b> moves to the next tab; clicking a tab works too.</p>`);
+  }
+  function closeTab() {
+    if (st.tabs.length < 2) return tabsReport('✖ Your last tab', '<p>This is your last tab: closing it would close the whole browser window. Open another tab first.</p>');
+    closePopups();
+    const [tab] = st.tabs.splice(st.active, 1);
+    closed.push({ tab, index: st.active });
+    st.active = Math.min(st.active, st.tabs.length - 1);
+    did.closed = true;
+    redraw();
+    tabsReport('✖ Close tab (Ctrl + W)', `<p>You closed <b>${tab.title}</b>. Closed by mistake? Don't panic: <b>Ctrl + Shift + T</b> brings it back.</p>`);
+  }
+  function reopenTab() {
+    if (!closed.length) return tabsReport('↩ Nothing to bring back', '<p>You have not closed a tab yet. Close one with <b>Ctrl + W</b>, then bring it back.</p>');
+    closePopups();
+    const { tab, index } = closed.pop();
+    st.tabs.splice(Math.min(index, st.tabs.length), 0, tab);
+    st.active = st.tabs.indexOf(tab);
+    did.reopened = true;
+    redraw();
+    tabsReport('↩ Reopen tab (Ctrl + Shift + T)', `<p><b>${tab.title}</b> is back, just as it was. This is the shortcut to remember when you close a tab by mistake.</p>`);
+  }
+
+  async function openKakum() {
+    const t = page();
+    if (t.key === 'kakum') return ui.info('🌳 Already here', '<p>The Kakum National Park page is open in this tab. Now press the <b>star ☆</b> to bookmark it, or save its picture.</p>');
+    if (t.key !== 'wiki') return ui.info('🔎 Wrong tab', `<p>This tab shows <b>${t.title || 'an empty page'}</b>. Switch to the <b>Wikipedia</b> tab first (<b>Ctrl + Tab</b>), then search Wikipedia for Kakum.</p>`);
+    closePopups();
+    Object.assign(t, PAGES.kakum);
+    ui.info('🔎 Searching Wikipedia…', '<p>You typed <b>Kakum National Park</b> in Wikipedia\'s search box. The request travels to the web server…</p>');
+    await fetchPage();
+    ui.info('🌳 Kakum National Park', '<p>The page arrived: Kakum is in the Central Region of Ghana and is famous for its <b>canopy walkway</b> high in the trees.</p><p>Next: keep this page with the <b>star ☆</b> (Ctrl + D), and save its picture.</p>');
+  }
+
+  // ---------- Bookmarks ----------
+  function bookmark() {
+    const t = page();
+    if (!t.url || t.loading) return ui.info('☆ Nothing to bookmark', '<p>Open a web page in this tab first.</p>');
+    st.list = st.bubble = st.menu = false;
+    const had = bookmarks.get(t.url);
+    // Like Chrome: the star fills at once and a box lets you change the name and folder.
+    const b = had ?? { name: t.key === 'kakum' ? 'Kakum National Park - Wikipedia' : t.title, bar: false };
+    bookmarks.set(t.url, b);
+    st.dialog = { name: b.name, bar: b.bar };
+    dialogGroup.hidden = false;
+    nameBtn.textContent = `✏️ Name it "${t.short} - Club"`;
+    folderLabel();
+    redraw();
+    stage.reveal();
+    ui.info('⭐ Bookmark added (Ctrl + D)', `<p>The star turned gold: <b>${t.title}</b> is bookmarked. Before you press <b>Done</b>, check the box:</p><ul><li><b>Name:</b> short and clear, e.g. "${t.short} - Club".</li><li><b>Folder:</b> it says <b>${b.bar ? 'Bookmarks bar' : 'Other bookmarks'}</b>. ${b.bar ? 'Good: it will show just under the address bar.' : 'Choose the <b>bookmarks bar</b> so it is one click away (Edge: Favourites bar).'}</li></ul>`);
+  }
+  function rename() {
+    if (!st.dialog) return;
+    st.dialog.name = `${page().short} - Club`;
+    redraw();
+    ui.info('✏️ Name changed', `<p>The bookmark is now called <b>${st.dialog.name}</b>: short, so it fits on the bar, and easy to spot.</p>`);
+  }
+  const folderLabel = () => (folderBtn.textContent = `📁 Change folder (now: ${st.dialog?.bar ? 'Bookmarks bar' : 'Other bookmarks'})`);
+  function toggleFolder() {
+    if (!st.dialog) return;
+    st.dialog.bar = !st.dialog.bar;
+    folderLabel();
+    redraw();
+    ui.info('📁 Folder', `<p>Folder: <b>${st.dialog.bar ? 'Bookmarks bar' : 'Other bookmarks'}</b>. ${st.dialog.bar ? 'It will sit on the bar under the address bar.' : 'It is saved, but hidden away in a menu.'}</p>`);
+  }
+  function done() {
+    if (!st.dialog) return;
+    const t = page();
+    const b = bookmarks.get(t.url);
+    Object.assign(b, st.dialog);
+    st.dialog = null;
+    dialogGroup.hidden = true;
+    st.bar = [...bookmarks.values()].filter((x) => x.bar).map((x) => x.name);
+    redraw();
+    const good = t.key === 'kakum' && b.name === 'Kakum - Club' && b.bar;
+    if (good) {
+      ui.complete('bookmark');
+      cards.star.card.classList.add('done');
+      ui.info('⭐ Kakum - Club is on the bar!', '<p>Your bookmark sits on the <b>bookmarks bar</b>, one click away. Bookmarks stay even in a private window and after you close the browser.</p><p>Forgot to bookmark a page? <b>Ctrl + H</b> (History) lists every page you visited.</p>');
+    } else if (t.key !== 'kakum') {
+      ui.info('⭐ Saved', `<p><b>${b.name}</b> is bookmarked${b.bar ? ' on the bar' : ''}. For the mission, bookmark the <b>Kakum National Park</b> page (in the Wikipedia tab).</p>`);
+    } else {
+      ui.info('⭐ Saved, but check it', `<p>The bookmark is saved as <b>${b.name}</b> in <b>${b.bar ? 'the bookmarks bar' : 'Other bookmarks'}</b>.</p><p>${b.name !== 'Kakum - Club' ? 'Rename it to <b>Kakum - Club</b>. ' : ''}${b.bar ? '' : 'Put it on the <b>bookmarks bar</b> so it is easy to find. '}Press the star ☆ again to edit it.</p>`);
+    }
+  }
+
+  // ---------- Downloads ----------
+  async function saveImage() {
+    const t = page();
+    if (t.key !== 'kakum' || t.loading) return ui.info('🖼️ Which picture?', '<p>The park picture is on the <b>Kakum National Park</b> page. Open it in the Wikipedia tab first.</p>');
+    if (st.dl === 'done') {
+      st.bubble = true;
+      redraw();
+      return ui.info('🖼️ Already saved', `<p><b>${PHOTO}</b> is already in Downloads. Saving it again would make a copy called <b>Kakum_Photo_Ama (1).jpg</b>, which is how Downloads fills up with copies!</p>`);
+    }
+    st.dialog = null;
+    dialogGroup.hidden = true;
+    st.menu = true;
+    redraw();
+    stage.reveal();
+    ui.info('🖼️ Right-click › Save image as…', `<p>You right-clicked the picture and chose <b>Save image as…</b>, then named it <b>${PHOTO}</b> (the circuit's <i>Kakum_Photo_YourName</i>).</p><p>The browser now copies the file from the web server onto your PC…</p>`);
+    await stage.wait(0.9);
+    st.menu = false;
+    st.dl = 'saving';
+    st.bubble = true;
+    redraw();
+    const p = api.packet('data', COLORS.green, 'pic');
+    await api.send(p, ['web', 'hub', 'isp', 'router', 'you'], 0.3);
+    // Last hop: from your computer into the Downloads folder.
+    const a = p.position.clone();
+    const b = folder.localToWorld(new THREE.Vector3(0.1, 1.0, -0.03));
+    await stage.tween((k) => {
+      p.position.lerpVectors(a, b, k);
+      p.position.y += Math.sin(k * Math.PI) * 0.8;
+      p.scale.setScalar(1 - k * 0.5);
+    }, 0.7);
+    api.drop(p);
+    file.visible = true;
+    file.position.y = 1.2;
+    await stage.tween((k) => (file.position.y = 1.2 - k * 0.48), 0.4);
+    st.dl = 'done';
+    redraw();
+    ui.info('📥 Saved in Downloads', `<p><b>${PHOTO}</b> landed in the <b>Downloads</b> folder (see the yellow folder by your computer).</p><p>Now find it two ways: the browser's downloads list (<b>Ctrl + J</b>) and <b>File Explorer › Downloads</b>.</p>`);
+  }
+  function dlReport(head, html) {
+    const all = st.dl === 'done' && found.list && found.folder;
+    if (all) {
+      ui.complete('download');
+      cards.folder.card.classList.add('done');
+    }
+    ui.info(head, `${html}<p>${tick(st.dl === 'done')} Save the picture<br>${tick(found.list)} Find it with Ctrl + J<br>${tick(found.folder)} Find it in File Explorer › Downloads</p>${all ? '<p>🏆 <b>Found it twice!</b> Last step in real life: rename it and move it into your <b>BIH_TechClub</b> folder (Session 4).</p>' : ''}`);
+  }
+  function showList() {
+    if (st.dl !== 'done') return ui.info('📥 Downloads list (Ctrl + J)', '<p>The list is empty: you have not saved anything yet. Save the park picture first.</p>');
+    st.dialog = null;
+    dialogGroup.hidden = true;
+    st.bubble = st.menu = false;
+    st.list = !st.list;
+    found.list = true;
+    redraw();
+    stage.reveal();
+    dlReport('📥 Downloads list (Ctrl + J)', `<p>${st.list ? `The list shows <b>${PHOTO}</b> and where it went: <b>This PC › Downloads</b>. "Show in folder" opens that folder.` : 'List closed. Press Ctrl + J again to open it.'}</p>`);
+  }
+  let lifted = false;
+  async function openFolder() {
+    if (st.dl !== 'done') return ui.info('📁 File Explorer › Downloads', '<p>The Downloads folder is empty for now. Save the park picture first, then come back.</p>');
+    found.folder = true;
+    stage.reveal();
+    fileTag.visible = true;
+    setLabel(fileTag, `This PC › Downloads › ${PHOTO}`);
+    if (!lifted) {
+      lifted = true;
+      await stage.tween((k) => (file.position.y = 0.72 + Math.sin(k * Math.PI) * 0.5), 0.9);
+      lifted = false;
+    }
+    dlReport('📁 File Explorer › Downloads', `<p>You opened File Explorer (<b>Win + E</b>), clicked <b>Downloads</b> on the left, and there is <b>${PHOTO}</b>.</p>`);
+  }
+
+  // ---------- Side panel ----------
+  let dialogGroup, nameBtn, folderBtn;
+  function controls(a) {
+    api = a;
+    const tabsG = ui.group('1 · Tabs');
+    ui.button('➕ New tab · Ctrl + T', a.once(newTab), { group: tabsG });
+    ui.button('⇥ Switch tab · Ctrl + Tab', a.once(async () => switchTab()), { group: tabsG });
+    ui.button('✖ Close tab · Ctrl + W', a.once(async () => closeTab()), { group: tabsG });
+    ui.button('↩ Reopen tab · Ctrl + Shift + T', a.once(async () => reopenTab()), { group: tabsG });
+    const bmG = ui.group('2 · Bookmark the Kakum page');
+    ui.button('🔎 Search Wikipedia: Kakum National Park', a.once(openKakum), { group: bmG });
+    ui.button('☆ Bookmark this page · Ctrl + D', a.once(async () => bookmark()), { group: bmG });
+    dialogGroup = ui.group('Bookmark box');
+    dialogGroup.hidden = true;
+    nameBtn = ui.button('✏️ Name it "Kakum - Club"', rename, { group: dialogGroup });
+    folderBtn = ui.button('📁 Change folder', toggleFolder, { group: dialogGroup });
+    ui.button('Done', done, { group: dialogGroup, primary: true });
+    const dlG = ui.group('3 · Download a picture');
+    ui.button('🖼️ Right-click the picture › Save image as…', a.once(saveImage), { group: dlG });
+    ui.button('📥 Downloads list · Ctrl + J', a.once(async () => showList()), { group: dlG });
+    ui.button('📁 File Explorer › Downloads', a.once(openFolder), { group: dlG });
+    // Move the Bookmark box buttons up, next to the star button.
+    bmG.after(dialogGroup);
+    redraw();
+    if (ui.isDone('bookmark')) cards.star.card.classList.add('done');
+    if (ui.isDone('download')) cards.folder.card.classList.add('done');
+  }
+  // A website from the padlock buttons opens in the current tab.
+  function show(site) {
+    const t = page();
+    const host = site.url.replace(/^https?:\/\//, '');
+    const name = host.replace(/^www\./, '');
+    Object.assign(t, { key: 'site', url: host, title: name, short: name.split('.')[0], secure: site.secure, kind: 'site', fav: site.secure ? '#2a9d8f' : '#ca1f3f', band: site.secure ? '#2a9d8f' : '#ca1f3f', loading: false });
+    redraw();
+  }
+  function intro() {
+    ui.info('🧭 Your browser, zoomed in', '<p>The big screen is the browser on <b>your computer</b>, zoomed in. Use the buttons to practise the Session 11 skills: <b>tabs</b>, the <b>bookmark star</b> and <b>downloads</b>.</p><p>Every page you open is fetched from a web server across the internet: watch the packets travel!</p>');
+  }
+  return { controls, show, intro };
+}
+
 export default function internetLab(stage, ui) {
   const { scene } = stage;
   const pos = (id) => new THREE.Vector3(...NODES[id].pos);
+  // Session 11's browser missions are stored apart from the town's six.
+  if (BROWSER_MODE) ui.missions('internet-browser', BROWSER_MISSIONS, () => stage.confetti());
 
   for (const [id, n] of Object.entries(NODES)) {
+    // In browser mode the big screen stands where the school mail server is.
+    if (BROWSER_MODE && id === 'mailA') continue;
     const g = new THREE.Group();
     g.position.copy(pos(id));
     if (n.kind === 'pc') pcModel(g, id, n);
@@ -411,7 +1068,7 @@ export default function internetLab(stage, ui) {
     else if (n.kind === 'globe') globeModel(g, stage);
     else if (n.kind === 'cloud') cloudModel(g);
     // The main places get a callout card (below); the rest keep a small tag.
-    if (!CALLOUTS[id]) {
+    if (!NODE_CARDS[id]) {
       const t = label(n.name, { scale: 0.62 });
       t.position.y = n.kind === 'tower' ? 3.6 : 2.1;
       g.add(t);
@@ -439,20 +1096,23 @@ export default function internetLab(stage, ui) {
   function select(id) {
     const n = NODES[id];
     ui.info(n.name, `<p>${n.info}</p>`);
-    if (id === 'hub') {
+    if (id === 'hub' && !BROWSER_MODE) {
       ui.complete('globe');
       cards.hub.card.classList.add('done');
     }
   }
+  // The browser's own cards go first (phones show only the first four).
+  const browser = BROWSER_MODE ? buildBrowser(stage, ui, scene) : null;
   // Clicking a card does the same as clicking the place.
   const cards = {};
-  for (const [id, [icon, title, text, at, dx, dy]] of Object.entries(CALLOUTS)) {
+  for (const [id, [icon, title, text, at, dx, dy]] of Object.entries(NODE_CARDS)) {
     cards[id] = stage.callout(NODES[id].group, { icon, title, text, at, dx, dy, onClick: () => select(id) });
   }
   if (ui.isDone('globe')) cards.hub.card.classList.add('done');
 
   // Cables along the ground, with a gentle S-bend like a real cable run.
   for (const [a, b] of LINKS) {
+    if (BROWSER_MODE && (a === 'mailA' || b === 'mailA')) continue;
     const fibre = FIBRE.has(`${a}-${b}`);
     const pa = pos(a).setY(fibre ? 0.07 : 0.05);
     const pb = pos(b).setY(fibre ? 0.07 : 0.05);
@@ -502,6 +1162,16 @@ export default function internetLab(stage, ui) {
         g.fillRect(38, 54, 52, 40);
         g.fillStyle = hex(color);
         g.fillRect(60, 62, 8, 18);
+      } else if (key.startsWith('pic')) {
+        // A picture file: a photo of green hills and a sun.
+        g.fillStyle = '#ffffff';
+        g.fillRect(0, 0, 128, 128);
+        g.fillStyle = '#bfe3f2';
+        g.fillRect(14, 14, 100, 100);
+        g.fillStyle = '#ffbe00';
+        g.beginPath(); g.arc(86, 40, 12, 0, 7); g.fill();
+        g.fillStyle = '#2a7d4f';
+        g.beginPath(); g.moveTo(14, 114); g.lineTo(48, 58); g.lineTo(76, 96); g.lineTo(92, 78); g.lineTo(114, 114); g.fill();
       } else if (key.startsWith('mail')) {
         g.fillStyle = '#ffffff';
         g.fillRect(0, 0, 128, 128);
@@ -565,8 +1235,11 @@ export default function internetLab(stage, ui) {
     }
   };
 
+  // ---------- Browser skills (Session 11 only) ----------
+  browser?.controls({ send, packet, drop, once, setScreen });
+
   // ---------- Website ----------
-  const webGroup = ui.group('1 · Visit a website (Session 11)');
+  const webGroup = ui.group(BROWSER_MODE ? '4 · Visit a website: padlock or warning?' : '1 · Visit a website (Session 11)');
   SITES.forEach((site) =>
     ui.button(`${site.secure ? '🔒' : '⚠️'} ${site.url.replace(/^https?:\/\//, '')}`, once(() => visit(site)), { group: webGroup })
   );
@@ -586,14 +1259,17 @@ export default function internetLab(stage, ui) {
     await send(page, ['web', 'hub', 'isp', 'router', 'you']);
     drop(page);
     setScreen('you', 'browser', site.url, site.secure);
+    browser?.show(site);
     ui.complete(site.secure ? 'https' : 'http');
     ui.info(site.url, `<p>✅ The web page arrived and your <b>browser</b> displayed it.</p><p>${site.secure ? 'The <b>padlock</b> means the data was <b>encrypted</b> (scrambled). The snooper only saw nonsense.' : '<b>No padlock:</b> the snooper on the network could read everything you sent. Never type passwords or personal details on an <code>http://</code> page.'}</p>`);
   }
 
   // ---------- Email ----------
-  const mailGroup = ui.group('2 · Send an email (Session 13)');
-  ui.button('✉️ To: Kofi', once(() => email(false)), { group: mailGroup });
-  ui.button('✉️ To: Kofi · Cc: Teacher', once(() => email(true)), { group: mailGroup });
+  if (!BROWSER_MODE) {
+    const mailGroup = ui.group('2 · Send an email (Session 13)');
+    ui.button('✉️ To: Kofi', once(() => email(false)), { group: mailGroup });
+    ui.button('✉️ To: Kofi · Cc: Teacher', once(() => email(true)), { group: mailGroup });
+  }
   async function email(cc) {
     ui.info('Sending email…', '<p><b>To:</b> kofi@friendschool.edu.gh' + (cc ? '<br><b>Cc:</b> teacher@friendschool.edu.gh' : '') + '<br><b>Subject:</b> Science project question</p><p>The email goes to <b>your</b> post office (mail server) first…</p>');
     setScreen('you', 'mail');
@@ -621,12 +1297,14 @@ export default function internetLab(stage, ui) {
   scene.add(histGroup);
   const histTag = label('Version history: 0', { scale: 0.5 });
   histTag.position.set(0, 0.4, 0.8);
-  histGroup.add(histTag);
+  if (!BROWSER_MODE) histGroup.add(histTag);
 
-  const docGroup = ui.group('3 · Edit a shared document (Session 29)');
-  ui.button('Ama (Editor) adds a paragraph', once(() => edit('ama', true, 'Ama added a paragraph')), { group: docGroup });
-  ui.button('You (Editor) fix a typo', once(() => edit('you', true, 'You fixed a typo')), { group: docGroup });
-  ui.button('Yaw (Commenter) tries to edit', once(() => edit('yaw', false, 'Yaw tried to edit')), { group: docGroup });
+  if (!BROWSER_MODE) {
+    const docGroup = ui.group('3 · Edit a shared document (Session 29)');
+    ui.button('Ama (Editor) adds a paragraph', once(() => edit('ama', true, 'Ama added a paragraph')), { group: docGroup });
+    ui.button('You (Editor) fix a typo', once(() => edit('you', true, 'You fixed a typo')), { group: docGroup });
+    ui.button('Yaw (Commenter) tries to edit', once(() => edit('yaw', false, 'Yaw tried to edit')), { group: docGroup });
+  }
   async function edit(who, allowed, what) {
     const route = who === 'you' ? ['you', 'router', 'isp', 'hub', 'cloud'] : [who, 'cloud'];
     if (who === 'you') setScreen('you', 'doc');
@@ -674,12 +1352,15 @@ export default function internetLab(stage, ui) {
     ui.info('☁️ Saved to the cloud', `<p><b>${what}.</b> Everyone sees the change within seconds — no emailing files back and forth.</p><p><b>Version history</b> keeps every save (${history.map((h, i) => `v${i + 1}`).join(', ')}), so mistakes can be undone. That is the ultimate safety net.</p>`);
   }
 
-  ui.info('The internet: a road network of computers', '<p>Click any building to learn what it does, then send some traffic using the buttons. Drag to look around.</p>');
+  if (BROWSER_MODE) browser.intro();
+  else ui.info('The internet: a road network of computers', '<p>Click any building to learn what it does, then send some traffic using the buttons. Drag to look around.</p>');
 }
 
-export const config = { camera: [0, 13, 14], target: [0.5, 0, -0.5], shadowSize: 14, maxDistance: 35, frame: 1.2 };
+const TOWN_CONFIG = { camera: [0, 13, 14], target: [0.5, 0, -0.5], shadowSize: 14, maxDistance: 35, frame: 1.2 };
+const BROWSER_CONFIG = { camera: [-3.2, 14.6, 15.0], target: [-3.2, 1.6, 0.5], shadowSize: 15, maxDistance: 35, frame: 0.86 };
+export const config = BROWSER_MODE ? BROWSER_CONFIG : TOWN_CONFIG;
 
-export const missions = [
+const TOWN_MISSIONS = [
   { id: 'globe', text: 'Click the blue globe called "The Internet".', hint: 'The internet is like a road network that joins computers together.' },
   { id: 'https', text: 'Visit a website that has a padlock 🔒.', hint: 'Watch what the snooper sees: only scrambled letters!' },
   { id: 'http', text: 'Visit the website with the ⚠️ warning sign.', hint: 'No padlock means anyone on the network can read what you send.' },
@@ -687,3 +1368,11 @@ export const missions = [
   { id: 'cloud-edit', text: 'Make an edit to the shared document.', hint: 'Use "Ama (Editor) adds a paragraph" or "You fix a typo".' },
   { id: 'blocked', text: 'Let Yaw (a Commenter) try to edit.', hint: 'What happens to Yaw\'s change? Why?' },
 ];
+
+// Session 11: browser skills.
+const BROWSER_MISSIONS = [
+  { id: 'tabs', text: 'Open two new tabs, switch between them, close one and bring it back.', hint: 'Ctrl + T opens, Ctrl + Tab switches, Ctrl + W closes, and Ctrl + Shift + T brings back the tab you closed.' },
+  { id: 'bookmark', text: 'Bookmark the Kakum page with the star ☆: name it "Kakum - Club" and put it on the bookmarks bar.', hint: 'In the Wikipedia tab, open the Kakum page first. Then press ☆ (Ctrl + D), change the name and the folder, and press Done.' },
+  { id: 'download', text: 'Save the park picture, then find it with Ctrl + J and in the Downloads folder.', hint: 'Right-click the picture on the Kakum page and choose Save image as… Then look for it in two places.' },
+];
+export const missions = BROWSER_MODE ? BROWSER_MISSIONS : TOWN_MISSIONS;

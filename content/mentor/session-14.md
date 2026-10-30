@@ -44,7 +44,12 @@ By the end of the session, pupils can:
 - **Team points:** one point per pupil whose form has zero errors, one for each mistake a partner catches before Submit, and one for a correctly saved confirmation file.
 
 ## The 3D lab
-**Form Filler** ("Fill in a practice online application on a 3D laptop. Catch the mistakes before you press Submit, and save your confirmation"). On the projector, do the first mission together: fill the application from the profile shown, reading each field type aloud as you go (text box, drop-down, date). Then pairs do the mission where planted mistakes must be caught before pressing Submit, and finish by saving the confirmation. It mirrors Page 3 (Spot the Mistakes) and is the warm-up for the real practice form on Page 5. If the internet is down, the Form Filler lab can replace the Google Form for the Page 5 mission.
+**Form Filler** ("Fill in a practice online application on a 3D laptop. Catch the mistakes before you press Submit, and save your confirmation"). The laptop shows the practice Holiday Camp form for the fictional pupil Akosua Boateng (the Page 5 profile). Yaw started it on a shared computer and left four mistakes, just like Page 3: a first name in small letters (akosua), the date in the wrong order (2012/14/08), a 9-digit phone number (024 000 000) and an email with a space. Pupils type into the real form fields in the side panel and the laptop screen updates. Three missions:
+1. **Catch the 4 planted mistakes and fix them before you press Submit.**
+2. **Fill every * required field from the profile and attach a photo that meets the rules.** (Pressing Submit early shows the red "This is a required question" messages; of the three files on the desk only Practice_Photo_Akosua.jpg, 240 KB, is accepted: the 3.2 MB photo is too big and the .docx is the wrong format. "👀 Partner check" lists the fields that still do not match, without giving answers.)
+3. **Submit once, write down the reference and save the confirmation as a PDF in your folder.** (The reference is BIH-CAMP-14, the same as your Google Form; saving to Downloads is accepted but the lab explains it belongs in Documents > BIH_TechClub.)
+
+On the projector, do the first mission together, reading each field type aloud (text box, drop-down, radio buttons, checkboxes, date). Point out that the form catches the date, phone and email mistakes itself, but not the small-letter name: the strict clerk saves exactly what you type. Pairs then do missions 2 and 3. If the internet is down, the Form Filler lab can replace the Google Form for the Page 5 mission: it uses the same profile and the same steps (fill, partner check, submit once, keep proof).
 
 ## Common mistakes and quick fixes
 | Pupils often… | Try this |
