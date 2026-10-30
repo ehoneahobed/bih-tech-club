@@ -19,6 +19,20 @@ The tokens live at the top of `src/site.css`. The workbooks are rebranded when p
 ## Self-study
 Every session page has a numbered path (learn → 3D lab → Lab Mission → check → save). Learners tick steps as they go, the lab step ticks itself when its missions are done, and *Finished? Check your answers* shows the answer key from the mentor guide. Progress is stored only in that browser (`bih-progress`). The home page shows *Continue* and a status on each session card. `/start/` explains how to study. The step wording is in `stepsFor()` in `scripts/build.mjs`; Sessions 20 and 22 (capstone) have their own paths. Each session's *What you need* line is `needs` in `content/sessions.json`.
 
+## Typing trainer
+`/typing/` teaches touch typing. Typing is not a session topic: from Session 2, every session opens with a 10-minute **typing warm-up**, and pupils practise at home or at the Hub.
+
+- **Lessons:** 11 stages (home row, G and H, E and I, R and U, the rest of the top row, bottom row, capitals with Shift, punctuation, numbers, symbols, speed sentences). A pupil moves up only with 95% accuracy on a stage run; every unlocked stage can be replayed. Drills are made from the letters a stage allows, using real words where possible. The on-screen keyboard and hands light the next key and finger, in the Session 2 finger colours (pinky red, ring amber, middle green, index blue).
+- **Mistakes:** a wrong key turns red and must be rubbed out with Backspace before the pupil can go on. Every wrong key still counts against accuracy.
+- **Warm-up:** each session page (2 onwards) has a *Start with your 10-minute typing warm-up* button linking to `typing/?warmup=<title-slug>`. It runs 1 minute of posture and finger checks, 5 minutes of drill at the pupil's stage, 3 minutes of the session's words, then a summary. The button is not a step in the session path, so saved ticks are not affected.
+- **Speed check:** 1 or 3 minutes. Speed (wpm) = letters typed correctly ÷ 5, per minute; gross wpm counts every key. The Typing Passport uses the 3-minute check: Bronze 15 wpm at 90%, Silver 25 wpm at 92%, Gold 35 wpm at 95%. Badges at 20, 30 and 40 wpm (90% accuracy or more), plus a few for stages, games and warm-ups.
+- **Games:** *Trotro Race* (Kaneshie to Circle against a pace trotro at 15/20/30/40 wpm) and *Falling Mangoes* (type the word on a mango before it lands). Both are plain Canvas 2D, pause when the page loses focus, respect reduced motion, and are silent unless sound is switched on.
+- **Progress** lives only in that browser (`bih-typing` in localStorage): stage results, speed checks, bests, badges and most-missed keys. *My progress* shows them, with a *Clear my typing progress* button for shared PCs.
+
+**Where the words live:** `content/typing.json`. `warmup` maps each session **title** (exactly as in `sessions.json`) to its 8–12 warm-up words; `bank` holds the Ghanaian names, places, foods and the practice sentences (plain, number and symbol sentences). The build puts all of it inside `typing/typing.js` (an esbuild bundle of `src/typing/`), so the trainer works in the Offline Club Kit without loading any other files.
+
+**Add words for a new session:** add a line to `warmup` in `content/typing.json` with the session's exact title as the key, for example `"My New Session": ["word", "two words", "Capital"]`. If you rename a session, rename its key too. The build warns about any session from 2 onwards with no warm-up words.
+
 The review and recommendations are in [`docs/PLANNING.md`](docs/PLANNING.md).
 
 ## Project layout
@@ -28,8 +42,10 @@ content/
   sessions.json          Course map: titles, levels, summaries, which 3D lab
   workbooks/             The 20 authored workbooks (the master copy, so edit these)
   mentor/                Mentor guides, one Markdown file per session (_TEMPLATE.md shows the headings)
+  typing.json            Warm-up words for each session (keyed by title) and the typing practice text
 src/
   labs/                  three.js 3D labs (one file per lab + runtime.js)
+  typing/                Typing trainer: stages, warm-up, speed check, games (bundled into typing/typing.js)
   workbook.js            Autosave + toolbar added to every workbook
   sw.js                  Service worker: the site keeps working offline after one visit
   site.css               Website styles (brand tokens at the top)
